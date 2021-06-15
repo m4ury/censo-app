@@ -11,13 +11,14 @@ class AddFieldsToUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()    
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('apellido_paterno')->after('name');
             $table->string('apellido_materno')->nullable();
             $table->boolean('estado')->default(1)->after('password');
             $table->string('type')->default('normal_user');
+            $table->enum('profesion', ['psicologo'=>'Psicologo', 'a_social' => 'Asistente Social', 'medico'=>'Medico']);
         });
     }
 

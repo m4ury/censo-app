@@ -65,7 +65,7 @@
             @endif
         </div>
 
-        {{-- Apellido Paterno field --}}
+        {{-- Apellido Materno field --}}
         <div class="input-group mb-3">
             <input type="text" name="apellido_mat" class="form-control {{ $errors->has('apellido_mat') ? 'is-invalid' : '' }}"
                    value="{{ old('apellido_mat') }}" placeholder="Apellido materno">
@@ -95,6 +95,19 @@
                     <strong>{{ $errors->first('email') }}</strong>
                 </div>
             @endif
+        </div>
+
+        {{-- Profesion field --}}
+        <div class="form-group row">
+            <div class="col-sm">
+                {!! Form::select('profesion', ['Medico'=> 'Medico', 'Psicologo' => 'Psicologo', 'Asistente Social' =>
+                'Asistente Social'], null, ['class' =>'form-control'.($errors->has('profesion') ? ' is-invalid' : ''), 'id' => 'tipo', 'placeholder' => 'Seleccione cargo']) !!}
+                @if ($errors->has('profesion'))
+                    <span class="invalid-feedback">
+            <strong>{{ $errors->first('profesion') }}</strong>
+        </span>
+                @endif
+            </div>
         </div>
 
         {{-- Password field --}}
@@ -147,3 +160,10 @@
         </a>
     </p>
 @stop
+@section('js')
+    <script>
+        $('#tipo').select2({
+            width: '100%',
+        });
+    </script>
+@endsection

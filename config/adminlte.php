@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Censo | ',
+    'title_prefix' => 'Psico-Censo | ',
     'title_postfix' => '',
 
     /*
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Censo</b>',
+    'logo' => '<b>Psico-Censo</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -100,12 +100,14 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/7.-Layout-and-Styling-Configuration
     |
     */
-    'classes_auth_card' => 'bg-gradient-dark',
-    'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-gradient-dark',
+    'classes_auth_card' => '',
+    'classes_auth_header' => 'bg-gradient-info',
+    'classes_auth_body' => '',
     'classes_auth_footer' => 'text-center',
-    'classes_auth_icon' => 'text-light',
-    'classes_auth_btn' => 'btn-flat btn-light',
+    'classes_auth_icon' => 'fa-lg text-info',
+    'classes_auth_btn' => 'btn-flat btn-primary',
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -252,7 +254,7 @@ return [
         ],
         //['header' => 'Patologias'],
         [
-            'text' => 'Patologias',
+            'text' => 'Diagnosticos',
             'route' => 'patologias.index',
             'icon' => 'fas fa-fw fa-heartbeat text-danger',
             'can' => 'ver-patologias'
@@ -478,26 +480,6 @@ return [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/chart.js/Chart.min.css',
-                ]
-            ],
-        ],
-        'Sweetalert2' => [
-            'active' => true,
-            'files' => [
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../../node_modules/sweetalert2/dist/sweetalert2.all.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../../node_modules/sweetalert2/dist/sweetalert2.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../../node_modules/sweetalert2/dist/sweetalert2.min.js',
                 ]
             ],
         ],

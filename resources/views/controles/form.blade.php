@@ -6,7 +6,7 @@
         'form-control'.($errors->has('tipo_control') ? ' is-invalid' : ''), 'id' => 'tipo', 'placeholder'=> "Seleccione
         Profesional"]) !!}
         @if ($errors->has('tipo_control'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('tipo_control') }}</strong>
         </span>
         @endif
@@ -21,7 +21,7 @@
         {!! Form::date('fecha_control', null, ['class' => 'form-control form-control-sm'.($errors->has('fecha_control')
         ? ' is-invalid' : '')]) !!}
         @if ($errors->has('fecha_control'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('fecha_control') }}</strong>
         </span>
         @endif
@@ -38,7 +38,7 @@
         form-control-sm'.($errors->has('presion_arterial') ? ' is-invalid' : ''), 'placeholder' => 'Ejemplo.: 120/80'])
         !!}
         @if ($errors->has('presion_arterial'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('presion_arterial') }}</strong>
         </span>
         @endif
@@ -50,7 +50,7 @@
         {!! Form::number('peso_actual', null, ['class' => 'form-control form-control-sm'.($errors->has('peso_actual') ?
         ' is-invalid' : ''), 'placeholder' => 'Ejemplo: 88', 'step' => 'any']) !!}
         @if ($errors->has('peso_actual'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('peso_actual') }}</strong>
         </span>
         @endif
@@ -60,7 +60,7 @@
         {!! Form::number('talla_actual', null, ['class' => 'form-control form-control-sm'.($errors->has('talla_actual')
         ? ' is-invalid' : ''), 'placeholder' => 'Ejemplo: 175']) !!}
         @if ($errors->has('talla_actual'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('talla_actual') }}</strong>
         </span>
         @endif
@@ -87,17 +87,17 @@
 </div>
 
 @foreach($paciente->patologias as $patologia)
-@if($patologia->nombre_patologia == 'HTA')
-@include('partials.hta')
-@elseif($patologia->nombre_patologia == 'DLP')
-@include('partials.dlp')
-{{-- @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' || $patologia->nombre_patologia == 'ANTECEDENTE ACV')
-@include('partials.acv_iam') --}}
-@elseif($patologia->nombre_patologia == 'SALA ERA')
-@include('partials.sala_era')
-@elseif($patologia->nombre_patologia == 'DM2')
-@include('partials.dm2')
-@endif
+    @if($patologia->nombre_patologia == 'HTA')
+        @include('partials.hta')
+    @elseif($patologia->nombre_patologia == 'DLP')
+        @include('partials.dlp')
+        {{-- @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' || $patologia->nombre_patologia == 'ANTECEDENTE ACV')
+        @include('partials.acv_iam') --}}
+    @elseif($patologia->nombre_patologia == 'SALA ERA')
+        @include('partials.sala_era')
+    @elseif($patologia->nombre_patologia == 'DM2')
+        @include('partials.dm2')
+    @endif
 @endforeach
 
 <div class="form-group row">
@@ -106,7 +106,7 @@
         {!! Form::date('proximo_control', null, ['class' => 'form-control
         form-control-sm'.($errors->has('proximo_control') ? ' is-invalid' : '')]) !!}
         @if ($errors->has('proximo_control'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('proximo_control') }}</strong>
         </span>
         @endif
@@ -117,7 +117,7 @@
         'Nutricionista' => 'Nutricionista'], null, ['class' => 'form-control form-control-sm'.($errors->has('prox_tipo')
         ? ' is-invalid' : ''), 'id' => 'prox_tipo', 'placeholder'=> "Seleccione Profesional"]) !!}
         @if ($errors->has('prox_tipo'))
-        <span class="invalid-feedback">
+            <span class="invalid-feedback">
             <strong>{{ $errors->first('prox_tipo') }}</strong>
         </span>
         @endif
@@ -125,8 +125,8 @@
 </div>
 
 @section('js')
-<script>
-    $('#Enfermera, #Kine, #Medico').hide();
+    <script>
+        $('#Enfermera, #Kine, #Medico').hide();
         $('#tipo, #prox_tipo').select2({
             theme: "classic",
             width: '100%',
@@ -200,5 +200,5 @@
         $('input.check10').on('change', function () {
             $('input.check10').not(this).prop('checked', false);
         });
-</script>
+    </script>
 @endsection

@@ -50,7 +50,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function adminlte_desc()
     {
-        return $this->type;
+        return $this->profesion;
     }
 
     public function adminlte_profile_url()

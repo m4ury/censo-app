@@ -17,19 +17,19 @@ class PacienteController extends Controller
             ->search($q)
             ->get();
 
-        return view('pacientes.index', compact('pacientes', 'q'));
+        return view('pacientes.index', compact('pacientes', 'q'))->with('fireAlert', true);
     }
 
     public function create()
     {
-        return view('pacientes.create');
+        //return view('pacientes.create');
     }
 
-    public function store(PacienteRequest $request)
+    public function store(Request $request)
     {
-        Paciente::create($request->all());
-        Alert::success('Nuevo Paciente ha sido cread@ con exito');
-        return redirect('pacientes')->withSuccess('Paciente Creado con exito!');
+        Paciente::updateOrCreate($request->except('_token'));
+
+        return back()->withSuccess('Paciente creada con exito!');
     }
 
     public function show($id)
