@@ -32,6 +32,6 @@
         "jszip": "^3.6.0",
         "moment": "^2.29.1",
         "pdfmake": "^0.1.70",
-        "sweetalert2": "^11.0.7"
+        "sweetalert2": "^11.4.6"
     }
 }

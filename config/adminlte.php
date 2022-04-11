@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Censo | ',
+    'title_prefix' => 'Salud Familiar | ',
     'title_postfix' => '',
 
     /*
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Censo</b>',
+    'logo' => '<b>Salud Familiar</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -245,6 +245,13 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],*/
         ['header' => 'PACIENTES'],
+
+        [
+            'text' => 'Familias',
+            'route' => 'familias.index',
+            'icon' => 'fas fa-solid fa-people-roof',
+        ],
+
         [
             'text' => 'Pacientes',
             'route' => 'pacientes.index',
@@ -504,17 +511,17 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'vendor/sweetalert2/sweetalert2.all.js',
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
-                    'location' => 'vendor/sweetalert2/sweetalert2.css',
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.css',
                 ],
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'vendor/sweetalert2/sweetalert2.js',
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.js',
                 ]
             ],
         ],
