@@ -42,6 +42,10 @@ class Paciente extends Model
         if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
     }
 
+    public function familia(){
+        
+    }
+
     //seccion A
 
     public function rcv_bajo()
@@ -202,7 +206,7 @@ class Paciente extends Model
 
     public function insulinaHba1C()
     {
-        return $this->hba1cMayorIgual9Porcent()->where('usoInsulina', '=', 1);
+        return $this->hba1cMayorIgual9Porcent()->where('pacientes.usoInsulina', '=', 1);
     }
 
     public function hba1cMayorIgual9Porcent()

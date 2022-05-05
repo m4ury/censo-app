@@ -55,12 +55,20 @@ class PacienteController extends Controller
             'apellidoP' => 'string|min:3',
             'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
+
+        //dd($validator);
+
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        $paciente = Paciente::findOrFail($id);
-        $paciente->update($request->all());
 
+        $paciente = Paciente::findOrFail($id);
+
+        $paciente->usoInsulina = $request->usoInsulina ?? 0;
+        $paciente->usoInsulina = $request->usoIecaAraII ?? 0;
+
+        $paciente->update($request->all());
+        //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
     }
 
