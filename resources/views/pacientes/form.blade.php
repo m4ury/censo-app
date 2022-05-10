@@ -94,7 +94,7 @@
             @endif
         </div>
         <div class="col-sm-5">
-            {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
+            {!! Form::select('sector', ['SB' => 'Naranjo', 'SA' => 'Celeste', 'SS' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
         </div>
     </div>
 

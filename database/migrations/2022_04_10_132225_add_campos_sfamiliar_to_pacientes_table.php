@@ -21,6 +21,7 @@ class AddCamposSfamiliarToPacientesTable extends Migration
             $table->enum('prevision', ['fonasa', 'isapre', 'dipreca', 'prais', 'prais-isapre', 'sin prevision'])->default('sin prevision');
             $table->enum('escolaridad', ['basica completa', 'basica incompleta', 'media completa', 'media incompleta', 'superior completa', 'superior incompleta', 'pre-escolar', 'tec-superior completa', 'tec-superior incompleta', 'sin escolaridad'])->default('sin escolaridad');
             $table->string('profesion')->nullable();
+            $table->boolean('nacionalidad')->default(1); //1 chileno 0 extrangero
         });
 
         Schema::table('pacientes', function (Blueprint $table) {
