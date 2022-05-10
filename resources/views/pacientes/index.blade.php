@@ -31,13 +31,17 @@
                     <td>{{ $paciente->ficha }}</td>
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
-                    @if($paciente->sector == 'celeste')
+                    @if($paciente->sector == 'SA')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-primary"></i></span> Celeste
                         </td>
-                    @else($paciente->sector == 'naranjo')
+                    @elseif($paciente->sector == 'SB')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-orange"></i></span> Naranjo
+                        </td>
+                        @else
+                        <td><span class="mr-2">
+                    <i class="fas fa-square text-white"></i></span> Blanco
                         </td>
                     @endif
                     <td>

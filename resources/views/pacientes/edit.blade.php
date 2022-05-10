@@ -115,7 +115,7 @@
                     <div class="form-group row">
                         {!! Form::label('sector_label', 'Sector.', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-5">
-                            {!! Form::select('sector', ['naranjo' => 'Naranjo', 'celeste' => 'Celeste', 'blanco' => 'Blanco'], old('sector', $paciente->sector), ['class' => 'form-control
+                            {!! Form::select('sector', ['SB' => 'Naranjo', 'SA' => 'Celeste', 'SS' => 'Blanco'], old('sector', $paciente->sector), ['class' => 'form-control
                             form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
                         </div>
                     </div>

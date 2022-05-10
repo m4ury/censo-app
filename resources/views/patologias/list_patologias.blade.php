@@ -15,14 +15,14 @@
                     @endif
                     {{ Form::open(['action' => 'PacientePatologiaController@eliminarPatologia', 'method' => 'POST',
                     'class' =>
-                    'col-sm-3 float-right']) }}
+                    'col-sm-3 float-right confirm']) }}
 
                     {{ Form::hidden('patologia_id', $patologia->id) }}
                     {{ Form::hidden('paciente_id', $paciente->id) }}
                     @if(auth()->user()->isAdmin() || auth()->user()->type == 'medico')
-                    {{ Form::submit('Eliminar patologia', ['class' => 'btn bg-gradient-primary', 'id' =>
-                    'delete-confirm', 'onclick'=>'return confirm("seguro desea eliminar esta Patologia?")'])
-                    }}
+                    {!! Form::button('<i class="fas fa-trash"> Eliminar </i>', ['type' => 'submit', 'class' => 'btn
+                    btn-outline-danger btn-sm float-right', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
+                    'Eliminar'] ) !!}
                     @endif
                     {{ Form::close() }}
 
@@ -377,3 +377,47 @@ $patologia->nombre_patologia === 'ANTECEDENTE ACV')
 </div>
 @endforeach
 @endif
+@section('js')
+
+<script>
+    $(".confirm").on('submit', function(e) {
+        e.preventDefault();
+        //console.log('alerta');
+      const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success mx-2',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro?',
+      text: "No podras revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, borrar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.submit();
+        swalWithBootstrapButtons.fire(
+          'Eliminado!',
+          'registro Eliminado.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Tranki.. no ha pasaso nada',
+          'error'
+        )
+      }
+    })
+    })
+    </script>
+
+@endsection
