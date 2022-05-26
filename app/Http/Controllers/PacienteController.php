@@ -52,8 +52,8 @@ class PacienteController extends Controller
         $validator = Validator::make($request->all(), [
             'rut' => 'cl_rut',
             'nombres' => 'string|min:3',
-            'apellidoP' => 'string|min:3',
-            'racVigente' => 'before_or_equal:' . Carbon::now(),
+            'apellidoP' => 'string|min:3'
+            //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
 
         //dd($validator);

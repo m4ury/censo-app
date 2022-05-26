@@ -20,9 +20,9 @@
                         <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">Nº Ficha: {{ $paciente->ficha
                             }}</span>
                         <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Sector: @if($paciente->sector
-                            == 'SA')
+                            == 'Celeste')
                             <i class="fas fa-square text-primary"></i> Celeste
-                            @elseif($paciente->sector == 'SB')
+                            @elseif($paciente->sector == 'Naranjo')
                             <i class="fas fa-square text-orange"></i> Naranjo
                             @else
                             <i class="fas fa-square text-white"></i> Blanco
@@ -48,6 +48,9 @@
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
+                            <a class="nav-link" id="vert-tabs-encuestas-tab" data-toggle="pill"
+                                href="#vert-tabs-encuestas" role="tab" aria-controls="vert-tabs-encuestas"
+                                aria-selected="false">Encuestas</a>
                         </div>
                     </div>
                     <div class="col-7 col-sm-9">
@@ -113,6 +116,14 @@
 
                                 @if($paciente->patologias->count() == 0)
                                 <p class="text-muted">No hay Patologias aun... </p>
+                                @endif
+                            </div>
+                            <div class="tab-pane fade" id="vert-tabs-encuestas" role="tabpanel"
+                                aria-labelledby="vert-tabs-encuestas-tab">
+                                @include('encuestas.list_encuestas', $paciente)
+
+                                @if($paciente->patologias->count() == 0)
+                                <p class="text-muted">No hay Encuestas aun... </p>
                                 @endif
                             </div>
                         </div>

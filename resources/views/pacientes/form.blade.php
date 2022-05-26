@@ -94,11 +94,11 @@
             @endif
         </div>
         <div class="col-sm-5">
-            {!! Form::select('sector', ['SB' => 'Naranjo', 'SA' => 'Celeste', 'SS' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
+            {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
         </div>
     </div>
 
-    <div class="form-group row">
+    {{-- <div class="form-group row">
         {!! Form::label('est_civil_label', 'Estado civil', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-5">
             {!! Form::select('e_civil', ['soltero' => 'Soltera(o)', 'casado' => 'Casada(o)', 'divorciado' => 'Divorciada(o)'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione estado civil', 'id' => 'e_civil']) !!}
@@ -106,7 +106,7 @@
         <div class="col-sm-5">
             {!! Form::select('parentesco', ['esposo' => 'Esposa(o)', 'pareja' => 'Pareja', 'papa' => 'Papá', 'mama' => 'Mamá', 'hermano' => 'Hermana(o)', 'hijo' => 'Hija(o)', 'abuelo' => 'Abuela(o)', 'tio' => 'Tia(o)', 'primo' => 'Prima(o)', 'suegro' => 'Suegra(o)', 'nuera' => 'Nuera', 'yerno' => 'Yerno', 'cuñado' => 'Cuñada(o)', 'sobrino' => 'Sobrina(o)', 'nieto' => 'Nieta(o)', 'bisnieto' => 'Bisnieta(o)', 'hijastro' => 'Hijastra(o)', 'otros' => 'Otros'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione parentesco', 'id' => 'parentesco']) !!}
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="form-group row">

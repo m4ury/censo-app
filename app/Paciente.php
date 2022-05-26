@@ -32,6 +32,11 @@ class Paciente extends Model
         return $this->hasMany(Control::class);
     }
 
+    public function encuestas()
+    {
+        return $this->hasMany(Encuesta::class);
+    }
+
     public function patologias()
     {
         return $this->belongsToMany(Patologia::class)->withPivot('created_at');
@@ -43,7 +48,7 @@ class Paciente extends Model
     }
 
     public function familia(){
-        
+
     }
 
     //seccion A

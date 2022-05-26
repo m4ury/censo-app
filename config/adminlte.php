@@ -15,7 +15,7 @@ return [
     */
 
     'title' => '',
-    'title_prefix' => 'Salud Familiar | ',
+    'title_prefix' => 'PSCV | ',
     'title_postfix' => '',
 
     /*
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Salud Familiar</b>',
+    'logo' => '<b>PSCV</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -246,18 +246,18 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],*/
-        ['header' => 'FAMILIAS'],
 
-        [
-            'text' => 'Familias',
-            'route' => 'familias.index',
-            'icon' => 'fas fa-users text-pink',
-        ],
-
+        ['header' => 'PACIENTES'],
         [
             'text' => 'Pacientes',
             'route' => 'pacientes.index',
             'icon' => 'fas fa-fw fa-user-injured text-success',
+        ],
+
+        [
+            'text' => 'Encuestas',
+            'route' => 'encuestas.index',
+            'icon' => 'fas fa-envelope text-pink',
         ],
         //['header' => 'Patologias'],
         [

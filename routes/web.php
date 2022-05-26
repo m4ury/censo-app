@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
 
     //rutas para familias
-    Route::resource('familias', 'FamiliaController');
+    Route::resource('encuestas', 'EncuestaController');
 
     //rutas para controles
     Route::resource('controles', 'ControlController')->except('[index, create]');
