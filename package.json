@@ -23,20 +23,15 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "datatables.net-autofill-dt": "^2.3.9",
+        "datatables.net-autofill-dt": "^2.4.0",
         "datatables.net-buttons-dt": "^1.7.1",
-        "datatables.net-datetime": "^1.1.0",
-        "datatables.net-dt": "^1.11.5",
+        "datatables.net-datetime": "^1.1.2",
+        "datatables.net-dt": "^1.12.1",
         "datatables.net-editor-dt": "^1.6.3",
         "datatables.net-zf": "^1.10.24",
-        "jszip": "^3.8.0",
+        "jszip": "^3.10.0",
         "moment": "^2.29.1",
-<<<<<<< Updated upstream
-        "pdfmake": "^0.1.70",
-        "sweetalert2": "^11.4.6"
-=======
         "pdfmake": "^0.1.72",
-        "sweetalert2": "^11.0.7"
->>>>>>> Stashed changes
+        "sweetalert2": "^11.4.6"
     }
 }
