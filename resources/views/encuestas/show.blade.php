@@ -249,21 +249,102 @@
                     </td>
                     <td></td>
                 </tr>
+                <thead>
+                    <tr>
+                        <th class="font-weight-bold">
+                            DEBERES
+                        </th>
+                        <th>
+                            SI
+                        </th>
+                        <th>
+                            NO
+                        </th>
+                        <th>
+                            OBSERVACIONES
+                        </th>
+                    </tr>
+                </thead>
                 <tr>
-                    <th class="font-weight-bold">
-                        DEBERES
-                    </th>
                     <th>
-                        SI
+                        Ha proporcionado informacion veraz acerca de su enfermedad, identidad y dirección
                     </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_1 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_1 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
                     <th>
-                        NO
+                        Conoce y cumple el reglamento interno del hospital y reguarda su informacion medica.
                     </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_2 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_2 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
                     <th>
-                        OBSERVACIONES
+                        Cuida las instalaciones y equipamiento del recinto.
                     </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_3 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_3 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>
+                        Usted se ha informado de los horarios de atencion y formas de pago.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_4 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_4 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>
+                        Usted trata respetuosamenteal personal de salud'
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>
+                        Usted se ha informado acerca del procedimiento de reclamos.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
                 </tr>
             </table>
+
+            <div class="row border border-dark mt-4">
+                <h6> En esta pregunta marque con una "X" la alternativa que Usted la considera:</h6>
+                <br>
+                1 - La atencion del personal del Hospital usted la considera:
+
+            </div>
         </div>
 
     </div>
