@@ -25,7 +25,11 @@ class EncuestaRequest extends FormRequest
     {
         return [
             'fecha_encuesta' => 'required|before_or_equal:today',
-            'paciente_id' => 'required'
+            'paciente_id' => 'required',
+            'atencion' => 'required',
+            'funcion' => 'required',
+            'nota' => 'required',
+
         ];
     }
 }

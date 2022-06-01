@@ -36,24 +36,21 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-5 col-sm-3">
+                    <div class="col-3 col-sm-3">
                         <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist"
                             aria-orientation="vertical">
                             <a class="nav-link active" id="vert-tabs-paciente-tab" data-toggle="pill"
                                 href="#vert-tabs-paciente" role="tab" aria-controls="vert-tabs-paciente"
                                 aria-selected="true">Informacion del Paciente</a>
                             <a class="nav-link" id="vert-tabs-controles-tab" data-toggle="pill"
-                                href="#vert-tabs-controles" role="tab" aria-controls="vert-tabs-presupuestos"
+                                href="#vert-tabs-controles" role="tab" aria-controls="vert-tabs-controles"
                                 aria-selected="false">Controles</a>
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
-                            <a class="nav-link" id="vert-tabs-encuestas-tab" data-toggle="pill"
-                                href="#vert-tabs-encuestas" role="tab" aria-controls="vert-tabs-encuestas"
-                                aria-selected="false">Encuestas</a>
                         </div>
                     </div>
-                    <div class="col-7 col-sm-9">
+                    <div class="col-9 col-sm-9">
                         <div class="tab-content" id="vert-tabs-tabContent">
                             <div class="tab-pane text-left fade active show" id="vert-tabs-paciente" role="tabpanel"
                                 aria-labelledby="vert-tabs-paciente-tab">
@@ -116,14 +113,6 @@
 
                                 @if($paciente->patologias->count() == 0)
                                 <p class="text-muted">No hay Patologias aun... </p>
-                                @endif
-                            </div>
-                            <div class="tab-pane fade" id="vert-tabs-encuestas" role="tabpanel"
-                                aria-labelledby="vert-tabs-encuestas-tab">
-                                @include('encuestas.list_encuestas', $paciente)
-
-                                @if($paciente->patologias->count() == 0)
-                                <p class="text-muted">No hay Encuestas aun... </p>
                                 @endif
                             </div>
                         </div>

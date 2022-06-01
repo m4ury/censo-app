@@ -30,28 +30,28 @@ class EncuestaController extends Controller
     {
 
         $encuesta = new Encuesta($request->except('_token'));
-        $encuesta->der_1 = $request->der_1 ?? 0;
-        $encuesta->der_2 = $request->der_2 ?? 0;
-        $encuesta->der_3 = $request->der_3 ?? 0;
-        $encuesta->der_4 = $request->der_4 ?? 0;
-        $encuesta->der_5 = $request->der_5 ?? 0;
-        $encuesta->der_6 = $request->der_6 ?? 0;
-        $encuesta->der_7 = $request->der_7 ?? 0;
-        $encuesta->der_8 = $request->der_8 ?? 0;
-        $encuesta->der_9 = $request->der_9 ?? 0;
-        $encuesta->der_10 = $request->der_10 ?? 0;
-        $encuesta->der_11 = $request->der_11 ?? 0;
-        $encuesta->der_12 = $request->der_12 ?? 0;
-        $encuesta->der_13 = $request->der_13 ?? 0;
-        $encuesta->der_14 = $request->der_14 ?? 0;
-        $encuesta->der_15 = $request->der_15 ?? 0;
+        $encuesta->der_1 = $request->der_1 ?? null;
+        $encuesta->der_2 = $request->der_2 ?? null;
+        $encuesta->der_3 = $request->der_3 ?? null;
+        $encuesta->der_4 = $request->der_4 ?? null;
+        $encuesta->der_5 = $request->der_5 ?? null;
+        $encuesta->der_6 = $request->der_6 ?? null;
+        $encuesta->der_7 = $request->der_7 ?? null;
+        $encuesta->der_8 = $request->der_8 ?? null;
+        $encuesta->der_9 = $request->der_9 ?? null;
+        $encuesta->der_10 = $request->der_10 ?? null;
+        $encuesta->der_11 = $request->der_11 ?? null;
+        $encuesta->der_12 = $request->der_12 ?? null;
+        $encuesta->der_13 = $request->der_13 ?? null;
+        $encuesta->der_14 = $request->der_14 ?? null;
+        $encuesta->der_15 = $request->der_15 ?? null;
 
-        $encuesta->deb_1 = $request->deb_1 ?? 0;
-        $encuesta->deb_2 = $request->deb_2 ?? 0;
-        $encuesta->deb_3 = $request->deb_3 ?? 0;
-        $encuesta->deb_4 = $request->deb_4 ?? 0;
-        $encuesta->deb_5 = $request->deb_5 ?? 0;
-        $encuesta->deb_6 = $request->deb_6 ?? 0;
+        $encuesta->deb_1 = $request->deb_1 ?? null;
+        $encuesta->deb_2 = $request->deb_2 ?? null;
+        $encuesta->deb_3 = $request->deb_3 ?? null;
+        $encuesta->deb_4 = $request->deb_4 ?? null;
+        $encuesta->deb_5 = $request->deb_5 ?? null;
+        $encuesta->deb_6 = $request->deb_6 ?? null;
 
         $encuesta->save();
 
@@ -87,7 +87,7 @@ class EncuestaController extends Controller
 
     public function destroy($id)
     {
-        Control::destroy($id);
-        return redirect()->back()->withErrors('Control eliminado con exito!');
+        Encuesta::destroy($id);
+        return redirect()->back()->withErrors('Encuesta eliminada con exito!');
     }
 }

@@ -5,12 +5,12 @@
         <i class="fas fa-money-check-alt"></i>
         Nueva encuesta
     </a>
-    @if (\Request::is('encuestas/*'))
+    {{-- @if (\Request::is('encuestas/*'))
     <a class="btn bg-gradient-secondary btn-sm" title="Regresar" href="{{ route('pacientes.show', $paciente->id) }}">
         <i class="fas fa-arrow-alt-circle-left"></i>
         Atras
     </a>
-    @endif
+    @endif --}}
 </div>
 <hr>
 <div class="col pb-2">

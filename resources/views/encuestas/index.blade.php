@@ -20,6 +20,8 @@
                 <th>N° Ficha</th>
                 <th>N° Telefono</th>
                 <th>Sector</th>
+                <th class="text-center">Documentos</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             {{--<td><a href="{{ route('encuestas.show', $encuesta->id) }}"></a></td> --}}
@@ -44,6 +46,18 @@
                     <i class="fas fa-square text-white"></i></span> Blanco
                         </td>
                     @endif
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                            title="Encuesta" href="{{ url('encuestas/'.$encuesta->id) }}" target="_blank"><i class="fas fa-envelope"></i>
+                        </a>
+                    </td>
+                    <td>
+                        {!! Form::open(['route' => ['encuestas.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
+                        {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
+                        'Eliminar'] ) !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -87,4 +101,50 @@
                     },
             });
     </script>
+
+<script>
+    $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+</script>
+<script>
+$(".confirm").on('submit', function(e) {
+    e.preventDefault();
+    //console.log('alerta');
+  const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success mx-2',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+swalWithBootstrapButtons.fire({
+  title: 'Estas seguro?',
+  text: "No podras revertir esto!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Si, borrar!',
+  cancelButtonText: 'No, cancelar!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.value) {
+    this.submit();
+    swalWithBootstrapButtons.fire(
+      'Eliminado!',
+      'registro Eliminado.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelado',
+      'Tranki.. no ha pasaso nada',
+      'error'
+    )
+  }
+})
+})
+</script>
 @endsection

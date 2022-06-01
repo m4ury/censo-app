@@ -159,7 +159,7 @@
         <div class="col-sm">
             {!! Form::label('der10_label', 'SI', ['class' => 'col-sm col-form-label text-bold']) !!}
             {!! Form::checkbox('der_10', 1, old('der_10', $encuesta->der_10), ['class' =>
-            'form-control my-2 ded_1']) !!}
+            'form-control my-2 der_10']) !!}
         </div>
         <div class="col-sm">
             {!! Form::label('der10_label', 'NO', ['class' => 'col-sm col-form-label text-bold']) !!}
@@ -346,17 +346,17 @@
     <div class="col-sm">
         {!! Form::label('atencion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('atencion', 'buena', old('atencion', $encuesta->atencion), ['class' =>
-        'form-control my-2 atencion']) !!}
+        'form-control my-2 atencion_r']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('atencion_label', 'REGULAR', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('atencion', 'regular', old('atencion', $encuesta->atencion), ['class' =>
-        'form-control my-2 atencion']) !!}
+        'form-control my-2 atencion_r']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('atencion_label', 'MALA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('atencion', 'mala', old('mala', $encuesta->atencion), ['class' =>
-        'form-control my-2 der_6']) !!}
+        'form-control my-2 atencion_r']) !!}
     </div>
 </div>
 
@@ -367,17 +367,17 @@
     <div class="col-sm">
         {!! Form::label('funcion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'buena', old('funcion', $encuesta->funcion), ['class' =>
-        'form-control my-2 funcion']) !!}
+        'form-control my-2 funcion_r']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('funcion_label', 'REGULAR', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'regular', old('funcion', $encuesta->funcion), ['class' =>
-        'form-control my-2 funcion']) !!}
+        'form-control my-2 funcion_r']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('funcion_label', 'MALA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'mala', old('mala', $encuesta->funcion), ['class' =>
-        'form-control my-2 der_6']) !!}
+        'form-control my-2 funcion_r']) !!}
     </div>
 </div>
 <hr>
@@ -386,7 +386,13 @@
     {!! Form::label('nota_label', '3 - En una escala de 1 a 7 con que nota calificaria la atencion recibida en este hospital:', ['class' => 'col-sm-3 col-form-label text-bold']) !!}
     <div class="col-sm">
         {!! Form::selectRange('nota', 1, 7, old('nota', $encuesta->nota), ['class' =>
-        'form-control col-sm my-2 nota']) !!}
+        'form-control col-sm my-2 nota'.($errors->has('nota')
+        ? ' is-invalid' : ''), 'placeholder'=> "Califique del 1 al 7"]) !!}
+        @if ($errors->has('nota'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('nota') }}</strong>
+        </span>
+        @endif
     </div>
 </div>
 

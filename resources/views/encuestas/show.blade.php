@@ -13,7 +13,7 @@
     </head>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm">
                 <img style="height: 100px; width: 100px" src="{{ asset('vendor\adminlte\dist\img\AdminLTELogo.png') }}" alt="logo">
             </div>
         </div>
@@ -51,8 +51,8 @@
             </p>
         </div>
 
-        <div class="col-md-12 table-responsive pt-3">
-            <table id="viatico" class="table table-md-responsive table-bordered">
+        <div class="col-12 table-responsive pt-3">
+            <table id="derechos" class="table table-md-responsive table-bordered">
                 <thead>
                     <tr>
                         <th class="font-weight-bold">
@@ -77,7 +77,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_1 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_1 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_1 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -89,7 +89,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_2 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_2 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_2 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -101,7 +101,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_3 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_3 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_3 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -113,7 +113,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_4 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_4 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_4 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -125,7 +125,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_5 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_5 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_5 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -137,7 +137,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_6 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_6 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_6 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -149,7 +149,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_7 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_7 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_7 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -161,7 +161,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_8 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_8 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_8 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -173,7 +173,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_9 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_9 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_9 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -185,7 +185,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_10 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_10 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_10 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -197,7 +197,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_11 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_11 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_11 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -209,7 +209,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_12 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_12 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_12 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -221,7 +221,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_13 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_13 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_13 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -233,7 +233,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_14 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_14 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_14 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -245,10 +245,14 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_15 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_15 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_15 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
+            </table>
+        </div>
+        <div class="col-12 table-responsive pt-3 ">
+            <table id="deberes" class="table table-md-responsive table-bordered">
                 <thead>
                     <tr>
                         <th class="font-weight-bold">
@@ -273,7 +277,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_1 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_1 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_1 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -285,7 +289,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_2 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_2 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_2 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -297,7 +301,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_3 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_3 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_3 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -309,7 +313,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_4 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_4 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_4 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -321,7 +325,7 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
@@ -333,20 +337,48 @@
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 == 1? "check text-success":" " }} mr-1"></i></strong>
                     </td>
                     <td>
-                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 == 0? "times text-danger":" " }} mr-1"></i></strong>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>
             </table>
+        </div>
 
-            <div class="row border border-dark mt-4">
+        <div class="row border border-dark mt-4">
+            <div class="col-md">
                 <h6> En esta pregunta marque con una "X" la alternativa que Usted la considera:</h6>
                 <br>
-                1 - La atencion del personal del Hospital usted la considera:
+                <strong> 1 - La atencion del personal del Hospital usted la considera:</strong>
+                <br>
+                @if($encuesta->atencion == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
+                @elseif($encuesta->atencion == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->atencion == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+                <hr>
+                <strong> 2 - Usted considera que la función que presta el hospital a la comuna es:</strong>
+                <br>
+                @if($encuesta->funcion == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
+                @elseif($encuesta->funcion == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->funcion == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+                <hr>
+                <strong> 3 - En una escala de 1 a 7 con qué nota calificaria la atencion recibida en este hospital.</strong>
+                <br>
+                <p class="font-weight-bold {{ $encuesta->nota < 3? "text-danger": "text-success"}}"> Nota: {{$encuesta->nota}} </p>
+                <h6 class="pt-4">Gracias por participar de esta encuesta, ya que su opinion es importante.</h6>
 
             </div>
         </div>
-
     </div>
     <style>
         html {
