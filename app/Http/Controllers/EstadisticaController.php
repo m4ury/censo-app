@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estadistica;
 use App\Paciente;
 use App\Control;
+use App\Encuesta;
 use Carbon\Carbon;
 
 class EstadisticaController extends Controller
@@ -3486,6 +3487,80 @@ class EstadisticaController extends Controller
             'rMod1519',
             'rMod2064',
             'rMod65mas',
+        ));
+    }
+
+    public function encuestas(){
+
+        $encuestas = new Encuesta;
+        $todas = $encuestas->count();
+
+        $der1_all = $encuestas->whereIn('der_1',[1,0])->count();
+        $der1_si = $encuestas->where('der_1', '=', 1)->count();
+        $der1_no = $encuestas->where('der_1', '=', 0)->count();
+
+        $der2_all = $encuestas->whereIn('der_2',[1,0])->count();
+        $der2_si = $encuestas->where('der_2', '=', 1)->count();
+        $der2_no = $encuestas->where('der_2', '=', 0)->count();
+
+        $der3_all = $encuestas->whereIn('der_3',[1,0])->count();
+        $der3_si = $encuestas->where('der_3', '=', 1)->count();
+        $der3_no = $encuestas->where('der_3', '=', 0)->count();
+
+        $der4_all = $encuestas->whereIn('der_4',[1,0])->count();
+        $der4_si = $encuestas->where('der_4', '=', 1)->count();
+        $der4_no = $encuestas->where('der_4', '=', 0)->count();
+
+        $der5_all = $encuestas->whereIn('der_5',[1,0])->count();
+        $der5_si = $encuestas->where('der_5', '=', 1)->count();
+        $der5_no = $encuestas->where('der_5', '=', 0)->count();
+
+        $der6_all = $encuestas->whereIn('der_6',[1,0])->count();
+        $der6_si = $encuestas->where('der_6', '=', 1)->count();
+        $der6_no = $encuestas->where('der_6', '=', 0)->count();
+
+        $der7_all = $encuestas->whereIn('der_7',[1,0])->count();
+        $der7_si = $encuestas->where('der_7', '=', 1)->count();
+        $der7_no = $encuestas->where('der_7', '=', 0)->count();
+
+        $der8_all = $encuestas->whereIn('der_8',[1,0])->count();
+        $der8_si = $encuestas->where('der_8', '=', 1)->count();
+        $der8_no = $encuestas->where('der_8', '=', 0)->count();
+
+        $der9_all = $encuestas->whereIn('der_9',[1,0])->count();
+        $der9_si = $encuestas->where('der_9', '=', 1)->count();
+        $der9_no = $encuestas->where('der_9', '=', 0)->count();
+
+        return view('estadisticas.encuestas', compact(
+            'encuestas',
+            'todas',
+            'der1_si',
+            'der1_no',
+            'der2_si',
+            'der2_no',
+            'der3_si',
+            'der3_no',
+            'der4_si',
+            'der4_no',
+            'der5_si',
+            'der5_no',
+            'der6_si',
+            'der6_no',
+            'der7_si',
+            'der7_no',
+            'der8_si',
+            'der8_no',
+            'der9_si',
+            'der9_no',
+            'der1_all',
+            'der2_all',
+            'der3_all',
+            'der4_all',
+            'der5_all',
+            'der6_all',
+            'der7_all',
+            'der8_all',
+            'der9_all',
         ));
     }
 }

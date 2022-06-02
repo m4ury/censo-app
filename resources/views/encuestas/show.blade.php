@@ -319,7 +319,7 @@
                 </tr>
                 <tr>
                     <th>
-                        Usted trata respetuosamenteal personal de salud'
+                        Usted trata respetuosamenteal personal de salud.
                     </th>
                     <td>
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_5 == 1? "check text-success":" " }} mr-1"></i></strong>
