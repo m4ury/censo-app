@@ -25,8 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::get('patologias/{paciente?}', 'PatologiaController@index')->name('patologias');
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
 
-    //rutas para familias
+    //rutas para encuestas
     Route::resource('encuestas', 'EncuestaController');
+    
+    //rutas para solicitudes
+    Route::resource('solicitudes', 'SolicitudController');
+    Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
 
     //rutas para controles
     Route::resource('controles', 'ControlController')->except('[index, create]');
@@ -35,8 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
     Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
-
-
+    
     //rutas para perfil
     Route::get('/perfil', 'UserController@profile')->name('perfil');
     Route::put('perfil', 'UserController@updateProfile');
@@ -56,11 +59,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p5b', 'EstadisticaController@seccionP5b')->name('estadisticas.seccion-p5b');
     Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
     Route::get('/estadisticas.encuestas', 'EstadisticaController@encuestas')->name('estadisticas.encuestas');
-
-
-
-
-
-    //ruta para exportar a excel
-    /*Route::get('exports/pacientes', 'PacienteController@export')->name('exports.pacientes');*/
+    
 });

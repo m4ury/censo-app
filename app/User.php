@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 //use illuminate\foundation\auth\user as authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use illuminate\notifications\notifiable;
+use Illuminate\Support\Facades\App;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -44,8 +45,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function adminlte_image()
     {
-        return 'https://picsum.photos/300/300';
+        //return 'https://picsum.photos/300/300';
         /*'https://source.unsplash.com/random/300x300';*/
+        return asset('img/logo-minsal.png');
     }
 
     public function adminlte_desc()
@@ -61,6 +63,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function controls()
     {
         return $this->hasMany(Control::class);
+    }
+
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class);
     }
 
     public function fullUserName()

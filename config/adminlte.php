@@ -259,6 +259,13 @@ return [
             'route' => 'encuestas.index',
             'icon' => 'fas fa-envelope text-pink',
         ],
+
+        [
+            'text' => 'Solicitudes',
+            'route' => 'solicitudes.index',
+            'icon' => 'fas fa-envelope text-pink',
+        ],
+
         //['header' => 'Patologias'],
         [
             'text' => 'Patologias',
