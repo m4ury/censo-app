@@ -263,7 +263,7 @@ return [
         [
             'text' => 'Solicitudes',
             'route' => 'solicitudes.index',
-            'icon' => 'fas fa-envelope text-pink',
+            'icon' => 'fas fa-envelope-open-text text-fuccia',
         ],
 
         //['header' => 'Patologias'],
@@ -384,6 +384,16 @@ return [
     */
 
     'plugins' => [
+        'Moment' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+            ],
+        ],
         'Datatables' => [
             'active' => false,
             'files' => [

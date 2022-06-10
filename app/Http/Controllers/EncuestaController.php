@@ -12,8 +12,10 @@ class EncuestaController extends Controller
     public function index()
     {
     $encuestas = Encuesta::all();
+    //dd($encuestas);
 
         return view('encuestas.index', compact('encuestas'));
+
     }
 
     public function create()

@@ -29,7 +29,7 @@
             @foreach($encuestas as $encuesta)
                 <tr>
                     <th>{{ Carbon\Carbon::parse($encuesta->fecha_encuesta)->format("d-m-Y") }}</th>
-                    <th>{{ Freshwork\ChileanBundle\Rut::parse($encuesta->paciente->rut)->format(Freshwork\ChileanBundle\Rut::FORMAT_COMPLETE) }}</th>
+                    <th>{{$encuesta->paciente->rut }}</th>
                     <td class="text-uppercase">{{ $encuesta->paciente->fullName() }}</td>
                     <td>{{ $encuesta->paciente->ficha }}</td>
                     <td>{{ $encuesta->paciente->telefono ?? '--' }}</td>
@@ -66,7 +66,9 @@
 @stop
 @section('plugins.Datatables', true)
 @section('js')
+<script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
+         $.fn.dataTable.moment('DD-MM-YYYY');
         $("#pacientes").DataTable(
             {
                 dom: 'Bfrtip',
@@ -76,6 +78,7 @@
                     'pdf',
                     'print',
                 ],
+                responsive: true,
                 language:
                     {
                         "processing": "Procesando...",
@@ -103,12 +106,9 @@
     </script>
 
 <script>
-    $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-</script>
-<script>
-$(".confirm").on('submit', function(e) {
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $(".confirm").on('submit', function(e) {
     e.preventDefault();
     //console.log('alerta');
   const swalWithBootstrapButtons = Swal.mixin({

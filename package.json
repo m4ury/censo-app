@@ -30,7 +30,7 @@
         "datatables.net-editor-dt": "^1.6.3",
         "datatables.net-zf": "^1.10.24",
         "jszip": "^3.10.0",
-        "moment": "^2.29.1",
+        "moment": "^2.29.3",
         "pdfmake": "^0.1.72",
         "sweetalert2": "^11.4.6"
     }
