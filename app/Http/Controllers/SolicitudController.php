@@ -36,8 +36,8 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        $solicitud = new Solicitud;
-        return view('solicitudes.create', compact('solicitud'));
+        /* $solicitud = new Solicitud;
+        return view('solicitudes.create', compact('solicitud')); */
     }
 
 
@@ -49,7 +49,7 @@ class SolicitudController extends Controller
         $solicitud->sol_fecha = Carbon::now();
         $solicitud->save();
 
-        return redirect('solicitudes.index')->withSuccess('Control creado con exito!');
+        return back()->withSuccess('Solicitud creado con exito!');
     }
 
     public function show($id)
@@ -61,28 +61,27 @@ class SolicitudController extends Controller
 
     public function edit($id)
     {
-        $control = Control::findOrFail($id);
-        $paciente = Paciente::with('patologias')->findOrFail($control->paciente->id);
-        return view('controles.edit', compact('control'));
+        /* $control = Solicitud::findOrFail($id);
+        return view('solicitudes.edit', compact('control')); */
     }
 
     public function editar($id)
     {
-        $control = Control::findOrFail($id);
+        /* $control = Control::findOrFail($id);
         $paciente = Paciente::with('patologias')->findOrFail($control->paciente->id);
-        return view('controles.editar', compact('control', 'paciente'));
+        return view('controles.editar', compact('control', 'paciente')); */
     }
 
 
     public function update(Request $request, $id)
     {
-        $control = Control::findOrFail($id);
+        $solicitud = Solicitud::findOrFail($id);
 
         //dd($request->all());
-        $control->update($request->all());
+        $solicitud->update($request->all());
         //$control->last = $request->last ?? 2;
-        $control->save();
-        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
+        $solicitud->save();
+        return back()->withSuccess('Solicitud actualizado con exito!');
     }
 
     public function destroy($id)

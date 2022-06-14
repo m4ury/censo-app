@@ -3,14 +3,14 @@
 @section('title', 'Solicitudes')
 
 @section('content')
-    <div class="col-sm-6 pb-3">
+    <!-- <div class="col-sm-6 pb-3">
         <a class="btn bg-gradient-success btn-sm" title="Solicitud de Fichas" href="{{ route('solicitudes.create') }}">
             <i class="fas fa-user-plus">
             </i>
             Nueva Solicitud
         </a>
-    </div>
-    <div class="col-md-12 table-responsive">
+    </div> -->
+    <div class="col-md-12 table-responsive pt-3">
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
             <tr>
@@ -37,13 +37,14 @@
                             @elseif($solicitud->sol_estado = 'some')
                             <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
                             @endif
-                    {{-- <td>
-                        <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
-                            title="Solicitud" href="{{ url('solicitudes/'.$solicitud->id) }}" target="_blank"><i class="fas fa-letter"></i>
-                        </a>
-                    </td> --}}
+
                     <td>
-                        {{--{!! Form::open(['route' => ['solicitudes.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
+                    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#solicitud_update"><i
+                        class="fas fa-pen"></i>
+                    Actualizar estado Solicitud
+                    </button>
+
+                        {{--{!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
                         {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
                         btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
                         'Eliminar'] ) !!}
@@ -53,7 +54,15 @@
             @endforeach
             </tbody>
         </table>
+        <div class="form-group d-inline-flex align-self-stretch">
+                <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#solicitud"><i
+                        class="fas fa-calendar-check"></i>
+                    Nueva Solicitud
+                </button>
+            </div>
     </div>
+    @include('solicitudes.modal')
+    @include('solicitudes.form')
 @stop
 @section('plugins.Datatables', true)
 @section('js')

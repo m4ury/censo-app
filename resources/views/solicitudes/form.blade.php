@@ -1,5 +1,8 @@
 
-    {{ Form::open(['action' => 'SolicitudController@store', 'method' => 'POST', 'class' => 'form-horizontal pt-2']) }}
+   <div class="modal fade py-3" id="solicitud_update" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+     aria-hidden="true">
+     {{ Form::open(['action' => 'SolicitudController@update', 'method' => 'POST', 'url' => 'solicitudes/'.$solicitud->id, 'class' => 'form-horizontal']) }}
+    @method('PUT')
     <div class="form-group row">
         {!! Form::label('sol_ficha_label', 'N° Ficha', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-3">
@@ -11,23 +14,12 @@
                             </span>
             @endif
         </div>
-
-        {!! Form::label('sol_rut_label', 'N° Ficha', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-3">
-            {!! Form::text('sol_rut',null, ['class' => 'form-control form-control-sm'.($errors->has('sol_rut') ? '
-            is-invalid' : ''), 'placeholder' => 'ej.: 16000000-K']) !!}
-            @if ($errors->has('sol_rut'))
-                <span class="invalid-feedback">
-                              <strong>{{ $errors->first('sol_rut') }}</strong>
-                            </span>
-            @endif
-        </div>
     </div>
 <hr>
 
 <div class="row">
     <div class="col">
-        {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-success btn-sm btn-block']) }}
+        {{ Form::submit('Actualizar', ['class' => 'btn bg-gradient-success btn-sm btn-block']) }}
     </div>
     <div class="col">
         <a href="{{ url('solicitudes') }}" style="text-decoration:none">
@@ -35,6 +27,7 @@
         </a>
     </div>
 </div>
+   </div>
 
 {{ Form::close() }}
 

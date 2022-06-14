@@ -33,11 +33,11 @@
                     <td class="text-uppercase">{{ $encuesta->paciente->fullName() }}</td>
                     <td>{{ $encuesta->paciente->ficha }}</td>
                     <td>{{ $encuesta->paciente->telefono ?? '--' }}</td>
-                    @if($encuesta->paciente->sector == 'Celeste')
+                    @if($encuesta->paciente->sector = 'celeste')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-primary"></i></span> Celeste
                         </td>
-                    @elseif($encuesta->paciente->sector == 'Naranjo')
+                    @elseif($encuesta->paciente->sector = 'naranjo')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-orange"></i></span> Naranjo
                         </td>
