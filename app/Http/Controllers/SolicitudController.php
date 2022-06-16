@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\newSolicitudCreada;
 use App\User;
 use App\Solicitud;
 //use Solicitud;
 use Illuminate\Http\Request;
 use App\Http\Requests\SolicitudRequest;
+use App\Mail\newSolicitudCreadaMail;
+use App\Notifications\newSolicitudCreadaNotification;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class SolicitudController extends Controller
 {
@@ -47,7 +51,12 @@ class SolicitudController extends Controller
         $solicitud = new Solicitud($request->except('_token'));
         $solicitud->user_id = Auth::user()->id;
         $solicitud->sol_fecha = Carbon::now();
+
         $solicitud->save();
+
+        Mail::to($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+
+        //event(new newSolicitudCreada($solicitud));
 
         return back()->withSuccess('Solicitud creado con exito!');
     }
@@ -61,15 +70,8 @@ class SolicitudController extends Controller
 
     public function edit($id)
     {
-        /* $control = Solicitud::findOrFail($id);
-        return view('solicitudes.edit', compact('control')); */
-    }
-
-    public function editar($id)
-    {
-        /* $control = Control::findOrFail($id);
-        $paciente = Paciente::with('patologias')->findOrFail($control->paciente->id);
-        return view('controles.editar', compact('control', 'paciente')); */
+        $solicitud = Solicitud::findOrFail($id);
+        return view('solicitudes.edit', compact('solicitud'));
     }
 
 
@@ -79,25 +81,13 @@ class SolicitudController extends Controller
 
         //dd($request->all());
         $solicitud->update($request->all());
-        //$control->last = $request->last ?? 2;
         $solicitud->save();
-        return back()->withSuccess('Solicitud actualizado con exito!');
+        return redirect('solicitudes')->withSuccess('Solicitud actualizado con exito!');
     }
 
     public function destroy($id)
     {
         Control::destroy($id);
         return redirect()->back()->withErrors('Control eliminado con exito!');
-    }
-
-    public function prox(Request $request)
-    {
-
-        $q = $request->get('q');
-        $controles = Control::latest()
-            ->search($q)
-            ->get();
-
-        return view('controles.proximos', compact('controles'));
     }
 }

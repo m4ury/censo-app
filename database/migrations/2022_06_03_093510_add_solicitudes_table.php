@@ -15,7 +15,7 @@ class AddSolicitudesTable extends Migration
     {
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
-            $table->string('sol_rut')->unique();
+            $table->string('sol_rut');
             $table->unsignedInteger('sol_ficha')->nullable();
             $table->date('sol_fecha');
             $table->enum('sol_estado', ['solicitado', 'medicina', 'some'])->nullable();

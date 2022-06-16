@@ -26,30 +26,29 @@
             @foreach($solicitudes as $solicitud)
                 <tr>
                     <th>{{ Carbon\Carbon::parse($solicitud->sol_fecha)->format("d-m-Y") }}</th>
-                    <th>{{ Freshwork\ChileanBundle\Rut::parse($solicitud->sol_rut)->format(Freshwork\ChileanBundle\Rut::FORMAT_COMPLETE) }}</th>
+                    <th>{{ $solicitud->sol_rut }}</th>
                     <td>{{ $solicitud->sol_ficha }}</td>
                     <td>{{ $solicitud->user->fullUserName() }}</td>
                         <td><span class="mr-2">
-                            @if($solicitud->sol_estado = 'solicitado')
+                            @if($solicitud->sol_estado == 'solicitado')
                             <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P>
-                            @elseif($solicitud->sol_estado = 'medicina')
+                            @elseif($solicitud->sol_estado == 'medicina')
                             <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P>
-                            @elseif($solicitud->sol_estado = 'some')
+                            @elseif($solicitud->sol_estado == 'some')
                             <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
                             @endif
 
                     <td>
-                    <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#solicitud_update"><i
-                        class="fas fa-pen"></i>
-                    Actualizar estado Solicitud
-                    </button>
+                    <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                        title="Editar" href="{{ url('solicitudes/'.$solicitud->id.'/edit') }}"><i class="fas fa-pen"></i>
+                    </a>
 
                         {{--{!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
                         {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
                         btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
                         'Eliminar'] ) !!}
                         {!! Form::close() !!}--}}
-                    </td>
+                        </td>
                 </tr>
             @endforeach
             </tbody>
@@ -62,8 +61,8 @@
             </div>
     </div>
     @include('solicitudes.modal')
-    @include('solicitudes.form')
-@stop
+
+    @stop
 @section('plugins.Datatables', true)
 @section('js')
     <script>
