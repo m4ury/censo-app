@@ -3495,6 +3495,7 @@ class EstadisticaController extends Controller
         $encuestas = new Encuesta;
         $todas = $encuestas->count();
 
+//derechos
         $der1_all = $encuestas->whereIn('der_1',[1,0])->count();
         $der1_si = $encuestas->where('der_1', '=', 1)->count();
         $der1_no = $encuestas->where('der_1', '=', 0)->count();
@@ -3531,6 +3532,56 @@ class EstadisticaController extends Controller
         $der9_si = $encuestas->where('der_9', '=', 1)->count();
         $der9_no = $encuestas->where('der_9', '=', 0)->count();
 
+        $der10_all = $encuestas->whereIn('der_10',[1,0])->count();
+        $der10_si = $encuestas->where('der_10', '=', 1)->count();
+        $der10_no = $encuestas->where('der_10', '=', 0)->count();
+
+        $der11_all = $encuestas->whereIn('der_11',[1,0])->count();
+        $der11_si = $encuestas->where('der_11', '=', 1)->count();
+        $der11_no = $encuestas->where('der_11', '=', 0)->count();
+
+        $der12_all = $encuestas->whereIn('der_12',[1,0])->count();
+        $der12_si = $encuestas->where('der_12', '=', 1)->count();
+        $der12_no = $encuestas->where('der_12', '=', 0)->count();
+
+        $der13_all = $encuestas->whereIn('der_13',[1,0])->count();
+        $der13_si = $encuestas->where('der_13', '=', 1)->count();
+        $der13_no = $encuestas->where('der_13', '=', 0)->count();
+
+        $der14_all = $encuestas->whereIn('der_14',[1,0])->count();
+        $der14_si = $encuestas->where('der_14', '=', 1)->count();
+        $der14_no = $encuestas->where('der_14', '=', 0)->count();
+
+        $der15_all = $encuestas->whereIn('der_15',[1,0])->count();
+        $der15_si = $encuestas->where('der_15', '=', 1)->count();
+        $der15_no = $encuestas->where('der_15', '=', 0)->count();
+
+//deberes
+        $deb1_all = $encuestas->whereIn('deb_1',[1,0])->count();
+        $deb1_si = $encuestas->where('deb_1', '=', 1)->count();
+        $deb1_no = $encuestas->where('deb_1', '=', 0)->count();
+
+        $deb2_all = $encuestas->whereIn('deb_2',[1,0])->count();
+        $deb2_si = $encuestas->where('deb_2', '=', 1)->count();
+        $deb2_no = $encuestas->where('deb_2', '=', 0)->count();
+
+        $deb3_all = $encuestas->whereIn('deb_3',[1,0])->count();
+        $deb3_si = $encuestas->where('deb_3', '=', 1)->count();
+        $deb3_no = $encuestas->where('deb_3', '=', 0)->count();
+
+        $deb4_all = $encuestas->whereIn('deb_4',[1,0])->count();
+        $deb4_si = $encuestas->where('deb_4', '=', 1)->count();
+        $deb4_no = $encuestas->where('deb_4', '=', 0)->count();
+
+        $deb5_all = $encuestas->whereIn('deb_5',[1,0])->count();
+        $deb5_si = $encuestas->where('deb_5', '=', 1)->count();
+        $deb5_no = $encuestas->where('deb_5', '=', 0)->count();
+
+        $deb6_all = $encuestas->whereIn('deb_6',[1,0])->count();
+        $deb6_si = $encuestas->where('deb_6', '=', 1)->count();
+        $deb6_no = $encuestas->where('deb_6', '=', 0)->count();
+
+
         return view('estadisticas.encuestas', compact(
             'encuestas',
             'todas',
@@ -3552,6 +3603,18 @@ class EstadisticaController extends Controller
             'der8_no',
             'der9_si',
             'der9_no',
+            'der10_si',
+            'der10_no',
+            'der11_si',
+            'der11_no',
+            'der12_si',
+            'der12_no',
+            'der13_si',
+            'der13_no',
+            'der14_si',
+            'der14_no',
+            'der15_si',
+            'der15_no',
             'der1_all',
             'der2_all',
             'der3_all',
@@ -3561,6 +3624,32 @@ class EstadisticaController extends Controller
             'der7_all',
             'der8_all',
             'der9_all',
+            'der10_all',
+            'der11_all',
+            'der12_all',
+            'der13_all',
+            'der14_all',
+            'der15_all',
+
+            'deb1_si',
+            'deb1_no',
+            'deb2_si',
+            'deb2_no',
+            'deb3_si',
+            'deb3_no',
+            'deb4_si',
+            'deb4_no',
+            'deb5_si',
+            'deb5_no',
+            'deb6_si',
+            'deb6_no',
+
+            'deb1_all',
+            'deb2_all',
+            'deb3_all',
+            'deb4_all',
+            'deb5_all',
+            'deb6_all',
         ));
     }
 }

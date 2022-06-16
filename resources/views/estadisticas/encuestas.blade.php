@@ -58,19 +58,19 @@
                             <td>{{ $der7_si }}</td>
                             <td>{{ $der8_si }}</td>
                             <td>{{ $der9_si }}</td>
+                            <td>{{ $der10_si }}</td>
+                            <td>{{ $der11_si }}</td>
+                            <td>{{ $der12_si }}</td>
+                            <td>{{ $der13_si }}</td>
+                            <td>{{ $der14_si }}</td>
+                            <td>{{ $der15_si }}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $deb1_si }}</td>
+                            <td>{{ $deb2_si }}</td>
+                            <td>{{ $deb3_si }}</td>
+                            <td>{{ $deb4_si }}</td>
+                            <td>{{ $deb5_si }}</td>
+                            <td>{{ $deb6_si }}</td>
                         </tr>
 
                         <tr>
@@ -84,19 +84,20 @@
                             <td>{{ $der7_no }}</td>
                             <td>{{ $der8_no }}</td>
                             <td>{{ $der9_no }}</td>
+                            <td>{{ $der10_no }}</td>
+                            <td>{{ $der11_no }}</td>
+                            <td>{{ $der12_no }}</td>
+                            <td>{{ $der13_no }}</td>
+                            <td>{{ $der14_no }}</td>
+                            <td>{{ $der15_no }}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $deb1_no }}</td>
+                            <td>{{ $deb2_no }}</td>
+                            <td>{{ $deb3_no }}</td>
+                            <td>{{ $deb4_no }}</td>
+                            <td>{{ $deb5_no }}</td>
+                            <td>{{ $deb6_no }}</td>
+
                         </tr>
                         <tr>
                             <th>TOTAL</th>
@@ -109,19 +110,19 @@
                             <td>{{ $der7_all }}</td>
                             <td>{{ $der8_all }}</td>
                             <td>{{ $der9_all }}</td>
+                            <td>{{ $der10_all }}</td>
+                            <td>{{ $der11_all }}</td>
+                            <td>{{ $der12_all }}</td>
+                            <td>{{ $der13_all }}</td>
+                            <td>{{ $der14_all }}</td>
+                            <td>{{ $der15_all }}</td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $deb1_all }}</td>
+                            <td>{{ $deb2_all }}</td>
+                            <td>{{ $deb3_all }}</td>
+                            <td>{{ $deb4_all }}</td>
+                            <td>{{ $deb5_all }}</td>
+                            <td>{{ $deb6_all }}</td>
                         </tr>
                         <tr>
                             <th>SI %</th>

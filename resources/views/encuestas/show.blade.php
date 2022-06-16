@@ -131,7 +131,7 @@
                 </tr>
                 <tr>
                     <th>
-                        Ha sido grabado o fotografiado sin su permisopara fines de difusión.
+                        Ha sido grabado o fotografiado sin su permiso para fines de difusión.
                     </th>
                     <td>
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->der_6 == 1? "check text-success":" " }} mr-1"></i></strong>

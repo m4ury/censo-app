@@ -70,21 +70,21 @@ class EncuestaController extends Controller
 
     public function edit($id)
     {
-        $control = Control::findOrFail($id);
-        $paciente = Paciente::with('patologias')->findOrFail($control->paciente->id);
-        return view('controles.edit', compact('control'));
+        $encuesta = Encuesta::findOrFail($id);
+        //$paciente = Paciente::with('patologias')->findOrFail($encuesta->paciente->id);
+        return view('encuestas.edit', compact('encuesta'));
 
     }
 
         public function update(Request $request, $id)
     {
-        $control = Control::findOrFail($id);
+        $encuesta = Encuesta::findOrFail($id);
 
         //dd($request->all());
-        $control->update($request->all());
-        //$control->last = $request->last ?? 2;
-        $control->save();
-        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
+        $encuesta->update($request->all());
+        //$encuesta->last = $request->last ?? 2;
+        $encuesta->save();
+        return redirect('encuestas')->withSuccess('Encuesta actualizado con exito!');
     }
 
     public function destroy($id)

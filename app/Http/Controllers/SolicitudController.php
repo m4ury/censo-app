@@ -54,7 +54,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        Mail::to($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        Mail::to('mmoraless@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 

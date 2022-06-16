@@ -15,7 +15,7 @@
                     {!! Form::label('sol_ficha_label', 'N° Ficha', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-3">
                             {!! Form::number('sol_ficha',old('sol_ficha', $solicitud->sol_ficha), ['class' => 'form-control form-control-sm'.($errors->has('sol_ficha') ? '
-                            is-invalid' : ''), 'placeholder' => 'Numero ficha solicitada']) !!}
+                            is-invalid' : ''), 'placeholder' => 'Numero ficha']) !!}
                             @if ($errors->has('sol_ficha'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('sol_ficha') }}</strong>
@@ -27,7 +27,7 @@
                 <div class="form-group row">
                         {!! Form::label('sol_estado_label', 'Estado.', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-5">
-                            {!! Form::select('sol_estado', ['medicina' => 'en Medicina', 'some' => 'en SOME'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
+                            {!! Form::select('sol_estado', ['medicina' => 'en Medicina', 'some' => 'en SOME', 'solicitado' => 'Solicitado'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
                         </div>
                     </div>
                 <hr>

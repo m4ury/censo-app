@@ -57,7 +57,7 @@
                                 <div class="card-body">
                                     <strong><i class="fas fa-map-marker-alt"></i> Dirección</strong>
                                     <p class="text-muted">
-                                        {{ $paciente->direccion }}, {{ $paciente->comuna ? : 'Licantén' }}
+                                        {{ $paciente->direccion }}, {{ $paciente->comuna ? : 'Hualañé' }}
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-phone-alt mr-1"></i> Telefono</strong>

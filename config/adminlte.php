@@ -273,7 +273,8 @@ return [
             'icon' => 'fas fa-fw fa-heartbeat text-info',
             'can' => 'ver-patologias'
         ],
-        ['header' => 'CONTROLES'],
+        ['header' => 'CONTROLES',
+        'can' => 'controles-all'],
         [
             'text' => 'Controles',
             'route' => 'controles-all',
@@ -286,7 +287,8 @@ return [
             'icon' => 'fas fa-fw fa-project-diagram text-yellow',
             'can' => 'controles-all'
         ],
-        ['header' => 'ESTADISTICAS'],
+        ['header' => 'ESTADISTICAS',
+        'can' => 'estadisticas'],
         [
             'text' => 'Estadisticas',
             'route' => 'estadisticas',
