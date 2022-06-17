@@ -27,7 +27,7 @@
                 <div class="form-group row">
                         {!! Form::label('sol_estado_label', 'Estado.', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-5">
-                            {!! Form::select('sol_estado', ['medicina' => 'en Medicina', 'some' => 'en SOME', 'solicitado' => 'Solicitado'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
+                            {!! Form::select('sol_estado', ['medicina' => 'entrgado a Medicina', 'some' => 'devuelto a SOME', 'solicitado' => 'Solicitado', 'a_social' => 'entregado a Asistente Social', 'psicologo' => 'entregado a Psicologa(a)', 'otros' => 'Otros'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
                         </div>
                     </div>
                 <hr>

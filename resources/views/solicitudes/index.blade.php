@@ -32,10 +32,16 @@
                         <td><span class="mr-2">
                             @if($solicitud->sol_estado == 'solicitado')
                             <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P>
-                            @elseif($solicitud->sol_estado == 'medicina')
+                                @elseif($solicitud->sol_estado == 'medicina')
                             <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P>
-                            @elseif($solicitud->sol_estado == 'some')
+                                @elseif($solicitud->sol_estado == 'some')
                             <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
+                                @elseif($solicitud->sol_estado == 'a_social')
+                            <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P>
+                                @elseif($solicitud->sol_estado == 'psicologo')
+                            <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P>
+                                @elseif($solicitud->sol_estado == 'otros')
+                            <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
                             @endif
 
                     <td>
