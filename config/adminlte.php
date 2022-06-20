@@ -252,12 +252,14 @@ return [
             'text' => 'Pacientes',
             'route' => 'pacientes.index',
             'icon' => 'fas fa-fw fa-user-injured text-success',
+            'can' => 'oirs'
         ],
 
         [
             'text' => 'Encuestas',
             'route' => 'encuestas.index',
             'icon' => 'fas fa-envelope text-pink',
+            'can' => 'oirs'
         ],
 
         [

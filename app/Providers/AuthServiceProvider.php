@@ -45,5 +45,12 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::define('oirs', function ($user) {
+            if ($user->type == 'oirs' || $user->type == 'admin') {
+                return true;
+            }
+            return false;
+        });
     }
 }

@@ -43,12 +43,13 @@
                                 @elseif($solicitud->sol_estado == 'otros')
                             <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
                             @endif
-
+                            @if(auth()->user()->someUser() || auth()->user()->isAdmin())
                     <td>
                     <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
                         title="Editar" href="{{ url('solicitudes/'.$solicitud->id.'/edit') }}"><i class="fas fa-pen"></i>
                     </a>
-
+                    @else <td class="text-muted">Opción deshabilitada para tu usuario</td>
+                    @endif
                         {{--{!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
                         {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
                         btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
