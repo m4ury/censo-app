@@ -11,7 +11,7 @@ class EncuestaController extends Controller
 {
     public function index()
     {
-    $encuestas = Encuesta::all();
+    $encuestas = Encuesta::with('paciente')->get();
     //dd($encuestas);
 
         return view('encuestas.index', compact('encuestas'));

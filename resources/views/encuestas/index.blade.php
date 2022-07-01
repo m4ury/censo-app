@@ -15,6 +15,7 @@
             <thead class="thead-light">
             <tr>
                 <th>Fecha encuesta</th>
+                <th>Numero encuesta</th>
                 <th>Rut</th>
                 <th>Nombre Completo</th>
                 <th>N° Ficha</th>
@@ -28,8 +29,9 @@
             <tbody>
             @foreach($encuestas as $encuesta)
                 <tr>
-                    <th>{{ Carbon\Carbon::parse($encuesta->fecha_encuesta)->format("d-m-Y") }}</th>
-                    <th>{{$encuesta->paciente->rut }}</th>
+                    <td>{{ Carbon\Carbon::parse($encuesta->fecha_encuesta)->format("d-m-Y") }}</td>
+                    <td>{{ $encuesta->num_encuestas }}</td>
+                    <td>{{$encuesta->paciente->rut }}</td>
                     <td class="text-uppercase">{{ $encuesta->paciente->fullName() }}</td>
                     <td>{{ $encuesta->paciente->ficha }}</td>
                     <td>{{ $encuesta->paciente->telefono ?? '--' }}</td>

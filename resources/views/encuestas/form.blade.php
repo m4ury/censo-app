@@ -1,13 +1,18 @@
 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     {{ Form::open(['action' => 'EncuestaController@store', 'method' => 'POST', 'class' => 'form-horizontal pt-2']) }}
+
     <div class="form-group row">
-        {!! Form::label('fecha_encuesta', 'Fecha:', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-3">
+        {!! Form::label('num_encuestas_label', 'Num. Encuesta:', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-2">
+            {!! Form::number('num_encuestas',null, ['class' => 'form-control form-control-sm']) !!}
+        </div>
+        {!! Form::label('fecha_encuesta', 'Fecha:', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-2">
             {!! Form::date('fecha_encuesta',null, ['class' => 'form-control form-control-sm']) !!}
         </div>
 
         {!! Form::label('rut', 'Rut Encuestado:', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             {!! Form::select('paciente_id', $pacientes, null, ['class' => 'form-control form-control-sm'.($errors->has('paciente_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione un rut', 'id' => 'rut']) !!}
             @if ($errors->has('paciente_id'))
                 <span class="invalid-feedback">

@@ -19,6 +19,7 @@
                 <th>N° Ficha</th>
                 <th>Solicitante</th>
                 <th>estado</th>
+                <th>Ultima modificacion</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -43,6 +44,8 @@
                                 @elseif($solicitud->sol_estado == 'otros')
                             <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
                             @endif
+                            </td>
+                            <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
                             @if(auth()->user()->someUser() || auth()->user()->isAdmin())
                     <td>
                     <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"

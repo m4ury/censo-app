@@ -19,7 +19,7 @@
         </div>
         <div class="row left pt-3">
             <div class="col-sm text-left">
-                <h5 class="font-weight-bold" style="text-decoration:underline">ENCUESTA Nº {{ $encuesta->id }}</h5>
+                <h5 class="font-weight-bold" style="text-decoration:underline">ENCUESTA Nº {{ $encuesta->num_encuestas }}</h5>
             </div>
         </div>
         <div class="row pt-3">

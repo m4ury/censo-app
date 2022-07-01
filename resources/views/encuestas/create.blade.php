@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'crear-pacientes')
+@section('title', 'crear-encuesta')
 
 @section('content')
     <div class="container">

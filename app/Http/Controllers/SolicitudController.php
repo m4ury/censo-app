@@ -27,7 +27,7 @@ class SolicitudController extends Controller
     public function index()
     {
         $solicitudes = Solicitud::latest('sol_fecha')
-            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id')
+            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at')
             ->get();
 
         return view('solicitudes.index', compact('solicitudes'));
@@ -54,7 +54,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        Mail::to('mmoraless@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 
@@ -81,6 +81,7 @@ class SolicitudController extends Controller
 
         //dd($request->all());
         $solicitud->update($request->all());
+        $solicitud->modificador_id = Auth::user()->id;
         $solicitud->save();
         return redirect('solicitudes')->withSuccess('Solicitud actualizado con exito!');
     }
