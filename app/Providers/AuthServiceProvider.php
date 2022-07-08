@@ -33,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('estadisticas', function ($user) {
-            if ($user->type == 'admin' || $user->type == 'enfermera') {
+            if ($user->type == 'admin' || $user->type == 'enfermera' || $user->type == 'oirs') {
                 return true;
             }
             return false;

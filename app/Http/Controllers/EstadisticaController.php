@@ -3581,6 +3581,29 @@ class EstadisticaController extends Controller
         $deb6_si = $encuestas->where('deb_6', '=', 1)->count();
         $deb6_no = $encuestas->where('deb_6', '=', 0)->count();
 
+//atencion
+        $buena = $encuestas->whereAtencion('buena')->count();
+        $regular = $encuestas->whereAtencion('regular')->count();
+        $mala = $encuestas->whereAtencion('mala')->count();
+        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->count();
+
+//funcion
+        $fun_buena = $encuestas->whereFuncion('buena')->count();
+        $fun_regular = $encuestas->whereFuncion('regular')->count();
+        $fun_mala = $encuestas->whereFuncion('mala')->count();
+        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->count();
+
+//notas
+        $nota_1 = $encuestas->whereNota(1)->count();
+        $nota_2 = $encuestas->whereNota(2)->count();
+        $nota_3 = $encuestas->whereNota(3)->count();
+        $nota_4 = $encuestas->whereNota(4)->count();
+        $nota_5 = $encuestas->whereNota(5)->count();
+        $nota_6 = $encuestas->whereNota(6)->count();
+        $nota_7 = $encuestas->whereNota(7)->count();
+
+        $notas_total = $encuestas->whereIn('nota', [1,2,3,4,5,6,7])->count();
+
 
         return view('estadisticas.encuestas', compact(
             'encuestas',
@@ -3650,6 +3673,26 @@ class EstadisticaController extends Controller
             'deb4_all',
             'deb5_all',
             'deb6_all',
+
+            'buena',
+            'regular',
+            'mala',
+
+            'fun_buena',
+            'fun_regular',
+            'fun_mala',
+
+            'fun_total',
+            'at_total',
+
+            'nota_1',
+            'nota_2',
+            'nota_3',
+            'nota_4',
+            'nota_5',
+            'nota_6',
+            'nota_7',
+            'notas_total'
         ));
     }
 }

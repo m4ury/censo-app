@@ -32,15 +32,15 @@
                     <td>{{ $solicitud->user->fullUserName() }}</td>
                         <td><span class="mr-2">
                             @if($solicitud->sol_estado == 'solicitado')
-                            <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P>
+                            <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'medicina')
-                            <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P>
+                            <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'some')
                             <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
                                 @elseif($solicitud->sol_estado == 'a_social')
-                            <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P>
+                            <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'psicologo')
-                            <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P>
+                            <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'otros')
                             <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
                             @endif
@@ -156,4 +156,9 @@ swalWithBootstrapButtons.fire({
 })
 })
 </script>
+<script type="text/javascript">
+    @if (count($errors) > 0)
+        $('#solicitud').modal('show');
+    @endif
+    </script>
 @endsection

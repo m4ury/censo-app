@@ -11,7 +11,7 @@ class EncuestaController extends Controller
 {
     public function index()
     {
-    $encuestas = Encuesta::with('paciente')->get();
+    $encuestas = Encuesta::with('paciente')->orderBy('num_encuestas', 'ASC')->get();
     //dd($encuestas);
 
         return view('encuestas.index', compact('encuestas'));

@@ -27,4 +27,5 @@ class SolicitudRequest extends FormRequest
             'sol_rut' => 'required|cl_rut'
         ];
     }
+
 }

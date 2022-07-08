@@ -129,9 +129,17 @@ return [
     |
     */
 
-    'custom' => [
+   /*  'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
+        ],
+    ], */
+
+
+    'custom' => [
+        'sol_rut' => [
+            'required' => 'El campo Rut es requerido.',
+            'cl_rut' => 'El rut ingresado no es valido'
         ],
     ],
 
