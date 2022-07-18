@@ -419,5 +419,11 @@ $patologia->nombre_patologia === 'ANTECEDENTE ACV')
     })
     })
     </script>
+    <script>
+        $('#patologias').select2({
+            theme: "classic",
+            width: '100%',
+         });
+     </script>
 
 @endsection

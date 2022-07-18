@@ -68,7 +68,7 @@
                         class="fas fa-calendar-check"></i>
                     Nueva Solicitud
                 </button>
-            </div>
+        </div>
     </div>
     @include('solicitudes.modal')
 
@@ -160,5 +160,5 @@ swalWithBootstrapButtons.fire({
     @if (count($errors) > 0)
         $('#solicitud').modal('show');
     @endif
-    </script>
+</script>
 @endsection

@@ -24,7 +24,7 @@ class SolicitudRequest extends FormRequest
     public function rules()
     {
         return [
-            'sol_rut' => 'required|cl_rut'
+            'sol_rut' => 'required|cl_rut|unique:solicitudes,sol_rut,NULL,sol_estado,sol_estado,solicitado'
         ];
     }
 

@@ -268,6 +268,12 @@ return [
             'icon' => 'fas fa-envelope-open-text text-fuccia',
         ],
 
+        [
+            'text' => 'Examenes',
+            'route' => 'examenes.index',
+            'icon' => 'fas fa-radiation text-yellow',
+        ],
+
         //['header' => 'Patologias'],
         [
             'text' => 'Patologias',

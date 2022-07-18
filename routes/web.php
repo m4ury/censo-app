@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 
     //rutas para encuestas
     Route::resource('encuestas', 'EncuestaController');
-    
+
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
@@ -39,7 +39,12 @@ Route::middleware('auth')->group(function () {
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
     Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
-    
+
+    //rutas para examenes
+    Route::resource('examenes', 'ExamenController')->except('[index, create]');
+    Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes');
+    Route::get('examenes/create/{paciente?}', 'ExamenController@create')->name('examenes.create');
+
     //rutas para perfil
     Route::get('/perfil', 'UserController@profile')->name('perfil');
     Route::put('perfil', 'UserController@updateProfile');
@@ -59,5 +64,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p5b', 'EstadisticaController@seccionP5b')->name('estadisticas.seccion-p5b');
     Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
     Route::get('/estadisticas.encuestas', 'EstadisticaController@encuestas')->name('estadisticas.encuestas');
-    
+
 });

@@ -139,7 +139,8 @@ return [
     'custom' => [
         'sol_rut' => [
             'required' => 'El campo Rut es requerido.',
-            'cl_rut' => 'El rut ingresado no es valido'
+            'cl_rut' => 'El rut ingresado no es valido',
+            'unique' => 'Ya existe una solicitud pendiente, para este Rut'
         ],
     ],
 

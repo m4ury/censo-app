@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
 use App\Paciente;
+use App\Patologia;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -36,8 +37,11 @@ class PacienteController extends Controller
     public function show($id)
     {
         $paciente = Paciente::findOrFail($id);
+        $patologias = Patologia::all();
         $controles = $paciente->controls()->latest('fecha_control')->get();
-        return view('pacientes.show', compact('paciente', 'controles'));
+        $examenes = $paciente->examenes()->latest('fecha_examen')->get();
+
+        return view('pacientes.show', compact('paciente', 'controles', 'examenes', 'patologias'));
     }
 
     public function edit($id)

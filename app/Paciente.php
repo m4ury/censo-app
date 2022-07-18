@@ -32,6 +32,11 @@ class Paciente extends Model
         return $this->hasMany(Control::class);
     }
 
+    public function examenes()
+    {
+        return $this->hasMany(Examen::class);
+    }
+
     public function encuestas()
     {
         return $this->hasMany(Encuesta::class);
