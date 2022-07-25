@@ -65,7 +65,7 @@ class ExamenController extends Controller
 
     public function guardado(Request $request)
     {
-        $pcte = Paciente::firstOrNew(
+        $pcte = Paciente::updateOrCreate(
             ['rut' =>  request('rut')],
             ['nombres' => request('nombres')],
             ['apellido_p' => request('apellidoP')]);
@@ -82,14 +82,14 @@ class ExamenController extends Controller
         $pcte->save();
 
         $examenes = new Examen($request->except('_token'));
-        $examen->fecha_solicitud = $request->fecha_solicitud;
+
         $examenes->firma = $request->firma ?? null;
         $examenes->cumple = $request->cumple ?? null;
         $examenes->user_id = Auth::user()->id;
         $examenes->paciente_id = $pcte->id;
         $examenes->save();
 
-        return view('examenes.index', compact('examenes'))->withSuccess('Examen creado con exito!');
+        return back()->withSuccess('Examen creado con exito!');
     }
 
     /**
