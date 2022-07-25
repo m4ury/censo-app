@@ -26,7 +26,7 @@ class SolicitudController extends Controller
 
     public function index()
     {
-        $solicitudes = Solicitud::latest('sol_fecha')
+        $solicitudes = Solicitud::latest('created_at')
             ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at')
             ->get();
 
@@ -54,7 +54,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        //Mail::to('mmoraless@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 

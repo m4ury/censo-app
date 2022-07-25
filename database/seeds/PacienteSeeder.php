@@ -13,7 +13,7 @@ class PacienteSeeder extends Seeder
      */
     public function run()
     {
-        //sector naranjo hasta abril 2022
+        //sector naranjo hasta abril 20227
         $pacientes = [
 ['rut' => '7268136-3', 'nombres' => 'Fidelina', 'apellidoP' => 'Calderon', 'apellidoM' => 'Poblete', 'ficha' =>12536, 'fecha_nacimiento' => '1953/05/08', 'direccion' => 'Paula s/n', 'sector' => 'NARANJO', 'sexo' => 'Femenino', 'telefono' => '96955511'],
 ['rut' => '7001637-0', 'nombres' => 'Luis', 'apellidoP' => 'Fuenzalida', 'apellidoM' => 'Flores', 'ficha' =>51327, 'fecha_nacimiento' => '1950/09/30', 'direccion' => 'Los Sauces', 'sector' => 'NARANJO', 'sexo' => 'Masculino', 'telefono' => '90031114'],

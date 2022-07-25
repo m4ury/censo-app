@@ -27,7 +27,8 @@
                 <th>Firma</th>
                 <th>Cumple</th>
                 <th>TENS responsable</th>
-                <th>Fecha / Hora Examen</th>
+                <th>Fecha Examen</th>
+                <th>Hora Examen</th>
             </tr>
         </thead>
         <tbody>
@@ -38,11 +39,12 @@
                 <td>{{ $examen->procedencia }}</td>
                 <td>{{ $examen->diagnostico }}</td>
                 <td>{{ $examen->procedimiento }}</td>
-                <td>{{$examen->medico}}</td>
+                <td>{{ "Dr. ".$examen->medico}}</td>
                 <td>{{ $examen->firma }}</td>
                 <td>{{ $examen->cumple }}</td>
                 <td>{{ $examen->user->fullUserName() ?? '--' }}</td>
-                <td>{{ \Carbon\Carbon::parse($examen->fecha_examen)->format("d-m-Y i:G A") }}</td>
+                <td>{{ \Carbon\Carbon::parse($examen->fecha_examen)->format("d-m-Y") }}</td>
+                <td>{{ Carbon\Carbon::create($examen->hora_examen)->format("G:i A") ?? '--'}}</td>
             </tr>
             @endforeach
         </tbody>

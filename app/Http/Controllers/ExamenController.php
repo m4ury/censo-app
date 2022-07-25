@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Examen;
+use App\Http\Requests\ExamenRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Paciente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExamenController extends Controller
 {
@@ -14,13 +16,9 @@ class ExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $q = $request->get('q');
-        $examenes = Examen::latest()
-            ->search($q)
-            ->get();
-        //dd($controles);
+        $examenes = Examen::all();
         return view('examenes.index', compact('examenes'));
     }
 
@@ -43,14 +41,55 @@ class ExamenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExamenRequest $request)
     {
         $examen = new Examen($request->except('_token'));
+        $examen->firma = $request->firma ?? null;
+        $examen->cumple = $request->cumple ?? null;
         $examen->user_id = Auth::user()->id;
         $examen->paciente_id = $request->paciente_id;
+        //$examen->fecha_solicitud = $request->fecha_solicitud;
         $examen->save();
 
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Examen creado con exito!');
+    }
+
+
+    public function creado()
+    {
+        $examen = new Examen;
+        $paciente = new Paciente;
+        return view('examenes.created', compact('paciente', 'examen'));
+    }
+
+
+    public function guardado(Request $request)
+    {
+        $pcte = Paciente::firstOrNew(
+            ['rut' =>  request('rut')],
+            ['nombres' => request('nombres')],
+            ['apellido_p' => request('apellidoP')]);
+
+            $validator = Validator::make($request->all(), [
+                'rut' => 'cl_rut',
+                'nombres' => 'string|min:3',
+                'apellidoP' => 'string|min:3'
+            ]);
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+
+        $pcte->save();
+
+        $examenes = new Examen($request->except('_token'));
+        $examen->fecha_solicitud = $request->fecha_solicitud;
+        $examenes->firma = $request->firma ?? null;
+        $examenes->cumple = $request->cumple ?? null;
+        $examenes->user_id = Auth::user()->id;
+        $examenes->paciente_id = $pcte->id;
+        $examenes->save();
+
+        return view('examenes.index', compact('examenes'))->withSuccess('Examen creado con exito!');
     }
 
     /**

@@ -1,17 +1,3 @@
-<!-- <div class="form-group row">
-    {!! Form::label('tipo_examen', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
-    <div class="col-sm">
-        {!! Form::select('tipo_examen', ['Medico'=> 'Medico', 'Enfermera' => 'Enfermera', 'Kinesiologo' =>
-        'Kinesiologo', 'Nutricionista' => 'Nutricionista'], old('tipo_examen', $examen->tipo_examen), ['class' =>
-        'form-examen'.($errors->has('tipo_examen') ? ' is-invalid' : ''), 'id' => 'tipo', 'placeholder'=> "Seleccione
-        Profesional"]) !!}
-        @if ($errors->has('tipo_examen'))
-        <span class="invalid-feedback">
-            <strong>{{ $errors->first('tipo_examen') }}</strong>
-        </span>
-        @endif
-    </div>
-</div> -->
 
 {!! Form::hidden('paciente_id', $paciente->id) !!}
 
@@ -89,7 +75,7 @@
     {!! Form::select('medico', ['apolonio'=> 'Dr. Apolonio', 'jara' => 'Dra. Jara', 'soriano' =>
         'Dr. Soriano', 'gong' => 'Dr. Yang', 'zapata' => 'Dra. Zapata', 'tolorza' => 'Dr. Tolorza', 'briones' => 'Dra. Briones', 'valle' => 'Dra. Valle', 'naranjo' => 'Dra. Naranjo'],old('medico', $examen->medico), ['class' => 'form-control
         form-control-sm'.($errors->has('medico') ?
-        ' is-invalid' : ''), 'id' => 'medico', 'placeholder' => 'Medico']) !!}
+        ' is-invalid' : ''), 'id' => 'medico', 'placeholder' => 'Seleccione medico']) !!}
         @if ($errors->has('medico'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('medico') }}</strong>
@@ -113,12 +99,12 @@
     <div class="form-group row">
         {!! Form::label('fecha_examen_label', 'Fecha/Hora Examen',['class' => 'col-sm-3 col-form-label']) !!}
         <div class="col-sm-2">
-            {!! Form::date('proximo_examen', old('proximo_examen', $examen->proximo_examen), ['class' =>
+            {!! Form::date('fecha_examen', old('fecha_examen', $examen->fecha_examen), ['class' =>
             'form-control
-            form-examen-sm'.($errors->has('proximo_examen') ? ' is-invalid' : '')]) !!}
-            @if ($errors->has('proximo_examen'))
+            form-control-sm'.($errors->has('fecha_examen') ? ' is-invalid' : '')]) !!}
+            @if ($errors->has('fecha_examen'))
             <span class="invalid-feedback">
-                <strong>{{ $errors->first('proximo_examen') }}</strong>
+                <strong>{{ $errors->first('fecha_examen') }}</strong>
             </span>
             @endif
         </div>

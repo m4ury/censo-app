@@ -75,7 +75,9 @@
     @stop
 @section('plugins.Datatables', true)
 @section('js')
+    <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
+        $.fn.dataTable.moment('DD-MM-YYYY');
         $("#pacientes").DataTable(
             {
                 dom: 'Bfrtip',
