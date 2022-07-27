@@ -28,7 +28,7 @@
                 <th>Cumple</th>
                 <th>TENS responsable</th>
                 <th>Fecha Examen</th>
-                <th>Hora Examen</th>
+                <!-- <th>Hora Examen</th> -->
             </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
                 <td>{{ $examen->cumple }}</td>
                 <td>{{ $examen->user->fullUserName() ?? '--' }}</td>
                 <td>{{ \Carbon\Carbon::parse($examen->fecha_examen)->format("d-m-Y") }}</td>
-                <td>{{ Carbon\Carbon::create($examen->hora_examen)->format("G:i A") ?? '--'}}</td>
+                <!-- <td> Carbon\Carbon::create($examen->hora_examen)->format("G:i A") ?? '--'</td> -->
             </tr>
             @endforeach
         </tbody>

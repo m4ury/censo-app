@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        {!! Form::label('nombres', 'Nombres', ['class' => 'col-sm-2 col-form-label']) !!}
+                        {!! Form::label('nombres', 'Nombre / Apellido paterno', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-5">
                             {!! Form::text('nombres', null, ['class' => 'form-control form-control-sm'.($errors->has('nombres') ? ' is-invalid' : ''),
                         'placeholder' => 'Ingrese Nombres']) !!}
