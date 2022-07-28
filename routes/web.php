@@ -45,12 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('examenes/create/{paciente?}', 'ExamenController@create')->name('examenes.create');
     Route::get('examenes/created/new', 'ExamenController@creado')->name('examenes.created');
     Route::post('examenes/guardar', 'ExamenController@guardado')->name('examenes.stored');
-
-
-    /*Route::get('examenes/created/', function () {
-        return view('examenes.created')->name('examenes.created');
-    });
-*/
+    Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes');
 
     //rutas para perfil
     Route::get('/perfil', 'UserController@profile')->name('perfil');

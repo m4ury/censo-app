@@ -32,35 +32,36 @@
     {!! Form::label('procedimiento_label', 'Examen solicitado(Procedimiento)', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select('procedimiento',
-        ['401002' => '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo',
-            '401009' => '401009 - Tórax simple frontal o lateral',
-            '401070' => '401070 - Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)',
-            '401070' => '401070 - Tórax frontal y lateral por neumonía (NAC)',
-            '401013' => '401013 - Abdomen simple',
-            '401014' => '401014 - Abdomen simple, proyección complementaria (lateral y/o oblicua)',
-            '401031' => '401031 - Cavidades perinasales, órbitas, art. Temporomandibulares, huesos propios de la nariz, malar, maxilar, arco cigomático y cara.',
-            '401032' => '401032 - Cráneo frontal y lateral',
-            '401033' => '401033 - Cráneo proyección especial de base de cráneo (Towne)',
-            '401042' => '401042 - Columna cervical o atlas-axis (frontal y lateral)',
-            '401043' => '401043 - Columna cervical (frontal, lateral y oblicuas)',
-            '401044' => '401044 - Columna cervical flexión y extensión (dinámicas)',
-            '401045' => '401045 - Columna dorsal o dorsolumbar localizada, parrilla costal adultos (frontal y lateral)',
-            '401046' => '401046 - Columna lumbar o lumbosacra (frontal, lateral y focalizada en 5to espacio)',
-            '401047' => '401047 - Columna lumbar o lumbosacra flexión y extensión (dinámicas)',
-            '401048' => '401048 - Columna lumbar o lumbosacra, oblicuas adicionales',
-            '401051' => '401051 - Pelvis, cadera o coxofemoral',
-            '401151' => '401151 - Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años',
-            '401052' => '401052 - Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)', '401053' => 'Sacrocoxis o articulaciones sacroilíacas',
-            '401054' => '401054 - Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)',
-            '401055' => '401055 - Clavícula',
-            '401056' => '401056 - Edad ósea: Carpo y mano',
-            '401057' => '401057 - Edad ósea: Rodilla frontal',
-            '401058' => '401058 - Estudio radiológico de escafoides',
-            '401059' => '401059 - Estudio radiológico de muñeca o tobillo (frontal, lateral y oblicuas)',
-            '401060' => '401060 - Hombro, fémur, rodilla, pierna, costilla o esternón (frontal y lateral)',
-            '401062' => '401062 - Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.',
-            '401063' => '401063 - Túnel intercondíleo o radio-carpiano'],
-        old('procedimiento', $examen->procedimiento), ['class' => 'form-control'.($errors->has('procedimiento') ? ' is-invalid' : ''), 'id' => 'procedimiento', 'placeholder'=> "Seleccione examen"]) !!}
+        [   '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo' => 'Partes blandas, laringe lateral, cavum rinofaríngeo',
+            '401009 - Tórax simple frontal o lateral' => 'Tórax simple frontal o lateral',
+            '401070 - Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)' => 'Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)',
+            '401070 - Tórax frontal y lateral por neumonía (NAC)' => 'Tórax frontal y lateral por neumonía (NAC)',
+            '401013 - Abdomen simple' => 'Abdomen simple',
+            '401014 - Abdomen simple, proyección complementaria (lateral y/o oblicua)' => 'Abdomen simple, proyección complementaria (lateral y/o oblicua)',
+            '401031 - Cavidades perinasales, órbitas, art. Temporomandibulares, huesos propios de la nariz, malar, maxilar, arco cigomático y cara.' => 'Cavidades perinasales, órbitas, art. Temporomandibulares, huesos propios de la nariz, malar, maxilar, arco cigomático y cara.',
+            '401032 - Cráneo frontal y lateral' => 'Cráneo frontal y lateral',
+            '401033 - Cráneo proyección especial de base de cráneo (Towne)' => 'Cráneo proyección especial de base de cráneo (Towne)',
+            '401042 - Columna cervical o atlas-axis (frontal y lateral)' => 'Columna cervical o atlas-axis (frontal y lateral)',
+            '401043 - Columna cervical (frontal, lateral y oblicuas)' => 'Columna cervical (frontal, lateral y oblicuas)',
+            '401044 - Columna cervical flexión y extensión (dinámicas)' => 'Columna cervical flexión y extensión (dinámicas)',
+            '401045 - Columna dorsal o dorsolumbar localizada, parrilla costal adultos (frontal y lateral)' => 'Columna dorsal o dorsolumbar localizada, parrilla costal adultos (frontal y lateral)',
+            '401046 - Columna lumbar o lumbosacra (frontal, lateral y focalizada en 5to espacio)' => 'Columna lumbar o lumbosacra (frontal, lateral y focalizada en 5to espacio)',
+            '401047 - Columna lumbar o lumbosacra flexión y extensión (dinámicas)' => 'Columna lumbar o lumbosacra flexión y extensión (dinámicas)',
+            '401048 - Columna lumbar o lumbosacra, oblicuas adicionales' => 'Columna lumbar o lumbosacra, oblicuas adicionales',
+            '401051 - Pelvis, cadera o coxofemoral' => 'Pelvis, cadera o coxofemoral',
+            '401151 - Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años' => 'Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años',
+            '401052 - Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)' => 'Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)',
+            '401053 - Sacrocoxis o articulaciones sacroilíacas' => 'Sacrocoxis o articulaciones sacroilíacas',
+            '401054 - Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)' => 'Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)',
+            '401055 - Clavícula' => 'Clavícula',
+            '401056 - Edad ósea: Carpo y mano' => 'Edad ósea: Carpo y mano',
+            '401057 - Edad ósea: Rodilla frontal' => 'Edad ósea: Rodilla frontal',
+            '401058 - Estudio radiológico de escafoides' => 'Estudio radiológico de escafoides',
+            '401059 - Estudio radiológico de muñeca o tobillo (frontal, lateral y oblicuas)' => 'Estudio radiológico de muñeca o tobillo (frontal, lateral y oblicuas)',
+            '401060 - Hombro, fémur, rodilla, pierna, costilla o esternón (frontal y lateral)' => 'Hombro, fémur, rodilla, pierna, costilla o esternón (frontal y lateral)',
+            '401062 - Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.' => 'Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.',
+            '401063 - Túnel intercondíleo o radio-carpiano' => 'Túnel intercondíleo o radio-carpiano'],
+        old('procedimiento', $examen->procedimiento), ['multiple' => 'multiple', 'class' => 'form-control'.($errors->has('procedimiento') ? ' is-invalid' : ''), 'id' => 'procedimiento']) !!}
         @if ($errors->has('procedimiento'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('procedimiento') }}</strong>
@@ -123,12 +124,30 @@
 
 @section('js')
 <script>
-        $('#procedencia, #procedimiento, #medico').select2({
+        $('#procedencia, #medico').select2({
             theme: "classic",
             width: '100%',
         });
 
         $("#firma, #cumple").removeAttr("checked");
+</script>
+<script>
+    $('#procedimiento').select2({
+        theme: "classic",
+        width: '100%',
+    });
+    // delegate a click event on the input box
+ $('#procedimiento-input').on('click',function()
+ {
+   // remove select2-disabled class from all li under the dropdown
+   $('#procedimiento-drop #procedimiento-results li').removeClass('select2-disabled');
+    // add select2-result-selectable class to all li which are missing the respective class
+   $('#procedimiento-drop #procedimiento-results li').each(function()
+   {
+     if(!$(this).hasClass('select2-result-selectable'))
+       $(this).addClass('select2-result-selectable');
+   });
+ });
 </script>
 
 @endsection

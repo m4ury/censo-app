@@ -30,7 +30,7 @@
                    value="{{ old('rut') }}" placeholder="{{ __('Rut Ej.: 16000000-K') }}" autofocus>
             <div class="input-group-append">
                 <div class="input-group-text">
-                    <span class="fas fa-fingerprint text-light"></span>
+                    <span class="fas fa-fingerprint text-blue"></span>
                 </div>
             </div>
             @if($errors->has('rut'))

@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        {!! Form::label('nombres', 'Nombre / Apellido paterno', ['class' => 'col-sm-2 col-form-label']) !!}
+                        {!! Form::label('nombres', 'Nombres', ['class' => 'col-sm-2 col-form-label']) !!}
                         <div class="col-sm-5">
                             {!! Form::text('nombres', null, ['class' => 'form-control form-control-sm'.($errors->has('nombres') ? ' is-invalid' : ''),
                         'placeholder' => 'Ingrese Nombres']) !!}
@@ -31,15 +31,22 @@
                                 </span>
                             @endif
                         </div>
-                            <div class="col-sm-5">
+                    </div>
+                    <div class="form-group row">
+                        {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
+                        <div class="col-sm-5">
                             {!! Form::text('apellidoP',null, ['class' => 'form-control form-control-sm'.($errors->has('apellidoP') ? '
                             is-invalid' : ''), 'placeholder' => 'Apellido Paterno']) !!}
                             @if ($errors->has('apellidoP'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('apellidoP') }}</strong>
-                                </span>
+                                <span class="invalid-feedback">
+                                              <strong>{{ $errors->first('apellidoP') }}</strong>
+                                            </span>
                             @endif
-                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            {!! Form::text('apellidoM',null, ['class' => 'form-control form-control-sm'.($errors->has('apellidoM') ? '
+                            is-invalid' : ''), 'placeholder' => 'Apellido Materno']) !!}
+                        </div>
                     </div>
 
                     @include('examenes.form')

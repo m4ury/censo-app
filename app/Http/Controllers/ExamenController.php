@@ -16,10 +16,19 @@ class ExamenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $q = $request->get('q');
+        $examenes = Examen::latest('fecha_examen')
+            ->search($q)
+            ->get();
+        //dd($controles);
+        return view('examenes.index', compact('examenes'));
+
+/*
         $examenes = Examen::all();
         return view('examenes.index', compact('examenes'));
+        */
     }
 
     /**
@@ -67,7 +76,7 @@ class ExamenController extends Controller
     {
         $pcte = Paciente::firstOrNew(
             ['rut' =>  request('rut')],
-            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP')]);
+            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM')]);
 
             $validator = Validator::make($request->all(), [
                 'rut' => 'cl_rut',
@@ -78,7 +87,7 @@ class ExamenController extends Controller
                 'diagnostico' => 'required|min:4',
                 'medico' => 'required',
                 'procedimiento' => 'required',
-                'fecha_examen' => 'required|after_or_equal:fecha_solicitud'
+                'fecha_examen' => 'required|after_or_equal:fecha_solicitud',
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();

@@ -40,8 +40,20 @@
                 <td>{{ $examen->diagnostico }}</td>
                 <td>{{ $examen->procedimiento }}</td>
                 <td>{{ "Dr. ".$examen->medico}}</td>
-                <td>{{ $examen->firma }}</td>
-                <td>{{ $examen->cumple }}</td>
+                <td class="text-center">
+                    @if($examen->firma)
+                        <i class='fas fa-check fa-lg text-success'></i>
+                    @else
+                        <i class='fas fa-times fa-lg text-danger'></i>
+                    @endif
+                </td>
+                <td class="text-center">
+                    @if($examen->cumple)
+                        <i class='fas fa-check fa-lg text-success'></i>
+                    @else
+                        <i class='fas fa-times fa-lg text-danger'></i>
+                    @endif
+                </td>
                 <td>{{ $examen->user->fullUserName() ?? '--' }}</td>
                 <td>{{ \Carbon\Carbon::parse($examen->fecha_examen)->format("d-m-Y") }}</td>
                 <!-- <td> Carbon\Carbon::create($examen->hora_examen)->format("G:i A") ?? '--'</td> -->

@@ -115,7 +115,7 @@
                                 aria-labelledby="vert-tabs-examenes-tab">
                                 @include('examenes.list_examenes', $paciente)
 
-                                @if($paciente->examenes)
+                                @if($paciente->examenes->count() == 0)
                                 <p class="text-muted">No hay Examenes aun... </p>
                                 @endif
                             </div>

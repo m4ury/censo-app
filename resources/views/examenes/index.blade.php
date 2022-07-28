@@ -8,6 +8,18 @@
 
 <div class="col-md-12 table-responsive">
 
+<div class="row">
+        {!! Form::open(['route' => 'examenes', 'method' => 'GET', 'class' => 'form-inline float-right pb-4']) !!}
+        {!! Form::selectMonth('q', null, ['class' => 'form-control', 'placeholder' => 'Busqueda por mes', 'id' => 'q'])
+        !!}
+        <button type="submit" class="btn btn-primary btn-sm mx-2">
+            <span><i class="fas fa-search"> Buscar</i></span>
+        </button>
+        {!! Form::close() !!}
+</div>
+
+<div class="col-md-12 table-responsive">
+
     <table id="controles" class="table table-hover table-md-responsive table-bordered">
         <thead class="thead-light">
             <tr>
@@ -34,22 +46,22 @@
             <tr>
 
                 <td>{{ \Carbon\Carbon::parse($examen->fecha_solicitud)->format("d-m-Y") ?? '--' }}</td>
-                <td class="text-uppercase">{{ $examen->paciente->nombres ?? '--' }}</td>
+                <td class="text-uppercase">{{ $examen->paciente->fullName() ?? '--' }}</td>
                 <td>{{ $examen->paciente->rut ?? '--' }}</td>
-                <td nowrap>{{ \Carbon\Carbon::parse($examen->paciente->fecha_nacimiento)->format("d-m-Y") }}</td>
+                <td nowrap>{{ $examen->paciente->fecha_nacimiento ? \Carbon\Carbon::parse($examen->paciente->fecha_nacimiento)->format("d-m-Y") : '--'}}</td>
                 <td class="text-uppercase">{{ $examen->procedencia }}</td>
                 <td>{{ $examen->diagnostico }}</td>
                 <td>{{ $examen->procedimiento }}</td>
                 <td class="text-capitalize"> <span>Dr. </span>{{$examen->medico}}</td>
                 <td class="text-center">
-                    @if($examen->firma ? 1 : '--')
+                    @if($examen->firma)
                         <i class='fas fa-check fa-lg text-success'></i>
                     @else
                         <i class='fas fa-times fa-lg text-danger'></i>
                     @endif
                 </td>
                 <td class="text-center">
-                    @if($examen->cumple ? 1 : '--')
+                    @if($examen->cumple)
                         <i class='fas fa-check fa-lg text-success'></i>
                     @else
                         <i class='fas fa-times fa-lg text-danger'></i>

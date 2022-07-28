@@ -27,7 +27,7 @@ class ExamenRequest extends FormRequest
         return [
             'fecha_solicitud' => 'required|before_or_equal:today',
             'procedencia' => 'required',
-            'diagnostico' => 'required|min:4',
+            'diagnostico' => 'required|min:3',
             'medico' => 'required',
             'procedimiento' => 'required',
             'fecha_examen' => 'required|after_or_equal:fecha_solicitud'

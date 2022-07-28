@@ -269,9 +269,10 @@ return [
         ],
 
         [
-            'text' => 'Examenes',
+            'text' => 'Examenes RX',
             'route' => 'examenes.index',
             'icon' => 'fas fa-radiation text-yellow',
+            'can' => 'rx'
         ],
 
         //['header' => 'Patologias'],

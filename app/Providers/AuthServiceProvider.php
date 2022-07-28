@@ -52,5 +52,12 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::define('rx', function ($user) {
+            if ($user->type == 'rx' || $user->type == 'admin') {
+                return true;
+            }
+            return false;
+        });
     }
 }

@@ -20,4 +20,10 @@ class Examen extends Model
         return $this->belongsTo(Paciente::class);
     }
 
+    public function scopeSearch($query, $q)
+    {
+        if ($q)
+            return $query->whereMonth('fecha_examen', $q);
+    }
+
 }
