@@ -52,12 +52,16 @@ class ExamenController extends Controller
      */
     public function store(ExamenRequest $request)
     {
+        //dd($request->procedimiento);
+
         $examen = new Examen($request->except('_token'));
+        $examen->procedimiento = implode(',', $request->procedimiento);
+        $examen->examen_cantidad = count($request->procedimiento);
         $examen->firma = $request->firma ?? null;
         $examen->cumple = $request->cumple ?? null;
         $examen->user_id = Auth::user()->id;
         $examen->paciente_id = $request->paciente_id;
-        //$examen->fecha_solicitud = $request->fecha_solicitud;
+        //$examenes->examen_cantidad = count($request->procedimiento);
         $examen->save();
 
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Examen creado con exito!');
@@ -74,6 +78,8 @@ class ExamenController extends Controller
 
     public function guardado(Request $request)
     {
+       //dd(count($request->procedimiento));
+
         $pcte = Paciente::firstOrNew(
             ['rut' =>  request('rut')],
             ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM')]);
@@ -96,10 +102,13 @@ class ExamenController extends Controller
         $pcte->save();
 
         $examenes = new Examen($request->except('_token'));
+        $examenes->examen_cantidad = count($request->procedimiento);
+        $examenes->procedimiento = implode(',', $request->procedimiento);
         $examenes->firma = $request->firma ?? null;
         $examenes->cumple = $request->cumple ?? null;
         $examenes->user_id = Auth::user()->id;
         $examenes->paciente_id = $pcte->id;
+
 
         $examenes->save();
 

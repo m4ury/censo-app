@@ -31,7 +31,7 @@
 <div class="form-group row">
     {!! Form::label('procedimiento_label', 'Examen solicitado(Procedimiento)', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
-        {!! Form::select('procedimiento',
+        {!! Form::select('procedimiento[]',
         [   '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo' => 'Partes blandas, laringe lateral, cavum rinofaríngeo',
             '401009 - Tórax simple frontal o lateral' => 'Tórax simple frontal o lateral',
             '401070 - Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)' => 'Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)',
@@ -62,6 +62,7 @@
             '401062 - Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.' => 'Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.',
             '401063 - Túnel intercondíleo o radio-carpiano' => 'Túnel intercondíleo o radio-carpiano'],
         old('procedimiento', $examen->procedimiento), ['multiple' => 'multiple', 'class' => 'form-control'.($errors->has('procedimiento') ? ' is-invalid' : ''), 'id' => 'procedimiento']) !!}
+
         @if ($errors->has('procedimiento'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('procedimiento') }}</strong>
@@ -98,7 +99,7 @@
 </div>
 
     <div class="form-group row">
-        {!! Form::label('fecha_examen_label', 'Fecha/Hora Examen',['class' => 'col-sm-3 col-form-label']) !!}
+        {!! Form::label('fecha_examen_label', 'Fecha Examen',['class' => 'col-sm-3 col-form-label']) !!}
         <div class="col-sm-2">
             {!! Form::date('fecha_examen', old('fecha_examen', $examen->fecha_examen), ['class' =>
             'form-control
@@ -122,7 +123,39 @@
         </div>
     </div>
 
+    {{-- <div class="div">
+        <select class="js-states js-example-events form-control" multiple="multiple">
+            <option>red</option>
+              <option>green</option>
+          </select>
+    </div> --}}
+
 @section('js')
+
+<script>
+
+var $eventSelect = $('#procedimiento').select2({
+        theme: "classic",
+        width: '100%',
+        //scrollAfterSelect: 'true'
+    });
+$.fn.select2.defaults.set("width", "50%");
+
+//$eventSelect.on("select2:open", function (e) { log("select2:open", e); });
+//$eventSelect.on("select2:close", function (e) { log("select2:close", e); });
+//$eventSelect.on("change", function (e) { log("change"); });
+
+$eventSelect.on("select2:select", function (e) {
+	//log("select2:select", e);
+//e.getHighlightedResults();
+$eventSelect.append('<option value="'+e.params.data.text+'">' +e.params.data.text + '</option>');
+});
+$eventSelect.on("select2:unselect", function (e) {
+	//log("select2:unselect", e);
+ 	e.params.data.element.remove();
+});
+</script>
+
 <script>
         $('#procedencia, #medico').select2({
             theme: "classic",
@@ -131,7 +164,7 @@
 
         $("#firma, #cumple").removeAttr("checked");
 </script>
-<script>
+{{-- <script>
     $('#procedimiento').select2({
         theme: "classic",
         width: '100%',
@@ -148,6 +181,6 @@
        $(this).addClass('select2-result-selectable');
    });
  });
-</script>
+</script> --}}
 
 @endsection

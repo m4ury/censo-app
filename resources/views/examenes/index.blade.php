@@ -51,7 +51,7 @@
                 <td nowrap>{{ $examen->paciente->fecha_nacimiento ? \Carbon\Carbon::parse($examen->paciente->fecha_nacimiento)->format("d-m-Y") : '--'}}</td>
                 <td class="text-uppercase">{{ $examen->procedencia }}</td>
                 <td>{{ $examen->diagnostico }}</td>
-                <td>{{ $examen->procedimiento }}</td>
+                <td>{{ $examen->procedimiento }}<span class="btn btn-info disabled ml-2" style="border-radius:23px">{{ $examen->examen_cantidad }}</span></td>
                 <td class="text-capitalize"> <span>Dr. </span>{{$examen->medico}}</td>
                 <td class="text-center">
                     @if($examen->firma)
