@@ -83,4 +83,19 @@
             </div>
         </div>
     </div>
+
+    <div class="card card-secondary card-outline">
+        <div class="card-header">
+            <h3 class="card-title text-bold">
+                EXAMENES RX
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.rayos')}}">ESTADISTICA MENSUAL RX</a>
+                </h4>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -7,6 +7,7 @@ use App\Paciente;
 use App\Control;
 use App\Encuesta;
 use Carbon\Carbon;
+use App\Examen;
 
 class EstadisticaController extends Controller
 {
@@ -3694,5 +3695,13 @@ class EstadisticaController extends Controller
             'nota_7',
             'notas_total'
         ));
+    }
+
+    public function rayos(){
+        $examenes = new Examen;
+        $todas = $examenes->count();
+
+
+        return ;
     }
 }
