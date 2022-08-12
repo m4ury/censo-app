@@ -1777,7 +1777,7 @@ class EstadisticaController extends Controller
         //usoIecaAraII
         $usoIecaAraII = $pacientes->usoIecaAraII()->get()->count();
         //dd($usoIecaAraII);
-        $usoIecaAraIIF = $pacientes->usoIecaAraII()->get()->where('sexo', 'Femenino')->count();
+        $usoIecaAraIIF = $pacientes->usoIecaAraII()->where('sexo', 'Femenino')->count();
         $usoIecaAraII_1519F = $pacientes->usoIecaAraII()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
         $usoIecaAraII_2024F = $pacientes->usoIecaAraII()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
         $usoIecaAraII_2529F = $pacientes->usoIecaAraII()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();

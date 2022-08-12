@@ -226,7 +226,7 @@ class Paciente extends Model
 
     public function usoIecaAraII()
     {
-        return $this->where('usoIecaAraII', '=', 1);
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->where('paciente_patologia.patologia_id', '=', 2)->where('pacientes.usoIecaAraII', '=', 1)->whereIn('erc', ['IIIA', 'IIIB', 'IV', 'V']);
     }
 
     public function ldlVigente()
@@ -294,22 +294,22 @@ class Paciente extends Model
 
     public function imc2529()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.last', '=', 1)->whereBetween('controls.imc', [25, 29.9])->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->whereBetween('controls.imc', [25, 29.9])->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
     }
 
     public function imc2831()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.last', '=', 1)->whereBetween('controls.imc', [28, 31.9])->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->whereBetween('controls.imc', [28, 31.9])->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
     }
 
     public function imcMayor30()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.last', '=', 1)->where('controls.imc', '>=', 30)->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc', '>=', 30)->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
     }
 
     public function imcMayor32()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.last', '=', 1)->where('controls.imc', '>=', 32)->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc', '>=', 32)->where('controls.fecha_control', '>=', '2021-06-01')->latest('controls.fecha_control');
     }
 
     //****rem P5****

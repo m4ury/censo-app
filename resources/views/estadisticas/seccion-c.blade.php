@@ -364,7 +364,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <th colspan="2">EN TRATAMIENTO CON IECA O ARA II.</th>
+                            <th colspan="2">CON ERC ETAPA 3B O SUPERIOR Y EN TRATAMIENTO CON IECA O ARA II.</th>
                             <td>{{ $usoIecaAraII }}</td>
                             <td>{{ $usoIecaAraIIM }}</td>
                             <td>{{ $usoIecaAraIIF }}</td>

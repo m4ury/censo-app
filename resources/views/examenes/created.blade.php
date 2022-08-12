@@ -56,7 +56,7 @@
                         </div>
                         <div class="col">
                             <a href="{{ route('examenes.index') }}" style="text-decoration:none">
-                                {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
+                                {{ Form::button('Volver', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
                             </a>
                         </div>
                     </div>
