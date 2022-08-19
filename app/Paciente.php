@@ -78,9 +78,14 @@ class Paciente extends Model
         return $this->pscv()->whereErc('sin');
     }
 
+    public function ercI()
+    {
+        return $this->pscv()->whereErc('I');
+    }
+
     public function ercI_II()
     {
-        return $this->pscv()->whereIn('erc', ['I', 'II']);
+        return $this->pscv()->whereErc('II');
     }
 
     public function ercIIIa()
@@ -186,32 +191,32 @@ class Paciente extends Model
 
     public function racVigente()
     {
-        return $this->where('racVigente', '>=', Carbon::now()->subYear(1));
+        return $this->dm2()->where('racVigente', '>=', Carbon::now()->subYear(1));
     }
 
     public function vfgVigente()
     {
-        return $this->where('vfgVigente', '>=', Carbon::now()->subYear(1));
+        return $this->dm2()->where('vfgVigente', '>=', Carbon::now()->subYear(1));
     }
 
     public function fondoOjoVigente()
     {
-        return $this->where('fondoOjoVigente', '>=', Carbon::now()->subYear(1));
+        return $this->dm2()->where('fondoOjoVigente', '>=', Carbon::now()->subYear(1));
     }
 
     public function controlPodologico_alDia()
     {
-        return $this->where('controlPodologico_alDia', '>=', Carbon::now()->subYear(1));
+        return $this->dm2()->where('controlPodologico_alDia', '>=', Carbon::now()->subYear(1));
     }
 
     public function ecgVigente()
     {
-        return $this->where('ecgVigente', '>=', Carbon::now()->subYear(1));
+        return $this->dm2()->where('ecgVigente', '>=', Carbon::now()->subYear(1));
     }
 
     public function usoInsulina()
     {
-        return $this->where('usoInsulina', '=', 1);
+        return $this->dm2()->where('usoInsulina', '=', 1);
     }
 
     public function insulinaHba1C()

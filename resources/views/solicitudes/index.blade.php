@@ -43,6 +43,8 @@
                             <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'otros')
                             <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
+                                @elseif($solicitud->sol_estado == 'box medico')
+                            <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MEDICO</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                             @endif
                             </td>
                             <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
@@ -110,6 +112,7 @@
                             "sortDescending": ": Activar para ordenar la columna de manera descendente"
                         }
                     },
+                    order: [[4, 'desc']],
             });
     </script>
 

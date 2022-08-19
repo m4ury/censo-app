@@ -240,7 +240,8 @@ class EstadisticaController extends Controller
         $s_erc_80M = $all->s_erc()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
 
         $dm2_sErc = $all->dm2()->get()->where('erc', '=', 'sin')->count();
-        $dm2_ercI_II = $all->dm2()->get()->whereIn('erc', ['I', 'II'])->count();
+        $dm2_ercI = $all->dm2()->get()->where('erc', '=','I')->count();
+        $dm2_ercI_II = $all->dm2()->get()->where('erc', '=','II')->count();
         $dm2_ercIIIa = $all->dm2()->get()->where('erc', '=', 'IIIA')->count();
         $dm2_ercIIIb = $all->dm2()->get()->where('erc', '=', 'IIIB')->count();
         $dm2_ercIV = $all->dm2()->get()->where('erc', '=', 'IV')->count();
@@ -2950,7 +2951,7 @@ class EstadisticaController extends Controller
             'imcMayor32_7579M',
             'imcMayor32_7579F',
             'imcMayor32_80M',
-            'imcMayor32_80F',
+            'imcMayor32_80F'
         ));
     }
 
@@ -3487,7 +3488,7 @@ class EstadisticaController extends Controller
             'rAlto65mas',
             'rMod1519',
             'rMod2064',
-            'rMod65mas',
+            'rMod65mas'
         ));
     }
 
