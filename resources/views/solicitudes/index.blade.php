@@ -45,6 +45,8 @@
                             <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P>
                                 @elseif($solicitud->sol_estado == 'box medico')
                             <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MEDICO</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
+                                @elseif($solicitud->sol_estado == 'acreditacion')
+                            <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                             @endif
                             </td>
                             <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
