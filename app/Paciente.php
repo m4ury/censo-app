@@ -83,7 +83,7 @@ class Paciente extends Model
         return $this->pscv()->whereErc('I');
     }
 
-    public function ercI_II()
+    public function ercII()
     {
         return $this->pscv()->whereErc('II');
     }
