@@ -3570,113 +3570,113 @@ class EstadisticaController extends Controller
         $todas = $encuestas->count();
 
 //derechos
-        $der1_all = $encuestas->whereIn('der_1',[1,0])->count();
-        $der1_si = $encuestas->where('der_1', '=', 1)->count();
-        $der1_no = $encuestas->where('der_1', '=', 0)->count();
+        $der1_all = $encuestas->whereIn('der_1',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der1_si = $encuestas->where('der_1', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der1_no = $encuestas->where('der_1', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der2_all = $encuestas->whereIn('der_2',[1,0])->count();
-        $der2_si = $encuestas->where('der_2', '=', 1)->count();
-        $der2_no = $encuestas->where('der_2', '=', 0)->count();
+        $der2_all = $encuestas->whereIn('der_2',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der2_si = $encuestas->where('der_2', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der2_no = $encuestas->where('der_2', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der3_all = $encuestas->whereIn('der_3',[1,0])->count();
-        $der3_si = $encuestas->where('der_3', '=', 1)->count();
-        $der3_no = $encuestas->where('der_3', '=', 0)->count();
+        $der3_all = $encuestas->whereIn('der_3',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der3_si = $encuestas->where('der_3', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der3_no = $encuestas->where('der_3', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der4_all = $encuestas->whereIn('der_4',[1,0])->count();
-        $der4_si = $encuestas->where('der_4', '=', 1)->count();
-        $der4_no = $encuestas->where('der_4', '=', 0)->count();
+        $der4_all = $encuestas->whereIn('der_4',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der4_si = $encuestas->where('der_4', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der4_no = $encuestas->where('der_4', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der5_all = $encuestas->whereIn('der_5',[1,0])->count();
-        $der5_si = $encuestas->where('der_5', '=', 1)->count();
-        $der5_no = $encuestas->where('der_5', '=', 0)->count();
+        $der5_all = $encuestas->whereIn('der_5',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der5_si = $encuestas->where('der_5', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der5_no = $encuestas->where('der_5', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der6_all = $encuestas->whereIn('der_6',[1,0])->count();
-        $der6_si = $encuestas->where('der_6', '=', 1)->count();
-        $der6_no = $encuestas->where('der_6', '=', 0)->count();
+        $der6_all = $encuestas->whereIn('der_6',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der6_si = $encuestas->where('der_6', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der6_no = $encuestas->where('der_6', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der7_all = $encuestas->whereIn('der_7',[1,0])->count();
-        $der7_si = $encuestas->where('der_7', '=', 1)->count();
-        $der7_no = $encuestas->where('der_7', '=', 0)->count();
+        $der7_all = $encuestas->whereIn('der_7',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der7_si = $encuestas->where('der_7', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der7_no = $encuestas->where('der_7', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der8_all = $encuestas->whereIn('der_8',[1,0])->count();
-        $der8_si = $encuestas->where('der_8', '=', 1)->count();
-        $der8_no = $encuestas->where('der_8', '=', 0)->count();
+        $der8_all = $encuestas->whereIn('der_8',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der8_si = $encuestas->where('der_8', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der8_no = $encuestas->where('der_8', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der9_all = $encuestas->whereIn('der_9',[1,0])->count();
-        $der9_si = $encuestas->where('der_9', '=', 1)->count();
-        $der9_no = $encuestas->where('der_9', '=', 0)->count();
+        $der9_all = $encuestas->whereIn('der_9',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der9_si = $encuestas->where('der_9', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der9_no = $encuestas->where('der_9', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der10_all = $encuestas->whereIn('der_10',[1,0])->count();
-        $der10_si = $encuestas->where('der_10', '=', 1)->count();
-        $der10_no = $encuestas->where('der_10', '=', 0)->count();
+        $der10_all = $encuestas->whereIn('der_10',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der10_si = $encuestas->where('der_10', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der10_no = $encuestas->where('der_10', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der11_all = $encuestas->whereIn('der_11',[1,0])->count();
-        $der11_si = $encuestas->where('der_11', '=', 1)->count();
-        $der11_no = $encuestas->where('der_11', '=', 0)->count();
+        $der11_all = $encuestas->whereIn('der_11',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der11_si = $encuestas->where('der_11', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der11_no = $encuestas->where('der_11', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der12_all = $encuestas->whereIn('der_12',[1,0])->count();
-        $der12_si = $encuestas->where('der_12', '=', 1)->count();
-        $der12_no = $encuestas->where('der_12', '=', 0)->count();
+        $der12_all = $encuestas->whereIn('der_12',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der12_si = $encuestas->where('der_12', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der12_no = $encuestas->where('der_12', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der13_all = $encuestas->whereIn('der_13',[1,0])->count();
-        $der13_si = $encuestas->where('der_13', '=', 1)->count();
-        $der13_no = $encuestas->where('der_13', '=', 0)->count();
+        $der13_all = $encuestas->whereIn('der_13',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der13_si = $encuestas->where('der_13', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der13_no = $encuestas->where('der_13', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der14_all = $encuestas->whereIn('der_14',[1,0])->count();
-        $der14_si = $encuestas->where('der_14', '=', 1)->count();
-        $der14_no = $encuestas->where('der_14', '=', 0)->count();
+        $der14_all = $encuestas->whereIn('der_14',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der14_si = $encuestas->where('der_14', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der14_no = $encuestas->where('der_14', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $der15_all = $encuestas->whereIn('der_15',[1,0])->count();
-        $der15_si = $encuestas->where('der_15', '=', 1)->count();
-        $der15_no = $encuestas->where('der_15', '=', 0)->count();
+        $der15_all = $encuestas->whereIn('der_15',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der15_si = $encuestas->where('der_15', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $der15_no = $encuestas->where('der_15', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
 //deberes
-        $deb1_all = $encuestas->whereIn('deb_1',[1,0])->count();
-        $deb1_si = $encuestas->where('deb_1', '=', 1)->count();
-        $deb1_no = $encuestas->where('deb_1', '=', 0)->count();
+        $deb1_all = $encuestas->whereIn('deb_1',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb1_si = $encuestas->where('deb_1', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb1_no = $encuestas->where('deb_1', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $deb2_all = $encuestas->whereIn('deb_2',[1,0])->count();
-        $deb2_si = $encuestas->where('deb_2', '=', 1)->count();
-        $deb2_no = $encuestas->where('deb_2', '=', 0)->count();
+        $deb2_all = $encuestas->whereIn('deb_2',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb2_si = $encuestas->where('deb_2', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb2_no = $encuestas->where('deb_2', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $deb3_all = $encuestas->whereIn('deb_3',[1,0])->count();
-        $deb3_si = $encuestas->where('deb_3', '=', 1)->count();
-        $deb3_no = $encuestas->where('deb_3', '=', 0)->count();
+        $deb3_all = $encuestas->whereIn('deb_3',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb3_si = $encuestas->where('deb_3', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb3_no = $encuestas->where('deb_3', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $deb4_all = $encuestas->whereIn('deb_4',[1,0])->count();
-        $deb4_si = $encuestas->where('deb_4', '=', 1)->count();
-        $deb4_no = $encuestas->where('deb_4', '=', 0)->count();
+        $deb4_all = $encuestas->whereIn('deb_4',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb4_si = $encuestas->where('deb_4', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb4_no = $encuestas->where('deb_4', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $deb5_all = $encuestas->whereIn('deb_5',[1,0])->count();
-        $deb5_si = $encuestas->where('deb_5', '=', 1)->count();
-        $deb5_no = $encuestas->where('deb_5', '=', 0)->count();
+        $deb5_all = $encuestas->whereIn('deb_5',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb5_si = $encuestas->where('deb_5', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb5_no = $encuestas->where('deb_5', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $deb6_all = $encuestas->whereIn('deb_6',[1,0])->count();
-        $deb6_si = $encuestas->where('deb_6', '=', 1)->count();
-        $deb6_no = $encuestas->where('deb_6', '=', 0)->count();
+        $deb6_all = $encuestas->whereIn('deb_6',[1,0])->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb6_si = $encuestas->where('deb_6', '=', 1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $deb6_no = $encuestas->where('deb_6', '=', 0)->whereMonth('fecha_encuesta', '<', 07)->count();
 
 //atencion
-        $buena = $encuestas->whereAtencion('buena')->count();
-        $regular = $encuestas->whereAtencion('regular')->count();
-        $mala = $encuestas->whereAtencion('mala')->count();
-        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->count();
+        $buena = $encuestas->whereAtencion('buena')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $regular = $encuestas->whereAtencion('regular')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $mala = $encuestas->whereAtencion('mala')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->whereMonth('fecha_encuesta', '<', 07)->count();
 
 //funcion
-        $fun_buena = $encuestas->whereFuncion('buena')->count();
-        $fun_regular = $encuestas->whereFuncion('regular')->count();
-        $fun_mala = $encuestas->whereFuncion('mala')->count();
-        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->count();
+        $fun_buena = $encuestas->whereFuncion('buena')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $fun_regular = $encuestas->whereFuncion('regular')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $fun_mala = $encuestas->whereFuncion('mala')->whereMonth('fecha_encuesta', '<', 07)->count();
+        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->whereMonth('fecha_encuesta', '<', 07)->count();
 
 //notas
-        $nota_1 = $encuestas->whereNota(1)->count();
-        $nota_2 = $encuestas->whereNota(2)->count();
-        $nota_3 = $encuestas->whereNota(3)->count();
-        $nota_4 = $encuestas->whereNota(4)->count();
-        $nota_5 = $encuestas->whereNota(5)->count();
-        $nota_6 = $encuestas->whereNota(6)->count();
-        $nota_7 = $encuestas->whereNota(7)->count();
+        $nota_1 = $encuestas->whereNota(1)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_2 = $encuestas->whereNota(2)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_3 = $encuestas->whereNota(3)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_4 = $encuestas->whereNota(4)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_5 = $encuestas->whereNota(5)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_6 = $encuestas->whereNota(6)->whereMonth('fecha_encuesta', '<', 07)->count();
+        $nota_7 = $encuestas->whereNota(7)->whereMonth('fecha_encuesta', '<', 07)->count();
 
-        $notas_total = $encuestas->whereIn('nota', [1,2,3,4,5,6,7])->count();
+        $notas_total = $encuestas->whereIn('nota', [1,2,3,4,5,6,7])->whereMonth('fecha_encuesta', '<', 07)->count();
 
 
         return view('estadisticas.encuestas', compact(
