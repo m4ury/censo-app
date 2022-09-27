@@ -411,92 +411,17 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '../node_modules/datatables.net/js/jquery.dataTables.min.js',
+                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '../node_modules/datatables.net-dt/js/dataTables.dataTables.min.js',
+                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '../node_modules/datatables.net-dt/css/jquery.dataTables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/dataTables.buttons.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.flash.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/datatables-plugins/jszip/jszip.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/datatables-plugins/pdfmake/pdfmake.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'vendor/datatables-plugins/pdfmake/vfs_fonts.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.html5.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.print.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill/js/dataTables.autoFill.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill-dt/css/autoFill.dataTables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill-dt/js/autoFill.dataTables.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.colVis.min.js'
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons-dt/css/buttons.dataTables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons-dt/js/buttons.dataTables.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-datetime/dist/dataTables.dateTime.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-datetime/dist/dataTables.dateTime.min.js',
+                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
                 ],
             ],
         ],

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Events\newSolicitudCreada;
 use App\User;
 use App\Solicitud;
-//use Solicitud;
+use App\Paciente;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\SolicitudRequest;
 use App\Mail\newSolicitudCreadaMail;
@@ -54,7 +55,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        //Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 

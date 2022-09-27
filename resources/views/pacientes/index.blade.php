@@ -25,21 +25,21 @@
             </thead>
             <tbody>
             @foreach($pacientes as $paciente)
-                <tr>
+                    <tr>
                     <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td class="text-uppercase">{{ $paciente->fullName() }}</td>
                     <td>{{ $paciente->ficha }}</td>
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
-                    @if($paciente->sector == 'Celeste')
+                    @if($paciente->sector == 'celeste')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-primary"></i></span> Celeste
                         </td>
-                    @elseif($paciente->sector == 'Naranjo')
+                    @elseif($paciente->sector == 'naranjo')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-orange"></i></span> Naranjo
                         </td>
-                        @elseif($paciente->sector == 'Blanco')
+                        @elseif($paciente->sector == 'blanco')
                         <td><span class="mr-2">
                     <i class="fas fa-square text-white"></i></span> Blanco
                         </td>

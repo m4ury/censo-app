@@ -16,10 +16,11 @@
             <tr>
                 <th>Fecha solicitud</th>
                 <th>Rut</th>
+                <th>Paciente</th>
                 <th>N° Ficha</th>
+                <th>Ficha Familiar</th>
                 <th>Solicitante</th>
                 <th>estado</th>
-                <th>Ultima modificacion</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -28,17 +29,19 @@
                 <tr>
                     <th>{{ Carbon\Carbon::parse($solicitud->sol_fecha)->format("d-m-Y") }}</th>
                     <th>{{ $solicitud->sol_rut }}</th>
-                    <td>{{ $solicitud->sol_ficha }}</td>
+                    <th>{{ \DB::connection('sfam')->table('pacientes')->select('pacientes.nombres')->where('pacientes.rut', 'LIKE', '%'.$solicitud->sol_rut.'%')->value('nombres') ?? '--' }}</th>
+                    <td>{{ \DB::connection('sfam')->table('pacientes')->select('pacientes.ficha')->where('pacientes.rut', 'LIKE', '%'.$solicitud->sol_rut.'%')->value('ficha') ?? $solicitud->sol_ficha }}</td>
+                    <td>{{ str_replace(['{', '}', ':', '"'],"", \DB::connection('sfam')->table('pacientes')->select('familias.sector', 'familias.ficha_familiar')->join('familias', 'familias.id', 'pacientes.familia_id')->where('pacientes.rut', 'LIKE', '%'.$solicitud->sol_rut.'%')->pluck('ficha_familiar', 'sector')) ?? '--' }}</td>
                     <td>{{ $solicitud->user->fullUserName() }}</td>
                         <td><span class="mr-2">
                             @if($solicitud->sol_estado == 'solicitado')
-                            <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
+                            <p class="btn rounded-pill bg-gradient-warning">SOLICITADO</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'medicina')
                             <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'some')
-                            <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
+                            <p class="btn rounded-pill bg-gradient-success px-4">EN SOME</P>
                                 @elseif($solicitud->sol_estado == 'a_social')
-                            <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
+                            <p class="btn rounded-pill bg-gradient-gray px-4">EN A. SOCIAL</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'psicologo')
                             <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'otros')
@@ -46,10 +49,9 @@
                                 @elseif($solicitud->sol_estado == 'box medico')
                             <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MEDICO</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                                 @elseif($solicitud->sol_estado == 'acreditacion')
-                            <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
+                            <p class="btn rounded-pill bg-gradient-purple px-4">ACREDITACION</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                             @endif
                             </td>
-                            <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
                             @if(auth()->user()->someUser() || auth()->user()->isAdmin())
                     <td>
                     <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
