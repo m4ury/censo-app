@@ -28,7 +28,7 @@
                 <tr>
                     <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                    <td>{{ $paciente->ficha }}</td>
+                    <td>{{ $paciente->ficha }} @if($paciente->fallecido == 1) <span class="text-warning mx-2"><i class= 'fa fa-cross'></i> {{ Carbon\Carbon::parse($paciente->fecha_fallecido)->format("d-m-Y") }}</span></td> @endif
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
                     @if($paciente->sector == 'Celeste')

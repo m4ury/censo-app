@@ -158,6 +158,22 @@
                     </div>
 
                     <hr>
+
+                    <div class="form-group row">
+                            {!! Form::label('fellecido_label', 'Fallecido?', ['class' => 'col-sm-2
+                            col-form-label']) !!}
+                            <div class="col-sm-4">
+                                {!! Form::checkbox('fallecido', 1, old('fallecido', $paciente->fallecido) ,['class' => 'form-control form-control col-sm fallecido']) !!}
+                            </div>
+                            <div class="form-group row fecha_f">
+                                {!! Form::label('fecha_fellecido_label', 'Fecha', ['class' => 'col-sm col-form-label']) !!}
+                                <div class="col">
+                                    {!! Form::date('fecha_fallecido',$paciente->fecha_fallecido, ['class' => 'form-control form-control col-sm']) !!}
+                                </div>
+                            </div>
+                    </div>
+
+                    <hr>
                     @if($paciente->edad() >= 65)
                         @include('partials.empam')
                         @endif
@@ -298,6 +314,17 @@
     });
     $('input.maltrato').on('change', function() {
         $('input.maltrato').not(this).prop('checked', false);
+    });
+
+</script>
+
+<script>
+    $(".fallecido").removeAttr("checked");
+
+    $('.fecha_f').hide();
+
+    $('.fallecido').click(function () {
+        $('.fecha_f').fadeIn()[this.checked ? "show" : "hide"]();
     });
 </script>
 @endsection

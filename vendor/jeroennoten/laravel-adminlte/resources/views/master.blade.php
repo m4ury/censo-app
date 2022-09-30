@@ -79,6 +79,9 @@
     @yield('body')
 
     @include('sweetalert::alert')
+	@auth
+     @include('adminlte::partials.footer.footer')
+    @endauth
 
     {{-- Base Scripts --}}
     @if(!config('adminlte.enabled_laravel_mix'))

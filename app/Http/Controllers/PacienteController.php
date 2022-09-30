@@ -15,7 +15,7 @@ class PacienteController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento')->latest()
+        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'fallecido', 'fecha_fallecido')->latest()
             ->search($q)
             ->get();
 
@@ -56,7 +56,8 @@ class PacienteController extends Controller
         $validator = Validator::make($request->all(), [
             'rut' => 'cl_rut',
             'nombres' => 'string|min:3',
-            'apellidoP' => 'string|min:3'
+            'apellidoP' => 'string|min:3',
+            'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
 

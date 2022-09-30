@@ -98,7 +98,6 @@ class ExamenController extends Controller
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
             }
-
         $pcte->save();
 
         $examenes = new Examen($request->except('_token'));
@@ -108,8 +107,6 @@ class ExamenController extends Controller
         $examenes->cumple = $request->cumple ?? null;
         $examenes->user_id = Auth::user()->id;
         $examenes->paciente_id = $pcte->id;
-
-
         $examenes->save();
 
         return back()->withSuccess('Examen creado con exito!');
