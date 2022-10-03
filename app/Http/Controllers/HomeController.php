@@ -29,6 +29,7 @@ class HomeController extends Controller
         //todos
         $all = new Paciente;
         $totalPacientes = $all->pscv()->count();
+        $dm2 = $all->dm2()->count();
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
@@ -41,8 +42,8 @@ class HomeController extends Controller
 
 
         //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->count();
+        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->where('fallecido', '=', 0)->count();
+        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->where('fallecido', '=', 0)->count();
 
         //x compensacion
         $compensados = $all->pscv()->where('compensado', '=', 1)->count();
@@ -92,7 +93,8 @@ class HomeController extends Controller
             'femenino2064',
             'femenino65mas',
             'masculino2064',
-            'masculino65mas'
+            'masculino65mas',
+            'dm2'
         ));
     }
 }

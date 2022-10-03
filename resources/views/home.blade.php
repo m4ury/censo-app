@@ -6,7 +6,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row align-self-center">
-        <div class="col-lg col-6">
+        <div class="col-lg-6 col-sm">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
@@ -20,10 +20,8 @@
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- ./col -->
-        <div class="col-lg-2 col-6">
+
+        <div class="col-lg-3 col-sm">
             <!-- small box -->
             <div class="small-box bg-gradient-pink">
                 <div class="inner">
@@ -37,34 +35,7 @@
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-2 col-6">
-            <!-- small box -->
-            <div class="small-box bg-gradient-pink">
-                <div class="inner">
-                    <h3>{{ $femenino2064 }}</h3>
-                    <p>Mujeres de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-female"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-6">
-            <!-- small box -->
-            <div class="small-box bg-gradient-pink">
-                <div class="inner">
-                    <h3>{{ $femenino65mas }}</h3>
-                    <p>Mujeres de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-female"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- ./col -->
-        <div class="col-lg-2 col-6">
+        <div class="col-lg-3 col-sm">
             <!-- small box -->
             <div class="small-box bg-gradient-blue">
                 <div class="inner">
@@ -78,33 +49,11 @@
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-2 col-6">
-            <!-- small box -->
-            <div class="small-box bg-gradient-blue">
-                <div class="inner">
-                    <h3>{{ $masculino2064 }}</h3>
-                    <p>Hombres de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-male"></i>
-                </div>
-            </div>
-        </div>
+    </div>
 
-        <div class="col-lg-2 col-6">
-            <!-- small box -->
-            <div class="small-box bg-gradient-blue">
-                <div class="inner">
-                    <h3>{{ $masculino65mas }}</h3>
-                    <p>Hombres de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-male"></i>
-                </div>
-            </div>
-        </div>
+    <div class="row align-self-center">
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-6 col-sm">
             <!-- small box -->
             <div class="small-box bg-gradient-orange">
                 <div class="inner">
@@ -118,7 +67,7 @@
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-6 col-sm">
             <div class="small-box bg-gradient-lightblue">
                 <div class="inner">
                     <h3>{{ $totalCeleste }}</h3>
@@ -131,332 +80,18 @@
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-lg-2 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados }}</h3>
-                    <p>Pacientes Compensados</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados }}</h3>
-                    <p>Pacientes NO Compensados</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-6">
-            <div class="small-box bg-gradient-info">
-                <div class="inner">
-                    <h3>{{ $sinInfo }}</h3>
-                    <p>Pacientes Sin Información</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-question"></i>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
     </div>
-    {{-- <div class="row">
-        <!--riesgo alto -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $compensados_rAlto }}</h3>
-                    <p>Total Pacientes Compensados - riesgo Alto</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $compensados_rAlto1519 }}</h3>
-                    <p>Compensados Riesgo Alto, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $compensados_rAlto2064 }}</h3>
-                    <p>Compensados Riesgo Alto, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $compensados_rAlto65mas }}</h3>
-                    <p>Compensados Riesgo Bajo, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <!--riesgo moderado -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $compensados_rMod }}</h3>
-                    <p>Total Pacientes Compensados - riesgo Moderado</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $compensados_rMod1519 }}</h3>
-                    <p>Compensados Riesgo Moderado, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $compensados_rMod2064 }}</h3>
-                    <p>Compensados Riesgo Moderado, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $compensados_rMod65mas }}</h3>
-                    <p>Compensados Riesgo Moderado, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
 
-        <!--riesgo bajo -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados_rBajo }}</h3>
-                    <p>Total Pacientes Compensados - riesgo Bajo</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados_rBajo1519 }}</h3>
-                    <p>Compensados Riesgo Bajo, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados_rBajo2064 }}</h3>
-                    <p>Compensados Riesgo Bajo, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados_rBajo65mas }}</h3>
-                    <p>Compensados Riesgo Bajo, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
 
-        <!--no compensado riesgo alto -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rAlto }}</h3>
-                    <p>Total Pacientes Descompensados - riesgo Alto</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rAlto1519 }}</h3>
-                    <p>Descompensados Riesgo Alto, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rAlto2064 }}</h3>
-                    <p>Descompensados Riesgo Alto, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rAlto65mas }}</h3>
-                    <p>Descompensados Riesgo Bajo, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <!--riesgo moderado -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rMod }}</h3>
-                    <p>Total Pacientes Descompensados - riesgo Moderado</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rMod1519 }}</h3>
-                    <p>Descompensados Riesgo Moderado, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rMod2064 }}</h3>
-                    <p>Descompensados Riesgo Moderado, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-warning">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rMod65mas }}</h3>
-                    <p>Descompensados Riesgo Moderado, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-
-        <!--riesgo bajo -->
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rBajo }}</h3>
-                    <p>Total Pacientes Descompensados - riesgo Bajo</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rBajo1519 }}</h3>
-                    <p>Descompensados Riesgo Bajo, de 15 a 19 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rBajo2064 }}</h3>
-                    <p>Descompensados Riesgo Bajo, de 20 a 64 años</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $noCompensados_rBajo65mas }}</h3>
-                    <p>Descompensados Riesgo Bajo, de 65 años y mas</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
-                </div>
-            </div>
-        </div>
-    </div>--}}
     <div class="card-body">
         <div class="d-flex">
             <p class="d-flex flex-column">
-                {{--<span class="text-bold text-lg">{{ $totalPacientes }}</span>--}}
                 <span>Total Pacientes</span>
             </p>
             <p class="ml-auto d-flex flex-column text-right">
-                {{--<span class="text-success">
-                    <i class="fas fa-arrow-up"></i> 33.1%
-                </span>--}}
-                {{--<span class="text-muted">Since last month</span>--}}
             </p>
         </div>
         <!-- /.d-flex -->
-
         <div class="position-relative mb-4">
             <div class="chartjs-size-monitor">
                 <div class="chartjs-size-monitor-expand">
@@ -470,6 +105,42 @@
                 class="chartjs-render-monitor"></canvas>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm">
+            <div class="small-box bg-gradient-success">
+                <div class="inner">
+                    <h3>{{ $compensados }}</h3>
+                    <p>Pacientes Compensados</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm">
+            <div class="small-box bg-gradient-danger">
+                <div class="inner">
+                    <h3>{{ $noCompensados }}</h3>
+                    <p>Pacientes NO Compensados</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-times"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm">
+            <div class="small-box bg-gradient-info">
+                <div class="inner">
+                    <h3>{{ $sinInfo }}</h3>
+                    <p>Pacientes Sin Información</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-question"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('js')
@@ -480,7 +151,7 @@
             data: {
                 labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
                 datasets: [{
-                    label: 'q Pacientes',
+                    label: 'Q Pacientes',
                     data: [
                         {{$in1519}}, {{$in2024}}, {{$in2529}}, {{$in3034}}, {{$in3539}}, {{$in4044}}, {{$in4549}}, {{$in5054}},{{$in5559}}, {{$in6064}},{{$in6569}}, {{$in7074}},{{$in7579}}, {{$mas80}}
                     ],
