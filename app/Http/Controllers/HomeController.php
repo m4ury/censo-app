@@ -30,6 +30,8 @@ class HomeController extends Controller
         $all = new Paciente;
         $totalPacientes = $all->pscv()->count();
         $dm2 = $all->dm2()->count();
+        $hta = $all->hta()->count();
+        $dlp = $all->dlp()->count();
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
@@ -94,7 +96,9 @@ class HomeController extends Controller
             'femenino65mas',
             'masculino2064',
             'masculino65mas',
-            'dm2'
+            'dm2',
+            'hta',
+            'dlp'
         ));
     }
 }

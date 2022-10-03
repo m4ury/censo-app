@@ -141,6 +141,55 @@
             </div>
         </div>
     </div>
+
+
+        <div class="row">
+            <div class="col-lg-4 col-sm">
+                <div class="small-box bg-gradient-primary">
+                    <div class="inner">
+                        <h3>{{ $dm2 }}</h3>
+                        <p>PACIENTES DIABETICOS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm small-box">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm">
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3>{{ $hta }}</h3>
+                        <p>PACIENTES HIPERTENSOS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm small-box">
+
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm">
+            <div class="small-box bg-gradient-secondary">
+                <div class="inner">
+                    <h3>{{ $dlp }}</h3>
+                    <p>PACIENTES DISLIPIDEMICOS</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 @endsection
 @section('js')
