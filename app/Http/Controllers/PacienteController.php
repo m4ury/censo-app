@@ -57,7 +57,7 @@ class PacienteController extends Controller
             'rut' => 'cl_rut',
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
-            'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
+            //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
 

@@ -32,6 +32,10 @@ class HomeController extends Controller
         $dm2 = $all->dm2()->count();
         $hta = $all->hta()->count();
         $dlp = $all->dlp()->count();
+        $iam = $all->iam()->count();
+        $acv = $all->acv()->count();
+        $usoInsulina = $all->where('usoInsulina', '=', 1)->count();
+        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->where('controls.tipo_control', '=', 'Enfermera')->latest('controls.fecha_control')->count();
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
@@ -98,7 +102,11 @@ class HomeController extends Controller
             'masculino65mas',
             'dm2',
             'hta',
-            'dlp'
+            'dlp',
+            'usoInsulina',
+            'pieDm2',
+            'iam',
+            'acv'
         ));
     }
 }

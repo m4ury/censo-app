@@ -155,32 +155,62 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-sm small-box">
-                
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-4 col-sm">
-                <div class="small-box bg-gradient-danger">
+                <div class="small-box col-sm border border-primary">
                     <div class="inner">
-                        <h3>{{ $hta }}</h3>
-                        <p>PACIENTES HIPERTENSOS</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <h3>{{ $usoInsulina }}</h3>
+                        <p>DEPENDIENTE INSULINA</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-sm small-box">
-
+            <div class="col-lg-4 col-sm">
+                <div class="small-box col-sm border border-primary">
+                    <div class="inner">
+                        <h3>{{ $pieDm2 }}</h3>
+                        <p>PIE DIABETICO</p>
+                    </div>
+                </div>
             </div>
         </div>
-    <div class="row">
-        <div class="col-lg-4 col-sm">
+        <div class="row">
+        <div class="col-lg-3 col-sm">
+            <div class="small-box bg-gradient-danger">
+                <div class="inner">
+                    <h3>{{ $hta }}</h3>
+                    <p>PACIENTES HIPERTENSOS</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm">
             <div class="small-box bg-gradient-secondary">
                 <div class="inner">
                     <h3>{{ $dlp }}</h3>
                     <p>PACIENTES DISLIPIDEMICOS</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm">
+            <div class="small-box bg-gradient-info">
+                <div class="inner">
+                    <h3>{{ $acv }}</h3>
+                    <p>CON ANTECEDENTES ACV</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm">
+            <div class="small-box bg-gradient-indigo">
+                <div class="inner">
+                    <h3>{{ $iam }}</h3>
+                    <p>CON ANTECEDENTES IAM</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user-injured"></i>
