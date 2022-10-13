@@ -220,7 +220,7 @@ class EstadisticaController extends Controller
         $acv_7579M = $all->acv()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
         $acv_80M = $all->acv()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
 
-        //erc
+        //sin erc
         $s_erc = $all->s_erc()->count();
         $s_ercM = $all->s_erc()->where('sexo', 'Masculino')->count();
         $s_ercOriginM = $all->s_erc()->where('pacientes.sexo', '=', 'masculino')->where('pueblo_originario', '=', 1)->count();
@@ -480,6 +480,45 @@ class EstadisticaController extends Controller
         $ercV_7579F = $all->ercV()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
         $ercV_80F = $all->ercV()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
 
+
+        //ERC ALL
+        $ercAll = $all->ercTotal()->count();
+        $ercAllM = $all->ercTotal()->where('sexo', 'Masculino')->count();
+        $ercAllOriginM = $all->ercTotal()->where('pacientes.sexo', '=', 'masculino')->where('pueblo_originario', '=', 1)->count();
+        $ercAll_1519M = $all->ercTotal()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $ercAll_2024M = $all->ercTotal()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $ercAll_2529M = $all->ercTotal()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $ercAll_3034M = $all->ercTotal()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $ercAll_3539M = $all->ercTotal()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $ercAll_4044M = $all->ercTotal()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $ercAll_4549M = $all->ercTotal()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $ercAll_5054M = $all->ercTotal()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $ercAll_5559M = $all->ercTotal()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $ercAll_6064M = $all->ercTotal()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $ercAll_6569M = $all->ercTotal()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $ercAll_7074M = $all->ercTotal()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $ercAll_7579M = $all->ercTotal()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $ercAll_80M = $all->ercTotal()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+        $ercAllF = $all->ercTotal()->where('sexo', 'Femenino')->count();
+        $ercAllOriginF = $all->ercTotal()->where('pacientes.sexo', '=', 'femenino')->where('pueblo_originario', '=', 1)->count();
+        $ercAll_1519F = $all->ercTotal()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $ercAll_2024F = $all->ercTotal()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $ercAll_2529F = $all->ercTotal()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $ercAll_3034F = $all->ercTotal()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $ercAll_3539F = $all->ercTotal()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $ercAll_4044F = $all->ercTotal()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $ercAll_4549F = $all->ercTotal()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $ercAll_5054F = $all->ercTotal()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $ercAll_5559F = $all->ercTotal()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $ercAll_6064F = $all->ercTotal()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $ercAll_6569F = $all->ercTotal()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $ercAll_7074F = $all->ercTotal()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $ercAll_7579F = $all->ercTotal()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $ercAll_80F = $all->ercTotal()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+
+
         //pscv todos
         $total_pscv = $all->pscv()->count();
         $m_pscv = $all->pscv()->where('sexo', 'Masculino')->count();
@@ -673,6 +712,8 @@ class EstadisticaController extends Controller
             'ercV',
             'ercVF',
             'ercVM',
+            'ercAllM',
+            'ercAllF',
             'pscv_1519M',
             'pscv_1519F',
             'pscv_2024M',
@@ -1139,7 +1180,36 @@ class EstadisticaController extends Controller
             'dm2_ercIIIa',
             'dm2_ercIIIb',
             'dm2_ercIV',
-            'dm2_ercV'
+            'dm2_ercV',
+            'ercAll',
+            'ercAll_1519M',
+            'ercAll_1519F',
+            'ercAll_2024M',
+            'ercAll_2024F',
+            'ercAll_2529M',
+            'ercAll_2529F',
+            'ercAll_3034M',
+            'ercAll_3034F',
+            'ercAll_3539M',
+            'ercAll_3539F',
+            'ercAll_4044M',
+            'ercAll_4044F',
+            'ercAll_4549M',
+            'ercAll_4549F',
+            'ercAll_5054M',
+            'ercAll_5054F',
+            'ercAll_5559M',
+            'ercAll_5559F',
+            'ercAll_6064M',
+            'ercAll_6064F',
+            'ercAll_6569M',
+            'ercAll_6569F',
+            'ercAll_7074M',
+            'ercAll_7074F',
+            'ercAll_7579M',
+            'ercAll_7579F',
+            'ercAll_80M',
+            'ercAll_80F',
         ));
     }
 

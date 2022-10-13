@@ -268,6 +268,9 @@
                 }]
             },
             options: {
+                animation: {
+                duration: 1500,
+                },
                 scales: {
                     yAxes: [{
                         ticks: {

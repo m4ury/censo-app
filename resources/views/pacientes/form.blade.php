@@ -98,30 +98,32 @@
         </div>
     </div>
 
-    {{-- <div class="form-group row">
-        {!! Form::label('est_civil_label', 'Estado civil', ['class' => 'col-sm-2 col-form-label']) !!}
+
+    <div class="form-group row">
+        {!! Form::label('ingreso_label', 'Ingreso a PSCV', ['class' => 'col-sm col-form-label']) !!}
         <div class="col-sm-5">
-            {!! Form::select('e_civil', ['soltero' => 'Soltera(o)', 'casado' => 'Casada(o)', 'divorciado' => 'Divorciada(o)'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione estado civil', 'id' => 'e_civil']) !!}
+            {!! Form::checkbox('ingreso', 1, null ,['class' => 'form-control form-control']) !!}
         </div>
+        {!! Form::label('fecha_ingreso_label', 'Fecha Ingreso', ['class' => 'col-sm col-form-label']) !!}
         <div class="col-sm-5">
-            {!! Form::select('parentesco', ['esposo' => 'Esposa(o)', 'pareja' => 'Pareja', 'papa' => 'Papá', 'mama' => 'Mamá', 'hermano' => 'Hermana(o)', 'hijo' => 'Hija(o)', 'abuelo' => 'Abuela(o)', 'tio' => 'Tia(o)', 'primo' => 'Prima(o)', 'suegro' => 'Suegra(o)', 'nuera' => 'Nuera', 'yerno' => 'Yerno', 'cuñado' => 'Cuñada(o)', 'sobrino' => 'Sobrina(o)', 'nieto' => 'Nieta(o)', 'bisnieto' => 'Bisnieta(o)', 'hijastro' => 'Hijastra(o)', 'otros' => 'Otros'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione parentesco', 'id' => 'parentesco']) !!}
+            {!! Form::date('fecha_ingreso',null, ['class' => 'form-control form-control']) !!}
         </div>
-    </div> --}}
+    </div>
 
 
     <div class="form-group row">
-        <div class="col">
             {!! Form::label('pueblo_originario', 'Originario', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-5">
             {!! Form::checkbox('pueblo_originario', 1, null ,['class' => 'form-control form-control']) !!}
         </div>
-        <div class="col">
+
             {!! Form::label('migrante', 'Pob. Migrante', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-5">
             {!! Form::checkbox('migrante', 1, null, ['class' => 'form-control form-control']) !!}
         </div>
     </div>
 
     <hr>
-
     <div class="row">
         <div class="col">
             {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block']) }}

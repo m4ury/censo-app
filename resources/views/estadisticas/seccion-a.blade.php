@@ -111,6 +111,11 @@
                             <td>{{$pscv_7579F}}</td>
                             <td>{{$pscv_80M}}</td>
                             <td>{{$pscv_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th rowspan="4" style="vertical-align: middle">CLASIFICACION DEL RIESGO
@@ -149,6 +154,11 @@
                             <td>{{$bajo_7579F}}</td>
                             <td>{{$bajo_80M}}</td>
                             <td>{{$bajo_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th>MODERADO</th>
@@ -183,6 +193,11 @@
                             <td>{{$mod_7579F}}</td>
                             <td>{{$mod_80M}}</td>
                             <td>{{$mod_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th>ALTO</th>
@@ -217,6 +232,11 @@
                             <td>{{$alto_7579F}}</td>
                             <td>{{$alto_80M}}</td>
                             <td>{{$alto_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         </tr>
                         <tr>
@@ -226,7 +246,7 @@
                                 (EXISTENCIA)
                             </th>
                         <tr>
-                            <th>HIPERTENSOS</th>
+                            <th>HIPERTENSION ARTERIAL</th>
                             <td>{{ $hta }}</td>
                             <td>{{ $htaM }}</td>
                             <td>{{ $htaF }}</td>
@@ -258,9 +278,14 @@
                             <td>{{$hta_7579F}}</td>
                             <td>{{$hta_80M}}</td>
                             <td>{{$hta_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
-                            <th>DIABETICOS</th>
+                            <th>DIABETES MELITUS TIPO 2</th>
                             <td>{{ $dm2 }}</td>
                             <td>{{ $dm2M }}</td>
                             <td>{{ $dm2F }}</td>
@@ -292,9 +317,14 @@
                             <td>{{$dm2_7579F}}</td>
                             <td>{{$dm2_80M}}</td>
                             <td>{{$dm2_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
-                            <th>DISLIPIDEMICOS</th>
+                            <th>DISLIPIDEMIA</th>
                             <td>{{ $dlp }}</td>
                             <td>{{ $dlpM }}</td>
                             <td>{{ $dlpF }}</td>
@@ -326,6 +356,11 @@
                             <td>{{$dlp_7579F}}</td>
                             <td>{{$dlp_80M}}</td>
                             <td>{{$dlp_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th nowrap="">TABAQUISMO MAYOR A 55 AÑOS</th>
@@ -360,6 +395,11 @@
                             <td>{{$tbq_7579F}}</td>
                             <td>{{$tbq_80M}}</td>
                             <td>{{$tbq_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th nowrap="">ANTECEDENTES DE INFARTO AGUDO AL MIOCARDIO (IAM)</th>
@@ -394,6 +434,11 @@
                             <td>{{$iam_7579F}}</td>
                             <td>{{$iam_80M}}</td>
                             <td>{{$iam_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         <tr>
                             <th nowrap="">ANTECEDENTES DE ENF. CEREBRO VASCULAR</th>
@@ -428,10 +473,15 @@
                             <td>{{$acv_7579F}}</td>
                             <td>{{$acv_80M}}</td>
                             <td>{{$acv_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
                         </tr>
                         </tr>
                         <tr>
-                            <th rowspan="7" style="vertical-align: middle">DETECCIÓN Y PREVENCION DE LA
+                            <th rowspan="9" style="vertical-align: middle">DETECCIÓN Y PREVENCION DE LA
                                 PROGRESION
                                 DE LA ENFERMEDAD RENAL CRÓNICA (ERC).
                             </th>
@@ -555,7 +605,7 @@
                         </tr>
 
                         <tr>
-                            <th nowrap="">ETAPA G3a (VFG > 45 a 59 ml/min)</th>
+                            <th nowrap="">ETAPA G3a</th>
                             <td>{{ $ercIIIa }}</td>
                             <td>{{ $ercIIIaM }}</td>
                             <td>{{ $ercIIIaF }}</td>
@@ -594,7 +644,7 @@
                             <td>{{ $dm2_ercIIIa }}</td>
                         </tr>
                         <tr>
-                            <th nowrap="">ETAPA G3b (VFG > 30 a 44 ml/min)</th>
+                            <th nowrap="">ETAPA G3b</th>
                             <td>{{ $ercIIIb }}</td>
                             <td>{{ $ercIIIbM }}</td>
                             <td>{{ $ercIIIbF }}</td>
@@ -633,7 +683,7 @@
                             <td>{{ $dm2_ercIIIb }}</td>
                         </tr>
                         <tr>
-                            <th nowrap="">ETAPA G4 (VFG > 15 a 29 ml/min)</th>
+                            <th nowrap="">ETAPA G4</th>
                             <td>{{ $ercIV }}</td>
                             <td>{{ $ercIVM }}</td>
                             <td>{{ $ercIVF }}</td>
@@ -672,7 +722,7 @@
                             <td>{{ $dm2_ercIV }}</td>
                         </tr>
                         <tr>
-                            <th nowrap="">ETAPA G5 (VFG < 15 ml/min)</th>
+                            <th nowrap="">ETAPA G5</th>
                             <td>{{ $ercV }}</td>
                             <td>{{ $ercVM }}</td>
                             <td>{{ $ercVF }}</td>
@@ -709,6 +759,45 @@
                             <td class="bg-gradient-white"></td>
                             <td class="bg-gradient-white"></td>
                             <td>{{ $dm2_ercV }}</td>
+                        </tr>
+                        <tr>
+                            <th nowrap="">TOTAL</th>
+                            <td>{{ $ercAll }}</td>
+                            <td>{{ $ercAllM }}</td>
+                            <td>{{ $ercAllF }}</td>
+                            <td>{{$ercAll_1519M}}</td>
+                            <td>{{$ercAll_1519F}}</td>
+                            <td>{{$ercAll_2024M}}</td>
+                            <td>{{$ercAll_2024F}}</td>
+                            <td>{{$ercAll_2529M}}</td>
+                            <td>{{$ercAll_2529F}}</td>
+                            <td>{{$ercAll_3034M}}</td>
+                            <td>{{$ercAll_3034F}}</td>
+                            <td>{{$ercAll_3539M}}</td>
+                            <td>{{$ercAll_3539F}}</td>
+                            <td>{{$ercAll_4044M}}</td>
+                            <td>{{$ercAll_4044F}}</td>
+                            <td>{{$ercAll_4549M}}</td>
+                            <td>{{$ercAll_4549F}}</td>
+                            <td>{{$ercAll_5054M}}</td>
+                            <td>{{$ercAll_5054F}}</td>
+                            <td>{{$ercAll_5559M}}</td>
+                            <td>{{$ercAll_5559F}}</td>
+                            <td>{{$ercAll_6064M}}</td>
+                            <td>{{$ercAll_6064F}}</td>
+                            <td>{{$ercAll_6569M}}</td>
+                            <td>{{$ercAll_6569F}}</td>
+                            <td>{{$ercAll_7074M}}</td>
+                            <td>{{$ercAll_7074F}}</td>
+                            <td>{{$ercAll_7579M}}</td>
+                            <td>{{$ercAll_7579F}}</td>
+                            <td>{{$ercAll_80M}}</td>
+                            <td>{{$ercAll_80F}}</td>
+                            <td class="bg-gradient-white"></td>
+                            <td class="bg-gradient-white"></td>
+                            <td class="bg-gradient-white"></td>
+                            <td class="bg-gradient-white"></td>
+                            <td></td>
                         </tr>
                         </tr>
                     </thead>

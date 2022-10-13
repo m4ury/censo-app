@@ -48,8 +48,8 @@ class HomeController extends Controller
 
 
         //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->where('fallecido', '=', 0)->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->where('fallecido', '=', 0)->count();
+        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->where('egreso', '=', null)->count();
+        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->where('egreso', '=', null)->count();
 
         //x compensacion
         $compensados = $all->pscv()->where('compensado', '=', 1)->count();

@@ -28,7 +28,25 @@
                 <tr>
                     <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                    <td>{{ $paciente->ficha }} @if($paciente->fallecido == 1) <span class="text-warning mx-2"><i class= 'fa fa-cross'></i> {{ Carbon\Carbon::parse($paciente->fecha_fallecido)->format("d-m-Y") }}</span></td> @endif
+                    <td>{{ $paciente->ficha }}
+                        @if($paciente->egreso != null)
+                        @switch($paciente->egreso)
+                            @case('fallecido')
+                            <span class="text-warning mx-2"><i class= 'fa fa-cross'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                            @break
+
+                            @case('inasistente')
+                            <span class="text-info mx-2"><i class= 'fas fa-sign-out-alt'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                            @break
+
+                            @case('cambio_centro')
+                            <span class="text-gray mx-2"><i class= 'fas fa-hospital'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                            @break
+
+                            @default
+                            ""
+                        @endswitch
+                    </td> @endif
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
                     @if($paciente->sector == 'Celeste')

@@ -156,144 +156,138 @@
                             $paciente->compensado), ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'compensado']) !!}
                         </div>
                     </div>
-
                     <hr>
-
                     <div class="form-group row">
-                            {!! Form::label('fellecido_label', 'Fallecido?', ['class' => 'col-sm-2
-                            col-form-label']) !!}
-                            <div class="col-sm-4">
-                                {!! Form::checkbox('fallecido', 1, old('fallecido', $paciente->fallecido) ,['class' => 'form-control form-control col-sm fallecido']) !!}
+                                {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::select('egreso', ['fallecido' => 'Fallecido', 'inasistente' => 'Inasistente', 'cambio_centro' => 'Cambio Hospital'], old('egreso', $paciente->egreso), ['class' => 'form-control
+                                form-control', 'placeholder' => 'Seleccione motivo Egr.', 'id' => 'egreso']) !!}
                             </div>
-                            <div class="form-group row fecha_f">
-                                {!! Form::label('fecha_fellecido_label', 'Fecha', ['class' => 'col-sm col-form-label']) !!}
-                                <div class="col">
-                                    {!! Form::date('fecha_fallecido',$paciente->fecha_fallecido, ['class' => 'form-control form-control col-sm']) !!}
-                                </div>
+                                {!! Form::label('fecha_egreso_label', 'Fecha', ['class' => 'col-sm col-form-label fecha_f']) !!}
+                            <div class="col-sm-3 fecha_f">
+                                {!! Form::date('fecha_egreso',$paciente->fecha_egreso, ['class' => 'form-control form-control col-sm']) !!}
+                            </div>
                             </div>
                     </div>
-
                     <hr>
                     @if($paciente->edad() >= 65)
                         @include('partials.empam')
-                        @endif
-
+                    @endif
                         @foreach($paciente->patologias as $patologia)
-                            @if($patologia->nombre_patologia == 'HTA')
-                                <div class="form-group row card card-danger card-outline">
-                                    <div class="card-header text-bold text-red">HIPERTENSION ARTERIAL</div>
-                                    <div class="card-body row form-group">
-                                        {!! Form::label('rac_vigente_label', 'CON RAZON ALBÚMINA CREATININA (RAC)', ['class' =>
-                                        'col-sm-6 col-form-label']) !!}
-                                        <div class="col-sm-6">
-                                            {!! Form::date('racVigente', old('racVigente', $paciente->racVigente), ['class' =>
-                                            'form-control']) !!}
-                                        </div>
-                                    </div>
+                    @if($patologia->nombre_patologia == 'HTA')
+                        <div class="form-group row card card-danger card-outline">
+                            <div class="card-header text-bold text-red">HIPERTENSION ARTERIAL</div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('rac_vigente_label', 'CON RAZON ALBÚMINA CREATININA (RAC)', ['class' =>
+                                'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('racVigente', old('racVigente', $paciente->racVigente), ['class' =>
+                                    'form-control']) !!}
                                 </div>
-                                @elseif($patologia->nombre_patologia == 'DM2')
-                                    <div class="form-group row card card-primary card-outline">
-                                        <div class="card-header text-bold text-primary">DIABETES MELITUS</div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('vfg_vigente_label', 'CON VELOCIDAD DE FILTRACIÓN GLOMERULAR (VFG)',
-                                            ['class' => 'col-sm-6 col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('vfgVigente', old('vfgVigente', $paciente->vfgVigente), ['class' =>
-                                                'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('fondoOjoVigente_label', 'CON FONDO DE OJO', ['class' => 'col-sm-6
-                                            col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('fondoOjoVigente', old('fondoOjoVigente', $paciente->fondoOjoVigente),
-                                                ['class' => 'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('ecgVigente_label', 'CON ECG', ['class' => 'col-sm-6 col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('ecgVigente', old('ecgVigente', $paciente->ecgVigente), ['class' =>
-                                                'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('ldlVigente_label', 'CON UN EXÁMEN DE COLESTEROL LDL', ['class' => 'col-sm-6
-                                            col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('ldlVigente', old('ldlVigente', $paciente->ldlVigente), ['class' =>
-                                                'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('controlPodologico_alDia_label', 'CON CONTROL PODOLOGICO AL DIA', ['class'
-                                            => 'col-sm-6 col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('controlPodologico_alDia', old('controlPodologico_alDia',
-                                                $paciente->controlPodologico_alDia), ['class' => 'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('usoInsulina_label', 'EN TRATAMIENTO CON INSULINA', ['class' => 'col-sm-3
-                                            col-form-label']) !!}
-                                            <div class="col-sm-3">
-                                                {!! Form::checkbox('usoInsulina', 1, old('usoInsulina',
-                                                $paciente->usoInsulina), ['class' => 'form-control']) !!}
-                                            </div>
-                                            {!! Form::label('usoIecaAraII_label', 'EN TRATAMIENTO CON IECA O ARA II', ['class' =>
-                                            'col-sm-3
-                                            col-form-label']) !!}
-                                            <div class="col-sm-3">
-                                                {!! Form::checkbox('usoIecaAraII', 1, old('usoIecaAraII',
-                                                $paciente->usoIecaAraII), ['class' => 'form-control']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="card-body row form-group">
-                                            {!! Form::label('aputacionPieDM2_label', 'CON AMPUTACIÓN PIE DIABETICO', ['class'
-                                            => 'col-sm-6 col-form-label']) !!}
-                                            <div class="col-sm-6">
-                                                {!! Form::date('aputacionPieDM2', old('aputacionPieDM2',
-                                                $paciente->aputacionPieDM2), ['class' => 'form-control']) !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' or $patologia->nombre_patologia ==
-                                        'ANTECEDENTE ACV')
-                                        <div class="form-group row card card-info card-outline">
-                                            <div class="card-header text-bold text-info">CON ANTECEDENTE DE ATAQUE CEREBRO
-                                                VASCULAR /
-                                                INFARTO AL MIOCARDIO
-                                            </div>
-                                            <div class="card-body row form-group">
-                                                {!! Form::label('usoAspirinas_label', 'EN TRATAMIENTO CON ACIDO ACETILSALICILICO', ['class'
-                                                =>
-                                                'col-sm-3 col-form-label']) !!}
-                                                <div class="col-sm-3">
-                                                    {!! Form::checkbox('usoAspirinas', 1, old('usoAspirinas',
-                                                    $paciente->usoAspirinas), ['class' => 'form-control']) !!}
-                                                </div>
-                                                {!! Form::label('usoEstatinas_label', 'EN TRATAMIENTO CON ESTATINA', ['class' =>
-                                                'col-sm-3 col-form-label']) !!}
-                                                <div class="col-sm-3">
-                                                    {!! Form::checkbox('usoEstatinas', 1, old('usoEstatinas',
-                                                    $paciente->usoEstatinas), ['class' => 'form-control']) !!}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @endforeach
+                            </div>
+                        </div>
+                    @elseif($patologia->nombre_patologia == 'DM2')
+                        <div class="form-group row card card-primary card-outline">
+                            <div class="card-header text-bold text-primary">DIABETES MELITUS</div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('vfg_vigente_label', 'CON VELOCIDAD DE FILTRACIÓN GLOMERULAR (VFG)',
+                                ['class' => 'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('vfgVigente', old('vfgVigente', $paciente->vfgVigente), ['class' =>
+                                    'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('fondoOjoVigente_label', 'CON FONDO DE OJO', ['class' => 'col-sm-6
+                                col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('fondoOjoVigente', old('fondoOjoVigente', $paciente->fondoOjoVigente),
+                                    ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('ecgVigente_label', 'CON ECG', ['class' => 'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('ecgVigente', old('ecgVigente', $paciente->ecgVigente), ['class' =>
+                                    'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('ldlVigente_label', 'CON UN EXÁMEN DE COLESTEROL LDL', ['class' => 'col-sm-6
+                                col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('ldlVigente', old('ldlVigente', $paciente->ldlVigente), ['class' =>
+                                    'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('controlPodologico_alDia_label', 'CON CONTROL PODOLOGICO AL DIA', ['class'
+                                => 'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('controlPodologico_alDia', old('controlPodologico_alDia',
+                                    $paciente->controlPodologico_alDia), ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('usoInsulina_label', 'EN TRATAMIENTO CON INSULINA', ['class' => 'col-sm-3
+                                col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::checkbox('usoInsulina', 1, old('usoInsulina',
+                                    $paciente->usoInsulina), ['class' => 'form-control']) !!}
+                                </div>
+                                {!! Form::label('usoIecaAraII_label', 'EN TRATAMIENTO CON IECA O ARA II', ['class' =>
+                                'col-sm-3
+                                col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::checkbox('usoIecaAraII', 1, old('usoIecaAraII',
+                                    $paciente->usoIecaAraII), ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('aputacionPieDM2_label', 'CON AMPUTACIÓN PIE DIABETICO', ['class'
+                                => 'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('aputacionPieDM2', old('aputacionPieDM2',
+                                    $paciente->aputacionPieDM2), ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                    @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' or $patologia->nombre_patologia == 'ANTECEDENTE ACV')
+                        <div class="form-group row card card-info card-outline">
+                            <div class="card-header text-bold text-info">CON ANTECEDENTE DE ATAQUE CEREBRO
+                                VASCULAR /
+                                INFARTO AL MIOCARDIO
+                            </div>
+                            <div class="card-body row form-group">
+                                {!! Form::label('usoAspirinas_label', 'EN TRATAMIENTO CON ACIDO ACETILSALICILICO', ['class'
+                                =>
+                                'col-sm-3 col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::checkbox('usoAspirinas', 1, old('usoAspirinas',
+                                    $paciente->usoAspirinas), ['class' => 'form-control']) !!}
+                                </div>
+                                {!! Form::label('usoEstatinas_label', 'EN TRATAMIENTO CON ESTATINA', ['class' =>
+                                'col-sm-3 col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::checkbox('usoEstatinas', 1, old('usoEstatinas',
+                                    $paciente->usoEstatinas), ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                        @endforeach
 
-                                        <div class="row">
-                                            <div class="col">
-                                                {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block']) }}
-                                            </div>
-                                            <div class="col">
-                                                <a href="{{ url('pacientes', $paciente->id) }}" style="text-decoration:none">
-                                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                        {{ Form::close() }}
+                    <div class="row">
+                        <div class="col">
+                            {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block']) }}
+                        </div>
+                        <div class="col">
+                            <a href="{{ url('pacientes', $paciente->id) }}" style="text-decoration:none">
+                                {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
+                            </a>
+                        </div>
+                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -302,7 +296,7 @@
 @endsection
 @section('js')
 <script>
-    $('#riesgo_cv, #erc, #comuna, #sector, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia').select2({
+    $('#riesgo_cv, #erc, #comuna, #sector, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso').select2({
         theme: "classic",
         width: '100%',
     });
@@ -319,12 +313,22 @@
 </script>
 
 <script>
-    $(".fallecido").removeAttr("checked");
-
     $('.fecha_f').hide();
 
-    $('.fallecido').click(function () {
-        $('.fecha_f').fadeIn()[this.checked ? "show" : "hide"]();
-    });
+    $('#egreso').change(function () {
+            $('.fecha_f').hide();
+            var selection = $('#egreso').val();
+            switch (selection) {
+                case 'inasistente':
+                    $('.fecha_f').show();
+                    break;
+                case 'fallecido':
+                    $('.fecha_f').show();
+                    break;
+                case 'cambio_centro':
+                    $('.fecha_f').show();
+                    break;
+            }
+        });
 </script>
 @endsection

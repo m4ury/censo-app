@@ -14,15 +14,14 @@
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Familiares</a>
                           </div>
                         </nav>
-
-                    <div class="tab-content" id="nav-tabContent">
-                        @include('pacientes.form')
+                        <div class="tab-content" id="nav-tabContent">
+                            @include('pacientes.form')
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @stop
 @section('js')
 <script type="text/javascript">
