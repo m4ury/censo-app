@@ -35,7 +35,7 @@ class HomeController extends Controller
         $iam = $all->iam()->count();
         $acv = $all->acv()->count();
         $usoInsulina = $all->where('usoInsulina', '=', 1)->count();
-        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->where('controls.tipo_control', '=', 'Enfermera')->latest('controls.fecha_control')->count();
+        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->latest('controls.fecha_control')->count();
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
