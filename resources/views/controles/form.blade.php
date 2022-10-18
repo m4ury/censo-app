@@ -222,7 +222,7 @@
             })
         });
 
-        $("#rac_vigente, #examenes1").removeAttr("checked");
+        $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function () {
             $('#Enfermera, #Kine, #Medico, #Nutricionista').hide();
