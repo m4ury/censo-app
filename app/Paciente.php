@@ -236,7 +236,7 @@ class Paciente extends Model
 
     public function usoIecaAraII()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->where('paciente_patologia.patologia_id', '=', 2)->where('pacientes.usoIecaAraII', '=', 1)->whereIn('erc', ['IIIA', 'IIIB', 'IV', 'V']);
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->where('paciente_patologia.patologia_id', '=', 2)->where('pacientes.usoIecaAraII', '=', 1)->whereIn('erc', ['IIIB', 'IV', 'V']);
     }
 
     public function ldlVigente()

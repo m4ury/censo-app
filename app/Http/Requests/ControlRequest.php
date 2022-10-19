@@ -22,7 +22,7 @@ class ControlRequest extends FormRequest
             'proximo_control' => 'required|after:fecha_control',
             'prox_tipo' => 'required',
             'presion_arterial' => 'required',
-            'pa_menor_140_90' => 'required_if:tipo_control,Medico'
+            //'pa_menor_140_90' => 'required_if:tipo_control,Medico'
         ];
     }
 }

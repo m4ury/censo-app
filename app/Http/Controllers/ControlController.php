@@ -69,11 +69,10 @@ class ControlController extends Controller
     public function update(Request $request, $id)
     {
         $control = Control::findOrFail($id);
-        //dd($request->all());
         $control->update($request->all());
-        $control->pa_menor_140_90 = $request->pa_menor_140_90 ?? 2;
-        $control->pa_menor_150_90 = $request->pa_menor_150_90 ?? 2;
-        $control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? 2;
+        //$control->pa_menor_140_90 = $request->pa_menor_140_90 ?? 2;
+        //$control->pa_menor_150_90 = $request->pa_menor_150_90 ?? 2;
+        //$control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? 2;
         $control->save();
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
     }

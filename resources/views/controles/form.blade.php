@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="form-group row">
-    {!! Form::label('presion_arterial', 'Presion Arterial', ['class' => 'col-sm-3 col-form-label']) !!}
+    {!! Form::label('presion_arterial_label', 'Presion Arterial', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-9">
         {!! Form::text('presion_arterial', old('presion_arterial', $control->presion_arterial), ['class' =>
         'form-control
