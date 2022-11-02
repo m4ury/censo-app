@@ -3845,6 +3845,6 @@ class EstadisticaController extends Controller
         $todas = $examenes->count();
 
 
-        return ;
+        return view('estadisticas.rayos', compact('todas'));
     }
 }
