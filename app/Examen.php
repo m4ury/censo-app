@@ -26,4 +26,8 @@ class Examen extends Model
             return $query->whereMonth('fecha_examen', $q);
     }
 
+    public function procedimientos(){
+        return $this->hasMany(Procedimiento::class);
+    }
+
 }

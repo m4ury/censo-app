@@ -181,8 +181,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401051</th>
-                            <th nowrap="">Pelvis, cadera o coxofemoral</th>
+                            <th class="table-danger">401051</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -190,8 +190,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401151</th>
-                            <th nowrap="">Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años</th>
+                            <th class="table-danger">401151</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -199,8 +199,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401052</th>
-                            <th nowrap="">Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)</th>
+                            <th class="table-danger">401052</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -208,8 +208,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401053</th>
-                            <th nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
+                            <th class="table-danger">401053</th>
+                            <th class="table-danger" nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -217,8 +217,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401054</th>
-                            <th nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
+                            <th class="table-danger">401054</th>
+                            <th class="table-danger" nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -226,8 +226,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401055</th>
-                            <th nowrap="">Clavícula</th>
+                            <th class="table-danger">401055</th>
+                            <th class="table-danger" nowrap="">Clavícula</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -235,8 +235,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401056</th>
-                            <th nowrap="">Edad ósea: Carpo y mano</th>
+                            <th class="table-danger">401056</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Carpo y mano</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -244,8 +244,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401057</th>
-                            <th nowrap="">Edad ósea: Rodilla frontal</th>
+                            <th class="table-danger">401057</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Rodilla frontal</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -253,8 +253,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401058</th>
-                            <th nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
+                            <th class="table-danger">401058</th>
+                            <th class="table-danger" nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -262,8 +262,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401059</th>
-                            <th nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
+                            <th class="table-danger">401059</th>
+                            <th class="table-danger" nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -271,8 +271,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401060</th>
-                            <th nowrap="">Clavícula</th>
+                            <th class="table-danger">401060</th>
+                            <th class="table-danger" nowrap="">Clavícula</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -280,8 +280,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401062</th>
-                            <th nowrap="">Edad ósea: Carpo y mano</th>
+                            <th class="table-danger">401062</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Carpo y mano</th>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -289,8 +289,8 @@
                             <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>401063</th>
-                            <th nowrap="">Edad ósea: Rodilla frontal</th>
+                            <th class="table-danger">401063</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Rodilla frontal</th>
                             <td></td>
                             <td></td>
                             <td></td>
