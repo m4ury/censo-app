@@ -166,8 +166,8 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
-                        <h3>{{ $pieDm2 }}</h3>
-                        <p>PIE DIABETICO</p>
+                        <h3>{{ $pieDm2 }}
+                        <p>PIE DIABETICO </p>
                     </div>
                 </div>
             </div>

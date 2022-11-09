@@ -174,7 +174,7 @@ class Paciente extends Model
 
     public function hbac17Pa140Ldl100()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.pa_menor_140_90', '=', 1)->where('controls.hba1cMenor7Porcent', '=', 1)->where('controls.ldlMenor100', '=', 1)->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1c7Pa140_90Ldl100Menores', '=', 1)->latest('controls.fecha_control');
     }
 
     public function ldl100()
