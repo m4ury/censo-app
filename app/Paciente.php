@@ -179,7 +179,7 @@ class Paciente extends Model
 
     public function ldl100()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.ldlMenor100', '=', 1)->latest('controls.fecha_control');
+        return $this->rcv_alto()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.ldlMenor100', '=', 1)->latest('controls.fecha_control');
     }
 
     public function aspirinas()
@@ -279,7 +279,7 @@ class Paciente extends Model
 
     public function aputacionPieDM2()
     {
-        return $this->where('aputacionPieDM2', '>=', Carbon::now()->subYear(1));
+        return $this->whereNotNull('aputacionPieDM2');
     }
 
     public function dm2_hta()

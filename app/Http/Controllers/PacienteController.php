@@ -71,7 +71,11 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
 
         $paciente->usoInsulina = $request->usoInsulina ?? 0;
-        $paciente->usoInsulina = $request->usoIecaAraII ?? 0;
+        $paciente->usoIecaAraII = $request->usoIecaAraII ?? 0;
+        $paciente->pueblo_originario = $request->pueblo_originario ?? 0;
+        $paciente->migrante = $request->migrante ?? 0;
+        $paciente->usoAspirinas = $request->usoAspirinas ?? 0;
+        $paciente->usoEstatinas = $request->usoEstatinas ?? 0;
 
         $paciente->update($request->all());
         //dd($paciente);
