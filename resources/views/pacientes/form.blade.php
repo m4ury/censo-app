@@ -67,37 +67,36 @@
 
 
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-<hr>
-<div class="form-group row">
-    {!! Form::label('direccion', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
-    <div class="col-sm-5">
-        {!! Form::text('direccion',null, ['class' => 'form-control form-control-sm'.($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Ej.: Calle, numero']) !!}
-        @if ($errors->has('direccion'))
-            <span class="invalid-feedback">
-                <strong>{{ $errors->first('direccion') }}</strong>
-            </span>
-        @endif
-    </div>
-    <div class="col-sm-5">
-        {!! Form::select('comuna', ['Cauquenes' => 'Cauquenes', 'Chanco' => 'Chanco', 'Pelluhue' => 'Pelluhue', 'Curico' => 'Curico', 'Hualane' => 'Hualane', 'Licanten' => 'Licanten', 'Molina' => 'Molina', 'Rauco' => 'Rauco', 'Romeral' => 'Romeral', 'Sgda Familia' => 'Sgda Familia', 'Teno' => 'Teno', 'Vichuquen' => 'Vichuquen', 'Linares' => 'Linares', 'Colbun' => 'Colbun', 'Longabi' => 'Longabi', 'Parral' => 'Parral', 'Retiro' => 'Retiro', 'San Javier' => 'San Javier', 'Villa Alegre' => 'Villa Alegre', 'Yerbas Buenas' => 'Yerbas Buenas', 'Talca' => 'Talca', 'Constitucion' => 'Constitucion', 'Empedrado' => 'Empedrado', 'Maule' => 'Maule', 'Pelarco' => 'Pelarco', 'Pencahue' => 'Pencahue', 'Rio Claro' => 'Rio Claro', 'San Clemente' => 'San Clemente', 'San Rafael' => 'San Rafael', 'Curepto' => 'Curepto'], null, ['class' => 'form-control form-control-sm', 'id' => 'comuna', 'placeholder' => 'Seleccione Comuna']) !!}
-    </div>
-</div>
-<div class="form-group row">
-        {!! Form::label('telefono', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
+    <hr>
+    <div class="form-group row">
+        {!! Form::label('direccion', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-5">
-            {!! Form::tel('telefono',null, ['class' => 'form-control form-control-sm'.($errors->has('telefono') ? ' is-invalid' : ''), 'id' => 'phone', 'placeholder' =>
-                'ej.: 912345678']) !!}
-            @if ($errors->has('telefono'))
+            {!! Form::text('direccion',null, ['class' => 'form-control form-control-sm'.($errors->has('direccion') ? ' is-invalid' : ''), 'placeholder' => 'Ej.: Calle, numero']) !!}
+            @if ($errors->has('direccion'))
                 <span class="invalid-feedback">
-                   <strong>{{ $errors->first('telefono') }}</strong>
+                    <strong>{{ $errors->first('direccion') }}</strong>
                 </span>
             @endif
         </div>
         <div class="col-sm-5">
-            {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
+            {!! Form::select('comuna', ['Cauquenes' => 'Cauquenes', 'Chanco' => 'Chanco', 'Pelluhue' => 'Pelluhue', 'Curico' => 'Curico', 'Hualane' => 'Hualane', 'Licanten' => 'Licanten', 'Molina' => 'Molina', 'Rauco' => 'Rauco', 'Romeral' => 'Romeral', 'Sgda Familia' => 'Sgda Familia', 'Teno' => 'Teno', 'Vichuquen' => 'Vichuquen', 'Linares' => 'Linares', 'Colbun' => 'Colbun', 'Longabi' => 'Longabi', 'Parral' => 'Parral', 'Retiro' => 'Retiro', 'San Javier' => 'San Javier', 'Villa Alegre' => 'Villa Alegre', 'Yerbas Buenas' => 'Yerbas Buenas', 'Talca' => 'Talca', 'Constitucion' => 'Constitucion', 'Empedrado' => 'Empedrado', 'Maule' => 'Maule', 'Pelarco' => 'Pelarco', 'Pencahue' => 'Pencahue', 'Rio Claro' => 'Rio Claro', 'San Clemente' => 'San Clemente', 'San Rafael' => 'San Rafael', 'Curepto' => 'Curepto'], null, ['class' => 'form-control form-control-sm', 'id' => 'comuna', 'placeholder' => 'Seleccione Comuna']) !!}
         </div>
     </div>
-
+    <div class="form-group row">
+            {!! Form::label('telefono', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
+            <div class="col-sm-5">
+                {!! Form::tel('telefono',null, ['class' => 'form-control form-control-sm'.($errors->has('telefono') ? ' is-invalid' : ''), 'id' => 'phone', 'placeholder' =>
+                    'ej.: 912345678']) !!}
+                @if ($errors->has('telefono'))
+                    <span class="invalid-feedback">
+                    <strong>{{ $errors->first('telefono') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="col-sm-5">
+                {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Sector', 'id' => 'sector']) !!}
+            </div>
+    </div>
 
     <div class="form-group row">
         {!! Form::label('ingreso_label', 'Ingreso a PSCV', ['class' => 'col-sm col-form-label']) !!}
@@ -109,7 +108,6 @@
             {!! Form::date('fecha_ingreso',null, ['class' => 'form-control form-control']) !!}
         </div>
     </div>
-
 
     <div class="form-group row">
             {!! Form::label('pueblo_originario', 'Originario', ['class' => 'col-sm col-form-label']) !!}

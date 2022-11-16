@@ -20,14 +20,15 @@
                 <th>Solicitante</th>
                 <th>estado</th>
                 <th>Ultima modificacion</th>
+                <th>Comentario</th>
                 <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
             @foreach($solicitudes as $solicitud)
                 <tr>
-                    <th>{{ Carbon\Carbon::parse($solicitud->sol_fecha)->format("d-m-Y") }}</th>
-                    <th>{{ $solicitud->sol_rut }}</th>
+                    <td>{{ Carbon\Carbon::parse($solicitud->sol_fecha)->format("d-m-Y") }}</td>
+                    <td>{{ $solicitud->sol_rut }}</td>
                     <td>{{ $solicitud->sol_ficha }}</td>
                     <td>{{ $solicitud->user->fullUserName() }}</td>
                         <td><span class="mr-2">
@@ -48,20 +49,22 @@
                                 @elseif($solicitud->sol_estado == 'acreditacion')
                             <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P> <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }} dias</span>
                             @endif
-                            </td>
-                            <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
+                        </td>
+                        <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
+                        <td>{{ $solicitud->sol_comentario ?? ''}}</td>
                             @if(auth()->user()->someUser() || auth()->user()->isAdmin())
-                    <td>
-                    <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
-                        title="Editar" href="{{ url('solicitudes/'.$solicitud->id.'/edit') }}"><i class="fas fa-pen"></i>
-                    </a>
-                    @else <td class="text-muted">Opción deshabilitada para tu usuario</td>
-                    @endif
-                        {{--{!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
-                        {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
-                        'Eliminar'] ) !!}
-                        {!! Form::close() !!}--}}
+                        <td>
+                            <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                                title="Editar" href="{{ url('solicitudes/'.$solicitud->id.'/edit') }}"><i class="fas fa-pen"></i>
+                            </a>
+                             @else
+                        <td class="text-muted">Opción deshabilitada para tu usuario</td>
+                            @endif
+                            {{--{!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
+                            {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
+                            btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
+                            'Eliminar'] ) !!}
+                            {!! Form::close() !!}--}}
                         </td>
                 </tr>
             @endforeach
