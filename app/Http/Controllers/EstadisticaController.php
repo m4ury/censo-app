@@ -3700,6 +3700,10 @@ class EstadisticaController extends Controller
         $der15_si = $encuestas->where('der_15', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
         $der15_no = $encuestas->where('der_15', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
 
+        $der16_all = $encuestas->whereIn('der_16',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der16_si = $encuestas->where('der_16', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der16_no = $encuestas->where('der_16', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+
 //deberes
         $deb1_all = $encuestas->whereIn('deb_1',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
         $deb1_si = $encuestas->where('deb_1', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
@@ -3724,6 +3728,10 @@ class EstadisticaController extends Controller
         $deb6_all = $encuestas->whereIn('deb_6',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
         $deb6_si = $encuestas->where('deb_6', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
         $deb6_no = $encuestas->where('deb_6', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+
+        $deb7_all = $encuestas->whereIn('deb_7',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb7_si = $encuestas->where('deb_7', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb7_no = $encuestas->where('deb_7', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
 
 //atencion
         $buena = $encuestas->whereAtencion('buena')->whereMonth('fecha_encuesta', '>', 06)->count();
@@ -3782,6 +3790,8 @@ class EstadisticaController extends Controller
             'der14_no',
             'der15_si',
             'der15_no',
+            'der16_si',
+            'der16_no',
             'der1_all',
             'der2_all',
             'der3_all',
@@ -3797,6 +3807,7 @@ class EstadisticaController extends Controller
             'der13_all',
             'der14_all',
             'der15_all',
+            'der16_all',
 
             'deb1_si',
             'deb1_no',
@@ -3810,6 +3821,8 @@ class EstadisticaController extends Controller
             'deb5_no',
             'deb6_si',
             'deb6_no',
+            'deb7_si',
+            'deb7_no',
 
             'deb1_all',
             'deb2_all',
@@ -3817,6 +3830,7 @@ class EstadisticaController extends Controller
             'deb4_all',
             'deb5_all',
             'deb6_all',
+            'deb7_all',
 
             'buena',
             'regular',

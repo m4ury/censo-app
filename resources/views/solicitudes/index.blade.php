@@ -51,7 +51,7 @@
                             @endif
                         </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format("d-m-Y G:i A")  }}</td>
-                        <td>{{ $solicitud->sol_comentario ?? ''}}</td>
+                        <td>{{ $solicitud->sol_comentario}}</td>
                             @if(auth()->user()->someUser() || auth()->user()->isAdmin())
                         <td>
                             <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"

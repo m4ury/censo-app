@@ -33,11 +33,11 @@
                 <table id="pscv" class="table table-md-responsive table-bordered">
                     <thead>
                         <tr>
-                            <th class="text-center" colspan="16">DERECHOS</th>
+                            <th class="text-center" colspan="17">DERECHOS</th>
                         </tr>
                         <tr>
                             <th></th>
-                            <th>Se le ha entregado informacion oportuna a su estado de salud.</th>
+                            <th>Se le ha entregado informacion oportuna y comprensible a su estado de salud.</th>
                             <th>Ha recibido un trato digno, respetando su privacidad.</th>
                             <th>Ha sido llamado por su nombre y atendido con amabilidad.</th>
                             <th>Usted ha recibido una atención de salud de calidad y segura. Según protocolos establecidos.</th>
@@ -52,6 +52,7 @@
                             <th>Los funcionarios portan su identificación</th>
                             <th>Se ha respetado el derecho de inscribir el nacimiento de su hijo en lugar de residencia, si corresponde</th>
                             <th>Su medico le ha entregado un informe de atencion recibida durante su hospitalizacion.</th>
+                            <th>Se respeta el derecho de atención preferente a personas mayores de 60 años y/o con discapacidad.</th>
                         </tr>
 
                         <tr>
@@ -71,6 +72,7 @@
                             <td>{{ $der13_si }}</td>
                             <td>{{ $der14_si }}</td>
                             <td>{{ $der15_si }}</td>
+                            <td>{{ $der16_si }}</td>
                         </tr>
 
                         <tr>
@@ -90,6 +92,7 @@
                             <td>{{ $der13_no }}</td>
                             <td>{{ $der14_no }}</td>
                             <td>{{ $der15_no }}</td>
+                            <td>{{ $der16_no }}</td>
                         </tr>
                         <tr>
                             <th>TOTAL</th>
@@ -108,6 +111,7 @@
                             <td>{{ $der13_all }}</td>
                             <td>{{ $der14_all }}</td>
                             <td>{{ $der15_all }}</td>
+                            <td>{{ $der16_all }}</td>
                         </tr>
                         <tr>
                             <th>SI %</th>
@@ -126,6 +130,7 @@
                             <td>{{ round($der13_si*100/$der13_all) }} %</td>
                             <td>{{ round($der14_si*100/$der14_all) }} %</td>
                             <td>{{ round($der15_si*100/$der15_all) }} %</td>
+                            <td>{{ $der16_all == 0 ? 'No hay suficientes respuestas aun...' : round($der16_si*100/$der16_all) .'%'}}</td>
                         </tr>
 
                         <tr>
@@ -145,6 +150,7 @@
                             <td>{{ round($der13_no*100/$der13_all) }} %</td>
                             <td>{{ round($der14_no*100/$der14_all) }} %</td>
                             <td>{{ round($der15_no*100/$der15_all) }} %</td>
+                            <td>{{ $der16_all == 0 ? 'No hay suficientes respuestas aun...' : round($der16_no*100/$der16_all) .'%'}}</td>
                         </tr>
                     </thead>
                 </table>
@@ -154,7 +160,7 @@
                 <table id="pscv" class="table table-md-responsive table-bordered mt-5">
                     <thead>
                         <tr>
-                            <th class="text-center" colspan="7">DEBERES</th>
+                            <th class="text-center" colspan="8">DEBERES</th>
                         </tr>
                         <tr>
                             <th></th>
@@ -164,6 +170,7 @@
                             <th>Usted se ha informado de los horarios de atencion y formas de pago.</th>
                             <th>Usted trata respetuosamenteal personal de salud.</th>
                             <th>Usted se ha informado acerca del procedimiento de reclamos.</th>
+                            <th>Usted da prioridad a personas con derecho a atención preferente.</th>
                         </tr>
 
                         <tr>
@@ -174,6 +181,7 @@
                             <td>{{ $deb4_si }}</td>
                             <td>{{ $deb5_si }}</td>
                             <td>{{ $deb6_si }}</td>
+                            <td>{{ $deb7_si }}</td>
                         </tr>
 
                         <tr>
@@ -184,6 +192,7 @@
                             <td>{{ $deb4_no }}</td>
                             <td>{{ $deb5_no }}</td>
                             <td>{{ $deb6_no }}</td>
+                            <td>{{ $deb7_no }}</td>
                         </tr>
                         <tr>
                             <th>TOTAL</th>
@@ -193,6 +202,7 @@
                             <td>{{ $deb4_all }}</td>
                             <td>{{ $deb5_all }}</td>
                             <td>{{ $deb6_all }}</td>
+                            <td>{{ $deb7_all }}</td>
                         </tr>
                         <tr>
                             <th>SI %</th>
@@ -202,6 +212,7 @@
                             <td>{{ round($deb4_si*100/$deb4_all) }} %</td>
                             <td>{{ round($deb5_si*100/$deb5_all) }} %</td>
                             <td>{{ round($deb6_si*100/$deb6_all) }} %</td>
+                            <td>{{ $deb7_all == 0 ? 'No hay suficientes respuestas aun...' : round($deb7_si*100/$deb7_all) .'%'}}</td>
                         </tr>
 
                         <tr>
@@ -212,6 +223,7 @@
                             <td>{{ round($deb4_no*100/$deb4_all) }} %</td>
                             <td>{{ round($deb5_no*100/$deb5_all) }} %</td>
                             <td>{{ round($deb6_no*100/$deb6_all) }} %</td>
+                            <td>{{ $deb7_all == 0 ? 'No hay suficientes respuestas aun...' : round($deb7_no*100/$deb7_all) .'%'}}</td>
                         </tr>
                     </thead>
                 </table>

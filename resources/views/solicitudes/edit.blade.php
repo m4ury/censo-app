@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Actualizando-solicitud')
+@section('title', 'actualiza-solicitud')
 
 @section('content')
     <div class="container pt-3">
@@ -25,11 +25,19 @@
                 </div>
 
                 <div class="form-group row">
-                        {!! Form::label('sol_estado_label', 'Estado.', ['class' => 'col-sm-2 col-form-label']) !!}
-                        <div class="col-sm-5">
-                            {!! Form::select('sol_estado', ['medicina' => 'entrgado a Medicina', 'some' => 'devuelto a SOME', 'solicitado' => 'Solicitado', 'a_social' => 'entregado a Asistente Social', 'psicologo' => 'entregado a Psicologa(a)', 'otros' => 'Otros', 'box medico' => 'en Box Medico', 'acreditacion' => 'por Acreditación'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
-                        </div>
+                    {!! Form::label('sol_estado_label', 'Estado', ['class' => 'col-sm-2 col-form-label']) !!}
+                    <div class="col-sm-5">
+                       {!! Form::select('sol_estado', ['medicina' => 'entrgado a Medicina', 'some' => 'devuelto a SOME', 'solicitado' => 'Solicitado', 'a_social' => 'entregado a Asistente Social', 'psicologo' => 'entregado a Psicologa(a)', 'otros' => 'Otros', 'box medico' => 'en Box Medico', 'acreditacion' => 'por Acreditación'], old('sol_estado', $solicitud->sol_estado), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione Estado', 'id' => 'estado']) !!}
                     </div>
+                </div>
+
+                <div class="form-group row">
+                    {!! Form::label('sol_comentario_label', 'Comentario', ['class' => 'col-sm-2 col-form-label']) !!}
+                    <div class="col-sm-5">
+                        {!! Form::text('sol_comentario', old('sol_comentario', $solicitud->sol_comentario), ['class' => 'form-control form-control-sm'.($errors->has('sol_comentario') ? '
+                        is-invalid' : ''), 'placeholder' => 'Breve comentario...']) !!}
+                    </div>
+                </div>
                 <hr>
 
                 <div class="row py-3 px-3">

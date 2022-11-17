@@ -249,6 +249,18 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr>
+                    <th>
+                        Se respeta el derecho a la atención preferente a personas mayores de 60 años y/o con discapacidad.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_16 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_16 === 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
             </table>
         </div>
         <div class="col-12 table-responsive pt-3 ">
@@ -338,6 +350,18 @@
                     </td>
                     <td>
                         <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_6 === 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>
+                        Usted da prioridad a personas con derecho a atención preferente.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_7 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_7 === 0? "times text-danger":" " }} mr-1"></i></strong>
                     </td>
                     <td></td>
                 </tr>

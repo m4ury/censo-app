@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCamposToSolicitudesTable extends Migration
+class AddFieldsToEncuestasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddCamposToSolicitudesTable extends Migration
      */
     public function up()
     {
-        Schema::table('solicitudes', function (Blueprint $table) {
-            $table->string('sol_comentario')->nullable();
+        Schema::table('encuestas', function (Blueprint $table) {
+            $table->tinyInteger('deb_7')->default(0);
+            $table->tinyInteger('der_16')->default(0);
         });
     }
 
@@ -25,8 +26,8 @@ class AddCamposToSolicitudesTable extends Migration
      */
     public function down()
     {
-        Schema::table('solicitudes', function (Blueprint $table) {
-            $table->string('sol_comentario')->nullable();
+        Schema::table('encuestas', function (Blueprint $table) {
+            //
         });
     }
 }
