@@ -120,14 +120,16 @@ class Paciente extends Model
 
     public function hta()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->where('patologias.nombre_patologia', '=', 'HTA');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+                        ->where('patologias.nombre_patologia', 'HTA');
     }
 
     public function dm2()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->where('patologias.nombre_patologia', '=', 'DM2');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+                        ->where('patologias.nombre_patologia', 'DM2');
     }
 
     public function dlp()
@@ -264,6 +266,26 @@ class Paciente extends Model
     public function evaluacionPie_maximo()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.evaluacionPie', '=', 'Maximo')->latest('controls.fecha_control');
+    }
+
+    public function SinEvaluacionPie(){
+        return $this->pscv()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia')
+            ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+            ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
+                ->where('patologias.nombre_patologia', 'DM2')
+                ;
+    }
+
+    public function evaluacionPie(){
+        return $this->pscv()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia', 'controls.fecha_control', 'controls.evaluacionPie')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+            ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
+                ->where('patologias.nombre_patologia', 'DM2')
+                ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
+                ->whereYear('controls.fecha_control', '>', 2021)
+                    ->latest('controls.fecha_control');
+
     }
 
     public function ulcerasActivas_TipoCuracion_avz()

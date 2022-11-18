@@ -34,8 +34,8 @@ class HomeController extends Controller
         $dlp = $all->dlp()->count();
         $iam = $all->iam()->count();
         $acv = $all->acv()->count();
-        $usoInsulina = $all->where('usoInsulina', '=', 1)->count();
-        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->whereYear('controls.fecha_control', '>','2021')->latest('controls.fecha_control')->count();
+        $usoInsulina = $all->dm2()->where('usoInsulina', '=', 1)->count();
+        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')->where('paciente_patologia.patologia_id', '=', 2)->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->whereYear('controls.fecha_control', '>','2021')->whereNull('pacientes.egreso')->latest('controls.fecha_control')->get()->unique('rut')->count();
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();

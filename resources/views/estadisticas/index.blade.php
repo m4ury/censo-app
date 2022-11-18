@@ -84,4 +84,24 @@
             </div>
         </div>
     </div>
+
+    <div class="card card-info card-outline">
+        <div class="card-header">
+            <h3 class="card-title text-bold">
+                PACIENTES PIE DM2
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.piedm')}}">FALTANTES</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.pie')}}">REALIZADOS</a>
+                </h4>
+            </div>
+        </div>
+    </div>
 @endsection

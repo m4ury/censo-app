@@ -3861,4 +3861,18 @@ class EstadisticaController extends Controller
 
         return view('estadisticas.rayos', compact('todas'));
     }
+
+    public function piedmr(){
+        $all = new Paciente;
+        $pacientes = $all->SinEvaluacionPie()->get()->unique('rut');
+        //dd($pacientes);
+        return view('estadisticas.piedm', compact('pacientes'));
+    }
+
+    public function pie(){
+        $all = new Paciente;
+        $pacientes = $all->evaluacionPie()->get()->unique('rut');
+        //dd($pacientes);
+        return view('estadisticas.pie', compact('pacientes'));
+    }
 }
