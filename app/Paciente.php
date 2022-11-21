@@ -269,21 +269,16 @@ class Paciente extends Model
     }
 
     public function SinEvaluacionPie(){
-        return $this->pscv()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia')
-            ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-            ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
-                ->where('patologias.nombre_patologia', 'DM2')
-                ;
+        return $this->dm2()
+                ->whereNotIn('pacientes.rut', $this->evaluacionPie()->get());
     }
 
     public function evaluacionPie(){
-        return $this->pscv()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia', 'controls.fecha_control', 'controls.evaluacionPie')
+        return $this->dm2()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'controls.fecha_control', 'controls.evaluacionPie')
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-            ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
-                ->where('patologias.nombre_patologia', 'DM2')
                 ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
                 ->whereYear('controls.fecha_control', '>', 2021)
+                ->whereIn('rut', $this->dm2()->get('pacientes.rut'))
                     ->latest('controls.fecha_control');
 
     }
