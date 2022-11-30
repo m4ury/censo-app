@@ -28,23 +28,23 @@ class HomeController extends Controller
     {
         //todos
         $all = new Paciente;
-        $totalPacientes = $all->pscv()->count();
-        $dm2 = $all->dm2()->count();
-        $hta = $all->hta()->count();
-        $dlp = $all->dlp()->count();
-        $iam = $all->iam()->count();
-        $acv = $all->acv()->count();
+        $totalPacientes = $all->pscv()->whereNull('egreso')->count();
+        $dm2 = $all->dm2()->whereNull('egreso')->count();
+        $hta = $all->hta()->whereNull('egreso')->count();
+        $dlp = $all->dlp()->whereNull('egreso')->count();
+        $iam = $all->iam()->whereNull('egreso')->count();
+        $acv = $all->acv()->whereNull('egreso')->count();
         $usoInsulina = $all->dm2()->where('usoInsulina', '=', 1)->count();
-        $pieDm2 = $all->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->whereYear('controls.fecha_control', '>','2021')->latest('controls.fecha_control')->get()->unique('rut')->count();
+        $pieDm2 = $all->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->whereYear('controls.fecha_control', '>','2021')->latest('controls.fecha_control')->get()->unique('rut')->count();
 
         //x sexo
-        $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
-        $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->get()->whereBetween('grupo', [20, 64])->count();
-        $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->get()->where('grupo', '>=', 65)->count();
+        $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->count();
+        $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
+        $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count();
 
-        $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->count();
-        $femenino2064 = $all->pscv()->where('sexo', '=', 'Femenino')->get()->whereBetween('grupo', [20, 64])->count();
-        $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->get()->where('grupo', '>=', 65)->count();
+        $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->count();
+        $femenino2064 = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
+        $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count();
 
 
         //x sector
