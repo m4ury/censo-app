@@ -48,30 +48,30 @@ class HomeController extends Controller
 
 
         //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->where('egreso', '=', null)->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->where('egreso', '=', null)->count();
+        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->whereNull('egreso')->count();
+        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->whereNull('egreso')->count();
 
         //x compensacion
-        $compensados = $all->pscv()->where('compensado', '=', 1)->count();
-        $noCompensados = $all->pscv()->where('compensado', '=', 2)->count();
-        $sinInfo = $all->pscv()->where('compensado', '=', 0)->count();
-        $sinInfo = $all->pscv()->where('compensado', '=', 0)->count();
+        $compensados = $all->pscv()->where('compensado', '=', 1)->whereNull('egreso')->count();
+        $noCompensados = $all->pscv()->where('compensado', '=', 2)->whereNull('egreso')->count();
+        $sinInfo = $all->pscv()->where('compensado', '=', 0)->whereNull('egreso')->count();
+        $sinInfo = $all->pscv()->where('compensado', '=', 0)->whereNull('egreso')->count();
 
         $pacientes = new Paciente;
-        $mas80 = $pacientes->pscv()->get()->where('grupo', '>=', 80)->count();
-        $in7579 = $pacientes->pscv()->get()->whereBetween('grupo', [75, 79])->count();
-        $in7074 = $pacientes->pscv()->get()->whereBetween('grupo', [70, 74])->count();
-        $in6569 = $pacientes->pscv()->get()->whereBetween('grupo', [65, 69])->count();
-        $in6064 = $pacientes->pscv()->get()->whereBetween('grupo', [60, 64])->count();
-        $in5559 = $pacientes->pscv()->get()->whereBetween('grupo', [55, 59])->count();
-        $in5054 = $pacientes->pscv()->get()->whereBetween('grupo', [50, 54])->count();
-        $in4549 = $pacientes->pscv()->get()->whereBetween('grupo', [45, 49])->count();
-        $in4044 = $pacientes->pscv()->get()->whereBetween('grupo', [40, 44])->count();
-        $in3539 = $pacientes->pscv()->get()->whereBetween('grupo', [35, 39])->count();
-        $in3034 = $pacientes->pscv()->get()->whereBetween('grupo', [30, 34])->count();
-        $in2529 = $pacientes->pscv()->get()->whereBetween('grupo', [25, 29])->count();
-        $in2024 = $pacientes->pscv()->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519 = $pacientes->pscv()->get()->whereBetween('grupo', [15, 19])->count();
+        $mas80 = $pacientes->pscv()->whereNull('egreso')->get()->where('grupo', '>=', 80)->count();
+        $in7579 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [75, 79])->count();
+        $in7074 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [70, 74])->count();
+        $in6569 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [65, 69])->count();
+        $in6064 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [60, 64])->count();
+        $in5559 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [55, 59])->count();
+        $in5054 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [50, 54])->count();
+        $in4549 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [45, 49])->count();
+        $in4044 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [40, 44])->count();
+        $in3539 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [35, 39])->count();
+        $in3034 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [30, 34])->count();
+        $in2529 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [25, 29])->count();
+        $in2024 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [20, 24])->count();
+        $in1519 = $pacientes->pscv()->whereNull('egreso')->get()->whereBetween('grupo', [15, 19])->count();
 
         return view('home', compact(
             'totalPacientes',

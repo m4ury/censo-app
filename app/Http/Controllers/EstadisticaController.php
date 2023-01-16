@@ -22,7 +22,7 @@ class EstadisticaController extends Controller
 
         //hta todos
         $hta = $all->hta()->count();
-        $htaF = $all->hta()->where('pacientes.sexo', '=', 'Femenino')->count();
+        $htaF = $all->hta()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
         $htaOriginF = $all->hta()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
         $hta_1519F = $all->hta()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
         $hta_2024F = $all->hta()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();

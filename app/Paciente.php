@@ -111,13 +111,14 @@ class Paciente extends Model
 
     public function pscv()
     {
-        return $this->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO']);
+        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO']);
     }
 
     public function hta()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
                     ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+                        ->whereNull('pacientes.egreso')
                         ->where('patologias.nombre_patologia', 'HTA');
     }
 
@@ -125,12 +126,17 @@ class Paciente extends Model
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
                     ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+                        ->whereNull('pacientes.egreso')
                         ->where('patologias.nombre_patologia', 'DM2');
     }
 
     public function dlp()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')->where('patologias.nombre_patologia', '=', 'dlp');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    //->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', 'DLP');
     }
 
     public function iam()
