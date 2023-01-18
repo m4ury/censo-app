@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCIÓN B: METAS DE COMPENSACIÓN
+                REM P4 - SECCIÓN B: METAS DE COMPENSACIÓN
             </h4>
             <div class="col-md-12 table-responsive">
                 <table id="pscv" class="table table-md-responsive table-bordered">

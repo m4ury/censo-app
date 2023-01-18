@@ -56,62 +56,62 @@ class Paciente extends Model
 
     public function rcv_bajo()
     {
-        return $this->whereRiesgo_cv('BAJO');
+        return $this->whereRiesgo_cv('BAJO')->whereNull("egreso");
     }
 
     public function rcv_mod()
     {
-        return $this->whereRiesgo_cv('MODERADO');
+        return $this->whereRiesgo_cv('MODERADO')->whereNull("egreso");
     }
 
     public function rcv_alto()
     {
-        return $this->whereRiesgo_cv('ALTO');
+        return $this->whereRiesgo_cv('ALTO')->whereNull("egreso");
     }
 
     public function s_erc()
     {
-        return $this->pscv()->whereErc('sin');
+        return $this->pscv()->whereErc('sin')->whereNull("egreso");
     }
 
     public function ercI()
     {
-        return $this->pscv()->whereErc('I');
+        return $this->pscv()->whereErc('I')->whereNull("egreso");
     }
 
     public function ercII()
     {
-        return $this->pscv()->whereErc('II');
+        return $this->pscv()->whereErc('II')->whereNull("egreso");
     }
 
     public function ercIIIa()
     {
-        return $this->pscv()->whereErc('IIIA');
+        return $this->pscv()->whereErc('IIIA')->whereNull("egreso");
     }
 
     public function ercIIIb()
     {
-        return $this->pscv()->whereErc('IIIB');
+        return $this->pscv()->whereErc('IIIB')->whereNull("egreso");
     }
 
     public function ercIV()
     {
-        return $this->pscv()->whereErc('IV');
+        return $this->pscv()->whereErc('IV')->whereNull("egreso");
     }
 
     public function ercV()
     {
-        return $this->pscv()->whereErc('V');
+        return $this->pscv()->whereErc('V')->whereNull("egreso");
     }
 
     public function ercTotal()
     {
-        return $this->pscv()->whereIn('erc', ['sin', 'I', 'II', 'IIIA', 'IIIB', 'IV', 'V']);
+        return $this->pscv()->whereIn('erc', ['sin', 'I', 'II', 'IIIA', 'IIIB', 'IV', 'V'])->whereNull("egreso");
     }
 
     public function pscv()
     {
-        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO']);
+        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])->whereNull("egreso");
     }
 
     public function hta()
@@ -141,59 +141,150 @@ class Paciente extends Model
 
     public function iam()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')->where('patologias.nombre_patologia', '=', 'antecedente iam');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'ANTECEDENTE IAM');
     }
 
     public function acv()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')->where('patologias.nombre_patologia', '=', 'antecedente acv');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'ANTECEDENTE ACV');
     }
 
     public function tbq()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')->where('patologias.nombre_patologia', '=', 'tabaquismo');
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'TABAQUISMO');
+    }
+
+    public function epilepsia()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'EPILEPSIA');
+    }
+
+    public function glaucoma()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'GLAUCOMA');
+    }
+
+    public function parkinson()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'ENF. PARKINSON');
+    }
+
+    public function artrosis()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'ARTROSIS RODILLA Y/O CADERA');
+    }
+
+    public function alivio_dolor()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'ALIVIO DOLOR');
+    }
+
+    public function hipot()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia', '=', 'HIPOTIROIDISMO');
     }
 
     //seccion B
 
     public function pa140()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.pa_menor_140_90', '=', 1)->where('controls.tipo_control', '=', 'Medico')->latest('controls.fecha_control');
+        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.pa_menor_140_90', '=', 1)->where('controls.tipo_control', '=', 'Medico')
+                    //->whereNull('pacientes.egreso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function pa150()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.pa_menor_150_90', '=', 1)->latest('controls.fecha_control');
+        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.pa_menor_150_90', '=', 1)
+                    //->whereNull('pacientes.egreso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function hbac17()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor7Porcent', '=', 1)->latest('controls.fecha_control');
+        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor7Porcent', '=', 1)
+                    //->whereNull('pacientes.egreso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function hbac18()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor8Porcent', '=', 1)->latest('controls.fecha_control');
+        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor8Porcent', '=', 1)
+                    //->whereNull('pacientes.egreso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function hbac17Pa140Ldl100()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1c7Pa140_90Ldl100Menores', '=', 1)->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.hba1cMenor7Porcent', '=', 1)
+                    ->where('controls.tipo_control', '=', 'Medico')
+                    ->where('controls.pa_menor_140_90', '=', 1)
+                    ->where('controls.ldlMenor100', '=', 1)
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function ldl100()
     {
-        return $this->rcv_alto()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.ldlMenor100', '=', 1)->latest('controls.fecha_control');
+        return $this->dm2()
+                    ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', '=', 'Medico')
+                    ->whereRiesgo_cv('ALTO')
+                    ->where('controls.ldlMenor100', '=', 1)
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function aspirinas()
     {
-        return $this->where('usoAspirinas', '=', 1);
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    //->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia','ANTECEDENTE ACV')
+                    ->where('pacientes.usoAspirinas', true);
     }
 
     public function estatinas()
     {
-        return $this->where('usoEstatinas', '=', 1);
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+        ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+        //->join('controls', 'controls.paciente_id', 'pacientes.id')
+        ->whereNull('pacientes.egreso')
+        ->where('patologias.nombre_patologia','ANTECEDENTE IAM')
+        ->where('pacientes.usoEstatinas', true);
     }
 
     //seccion C
@@ -281,6 +372,7 @@ class Paciente extends Model
             ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
             ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
                 ->where('patologias.nombre_patologia', 'DM2')
+                ->whereNull('pacientes.egreso')
                 ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
                 ->whereYear('controls.fecha_control', '>', 2021)
                     ->latest('controls.fecha_control');

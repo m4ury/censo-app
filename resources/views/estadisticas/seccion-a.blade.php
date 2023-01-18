@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCIÓN A: PROGRAMA SALUD CARDIOVASCULAR
+                REM P4 - SECCIÓN A: PROGRAMA SALUD CARDIOVASCULAR
                 (PSCV)
             </h4>
             <div class="col-md-12 table-responsive">

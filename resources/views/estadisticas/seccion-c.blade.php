@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV AL CORTE
+                REM P4 - SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV AL CORTE
             </h4>
             <div class="col-md-12 table-responsive">
                 <table class="table table-md-responsive table-bordered">

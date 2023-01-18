@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO NUTRICIONAL
+                REM P5 - SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO NUTRICIONAL
             </h4>
             <div class="col-md-12 table-responsive">
                 <table id="pscv" class="table table-md-responsive table-bordered">

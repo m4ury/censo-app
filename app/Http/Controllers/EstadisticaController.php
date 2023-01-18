@@ -3097,6 +3097,497 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP3a()
+    {
+        $all = new Paciente;
+
+        //epilepsia todos
+        $epilepsia = $all->epilepsia()->count();
+        $epilepsiaF = $all->epilepsia()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $epilepsiaOriginF = $all->epilepsia()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $epilepsia_04F = $all->epilepsia()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $epilepsia_59F = $all->epilepsia()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $epilepsia_1014F = $all->epilepsia()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $epilepsia_1519F = $all->epilepsia()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $epilepsia_2024F = $all->epilepsia()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $epilepsia_2529F = $all->epilepsia()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $epilepsia_3034F = $all->epilepsia()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $epilepsia_3539F = $all->epilepsia()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $epilepsia_4044F = $all->epilepsia()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $epilepsia_4549F = $all->epilepsia()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $epilepsia_5054F = $all->epilepsia()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $epilepsia_5559F = $all->epilepsia()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $epilepsia_6064F = $all->epilepsia()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $epilepsia_6569F = $all->epilepsia()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $epilepsia_7074F = $all->epilepsia()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $epilepsia_7579F = $all->epilepsia()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $epilepsia_80F = $all->epilepsia()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $epilepsiaM = $all->epilepsia()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $epilepsiaOriginM = $all->epilepsia()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $epilepsia_04M = $all->epilepsia()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $epilepsia_59M = $all->epilepsia()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $epilepsia_1014M = $all->epilepsia()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $epilepsia_1519M = $all->epilepsia()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $epilepsia_2024M = $all->epilepsia()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $epilepsia_2529M = $all->epilepsia()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $epilepsia_3034M = $all->epilepsia()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $epilepsia_3539M = $all->epilepsia()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $epilepsia_4044M = $all->epilepsia()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $epilepsia_4549M = $all->epilepsia()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $epilepsia_5054M = $all->epilepsia()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $epilepsia_5559M = $all->epilepsia()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $epilepsia_6064M = $all->epilepsia()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $epilepsia_6569M = $all->epilepsia()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $epilepsia_7074M = $all->epilepsia()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $epilepsia_7579M = $all->epilepsia()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $epilepsia_80M = $all->epilepsia()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+
+        //glaucoma todos
+        $glaucoma = $all->glaucoma()->count();
+        $glaucomaF = $all->glaucoma()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $glaucomaOriginF = $all->glaucoma()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $glaucoma_04F = $all->glaucoma()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $glaucoma_59F = $all->glaucoma()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $glaucoma_1014F = $all->glaucoma()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $glaucoma_1519F = $all->glaucoma()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $glaucoma_2024F = $all->glaucoma()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $glaucoma_2529F = $all->glaucoma()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $glaucoma_3034F = $all->glaucoma()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $glaucoma_3539F = $all->glaucoma()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $glaucoma_4044F = $all->glaucoma()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $glaucoma_4549F = $all->glaucoma()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $glaucoma_5054F = $all->glaucoma()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $glaucoma_5559F = $all->glaucoma()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $glaucoma_6064F = $all->glaucoma()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $glaucoma_6569F = $all->glaucoma()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $glaucoma_7074F = $all->glaucoma()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $glaucoma_7579F = $all->glaucoma()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $glaucoma_80F = $all->glaucoma()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $glaucomaM = $all->glaucoma()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $glaucomaOriginM = $all->glaucoma()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $glaucoma_04M = $all->glaucoma()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $glaucoma_59M = $all->glaucoma()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $glaucoma_1014M = $all->glaucoma()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $glaucoma_1519M = $all->glaucoma()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $glaucoma_2024M = $all->glaucoma()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $glaucoma_2529M = $all->glaucoma()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $glaucoma_3034M = $all->glaucoma()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $glaucoma_3539M = $all->glaucoma()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $glaucoma_4044M = $all->glaucoma()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $glaucoma_4549M = $all->glaucoma()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $glaucoma_5054M = $all->glaucoma()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $glaucoma_5559M = $all->glaucoma()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $glaucoma_6064M = $all->glaucoma()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $glaucoma_6569M = $all->glaucoma()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $glaucoma_7074M = $all->glaucoma()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $glaucoma_7579M = $all->glaucoma()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $glaucoma_80M = $all->glaucoma()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+
+        //parkinson todos
+        $parkinson = $all->parkinson()->count();
+        $parkinsonF = $all->parkinson()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $parkinsonOriginF = $all->parkinson()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $parkinson_04F = $all->parkinson()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $parkinson_59F = $all->parkinson()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $parkinson_1014F = $all->parkinson()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $parkinson_1519F = $all->parkinson()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $parkinson_2024F = $all->parkinson()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $parkinson_2529F = $all->parkinson()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $parkinson_3034F = $all->parkinson()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $parkinson_3539F = $all->parkinson()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $parkinson_4044F = $all->parkinson()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $parkinson_4549F = $all->parkinson()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $parkinson_5054F = $all->parkinson()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $parkinson_5559F = $all->parkinson()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $parkinson_6064F = $all->parkinson()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $parkinson_6569F = $all->parkinson()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $parkinson_7074F = $all->parkinson()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $parkinson_7579F = $all->parkinson()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $parkinson_80F = $all->parkinson()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $parkinsonM = $all->parkinson()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $parkinsonOriginM = $all->parkinson()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $parkinson_04M = $all->parkinson()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $parkinson_59M = $all->parkinson()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $parkinson_1014M = $all->parkinson()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $parkinson_1519M = $all->parkinson()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $parkinson_2024M = $all->parkinson()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $parkinson_2529M = $all->parkinson()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $parkinson_3034M = $all->parkinson()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $parkinson_3539M = $all->parkinson()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $parkinson_4044M = $all->parkinson()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $parkinson_4549M = $all->parkinson()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $parkinson_5054M = $all->parkinson()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $parkinson_5559M = $all->parkinson()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $parkinson_6064M = $all->parkinson()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $parkinson_6569M = $all->parkinson()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $parkinson_7074M = $all->parkinson()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $parkinson_7579M = $all->parkinson()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $parkinson_80M = $all->parkinson()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+        //artrosis todos
+        $artrosis = $all->artrosis()->count();
+        $artrosisF = $all->artrosis()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $artrosisOriginF = $all->artrosis()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $artrosis_04F = $all->artrosis()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $artrosis_59F = $all->artrosis()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $artrosis_1014F = $all->artrosis()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $artrosis_1519F = $all->artrosis()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $artrosis_2024F = $all->artrosis()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $artrosis_2529F = $all->artrosis()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $artrosis_3034F = $all->artrosis()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $artrosis_3539F = $all->artrosis()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $artrosis_4044F = $all->artrosis()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $artrosis_4549F = $all->artrosis()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $artrosis_5054F = $all->artrosis()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $artrosis_5559F = $all->artrosis()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $artrosis_6064F = $all->artrosis()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $artrosis_6569F = $all->artrosis()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $artrosis_7074F = $all->artrosis()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $artrosis_7579F = $all->artrosis()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $artrosis_80F = $all->artrosis()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $artrosisM = $all->artrosis()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $artrosisOriginM = $all->artrosis()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $artrosis_04M = $all->artrosis()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $artrosis_59M = $all->artrosis()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $artrosis_1014M = $all->artrosis()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $artrosis_1519M = $all->artrosis()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $artrosis_2024M = $all->artrosis()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $artrosis_2529M = $all->artrosis()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $artrosis_3034M = $all->artrosis()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $artrosis_3539M = $all->artrosis()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $artrosis_4044M = $all->artrosis()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $artrosis_4549M = $all->artrosis()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $artrosis_5054M = $all->artrosis()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $artrosis_5559M = $all->artrosis()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $artrosis_6064M = $all->artrosis()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $artrosis_6569M = $all->artrosis()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $artrosis_7074M = $all->artrosis()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $artrosis_7579M = $all->artrosis()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $artrosis_80M = $all->artrosis()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+        //alivio_dolor todos
+        $alivio_dolor = $all->alivio_dolor()->count();
+        $alivio_dolorF = $all->alivio_dolor()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $alivio_dolorOriginF = $all->alivio_dolor()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $alivio_dolor_04F = $all->alivio_dolor()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_59F = $all->alivio_dolor()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_1014F = $all->alivio_dolor()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_1519F = $all->alivio_dolor()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_2024F = $all->alivio_dolor()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_2529F = $all->alivio_dolor()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_3034F = $all->alivio_dolor()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_3539F = $all->alivio_dolor()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_4044F = $all->alivio_dolor()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_4549F = $all->alivio_dolor()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_5054F = $all->alivio_dolor()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_5559F = $all->alivio_dolor()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_6064F = $all->alivio_dolor()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_6569F = $all->alivio_dolor()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_7074F = $all->alivio_dolor()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_7579F = $all->alivio_dolor()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_80F = $all->alivio_dolor()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $alivio_dolorM = $all->alivio_dolor()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $alivio_dolorOriginM = $all->alivio_dolor()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $alivio_dolor_04M = $all->alivio_dolor()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_59M = $all->alivio_dolor()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_1014M = $all->alivio_dolor()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $alivio_dolor_1519M = $all->alivio_dolor()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_2024M = $all->alivio_dolor()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_2529M = $all->alivio_dolor()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_3034M = $all->alivio_dolor()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_3539M = $all->alivio_dolor()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_4044M = $all->alivio_dolor()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_4549M = $all->alivio_dolor()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_5054M = $all->alivio_dolor()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_5559M = $all->alivio_dolor()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_6064M = $all->alivio_dolor()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_6569M = $all->alivio_dolor()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_7074M = $all->alivio_dolor()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_7579M = $all->alivio_dolor()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $alivio_dolor_80M = $all->alivio_dolor()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+        //hipotiroidismo
+        $hipot = $all->hipot()->count();
+        $hipotF = $all->hipot()->whereNull('egreso')->where('pacientes.sexo', '=', 'Femenino')->count();
+        $hipotOriginF = $all->hipot()->where('pacientes.sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $hipot_04F = $all->hipot()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $hipot_59F = $all->hipot()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $hipot_1014F = $all->hipot()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $hipot_1519F = $all->hipot()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $hipot_2024F = $all->hipot()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $hipot_2529F = $all->hipot()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $hipot_3034F = $all->hipot()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $hipot_3539F = $all->hipot()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $hipot_4044F = $all->hipot()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $hipot_4549F = $all->hipot()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $hipot_5054F = $all->hipot()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $hipot_5559F = $all->hipot()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $hipot_6064F = $all->hipot()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $hipot_6569F = $all->hipot()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $hipot_7074F = $all->hipot()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $hipot_7579F = $all->hipot()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $hipot_80F = $all->hipot()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $hipotM = $all->hipot()->where('pacientes.sexo', '=', 'Masculino')->count();
+        $hipotOriginM = $all->hipot()->where('pacientes.sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $hipot_04M = $all->hipot()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $hipot_59M = $all->hipot()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $hipot_1014M = $all->hipot()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $hipot_1519M = $all->hipot()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $hipot_2024M = $all->hipot()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $hipot_2529M = $all->hipot()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $hipot_3034M = $all->hipot()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $hipot_3539M = $all->hipot()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $hipot_4044M = $all->hipot()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $hipot_4549M = $all->hipot()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $hipot_5054M = $all->hipot()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $hipot_5559M = $all->hipot()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $hipot_6064M = $all->hipot()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $hipot_6569M = $all->hipot()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $hipot_7074M = $all->hipot()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $hipot_7579M = $all->hipot()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $hipot_80M = $all->hipot()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+        return view('estadisticas.seccion-p3a', compact(
+            'epilepsia',
+            'epilepsiaM',
+            'epilepsiaF',
+            'epilepsia_1519M',
+            'epilepsia_1519F',
+            'epilepsia_2024M',
+            'epilepsia_2024F',
+            'epilepsia_2529M',
+            'epilepsia_2529F',
+            'epilepsia_3034M',
+            'epilepsia_3034F',
+            'epilepsia_3539M',
+            'epilepsia_3539F',
+            'epilepsia_4044M',
+            'epilepsia_4044F',
+            'epilepsia_4549M',
+            'epilepsia_4549F',
+            'epilepsia_5054M',
+            'epilepsia_5054F',
+            'epilepsia_5559M',
+            'epilepsia_5559F',
+            'epilepsia_6064M',
+            'epilepsia_6064F',
+            'epilepsia_6569M',
+            'epilepsia_6569F',
+            'epilepsia_7074M',
+            'epilepsia_7074F',
+            'epilepsia_7579M',
+            'epilepsia_7579F',
+            'epilepsia_80M',
+            'epilepsia_80F',
+            'epilepsia_04M',
+            'epilepsia_04F',
+            'epilepsia_59M',
+            'epilepsia_59F',
+            'epilepsia_1014M',
+            'epilepsia_1014F',
+
+            'glaucoma',
+            'glaucomaM',
+            'glaucomaF',
+            'glaucoma_1519M',
+            'glaucoma_1519F',
+            'glaucoma_2024M',
+            'glaucoma_2024F',
+            'glaucoma_2529M',
+            'glaucoma_2529F',
+            'glaucoma_3034M',
+            'glaucoma_3034F',
+            'glaucoma_3539M',
+            'glaucoma_3539F',
+            'glaucoma_4044M',
+            'glaucoma_4044F',
+            'glaucoma_4549M',
+            'glaucoma_4549F',
+            'glaucoma_5054M',
+            'glaucoma_5054F',
+            'glaucoma_5559M',
+            'glaucoma_5559F',
+            'glaucoma_6064M',
+            'glaucoma_6064F',
+            'glaucoma_6569M',
+            'glaucoma_6569F',
+            'glaucoma_7074M',
+            'glaucoma_7074F',
+            'glaucoma_7579M',
+            'glaucoma_7579F',
+            'glaucoma_80M',
+            'glaucoma_80F',
+            'glaucoma_04M',
+            'glaucoma_04F',
+            'glaucoma_59M',
+            'glaucoma_59F',
+            'glaucoma_1014M',
+            'glaucoma_1014F',
+
+            'parkinson',
+            'parkinsonM',
+            'parkinsonF',
+            'parkinson_1519M',
+            'parkinson_1519F',
+            'parkinson_2024M',
+            'parkinson_2024F',
+            'parkinson_2529M',
+            'parkinson_2529F',
+            'parkinson_3034M',
+            'parkinson_3034F',
+            'parkinson_3539M',
+            'parkinson_3539F',
+            'parkinson_4044M',
+            'parkinson_4044F',
+            'parkinson_4549M',
+            'parkinson_4549F',
+            'parkinson_5054M',
+            'parkinson_5054F',
+            'parkinson_5559M',
+            'parkinson_5559F',
+            'parkinson_6064M',
+            'parkinson_6064F',
+            'parkinson_6569M',
+            'parkinson_6569F',
+            'parkinson_7074M',
+            'parkinson_7074F',
+            'parkinson_7579M',
+            'parkinson_7579F',
+            'parkinson_80M',
+            'parkinson_80F',
+            'parkinson_04M',
+            'parkinson_04F',
+            'parkinson_59M',
+            'parkinson_59F',
+            'parkinson_1014M',
+            'parkinson_1014F',
+
+            'artrosis',
+            'artrosisM',
+            'artrosisF',
+            'artrosis_1519M',
+            'artrosis_1519F',
+            'artrosis_2024M',
+            'artrosis_2024F',
+            'artrosis_2529M',
+            'artrosis_2529F',
+            'artrosis_3034M',
+            'artrosis_3034F',
+            'artrosis_3539M',
+            'artrosis_3539F',
+            'artrosis_4044M',
+            'artrosis_4044F',
+            'artrosis_4549M',
+            'artrosis_4549F',
+            'artrosis_5054M',
+            'artrosis_5054F',
+            'artrosis_5559M',
+            'artrosis_5559F',
+            'artrosis_6064M',
+            'artrosis_6064F',
+            'artrosis_6569M',
+            'artrosis_6569F',
+            'artrosis_7074M',
+            'artrosis_7074F',
+            'artrosis_7579M',
+            'artrosis_7579F',
+            'artrosis_80M',
+            'artrosis_80F',
+            'artrosis_04M',
+            'artrosis_04F',
+            'artrosis_59M',
+            'artrosis_59F',
+            'artrosis_1014M',
+            'artrosis_1014F',
+
+            'alivio_dolor',
+            'alivio_dolorM',
+            'alivio_dolorF',
+            'alivio_dolor_1519M',
+            'alivio_dolor_1519F',
+            'alivio_dolor_2024M',
+            'alivio_dolor_2024F',
+            'alivio_dolor_2529M',
+            'alivio_dolor_2529F',
+            'alivio_dolor_3034M',
+            'alivio_dolor_3034F',
+            'alivio_dolor_3539M',
+            'alivio_dolor_3539F',
+            'alivio_dolor_4044M',
+            'alivio_dolor_4044F',
+            'alivio_dolor_4549M',
+            'alivio_dolor_4549F',
+            'alivio_dolor_5054M',
+            'alivio_dolor_5054F',
+            'alivio_dolor_5559M',
+            'alivio_dolor_5559F',
+            'alivio_dolor_6064M',
+            'alivio_dolor_6064F',
+            'alivio_dolor_6569M',
+            'alivio_dolor_6569F',
+            'alivio_dolor_7074M',
+            'alivio_dolor_7074F',
+            'alivio_dolor_7579M',
+            'alivio_dolor_7579F',
+            'alivio_dolor_80M',
+            'alivio_dolor_80F',
+            'alivio_dolor_04M',
+            'alivio_dolor_04F',
+            'alivio_dolor_59M',
+            'alivio_dolor_59F',
+            'alivio_dolor_1014M',
+            'alivio_dolor_1014F',
+
+            'hipot',
+            'hipotM',
+            'hipotF',
+            'hipot_1519M',
+            'hipot_1519F',
+            'hipot_2024M',
+            'hipot_2024F',
+            'hipot_2529M',
+            'hipot_2529F',
+            'hipot_3034M',
+            'hipot_3034F',
+            'hipot_3539M',
+            'hipot_3539F',
+            'hipot_4044M',
+            'hipot_4044F',
+            'hipot_4549M',
+            'hipot_4549F',
+            'hipot_5054M',
+            'hipot_5054F',
+            'hipot_5559M',
+            'hipot_5559F',
+            'hipot_6064M',
+            'hipot_6064F',
+            'hipot_6569M',
+            'hipot_6569F',
+            'hipot_7074M',
+            'hipot_7074F',
+            'hipot_7579M',
+            'hipot_7579F',
+            'hipot_80M',
+            'hipot_80F',
+            'hipot_04M',
+            'hipot_04F',
+            'hipot_59M',
+            'hipot_59F',
+            'hipot_1014M',
+            'hipot_1014F',
+        ));
+}
+
+
+
     public function seccionP5a()
     {
         $pacientes = new Paciente;

@@ -105,7 +105,7 @@
                 class="chartjs-render-monitor"></canvas>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-4 col-sm">
             <div class="small-box bg-gradient-success">
                 <div class="inner">
@@ -141,8 +141,7 @@
             </div>
         </div>
     </div>
-
-
+ --}}
         <div class="row">
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-primary">
