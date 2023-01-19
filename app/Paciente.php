@@ -223,7 +223,7 @@ class Paciente extends Model
 
     public function pa150()
     {
-        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.pa_menor_150_90', '=', 1)
+        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.pa_menor_150_90', true)
                     //->whereNull('pacientes.egreso')
                     ->whereYear('controls.fecha_control', '2022')
                     ->latest('controls.fecha_control');
@@ -231,7 +231,7 @@ class Paciente extends Model
 
     public function hbac17()
     {
-        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor7Porcent', '=', 1)
+        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.hba1cMenor7Porcent', true)
                     //->whereNull('pacientes.egreso')
                     ->whereYear('controls.fecha_control', '2022')
                     ->latest('controls.fecha_control');
@@ -239,7 +239,7 @@ class Paciente extends Model
 
     public function hbac18()
     {
-        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMenor8Porcent', '=', 1)
+        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.hba1cMenor8Porcent', true)
                     //->whereNull('pacientes.egreso')
                     ->whereYear('controls.fecha_control', '2022')
                     ->latest('controls.fecha_control');
@@ -248,10 +248,10 @@ class Paciente extends Model
     public function hbac17Pa140Ldl100()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.hba1cMenor7Porcent', '=', 1)
-                    ->where('controls.tipo_control', '=', 'Medico')
-                    ->where('controls.pa_menor_140_90', '=', 1)
-                    ->where('controls.ldlMenor100', '=', 1)
+                    ->where('controls.hba1cMenor7Porcent', true)
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.pa_menor_140_90', true)
+                    ->where('controls.ldlMenor100', true)
                     ->whereYear('controls.fecha_control', '2022')
                     ->latest('controls.fecha_control');
     }
@@ -280,11 +280,18 @@ class Paciente extends Model
     public function estatinas()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-        ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
         //->join('controls', 'controls.paciente_id', 'pacientes.id')
-        ->whereNull('pacientes.egreso')
-        ->where('patologias.nombre_patologia','ANTECEDENTE IAM')
-        ->where('pacientes.usoEstatinas', true);
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia','ANTECEDENTE IAM')
+                    ->where('pacientes.usoEstatinas', true);
+    }
+
+    public function fumador()
+    {
+        return $this->estatinas()
+                    ->whereNull('pacientes.egreso')
+                    ->where('patologias.nombre_patologia','TABAQUISMO');
     }
 
     //seccion C
@@ -292,6 +299,8 @@ class Paciente extends Model
     public function racVigente()
     {
         return $this->dm2()->where('racVigente', '>=', Carbon::now()->subYear(1));
+        //return $this->dm2()->where('racVigente', '>=', Carbon::now()->subMonth(13));
+        //return $this->dm2()->whereYear('racVigente', '<=', 2022);
     }
 
     public function vfgVigente()
@@ -316,22 +325,40 @@ class Paciente extends Model
 
     public function usoInsulina()
     {
-        return $this->dm2()->where('usoInsulina', '=', 1);
+        return $this->dm2()->where('usoInsulina', true);
     }
 
     public function insulinaHba1C()
     {
-        return $this->hba1cMayorIgual9Porcent()->where('pacientes.usoInsulina', '=', 1);
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->where('paciente_patologia.patologia_id', 2)
+                    ->where('controls.hba1cMenor8Porcent', true)
+                    ->where('pacientes.usoInsulina', true)
+                    ->union(DB::table('pacientes')
+                        ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 2)
+                        ->where('controls.hba1cMenor7Porcent', true)
+                        ->where('pacientes.usoInsulina', true));
     }
+
 
     public function hba1cMayorIgual9Porcent()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMayorIgual9Porcent', '=', 1)->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.hba1cMayorIgual9Porcent', true)
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function usoIecaAraII()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->where('paciente_patologia.patologia_id', '=', 2)->where('pacientes.usoIecaAraII', '=', 1)->whereIn('erc', ['IIIB', 'IV', 'V']);
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->where('paciente_patologia.patologia_id', 2)
+                    ->where('pacientes.usoIecaAraII', 1)
+                    ->whereIn('erc', ['IIIB', 'IV', 'V']);
     }
 
     public function ldlVigente()
@@ -343,22 +370,34 @@ class Paciente extends Model
     //Controles Enfermera *********
     public function evaluacionPie_bajo()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.evaluacionPie', '=', 'Bajo')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.evaluacionPie', 'Bajo')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function evaluacionPie_moderado()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.evaluacionPie', '=', 'Moderado')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.evaluacionPie', 'Moderado')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function evaluacionPie_alto()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.evaluacionPie', '=', 'Alto')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.evaluacionPie', 'Alto')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function evaluacionPie_maximo()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.evaluacionPie', '=', 'Maximo')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.evaluacionPie', 'Maximo')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function SinEvaluacionPie(){
@@ -381,12 +420,18 @@ class Paciente extends Model
 
     public function ulcerasActivas_TipoCuracion_avz()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.ulcerasActivas_TipoCuracion', '=', 'Avanzada')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.ulcerasActivas_TipoCuracion', 'Avanzada')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function ulcerasActivas_TipoCuracion_conv()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.ulcerasActivas_TipoCuracion', '=', 'Convencional')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.ulcerasActivas_TipoCuracion', 'Convencional')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
     //Controles Enfermera ************
 
@@ -397,42 +442,76 @@ class Paciente extends Model
 
     public function dm2_hta()
     {
-        return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'HTA'])->groupBy('pacientes.id')->havingRaw('count(*) = 2');
+        return $this->dm2()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 1));
+        /* return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'HTA'])->groupBy('pacientes.id')->havingRaw('count(*) = 2'); */
     }
 
     public function dm2_acv()
     {
-        return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'ANTECEDENTE ACV'])->groupBy('pacientes.id')->havingRaw('count(*) = 2');
+        return $this->dm2()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 5));
+        /* return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'ANTECEDENTE ACV'])->groupBy('pacientes.id')->havingRaw('count(*) = 2'); */
     }
 
     public function dm2_iam()
     {
-        return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'ANTECEDENTE IAM'])->groupBy('pacientes.id')->havingRaw('count(*) = 2');
+        return $this->dm2()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 4));
+        /* return DB::table('pacientes')->select(DB::raw('pacientes.id'))->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')->whereIn('patologias.nombre_patologia', ['DM2', 'ANTECEDENTE IAM'])->groupBy('pacientes.id')->havingRaw('count(*) = 2'); */
     }
 
     public function paMayor160()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.pa_mayor_160_100', '=', 1)->where('controls.tipo_control', '=', 'Medico')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.pa_mayor_160_100', '=', 1)
+                    ->where('controls.tipo_control', 'Medico')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function imc2529()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc_resultado', '=', 'Sobrepeso')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.imc_resultado', 'Sobrepeso')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function imc2831()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc_resultado', '=', 'Sobrepeso')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.imc_resultado', 'Sobrepeso')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function imcMayor30()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc_resultado', '=', 'Obesidad')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.imc_resultado', 'Obesidad')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function imcMayor32()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.imc_resultado', '=', 'Obesidad')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.imc_resultado', 'Obesidad')
+                    ->whereYear('controls.fecha_control', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     //****rem P5****
@@ -491,28 +570,48 @@ class Paciente extends Model
 
     public function bajoPeso()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.imc_resultado', '=', 'Bajo peso')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.imc_resultado', 'Bajo peso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     /* return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMayorIgual9Porcent', '=', 1)->latest('controls.fecha_control'); */
 
     public function normal()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.imc_resultado', '=', 'Normal')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.imc_resultado', 'Normal')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function sobrePeso()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.imc_resultado', '=', 'Sobrepeso')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.imc_resultado', 'Sobrepeso')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function obeso()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.imc_resultado', '=', 'Obesidad')->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', '=', 'Medico')
+                    ->where('controls.imc_resultado', 'Obesidad')
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 
     public function totalSeccionB()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])->latest('controls.fecha_control');
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
+                    ->whereYear('controls.fecha_control', '2022')
+                    ->latest('controls.fecha_control');
     }
 }
