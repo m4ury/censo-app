@@ -69,6 +69,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.rayos', 'EstadisticaController@rayos')->name('estadisticas.rayos');
     Route::get('/estadisticas.piedm', 'EstadisticaController@piedmr')->name('estadisticas.piedm');
     Route::get('/estadisticas.pie', 'EstadisticaController@pie')->name('estadisticas.pie');
+    Route::get('/estadisticas.dm2', 'EstadisticaController@dm2')->name('estadisticas.dm2');
+    Route::get('/estadisticas.hta', 'EstadisticaController@hta')->name('estadisticas.hta');
+
 
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
 

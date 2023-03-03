@@ -219,33 +219,46 @@ class Paciente extends Model
 
     public function pa140()
     {
-        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.pa_menor_140_90', '=', 1)->where('controls.tipo_control', '=', 'Medico')
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+                    ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('paciente_patologia.patologia_id', '=', 1)
+                    ->where('controls.pa_menor_140_90', true)
+                    ->where('controls.tipo_control', 'Medico')
                     //->whereNull('pacientes.egreso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
     public function pa150()
     {
-        return $this->hta()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.pa_menor_150_90', true)
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+                    ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('paciente_patologia.patologia_id', '=', 1)
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.pa_menor_150_90', true)
                     //->whereNull('pacientes.egreso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
     public function hbac17()
     {
-        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.hba1cMenor7Porcent', true)
+        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.hba1cMenor7Porcent', true)
                     //->whereNull('pacientes.egreso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
     public function hbac18()
     {
-        return $this->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', 'Medico')->where('controls.hba1cMenor8Porcent', true)
+        return $this->dm2()
+                    ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Medico')
+                    ->where('controls.hba1cMenor8Porcent', true)
                     //->whereNull('pacientes.egreso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -256,7 +269,7 @@ class Paciente extends Model
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.pa_menor_140_90', true)
                     ->where('controls.ldlMenor100', true)
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -267,7 +280,7 @@ class Paciente extends Model
                     ->where('controls.tipo_control', '=', 'Medico')
                     ->whereRiesgo_cv('ALTO')
                     ->where('controls.ldlMenor100', '=', 1)
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -353,7 +366,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.hba1cMayorIgual9Porcent', true)
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -376,7 +389,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.evaluacionPie', 'Bajo')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -384,7 +397,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.evaluacionPie', 'Moderado')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -392,7 +405,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.evaluacionPie', 'Alto')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -400,7 +413,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.evaluacionPie', 'Maximo')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -417,7 +430,7 @@ class Paciente extends Model
                 ->where('patologias.nombre_patologia', 'DM2')
                 ->whereNull('pacientes.egreso')
                 ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
-                ->whereYear('controls.fecha_control', '>', 2021)
+                ->whereYear('controls.fecha_control', '>', 2022)
                     ->latest('controls.fecha_control');
 
     }
@@ -426,7 +439,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.ulcerasActivas_TipoCuracion', 'Avanzada')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -434,7 +447,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.ulcerasActivas_TipoCuracion', 'Convencional')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
     //Controles Enfermera ************
@@ -482,7 +495,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.pa_mayor_160_100', '=', 1)
                     ->where('controls.tipo_control', 'Medico')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -490,7 +503,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.imc_resultado', 'Sobrepeso')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -498,7 +511,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.imc_resultado', 'Sobrepeso')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -506,7 +519,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.imc_resultado', 'Obesidad')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -514,7 +527,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.imc_resultado', 'Obesidad')
-                    ->whereYear('controls.fecha_control', 2022)
+                    ->whereYear('controls.fecha_control', 2023)
                     ->latest('controls.fecha_control');
     }
 
@@ -577,7 +590,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Bajo peso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -588,7 +601,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Normal')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -597,7 +610,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Sobrepeso')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -606,7 +619,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', '=', 'Medico')
                     ->where('controls.imc_resultado', 'Obesidad')
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 
@@ -615,7 +628,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
-                    ->whereYear('controls.fecha_control', '2022')
+                    ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
 }

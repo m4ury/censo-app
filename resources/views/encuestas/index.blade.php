@@ -3,6 +3,10 @@
 @section('title', 'encuestas')
 
 @section('content')
+    @php
+    setlocale( LC_ALL, "Spanish_Chile" );
+    @endphp
+
     <div class="col-sm-6 pb-3">
         <a class="btn bg-gradient-success btn-sm" title="Nueva Encuesta" href="{{ route('encuestas.create') }}">
             <i class="fas fa-user-plus">
@@ -10,6 +14,14 @@
             Nueva Encuesta
         </a>
     </div>
+    {{-- <div class="page-header">
+        {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET', 'class' => 'form-inline float-right pb-3']) !!}
+        {!! Form::select('q', [2022, 2023], ['class' => 'form-control', 'placeholder' => 'Busqueda por año', 'id' => 'q']) !!}
+        <button type="submit" class="btn btn-secondary btn-block form-control mt-2">
+            <span><i class="fas fa-search"> Buscar</i></span>
+        </button>
+        {!! Form::close() !!}
+    </div> --}}
     <div class="col-md-12 table-responsive">
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
@@ -148,5 +160,11 @@ swalWithBootstrapButtons.fire({
   }
 })
 })
+</script>
+<script>
+    $('#q').select2({
+        theme: "classic",
+        width: '100%',
+    });
 </script>
 @endsection

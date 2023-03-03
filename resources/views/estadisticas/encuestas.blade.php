@@ -115,41 +115,41 @@
                         </tr>
                         <tr>
                             <th>SI %</th>
-                            <td>{{ round($der1_si*100/$der1_all) }} %</td>
-                            <td>{{ round($der2_si*100/$der2_all) }} %</td>
-                            <td>{{ round($der3_si*100/$der3_all) }} %</td>
-                            <td>{{ round($der4_si*100/$der4_all) }} %</td>
-                            <td>{{ round($der5_si*100/$der5_all) }} %</td>
-                            <td>{{ round($der6_si*100/$der6_all) }} %</td>
-                            <td>{{ round($der7_si*100/$der7_all) }} %</td>
-                            <td>{{ round($der8_si*100/$der8_all) }} %</td>
-                            <td>{{ round($der9_si*100/$der9_all) }} %</td>
-                            <td>{{ round($der10_si*100/$der10_all) }} %</td>
-                            <td>{{ round($der11_si*100/$der11_all) }} %</td>
-                            <td>{{ round($der12_si*100/$der12_all) }} %</td>
-                            <td>{{ round($der13_si*100/$der13_all) }} %</td>
-                            <td>{{ round($der14_si*100/$der14_all) }} %</td>
-                            <td>{{ round($der15_si*100/$der15_all) }} %</td>
+                            <td>{{ $der1_si == 0 ? 'No hay suficientes respuestas aun...' : round($der1_si*100/$der1_all) }} %</td>
+                            <td>{{ $der2_si == 0 ? 'No hay suficientes respuestas aun...' : round($der2_si*100/$der2_all) }} %</td>
+                            <td>{{ $der3_si == 0 ? 'No hay suficientes respuestas aun...' : round($der3_si*100/$der3_all) }} %</td>
+                            <td>{{ $der4_si == 0 ? 'No hay suficientes respuestas aun...' : round($der4_si*100/$der4_all) }} %</td>
+                            <td>{{ $der5_si == 0 ? 'No hay suficientes respuestas aun...' : round($der5_si*100/$der5_all) }} %</td>
+                            <td>{{ $der6_si == 0 ? 'No hay suficientes respuestas aun...' : round($der6_si*100/$der6_all) }} %</td>
+                            <td>{{ $der7_si == 0 ? 'No hay suficientes respuestas aun...' : round($der7_si*100/$der7_all) }} %</td>
+                            <td>{{ $der8_si == 0 ? 'No hay suficientes respuestas aun...' : round($der8_si*100/$der8_all) }} %</td>
+                            <td>{{ $der9_si == 0 ? 'No hay suficientes respuestas aun...' : round($der9_si*100/$der9_all) }} %</td>
+                            <td>{{ $der10_si == 0 ? 'No hay suficientes respuestas aun...' : round($der10_si*100/$der10_all) }} %</td>
+                            <td>{{ $der11_si == 0 ? 'No hay suficientes respuestas aun...' : round($der11_si*100/$der11_all) }} %</td>
+                            <td>{{ $der12_si == 0 ? 'No hay suficientes respuestas aun...' : round($der12_si*100/$der12_all) }} %</td>
+                            <td>{{ $der13_si == 0 ? 'No hay suficientes respuestas aun...' : round($der13_si*100/$der13_all) }} %</td>
+                            <td>{{ $der14_si == 0 ? 'No hay suficientes respuestas aun...' : round($der14_si*100/$der14_all) }} %</td>
+                            <td>{{ $der15_si == 0 ? 'No hay suficientes respuestas aun...' : round($der15_si*100/$der15_all) }} %</td>
                             <td>{{ $der16_all == 0 ? 'No hay suficientes respuestas aun...' : round($der16_si*100/$der16_all) .'%'}}</td>
                         </tr>
 
                         <tr>
                             <th>NO %</th>
-                            <td>{{ round($der1_no*100/$der1_all) }} %</td>
-                            <td>{{ round($der2_no*100/$der2_all) }} %</td>
-                            <td>{{ round($der3_no*100/$der3_all) }} %</td>
-                            <td>{{ round($der4_no*100/$der4_all) }} %</td>
-                            <td>{{ round($der5_no*100/$der5_all) }} %</td>
-                            <td>{{ round($der6_no*100/$der6_all) }} %</td>
-                            <td>{{ round($der7_no*100/$der7_all) }} %</td>
-                            <td>{{ round($der8_no*100/$der8_all) }} %</td>
-                            <td>{{ round($der9_no*100/$der9_all) }} %</td>
-                            <td>{{ round($der10_no*100/$der10_all) }} %</td>
-                            <td>{{ round($der11_no*100/$der11_all) }} %</td>
-                            <td>{{ round($der12_no*100/$der12_all) }} %</td>
-                            <td>{{ round($der13_no*100/$der13_all) }} %</td>
-                            <td>{{ round($der14_no*100/$der14_all) }} %</td>
-                            <td>{{ round($der15_no*100/$der15_all) }} %</td>
+                            <td>{{ $der1_no == 0 ? 'No hay suficientes respuestas aun...' : round($der1_no*100/$der1_all) }} %</td>
+                            <td>{{ $der2_no == 0 ? 'No hay suficientes respuestas aun...' : round($der2_no*100/$der2_all) }} %</td>
+                            <td>{{ $der3_no == 0 ? 'No hay suficientes respuestas aun...' : round($der3_no*100/$der3_all) }} %</td>
+                            <td>{{ $der4_no == 0 ? 'No hay suficientes respuestas aun...' : round($der4_no*100/$der4_all) }} %</td>
+                            <td>{{ $der5_no == 0 ? 'No hay suficientes respuestas aun...' : round($der5_no*100/$der5_all) }} %</td>
+                            <td>{{ $der6_no == 0 ? 'No hay suficientes respuestas aun...' : round($der6_no*100/$der6_all) }} %</td>
+                            <td>{{ $der7_no == 0 ? 'No hay suficientes respuestas aun...' : round($der7_no*100/$der7_all) }} %</td>
+                            <td>{{ $der8_no == 0 ? 'No hay suficientes respuestas aun...' : round($der8_no*100/$der8_all) }} %</td>
+                            <td>{{ $der9_no == 0 ? 'No hay suficientes respuestas aun...' : round($der9_no*100/$der9_all) }} %</td>
+                            <td>{{ $der10_no == 0 ? 'No hay suficientes respuestas aun...' : round($der10_no*100/$der10_all) }} %</td>
+                            <td>{{ $der11_no == 0 ? 'No hay suficientes respuestas aun...' : round($der11_no*100/$der11_all) }} %</td>
+                            <td>{{ $der12_no == 0 ? 'No hay suficientes respuestas aun...' : round($der12_no*100/$der12_all) }} %</td>
+                            <td>{{ $der13_no == 0 ? 'No hay suficientes respuestas aun...' : round($der13_no*100/$der13_all) }} %</td>
+                            <td>{{ $der14_no == 0 ? 'No hay suficientes respuestas aun...' : round($der14_no*100/$der14_all) }} %</td>
+                            <td>{{ $der15_no == 0 ? 'No hay suficientes respuestas aun...' : round($der15_no*100/$der15_all) }} %</td>
                             <td>{{ $der16_all == 0 ? 'No hay suficientes respuestas aun...' : round($der16_no*100/$der16_all) .'%'}}</td>
                         </tr>
                     </thead>
@@ -206,23 +206,23 @@
                         </tr>
                         <tr>
                             <th>SI %</th>
-                            <td>{{ round($deb1_si*100/$deb1_all) }} %</td>
-                            <td>{{ round($deb2_si*100/$deb2_all) }} %</td>
-                            <td>{{ round($deb3_si*100/$deb3_all) }} %</td>
-                            <td>{{ round($deb4_si*100/$deb4_all) }} %</td>
-                            <td>{{ round($deb5_si*100/$deb5_all) }} %</td>
-                            <td>{{ round($deb6_si*100/$deb6_all) }} %</td>
+                            <td>{{ $deb1_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb1_si*100/$deb1_all) }} %</td>
+                            <td>{{ $deb2_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb2_si*100/$deb2_all) }} %</td>
+                            <td>{{ $deb3_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb3_si*100/$deb3_all) }} %</td>
+                            <td>{{ $deb4_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb4_si*100/$deb4_all) }} %</td>
+                            <td>{{ $deb5_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb5_si*100/$deb5_all) }} %</td>
+                            <td>{{ $deb6_si == 0 ? 'No hay suficientes respuestas aun...' : round($deb6_si*100/$deb6_all) }} %</td>
                             <td>{{ $deb7_all == 0 ? 'No hay suficientes respuestas aun...' : round($deb7_si*100/$deb7_all) .'%'}}</td>
                         </tr>
 
                         <tr>
                             <th>NO %</th>
-                            <td>{{ round($deb1_no*100/$deb1_all) }} %</td>
-                            <td>{{ round($deb2_no*100/$deb2_all) }} %</td>
-                            <td>{{ round($deb3_no*100/$deb3_all) }} %</td>
-                            <td>{{ round($deb4_no*100/$deb4_all) }} %</td>
-                            <td>{{ round($deb5_no*100/$deb5_all) }} %</td>
-                            <td>{{ round($deb6_no*100/$deb6_all) }} %</td>
+                            <td>{{ $deb1_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb1_no*100/$deb1_all) }} %</td>
+                            <td>{{ $deb2_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb2_no*100/$deb2_all) }} %</td>
+                            <td>{{ $deb3_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb3_no*100/$deb3_all) }} %</td>
+                            <td>{{ $deb4_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb4_no*100/$deb4_all) }} %</td>
+                            <td>{{ $deb5_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb5_no*100/$deb5_all) }} %</td>
+                            <td>{{ $deb6_no == 0 ? 'No hay suficientes respuestas aun...' : round($deb6_no*100/$deb6_all) }} %</td>
                             <td>{{ $deb7_all == 0 ? 'No hay suficientes respuestas aun...' : round($deb7_no*100/$deb7_all) .'%'}}</td>
                         </tr>
                     </thead>
@@ -265,20 +265,20 @@
 
                         <tr>
                             <th>BUENA %</th>
-                            <td>{{ round($buena*100/$at_total) }} %</td>
-                            <td>{{ round($fun_buena*100/$fun_total) }} %</td>
+                            <td>{{ $buena == 0 ? 'No hay suficientes respuestas aun...' : round($buena*100/$at_total) }} %</td>
+                            <td>{{ $fun_buena == 0 ? 'No hay suficientes respuestas aun...' : round($fun_buena*100/$fun_total) }} %</td>
                         </tr>
 
                         <tr>
                             <th>REGULAR %</th>
-                            <td>{{ round($regular*100/$at_total) }} %</td>
-                            <td>{{ round($fun_regular*100/$fun_total) }} %</td>
+                            <td>{{ $regular == 0 ? 'No hay suficientes respuestas aun...' :round($regular*100/$at_total) }} %</td>
+                            <td>{{ $fun_regular == 0 ? 'No hay suficientes respuestas aun...' :round($fun_regular*100/$fun_total) }} %</td>
                         </tr>
 
                         <tr>
                             <th>MALA %</th>
-                            <td>{{ round($mala*100/$at_total) }} %</td>
-                            <td>{{ round($fun_mala*100/$fun_total) }} %</td>
+                            <td>{{ $mala == 0 ? 'No hay suficientes respuestas aun...' : round($mala*100/$at_total) }} %</td>
+                            <td>{{ $fun_mala == 0 ? 'No hay suficientes respuestas aun...' : round($fun_mala*100/$fun_total) }} %</td>
                         </tr>
 
                     </thead>
@@ -315,13 +315,13 @@
 
                         <tr>
                             <th colspan="">%</th>
-                            <td>{{ round($nota_1*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_2*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_3*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_4*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_5*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_6*100/$notas_total) }} %</td>
-                            <td>{{ round($nota_7*100/$notas_total) }} %</td>
+                            <td>{{ $nota_1 == 0 ? 'No hay suficientes respuestas aun...' :  round($nota_1*100/$notas_total) }} %</td>
+                            <td>{{ $nota_2 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_2*100/$notas_total) }} %</td>
+                            <td>{{ $nota_3 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_3*100/$notas_total) }} %</td>
+                            <td>{{ $nota_4 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_4*100/$notas_total) }} %</td>
+                            <td>{{ $nota_5 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_5*100/$notas_total) }} %</td>
+                            <td>{{ $nota_6 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_6*100/$notas_total) }} %</td>
+                            <td>{{ $nota_7 == 0 ? 'No hay suficientes respuestas aun...' : round($nota_7*100/$notas_total) }} %</td>
                         </tr>
                     </thead>
                 </table>

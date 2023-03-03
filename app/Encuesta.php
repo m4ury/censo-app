@@ -12,4 +12,9 @@ class Encuesta extends Model
     {
         return $this->belongsTo(Paciente::class);
     }
+
+    public function scopeSearch($query, $q)
+    {
+        if ($q) return $query->whereYear('fecha_encuesta', "%$q%");
+    }
 }

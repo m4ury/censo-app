@@ -21,7 +21,9 @@ class ControlRequest extends FormRequest
             'talla_actual' => 'required|numeric|min:1',
             'proximo_control' => 'required|after:fecha_control',
             'prox_tipo' => 'required',
-            'presion_arterial' => 'required',
+            'sistolica' => 'required',
+            'diastolica' => 'required'
+            //'presion_arterial' => 'required',
             //'pa_menor_140_90' => 'required_if:tipo_control,Medico'
         ];
     }

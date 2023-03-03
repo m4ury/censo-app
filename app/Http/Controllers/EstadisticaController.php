@@ -41,7 +41,7 @@ class EstadisticaController extends Controller
 
         $htaM = $all->hta(null, 'Masculino')->count();
         $htaOriginM = $all->hta(null, 'Masculino')->where('pueblo_originario', '=', 1)->count();
-        $hta_1519M = $all->hta(null, 'Masculino', [15, 19])->where('sexo', 'Masculino')->count();
+        $hta_1519M = $all->hta(null, 'Masculino', [15, 19])->count();
         $hta_2024M = $all->hta(null, 'Masculino', [20, 24])->count();
         $hta_2529M = $all->hta(null, 'Masculino', [25, 29])->count();
         $hta_3034M = $all->hta(null, 'Masculino', [30, 34])->count();
@@ -2529,39 +2529,39 @@ class EstadisticaController extends Controller
         // $hta_racVigenteF = $pacientes->racVigente()->where('sexo', 'Femenino')->count();
         // $hta_racVigenteM = $pacientes->racVigente()->where('sexo', 'Masculino')->count();
 
-        $hta_racVigente = $pacientes->hta()->where('racVigente', '>=', Carbon::now()->subYear(1))->get()->count();
+        $hta_racVigente = $pacientes->hta('Femenino', 'Masculino')->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
         //dd($racVigente);
-        $hta_racVigenteF = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->where('sexo', 'Femenino')->count();
-        $hta_racVigente_1519F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_2024F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_2529F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_3034F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_3539F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_4044F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_4549F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_5054F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_5559F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_6064F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_6569F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_7074F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_7579F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
-        $hta_racVigente_80F = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+        $hta_racVigenteF = $pacientes->hta('Femenino', null)->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_1519F = $pacientes->hta('Femenino', null, [15, 19])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_2024F = $pacientes->hta('Femenino', null, [20, 24])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_2529F = $pacientes->hta('Femenino', null, [25, 29])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_3034F = $pacientes->hta('Femenino', null, [30, 34])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_3539F = $pacientes->hta('Femenino', null, [35, 39])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_4044F = $pacientes->hta('Femenino', null, [40, 44])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_4549F = $pacientes->hta('Femenino', null, [45, 49])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_5054F = $pacientes->hta('Femenino', null, [50, 54])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_5559F = $pacientes->hta('Femenino', null, [55, 59])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_6064F = $pacientes->hta('Femenino', null, [60, 64])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_6569F = $pacientes->hta('Femenino', null, [65, 69])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_7074F = $pacientes->hta('Femenino', null, [70, 74])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_7579F = $pacientes->hta('Femenino', null, [75, 79])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_80F = $pacientes->hta('Femenino', null, [80, 120])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
 
-        $hta_racVigenteM = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->where('sexo', 'Masculino')->count();
-        $hta_racVigente_1519M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_2024M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_2529M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_3034M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_3539M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_4044M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_4549M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_5054M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_5559M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_6064M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_6569M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_7074M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_7579M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
-        $hta_racVigente_80M = $pacientes->hta()->get()->where('racVigente', '>=', Carbon::now()->subYear(1))->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+        $hta_racVigenteM = $pacientes->hta('Masculino', null)->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_1519M = $pacientes->hta('Masculino', null, [15, 19])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_2024M = $pacientes->hta('Masculino', null, [20, 24])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_2529M = $pacientes->hta('Masculino', null, [25, 29])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_3034M = $pacientes->hta('Masculino', null, [30, 34])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_3539M = $pacientes->hta('Masculino', null, [35, 39])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_4044M = $pacientes->hta('Masculino', null, [40, 44])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_4549M = $pacientes->hta('Masculino', null, [45, 49])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_5054M = $pacientes->hta('Masculino', null, [50, 54])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_5559M = $pacientes->hta('Masculino', null, [55, 59])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_6064M = $pacientes->hta('Masculino', null, [60, 64])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_6569M = $pacientes->hta('Masculino', null, [65, 69])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_7074M = $pacientes->hta('Masculino', null, [70, 74])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_7579M = $pacientes->hta('Masculino', null, [75, 79])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
+        $hta_racVigente_80M = $pacientes->hta('Masculino', null, [80, 120])->where('racVigente', '>=', Carbon::now()->subYear(1))->count();
 
 
         //pa mayor = 160/100
@@ -4626,121 +4626,121 @@ class EstadisticaController extends Controller
         $todas = $encuestas->count();
 
 //derechos
-        $der1_all = $encuestas->whereIn('der_1',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der1_si = $encuestas->where('der_1', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der1_no = $encuestas->where('der_1', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der1_all = $encuestas->whereIn('der_1',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der1_si = $encuestas->where('der_1', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der1_no = $encuestas->where('der_1', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der2_all = $encuestas->whereIn('der_2',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der2_si = $encuestas->where('der_2', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der2_no = $encuestas->where('der_2', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der2_all = $encuestas->whereIn('der_2',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der2_si = $encuestas->where('der_2', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der2_no = $encuestas->where('der_2', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der3_all = $encuestas->whereIn('der_3',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der3_si = $encuestas->where('der_3', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der3_no = $encuestas->where('der_3', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der3_all = $encuestas->whereIn('der_3',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der3_si = $encuestas->where('der_3', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der3_no = $encuestas->where('der_3', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der4_all = $encuestas->whereIn('der_4',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der4_si = $encuestas->where('der_4', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der4_no = $encuestas->where('der_4', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der4_all = $encuestas->whereIn('der_4',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der4_si = $encuestas->where('der_4', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der4_no = $encuestas->where('der_4', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der5_all = $encuestas->whereIn('der_5',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der5_si = $encuestas->where('der_5', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der5_no = $encuestas->where('der_5', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der5_all = $encuestas->whereIn('der_5',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der5_si = $encuestas->where('der_5', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der5_no = $encuestas->where('der_5', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der6_all = $encuestas->whereIn('der_6',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der6_si = $encuestas->where('der_6', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der6_no = $encuestas->where('der_6', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der6_all = $encuestas->whereIn('der_6',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der6_si = $encuestas->where('der_6', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der6_no = $encuestas->where('der_6', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der7_all = $encuestas->whereIn('der_7',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der7_si = $encuestas->where('der_7', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der7_no = $encuestas->where('der_7', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der7_all = $encuestas->whereIn('der_7',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der7_si = $encuestas->where('der_7', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der7_no = $encuestas->where('der_7', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der8_all = $encuestas->whereIn('der_8',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der8_si = $encuestas->where('der_8', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der8_no = $encuestas->where('der_8', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der8_all = $encuestas->whereIn('der_8',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der8_si = $encuestas->where('der_8', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der8_no = $encuestas->where('der_8', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der9_all = $encuestas->whereIn('der_9',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der9_si = $encuestas->where('der_9', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der9_no = $encuestas->where('der_9', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der9_all = $encuestas->whereIn('der_9',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der9_si = $encuestas->where('der_9', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der9_no = $encuestas->where('der_9', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der10_all = $encuestas->whereIn('der_10',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der10_si = $encuestas->where('der_10', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der10_no = $encuestas->where('der_10', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der10_all = $encuestas->whereIn('der_10',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der10_si = $encuestas->where('der_10', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der10_no = $encuestas->where('der_10', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der11_all = $encuestas->whereIn('der_11',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der11_si = $encuestas->where('der_11', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der11_no = $encuestas->where('der_11', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der11_all = $encuestas->whereIn('der_11',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der11_si = $encuestas->where('der_11', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der11_no = $encuestas->where('der_11', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der12_all = $encuestas->whereIn('der_12',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der12_si = $encuestas->where('der_12', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der12_no = $encuestas->where('der_12', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der12_all = $encuestas->whereIn('der_12',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der12_si = $encuestas->where('der_12', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der12_no = $encuestas->where('der_12', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der13_all = $encuestas->whereIn('der_13',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der13_si = $encuestas->where('der_13', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der13_no = $encuestas->where('der_13', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der13_all = $encuestas->whereIn('der_13',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der13_si = $encuestas->where('der_13', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der13_no = $encuestas->where('der_13', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der14_all = $encuestas->whereIn('der_14',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der14_si = $encuestas->where('der_14', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der14_no = $encuestas->where('der_14', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der14_all = $encuestas->whereIn('der_14',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der14_si = $encuestas->where('der_14', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der14_no = $encuestas->where('der_14', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der15_all = $encuestas->whereIn('der_15',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der15_si = $encuestas->where('der_15', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der15_no = $encuestas->where('der_15', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der15_all = $encuestas->whereIn('der_15',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der15_si = $encuestas->where('der_15', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der15_no = $encuestas->where('der_15', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $der16_all = $encuestas->whereIn('der_16',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der16_si = $encuestas->where('der_16', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $der16_no = $encuestas->where('der_16', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $der16_all = $encuestas->whereIn('der_16',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der16_si = $encuestas->where('der_16', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der16_no = $encuestas->where('der_16', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
 //deberes
-        $deb1_all = $encuestas->whereIn('deb_1',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb1_si = $encuestas->where('deb_1', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb1_no = $encuestas->where('deb_1', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb1_all = $encuestas->whereIn('deb_1',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb1_si = $encuestas->where('deb_1', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb1_no = $encuestas->where('deb_1', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb2_all = $encuestas->whereIn('deb_2',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb2_si = $encuestas->where('deb_2', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb2_no = $encuestas->where('deb_2', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb2_all = $encuestas->whereIn('deb_2',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb2_si = $encuestas->where('deb_2', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb2_no = $encuestas->where('deb_2', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb3_all = $encuestas->whereIn('deb_3',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb3_si = $encuestas->where('deb_3', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb3_no = $encuestas->where('deb_3', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb3_all = $encuestas->whereIn('deb_3',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb3_si = $encuestas->where('deb_3', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb3_no = $encuestas->where('deb_3', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb4_all = $encuestas->whereIn('deb_4',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb4_si = $encuestas->where('deb_4', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb4_no = $encuestas->where('deb_4', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb4_all = $encuestas->whereIn('deb_4',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb4_si = $encuestas->where('deb_4', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb4_no = $encuestas->where('deb_4', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb5_all = $encuestas->whereIn('deb_5',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb5_si = $encuestas->where('deb_5', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb5_no = $encuestas->where('deb_5', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb5_all = $encuestas->whereIn('deb_5',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb5_si = $encuestas->where('deb_5', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb5_no = $encuestas->where('deb_5', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb6_all = $encuestas->whereIn('deb_6',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb6_si = $encuestas->where('deb_6', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb6_no = $encuestas->where('deb_6', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb6_all = $encuestas->whereIn('deb_6',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb6_si = $encuestas->where('deb_6', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb6_no = $encuestas->where('deb_6', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $deb7_all = $encuestas->whereIn('deb_7',[1,0])->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb7_si = $encuestas->where('deb_7', '=', 1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $deb7_no = $encuestas->where('deb_7', '=', 0)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $deb7_all = $encuestas->whereIn('deb_7',[1,0])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb7_si = $encuestas->where('deb_7', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb7_no = $encuestas->where('deb_7', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
 
 //atencion
-        $buena = $encuestas->whereAtencion('buena')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $regular = $encuestas->whereAtencion('regular')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $mala = $encuestas->whereAtencion('mala')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->whereMonth('fecha_encuesta', '>', 06)->count();
+        $buena = $encuestas->whereAtencion('buena')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $regular = $encuestas->whereAtencion('regular')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $mala = $encuestas->whereAtencion('mala')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->whereYear('fecha_encuesta', '>', 2022)->count();
 
 //funcion
-        $fun_buena = $encuestas->whereFuncion('buena')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $fun_regular = $encuestas->whereFuncion('regular')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $fun_mala = $encuestas->whereFuncion('mala')->whereMonth('fecha_encuesta', '>', 06)->count();
-        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->whereMonth('fecha_encuesta', '>', 06)->count();
+        $fun_buena = $encuestas->whereFuncion('buena')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $fun_regular = $encuestas->whereFuncion('regular')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $fun_mala = $encuestas->whereFuncion('mala')->whereYear('fecha_encuesta', '>', 2022)->count();
+        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->whereYear('fecha_encuesta', '>', 2022)->count();
 
 //notas
-        $nota_1 = $encuestas->whereNota(1)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_2 = $encuestas->whereNota(2)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_3 = $encuestas->whereNota(3)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_4 = $encuestas->whereNota(4)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_5 = $encuestas->whereNota(5)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_6 = $encuestas->whereNota(6)->whereMonth('fecha_encuesta', '>', 06)->count();
-        $nota_7 = $encuestas->whereNota(7)->whereMonth('fecha_encuesta', '>', 06)->count();
+        $nota_1 = $encuestas->whereNota(1)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_2 = $encuestas->whereNota(2)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_3 = $encuestas->whereNota(3)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_4 = $encuestas->whereNota(4)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_5 = $encuestas->whereNota(5)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_6 = $encuestas->whereNota(6)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_7 = $encuestas->whereNota(7)->whereYear('fecha_encuesta', '>', 2022)->count();
 
-        $notas_total = $encuestas->whereIn('nota', [1,2,3,4,5,6,7])->whereMonth('fecha_encuesta', '>', 06)->count();
+        $notas_total = $encuestas->whereIn('nota', [1,2,3,4,5,6,7])->whereYear('fecha_encuesta', '>', 2022)->count();
 
 
         return view('estadisticas.encuestas', compact(
@@ -4843,8 +4843,6 @@ class EstadisticaController extends Controller
     public function rayos(){
         $examenes = new Examen;
         $todas = $examenes->count();
-
-
         return view('estadisticas.rayos', compact('todas'));
     }
 
@@ -4860,5 +4858,26 @@ class EstadisticaController extends Controller
         $pacientes = $all->evaluacionPie()->get()->unique('rut');
         //dd($pacientes);
         return view('estadisticas.pie', compact('pacientes'));
+    }
+
+    public function dm2(){
+        $all = new Paciente;
+        $dm2 = $all->dm2()
+            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+            ->whereNull('egreso')
+            ->get();
+
+        return view('estadisticas.dm2', compact('dm2'));
+    }
+
+    public function hta(){
+        $all = new Paciente;
+        $hta = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+                    ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+                    ->where('paciente_patologia.patologia_id', 1)
+                    ->whereNull('egreso')
+                    ->get();
+
+        return view('estadisticas.hta', compact('hta'));
     }
 }

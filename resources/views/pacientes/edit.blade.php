@@ -167,10 +167,9 @@
                             <div class="col-sm-3 fecha_f">
                                 {!! Form::date('fecha_egreso',$paciente->fecha_egreso, ['class' => 'form-control form-control col-sm']) !!}
                             </div>
-                            </div>
                     </div>
                     <hr>
-                    @if($paciente->edad() >= 65)
+                    @if($paciente->grupo > 64)
                         @include('partials.empam')
                     @endif
                         @foreach($paciente->patologias as $patologia)
@@ -274,9 +273,21 @@
                                 </div>
                             </div>
                         </div>
+                    @elseif($patologia->nombre_patologia == 'SALA ERA')
+                        <div class="form-group row card card-info card-outline">
+                            <div class="card-header text-bold text-info">SALA ERA</div>
+                                <div class="card-body row form-group">
+                                    {!! Form::label('espirometriaVigente_label', 'ESPIROMETRIA VIGENTE', ['class' => 'col-sm-6
+                                    col-form-label']) !!}
+                                    <div class="col-sm-6">
+                                        {!! Form::date('espirometriaVigente', old('espirometriaVigente', $paciente->espirometriaVigente),
+                                        ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
-                        @endforeach
-
+                @endforeach
                     <div class="row">
                         <div class="col">
                             {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block']) }}

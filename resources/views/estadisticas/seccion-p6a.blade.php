@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P4: Seccion A')
+@section('title', 'REM P6: Seccion A')
 
 @section('content')
 <div class="row justify-content-center">
@@ -11,8 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                REM P4 - SECCIÓN A: PROGRAMA SALUD CARDIOVASCULAR
-                (PSCV)
+                REM-P6. POBLACIÓN EN CONTROL PROGRAMA DE SALUD MENTAL EN ATENCIÓN PRIMARIA Y ESPECIALIDAD
             </h4>
             <div class="col-md-12 table-responsive">
                 <table id="pscv" class="table table-md-responsive table-bordered">
