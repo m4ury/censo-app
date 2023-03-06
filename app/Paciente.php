@@ -631,4 +631,15 @@ class Paciente extends Model
                     ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
     }
+
+    public function asma($clasif, $fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.asmaClasif', $clasif)
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
 }

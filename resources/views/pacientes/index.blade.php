@@ -30,39 +30,39 @@
                     <td class="text-uppercase">{{ $paciente->fullName() }}</td>
                     <td>{{ $paciente->ficha }}
                         @if($paciente->egreso != null)
-                        @switch($paciente->egreso)
-                            @case('fallecido')
-                            <span class="text-warning mx-2"><i class= 'fa fa-cross'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
-                            @break
-
-                            @case('inasistente')
-                            <span class="text-info mx-2"><i class= 'fas fa-sign-out-alt'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
-                            @break
-
-                            @case('cambio_centro')
-                            <span class="text-gray mx-2"><i class= 'fas fa-hospital'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
-                            @break
-
-                            @default
-                            ""
-                        @endswitch
-                    </td> @endif
+                            @switch($paciente->egreso)
+                                @case('fallecido')
+                                    <span class="text-warning mx-2"><i class= 'fa fa-cross'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                                @break
+                                    @case('inasistente')
+                                    <span class="text-info mx-2"><i class= 'fas fa-sign-out-alt'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                                @break
+                                    @case('cambio_centro')
+                                    <span class="text-gray mx-2"><i class= 'fas fa-hospital'></i> {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format("d-m-Y") }}</span>
+                                @break
+                                @default
+                                ""
+                            @endswitch
+                        @endif
+                    </td>
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
-                    @if($paciente->sector == 'Celeste')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-primary"></i></span> Celeste
+                        <td>
+                            @if($paciente->sector == 'celeste')
+                            <span class="mr-2">
+                                <i class="fas fa-square text-primary"></i>
+                            </span> Celeste
+                            @elseif($paciente->sector == 'naranjo')
+                            <span class="mr-2">
+                                <i class="fas fa-square text-orange"></i>
+                            </span> Naranjo
+                            @elseif($paciente->sector == 'Blanco')
+                            <span class="mr-2">
+                                <i class="fas fa-square text-white"></i>
+                            </span> Blanco
+                            @endif
                         </td>
-                    @elseif($paciente->sector == 'Naranjo')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-orange"></i></span> Naranjo
-                        </td>
-                        @elseif($paciente->sector == 'Blanco')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-white"></i></span> Blanco
-                        </td>
-                    @endif
-                    <td>
+                        <td>
                         @switch($paciente->edad())
                             @case($paciente->edad()<15)
                             {{ "Menor de 15" }}
