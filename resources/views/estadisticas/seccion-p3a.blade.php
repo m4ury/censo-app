@@ -20,7 +20,7 @@
                             <th class="text-center" colspan="2" rowspan="3">PROGRAMAS</th>
                             <th class="text-center" colspan="3" rowspan="2">TOTAL</th>
                             <th class="text-center" colspan="34">GRUPOS DE EDAD (en años) Y SEXO</th>
-                            <th colspan="2" rowspan="2">Pueblos Originarios</th>
+                            <th class="text-center" rowspan="3" style="vertical-align: middle">Con espirometría vigente</th>
                             <th colspan="2" rowspan="2">Poblacion Migrantes</th>
 
                         </tr>
@@ -83,12 +83,144 @@
                             <th>Mujeres</th>
                             <th>Hombres</th>
                             <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
                         </tr>
 
                         <tr>
                             <th rowspan="4">SÍNDROME BRONQUIAL OBSTRUCTIVA RECURRENTE (SBOR)</th>
+                        <tr>
+                            <th>LEVE</th>
+                            <td>{{$asmaLeve}}</td>
+                            <td>{{$asmaLeveM}}</td>
+                            <td>{{$asmaLeveF}}</td>
+                            <td>{{$asmaLeve_04M}}</td>
+                            <td>{{$asmaLeve_04F}}</td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>MODERADO</th>
+                            <td>{{$asmaModerado}}</td>
+                            <td>{{$asmaModeradoM}}</td>
+                            <td>{{$asmaModeradoF}}</td>
+                            <td>{{$asmaModerado_04M}}</td>
+                            <td>{{$asmaModerado_04F}}</td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th>SEVERO</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <th rowspan="4" nowrap ="" class ="py-5">ASMA BRONQUIAL</th>
                         <tr>
                             <th>LEVE</th>
                             <td>{{$asmaLeve}}</td>
@@ -128,10 +260,10 @@
                             <td>{{$asmaLeve_7579F}}</td>
                             <td>{{$asmaLeve_80M}}</td>
                             <td>{{$asmaLeve_80F}}</td>
-                            <td>{{$asmaLeve_OriginM}}</td>
-                            <td>{{$asmaLeve_OriginF}}</td>
+                            <td>{{$asmaLeve_espVig}}</td>
                             <td></td>
                             <td></td>
+
                         </tr>
                         <tr>
                             <th>MODERADO</th>
@@ -172,188 +304,54 @@
                             <td>{{$asmaModerado_7579F}}</td>
                             <td>{{$asmaModerado_80M}}</td>
                             <td>{{$asmaModerado_80F}}</td>
-                            <td>{{$asmaModerado_OriginM}}</td>
-                            <td>{{$asmaModerado_OriginF}}</td>
+                            <td>{{$asmaModerado_espVig}}</td>
                             <td></td>
                             <td></td>
+
                         </tr>
                         <tr>
                             <th>SEVERO</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th rowspan="4" nowrap ="" class ="py-5">ASMA BRONQUIAL</th>
-                        <tr>
-                            <th>LEVE</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>MODERADO</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>SEVERO</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$asmaSevero}}</td>
+                            <td>{{$asmaSeveroM}}</td>
+                            <td>{{$asmaSeveroF}}</td>
+                            <td>{{$asmaSevero_04M}}</td>
+                            <td>{{$asmaSevero_04F}}</td>
+                            <td>{{$asmaSevero_59M}}</td>
+                            <td>{{$asmaSevero_59F}}</td>
+                            <td>{{$asmaSevero_1014M}}</td>
+                            <td>{{$asmaSevero_1014F}}</td>
+                            <td>{{$asmaSevero_1519M}}</td>
+                            <td>{{$asmaSevero_1519F}}</td>
+                            <td>{{$asmaSevero_2024M}}</td>
+                            <td>{{$asmaSevero_2024F}}</td>
+                            <td>{{$asmaSevero_2529M}}</td>
+                            <td>{{$asmaSevero_2529F}}</td>
+                            <td>{{$asmaSevero_3034M}}</td>
+                            <td>{{$asmaSevero_3034F}}</td>
+                            <td>{{$asmaSevero_3539M}}</td>
+                            <td>{{$asmaSevero_3539F}}</td>
+                            <td>{{$asmaSevero_4044M}}</td>
+                            <td>{{$asmaSevero_4044F}}</td>
+                            <td>{{$asmaSevero_4549M}}</td>
+                            <td>{{$asmaSevero_4549F}}</td>
+                            <td>{{$asmaSevero_5054M}}</td>
+                            <td>{{$asmaSevero_5054F}}</td>
+                            <td>{{$asmaSevero_5559M}}</td>
+                            <td>{{$asmaSevero_5559F}}</td>
+                            <td>{{$asmaSevero_6064M}}</td>
+                            <td>{{$asmaSevero_6064F}}</td>
+                            <td>{{$asmaSevero_6569M}}</td>
+                            <td>{{$asmaSevero_6569F}}</td>
+                            <td>{{$asmaSevero_7074M}}</td>
+                            <td>{{$asmaSevero_7074F}}</td>
+                            <td>{{$asmaSevero_7579M}}</td>
+                            <td>{{$asmaSevero_7579F}}</td>
+                            <td>{{$asmaSevero_80M}}</td>
+                            <td>{{$asmaSevero_80F}}</td>
+                            <td>{{$asmaSevero_espVig}}</td>
+                            <td></td>
+                            <td></td>
+
                         </tr>
                         <tr>
                             <th rowspan="3">ENFERMEDAD PULMONAR OBSTRUCTIVA CRÓNICA (EPOC)</th>
@@ -362,6 +360,22 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -383,29 +397,29 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th>TIPO B</th>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -427,23 +441,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">OTRAS RESPIRATORIAS CRONICAS</th>
@@ -484,10 +482,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">OXIGENO DEPENDIENTE</th>
@@ -528,10 +526,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th colspan="2">ASISTENCIA VENTILATORIA NO INVASIVA O INVASIVA</th>
@@ -572,10 +570,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">FIBROSIS QUÍSTICA </th>
@@ -608,18 +606,18 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">EPILEPSIA</th>
@@ -660,10 +658,10 @@
                             <td>{{$epilepsia_7579F}}</td>
                             <td>{{$epilepsia_80M}}</td>
                             <td>{{$epilepsia_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">GLAUCOMA</th>
@@ -704,10 +702,10 @@
                             <td>{{$glaucoma_7579F}}</td>
                             <td>{{$glaucoma_80M}}</td>
                             <td>{{$glaucoma_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ENFERMEDAD DE PARKINSON </th>
@@ -748,9 +746,10 @@
                             <td>{{$parkinson_7579F}}</td>
                             <td>{{$parkinson_80M}}</td>
                             <td>{{$parkinson_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ARTROSIS DE CADERA Y RODILLA</th>
@@ -791,10 +790,10 @@
                             <td>{{$artrosis_7579F}}</td>
                             <td>{{$artrosis_80M}}</td>
                             <td>{{$artrosis_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ALIVIO DEL DOLOR</th>
@@ -835,10 +834,10 @@
                             <td>{{$alivio_dolor_7579F}}</td>
                             <td>{{$alivio_dolor_80M}}</td>
                             <td>{{$alivio_dolor_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">HIPOTIROIDISMO</th>
@@ -879,10 +878,10 @@
                             <td>{{$hipot_7579F}}</td>
                             <td>{{$hipot_80M}}</td>
                             <td>{{$hipot_80F}}</td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA LEVE</th>
@@ -923,10 +922,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA MODERADA</th>
@@ -967,10 +966,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+
                         </tr>
                     </thead>
                 </table>

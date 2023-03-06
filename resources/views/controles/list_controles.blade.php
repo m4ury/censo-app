@@ -37,7 +37,7 @@
                     <tr>
                         <td>{{ $control->tipo_control }}</td>
                         <td>{{ \Carbon\Carbon::parse($control->fecha_control)->format("d-m-Y") }}</td>
-                        <td>{{ $control->sistolica }} / {{ $control->diastolica }}</td>
+                        <td>{{ $control->sistolica ?? '' }} - {{ $control->diastolica ?? '' }}</td>
                         <td>{{ $control->peso_actual }}</td>
                         <td>{{ $control->talla_actual }}</td>
                         <td>{{ $control->imc }}</td>

@@ -632,14 +632,56 @@ class Paciente extends Model
                     ->latest('controls.fecha_control');
     }
 
-    public function asma($clasif, $fem, $masc)
+    public function asmaLeve($fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Kinesiologo')
-                    ->where('controls.asmaClasif', $clasif)
+                    ->where('controls.asmaClasif', 'Leve')
                     ->whereYear('controls.fecha_control', '2023')
                     ->whereIn('sexo', [$fem, $masc])
                     ->whereNull('pacientes.egreso')
                     ->latest('controls.fecha_control');
+    }
+
+    public function asmaMod($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.asmaClasif', 'Moderado')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function asmaSevero($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.asmaClasif', 'Severo')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function espiromVigente($clasif, $fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                        ->where('controls.asmaClasif', $clasif)
+                        ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+                        ->whereIn('pacientes.sexo', [$fem, $masc])
+                        ->latest('controls.fecha_control');
+
+    /* $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                    ->where('paciente_patologia.patologia_id', 8)
+                    ->where('controls.asmaClasif', $asma)
+                    ->union(DB::table('pacientes')
+                        ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 8)
+                        ->where('pacientes.espirometriaVigente', '>=', Carbon::now()->subYear(1)))
+                        ->get() */;
     }
 }

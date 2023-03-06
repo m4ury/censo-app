@@ -46,4 +46,13 @@
             </div>
         </div>
     @endif
+            <div class="card-body row form-group" id ="espirometria">
+                {!! Form::label('espirometriaVigente_label', 'ESPIROMETRIA VIGENTE', ['class' => 'col-sm-6
+                col-form-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::date('espirometriaVigente', old('espirometriaVigente', $control->espirometriaVigente),
+                    ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
 </div>

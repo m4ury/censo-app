@@ -48,11 +48,11 @@
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->sexo }}</td>
                         <td>
-                            @if($paciente->sector == 'celeste')
+                            @if($paciente->sector == 'Celeste')
                             <span class="mr-2">
                                 <i class="fas fa-square text-primary"></i>
                             </span> Celeste
-                            @elseif($paciente->sector == 'naranjo')
+                            @elseif($paciente->sector == 'Naranjo')
                             <span class="mr-2">
                                 <i class="fas fa-square text-orange"></i>
                             </span> Naranjo

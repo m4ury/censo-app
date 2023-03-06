@@ -325,6 +325,18 @@
 
         } else $('.hba1c7').show()
 });
+
+$('.asmaClasif, epocClasif, sborClasif').change(function () {
+    $('#espirometria').hide()
+        if ($('.asmaClasif').val() === 'Leve' || $('.asmaClasif').val() === 'Moderado' || $('.asmaClasif').val() === 'Severo'){
+            //console.log($('.asmaClasif').val())
+            $('#espirometria').show()
+        }else if($('.epocClasif').val() === 'A' || $('.epocClasif').val() === 'B'){
+            $('#espirometria').show()
+        }else if($('.sborClasif').val() === 'Leve' || $('.sborClasif').val() === 'Moderado' || $('.asmaClasif').val() === 'Severo'){
+            $('#espirometria').show()
+        }
+})
 </script>
 
 @endsection

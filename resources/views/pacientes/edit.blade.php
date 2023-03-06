@@ -273,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-                    @elseif($patologia->nombre_patologia == 'SALA ERA')
+                    {{-- @elseif($patologia->nombre_patologia == 'SALA ERA')
                         <div class="form-group row card card-info card-outline">
                             <div class="card-header text-bold text-info">SALA ERA</div>
                                 <div class="card-body row form-group">
@@ -285,7 +285,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
                 @endforeach
                     <div class="row">

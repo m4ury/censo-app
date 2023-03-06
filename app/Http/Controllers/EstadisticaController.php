@@ -3596,90 +3596,133 @@ class EstadisticaController extends Controller
     {
         $all = new Paciente;
 
-        $asmaLeve = $all->asma('Leve', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaLeve = $all->asmaLeve('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaLeveM = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaLeve_espVig = $all->espiromVigente('Leve', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaLeve_OriginM = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaLeve_04M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaLeve_59M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaLeve_1014M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaLeve_1519M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaLeve_2024M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaLeve_2529M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaLeve_3034M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaLeve_3539M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaLeve_4044M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaLeve_4549M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaLeve_5054M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaLeve_5559M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaLeve_6064M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaLeve_6569M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaLeve_7074M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaLeve_7579M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaLeve_80M = $all->asmaLeve(null, 'Masculino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
-        $asmaLeveM = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
-        $asmaLeve_OriginM = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
-        $asmaLeve_04M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-        $asmaLeve_59M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
-        $asmaLeve_1014M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
-        $asmaLeve_1519M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
-        $asmaLeve_2024M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
-        $asmaLeve_2529M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
-        $asmaLeve_3034M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
-        $asmaLeve_3539M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
-        $asmaLeve_4044M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
-        $asmaLeve_4549M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
-        $asmaLeve_5054M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
-        $asmaLeve_5559M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
-        $asmaLeve_6064M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
-        $asmaLeve_6569M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
-        $asmaLeve_7074M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
-        $asmaLeve_7579M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $asmaLeve_80M = $all->asma('Leve', null, 'Masculino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
-
-        $asmaLeveF = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->unique('rut')->count();
-        $asmaLeve_OriginF = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
-        $asmaLeve_04F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-        $asmaLeve_59F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
-        $asmaLeve_1014F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
-        $asmaLeve_1519F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
-        $asmaLeve_2024F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
-        $asmaLeve_2529F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
-        $asmaLeve_3034F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
-        $asmaLeve_3539F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
-        $asmaLeve_4044F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
-        $asmaLeve_4549F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
-        $asmaLeve_5054F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
-        $asmaLeve_5559F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
-        $asmaLeve_6064F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
-        $asmaLeve_6569F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
-        $asmaLeve_7074F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
-        $asmaLeve_7579F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $asmaLeve_80F = $all->asma('Leve', null, 'Femenino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+        $asmaLeveF = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->unique('rut')->count();
+        $asmaLeve_OriginF = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaLeve_04F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaLeve_59F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaLeve_1014F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaLeve_1519F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaLeve_2024F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaLeve_2529F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaLeve_3034F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaLeve_3539F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaLeve_4044F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaLeve_4549F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaLeve_5054F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaLeve_5559F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaLeve_6064F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaLeve_6569F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaLeve_7074F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaLeve_7579F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaLeve_80F = $all->asmaLeve(null, 'Femenino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
         //asma moderado
-        $asmaModerado = $all->asma('Moderado', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaModerado = $all->asmaMod('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaModeradoM = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaModerado_espVig = $all->espiromVigente('Moderado', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->whereNotIn('rut', $asmaLeve)->unique('rut')->count();
+        $asmaModerado_OriginM = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaModerado_04M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaModerado_59M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaModerado_1014M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaModerado_1519M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaModerado_2024M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaModerado_2529M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaModerado_3034M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaModerado_3539M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaModerado_4044M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaModerado_4549M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaModerado_5054M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaModerado_5559M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaModerado_6064M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaModerado_6569M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaModerado_7074M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaModerado_7579M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaModerado_80M = $all->asmaMod(null, 'Masculino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
-        $asmaModeradoM = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
-        $asmaModerado_OriginM = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
-        $asmaModerado_04M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-        $asmaModerado_59M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
-        $asmaModerado_1014M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
-        $asmaModerado_1519M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
-        $asmaModerado_2024M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
-        $asmaModerado_2529M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
-        $asmaModerado_3034M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
-        $asmaModerado_3539M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
-        $asmaModerado_4044M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
-        $asmaModerado_4549M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
-        $asmaModerado_5054M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
-        $asmaModerado_5559M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
-        $asmaModerado_6064M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
-        $asmaModerado_6569M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
-        $asmaModerado_7074M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
-        $asmaModerado_7579M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $asmaModerado_80M = $all->asma('Moderado', null, 'Masculino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+        $asmaModeradoF = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->unique('rut')->count();
+        $asmaModerado_OriginF = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaModerado_04F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaModerado_59F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaModerado_1014F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaModerado_1519F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaModerado_2024F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaModerado_2529F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaModerado_3034F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaModerado_3539F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaModerado_4044F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaModerado_4549F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaModerado_5054F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaModerado_5559F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaModerado_6064F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaModerado_6569F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaModerado_7074F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaModerado_7579F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaModerado_80F = $all->asmaMod(null, 'Femenino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
-        $asmaModeradoF = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->unique('rut')->count();
-        $asmaModerado_OriginF = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
-        $asmaModerado_04F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-        $asmaModerado_59F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
-        $asmaModerado_1014F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
-        $asmaModerado_1519F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
-        $asmaModerado_2024F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
-        $asmaModerado_2529F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
-        $asmaModerado_3034F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
-        $asmaModerado_3539F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
-        $asmaModerado_4044F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
-        $asmaModerado_4549F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
-        $asmaModerado_5054F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
-        $asmaModerado_5559F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
-        $asmaModerado_6064F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
-        $asmaModerado_6569F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
-        $asmaModerado_7074F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
-        $asmaModerado_7579F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $asmaModerado_80F = $all->asma('Moderado', null, 'Femenino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+        //asma Severo
+        $asmaSevero = $all->asmaSevero('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaSeveroM = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->whereNotIn('rut', $asmaLeve)->unique('rut')->count();
+        $asmaSevero_espVig = $all->espiromVigente('Severo', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaSevero_OriginM = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaSevero_04M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaSevero_59M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaSevero_1014M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaSevero_1519M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaSevero_2024M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaSevero_2529M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaSevero_3034M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaSevero_3539M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaSevero_4044M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaSevero_4549M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaSevero_5054M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaSevero_5559M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaSevero_6064M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaSevero_6569M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaSevero_7074M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaSevero_7579M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaSevero_80M = $all->asmaSevero(null, 'Masculino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asmaSeveroF = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->unique('rut')->count();
+        $asmaSevero_OriginF = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaSevero_04F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaSevero_59F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaSevero_1014F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaSevero_1519F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaSevero_2024F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaSevero_2529F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaSevero_3034F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaSevero_3539F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaSevero_4044F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaSevero_4549F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaSevero_5054F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaSevero_5559F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaSevero_6064F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaSevero_6569F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaSevero_7074F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaSevero_7579F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaSevero_80F = $all->asmaSevero(null, 'Femenino')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
         //epilepsia todos
         $epilepsia = $all->epilepsia()->count();
@@ -4201,6 +4244,7 @@ class EstadisticaController extends Controller
             'asmaLeve_59F',
             'asmaLeve_1014M',
             'asmaLeve_1014F',
+            'asmaLeve_espVig',
             'asmaLeve_OriginM',
             'asmaLeve_OriginF',
 
@@ -4241,8 +4285,50 @@ class EstadisticaController extends Controller
             'asmaModerado_59F',
             'asmaModerado_1014M',
             'asmaModerado_1014F',
+            'asmaModerado_espVig',
             'asmaModerado_OriginM',
-            'asmaModerado_OriginF'
+            'asmaModerado_OriginF',
+
+            'asmaSevero',
+            'asmaSeveroM',
+            'asmaSeveroF',
+            'asmaSevero_1519M',
+            'asmaSevero_1519F',
+            'asmaSevero_2024M',
+            'asmaSevero_2024F',
+            'asmaSevero_2529M',
+            'asmaSevero_2529F',
+            'asmaSevero_3034M',
+            'asmaSevero_3034F',
+            'asmaSevero_3539M',
+            'asmaSevero_3539F',
+            'asmaSevero_4044M',
+            'asmaSevero_4044F',
+            'asmaSevero_4549M',
+            'asmaSevero_4549F',
+            'asmaSevero_5054M',
+            'asmaSevero_5054F',
+            'asmaSevero_5559M',
+            'asmaSevero_5559F',
+            'asmaSevero_6064M',
+            'asmaSevero_6064F',
+            'asmaSevero_6569M',
+            'asmaSevero_6569F',
+            'asmaSevero_7074M',
+            'asmaSevero_7074F',
+            'asmaSevero_7579M',
+            'asmaSevero_7579F',
+            'asmaSevero_80M',
+            'asmaSevero_80F',
+            'asmaSevero_04M',
+            'asmaSevero_04F',
+            'asmaSevero_59M',
+            'asmaSevero_59F',
+            'asmaSevero_1014M',
+            'asmaSevero_1014F',
+            'asmaSevero_espVig',
+            'asmaSevero_OriginM',
+            'asmaSevero_OriginF'
         ));
 }
 
