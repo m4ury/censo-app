@@ -9,12 +9,10 @@ use App\Paciente;
 
 class EncuestaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-    $q = $request->get('q');
     $encuestas = Encuesta::with('paciente')
-            ->search($q)
-            //->whereYear('fecha_encuesta', 2023)
+            ->whereYear('fecha_encuesta', 2023)
             ->orderBy('num_encuestas', 'ASC')->get();
     //dd($encuestas);
 

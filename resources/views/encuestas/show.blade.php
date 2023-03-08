@@ -372,13 +372,38 @@
             <div class="col-md">
                 <h6> En esta pregunta marque con una "X" la alternativa que Usted la considera:</h6>
                 <br>
-                <strong> 1 - La atencion del personal del Hospital usted la considera:</strong>
+                <strong> 1 - La atencion del personal en CONSULTORIO del Hospital usted la considera:</strong>
                 <br>
                 @if($encuesta->atencion == 'buena')
                 <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
                 @elseif($encuesta->atencion == 'regular')
                 <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
                 @elseif($encuesta->atencion == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+<hr>
+                <strong> 1.1 - La atencion del personal en MEDICINA del Hospital usted la considera:</strong>
+                <br>
+                @if($encuesta->atencionMed == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success "></i>
+                @elseif($encuesta->atencionMed == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->atencionMed == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+                    <hr>
+
+                <strong> 1.2 - La atencion del personal en URGENCIAS del Hospital usted la considera:</strong>
+                <br>
+                @if($encuesta->atencionUrg == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
+                @elseif($encuesta->atencionUrg == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->atencionUrg == 'mala')
                 <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
                 @else
                 <p class="btn badge-pill bg-gradient-info">No hay datos...</p>

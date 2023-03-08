@@ -665,6 +665,72 @@ class Paciente extends Model
                     ->latest('controls.fecha_control');
     }
 
+    public function sborLeve($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.sborClasif', 'Leve')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function sborMod($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.sborClasif', 'Moderado')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function sborSevero($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.sborClasif', 'Severo')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function epocA($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.epocClasif', 'A')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function epocB($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.epocClasif', 'B')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function otrasResp($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.otras_enf', 'Otras respiratorias cronicas')
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
     public function espiromVigente($clasif, $fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')

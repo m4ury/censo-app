@@ -89,11 +89,11 @@
                             <th rowspan="4">SÍNDROME BRONQUIAL OBSTRUCTIVA RECURRENTE (SBOR)</th>
                         <tr>
                             <th>LEVE</th>
-                            <td>{{$asmaLeve}}</td>
-                            <td>{{$asmaLeveM}}</td>
-                            <td>{{$asmaLeveF}}</td>
-                            <td>{{$asmaLeve_04M}}</td>
-                            <td>{{$asmaLeve_04F}}</td>
+                            <td>{{$sborLeve}}</td>
+                            <td>{{$sborLeveM}}</td>
+                            <td>{{$sborLeveF}}</td>
+                            <td>{{$sborLeve_04M}}</td>
+                            <td>{{$sborLeve_04F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
@@ -133,11 +133,11 @@
                         </tr>
                         <tr>
                             <th>MODERADO</th>
-                            <td>{{$asmaModerado}}</td>
-                            <td>{{$asmaModeradoM}}</td>
-                            <td>{{$asmaModeradoF}}</td>
-                            <td>{{$asmaModerado_04M}}</td>
-                            <td>{{$asmaModerado_04F}}</td>
+                            <td>{{$sborMod}}</td>
+                            <td>{{$sborModM}}</td>
+                            <td>{{$sborModF}}</td>
+                            <td>{{$sborMod_04M}}</td>
+                            <td>{{$sborMod_04F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
@@ -177,11 +177,11 @@
                         </tr>
                         <tr>
                             <th>SEVERO</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$sborSevero}}</td>
+                            <td>{{$sborSeveroM}}</td>
+                            <td>{{$sborSeveroF}}</td>
+                            <td>{{$sborSevero_04M}}</td>
+                            <td>{{$sborSevero_04F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
@@ -357,9 +357,9 @@
                             <th rowspan="3">ENFERMEDAD PULMONAR OBSTRUCTIVA CRÓNICA (EPOC)</th>
                         <tr>
                             <th>TIPO A</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $epocA }}</td>
+                            <td>{{ $epocAM }}</td>
+                            <td>{{ $epocAF }}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
@@ -376,24 +376,24 @@
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $epocA_4044M }}</td>
+                            <td>{{ $epocA_4044F }}</td>
+                            <td>{{ $epocA_4549M }}</td>
+                            <td>{{ $epocA_4549F }}</td>
+                            <td>{{ $epocA_5054M }}</td>
+                            <td>{{ $epocA_5054F }}</td>
+                            <td>{{ $epocA_5559M }}</td>
+                            <td>{{ $epocA_5559F }}</td>
+                            <td>{{ $epocA_6064M }}</td>
+                            <td>{{ $epocA_6064F }}</td>
+                            <td>{{ $epocA_6569M }}</td>
+                            <td>{{ $epocA_6569F }}</td>
+                            <td>{{ $epocA_7074M }}</td>
+                            <td>{{ $epocA_7074F }}</td>
+                            <td>{{ $epocA_7579M }}</td>
+                            <td>{{ $epocA_7579F }}</td>
+                            <td>{{ $epocA_80M }}</td>
+                            <td>{{ $epocA_80F }}</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -401,9 +401,9 @@
                         </tr>
                         <tr>
                             <th>TIPO B</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $epocB }}</td>
+                            <td>{{ $epocBM }}</td>
+                            <td>{{ $epocBF }}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
@@ -420,24 +420,24 @@
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $epocB_4044M }}</td>
+                            <td>{{ $epocB_4044F }}</td>
+                            <td>{{ $epocB_4549M }}</td>
+                            <td>{{ $epocB_4549F }}</td>
+                            <td>{{ $epocB_5054M }}</td>
+                            <td>{{ $epocB_5054F }}</td>
+                            <td>{{ $epocB_5559M }}</td>
+                            <td>{{ $epocB_5559F }}</td>
+                            <td>{{ $epocB_6064M }}</td>
+                            <td>{{ $epocB_6064F }}</td>
+                            <td>{{ $epocB_6569M }}</td>
+                            <td>{{ $epocB_6569F }}</td>
+                            <td>{{ $epocB_7074M }}</td>
+                            <td>{{ $epocB_7074F }}</td>
+                            <td>{{ $epocB_7579M }}</td>
+                            <td>{{ $epocB_7579F }}</td>
+                            <td>{{ $epocB_80M }}</td>
+                            <td>{{ $epocB_80F }}</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -445,43 +445,43 @@
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">OTRAS RESPIRATORIAS CRONICAS</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$otrasResp}}</td>
+                            <td>{{$otrasRespM}}</td>
+                            <td>{{$otrasRespF}}</td>
+                            <td>{{$otrasResp_04M}}</td>
+                            <td>{{$otrasResp_04F}}</td>
+                            <td>{{$otrasResp_59M}}</td>
+                            <td>{{$otrasResp_59F}}</td>
+                            <td>{{$otrasResp_1014M}}</td>
+                            <td>{{$otrasResp_1014F}}</td>
+                            <td>{{$otrasResp_1519M}}</td>
+                            <td>{{$otrasResp_1519F}}</td>
+                            <td>{{$otrasResp_2024M}}</td>
+                            <td>{{$otrasResp_2024F}}</td>
+                            <td>{{$otrasResp_2529M}}</td>
+                            <td>{{$otrasResp_2529F}}</td>
+                            <td>{{$otrasResp_3034M}}</td>
+                            <td>{{$otrasResp_3034F}}</td>
+                            <td>{{$otrasResp_3539M}}</td>
+                            <td>{{$otrasResp_3539F}}</td>
+                            <td>{{$otrasResp_4044M}}</td>
+                            <td>{{$otrasResp_4044F}}</td>
+                            <td>{{$otrasResp_4549M}}</td>
+                            <td>{{$otrasResp_4549F}}</td>
+                            <td>{{$otrasResp_5054M}}</td>
+                            <td>{{$otrasResp_5054F}}</td>
+                            <td>{{$otrasResp_5559M}}</td>
+                            <td>{{$otrasResp_5559F}}</td>
+                            <td>{{$otrasResp_6064M}}</td>
+                            <td>{{$otrasResp_6064F}}</td>
+                            <td>{{$otrasResp_6569M}}</td>
+                            <td>{{$otrasResp_6569F}}</td>
+                            <td>{{$otrasResp_7074M}}</td>
+                            <td>{{$otrasResp_7074F}}</td>
+                            <td>{{$otrasResp_7579M}}</td>
+                            <td>{{$otrasResp_7579F}}</td>
+                            <td>{{$otrasResp_80M}}</td>
+                            <td>{{$otrasResp_80F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>

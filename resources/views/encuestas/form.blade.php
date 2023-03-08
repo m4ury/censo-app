@@ -374,8 +374,9 @@
     En esta pregunta marque con una "X" la alternativa que Usted la considera:
 </h3>
 
+{{--consultorio--}}
 <div class="form-group row my-2 ml-2">
-    {!! Form::label('atencion_label', '1 - La atencion del personal del Hospital usted la considera: ', ['class' => 'col-sm col-form-label text-bold']) !!}
+    {!! Form::label('atencion_label', '1 - La atencion del personal en CONSULTORIO del Hospital usted la considera: ', ['class' => 'col-sm col-form-label text-bold']) !!}
     <div class="col-sm">
         {!! Form::label('atencion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('atencion', 'buena', old('atencion', $encuesta->atencion), ['class' =>
@@ -393,6 +394,46 @@
     </div>
 </div>
 
+{{--medicina--}}
+<div class="form-group row my-2 ml-2">
+    {!! Form::label('atencion_label', '1.1 - La atencion del personal en MEDICINA del Hospital usted la considera: ', ['class' => 'col-sm col-form-label text-bold']) !!}
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionMed', 'buena', old('atencionMed', $encuesta->atencionMed), ['class' =>
+        'form-control my-2 atencion_m']) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'REGULAR', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionMed', 'regular', old('atencionMed', $encuesta->atencionMed), ['class' =>
+        'form-control my-2 atencion_m']) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'MALA', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionMed', 'mala', old('atencionMed', $encuesta->atencionMed), ['class' =>
+        'form-control my-2 atencion_m']) !!}
+    </div>
+</div>
+
+{{--urgencias--}}
+<div class="form-group row my-2 ml-2">
+    {!! Form::label('atencion_label', '1.2 - La atencion del personal en URGENCIAS del Hospital usted la considera: ', ['class' => 'col-sm col-form-label text-bold']) !!}
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionUrg', 'buena', old('atencionUrg', $encuesta->atencionUrg), ['class' =>
+        'form-control my-2 atencion_u']) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'REGULAR', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionUrg', 'regular', old('atencionUrg', $encuesta->atencionUrg), ['class' =>
+        'form-control my-2 atencion_u']) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('atencion_label', 'MALA', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('atencionUrg', 'mala', old('atencionUrg', $encuesta->atencionUrg), ['class' =>
+        'form-control my-2 atencion_u']) !!}
+    </div>
+</div>
+
 <hr>
 
 <div class="form-group row my-2 ml-2">
@@ -400,17 +441,17 @@
     <div class="col-sm">
         {!! Form::label('funcion_label', 'BUENA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'buena', old('funcion', $encuesta->funcion), ['class' =>
-        'form-control my-2 funcion_r']) !!}
+        'form-control my-2 funcion_u']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('funcion_label', 'REGULAR', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'regular', old('funcion', $encuesta->funcion), ['class' =>
-        'form-control my-2 funcion_r']) !!}
+        'form-control my-2 funcion_u']) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('funcion_label', 'MALA', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('funcion', 'mala', old('mala', $encuesta->funcion), ['class' =>
-        'form-control my-2 funcion_r']) !!}
+        'form-control my-2 funcion_u']) !!}
     </div>
 </div>
 <hr>
