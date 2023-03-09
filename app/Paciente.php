@@ -555,32 +555,38 @@ class Paciente extends Model
 
     public function depLeve()
     {
-        return $this->whereDependencia('L');
+        return $this->whereDependencia('L')
+                    ->whereNull('egreso');
     }
 
     public function depMod()
     {
-        return $this->whereDependencia('M');
+        return $this->whereDependencia('M')
+                    ->whereNull('egreso');
     }
 
     public function depGrave()
     {
-        return $this->whereDependencia('G');
+        return $this->whereDependencia('G')
+                    ->whereNull('egreso');
     }
 
     public function depTotal()
     {
-        return $this->whereDependencia('T');
+        return $this->whereDependencia('T')
+                    ->whereNull('egreso');
     }
 
     public function subBarthel()
     {
-        return $this->whereIn('dependencia', ['L', 'M', 'G', 'T']);
+        return $this->whereIn('dependencia', ['L', 'M', 'G', 'T'])
+                    ->whereNull('egreso');
     }
 
     public function totalSeccion()
     {
-        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])->orWhereIn('dependencia', ['L', 'M', 'G', 'T']);
+        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+                    ->whereNull('egreso');
     }
 
     //seccion B

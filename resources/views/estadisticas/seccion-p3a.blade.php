@@ -885,43 +885,43 @@
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA LEVE</th>
+                            <td>{{$depLeve}}</td>
+                            <td>{{$depLeveM}}</td>
+                            <td>{{$depLeveF}}</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$depLeve_1014M}}</td>
+                            <td>{{$depLeve_1014F}}</td>
+                            <td>{{$depLeve_1519M}}</td>
+                            <td>{{$depLeve_1519F}}</td>
+                            <td>{{$depLeve_2024M}}</td>
+                            <td>{{$depLeve_2024F}}</td>
+                            <td>{{$depLeve_2529M}}</td>
+                            <td>{{$depLeve_2529F}}</td>
+                            <td>{{$depLeve_3034M}}</td>
+                            <td>{{$depLeve_3034F}}</td>
+                            <td>{{$depLeve_3539M}}</td>
+                            <td>{{$depLeve_3539F}}</td>
+                            <td>{{$depLeve_4044M}}</td>
+                            <td>{{$depLeve_4044F}}</td>
+                            <td>{{$depLeve_4549M}}</td>
+                            <td>{{$depLeve_4549F}}</td>
+                            <td>{{$depLeve_5054M}}</td>
+                            <td>{{$depLeve_5054F}}</td>
+                            <td>{{$depLeve_5559M}}</td>
+                            <td>{{$depLeve_5559F}}</td>
+                            <td>{{$depLeve_6064M}}</td>
+                            <td>{{$depLeve_6064F}}</td>
+                            <td>{{$depLeve_6569M}}</td>
+                            <td>{{$depLeve_6569F}}</td>
+                            <td>{{$depLeve_7074M}}</td>
+                            <td>{{$depLeve_7074F}}</td>
+                            <td>{{$depLeve_7579M}}</td>
+                            <td>{{$depLeve_7579F}}</td>
+                            <td>{{$depLeve_80M}}</td>
+                            <td>{{$depLeve_80F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
@@ -929,43 +929,43 @@
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA MODERADA</th>
+                            <td>{{$depMod}}</td>
+                            <td>{{$depModM}}</td>
+                            <td>{{$depModF}}</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$depMod_1014M}}</td>
+                            <td>{{$depMod_1014F}}</td>
+                            <td>{{$depMod_1519M}}</td>
+                            <td>{{$depMod_1519F}}</td>
+                            <td>{{$depMod_2024M}}</td>
+                            <td>{{$depMod_2024F}}</td>
+                            <td>{{$depMod_2529M}}</td>
+                            <td>{{$depMod_2529F}}</td>
+                            <td>{{$depMod_3034M}}</td>
+                            <td>{{$depMod_3034F}}</td>
+                            <td>{{$depMod_3539M}}</td>
+                            <td>{{$depMod_3539F}}</td>
+                            <td>{{$depMod_4044M}}</td>
+                            <td>{{$depMod_4044F}}</td>
+                            <td>{{$depMod_4549M}}</td>
+                            <td>{{$depMod_4549F}}</td>
+                            <td>{{$depMod_5054M}}</td>
+                            <td>{{$depMod_5054F}}</td>
+                            <td>{{$depMod_5559M}}</td>
+                            <td>{{$depMod_5559F}}</td>
+                            <td>{{$depMod_6064M}}</td>
+                            <td>{{$depMod_6064F}}</td>
+                            <td>{{$depMod_6569M}}</td>
+                            <td>{{$depMod_6569F}}</td>
+                            <td>{{$depMod_7074M}}</td>
+                            <td>{{$depMod_7074F}}</td>
+                            <td>{{$depMod_7579M}}</td>
+                            <td>{{$depMod_7579F}}</td>
+                            <td>{{$depMod_80M}}</td>
+                            <td>{{$depMod_80F}}</td>
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
