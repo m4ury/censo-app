@@ -3,44 +3,46 @@
 @section('title', 'estadisticas')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col">
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h3 class="card-title text-bold">
-                    REM-P3. POBLACION EN CONTROL OTROS PROGRAMAS
-                </h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <h4 class="card-title text-bold mb-3">
-                        <a href="{{route('estadisticas.seccion-p3a')}}">SECCIÓN A: EXISTENCIA DE POBLACIÓN EN CONTROL</a>
-                    </h4>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">
+                        REM-P3. POBLACION EN CONTROL OTROS PROGRAMAS
+                    </h3>
                 </div>
-                <div class="row">
-                    <h4 class="card-title text-bold mb-3">
-                        <a href="#">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
-                    </h4>
-                </div>
-                <div class="row">
-                    <h4 class="card-title text-bold mb-3">
-                        <a href="#">SECCIÓN C: POBLACION EN CONTROL EN PROGRAMA DE REHABILITACION PULMONAR EN SALA IRA-ERA</a>
-                    </h4>
-                </div>
-                <div class="row">
-                    <h4 class="card-title text-bold mb-3">
-                        <a href="#">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
-                    </h4>
-                </div>
-                <div class="row">
-                    <h4 class="card-title text-bold mb-3">
-                        <a href="#">SECCIÓN E: RESULTADO DE ENCUESTA CALIDAD DE VIDA</a>
-                    </h4>
+                <div class="card-body">
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{route('estadisticas.seccion-p3a')}}">SECCIÓN A: EXISTENCIA DE POBLACIÓN EN
+                                CONTROL</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="#">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="#">SECCIÓN C: POBLACION EN CONTROL EN PROGRAMA DE REHABILITACION PULMONAR EN SALA
+                                IRA-ERA</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="#">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="#">SECCIÓN E: RESULTADO DE ENCUESTA CALIDAD DE VIDA</a>
+                        </h4>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <div class="row justify-content-center">
         <div class="col">
             <div class="card card-primary card-outline">
@@ -87,7 +89,8 @@
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.seccion-p5b')}}">SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO NUTRICIONAL</a>
+                    <a href="{{route('estadisticas.seccion-p5b')}}">SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO
+                        NUTRICIONAL</a>
                 </h4>
             </div>
         </div>
@@ -108,7 +111,7 @@
         </div>
     </div>
 
-    <div class="card card-info card-outline">
+    {{--<div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
                 ESTADISTICA MENSUAL
@@ -121,7 +124,7 @@
                 </h4>
             </div>
         </div>
-    </div>
+    </div>--}}
 
     <div class="card card-info card-outline">
         <div class="card-header">
@@ -158,6 +161,28 @@
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
                     <a href="{{route('estadisticas.hta')}}">TODOS</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-info card-outline">
+        <div class="card-header">
+            <h3 class="card-title text-bold">
+                ENCUESTA NACIONAL DE LA SALUD
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.ens')}}">HTA</a>
+                </h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.ensDm2')}}">DM2</a>
                 </h4>
             </div>
         </div>

@@ -4,144 +4,144 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row align-self-center">
-        <div class="col-lg-6 col-sm">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>{{ $totalPacientes }}</h3>
-                    <p>Total Pacientes en Prog. Cardiovascular</p>
+    <div class="container-fluid">
+        <div class="row align-self-center">
+            <div class="col-lg-6 col-sm">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ $totalPacientes }}</h3>
+                        <p>Total Pacientes en Prog. Cardiovascular</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <a href="{{ route('pacientes.index') }}" class="small-box-footer">Mas información <i
+                                class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <a href="{{ route('pacientes.index') }}" class="small-box-footer">Mas información <i
-                        class="fas fa-arrow-circle-right"></i></a>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-sm">
-            <!-- small box -->
-            <div class="small-box bg-gradient-pink">
-                <div class="inner">
-                    <h3>{{ $totalFemenino }}</h3>
-                    <p>Total Pacientes Mujeres</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-female"></i>
-                </div>
-                <a href="{{ url('/pacientes?q=femenino') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm">
-            <!-- small box -->
-            <div class="small-box bg-gradient-blue">
-                <div class="inner">
-                    <h3>{{ $totalMasculino }}</h3>
-                    <p>Total Pacientes Hombres</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-male"></i>
-                </div>
-                <a href="{{ url('/pacientes?q=masculino') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="row align-self-center">
-        <!-- ./col -->
-        <div class="col-lg-6 col-sm">
-            <!-- small box -->
-            <div class="small-box bg-gradient-orange">
-                <div class="inner">
-                    <h3>{{ $totalNaranjo }}</h3>
-                    <p>Pacientes Sector Naranjo</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-hospital-user"></i>
-                </div>
-                <a href="{{ url('/pacientes?q=naranjo') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm">
-            <div class="small-box bg-gradient-lightblue">
-                <div class="inner">
-                    <h3>{{ $totalCeleste }}</h3>
-                    <p>Pacientes Sector Celeste</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-hospital-user"></i>
-                </div>
-                <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
-                        class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="card-body">
-        <div class="d-flex">
-            <p class="d-flex flex-column">
-                <span>Total Pacientes</span>
-            </p>
-            <p class="ml-auto d-flex flex-column text-right">
-            </p>
-        </div>
-        <!-- /.d-flex -->
-        <div class="position-relative mb-4">
-            <div class="chartjs-size-monitor">
-                <div class="chartjs-size-monitor-expand">
-                    <div class=""></div>
-                </div>
-                <div class="chartjs-size-monitor-shrink">
-                    <div class=""></div>
+            <div class="col-lg-3 col-sm">
+                <!-- small box -->
+                <div class="small-box bg-gradient-pink">
+                    <div class="inner">
+                        <h3>{{ $totalFemenino }}</h3>
+                        <p>Total Pacientes Mujeres</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=femenino') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;" width="759"
-                class="chartjs-render-monitor"></canvas>
-        </div>
-    </div>
-    {{-- <div class="row">
-        <div class="col-lg-4 col-sm">
-            <div class="small-box bg-gradient-success">
-                <div class="inner">
-                    <h3>{{ $compensados }}</h3>
-                    <p>Pacientes Compensados</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $noCompensados }}</h3>
-                    <p>Pacientes NO Compensados</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-times"></i>
+            <div class="col-lg-3 col-sm">
+                <!-- small box -->
+                <div class="small-box bg-gradient-blue">
+                    <div class="inner">
+                        <h3>{{ $totalMasculino }}</h3>
+                        <p>Total Pacientes Hombres</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-male"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=masculino') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-sm">
-            <div class="small-box bg-gradient-info">
-                <div class="inner">
-                    <h3>{{ $sinInfo }}</h3>
-                    <p>Pacientes Sin Información</p>
+        <div class="row align-self-center">
+            <!-- ./col -->
+            <div class="col-lg-6 col-sm">
+                <!-- small box -->
+                <div class="small-box bg-gradient-orange">
+                    <div class="inner">
+                        <h3>{{ $totalNaranjo }}</h3>
+                        <p>Pacientes Sector Naranjo</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=naranjo') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-question"></i>
+            </div>
+            <div class="col-lg-6 col-sm">
+                <div class="small-box bg-gradient-lightblue">
+                    <div class="inner">
+                        <h3>{{ $totalCeleste }}</h3>
+                        <p>Pacientes Sector Celeste</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
+                                class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>
-    </div>
- --}}
+
+
+        <div class="card-body">
+            <div class="d-flex">
+                <p class="d-flex flex-column">
+                    <span>Total Pacientes</span>
+                </p>
+                <p class="ml-auto d-flex flex-column text-right">
+                </p>
+            </div>
+            <!-- /.d-flex -->
+            <div class="position-relative mb-4">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;" width="759"
+                        class="chartjs-render-monitor"></canvas>
+            </div>
+        </div>
+        {{-- <div class="row">
+            <div class="col-lg-4 col-sm">
+                <div class="small-box bg-gradient-success">
+                    <div class="inner">
+                        <h3>{{ $compensados }}</h3>
+                        <p>Pacientes Compensados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm">
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3>{{ $noCompensados }}</h3>
+                        <p>Pacientes NO Compensados</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-times"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-sm">
+                <div class="small-box bg-gradient-info">
+                    <div class="inner">
+                        <h3>{{ $sinInfo }}</h3>
+                        <p>Pacientes Sin Información</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-question"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+     --}}
         <div class="row">
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-primary">
@@ -172,58 +172,56 @@
             </div>
         </div>
         <div class="row">
-        <div class="col-lg-3 col-sm">
-            <div class="small-box bg-gradient-danger">
-                <div class="inner">
-                    <h3>{{ $hta }}</h3>
-                    <p>PACIENTES HIPERTENSOS</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-injured"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm">
-            <div class="small-box bg-gradient-secondary">
-                <div class="inner">
-                    <h3>{{ $dlp }}</h3>
-                    <p>PACIENTES DISLIPIDEMICOS</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-injured"></i>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3>{{ $hta }}</h3>
+                        <p>PACIENTES HIPERTENSOS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm">
-            <div class="small-box bg-gradient-info">
-                <div class="inner">
-                    <h3>{{ $acv }}</h3>
-                    <p>CON ANTECEDENTES ACV</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-user-injured"></i>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-secondary">
+                    <div class="inner">
+                        <h3>{{ $dlp }}</h3>
+                        <p>PACIENTES DISLIPIDEMICOS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm">
-            <div class="small-box bg-gradient-indigo">
-                <div class="inner">
-                    <h3>{{ $iam }}</h3>
-                    <p>CON ANTECEDENTES IAM</p>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-info">
+                    <div class="inner">
+                        <h3>{{ $acv }}</h3>
+                        <p>CON ANTECEDENTES ACV</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
                 </div>
-                <div class="icon">
-                    <i class="fas fa-user-injured"></i>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-indigo">
+                    <div class="inner">
+                        <h3>{{ $iam }}</h3>
+                        <p>CON ANTECEDENTES IAM</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-</div>
 @endsection
 @section('js')
-<script>
-    var ctx = document.getElementById('myChart').getContext('2d');
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -268,7 +266,7 @@
             },
             options: {
                 animation: {
-                duration: 1500,
+                    duration: 1500,
                 },
                 scales: {
                     yAxes: [{
@@ -279,5 +277,5 @@
                 }
             }
         });
-</script>
+    </script>
 @endsection
