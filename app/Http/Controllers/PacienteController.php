@@ -15,7 +15,8 @@ class PacienteController extends Controller
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento')->latest()
+        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso')
+            ->orderBy('rut')
             ->search($q)
             ->get();
 
@@ -56,7 +57,9 @@ class PacienteController extends Controller
         $validator = Validator::make($request->all(), [
             'rut' => 'cl_rut',
             'nombres' => 'string|min:3',
-            'apellidoP' => 'string|min:3'
+            'apellidoP' => 'string|min:3',
+            'erc' => 'required_with:riesgo_cv'
+            //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
 
@@ -69,7 +72,11 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
 
         $paciente->usoInsulina = $request->usoInsulina ?? 0;
-        $paciente->usoInsulina = $request->usoIecaAraII ?? 0;
+        $paciente->usoIecaAraII = $request->usoIecaAraII ?? 0;
+        $paciente->pueblo_originario = $request->pueblo_originario ?? 0;
+        $paciente->migrante = $request->migrante ?? 0;
+        $paciente->usoAspirinas = $request->usoAspirinas ?? 0;
+        $paciente->usoEstatinas = $request->usoEstatinas ?? 0;
 
         $paciente->update($request->all());
         //dd($paciente);

@@ -99,6 +99,12 @@
         $('input.deb_6').on('change', function () {
             $('input.deb_6').not(this).prop('checked', false);
         });
+        $('input.deb_7').on('change', function () {
+            $('input.deb_7').not(this).prop('checked', false);
+        });
+        $('input.der_16').on('change', function () {
+            $('input.der_16').not(this).prop('checked', false);
+        });
 
 
         $('input.atencion').on('change', function () {

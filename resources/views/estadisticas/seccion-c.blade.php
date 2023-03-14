@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV AL CORTE
+                REM P4 - SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV AL CORTE
             </h4>
             <div class="col-md-12 table-responsive">
                 <table class="table table-md-responsive table-bordered">
@@ -309,21 +309,37 @@
                         </tr>
                         <tr>
                             <th colspan="2">EN TRATAMIENTO CON INSULINA QUE LOGRA META CON HbA1C SEGÚN EDAD</th>
-                            <td>
-                                {{ $insulinaHba1C }}
-                            </td>
-                            <td>
-                                {{ $insulinaHba1C_1564 }}
-                            </td>
-                            <td>
-                                {{ $insulinaHba1C_65 }}
-                            </td>
-                            <td>
-                                {{ $insulinaHba1CM }}
-                            </td>
-                            <td>
-                                {{ $insulinaHba1CF }}
-                            </td>
+                            <td>{{ $insulinaHba1C }}</td>
+                            <td>{{ $insulinaHba1CM }}</td>
+                            <td>{{ $insulinaHba1CF }}</td>
+                            <td>{{$insulinaHba1C_1519M}}</td>
+                            <td>{{$insulinaHba1C_1519F}}</td>
+                            <td>{{$insulinaHba1C_2024M}}</td>
+                            <td>{{$insulinaHba1C_2024F}}</td>
+                            <td>{{$insulinaHba1C_2529M}}</td>
+                            <td>{{$insulinaHba1C_2529F}}</td>
+                            <td>{{$insulinaHba1C_3034M}}</td>
+                            <td>{{$insulinaHba1C_3034F}}</td>
+                            <td>{{$insulinaHba1C_3539M}}</td>
+                            <td>{{$insulinaHba1C_3539F}}</td>
+                            <td>{{$insulinaHba1C_4044M}}</td>
+                            <td>{{$insulinaHba1C_4044F}}</td>
+                            <td>{{$insulinaHba1C_4549M}}</td>
+                            <td>{{$insulinaHba1C_4549F}}</td>
+                            <td>{{$insulinaHba1C_5054M}}</td>
+                            <td>{{$insulinaHba1C_5054F}}</td>
+                            <td>{{$insulinaHba1C_5559M}}</td>
+                            <td>{{$insulinaHba1C_5559F}}</td>
+                            <td>{{$insulinaHba1C_6064M}}</td>
+                            <td>{{$insulinaHba1C_6064F}}</td>
+                            <td>{{$insulinaHba1C_6569M}}</td>
+                            <td>{{$insulinaHba1C_6569F}}</td>
+                            <td>{{$insulinaHba1C_7074M}}</td>
+                            <td>{{$insulinaHba1C_7074F}}</td>
+                            <td>{{$insulinaHba1C_7579M}}</td>
+                            <td>{{$insulinaHba1C_7579F}}</td>
+                            <td>{{$insulinaHba1C_80M}}</td>
+                            <td>{{$insulinaHba1C_80F}}</td>
                         </tr>
                         <tr>
                             <th colspan="2">CON HbA1C >= 9 %</th>
@@ -603,112 +619,228 @@
                             </th>
                         <tr>
                             <th nowrap="">Curación Convencional</th>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_conv }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_conv_1564 }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_conv_65 }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_convM }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_convF }}
-                            </td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_conv }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_convM }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_convF }}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_1519M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_1519F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2024M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2024F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2529M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2529F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3034M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3034F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3539M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3539F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4044M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4044F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4549M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4549F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5054M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5054F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5559M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5559F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6064M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6064F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6569M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6569F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7074M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7074F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7579M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7579F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_80M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th nowrap="">Curación Avanzada</th>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_avz }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_avz_1564 }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_avz_65 }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_avzM }}
-                            </td>
-                            <td>
-                                {{ $ulcerasActivas_TipoCuracion_avzF }}
-                            </td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_avz }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_avzM }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_avzF }}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_1519M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_1519F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_2024M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_2024F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_2529M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_2529F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_3034M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_3034F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_3539M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_3539F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_4044M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_4044F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_4549M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_4549F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_5054M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_5054F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_5559M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_5559F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_6064M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_6064F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_6569M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_6569F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_7074M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_7074F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_7579M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_7579F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_80M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_avz_80F}}</td>
                         </tr>
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">CON AMPUTACIÓN POR PIE DIABÉTICO</th>
-                            <td>
-                                {{ $aputacionPieDM2 }}
-                            </td>
-                            <td>
-                                {{ $aputacionPieDM2_1564 }}
-                            </td>
-                            <td>
-                                {{ $aputacionPieDM2_65 }}
-                            </td>
-                            <td>
-                                {{ $aputacionPieDM2M }}
-                            </td>
-                            <td>
-                                {{ $aputacionPieDM2F }}
-                            </td>
+                            <td>{{ $aputacionPieDM2 }}</td>
+                            <td>{{ $aputacionPieDM2M }}</td>
+                            <td>{{ $aputacionPieDM2F }}</td>
+                            <td>{{$aputacionPieDM2_1519M}}</td>
+                            <td>{{$aputacionPieDM2_1519F}}</td>
+                            <td>{{$aputacionPieDM2_2024M}}</td>
+                            <td>{{$aputacionPieDM2_2024F}}</td>
+                            <td>{{$aputacionPieDM2_2529M}}</td>
+                            <td>{{$aputacionPieDM2_2529F}}</td>
+                            <td>{{$aputacionPieDM2_3034M}}</td>
+                            <td>{{$aputacionPieDM2_3034F}}</td>
+                            <td>{{$aputacionPieDM2_3539M}}</td>
+                            <td>{{$aputacionPieDM2_3539F}}</td>
+                            <td>{{$aputacionPieDM2_4044M}}</td>
+                            <td>{{$aputacionPieDM2_4044F}}</td>
+                            <td>{{$aputacionPieDM2_4549M}}</td>
+                            <td>{{$aputacionPieDM2_4549F}}</td>
+                            <td>{{$aputacionPieDM2_5054M}}</td>
+                            <td>{{$aputacionPieDM2_5054F}}</td>
+                            <td>{{$aputacionPieDM2_5559M}}</td>
+                            <td>{{$aputacionPieDM2_5559F}}</td>
+                            <td>{{$aputacionPieDM2_6064M}}</td>
+                            <td>{{$aputacionPieDM2_6064F}}</td>
+                            <td>{{$aputacionPieDM2_6569M}}</td>
+                            <td>{{$aputacionPieDM2_6569F}}</td>
+                            <td>{{$aputacionPieDM2_7074M}}</td>
+                            <td>{{$aputacionPieDM2_7074F}}</td>
+                            <td>{{$aputacionPieDM2_7579M}}</td>
+                            <td>{{$aputacionPieDM2_7579F}}</td>
+                            <td>{{$aputacionPieDM2_80M}}</td>
+                            <td>{{$aputacionPieDM2_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">CON DIAGNOSTICO ASOCIADO DE HIPERTENSION ARTERIAL</th>
-                            <td>
-                                {{ $dm2M_hta }}
-                            </td>
-                            <td>
-                                {{ $dm2M_hta_1564 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_hta_65 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_htaM }}
-                            </td>
-                            <td>
-                                {{ $dm2M_htaF }}
-                            </td>
+                            <td>{{ $dm2M_hta }}</td>
+                            <td>{{ $dm2M_htaM }}</td>
+                            <td>{{ $dm2M_htaF }}</td>
+                            <td>{{$dm2M_hta_1519M}}</td>
+                            <td>{{$dm2M_hta_1519F}}</td>
+                            <td>{{$dm2M_hta_2024M}}</td>
+                            <td>{{$dm2M_hta_2024F}}</td>
+                            <td>{{$dm2M_hta_2529M}}</td>
+                            <td>{{$dm2M_hta_2529F}}</td>
+                            <td>{{$dm2M_hta_3034M}}</td>
+                            <td>{{$dm2M_hta_3034F}}</td>
+                            <td>{{$dm2M_hta_3539M}}</td>
+                            <td>{{$dm2M_hta_3539F}}</td>
+                            <td>{{$dm2M_hta_4044M}}</td>
+                            <td>{{$dm2M_hta_4044F}}</td>
+                            <td>{{$dm2M_hta_4549M}}</td>
+                            <td>{{$dm2M_hta_4549F}}</td>
+                            <td>{{$dm2M_hta_5054M}}</td>
+                            <td>{{$dm2M_hta_5054F}}</td>
+                            <td>{{$dm2M_hta_5559M}}</td>
+                            <td>{{$dm2M_hta_5559F}}</td>
+                            <td>{{$dm2M_hta_6064M}}</td>
+                            <td>{{$dm2M_hta_6064F}}</td>
+                            <td>{{$dm2M_hta_6569M}}</td>
+                            <td>{{$dm2M_hta_6569F}}</td>
+                            <td>{{$dm2M_hta_7074M}}</td>
+                            <td>{{$dm2M_hta_7074F}}</td>
+                            <td>{{$dm2M_hta_7579M}}</td>
+                            <td>{{$dm2M_hta_7579F}}</td>
+                            <td>{{$dm2M_hta_80M}}</td>
+                            <td>{{$dm2M_hta_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">CON ANTECEDENTE DE ATAQUE CEREBRO VASCULAR</th>
-                            <td>
-                                {{ $dm2M_acv }}
-                            </td>
-                            <td>
-                                {{ $dm2M_acv_1564 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_acv_65 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_acvM }}
-                            </td>
-                            <td>
-                                {{ $dm2M_acvF }}
-                            </td>
+                            <td>{{ $dm2M_acv }}</td>
+                            <td>{{ $dm2M_acvM }}</td>
+                            <td>{{ $dm2M_acvF }}</td>
+                            <td>{{$dm2M_acv_1519M}}</td>
+                            <td>{{$dm2M_acv_1519F}}</td>
+                            <td>{{$dm2M_acv_2024M}}</td>
+                            <td>{{$dm2M_acv_2024F}}</td>
+                            <td>{{$dm2M_acv_2529M}}</td>
+                            <td>{{$dm2M_acv_2529F}}</td>
+                            <td>{{$dm2M_acv_3034M}}</td>
+                            <td>{{$dm2M_acv_3034F}}</td>
+                            <td>{{$dm2M_acv_3539M}}</td>
+                            <td>{{$dm2M_acv_3539F}}</td>
+                            <td>{{$dm2M_acv_4044M}}</td>
+                            <td>{{$dm2M_acv_4044F}}</td>
+                            <td>{{$dm2M_acv_4549M}}</td>
+                            <td>{{$dm2M_acv_4549F}}</td>
+                            <td>{{$dm2M_acv_5054M}}</td>
+                            <td>{{$dm2M_acv_5054F}}</td>
+                            <td>{{$dm2M_acv_5559M}}</td>
+                            <td>{{$dm2M_acv_5559F}}</td>
+                            <td>{{$dm2M_acv_6064M}}</td>
+                            <td>{{$dm2M_acv_6064F}}</td>
+                            <td>{{$dm2M_acv_6569M}}</td>
+                            <td>{{$dm2M_acv_6569F}}</td>
+                            <td>{{$dm2M_acv_7074M}}</td>
+                            <td>{{$dm2M_acv_7074F}}</td>
+                            <td>{{$dm2M_acv_7579M}}</td>
+                            <td>{{$dm2M_acv_7579F}}</td>
+                            <td>{{$dm2M_acv_80M}}</td>
+                            <td>{{$dm2M_acv_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">CON ANTECEDENTES DE INFARTO AGUDO AL MIOCARDIO</th>
-                            <td>
-                                {{ $dm2M_iam }}
-                            </td>
-                            <td>
-                                {{ $dm2M_iam_1564 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_iam_65 }}
-                            </td>
-                            <td>
-                                {{ $dm2M_iamM }}
-                            </td>
-                            <td>
-                                {{ $dm2M_iamF }}
-                            </td>
+                            <td>{{ $dm2M_iam }}</td>
+                            <td>{{ $dm2M_iamM }}</td>
+                            <td>{{ $dm2M_iamF }}</td>
+                            <td>{{$dm2M_iam_1519M}}</td>
+                            <td>{{$dm2M_iam_1519F}}</td>
+                            <td>{{$dm2M_iam_2024M}}</td>
+                            <td>{{$dm2M_iam_2024F}}</td>
+                            <td>{{$dm2M_iam_2529M}}</td>
+                            <td>{{$dm2M_iam_2529F}}</td>
+                            <td>{{$dm2M_iam_3034M}}</td>
+                            <td>{{$dm2M_iam_3034F}}</td>
+                            <td>{{$dm2M_iam_3539M}}</td>
+                            <td>{{$dm2M_iam_3539F}}</td>
+                            <td>{{$dm2M_iam_4044M}}</td>
+                            <td>{{$dm2M_iam_4044F}}</td>
+                            <td>{{$dm2M_iam_4549M}}</td>
+                            <td>{{$dm2M_iam_4549F}}</td>
+                            <td>{{$dm2M_iam_5054M}}</td>
+                            <td>{{$dm2M_iam_5054F}}</td>
+                            <td>{{$dm2M_iam_5559M}}</td>
+                            <td>{{$dm2M_iam_5559F}}</td>
+                            <td>{{$dm2M_iam_6064M}}</td>
+                            <td>{{$dm2M_iam_6064F}}</td>
+                            <td>{{$dm2M_iam_6569M}}</td>
+                            <td>{{$dm2M_iam_6569F}}</td>
+                            <td>{{$dm2M_iam_7074M}}</td>
+                            <td>{{$dm2M_iam_7074F}}</td>
+                            <td>{{$dm2M_iam_7579M}}</td>
+                            <td>{{$dm2M_iam_7579F}}</td>
+                            <td>{{$dm2M_iam_80M}}</td>
+                            <td>{{$dm2M_iam_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th colspan="2" class="text-left bg-gradient-gray">PERSONAS HIPERTENSAS EN PSCV</th>

@@ -105,8 +105,8 @@ return [
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
-    'classes_auth_footer' => '',
-    'classes_auth_icon' => '',
+    'classes_auth_footer' => 'text-center',
+    'classes_auth_icon' => 'fa-lg text-info',
     'classes_auth_btn' => 'btn-flat btn-primary',
 
     /*
@@ -146,7 +146,7 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -282,7 +282,7 @@ return [
             'icon' => 'fas fa-fw fa-heartbeat text-info',
             'can' => 'ver-patologias'
         ],
-        ['header' => 'CONTROLES',
+        /* ['header' => 'CONTROLES',
         'can' => 'controles-all'],
         [
             'text' => 'Controles',
@@ -295,7 +295,7 @@ return [
             'route' => 'proximos',
             'icon' => 'fas fa-fw fa-project-diagram text-yellow',
             'can' => 'controles-all'
-        ],
+        ], */
         ['header' => 'ESTADISTICAS',
         'can' => 'estadisticas'],
         [

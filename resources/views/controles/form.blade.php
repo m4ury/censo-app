@@ -2,7 +2,7 @@
     {!! Form::label('tipo_control', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select('tipo_control', ['Medico'=> 'Medico', 'Enfermera' => 'Enfermera', 'Kinesiologo' =>
-        'Kinesiologo', 'Nutricionista' => 'Nutricionista'], old('tipo_control', $control->tipo_control), ['class' =>
+        'Kinesiologo', 'Nutricionista' => 'Nutricionista', 'Psicologo' => 'Psicologo'], old('tipo_control', $control->tipo_control), ['class' =>
         'form-control'.($errors->has('tipo_control') ? ' is-invalid' : ''), 'id' => 'tipo', 'placeholder'=> "Seleccione
         Profesional"]) !!}
         @if ($errors->has('tipo_control'))
@@ -29,15 +29,26 @@
     </div>
 </div>
 <div class="form-group row">
-    {!! Form::label('presion_arterial', 'Presion Arterial', ['class' => 'col-sm-3 col-form-label']) !!}
-    <div class="col-sm-9">
-        {!! Form::text('presion_arterial', old('presion_arterial', $control->presion_arterial), ['class' =>
+    {!! Form::label('sistolica_label', 'Presion Art. Sistolica', ['class' => 'col-sm-3 col-form-label']) !!}
+    <div class="col-sm-3">
+        {!! Form::number('sistolica', old('sistólica', $control->sistolica), ['class' =>
         'form-control
-        form-control-sm'.($errors->has('presion_arterial') ? ' is-invalid' : ''), 'placeholder' => 'Ejemplo.: 120/80'])
+        form-control-sm'.($errors->has('sistolica') ? ' is-invalid' : ''), 'placeholder' => 'Ejemplo.: 120'])
         !!}
-        @if ($errors->has('presion_arterial'))
+        @if ($errors->has('sistolica'))
         <span class="invalid-feedback">
-            <strong>{{ $errors->first('presion_arterial') }}</strong>
+            <strong>{{ $errors->first('sistolica') }}</strong>
+        </span>
+        @endif
+    </div>
+    {!! Form::label('diastolica_label', 'Presion Art. Diastólica',['class' => 'col-sm-3 col-form-label']) !!}
+    <div class="col-sm-3">
+        {!! Form::number('diastolica', old('diastolica', $control->diastolica), ['class' => 'form-control
+        form-control-sm'.($errors->has('diastolica')
+        ? ' is-invalid' : ''), 'placeholder' => 'Ejemplo: 80']) !!}
+        @if ($errors->has('diastolica'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('diastolica') }}</strong>
         </span>
         @endif
     </div>
@@ -105,6 +116,8 @@
 @include('partials.sala_era')
 @elseif($patologia->nombre_patologia == 'DM2')
 @include('partials.dm2')
+@elseif($patologia->nombre_patologia == 'SALUD MENTAL')
+@include('partials.salud_mental')
 @endif
 @endforeach
 
@@ -141,7 +154,7 @@
         <div class="col-sm-2">
             {!! Form::select('prox_tipo', ['Medico'=> 'Medico', 'Enfermera' => 'Enfermera', 'Kinesiologo' =>
             'Kinesiologo',
-            'Nutricionista' => 'Nutricionista'], old('prox_tipo', $control->prox_tipo), ['class' => 'form-control
+            'Nutricionista' => 'Nutricionista', 'Psicologo' => 'Psicologo'], old('prox_tipo', $control->prox_tipo), ['class' => 'form-control
             form-control-sm'.($errors->has('prox_tipo')
             ? ' is-invalid' : ''), 'id' => 'prox_tipo', 'placeholder'=> "Seleccione Profesional"]) !!}
             @if ($errors->has('prox_tipo'))
@@ -176,7 +189,7 @@
 @section('js')
 <script>
     $('#Enfermera, #Kine, #Medico, #Nutricionista').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf').select2({
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif').select2({
             theme: "classic",
             width: '100%',
         });
@@ -222,7 +235,7 @@
             })
         });
 
-        $("#rac_vigente, #examenes1").removeAttr("checked");
+        $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function () {
             $('#Enfermera, #Kine, #Medico, #Nutricionista').hide();
@@ -312,6 +325,18 @@
 
         } else $('.hba1c7').show()
 });
+
+$('.asmaClasif, epocClasif, sborClasif').change(function () {
+    $('#espirometria').hide()
+        if ($('.asmaClasif').val() === 'Leve' || $('.asmaClasif').val() === 'Moderado' || $('.asmaClasif').val() === 'Severo'){
+            //console.log($('.asmaClasif').val())
+            $('#espirometria').show()
+        }else if($('.epocClasif').val() === 'A' || $('.epocClasif').val() === 'B'){
+            $('#espirometria').show()
+        }else if($('.sborClasif').val() === 'Leve' || $('.sborClasif').val() === 'Moderado' || $('.asmaClasif').val() === 'Severo'){
+            $('#espirometria').show()
+        }
+})
 </script>
 
 @endsection

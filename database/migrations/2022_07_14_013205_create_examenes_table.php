@@ -20,12 +20,11 @@ class CreateExamenesTable extends Migration
             $table->date('fecha_solicitud');
             $table->enum('procedencia', ['urgencia', 'medicina', 'poli', 'depto']);
             $table->string('diagnostico')->nullable();
-            $table->string('procedimiento')->nullable();
+            //$table->string('procedimiento')->nullable();
             $table->enum('medico', ['apolonio', 'jara', 'soriano', 'gong', 'zapata', 'tolorza', 'briones', 'valle', 'naranjo'])->nullable();
             $table->tinyInteger('firma')->default(1);
             $table->tinyInteger('cumple')->default(1);
             $table->foreignId('user_id')->nullable();
-            //$table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('fecha_examen');
             $table->timestamps();
         });

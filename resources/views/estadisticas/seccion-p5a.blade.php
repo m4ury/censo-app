@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCION A: POBLACIÓN EN CONTROL POR CONDICIÓN DE FUNCIONALIDAD
+                REM P5 - SECCION A: POBLACIÓN EN CONTROL POR CONDICIÓN DE FUNCIONALIDAD
             </h4>
             <div class="col-md-12 table-responsive">
                 <table id="pscv" class="table table-md-responsive table-bordered">

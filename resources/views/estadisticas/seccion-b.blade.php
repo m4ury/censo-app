@@ -11,7 +11,7 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                SECCIÓN B: METAS DE COMPENSACIÓN
+                REM P4 - SECCIÓN B: METAS DE COMPENSACIÓN
             </h4>
             <div class="col-md-12 table-responsive">
                 <table id="pscv" class="table table-md-responsive table-bordered">
@@ -149,7 +149,7 @@
                             <td>{{ $pa150F }}</td>
                         </tr>
                         <tr>
-                            <th rowspan="5" style="vertical-align: middle">PERSONAS BAJO CONTROL POR DIABETES
+                            <th rowspan="4" style="vertical-align: middle">PERSONAS BAJO CONTROL POR DIABETES
                                 MELLITUS
                             </th>
                         <tr>
@@ -255,6 +255,7 @@
                             <td>{{$hbac17Pa140Ldl100_80F}}</td>
                         </tr>
                         <tr>
+                            <th nowrap="" style="vertical-align: middle">PERSONAS CON RCV ALTO</th>
                             <th nowrap="">COLESTEROL LDL < 100 mg/dL</th>
                             <td>{{ $ldl100_all }}</td>
                             <td>{{ $ldl100M }}</td>
@@ -289,7 +290,7 @@
                             <td>{{$ldl100_80F}}</td>
                         </tr>
                         <tr>
-                            <th rowspan="2" style="vertical-align: middle">PERSONAS BAJO CONTROL con
+                            <th rowspan="3" style="vertical-align: middle">PERSONAS BAJO CONTROL con
                                 antecedentes
                                 Enfermedad Cardiovascular (ECV)
                             </th>
@@ -359,6 +360,40 @@
                             <td>{{$estatinas_7579F}}</td>
                             <td>{{$estatinas_80M}}</td>
                             <td>{{$estatinas_80F}}</td>
+                        </tr>
+                        <tr>
+                            <th nowrap="">Fumador actual</th>
+                            <td>{{ $fumador }}</td>
+                            <td>{{ $fumadorM }}</td>
+                            <td>{{ $fumadorF }}</td>
+                            <td>{{$fumador_1519M}}</td>
+                            <td>{{$fumador_1519F}}</td>
+                            <td>{{$fumador_2024M}}</td>
+                            <td>{{$fumador_2024F}}</td>
+                            <td>{{$fumador_2529M}}</td>
+                            <td>{{$fumador_2529F}}</td>
+                            <td>{{$fumador_3034M}}</td>
+                            <td>{{$fumador_3034F}}</td>
+                            <td>{{$fumador_3539M}}</td>
+                            <td>{{$fumador_3539F}}</td>
+                            <td>{{$fumador_4044M}}</td>
+                            <td>{{$fumador_4044F}}</td>
+                            <td>{{$fumador_4549M}}</td>
+                            <td>{{$fumador_4549F}}</td>
+                            <td>{{$fumador_5054M}}</td>
+                            <td>{{$fumador_5054F}}</td>
+                            <td>{{$fumador_5559M}}</td>
+                            <td>{{$fumador_5559F}}</td>
+                            <td>{{$fumador_6064M}}</td>
+                            <td>{{$fumador_6064F}}</td>
+                            <td>{{$fumador_6569M}}</td>
+                            <td>{{$fumador_6569F}}</td>
+                            <td>{{$fumador_7074M}}</td>
+                            <td>{{$fumador_7074F}}</td>
+                            <td>{{$fumador_7579M}}</td>
+                            <td>{{$fumador_7579F}}</td>
+                            <td>{{$fumador_80M}}</td>
+                            <td>{{$fumador_80F}}</td>
                         </tr>
                     </thead>
                 </table>

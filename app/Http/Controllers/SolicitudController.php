@@ -28,7 +28,7 @@ class SolicitudController extends Controller
     public function index()
     {
         $solicitudes = Solicitud::latest('created_at')
-            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at')
+            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario')
             ->get();
 
         return view('solicitudes.index', compact('solicitudes'));

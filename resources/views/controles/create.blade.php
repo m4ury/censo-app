@@ -21,12 +21,6 @@
                         </div>
                     </div>
                     {{ Form::close() }}
-
-                    @section('js')
-                    <script>
-                        $('#comuna, #sexo, #sector').select2();
-                    </script>
-                    @endsection
                 </div>
             </div>
         </div>

@@ -4,6 +4,15 @@
 
 @section('content')
 <div class="row justify-content-center">
+    {{-- <div class="row">
+        {!! Form::open(['route' => 'examenes', 'method' => 'GET', 'class' => 'form-inline float-right pb-4']) !!}
+        {!! Form::selectMonth('q', null, ['class' => 'form-control', 'placeholder' => 'Busqueda por mes', 'id' => 'q'])
+        !!}
+        <button type="submit" class="btn btn-primary btn-sm mx-2">
+            <span><i class="fas fa-search"> Buscar</i></span>
+        </button>
+        {!! Form::close() !!}
+    </div> --}}
     <div class="card card-primary card-outline">
         <div class="card-body">
             <h4 class="card-title text-bold mb-3">
@@ -11,137 +20,301 @@
                     <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                     Volver
                 </a>
-                EXAMENES RADIOLOGICOS SIMPLES
+                EXAMENES ESTADISTICA MENSUAL
             </h4>
             <div class="col-md-12 table-responsive">
-                <table id="pscv" class="table table-md-responsive table-bordered">
+                <table class="table table-md-responsive table-bordered">
                     <thead>
                         <tr>
-                            <th class="text-center" colspan="2" rowspan="3">ESTADO NUTRICIONAL</th>
-                            <th class="text-center" colspan="3" rowspan="2">TOTAL</th>
-                            <th class="text-center" colspan="8">GRUPOS DE EDAD (en años) Y SEXO</th>
-                            <th colspan="2" rowspan="2">Pueblos Originarios</th>
-                            <th colspan="2" rowspan="2">Poblacion Migrantes</th>
+                            <th class="text-center bg-gradient-purple" rowspan="2" colspan="2">EXAMENES RADIOLOGICOS SIMPLES</th>
+                            <th class="text-center bg-info" colspan="6">{{Carbon\Carbon::now()->subMonth(1)->format('M-Y')}}</th>
+                        </tr>
+                        <tr class="text-center bg-info">
+                            <th nowrap="">URGENCIA</th>
+                            <th nowrap="">MEDICINA</th>
+                            <th nowrap="">POLICLINICO</th>
+                            <th nowrap="">DPTO. SALUD</th>
+                            <th class="text-center">TOTAL</th>
                         </tr>
                         <tr>
-                            <th nowrap="" colspan="2">65 a 69 años</th>
-                            <th nowrap="" colspan="2">70 a 74 años</th>
-                            <th nowrap="" colspan="2">75 a 79 años</th>
-                            <th nowrap="" colspan="2">80 y mas años</th>
+                            <th class="table-danger">401002</th>
+                            <th class="table-danger" nowrap="">Partes blandas, laringe lateral, cavum rinofaríngeo</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th>Ambos Sexos</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
-                            <th>Hombres</th>
-                            <th>Mujeres</th>
+                            <th class="table-danger">401009</th>
+                            <th class="table-danger" nowrap="">Tórax simple frontal o lateral</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr rowspan="2">
+                            <th class="table-danger">401070</th>
+                            <th class="table-danger" nowrap="">Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th nowrap="" colspan="2">BAJO PESO</th>
-                            <td>{{ $bajoPeso }}</td>
-                            <td>{{ $bajoPesoM }}</td>
-                            <td>{{ $bajoPesoF }}</td>
-                            <td>{{$bajoPeso_6569M}}</td>
-                            <td>{{$bajoPeso_6569F}}</td>
-                            <td>{{$bajoPeso_7074M}}</td>
-                            <td>{{$bajoPeso_7074F}}</td>
-                            <td>{{$bajoPeso_7579M}}</td>
-                            <td>{{$bajoPeso_7579F}}</td>
-                            <td>{{$bajoPeso_80M}}</td>
-                            <td>{{$bajoPeso_80F}}</td>
+                            <th class="table-danger"></th>
+                            <th class="table-danger" nowrap="">Tórax frontal y lateral por neumonía (NAC) </th>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                        </tr>
-
-                        <tr>
-                            <th nowrap="" colspan="2">NORMAL</th>
-                            <td>{{ $normal }}</td>
-                            <td>{{ $normalM }}</td>
-                            <td>{{ $normalF }}</td>
-                            <td>{{$normal_6569M}}</td>
-                            <td>{{$normal_6569F}}</td>
-                            <td>{{$normal_7074M}}</td>
-                            <td>{{$normal_7074F}}</td>
-                            <td>{{$normal_7579M}}</td>
-                            <td>{{$normal_7579F}}</td>
-                            <td>{{$normal_80M}}</td>
-                            <td>{{$normal_80F}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <th nowrap="" colspan="2">SOBREPESO</th>
-                            <td>{{ $sobrePeso }}</td>
-                            <td>{{ $sobrePesoM }}</td>
-                            <td>{{ $sobrePesoF }}</td>
-                            <td>{{$sobrePeso_6569M}}</td>
-                            <td>{{$sobrePeso_6569F}}</td>
-                            <td>{{$sobrePeso_7074M}}</td>
-                            <td>{{$sobrePeso_7074F}}</td>
-                            <td>{{$sobrePeso_7579M}}</td>
-                            <td>{{$sobrePeso_7579F}}</td>
-                            <td>{{$sobrePeso_80M}}</td>
-                            <td>{{$sobrePeso_80F}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th nowrap="" colspan="2">OBESO</th>
-                            <td>{{ $obeso }}</td>
-                            <td>{{ $obesoM }}</td>
-                            <td>{{ $obesoF }}</td>
-                            <td>{{$obeso_6569M}}</td>
-                            <td>{{$obeso_6569F}}</td>
-                            <td>{{$obeso_7074M}}</td>
-                            <td>{{$obeso_7074F}}</td>
-                            <td>{{$obeso_7579M}}</td>
-                            <td>{{$obeso_7579F}}</td>
-                            <td>{{$obeso_80M}}</td>
-                            <td>{{$obeso_80F}}</td>
+                            <th class="table-danger">401013</th>
+                            <th class="table-danger" nowrap="">Abdomen simple</th>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-info"></td>
                         </tr>
                         <tr>
-                            <th class="text-center" nowrap="" colspan="2">TOTAL</th>
-                            <td>{{ $totalSeccionB }}</td>
-                            <td>{{ $totalSeccionBM }}</td>
-                            <td>{{ $totalSeccionBF }}</td>
-                            <td>{{$totalSeccionB_6569M}}</td>
-                            <td>{{$totalSeccionB_6569F}}</td>
-                            <td>{{$totalSeccionB_7074M}}</td>
-                            <td>{{$totalSeccionB_7074F}}</td>
-                            <td>{{$totalSeccionB_7579M}}</td>
-                            <td>{{$totalSeccionB_7579F}}</td>
-                            <td>{{$totalSeccionB_80M}}</td>
-                            <td>{{$totalSeccionB_80F}}</td>
+                            <th class="table-danger">401014</th>
+                            <th class="table-danger" nowrap="">Abdomen simple, proyección complementaria (lateral y/o oblicua)</th>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401031</th>
+                            <th class="table-danger" nowrap="">Cavidades perinasales, órbitas, art. Temporomandibulares, huesos propios de la nariz, malar, maxilar, arco cigomático y cara.</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401032</th>
+                            <th class="table-danger" nowrap="">Cráneo frontal y lateral </th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401033</th>
+                            <th class="table-danger" nowrap="">Cráneo proyección especial de base de cráneo (Towne)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401042</th>
+                            <th class="table-danger" nowrap="">Columna cervical o atlas-axis (frontal y lateral)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401043</th>
+                            <th class="table-danger" nowrap="">Columna cervical (frontal, lateral y oblicuas)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401044</th>
+                            <th class="table-danger" nowrap="">Columna cervical flexión y extensión (dinámicas)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401045</th>
+                            <th class="table-danger" nowrap="">Columna dorsal o dorsolumbar localizada, parrilla costal adultos (frontal y lateral)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401046</th>
+                            <th class="table-danger" nowrap="">Columna lumbar o lumbosacra (frontal, lateral y focalizada en 5to espacio)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401047</th>
+                            <th class="table-danger" nowrap="">Columna lumbar o lumbosacra flexión y extensión (dinámicas)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401048</th>
+                            <th class="table-danger" nowrap="">Columna lumbar o lumbosacra, oblicuas adicionales</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401051</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401151</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral de RN, lactante o niño menor de 6 años</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401052</th>
+                            <th class="table-danger" nowrap="">Pelvis, cadera o coxofemoral, proyecciones especiales (rotación interna, abducción, lateral,lowenstein u otras)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401053</th>
+                            <th class="table-danger" nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401054</th>
+                            <th class="table-danger" nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401055</th>
+                            <th class="table-danger" nowrap="">Clavícula</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401056</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Carpo y mano</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401057</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Rodilla frontal</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401058</th>
+                            <th class="table-danger" nowrap="">Sacrocoxis o articulaciones sacroilíacas</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401059</th>
+                            <th class="table-danger" nowrap="">Brazo, antebrazo, codo, muñeca, mano, dedos, pie (frontal y lateral)</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401060</th>
+                            <th class="table-danger" nowrap="">Clavícula</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401062</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Carpo y mano</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-danger">401063</th>
+                            <th class="table-danger" nowrap="">Edad ósea: Rodilla frontal</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bg-info"></td>
                         </tr>
                     </thead>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2"></th>
+                            <th colspan="4"  class="text-center bg-gradient-purple">EXAMENES TOTALES</th>
+                            <td class="bg-info text-center">{{ $todas }}
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    table {
+        font-size: small;
+      }
+</style>
 @endsection

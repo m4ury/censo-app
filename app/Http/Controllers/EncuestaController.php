@@ -11,7 +11,9 @@ class EncuestaController extends Controller
 {
     public function index()
     {
-    $encuestas = Encuesta::with('paciente')->orderBy('num_encuestas', 'ASC')->get();
+    $encuestas = Encuesta::with('paciente')
+            ->whereYear('fecha_encuesta', 2023)
+            ->orderBy('num_encuestas', 'ASC')->get();
     //dd($encuestas);
 
         return view('encuestas.index', compact('encuestas'));
@@ -47,6 +49,7 @@ class EncuestaController extends Controller
         $encuesta->der_13 = $request->der_13 ?? null;
         $encuesta->der_14 = $request->der_14 ?? null;
         $encuesta->der_15 = $request->der_15 ?? null;
+        $encuesta->der_16 = $request->der_16 ?? null;
 
         $encuesta->deb_1 = $request->deb_1 ?? null;
         $encuesta->deb_2 = $request->deb_2 ?? null;
@@ -54,6 +57,8 @@ class EncuestaController extends Controller
         $encuesta->deb_4 = $request->deb_4 ?? null;
         $encuesta->deb_5 = $request->deb_5 ?? null;
         $encuesta->deb_6 = $request->deb_6 ?? null;
+        $encuesta->deb_7 = $request->deb_7 ?? null;
+
 
         $encuesta->save();
 

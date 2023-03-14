@@ -249,6 +249,18 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr>
+                    <th>
+                        Se respeta el derecho a la atención preferente a personas mayores de 60 años y/o con discapacidad.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_16 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->der_16 === 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
             </table>
         </div>
         <div class="col-12 table-responsive pt-3 ">
@@ -341,6 +353,18 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr>
+                    <th>
+                        Usted da prioridad a personas con derecho a atención preferente.
+                    </th>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_7 == 1? "check text-success":" " }} mr-1"></i></strong>
+                    </td>
+                    <td>
+                        <strong class="text-center"><i class="fas fa-{{ $encuesta->deb_7 === 0? "times text-danger":" " }} mr-1"></i></strong>
+                    </td>
+                    <td></td>
+                </tr>
             </table>
         </div>
 
@@ -348,13 +372,38 @@
             <div class="col-md">
                 <h6> En esta pregunta marque con una "X" la alternativa que Usted la considera:</h6>
                 <br>
-                <strong> 1 - La atencion del personal del Hospital usted la considera:</strong>
+                <strong> 1 - La atencion del personal en CONSULTORIO del Hospital usted la considera:</strong>
                 <br>
                 @if($encuesta->atencion == 'buena')
                 <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
                 @elseif($encuesta->atencion == 'regular')
                 <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
                 @elseif($encuesta->atencion == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+<hr>
+                <strong> 1.1 - La atencion del personal en MEDICINA del Hospital usted la considera:</strong>
+                <br>
+                @if($encuesta->atencionMed == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success "></i>
+                @elseif($encuesta->atencionMed == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->atencionMed == 'mala')
+                <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
+                @else
+                <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                @endif
+                    <hr>
+
+                <strong> 1.2 - La atencion del personal en URGENCIAS del Hospital usted la considera:</strong>
+                <br>
+                @if($encuesta->atencionUrg == 'buena')
+                <p class="btn rounded-pill bg-success text-gray">BUENA</P> <i class="fas fa-times text-success"></i>
+                @elseif($encuesta->atencionUrg == 'regular')
+                <p class="btn rounded-pill bg-warning px-4">REGULAR</P> <i class="fas fa-times text-warning"></i>
+                @elseif($encuesta->atencionUrg == 'mala')
                 <p class="btn rounded-pill bg-danger px-4">MALA</P> <i class="fas fa-times text-danger"></i>
                 @else
                 <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
