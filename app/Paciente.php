@@ -577,6 +577,27 @@ class Paciente extends Model
                     ->whereNull('egreso');
     }
 
+    public function depSevera()
+    {
+        return $this->whereBetween('dependencia', ['G', 'T'])
+                    ->where('postrado_oncol', '=', 'no oncologico')
+                    ->whereNull('egreso');
+    }
+
+    public function oncologico()
+    {
+        return $this->whereIn('dependencia', ['G', 'T'])
+                    ->where('postrado_oncol', '=','oncologico')
+                    ->whereNull('egreso');
+    }
+
+    public function escaras()
+    {
+        return $this->whereIn('dependencia', ['G', 'T'])
+                    ->where('escaras', true)
+                    ->whereNull('egreso');
+    }
+
     public function subBarthel()
     {
         return $this->whereIn('dependencia', ['L', 'M', 'G', 'T'])

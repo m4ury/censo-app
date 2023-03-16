@@ -125,11 +125,11 @@
                             {!! Form::label('pueblo_originario_label', 'Originario', ['class' => 'col-sm
                             col-form-label']) !!}
                             {!! Form::checkbox('pueblo_originario', 1, old('pueblo_originario',
-                            $paciente->pueblo_originario) ,['class' => 'form-control form-control']) !!}
+                            $paciente->pueblo_originario == 1 ?true:false) ,['class' => 'form-control form-control']) !!}
                         </div>
                         <div class="col-sm-5">
                             {!! Form::label('migrante_label', 'Pob. Migrante', ['class' => 'col-sm col-form-label']) !!}
-                            {!! Form::checkbox('migrante', 1, old('migrante', $paciente->migrante),['class' =>
+                            {!! Form::checkbox('migrante', 1, old('migrante', $paciente->migrante == 1 ?true:false),['class' =>
                             'form-control form-control']) !!}
                         </div>
                     </div>
@@ -307,7 +307,7 @@
 @endsection
 @section('js')
 <script>
-    $('#riesgo_cv, #erc, #comuna, #sector, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso').select2({
+    $('#riesgo_cv, #erc, #comuna, #sector, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso, #postrado_oncol').select2({
         theme: "classic",
         width: '100%',
     });
@@ -320,6 +320,7 @@
     $('input.maltrato').on('change', function() {
         $('input.maltrato').not(this).prop('checked', false);
     });
+    // $(".escaras").removeAttr("checked");
 
 </script>
 
@@ -340,6 +341,19 @@
                     $('.fecha_f').show();
                     break;
             }
+        });
+</script>
+
+<script>
+    $('#postrados').hide();
+    $('#dependencia').change(function () {
+        $('#postrados').hide();
+            var selection = $('#dependencia').val();
+            if(selection == "G" ||  selection == "T")
+            {
+                $('#postrados').show();
+            }
+
         });
 </script>
 @endsection

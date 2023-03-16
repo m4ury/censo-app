@@ -58,7 +58,8 @@ class PacienteController extends Controller
             'rut' => 'cl_rut',
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
-            'erc' => 'required_with:riesgo_cv'
+            'erc' => 'required_with:riesgo_cv',
+            'direccion' => 'required'
             //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
@@ -77,6 +78,7 @@ class PacienteController extends Controller
         $paciente->migrante = $request->migrante ?? 0;
         $paciente->usoAspirinas = $request->usoAspirinas ?? 0;
         $paciente->usoEstatinas = $request->usoEstatinas ?? 0;
+        $paciente->escaras = $request->escaras ?? 0;
 
         $paciente->update($request->all());
         //dd($paciente);

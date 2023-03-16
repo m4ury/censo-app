@@ -87,140 +87,138 @@
 
                         <tr>
                             <th rowspan="4">SÍNDROME BRONQUIAL OBSTRUCTIVA RECURRENTE (SBOR)</th>
-                        <tr>
-                            <th>LEVE</th>
-                            <td>{{$sborLeve}}</td>
-                            <td>{{$sborLeveM}}</td>
-                            <td>{{$sborLeveF}}</td>
-                            <td>{{$sborLeve_04M}}</td>
-                            <td>{{$sborLeve_04F}}</td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <tr>
+                                <th>LEVE</th>
+                                <td>{{$sborLeve}}</td>
+                                <td>{{$sborLeveM}}</td>
+                                <td>{{$sborLeveF}}</td>
+                                <td>{{$sborLeve_04M}}</td>
+                                <td>{{$sborLeve_04F}}</td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
 
-                        </tr>
+                            </tr>
+                            <tr>
+                                <th>MODERADO</th>
+                                <td>{{$sborMod}}</td>
+                                <td>{{$sborModM}}</td>
+                                <td>{{$sborModF}}</td>
+                                <td>{{$sborMod_04M}}</td>
+                                <td>{{$sborMod_04F}}</td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>SEVERO</th>
+                                <td>{{$sborSevero}}</td>
+                                <td>{{$sborSeveroM}}</td>
+                                <td>{{$sborSeveroF}}</td>
+                                <td>{{$sborSevero_04M}}</td>
+                                <td>{{$sborSevero_04F}}</td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         <tr>
-                            <th>MODERADO</th>
-                            <td>{{$sborMod}}</td>
-                            <td>{{$sborModM}}</td>
-                            <td>{{$sborModF}}</td>
-                            <td>{{$sborMod_04M}}</td>
-                            <td>{{$sborMod_04F}}</td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                        </tr>
-                        <tr>
-                            <th>SEVERO</th>
-                            <td>{{$sborSevero}}</td>
-                            <td>{{$sborSeveroM}}</td>
-                            <td>{{$sborSeveroF}}</td>
-                            <td>{{$sborSevero_04M}}</td>
-                            <td>{{$sborSevero_04F}}</td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td class="bg-gradient-gray"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-
-                        </tr>
-                        <tr>
-                            <th rowspan="4" nowrap ="" class ="py-5">ASMA BRONQUIAL</th>
+                            <th rowspan="4" nowrap ="" class ="py-5" style="vertical-align: middle">ASMA BRONQUIAL</th>
                         <tr>
                             <th>LEVE</th>
                             <td>{{$asmaLeve}}</td>
@@ -263,7 +261,6 @@
                             <td>{{$asmaLeve_espVig}}</td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th>MODERADO</th>
@@ -307,7 +304,6 @@
                             <td>{{$asmaModerado_espVig}}</td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th>SEVERO</th>
@@ -351,7 +347,6 @@
                             <td>{{$asmaSevero_espVig}}</td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th rowspan="3">ENFERMEDAD PULMONAR OBSTRUCTIVA CRÓNICA (EPOC)</th>
@@ -397,7 +392,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th>TIPO B</th>
@@ -441,7 +435,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">OTRAS RESPIRATORIAS CRONICAS</th>
@@ -485,7 +478,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">OXIGENO DEPENDIENTE</th>
@@ -529,7 +521,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th colspan="2">ASISTENCIA VENTILATORIA NO INVASIVA O INVASIVA</th>
@@ -573,7 +564,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">FIBROSIS QUÍSTICA </th>
@@ -617,7 +607,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">EPILEPSIA</th>
@@ -661,7 +650,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">GLAUCOMA</th>
@@ -705,7 +693,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ENFERMEDAD DE PARKINSON </th>
@@ -749,7 +736,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ARTROSIS DE CADERA Y RODILLA</th>
@@ -793,7 +779,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">ALIVIO DEL DOLOR</th>
@@ -837,7 +822,6 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">HIPOTIROIDISMO</th>
@@ -881,17 +865,16 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA LEVE</th>
                             <td>{{$depLeve}}</td>
                             <td>{{$depLeveM}}</td>
                             <td>{{$depLeveF}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$depLeve_04M}}</td>
+                            <td>{{$depLeve_04F}}</td>
+                            <td>{{$depLeve_59M}}</td>
+                            <td>{{$depLeve_59F}}</td>
                             <td>{{$depLeve_1014M}}</td>
                             <td>{{$depLeve_1014F}}</td>
                             <td>{{$depLeve_1519M}}</td>
@@ -925,17 +908,16 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
-
                         </tr>
                         <tr>
                             <th nowrap="" colspan="2">DEPENDENCIA MODERADA</th>
                             <td>{{$depMod}}</td>
                             <td>{{$depModM}}</td>
                             <td>{{$depModF}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$depMod_04M}}</td>
+                            <td>{{$depMod_04F}}</td>
+                            <td>{{$depMod_59M}}</td>
+                            <td>{{$depMod_59F}}</td>
                             <td>{{$depMod_1014M}}</td>
                             <td>{{$depMod_1014F}}</td>
                             <td>{{$depMod_1519M}}</td>
@@ -969,10 +951,314 @@
                             <td class="bg-gradient-gray"></td>
                             <td></td>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <th rowspan="3" nowrap ="" class ="py-5" style="vertical-align: middle">DEPENDENCIA SEVERA</th>
+                            <th>ONCOLOGICA</th>
+                            <td>{{$oncologico}}</td>
+                            <td>{{$oncologicoM}}</td>
+                            <td>{{$oncologicoF}}</td>
+                            <td>{{$oncologico_04M}}</td>
+                            <td>{{$oncologico_04F}}</td>
+                            <td>{{$oncologico_59M}}</td>
+                            <td>{{$oncologico_59F}}</td>
+                            <td>{{$oncologico_1014M}}</td>
+                            <td>{{$oncologico_1014F}}</td>
+                            <td>{{$oncologico_1519M}}</td>
+                            <td>{{$oncologico_1519F}}</td>
+                            <td>{{$oncologico_2024M}}</td>
+                            <td>{{$oncologico_2024F}}</td>
+                            <td>{{$oncologico_2529M}}</td>
+                            <td>{{$oncologico_2529F}}</td>
+                            <td>{{$oncologico_3034M}}</td>
+                            <td>{{$oncologico_3034F}}</td>
+                            <td>{{$oncologico_3539M}}</td>
+                            <td>{{$oncologico_3539F}}</td>
+                            <td>{{$oncologico_4044M}}</td>
+                            <td>{{$oncologico_4044F}}</td>
+                            <td>{{$oncologico_4549M}}</td>
+                            <td>{{$oncologico_4549F}}</td>
+                            <td>{{$oncologico_5054M}}</td>
+                            <td>{{$oncologico_5054F}}</td>
+                            <td>{{$oncologico_5559M}}</td>
+                            <td>{{$oncologico_5559F}}</td>
+                            <td>{{$oncologico_6064M}}</td>
+                            <td>{{$oncologico_6064F}}</td>
+                            <td>{{$oncologico_6569M}}</td>
+                            <td>{{$oncologico_6569F}}</td>
+                            <td>{{$oncologico_7074M}}</td>
+                            <td>{{$oncologico_7074F}}</td>
+                            <td>{{$oncologico_7579M}}</td>
+                            <td>{{$oncologico_7579F}}</td>
+                            <td>{{$oncologico_80M}}</td>
+                            <td>{{$oncologico_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th nowrap ="">NO ONCOLOGICA</th>
+                            <td>{{$depSevera}}</td>
+                            <td>{{$depSeveraM}}</td>
+                            <td>{{$depSeveraF}}</td>
+                            <td>{{$depSevera_04M}}</td>
+                            <td>{{$depSevera_04F}}</td>
+                            <td>{{$depSevera_59M}}</td>
+                            <td>{{$depSevera_59F}}</td>
+                            <td>{{$depSevera_1014M}}</td>
+                            <td>{{$depSevera_1014F}}</td>
+                            <td>{{$depSevera_1519M}}</td>
+                            <td>{{$depSevera_1519F}}</td>
+                            <td>{{$depSevera_2024M}}</td>
+                            <td>{{$depSevera_2024F}}</td>
+                            <td>{{$depSevera_2529M}}</td>
+                            <td>{{$depSevera_2529F}}</td>
+                            <td>{{$depSevera_3034M}}</td>
+                            <td>{{$depSevera_3034F}}</td>
+                            <td>{{$depSevera_3539M}}</td>
+                            <td>{{$depSevera_3539F}}</td>
+                            <td>{{$depSevera_4044M}}</td>
+                            <td>{{$depSevera_4044F}}</td>
+                            <td>{{$depSevera_4549M}}</td>
+                            <td>{{$depSevera_4549F}}</td>
+                            <td>{{$depSevera_5054M}}</td>
+                            <td>{{$depSevera_5054F}}</td>
+                            <td>{{$depSevera_5559M}}</td>
+                            <td>{{$depSevera_5559F}}</td>
+                            <td>{{$depSevera_6064M}}</td>
+                            <td>{{$depSevera_6064F}}</td>
+                            <td>{{$depSevera_6569M}}</td>
+                            <td>{{$depSevera_6569F}}</td>
+                            <td>{{$depSevera_7074M}}</td>
+                            <td>{{$depSevera_7074F}}</td>
+                            <td>{{$depSevera_7579M}}</td>
+                            <td>{{$depSevera_7579F}}</td>
+                            <td>{{$depSevera_80M}}</td>
+                            <td>{{$depSevera_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th nowrap ="">CON ESCARAS (*)</th>
+                            <td>{{$escaras}}</td>
+                            <td>{{$escarasM}}</td>
+                            <td>{{$escarasF}}</td>
+                            <td>{{$escaras_04M}}</td>
+                            <td>{{$escaras_04F}}</td>
+                            <td>{{$escaras_59M}}</td>
+                            <td>{{$escaras_59F}}</td>
+                            <td>{{$escaras_1014M}}</td>
+                            <td>{{$escaras_1014F}}</td>
+                            <td>{{$escaras_1519M}}</td>
+                            <td>{{$escaras_1519F}}</td>
+                            <td>{{$escaras_2024M}}</td>
+                            <td>{{$escaras_2024F}}</td>
+                            <td>{{$escaras_2529M}}</td>
+                            <td>{{$escaras_2529F}}</td>
+                            <td>{{$escaras_3034M}}</td>
+                            <td>{{$escaras_3034F}}</td>
+                            <td>{{$escaras_3539M}}</td>
+                            <td>{{$escaras_3539F}}</td>
+                            <td>{{$escaras_4044M}}</td>
+                            <td>{{$escaras_4044F}}</td>
+                            <td>{{$escaras_4549M}}</td>
+                            <td>{{$escaras_4549F}}</td>
+                            <td>{{$escaras_5054M}}</td>
+                            <td>{{$escaras_5054F}}</td>
+                            <td>{{$escaras_5559M}}</td>
+                            <td>{{$escaras_5559F}}</td>
+                            <td>{{$escaras_6064M}}</td>
+                            <td>{{$escaras_6064F}}</td>
+                            <td>{{$escaras_6569M}}</td>
+                            <td>{{$escaras_6569F}}</td>
+                            <td>{{$escaras_7074M}}</td>
+                            <td>{{$escaras_7074F}}</td>
+                            <td>{{$escaras_7579M}}</td>
+                            <td>{{$escaras_7579F}}</td>
+                            <td>{{$escaras_80M}}</td>
+                            <td>{{$escaras_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
 
+                        <tr>
+                            <th rowspan="4" class ="py-5" style="vertical-align: middle">ATENCIÓN DOMICILIARIA POR DEPENDENCIA SEVERA</th>
+                            <th>TOTAL PERSONAS</th>
+                            <td>{{$depSevera}}</td>
+                            <td>{{$depSeveraM}}</td>
+                            <td>{{$depSeveraF}}</td>
+                            <td>{{$depSevera_04M}}</td>
+                            <td>{{$depSevera_04F}}</td>
+                            <td>{{$depSevera_59M}}</td>
+                            <td>{{$depSevera_59F}}</td>
+                            <td>{{$depSevera_1014M}}</td>
+                            <td>{{$depSevera_1014F}}</td>
+                            <td>{{$depSevera_1519M}}</td>
+                            <td>{{$depSevera_1519F}}</td>
+                            <td>{{$depSevera_2024M}}</td>
+                            <td>{{$depSevera_2024F}}</td>
+                            <td>{{$depSevera_2529M}}</td>
+                            <td>{{$depSevera_2529F}}</td>
+                            <td>{{$depSevera_3034M}}</td>
+                            <td>{{$depSevera_3034F}}</td>
+                            <td>{{$depSevera_3539M}}</td>
+                            <td>{{$depSevera_3539F}}</td>
+                            <td>{{$depSevera_4044M}}</td>
+                            <td>{{$depSevera_4044F}}</td>
+                            <td>{{$depSevera_4549M}}</td>
+                            <td>{{$depSevera_4549F}}</td>
+                            <td>{{$depSevera_5054M}}</td>
+                            <td>{{$depSevera_5054F}}</td>
+                            <td>{{$depSevera_5559M}}</td>
+                            <td>{{$depSevera_5559F}}</td>
+                            <td>{{$depSevera_6064M}}</td>
+                            <td>{{$depSevera_6064F}}</td>
+                            <td>{{$depSevera_6569M}}</td>
+                            <td>{{$depSevera_6569F}}</td>
+                            <td>{{$depSevera_7074M}}</td>
+                            <td>{{$depSevera_7074F}}</td>
+                            <td>{{$depSevera_7579M}}</td>
+                            <td>{{$depSevera_7579F}}</td>
+                            <td>{{$depSevera_80M}}</td>
+                            <td>{{$depSevera_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th nowrap ="">TOTAL PERSONAS CON ESCARAS</th>
+                            <td>{{$escaras}}</td>
+                            <td>{{$escarasM}}</td>
+                            <td>{{$escarasF}}</td>
+                            <td>{{$escaras_04M}}</td>
+                            <td>{{$escaras_04F}}</td>
+                            <td>{{$escaras_59M}}</td>
+                            <td>{{$escaras_59F}}</td>
+                            <td>{{$escaras_1014M}}</td>
+                            <td>{{$escaras_1014F}}</td>
+                            <td>{{$escaras_1519M}}</td>
+                            <td>{{$escaras_1519F}}</td>
+                            <td>{{$escaras_2024M}}</td>
+                            <td>{{$escaras_2024F}}</td>
+                            <td>{{$escaras_2529M}}</td>
+                            <td>{{$escaras_2529F}}</td>
+                            <td>{{$escaras_3034M}}</td>
+                            <td>{{$escaras_3034F}}</td>
+                            <td>{{$escaras_3539M}}</td>
+                            <td>{{$escaras_3539F}}</td>
+                            <td>{{$escaras_4044M}}</td>
+                            <td>{{$escaras_4044F}}</td>
+                            <td>{{$escaras_4549M}}</td>
+                            <td>{{$escaras_4549F}}</td>
+                            <td>{{$escaras_5054M}}</td>
+                            <td>{{$escaras_5054F}}</td>
+                            <td>{{$escaras_5559M}}</td>
+                            <td>{{$escaras_5559F}}</td>
+                            <td>{{$escaras_6064M}}</td>
+                            <td>{{$escaras_6064F}}</td>
+                            <td>{{$escaras_6569M}}</td>
+                            <td>{{$escaras_6569F}}</td>
+                            <td>{{$escaras_7074M}}</td>
+                            <td>{{$escaras_7074F}}</td>
+                            <td>{{$escaras_7579M}}</td>
+                            <td>{{$escaras_7579F}}</td>
+                            <td>{{$escaras_80M}}</td>
+                            <td>{{$escaras_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL PERSONAS CON CUIDADOR QUE RECIBE APOYO MONETARIO</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th >CON INDICACIÓN DE NUTRICIÓN ENTERAL DOMICILIARIA (NED) </th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </thead>
                 </table>
+                <P>(*) Incluidos en Dependencia Severa Oncológica y NO Oncológica</P>
             </div>
         </div>
     </div>

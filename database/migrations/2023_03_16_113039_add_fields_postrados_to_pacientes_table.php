@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldsFallecidosToPacientesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class AddFieldsFallecidosToPacientesTable extends Migration
     public function up()
     {
         Schema::table('pacientes', function (Blueprint $table) {
-            $table->boolean('fallecido')->default(0);
-            $table->date('fecha_fallecido')->nullable();
+            $table->enum('postrado_oncol', ['oncologico', 'no oncologico'])->nullable();
+            $table->boolean('escaras')->nullable()->default(0);
         });
     }
 
@@ -30,4 +30,4 @@ class AddFieldsFallecidosToPacientesTable extends Migration
             //
         });
     }
-}
+};

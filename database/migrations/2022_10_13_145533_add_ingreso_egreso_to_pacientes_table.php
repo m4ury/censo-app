@@ -14,7 +14,7 @@ class AddIngresoEgresoToPacientesTable extends Migration
     public function up()
     {
         Schema::table('pacientes', function (Blueprint $table) {
-            $table->enum('egreso',['fallecido', 'inasistente', 'cambio_centro'])->default('inasistente');
+            $table->enum('egreso',['fallecido', 'inasistente', 'cambio_centro'])->default('inasistente')->nullable();
             $table->date('fecha_egreso')->nullable();
             $table->boolean('ingreso')->nullable();
             $table->date('fecha_ingreso')->nullable();

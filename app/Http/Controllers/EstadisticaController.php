@@ -4120,6 +4120,8 @@ class EstadisticaController extends Controller
         $depLeve = $all->depLeve()->count();
         $depLeveF = $all->depLeve()->where('sexo', 'Femenino')->count();
         //$aspirinasOriginF = $all->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $depLeve_04F = $all->depLeve()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $depLeve_59F = $all->depLeve()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
         $depLeve_1014F = $all->depLeve()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
         $depLeve_1519F = $all->depLeve()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
         $depLeve_2024F = $all->depLeve()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
@@ -4138,6 +4140,8 @@ class EstadisticaController extends Controller
 
         $depLeveM = $all->depLeve()->where('sexo', 'Masculino')->count();
         //$aspirinasOriginM = $all->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $depLeve_04M = $all->depLeve()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Masculino')->count();
+        $depLeve_59M = $all->depLeve()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Masculino')->count();
         $depLeve_1014M = $all->depLeve()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Masculino')->count();
         $depLeve_1519M = $all->depLeve()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
         $depLeve_2024M = $all->depLeve()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
@@ -4158,6 +4162,8 @@ class EstadisticaController extends Controller
         $depMod = $all->depMod()->count();
         $depModF = $all->depMod()->where('sexo', '=', 'Femenino')->count();
         //$aspirinasOriginF = $all->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $depMod_04F = $all->depMod()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $depMod_59F = $all->depMod()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
         $depMod_1014F = $all->depMod()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
         $depMod_1519F = $all->depMod()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
         $depMod_2024F = $all->depMod()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
@@ -4176,6 +4182,8 @@ class EstadisticaController extends Controller
 
         $depModM = $all->depMod()->where('sexo', '=', 'Masculino')->count();
         //$aspirinasOriginM = $all->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $depMod_04M = $all->depMod()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Masculino')->count();
+        $depMod_59M = $all->depMod()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Masculino')->count();
         $depMod_1014M = $all->depMod()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Masculino')->count();
         $depMod_1519M = $all->depMod()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
         $depMod_2024M = $all->depMod()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
@@ -4192,10 +4200,143 @@ class EstadisticaController extends Controller
         $depMod_7579M = $all->depMod()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
         $depMod_80M = $all->depMod()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
 
+
+        //DEPENDENCIA SEVERA
+        $depSevera = $all->depSevera()->count();
+        $depSeveraF = $all->depSevera()->where('sexo', '=', 'Femenino')->count();
+        //$aspirinasOriginF = $all->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $depSevera_04F = $all->depSevera()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $depSevera_59F = $all->depSevera()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $depSevera_1014F = $all->depSevera()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $depSevera_1519F = $all->depSevera()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $depSevera_2024F = $all->depSevera()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $depSevera_2529F = $all->depSevera()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $depSevera_3034F = $all->depSevera()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $depSevera_3539F = $all->depSevera()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $depSevera_4044F = $all->depSevera()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $depSevera_4549F = $all->depSevera()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $depSevera_5054F = $all->depSevera()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $depSevera_5559F = $all->depSevera()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $depSevera_6064F = $all->depSevera()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $depSevera_6569F = $all->depSevera()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $depSevera_7074F = $all->depSevera()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $depSevera_7579F = $all->depSevera()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $depSevera_80F = $all->depSevera()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $depSeveraM = $all->depSevera()->where('sexo', '=', 'Masculino')->count();
+        //$aspirinasOriginM = $all->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $depSevera_04M = $all->depSevera()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Masculino')->count();
+        $depSevera_59M = $all->depSevera()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Masculino')->count();
+        $depSevera_1014M = $all->depSevera()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Masculino')->count();
+        $depSevera_1519M = $all->depSevera()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $depSevera_2024M = $all->depSevera()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $depSevera_2529M = $all->depSevera()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $depSevera_3034M = $all->depSevera()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $depSevera_3539M = $all->depSevera()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $depSevera_4044M = $all->depSevera()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $depSevera_4549M = $all->depSevera()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $depSevera_5054M = $all->depSevera()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $depSevera_5559M = $all->depSevera()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $depSevera_6064M = $all->depSevera()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $depSevera_6569M = $all->depSevera()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $depSevera_7074M = $all->depSevera()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $depSevera_7579M = $all->depSevera()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $depSevera_80M = $all->depSevera()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+
+        //DEPENDENCIA ONCOLOGICO
+        $oncologico = $all->oncologico()->count();
+        $oncologicoF = $all->oncologico()->where('sexo', '=', 'Femenino')->count();
+        //$aspirinasOriginF = $all->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+        $oncologico_04F = $all->oncologico()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+        $oncologico_59F = $all->oncologico()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+        $oncologico_1014F = $all->oncologico()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+        $oncologico_1519F = $all->oncologico()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+        $oncologico_2024F = $all->oncologico()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+        $oncologico_2529F = $all->oncologico()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+        $oncologico_3034F = $all->oncologico()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+        $oncologico_3539F = $all->oncologico()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+        $oncologico_4044F = $all->oncologico()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+        $oncologico_4549F = $all->oncologico()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+        $oncologico_5054F = $all->oncologico()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+        $oncologico_5559F = $all->oncologico()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+        $oncologico_6064F = $all->oncologico()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+        $oncologico_6569F = $all->oncologico()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $oncologico_7074F = $all->oncologico()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $oncologico_7579F = $all->oncologico()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $oncologico_80F = $all->oncologico()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+        $oncologicoM = $all->oncologico()->where('sexo', '=', 'Masculino')->count();
+        //$aspirinasOriginM = $all->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+        $oncologico_04M = $all->oncologico()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Masculino')->count();
+        $oncologico_59M = $all->oncologico()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Masculino')->count();
+        $oncologico_1014M = $all->oncologico()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Masculino')->count();
+        $oncologico_1519M = $all->oncologico()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+        $oncologico_2024M = $all->oncologico()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+        $oncologico_2529M = $all->oncologico()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+        $oncologico_3034M = $all->oncologico()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+        $oncologico_3539M = $all->oncologico()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+        $oncologico_4044M = $all->oncologico()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+        $oncologico_4549M = $all->oncologico()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+        $oncologico_5054M = $all->oncologico()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+        $oncologico_5559M = $all->oncologico()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+        $oncologico_6064M = $all->oncologico()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+        $oncologico_6569M = $all->oncologico()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $oncologico_7074M = $all->oncologico()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $oncologico_7579M = $all->oncologico()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $oncologico_80M = $all->oncologico()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
+
+         //ESCARAS
+         $escaras = $all->escaras()->count();
+         $escarasF = $all->escaras()->where('sexo', '=', 'Femenino')->count();
+         //$aspirinasOriginF = $all->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
+         $escaras_04F = $all->escaras()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
+         $escaras_59F = $all->escaras()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Femenino')->count();
+         $escaras_1014F = $all->escaras()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Femenino')->count();
+         $escaras_1519F = $all->escaras()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
+         $escaras_2024F = $all->escaras()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Femenino')->count();
+         $escaras_2529F = $all->escaras()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Femenino')->count();
+         $escaras_3034F = $all->escaras()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Femenino')->count();
+         $escaras_3539F = $all->escaras()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Femenino')->count();
+         $escaras_4044F = $all->escaras()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Femenino')->count();
+         $escaras_4549F = $all->escaras()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Femenino')->count();
+         $escaras_5054F = $all->escaras()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Femenino')->count();
+         $escaras_5559F = $all->escaras()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Femenino')->count();
+         $escaras_6064F = $all->escaras()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Femenino')->count();
+         $escaras_6569F = $all->escaras()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+         $escaras_7074F = $all->escaras()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+         $escaras_7579F = $all->escaras()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+         $escaras_80F = $all->escaras()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+
+         $escarasM = $all->escaras()->where('sexo', '=', 'Masculino')->count();
+         //$aspirinasOriginM = $all->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
+         $escaras_04M = $all->escaras()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Masculino')->count();
+         $escaras_59M = $all->escaras()->get()->whereBetween('grupo', [5, 9])->where('sexo', 'Masculino')->count();
+         $escaras_1014M = $all->escaras()->get()->whereBetween('grupo', [10, 14])->where('sexo', 'Masculino')->count();
+         $escaras_1519M = $all->escaras()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Masculino')->count();
+         $escaras_2024M = $all->escaras()->get()->whereBetween('grupo', [20, 24])->where('sexo', 'Masculino')->count();
+         $escaras_2529M = $all->escaras()->get()->whereBetween('grupo', [25, 29])->where('sexo', 'Masculino')->count();
+         $escaras_3034M = $all->escaras()->get()->whereBetween('grupo', [30, 34])->where('sexo', 'Masculino')->count();
+         $escaras_3539M = $all->escaras()->get()->whereBetween('grupo', [35, 39])->where('sexo', 'Masculino')->count();
+         $escaras_4044M = $all->escaras()->get()->whereBetween('grupo', [40, 44])->where('sexo', 'Masculino')->count();
+         $escaras_4549M = $all->escaras()->get()->whereBetween('grupo', [45, 49])->where('sexo', 'Masculino')->count();
+         $escaras_5054M = $all->escaras()->get()->whereBetween('grupo', [50, 54])->where('sexo', 'Masculino')->count();
+         $escaras_5559M = $all->escaras()->get()->whereBetween('grupo', [55, 59])->where('sexo', 'Masculino')->count();
+         $escaras_6064M = $all->escaras()->get()->whereBetween('grupo', [60, 64])->where('sexo', 'Masculino')->count();
+         $escaras_6569M = $all->escaras()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+         $escaras_7074M = $all->escaras()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+         $escaras_7579M = $all->escaras()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+         $escaras_80M = $all->escaras()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+
         return view('estadisticas.seccion-p3a', compact(
             'depLeve',
             'depLeveF',
             'depLeveM',
+            'depLeve_04F',
+            'depLeve_04M',
+            'depLeve_59F',
+            'depLeve_59M',
             'depLeve_1014F',
             'depLeve_1014M',
             'depLeve_1519F',
@@ -4230,6 +4371,10 @@ class EstadisticaController extends Controller
             'depMod',
             'depModF',
             'depModM',
+            'depMod_04F',
+            'depMod_04M',
+            'depMod_59F',
+            'depMod_59M',
             'depMod_1014F',
             'depMod_1014M',
             'depMod_1519F',
@@ -4260,7 +4405,121 @@ class EstadisticaController extends Controller
             'depMod_7579M',
             'depMod_80F',
             'depMod_80M',
-            
+
+            'depSevera',
+            'depSeveraF',
+            'depSeveraM',
+            'depSevera_04F',
+            'depSevera_04M',
+            'depSevera_59F',
+            'depSevera_59M',
+            'depSevera_1014F',
+            'depSevera_1014M',
+            'depSevera_1519F',
+            'depSevera_1519M',
+            'depSevera_2024F',
+            'depSevera_2024M',
+            'depSevera_2529F',
+            'depSevera_2529M',
+            'depSevera_3034F',
+            'depSevera_3034M',
+            'depSevera_3539F',
+            'depSevera_3539M',
+            'depSevera_4044F',
+            'depSevera_4044M',
+            'depSevera_4549F',
+            'depSevera_4549M',
+            'depSevera_5054F',
+            'depSevera_5054M',
+            'depSevera_5559F',
+            'depSevera_5559M',
+            'depSevera_6064F',
+            'depSevera_6064M',
+            'depSevera_6569F',
+            'depSevera_6569M',
+            'depSevera_7074F',
+            'depSevera_7074M',
+            'depSevera_7579F',
+            'depSevera_7579M',
+            'depSevera_80F',
+            'depSevera_80M',
+
+            'escaras',
+            'escarasF',
+            'escarasM',
+            'escaras_04F',
+            'escaras_04M',
+            'escaras_59F',
+            'escaras_59M',
+            'escaras_1014F',
+            'escaras_1014M',
+            'escaras_1519F',
+            'escaras_1519M',
+            'escaras_2024F',
+            'escaras_2024M',
+            'escaras_2529F',
+            'escaras_2529M',
+            'escaras_3034F',
+            'escaras_3034M',
+            'escaras_3539F',
+            'escaras_3539M',
+            'escaras_4044F',
+            'escaras_4044M',
+            'escaras_4549F',
+            'escaras_4549M',
+            'escaras_5054F',
+            'escaras_5054M',
+            'escaras_5559F',
+            'escaras_5559M',
+            'escaras_6064F',
+            'escaras_6064M',
+            'escaras_6569F',
+            'escaras_6569M',
+            'escaras_7074F',
+            'escaras_7074M',
+            'escaras_7579F',
+            'escaras_7579M',
+            'escaras_80F',
+            'escaras_80M',
+
+            'oncologico',
+            'oncologicoF',
+            'oncologicoM',
+            'oncologico_04F',
+            'oncologico_04M',
+            'oncologico_59F',
+            'oncologico_59M',
+            'oncologico_1014F',
+            'oncologico_1014M',
+            'oncologico_1519F',
+            'oncologico_1519M',
+            'oncologico_2024F',
+            'oncologico_2024M',
+            'oncologico_2529F',
+            'oncologico_2529M',
+            'oncologico_3034F',
+            'oncologico_3034M',
+            'oncologico_3539F',
+            'oncologico_3539M',
+            'oncologico_4044F',
+            'oncologico_4044M',
+            'oncologico_4549F',
+            'oncologico_4549M',
+            'oncologico_5054F',
+            'oncologico_5054M',
+            'oncologico_5559F',
+            'oncologico_5559M',
+            'oncologico_6064F',
+            'oncologico_6064M',
+            'oncologico_6569F',
+            'oncologico_6569M',
+            'oncologico_7074F',
+            'oncologico_7074M',
+            'oncologico_7579F',
+            'oncologico_7579M',
+            'oncologico_80F',
+            'oncologico_80M',
+
             'epilepsia',
             'epilepsiaM',
             'epilepsiaF',
