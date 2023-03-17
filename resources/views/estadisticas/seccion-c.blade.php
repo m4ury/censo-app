@@ -155,6 +155,46 @@
                             <td></td>
                             <td></td>
                         </tr>
+
+                        <tr>
+                            <th colspan="2">CON VELOCIDAD DE FILTRACIÓN GLOMERULAR ESTIMADA (VFGe) Y CON RAZON ALBÚMINA CREATININA (RAC) VIGENTE</th>
+                            <td>{{ $vfgRacVigente }}</td>
+                            <td>{{ $vfgRacVigenteM }}</td>
+                            <td>{{ $vfgRacVigenteF }}</td>
+                            <td>{{$vfgRacVigente_1519M}}</td>
+                            <td>{{$vfgRacVigente_1519F}}</td>
+                            <td>{{$vfgRacVigente_2024M}}</td>
+                            <td>{{$vfgRacVigente_2024F}}</td>
+                            <td>{{$vfgRacVigente_2529M}}</td>
+                            <td>{{$vfgRacVigente_2529F}}</td>
+                            <td>{{$vfgRacVigente_3034M}}</td>
+                            <td>{{$vfgRacVigente_3034F}}</td>
+                            <td>{{$vfgRacVigente_3539M}}</td>
+                            <td>{{$vfgRacVigente_3539F}}</td>
+                            <td>{{$vfgRacVigente_4044M}}</td>
+                            <td>{{$vfgRacVigente_4044F}}</td>
+                            <td>{{$vfgRacVigente_4549M}}</td>
+                            <td>{{$vfgRacVigente_4549F}}</td>
+                            <td>{{$vfgRacVigente_5054M}}</td>
+                            <td>{{$vfgRacVigente_5054F}}</td>
+                            <td>{{$vfgRacVigente_5559M}}</td>
+                            <td>{{$vfgRacVigente_5559F}}</td>
+                            <td>{{$vfgRacVigente_6064M}}</td>
+                            <td>{{$vfgRacVigente_6064F}}</td>
+                            <td>{{$vfgRacVigente_6569M}}</td>
+                            <td>{{$vfgRacVigente_6569F}}</td>
+                            <td>{{$vfgRacVigente_7074M}}</td>
+                            <td>{{$vfgRacVigente_7074F}}</td>
+                            <td>{{$vfgRacVigente_7579M}}</td>
+                            <td>{{$vfgRacVigente_7579F}}</td>
+                            <td>{{$vfgRacVigente_80M}}</td>
+                            <td>{{$vfgRacVigente_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                         <tr>
                             <th colspan="2">CON FONDO DE OJO, VIGENTE</th>
                             <td>{{ $fondoOjoVigente }}</td>
@@ -379,6 +419,47 @@
                             <td></td>
                             <td></td>
                         </tr>
+
+                        <tr>
+                            <th colspan="2">FUMADOR ACTUAL</th>
+                            <td>{{ $dm2Fumador }}</td>
+                            <td>{{ $dm2FumadorM }}</td>
+                            <td>{{ $dm2FumadorF }}</td>
+                            <td>{{$dm2Fumador_1519M}}</td>
+                            <td>{{$dm2Fumador_1519F}}</td>
+                            <td>{{$dm2Fumador_2024M}}</td>
+                            <td>{{$dm2Fumador_2024F}}</td>
+                            <td>{{$dm2Fumador_2529M}}</td>
+                            <td>{{$dm2Fumador_2529F}}</td>
+                            <td>{{$dm2Fumador_3034M}}</td>
+                            <td>{{$dm2Fumador_3034F}}</td>
+                            <td>{{$dm2Fumador_3539M}}</td>
+                            <td>{{$dm2Fumador_3539F}}</td>
+                            <td>{{$dm2Fumador_4044M}}</td>
+                            <td>{{$dm2Fumador_4044F}}</td>
+                            <td>{{$dm2Fumador_4549M}}</td>
+                            <td>{{$dm2Fumador_4549F}}</td>
+                            <td>{{$dm2Fumador_5054M}}</td>
+                            <td>{{$dm2Fumador_5054F}}</td>
+                            <td>{{$dm2Fumador_5559M}}</td>
+                            <td>{{$dm2Fumador_5559F}}</td>
+                            <td>{{$dm2Fumador_6064M}}</td>
+                            <td>{{$dm2Fumador_6064F}}</td>
+                            <td>{{$dm2Fumador_6569M}}</td>
+                            <td>{{$dm2Fumador_6569F}}</td>
+                            <td>{{$dm2Fumador_7074M}}</td>
+                            <td>{{$dm2Fumador_7074F}}</td>
+                            <td>{{$dm2Fumador_7579M}}</td>
+                            <td>{{$dm2Fumador_7579F}}</td>
+                            <td>{{$dm2Fumador_80M}}</td>
+                            <td>{{$dm2Fumador_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+
                         <tr>
                             <th colspan="2">CON ERC ETAPA 3B O SUPERIOR Y EN TRATAMIENTO CON IECA O ARA II.</th>
                             <td>{{ $usoIecaAraII }}</td>
@@ -614,7 +695,7 @@
                         </tr>
                         </tr>
                         <tr>
-                            <th rowspan="3" style="vertical-align: middle">
+                            <th rowspan="4" style="vertical-align: middle">
                                 CON ÚLCERAS ACTIVAS DE PIE TRATADAS CON CURACIÓN
                             </th>
                         <tr>
@@ -688,6 +769,44 @@
                             <td>{{$ulcerasActivas_TipoCuracion_avz_7579F}}</td>
                             <td>{{$ulcerasActivas_TipoCuracion_avz_80M}}</td>
                             <td>{{$ulcerasActivas_TipoCuracion_avz_80F}}</td>
+                        </tr>
+                        <tr>
+                            <th nowrap="">Con ayuda técnica de descarga</th>
+                            <td>{{ $ulcerasActivas_TipoCuracion_conv }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_convM }}</td>
+                            <td>{{ $ulcerasActivas_TipoCuracion_convF }}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_1519M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_1519F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2024M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2024F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2529M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_2529F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3034M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3034F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3539M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_3539F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4044M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4044F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4549M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_4549F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5054M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5054F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5559M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_5559F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6064M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6064F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6569M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_6569F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7074M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7074F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7579M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_7579F}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_80M}}</td>
+                            <td>{{$ulcerasActivas_TipoCuracion_conv_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         </tr>
                         <tr>
@@ -766,6 +885,46 @@
                             <td></td>
                             <td></td>
                         </tr>
+
+                        <tr>
+                            <th nowrap="" colspan="2">CON DIAGNÓSTICO DE ENFERMEDAD RENAL CRÓNICA</th>
+                            <td>{{ $dm2Erc }}</td>
+                            <td>{{ $dm2ErcM }}</td>
+                            <td>{{ $dm2ErcF }}</td>
+                            <td>{{$dm2Erc_1519M}}</td>
+                            <td>{{$dm2Erc_1519F}}</td>
+                            <td>{{$dm2Erc_2024M}}</td>
+                            <td>{{$dm2Erc_2024F}}</td>
+                            <td>{{$dm2Erc_2529M}}</td>
+                            <td>{{$dm2Erc_2529F}}</td>
+                            <td>{{$dm2Erc_3034M}}</td>
+                            <td>{{$dm2Erc_3034F}}</td>
+                            <td>{{$dm2Erc_3539M}}</td>
+                            <td>{{$dm2Erc_3539F}}</td>
+                            <td>{{$dm2Erc_4044M}}</td>
+                            <td>{{$dm2Erc_4044F}}</td>
+                            <td>{{$dm2Erc_4549M}}</td>
+                            <td>{{$dm2Erc_4549F}}</td>
+                            <td>{{$dm2Erc_5054M}}</td>
+                            <td>{{$dm2Erc_5054F}}</td>
+                            <td>{{$dm2Erc_5559M}}</td>
+                            <td>{{$dm2Erc_5559F}}</td>
+                            <td>{{$dm2Erc_6064M}}</td>
+                            <td>{{$dm2Erc_6064F}}</td>
+                            <td>{{$dm2Erc_6569M}}</td>
+                            <td>{{$dm2Erc_6569F}}</td>
+                            <td>{{$dm2Erc_7074M}}</td>
+                            <td>{{$dm2Erc_7074F}}</td>
+                            <td>{{$dm2Erc_7579M}}</td>
+                            <td>{{$dm2Erc_7579F}}</td>
+                            <td>{{$dm2Erc_80M}}</td>
+                            <td>{{$dm2Erc_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                         <tr>
                             <th nowrap="" colspan="2">CON ANTECEDENTE DE ATAQUE CEREBRO VASCULAR</th>
                             <td>{{ $dm2M_acv }}</td>
@@ -883,6 +1042,46 @@
                             <td></td>
                             <td></td>
                         </tr>
+
+                        <tr>
+                            <th nowrap="" colspan="2">CON VELOCIDAD DE FILTRACIÓN GLOMERULAR ESTIMADA (VFGe) Y CON RAZON ALBÚMINA CREATININA  (RAC) VIGENTE</th>
+                            <td>{{ $htaVfgRac }}</td>
+                            <td>{{ $htaVfgRacM }}</td>
+                            <td>{{ $htaVfgRacF }}</td>
+                            <td>{{$htaVfgRac_1519M}}</td>
+                            <td>{{$htaVfgRac_1519F}}</td>
+                            <td>{{$htaVfgRac_2024M}}</td>
+                            <td>{{$htaVfgRac_2024F}}</td>
+                            <td>{{$htaVfgRac_2529M}}</td>
+                            <td>{{$htaVfgRac_2529F}}</td>
+                            <td>{{$htaVfgRac_3034M}}</td>
+                            <td>{{$htaVfgRac_3034F}}</td>
+                            <td>{{$htaVfgRac_3539M}}</td>
+                            <td>{{$htaVfgRac_3539F}}</td>
+                            <td>{{$htaVfgRac_4044M}}</td>
+                            <td>{{$htaVfgRac_4044F}}</td>
+                            <td>{{$htaVfgRac_4549M}}</td>
+                            <td>{{$htaVfgRac_4549F}}</td>
+                            <td>{{$htaVfgRac_5054M}}</td>
+                            <td>{{$htaVfgRac_5054F}}</td>
+                            <td>{{$htaVfgRac_5559M}}</td>
+                            <td>{{$htaVfgRac_5559F}}</td>
+                            <td>{{$htaVfgRac_6064M}}</td>
+                            <td>{{$htaVfgRac_6064F}}</td>
+                            <td>{{$htaVfgRac_6569M}}</td>
+                            <td>{{$htaVfgRac_6569F}}</td>
+                            <td>{{$htaVfgRac_7074M}}</td>
+                            <td>{{$htaVfgRac_7074F}}</td>
+                            <td>{{$htaVfgRac_7579M}}</td>
+                            <td>{{$htaVfgRac_7579F}}</td>
+                            <td>{{$htaVfgRac_80M}}</td>
+                            <td>{{$htaVfgRac_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                         <tr>
                             <th nowrap="" colspan="2">CON PRESIÓN ARTERIAL igual o Mayor 160/100 mmHg</th>
                             <td>{{ $paMayor160 }}</td>
@@ -921,6 +1120,46 @@
                             <td></td>
                             <td></td>
                         </tr>
+
+                        <tr>
+                            <th nowrap="" colspan="2">CON VELOCIDAD DE FILTRACION GLOMERULAR  ESTIMADA  (VFGe) VIGENTE</th>
+                            <td>{{ $htaVfgVigente }}</td>
+                            <td>{{ $htaVfgVigenteM }}</td>
+                            <td>{{ $htaVfgVigenteF }}</td>
+                            <td>{{$htaVfgVigente_1519M}}</td>
+                            <td>{{$htaVfgVigente_1519F}}</td>
+                            <td>{{$htaVfgVigente_2024M}}</td>
+                            <td>{{$htaVfgVigente_2024F}}</td>
+                            <td>{{$htaVfgVigente_2529M}}</td>
+                            <td>{{$htaVfgVigente_2529F}}</td>
+                            <td>{{$htaVfgVigente_3034M}}</td>
+                            <td>{{$htaVfgVigente_3034F}}</td>
+                            <td>{{$htaVfgVigente_3539M}}</td>
+                            <td>{{$htaVfgVigente_3539F}}</td>
+                            <td>{{$htaVfgVigente_4044M}}</td>
+                            <td>{{$htaVfgVigente_4044F}}</td>
+                            <td>{{$htaVfgVigente_4549M}}</td>
+                            <td>{{$htaVfgVigente_4549F}}</td>
+                            <td>{{$htaVfgVigente_5054M}}</td>
+                            <td>{{$htaVfgVigente_5054F}}</td>
+                            <td>{{$htaVfgVigente_5559M}}</td>
+                            <td>{{$htaVfgVigente_5559F}}</td>
+                            <td>{{$htaVfgVigente_6064M}}</td>
+                            <td>{{$htaVfgVigente_6064F}}</td>
+                            <td>{{$htaVfgVigente_6569M}}</td>
+                            <td>{{$htaVfgVigente_6569F}}</td>
+                            <td>{{$htaVfgVigente_7074M}}</td>
+                            <td>{{$htaVfgVigente_7074F}}</td>
+                            <td>{{$htaVfgVigente_7579M}}</td>
+                            <td>{{$htaVfgVigente_7579F}}</td>
+                            <td>{{$htaVfgVigente_80M}}</td>
+                            <td>{{$htaVfgVigente_80F}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
                         <tr>
                             <th colspan="2" class="text-left bg-gradient-gray">TODAS LAS PERSONAS EN PSCV</th>
                         </tr>

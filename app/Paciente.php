@@ -320,8 +320,19 @@ class Paciente extends Model
         //return $this->dm2()->whereYear('racVigente', '<=', 2022);
     }
 
+    public function vfgRacVigente()
+    {
+    return $this->vfgVigente()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereYear('racVigente', '<=', 2022));
+                       // ->where('racVigente', '>=', Carbon::now()->subYear(1)));
+    }
+
     public function vfgVigente()
     {
+        //return $this->dm2()->where('vfgVigente', '>=', Carbon::now()->subYear(1));
         return $this->dm2()->where('vfgVigente', '>=', Carbon::now()->subYear(1));
     }
 
@@ -368,6 +379,31 @@ class Paciente extends Model
                     ->where('controls.hba1cMayorIgual9Porcent', true)
                     ->whereYear('controls.fecha_control', '2023')
                     ->latest('controls.fecha_control');
+    }
+
+    public function dm2Fumador()
+    {
+        return $this->dm2()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                        ->where('paciente_patologia.patologia_id', 7));
+    }
+
+    public function htaVfgRac()
+    {
+        return $this->htaVfgVigente()
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereYear('racVigente', '>=', Carbon::now()->subYear(1)));
+    }
+
+    public function htaVfgVigente()
+    {
+        //return $this->dm2()->where('vfgVigente', '>=', Carbon::now()->subYear(1));
+        return $this->hta()->where('vfgVigente', '>=', Carbon::now()->subYear(1));
     }
 
     public function usoIecaAraII()
@@ -455,6 +491,12 @@ class Paciente extends Model
     public function aputacionPieDM2()
     {
         return $this->whereNotNull('aputacionPieDM2');
+    }
+
+    public function dm2Erc()
+    {
+        return $this->dm2()
+                    ->whereIn('erc', ['I','II', 'IIIA', 'IIIB', 'IV', 'V']);
     }
 
     public function dm2_hta()
