@@ -168,14 +168,16 @@
                                 {!! Form::date('fecha_egreso',$paciente->fecha_egreso, ['class' => 'form-control form-control col-sm']) !!}
                             </div>
                     </div>
+
+                        @if($paciente->grupo > 4)
+                            @include('partials.empam')
+                        @endif
+
                     <hr>
-                    @if($paciente->grupo > 64)
-                        @include('partials.empam')
-                    @endif
-                        @foreach($paciente->patologias as $patologia)
-                    @if($patologia->nombre_patologia == 'HTA')
+                    {{-- $paciente->patologias--}}
+                    @if($paciente->patologias->contains('nombre_patologia', 'HTA') || $paciente->patologias->contains('nombre_patologia', 'DM2'))
                         <div class="form-group row card card-danger card-outline">
-                            <div class="card-header text-bold text-red">HIPERTENSION ARTERIAL</div>
+                            <div class="card-header text-bold text-red">HTA - DM2</div>
                             <div class="card-body row form-group">
                                 {!! Form::label('rac_vigente_label', 'CON RAZON ALBÚMINA CREATININA (RAC)', ['class' =>
                                 'col-sm-6 col-form-label']) !!}
@@ -184,10 +186,6 @@
                                     'form-control']) !!}
                                 </div>
                             </div>
-                        </div>
-                    @elseif($patologia->nombre_patologia == 'DM2')
-                        <div class="form-group row card card-primary card-outline">
-                            <div class="card-header text-bold text-primary">DIABETES MELITUS</div>
                             <div class="card-body row form-group">
                                 {!! Form::label('vfg_vigente_label', 'CON VELOCIDAD DE FILTRACIÓN GLOMERULAR (VFG)',
                                 ['class' => 'col-sm-6 col-form-label']) !!}
@@ -197,18 +195,23 @@
                                 </div>
                             </div>
                             <div class="card-body row form-group">
+                                {!! Form::label('ecgVigente_label', 'CON ECG', ['class' => 'col-sm-6 col-form-label']) !!}
+                                <div class="col-sm-6">
+                                    {!! Form::date('ecgVigente', old('ecgVigente', $paciente->ecgVigente), ['class' =>
+                                    'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    @if($paciente->patologias->contains('nombre_patologia', 'DM2'))
+                        <div class="form-group row card card-primary card-outline">
+                            <div class="card-header text-bold text-primary">DIABETES MELITUS</div>
+                            <div class="card-body row form-group">
                                 {!! Form::label('fondoOjoVigente_label', 'CON FONDO DE OJO', ['class' => 'col-sm-6
                                 col-form-label']) !!}
                                 <div class="col-sm-6">
                                     {!! Form::date('fondoOjoVigente', old('fondoOjoVigente', $paciente->fondoOjoVigente),
                                     ['class' => 'form-control']) !!}
-                                </div>
-                            </div>
-                            <div class="card-body row form-group">
-                                {!! Form::label('ecgVigente_label', 'CON ECG', ['class' => 'col-sm-6 col-form-label']) !!}
-                                <div class="col-sm-6">
-                                    {!! Form::date('ecgVigente', old('ecgVigente', $paciente->ecgVigente), ['class' =>
-                                    'form-control']) !!}
                                 </div>
                             </div>
                             <div class="card-body row form-group">
@@ -251,7 +254,8 @@
                                 </div>
                             </div>
                         </div>
-                    @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' or $patologia->nombre_patologia == 'ANTECEDENTE ACV')
+                    @endif
+                    @if($paciente->patologias->contains('nombre_patologia', 'ANTECEDENTE IAM') or $paciente->patologias->contains('ANTECEDENTE ACV'))
                         <div class="form-group row card card-info card-outline">
                             <div class="card-header text-bold text-info">CON ANTECEDENTE DE ATAQUE CEREBRO
                                 VASCULAR /
@@ -273,21 +277,7 @@
                                 </div>
                             </div>
                         </div>
-                    {{-- @elseif($patologia->nombre_patologia == 'SALA ERA')
-                        <div class="form-group row card card-info card-outline">
-                            <div class="card-header text-bold text-info">SALA ERA</div>
-                                <div class="card-body row form-group">
-                                    {!! Form::label('espirometriaVigente_label', 'ESPIROMETRIA VIGENTE', ['class' => 'col-sm-6
-                                    col-form-label']) !!}
-                                    <div class="col-sm-6">
-                                        {!! Form::date('espirometriaVigente', old('espirometriaVigente', $paciente->espirometriaVigente),
-                                        ['class' => 'form-control']) !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                     @endif
-                @endforeach
                     <div class="row">
                         <div class="col">
                             {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block']) }}

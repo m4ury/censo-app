@@ -577,22 +577,26 @@ class Paciente extends Model
     //Seccion A
     public function aSinRiesgo()
     {
-        return $this->whereFuncionalidad('SR');
+        return $this->whereFuncionalidad('SR')
+                    ->whereNull('egreso');
     }
 
     public function aRiesgo()
     {
-        return $this->whereFuncionalidad('R');
+        return $this->whereFuncionalidad('R')
+                    ->whereNull('egreso');
     }
 
     public function riesgoDependencia()
     {
-        return $this->whereFuncionalidad('RD');
+        return $this->whereFuncionalidad('RD')
+                    ->whereNull('egreso');
     }
 
     public function subEsfam()
     {
-        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD']);
+        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                    ->whereNull('egreso');
     }
 
     public function depLeve()
@@ -648,7 +652,8 @@ class Paciente extends Model
 
     public function totalSeccion()
     {
-        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                    ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
                     ->whereNull('egreso');
     }
 
@@ -659,7 +664,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Bajo peso')
-                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereYear('controls.fecha_control', 2022)
                     ->latest('controls.fecha_control');
     }
 
@@ -670,7 +675,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Normal')
-                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereYear('controls.fecha_control', 2022)
                     ->latest('controls.fecha_control');
     }
 
@@ -679,16 +684,16 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Sobrepeso')
-                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereYear('controls.fecha_control', 2022)
                     ->latest('controls.fecha_control');
     }
 
     public function obeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', '=', 'Medico')
+                    ->where('controls.tipo_control', 'Medico')
                     ->where('controls.imc_resultado', 'Obesidad')
-                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereYear('controls.fecha_control', 2022)
                     ->latest('controls.fecha_control');
     }
 
@@ -696,8 +701,8 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->where('controls.tipo_control', 'Medico')
-                    ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
-                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad', 'Obesidad Morbida'])
+                    ->whereYear('controls.fecha_control', 2022)
                     ->latest('controls.fecha_control');
     }
 
