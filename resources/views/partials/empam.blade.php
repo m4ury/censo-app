@@ -1,4 +1,4 @@
-<div class="card card-primary card-outline mb-3" id="Enfermera">
+<div class="card card-primary card-outline mb-3 px-3" id="Enfermera">
     <div class="card-header text-bold text-bold">Examen de Medicina Prev. Adulto Mayor</div>
     <div class="form-group row my-2 ml-2">
         {!! Form::label('funcionalidad_label', 'Funcionalidad', ['class' => 'col-sm-3 col-form-label']) !!}
