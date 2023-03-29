@@ -25,8 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('patologias/{paciente?}', 'PatologiaController@index')->name('patologias');
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
 
-    //rutas para encuestas
+    //rutas para OIRS
     Route::resource('encuestas', 'EncuestaController');
+    Route::resource('ciudadanas', 'CiudadanaController');
+
 
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');
