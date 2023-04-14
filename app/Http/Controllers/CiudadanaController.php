@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Ciudadana;
+use App\Paciente;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCiudadanaRequest;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateCiudadanaRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CiudadanaController extends Controller
 {
@@ -15,11 +19,11 @@ class CiudadanaController extends Controller
      */
     public function index()
     {
-        $ciudadanas = Ciudadana::with('paciente')
-            ->whereYear('fecha_ciudadana', 2023)
-            ->orderBy('folio', 'ASC')->get();
+        $ciudadanas = Ciudadana::latest('fecha_ciudadana')
+            ->select('id', 'folio', 'tipo_sol', 'nombres', 'dirijido', 'fecha_respuesta','fecha_ciudadana', 'link')
+            ->get();
 
-        return view('ciudadanas.index', compact('encuestas'));
+        return view('ciudadanas.index', compact('ciudadanas'));
     }
 
     /**
@@ -29,7 +33,7 @@ class CiudadanaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -40,7 +44,16 @@ class CiudadanaController extends Controller
      */
     public function store(StoreCiudadanaRequest $request)
     {
-        //
+        //dd($request->all());
+        $ciudadana = new Ciudadana($request->except('_token'));
+            $pdf = $request->link;
+           // dd($pdf);
+            //$fileName = Storage::disk('local')->put('public', $pdf);
+            $fileName = Storage::put(public_path('storage'), $pdf);
+            $ciudadana->link = $fileName;
+            $ciudadana->save();
+
+        return back()->withSuccess('Solicitud Ciudadana creada con exito!');
     }
 
     /**
