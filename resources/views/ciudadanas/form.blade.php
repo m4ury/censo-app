@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{ Form::open(['action' => 'CiudadanaController@store', 'method' => 'POST']) }}
+                {{ Form::open(['action' => 'CiudadanaController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
                     <div class="form-group row">
                         {!! Form::label('fecha_ciudadana_label', 'Fecha Solicitud Ciudadana: ', ['class' => 'col-sm-3 col-form-label']) !!}
                         <div class="col-sm">
