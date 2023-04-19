@@ -5,14 +5,6 @@
         <i class="fas fa-money-check-alt"></i>
         Nuevo control
     </a>
-    <div class="form-group d-inline-flex align-self-stretch">
-        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#efam"><i
-                class="fas fa-calendar-check"></i>
-            Nuevo EFAM
-        </button>
-</div>
-</div>
-@include('efams.modal')
     @if (\Request::is('control/*'))
     <a class="btn bg-gradient-secondary btn-sm" title="Regresar" href="{{ route('pacientes.show', $paciente->id) }}">
         <i class="fas fa-arrow-alt-circle-left"></i>

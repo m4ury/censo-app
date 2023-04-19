@@ -6100,6 +6100,17 @@ class EstadisticaController extends Controller
         return view('estadisticas.dm2', compact('dm2'));
     }
 
+    public function sm(){
+        $all = new Paciente;
+        $sm = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+        ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+        ->where('paciente_patologia.patologia_id', 9)
+        ->whereNull('egreso')
+        ->get();
+
+        return view('estadisticas.sm', compact('sm'));
+    }
+
     public function hta(){
     $all = new Paciente;
     $hta = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')

@@ -8,5 +8,6 @@
             =>'Riesgo de Dependencia'], old('rEfam', $control->rEfam), ['class' => 'col form-control form-control-sm',
             'placeholder' => 'Resultado EFAM', 'id' => 'funcionalidad']) !!}
         </div>
+        <p class="px-3 text-bold" id="mensaje"></p>
     </div>
 </div>

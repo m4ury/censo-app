@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('controls', function (Blueprint $table) {
             $table->enum('rEfam', ['autovalente', 'rDependencia', 'autConRiesgo', 'autSinRiesgo'])->nullable();
+            $table->boolean('seguimiento')->default(false);
         });
     }
 
