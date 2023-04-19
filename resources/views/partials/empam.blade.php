@@ -1,14 +1,8 @@
 <div class="card card-primary card-outline mb-3 px-3" id="Enfermera">
-    <div class="card-header text-bold text-bold">Examen de Medicina Prev. Adulto Mayor</div>
+    <div class="card-header text-bold text-bold">Pacientes con riesgo de Dependencia</div>
     <div class="form-group row my-2 ml-2">
-        {!! Form::label('funcionalidad_label', 'Funcionalidad', ['class' => 'col-sm-3 col-form-label']) !!}
-        <div class="col-sm-3">
-            {!! Form::select('funcionalidad', ['SR' => 'Autoval. sin Riesgo', 'R' => 'Autoval. con Riesgo', 'RD'
-            =>'Riesgo de Dependencia'], old('funcionalidad', $paciente->funcionalidad), ['class' => 'form-control form-control-sm',
-            'placeholder' => 'Seleccione funcionalidad', 'id' => 'funcionalidad']) !!}
-        </div>
         {!! Form::label('dependencia_label', 'Dependencia', ['class' => 'col-sm-3 col-form-label']) !!}
-        <div class="col-sm-3">
+        <div class="col-sm">
             {!! Form::select('dependencia', ['L' =>'Depend. Leve', 'M' => 'Depend. Moderado', 'G' => 'Depend. Grave', 'T' =>'Depend. Total'], old('dependencia', $paciente->dependencia), ['class' => 'form-control form-control-sm',
             'placeholder' => 'Seleccione dependencia', 'id' => 'dependencia']) !!}
         </div>
