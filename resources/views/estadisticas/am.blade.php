@@ -35,19 +35,15 @@
                     <td>{{ $paciente->fullName() }}</td>
                     <td>{{ $paciente->edad() }}</td>
                     <td>{{ $paciente->telefono }}</td>
-                    @if($paciente->sector == 'Celeste')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-primary"></i></span> Celeste
-                        </td>
-                    @elseif($paciente->sector == 'Naranjo')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-orange"></i></span> Naranjo
-                        </td>
+                    <td><span class="mr-2">
+                        @if($paciente->sector == 'Celeste')
+                            <i class="fas fa-square text-primary"></i></span> Celeste
+                        @elseif($paciente->sector == 'Naranjo')
+                            <i class="fas fa-square text-orange"></i></span> Naranjo
                         @elseif($paciente->sector == 'Blanco')
-                        <td><span class="mr-2">
-                    <i class="fas fa-square text-white"></i></span> Blanco
-                        </td>
-                    @endif
+                            <i class="fas fa-square text-white"></i></span> Blanco
+                        @endif
+                    </td>
                 </tr>
             @endforeach
             </tbody>

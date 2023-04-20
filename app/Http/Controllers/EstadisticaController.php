@@ -6102,9 +6102,8 @@ class EstadisticaController extends Controller
 
     public function sm(){
         $all = new Paciente;
-        $sm = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+        $sm = $all->sm()
         ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
-        ->where('paciente_patologia.patologia_id', 9)
         ->whereNull('egreso')
         ->get();
 
