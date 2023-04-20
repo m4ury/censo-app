@@ -52,9 +52,9 @@
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
-                            <a class="nav-link" id="vert-tabs-examenes-tab" data-toggle="pill"
+                            {{-- <a class="nav-link" id="vert-tabs-examenes-tab" data-toggle="pill"
                                 href="#vert-tabs-examenes" role="tab" aria-controls="vert-tabs-examenes"
-                                aria-selected="false">Examenes</a>
+                                aria-selected="false">Examenes</a> --}}
                         </div>
                     </div>
                     <div class="col-9 col-sm-9">
@@ -115,14 +115,14 @@
                                 @endif
                             </div>
 
-                            <div class="tab-pane fade" id="vert-tabs-examenes" role="tabpanel"
+                            {{-- <div class="tab-pane fade" id="vert-tabs-examenes" role="tabpanel"
                                 aria-labelledby="vert-tabs-examenes-tab">
                                 @include('examenes.list_examenes', $paciente)
 
                                 @if($paciente->examenes->count() == 0)
                                 <p class="text-muted">No hay Examenes aun... </p>
                                 @endif
-                            </div>
+                            </div> --}}
 
                             <div class="tab-pane fade" id="vert-tabs-patologias" role="tabpanel"
                                 aria-labelledby="vert-tabs-patologias-tab">

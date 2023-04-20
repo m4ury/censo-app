@@ -32,6 +32,11 @@ class Paciente extends Model
         return $this->hasMany(Control::class);
     }
 
+    public function efams()
+    {
+        return $this->hasMany(Control::class);
+    }
+
     public function examenes()
     {
         return $this->hasMany(Examen::class);
@@ -132,6 +137,14 @@ class Paciente extends Model
                     ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
                         ->whereNull('pacientes.egreso')
                         ->where('patologias.nombre_patologia', 'DM2');
+    }
+
+    public function sm()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+                    ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+                        ->whereNull('pacientes.egreso')
+                        ->where('patologias.nombre_patologia', 'SALUD MENTAL');
     }
 
     public function dlp()
@@ -662,10 +675,16 @@ class Paciente extends Model
     public function bajoPeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', 'Medico')
+                    ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
                     ->where('controls.imc_resultado', 'Bajo peso')
                     ->whereYear('controls.fecha_control', 2022)
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                        ->orWhereIn('dependencia', ['L', 'M', 'G', 'T']))
                     ->latest('controls.fecha_control');
+
     }
 
     /* return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMayorIgual9Porcent', '=', 1)->latest('controls.fecha_control'); */
@@ -673,36 +692,56 @@ class Paciente extends Model
     public function normal()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', 'Medico')
+                    ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
                     ->where('controls.imc_resultado', 'Normal')
                     ->whereYear('controls.fecha_control', 2022)
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                        ->orWhereIn('dependencia', ['L', 'M', 'G', 'T']))
                     ->latest('controls.fecha_control');
     }
 
     public function sobrePeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', 'Medico')
+                    ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
                     ->where('controls.imc_resultado', 'Sobrepeso')
                     ->whereYear('controls.fecha_control', 2022)
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                        ->orWhereIn('dependencia', ['L', 'M', 'G', 'T']))
                     ->latest('controls.fecha_control');
     }
 
     public function obeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', 'Medico')
+                    ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
                     ->where('controls.imc_resultado', 'Obesidad')
                     ->whereYear('controls.fecha_control', 2022)
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                        ->orWhereIn('dependencia', ['L', 'M', 'G', 'T']))
                     ->latest('controls.fecha_control');
     }
 
     public function totalSeccionB()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->where('controls.tipo_control', 'Medico')
-                    ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad', 'Obesidad Morbida'])
+                    ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+                    ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
                     ->whereYear('controls.fecha_control', 2022)
+                    ->whereIn('pacientes.rut',
+                        DB::table('pacientes')
+                        ->select('pacientes.rut')
+                        ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
+                        ->orWhereIn('dependencia', ['L', 'M', 'G', 'T']))
                     ->latest('controls.fecha_control');
     }
 

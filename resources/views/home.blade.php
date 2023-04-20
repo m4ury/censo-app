@@ -146,7 +146,7 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-primary">
                     <div class="inner">
-                        <h3>{{ $dm2 }}</h3>
+                        <h3><a href="{{route('estadisticas.dm2')}}" style="color:aliceblue">{{ $dm2 }}</a></h3>
                         <p>PACIENTES DIABETICOS</p>
                     </div>
                     <div class="icon">
@@ -165,8 +165,9 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
-                        <h3>{{ $pieDm2 }}</h3>
-                        <p>PIE DIABETICO </p>
+                        <h3><a href="{{route('estadisticas.pie')}}" style="color:black">{{ $pieDm2 }}</h3>
+                        <p>EVALUACIONES PIE DIABETICO, <span class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round($pieDm2*100/$pieDm2_90) }}% </span>** en base al 90%</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -175,7 +176,7 @@
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3>{{ $hta }}</h3>
+                        <h3><a href="{{route('estadisticas.hta')}}" style="color:aliceblue">{{ $hta }}</a></h3>
                         <p>PACIENTES HIPERTENSOS</p>
                     </div>
                     <div class="icon">
@@ -216,6 +217,51 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3><a href="{{route('estadisticas.sm')}}" style="color:aliceblue">{{ $sm }}</a></h3>
+                        <p>PACIENTES SALUD MENTAL</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg col-sm">
+                    <div class="small-box bg-gradient-yellow">
+                        <div class="inner">
+                            <h3><a href="{{route('estadisticas.am')}}" style="color:aliceblue">{{ $am }}</a></h3>
+                            <p>PACIENTES ADULTO MAYOR</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg col-sm">
+                    <div class="small-box col-sm border border-warning">
+                        <div class="inner">
+                            <h3>0</h3>
+                            <p>EFAM REALIZADOS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-blue">
+                    <div class="inner">
+                        <h3><a href="{{route('estadisticas.sala_era')}}" style="color:aliceblue">{{ $sala_era }}</a></h3>
+                        <p>PACIENTES SALA IRA/ERA</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

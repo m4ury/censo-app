@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'evaluaciones pie diabetico realizadas')
+@section('title', 'pctes salud mental')
 
 @section('content')
-<div class="card card-success card-outline">
+<div class="card card-primary card-outline">
     <div class="card-header">
 
         <h3 class="card-title">
@@ -11,31 +11,37 @@
                 <i class="fas fa-arrow-alt-circle-left"></i>
                 Volver
             </a>
-            <i class="fas fa-user-check px-2" style="color:green"></i>
-            PACIENTES CON EVALUACION PIE DIABETICO REALIZADO
+            <i class="fas fa-user-injured px-2" style="color:rgb(38, 0, 255)"></i>
+            PACIENTES SALUD MENTAL
         </h3>
     </div>
     <div class="col-md-12 table-responsive pt-3">
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
             <tr>
-                <th>Fecha ultimo control</th>
                 <th>Rut</th>
                 <th>N° Ficha</th>
                 <th>Nombre completo</th>
-                <th>Evaluacion</th>
-                <th>patologia</th>
+                <th>Telefono</th>
+                <th>Sector</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($pacientes as $paciente)
+            @foreach($sm as $paciente)
                 <tr>
-                    <td>{{ $paciente->fecha_control ?? '--'}}</td>
-                    <td>{{ $paciente->rut }}</td>
+                    <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td>{{ $paciente->ficha }}</td>
                     <td>{{ $paciente->fullName() }}</td>
-                    <td>{{ $paciente->evaluacionPie }}</td>
-                    <td>{{ $paciente->nombre_patologia }}</td>
+                    <td>{{ $paciente->telefono }}</td>
+                    <td><span class="mr-2">
+                        @if($paciente->sector == 'Celeste')
+                            <i class="fas fa-square text-primary"></i></span> Celeste
+                        @elseif($paciente->sector == 'Naranjo')
+                            <i class="fas fa-square text-orange"></i></span> Naranjo
+                        @elseif($paciente->sector == 'Blanco')
+                            <i class="fas fa-square text-white"></i></span> Blanco
+                        @endif
+                    </td>
                 </tr>
             @endforeach
             </tbody>

@@ -105,6 +105,10 @@
     </div>
 </div>
 
+    @if($paciente->grupo > 64)
+        @include('partials.efam')
+    @endif
+
 @foreach($paciente->patologias as $patologia)
 @if($patologia->nombre_patologia == 'HTA')
 @include('partials.hta')
@@ -140,7 +144,7 @@
         !!}
         <div class="col-sm-2">
             {!! Form::select('tipo_atencion', ['Telefonico'=> 'Telefonico', 'Visita domiciliaria' => 'Visita
-            domiciliaria', 'Presencial' => 'Presencial', 'ELEAM' => 'ELEAM'], old('tipo_atencion',
+            domiciliaria', 'Presencial' => 'Presencial'], old('tipo_atencion',
             $control->tipo_atencion), ['class' => 'form-control form-control-sm'.($errors->has('prox_tipo')
             ? ' is-invalid' : ''), 'id' => 'atencion', 'placeholder'=> "Seleccione"]) !!}
             @if ($errors->has('tipo_atencion'))
@@ -188,8 +192,8 @@
 
 @section('js')
 <script>
-    $('#Enfermera, #Kine, #Medico, #Nutricionista').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif').select2({
+    $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm').select2({
             theme: "classic",
             width: '100%',
         });
@@ -238,23 +242,26 @@
         $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function () {
-            $('#Enfermera, #Kine, #Medico, #Nutricionista').hide();
+            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
             var selection = $('#tipo').val();
             switch (selection) {
                 case 'Enfermera':
                     $('#Enfermera').show();
-                    $('#Kine').hide();
+                    $('#efam').show();
+                    //$('#Kine').hide();
                     $('#Medico').hide();
                     break;
                 case 'Kinesiologo':
                     $('#Kine').show();
-                    $('#Enfermera').hide();
+                    //$('#Enfermera').hide();
                     $('#Medico').hide();
                     break;
                 case 'Medico':
                     $('#Medico, #Nutricionista').show();
                     $('#Enfermera').hide();
-                    //$('#Kine').hide();
+                    break;
+                case 'Psicologo':
+                    $('#Psicologo').show();
                     break;
             }
         });
@@ -336,6 +343,17 @@ $('.asmaClasif, epocClasif, sborClasif').change(function () {
         }else if($('.sborClasif').val() === 'Leve' || $('.sborClasif').val() === 'Moderado' || $('.asmaClasif').val() === 'Severo'){
             $('#espirometria').show()
         }
+});
+
+$('#funcionalidad').change(function () {
+    $("#mensaje").empty();
+    var mensaje = "Favor edite paciente... <a class='btn bg-gradient-primary btn-sm' title='Editar' href='{{ route('pacientes.edit', $paciente->id) }}'> Editar Paciente <i class='fas fa-pen mx-2'></i></a>"
+    if ($('#funcionalidad').val() === 'rDependencia'){
+        $('#mensaje').append(mensaje);
+    }
+    else if($('#mensaje').val() !== 'rDependencia'){
+        mensaje = ''
+    }
 })
 </script>
 
