@@ -30,6 +30,8 @@ class HomeController extends Controller
         $all = new Paciente;
         $totalPacientes = $all->pscv()->whereNull('egreso')->count();
         $dm2 = $all->dm2()->whereNull('egreso')->count();
+        $pieDm2_90 = round($dm2*90/100);
+        //dd($pieDm2_90);
         $hta = $all->hta()->whereNull('egreso')->count();
         $dlp = $all->dlp()->whereNull('egreso')->count();
         $iam = $all->iam()->whereNull('egreso')->count();
@@ -37,24 +39,42 @@ class HomeController extends Controller
         $usoInsulina = $all->dm2()->where('usoInsulina', '=', 1)->count();
         $pieDm2 = $all->dm2()->join('controls', 'controls.paciente_id', 'pacientes.id')->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])->whereYear('controls.fecha_control', '>','2022')->latest('controls.fecha_control')->get()->unique('rut')->count();
 
+        $sm = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+        ->where('paciente_patologia.patologia_id', 9)
+        ->whereNull('egreso')
+        ->count();
+
+        $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+        ->where('paciente_patologia.patologia_id', 8)
+        ->whereNull('egreso')
+        ->count();
+
+        $am = $all->select('id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento')
+        ->whereNull('egreso')
+        ->get()
+        ->where('grupo', '>', 64)
+        ->count();
+
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->count();
-        $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
-        $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count();
+        /* $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
+        $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
 
         $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->count();
-        $femenino2064 = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
-        $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count();
+        /* $femenino2064 = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
+        $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
 
         //x sector
         $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->whereNull('egreso')->count();
         $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->whereNull('egreso')->count();
 
-        //x compensacion
+        /* //x compensacion
         $compensados = $all->pscv()->where('compensado', '=', 1)->whereNull('egreso')->count();
         $noCompensados = $all->pscv()->where('compensado', '=', 2)->whereNull('egreso')->count();
         $sinInfo = $all->pscv()->where('compensado', '=', 0)->whereNull('egreso')->count();
-        $sinInfo = $all->pscv()->where('compensado', '=', 0)->whereNull('egreso')->count();
+        $sinInfo = $all->pscv()->where('compensado', '=', 0)->whereNull('egreso')->count(); */
 
         $pacientes = new Paciente;
         $mas80 = $pacientes->pscv()->whereNull('egreso')->get()->where('grupo', '>=', 80)->count();
@@ -92,20 +112,17 @@ class HomeController extends Controller
             'in2529',
             'in2024',
             'in1519',
-            'compensados',
-            'noCompensados',
-            'sinInfo',
-            'femenino2064',
-            'femenino65mas',
-            'masculino2064',
-            'masculino65mas',
+            'am',
+            'sm',
             'dm2',
             'hta',
             'dlp',
             'usoInsulina',
             'pieDm2',
             'iam',
-            'acv'
+            'acv',
+            'sala_era',
+            'pieDm2_90'
         ));
     }
 }

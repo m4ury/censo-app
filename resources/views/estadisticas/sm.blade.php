@@ -29,7 +29,7 @@
             <tbody>
             @foreach($sm as $paciente)
                 <tr>
-                    <td>{{ $paciente->rut }}</td>
+                    <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td>{{ $paciente->ficha }}</td>
                     <td>{{ $paciente->fullName() }}</td>
                     <td>{{ $paciente->telefono }}</td>

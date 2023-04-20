@@ -6070,18 +6070,18 @@ class EstadisticaController extends Controller
         ));
     }
 
-    public function rayos(){
+    /* public function rayos(){
         $examenes = new Examen;
         $todas = $examenes->count();
         return view('estadisticas.rayos', compact('todas'));
-    }
+    } */
 
-    public function piedmr(){
+    /* public function piedmr(){
         $all = new Paciente;
         $pacientes = $all->SinEvaluacionPie()->get()->unique('rut');
         //dd($pacientes);
         return view('estadisticas.piedm', compact('pacientes'));
-    }
+    } */
 
     public function pie(){
         $all = new Paciente;
@@ -6093,7 +6093,7 @@ class EstadisticaController extends Controller
     public function dm2(){
         $all = new Paciente;
         $dm2 = $all->dm2()
-            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
             ->whereNull('egreso')
             ->get();
 
@@ -6103,12 +6103,33 @@ class EstadisticaController extends Controller
     public function sm(){
         $all = new Paciente;
         $sm = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-        ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
         ->where('paciente_patologia.patologia_id', 9)
         ->whereNull('egreso')
         ->get();
 
         return view('estadisticas.sm', compact('sm'));
+    }
+
+    public function sala_era(){
+        $all = new Paciente;
+        $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
+        ->where('paciente_patologia.patologia_id', 8)
+        ->whereNull('egreso')
+        ->get();
+
+        return view('estadisticas.sala_era', compact('sala_era'));
+    }
+
+    public function am(){
+        $all = new Paciente;
+        $am = $all->select('id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento')
+        ->whereNull('egreso')
+        ->get()
+        ->where('grupo', '>', 64);
+
+        return view('estadisticas.am', compact('am'));
     }
 
     public function hta(){
@@ -6121,7 +6142,7 @@ class EstadisticaController extends Controller
 
     return view('estadisticas.hta', compact('hta'));
 }
-    public function ens()
+    /* public function ens()
     {
 
         $pacientes = new Paciente;
@@ -6267,5 +6288,5 @@ class EstadisticaController extends Controller
                 'in2024F',
                 'in1519F'
             ));
-    }
+    } */
 }

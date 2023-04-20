@@ -129,7 +129,7 @@
     <div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
-                PACIENTES DM2
+                PACIENTES DIABETICOS
             </h3>
         </div>
         <div class="card-body">
@@ -145,7 +145,7 @@
             </div> --}}
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.pie')}}">CURACION PIE REALIZADOS</a>
+                    <a href="{{route('estadisticas.pie')}}">EVALUACION PIE DIABETICO</a>
                 </h4>
             </div>
         </div>
@@ -154,7 +154,7 @@
     <div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
-                PACIENTES HTA
+                PACIENTES HIPERTENSOS
             </h3>
         </div>
         <div class="card-body">
@@ -184,6 +184,21 @@
     <div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
+                PACIENTES ADULTO MAYOR
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{route('estadisticas.am')}}">TODOS</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="card card-info card-outline">
+        <div class="card-header">
+            <h3 class="card-title text-bold">
                 ENCUESTA NACIONAL DE LA SALUD
             </h3>
         </div>
@@ -201,5 +216,5 @@
                 </h4>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

@@ -192,8 +192,8 @@
 
 @section('js')
 <script>
-    $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad').select2({
+    $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm').select2({
             theme: "classic",
             width: '100%',
         });
@@ -242,24 +242,26 @@
         $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function () {
-            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam').hide();
+            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
             var selection = $('#tipo').val();
             switch (selection) {
                 case 'Enfermera':
                     $('#Enfermera').show();
                     $('#efam').show();
-                    $('#Kine').hide();
+                    //$('#Kine').hide();
                     $('#Medico').hide();
                     break;
                 case 'Kinesiologo':
                     $('#Kine').show();
-                    $('#Enfermera').hide();
+                    //$('#Enfermera').hide();
                     $('#Medico').hide();
                     break;
                 case 'Medico':
                     $('#Medico, #Nutricionista').show();
                     $('#Enfermera').hide();
-                    //$('#Kine').hide();
+                    break;
+                case 'Psicologo':
+                    $('#Psicologo').show();
                     break;
             }
         });
