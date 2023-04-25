@@ -434,6 +434,15 @@ class Paciente extends Model
 
 
     //Controles Enfermera *********
+    public function efam()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->whereIn('controls.rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
+                    ->whereYear('controls.fecha_control', 2023)
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
     public function evaluacionPie_bajo()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')

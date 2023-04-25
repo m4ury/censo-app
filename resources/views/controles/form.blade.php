@@ -28,7 +28,7 @@
         @endif
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row presion_art">
     {!! Form::label('sistolica_label', 'Presion Art. Sistolica', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('sistolica', old('sistólica', $control->sistolica), ['class' =>
@@ -53,7 +53,7 @@
         @endif
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row peso_talla">
     {!! Form::label('peso_actual', 'Peso actual(Kg.)',['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('peso_actual', old('peso_actual', $control->peso_actual), ['class' => 'form-control
@@ -77,7 +77,7 @@
         @endif
     </div>
 </div>
-<div class="form-group row">
+<div class="form-group row imc">
     {!! Form::label('imc', 'IMC',['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::text('imc', old('imc', $control->imc), ['class' => 'form-control form-control-sm','step' => 'any',
@@ -243,6 +243,7 @@
 
         $('#tipo').change(function () {
             $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
+            $('.presion_art, .peso_talla, .imc').show()
             var selection = $('#tipo').val();
             switch (selection) {
                 case 'Enfermera':
@@ -262,6 +263,7 @@
                     break;
                 case 'Psicologo':
                     $('#Psicologo').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
                     break;
             }
         });

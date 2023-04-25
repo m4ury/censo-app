@@ -5317,39 +5317,39 @@ class EstadisticaController extends Controller
         $pacientes = new Paciente;
 
         //SIN RIESGO
-        $aSinRiesgo = $pacientes->aSinRiesgo()->whereBetween('sexo', ['Femenino', 'Masculino'])->count();
-        $aSinRiesgoF = $pacientes->aSinRiesgo()->where('sexo','=', 'Femenino')->count();
+        $aSinRiesgo = $pacientes->efam()->where('rEfam', 'autSinRiesgo')->get()->unique('rut')->count();
+        $aSinRiesgoF = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autSinRiesgo')->get()->unique('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
-        $aSinRiesgo_6569F = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [65, 69])->where('sexo', 'Femenino')->count();
-        $aSinRiesgo_7074F = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [70, 74])->where('sexo', 'Femenino')->count();
-        $aSinRiesgo_7579F = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [75, 79])->where('sexo', 'Femenino')->count();
-        $aSinRiesgo_80F = $pacientes->aSinRiesgo()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+        $aSinRiesgo_6569F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $aSinRiesgo_7074F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $aSinRiesgo_7579F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $aSinRiesgo_80F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autSinRiesgo')->get()->where('grupo', '>', 79)->unique('rut')->count();
 
-        $aSinRiesgoM = $pacientes->aSinRiesgo()->where('sexo', 'Masculino')->count();
+        $aSinRiesgoM = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autSinRiesgo')->get()->unique('rut')->count();
         //$aspirinasOriginM = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
-        $aSinRiesgo_6569M = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [65, 69])->where('sexo', 'Masculino')->count();
-        $aSinRiesgo_7074M = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [70, 74])->where('sexo', 'Masculino')->count();
-        $aSinRiesgo_7579M = $pacientes->aSinRiesgo()->get()->whereIn('grupo', [75, 79])->where('sexo', 'Masculino')->count();
-        $aSinRiesgo_80M = $pacientes->aSinRiesgo()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+        $aSinRiesgo_6569M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $aSinRiesgo_7074M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $aSinRiesgo_7579M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autSinRiesgo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $aSinRiesgo_80M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autSinRiesgo')->get()->where('grupo', '>', 79)->unique('rut')->count();
 
         //CON RIESGO
-        $aRiesgo = $pacientes->aRiesgo()->count();
-        $aRiesgoF = $pacientes->aRiesgo()->where('sexo', 'Femenino')->count();
+        $aRiesgo = $pacientes->efam()->where('rEfam', 'autConRiesgo')->get()->unique('rut')->count();
+        $aRiesgoF = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autConRiesgo')->get()->unique('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
-        $aRiesgo_6569F = $pacientes->aRiesgo()->get()->whereIn('grupo', [65, 69])->where('sexo', 'Femenino')->count();
-        $aRiesgo_7074F = $pacientes->aRiesgo()->get()->whereIn('grupo', [70, 74])->where('sexo', 'Femenino')->count();
-        $aRiesgo_7579F = $pacientes->aRiesgo()->get()->whereIn('grupo', [75, 79])->where('sexo', 'Femenino')->count();
-        $aRiesgo_80F = $pacientes->aRiesgo()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->count();
+        $aRiesgo_6569F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $aRiesgo_7074F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $aRiesgo_7579F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $aRiesgo_80F = $pacientes->efam()->where('sexo', 'Femenino')->where('rEfam', 'autConRiesgo')->get()->where('grupo', '>', 79)->unique('rut')->count();
 
-        $aRiesgoM = $pacientes->aRiesgo()->where('sexo', 'Masculino')->count();
+        $aRiesgoM = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autConRiesgo')->get()->unique('rut')->count();
         //$aspirinasOriginM = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
-        $aRiesgo_6569M = $pacientes->aRiesgo()->get()->whereIn('grupo', [65, 69])->where('sexo', 'Masculino')->count();
-        $aRiesgo_7074M = $pacientes->aRiesgo()->get()->whereIn('grupo', [70, 74])->where('sexo', 'Masculino')->count();
-        $aRiesgo_7579M = $pacientes->aRiesgo()->get()->whereIn('grupo', [75, 79])->where('sexo', 'Masculino')->count();
-        $aRiesgo_80M = $pacientes->aRiesgo()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
+        $aRiesgo_6569M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $aRiesgo_7074M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $aRiesgo_7579M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autConRiesgo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $aRiesgo_80M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'autConRiesgo')->get()->where('grupo', '>', 79)->unique('rut')->count();
 
         //RIESGO DEPENDENCIA
-        $riesgoDependencia = $pacientes->riesgoDependencia()->count();
+        $riesgoDependencia = $pacientes->efam()->where('rEfam', 'rDependencia')->get()->unique('rut')->count();
         $riesgoDependenciaF = $pacientes->riesgoDependencia()->where('sexo', 'Femenino')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
         $riesgoDependencia_6569F = $pacientes->riesgoDependencia()->get()->whereIn('grupo', [65, 69])->where('sexo', 'Femenino')->count();
