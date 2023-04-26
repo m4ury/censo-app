@@ -84,9 +84,29 @@
 
 
         <div class="card-body">
+            {{-- <div class="d-flex">
+                <p class="d-flex flex-column">
+                    <span>Pacientes x Sector</span>
+                </p>
+                <p class="ml-auto d-flex flex-column text-right">
+                </p>
+            </div>
+            <!-- /.d-flex -->
+            <div class="position-relative mb-4">
+                <div class="chartjs-size-monitor">
+                    <div class="chartjs-size-monitor-expand">
+                        <div class=""></div>
+                    </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class=""></div>
+                    </div>
+                </div>
+                <canvas id="chartSector" height="200" style="display: block; width: 759px; height: 200px;" width="759" class="chartjs-render-monitor">
+                </canvas>
+            </div> --}}
             <div class="d-flex">
                 <p class="d-flex flex-column">
-                    <span>Total Pacientes</span>
+                    <span>Pacientes x Rango etareo</span>
                 </p>
                 <p class="ml-auto d-flex flex-column text-right">
                 </p>
@@ -217,7 +237,8 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div class="row">
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-green">
                     <div class="inner">
@@ -243,32 +264,32 @@
                 <div class="col-lg col-sm">
                     <div class="small-box col-sm border border-warning">
                         <div class="inner">
-                            <h3>0</h3>
+                            <h3>{{ $efam }}</h3>
                             <p>EFAM REALIZADOS</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-blue">
-                    <div class="inner">
-                        <h3><a href="{{route('estadisticas.sala_era')}}" style="color:aliceblue">{{ $sala_era }}</a></h3>
-                        <p>PACIENTES SALA IRA/ERA</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+            <div class="row">
+                <div class="col-lg-3 col-sm">
+                    <div class="small-box bg-gradient-blue">
+                        <div class="inner">
+                            <h3><a href="{{route('estadisticas.sala_era')}}" style="color:aliceblue">{{ $sala_era }}</a></h3>
+                            <p>PACIENTES SALA IRA/ERA</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
 @section('js')
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+    {{-- <script>
+        var ctx = document.getElementById('chartSector').getContext('2d');
+        var chartSector = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
@@ -323,5 +344,132 @@
                 }
             }
         });
-    </script>
+    </script> --}}
+{{-- <script>
+        var ctx = document.getElementById('chartSector').getContext('2d');
+        var chartSector = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
+                datasets: [
+                {
+                    label: 'Sector Naranjo',
+                    data: [
+                        {{$in1519N}}, {{$in2024N}}, {{$in2529N}}, {{$in3034N}}, {{$in3539N}}, {{$in4044N}}, {{$in4549N}}, {{$in5054N}},{{$in5559N}}, {{$in6064N}},{{$in6569N}}, {{$in7074N}},{{$in7579N}}, {{$mas80N}}
+                    ],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgb(255,165,0)',
+                    borderWidth: 2
+                },
+                {
+                    label: 'Sector Celeste',
+                    data: [
+                        {{$in1519C}}, {{$in2024C}}, {{$in2529C}}, {{$in3034C}}, {{$in3539C}}, {{$in4044C}}, {{$in4549C}}, {{$in5054C}},{{$in5559C}}, {{$in6064C}},{{$in6569C}}, {{$in7074C}},{{$in7579C}}, {{$mas80C}}
+                    ],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgb(0,255,255)',
+                    borderWidth: 2
+                }
+                ]
+            },
+            options: {
+                animation: {
+                    duration: 1500,
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+</script> --}}
+
+{{-- <script>
+    var ctx = document.getElementById('chartSector').getContext('2d');
+    var chartSector = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
+            datasets: [
+            {
+                label: 'Sector Naranjo',
+                data: [
+                    {{$in1519N}}, {{$in2024N}}, {{$in2529N}}, {{$in3034N}}, {{$in3539N}}, {{$in4044N}}, {{$in4549N}}, {{$in5054N}},{{$in5559N}}, {{$in6064N}},{{$in6569N}}, {{$in7074N}},{{$in7579N}}, {{$mas80N}}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgb(255,165,0)',
+                borderWidth: 2
+            },
+            {
+                label: 'Sector Celeste',
+                data: [
+                    {{$in1519C}}, {{$in2024C}}, {{$in2529C}}, {{$in3034C}}, {{$in3539C}}, {{$in4044C}}, {{$in4549C}}, {{$in5054C}},{{$in5559C}}, {{$in6064C}},{{$in6569C}}, {{$in7074C}},{{$in7579C}}, {{$mas80C}}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgb(0,255,255)',
+                borderWidth: 2
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1500,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script> --}}
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
+            datasets: [
+                {
+                label: 'Hombres',
+                data: [
+                    {{$in1519M}}, {{$in2024M}}, {{$in2529M}}, {{$in3034M}}, {{$in3539M}}, {{$in4044M}}, {{$in4549M}}, {{$in5054M}},{{$in5559M}}, {{$in6064M}},{{$in6569M}}, {{$in7074M}},{{$in7579M}}, {{$mas80M}}
+                ],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgb(54, 162, 235)',
+                borderWidth: 2
+            },
+                {
+                    label: 'Mujeres',
+                    data: [
+                        {{$in1519F}}, {{$in2024F}}, {{$in2529F}}, {{$in3034F}}, {{$in3539F}}, {{$in4044F}}, {{$in4549F}}, {{$in5054F}},{{$in5559F}}, {{$in6064F}},{{$in6569F}}, {{$in7074F}},{{$in7579F}}, {{$mas80F}}
+                    ],
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2
+            },
+            ]
+        },
+        options: {
+            responsive: true,
+            animation: {
+                duration: 1500,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 @endsection
