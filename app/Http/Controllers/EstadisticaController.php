@@ -4531,7 +4531,6 @@ class EstadisticaController extends Controller
         $depMod_7579M = $all->depMod()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
         $depMod_80M = $all->depMod()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
 
-
         //DEPENDENCIA SEVERA
         $depSevera = $all->depSevera()->count();
         $depSeveraF = $all->depSevera()->where('sexo', '=', 'Femenino')->count();
@@ -4574,7 +4573,6 @@ class EstadisticaController extends Controller
         $depSevera_7579M = $all->depSevera()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
         $depSevera_80M = $all->depSevera()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
 
-
         //DEPENDENCIA ONCOLOGICO
         $oncologico = $all->oncologico()->count();
         $oncologicoF = $all->oncologico()->where('sexo', '=', 'Femenino')->count();
@@ -4616,7 +4614,6 @@ class EstadisticaController extends Controller
         $oncologico_7074M = $all->oncologico()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
         $oncologico_7579M = $all->oncologico()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
         $oncologico_80M = $all->oncologico()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->count();
-
 
          //ESCARAS
          $escaras = $all->escaras()->count();
@@ -6088,6 +6085,13 @@ class EstadisticaController extends Controller
         $pacientes = $all->evaluacionPie()->get()->unique('rut');
         //dd($pacientes);
         return view('estadisticas.pie', compact('pacientes'));
+    }
+
+    public function dm2Descom(){
+        $all = new Paciente;
+        $pacientes = $all->dm2Descom()->get()->unique('rut');
+        //dd($pacientes);
+        return view('estadisticas.dm2_descom', compact('pacientes'));
     }
 
     public function dm2(){
