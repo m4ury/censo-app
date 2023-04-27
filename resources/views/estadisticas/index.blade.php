@@ -138,11 +138,11 @@
                     <a href="{{route('estadisticas.dm2')}}">TODOS</a>
                 </h4>
             </div>
-            {{-- <div class="row">
+            <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.piedm')}}">FALTANTES</a>
+                    <a href="{{route('estadisticas.dm2_descom')}}">DESCOMPENSADOS</a>
                 </h4>
-            </div> --}}
+            </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
                     <a href="{{route('estadisticas.pie')}}">EVALUACION PIE DIABETICO</a>

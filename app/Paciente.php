@@ -490,7 +490,18 @@ class Paciente extends Model
                 ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
                 ->whereYear('controls.fecha_control', '>', 2022)
                     ->latest('controls.fecha_control');
+    }
 
+    public function dm2Descom(){
+        return $this->pscv()->select('pacientes.id', 'pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia', 'controls.fecha_control', 'controls.hba1cMayorIgual9Porcent')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
+            ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')
+                ->where('patologias.nombre_patologia', 'DM2')
+                ->whereNull('pacientes.egreso')
+                ->where('controls.hba1cMayorIgual9Porcent',true)
+                ->whereYear('controls.fecha_control', '>', 2022)
+                    ->latest('controls.fecha_control');
     }
 
     public function ulcerasActivas_TipoCuracion_avz()
