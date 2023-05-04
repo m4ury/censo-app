@@ -52,9 +52,9 @@
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
-                            {{-- <a class="nav-link" id="vert-tabs-examenes-tab" data-toggle="pill"
-                                href="#vert-tabs-examenes" role="tab" aria-controls="vert-tabs-examenes"
-                                aria-selected="false">Examenes</a> --}}
+                            <a class="nav-link" id="vert-tabs-consultas-tab" data-toggle="pill"
+                                href="#vert-tabs-consultas" role="tab" aria-controls="vert-tabs-consultas"
+                                aria-selected="false">Consulta dental</a>
                         </div>
                     </div>
                     <div class="col-9 col-sm-9">
@@ -114,16 +114,17 @@
                                         class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
-
-                            {{-- <div class="tab-pane fade" id="vert-tabs-examenes" role="tabpanel"
-                                aria-labelledby="vert-tabs-examenes-tab">
-                                @include('examenes.list_examenes', $paciente)
-
-                                @if($paciente->examenes->count() == 0)
-                                <p class="text-muted">No hay Examenes aun... </p>
-                                @endif
-                            </div> --}}
-
+                            <div class="tab-pane fade" id="vert-tabs-consultas" role="tabpanel"
+                                aria-labelledby="vert-tabs-consultas-tab">
+                                @include('consultas.list_consultas', $paciente)
+                                {{-- @if($paciente->consultas->count() > 0)
+                                <a href="{{ route('consultas', $paciente->id) }}"><span class="text-bold">Ver Todas las
+                                        consultas...</span></a>
+                                @else
+                                <p class="text-muted">No hay Consultas aun, crea una <i
+                                        class="far fa-laugh-wink fa-2x"></i></p>
+                                @endif --}}
+                            </div>
                             <div class="tab-pane fade" id="vert-tabs-patologias" role="tabpanel"
                                 aria-labelledby="vert-tabs-patologias-tab">
                                 @include('patologias.list_patologias', $paciente)
@@ -133,7 +134,6 @@
                                         class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
-
                         </div>
                     </div>
                 </div>

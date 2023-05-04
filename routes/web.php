@@ -42,12 +42,18 @@ Route::middleware('auth')->group(function () {
     Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
 
+    //rutas para consultas
+    Route::resource('consultas', 'ConsultaController')->except('[index, create]');
+    //Route::get('controles-all', 'ControlController@index')->name('controles-all');
+    Route::get('consultas/pcte/{paciente?}', 'ConsultaController@consultasPcte')->name('consultas');
+    Route::get('consultas/create/{paciente?}', 'ConsultaController@create')->name('consultas.create');
+
     //rutas para examenes
-    Route::resource('examenes', 'ExamenController')->except('[index, create]');
+    /* Route::resource('examenes', 'ExamenController')->except('[index, create]');
     Route::get('examenes/create/{paciente?}', 'ExamenController@create')->name('examenes.create');
     Route::get('examenes/created/new', 'ExamenController@creado')->name('examenes.created');
     Route::post('examenes/guardar', 'ExamenController@guardado')->name('examenes.stored');
-    Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes');
+    Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes'); */
 
     //rutas para perfil
     Route::get('/perfil', 'UserController@profile')->name('perfil');

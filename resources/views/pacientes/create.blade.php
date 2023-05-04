@@ -25,6 +25,16 @@
 @stop
 @section('js')
 <script type="text/javascript">
+    $('#embarazada').hide();
+    $('#sexo').change(function () {
+    $('#embarazada').hide()
+        if ($('#sexo').val() === 'Femenino'){
+            //console.log($('.asmaClasif').val())
+            $('#embarazada').show()
+        }
+    }
+);
+
     $('#sexo, #comuna, #sector, #e_civil, #parentesco').select2({
         theme: 'classic',
         width: '100%'

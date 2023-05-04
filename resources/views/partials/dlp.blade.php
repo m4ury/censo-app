@@ -3,7 +3,7 @@
     <div class="form-group row my-2 ml-2">
         {!! Form::label('ldl_label', 'LDL', ['class' => 'col-sm col-form-label px-3']) !!}
         <div class="col-sm-9">
-            {!! Form::select('ldl', ['A' => 'Menor a 70', 'B' => 'Entre 70 a 99', 'C' => 'Mayor Igual a 100'], old('ldl', $control->ldl), ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una opción']) !!}
+            {!! Form::select('ldl', ['A' => 'Menor a 70', 'B' => 'Entre 70 a 99', 'C' => 'Mayor Igual a 100'], old('ldl', $control->ldl), ['class' => 'form-control form-control-sm ldl', 'placeholder' => 'Seleccione una opción']) !!}
         </div>
     </div>
 </div>

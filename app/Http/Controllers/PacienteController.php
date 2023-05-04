@@ -31,7 +31,7 @@ class PacienteController extends Controller
     public function store(PacienteRequest $request)
     {
         Paciente::create($request->all());
-        Alert::success('Nuevo Paciente ha sido cread@ con exito');
+        //Alert::success('Nuevo Paciente ha sido cread@ con exito');
         return redirect('pacientes')->withSuccess('Paciente Creado con exito!');
     }
 
@@ -40,9 +40,9 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
         $patologias = Patologia::all();
         $controles = $paciente->controls()->latest('fecha_control')->get();
-        $examenes = $paciente->examenes()->latest('fecha_examen')->get();
+        $consultas = $paciente->consultas()->latest('fecha_consulta')->get();
 
-        return view('pacientes.show', compact('paciente', 'controles', 'examenes', 'patologias'));
+        return view('pacientes.show', compact('paciente', 'controles', 'consultas', 'patologias'));
     }
 
     public function edit($id)
@@ -79,7 +79,9 @@ class PacienteController extends Controller
         $paciente->usoAspirinas = $request->usoAspirinas ?? 0;
         $paciente->usoEstatinas = $request->usoEstatinas ?? 0;
         $paciente->escaras = $request->escaras ?? 0;
-
+        $paciente->sename = $request->sename ?? 0;
+        $paciente->embarazada = $request->embarazada ?? 0;
+        $paciente->mejor_ninez = $request->mejor_ninez ?? 0;
         $paciente->update($request->all());
         //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
