@@ -876,16 +876,27 @@ class Paciente extends Model
                         ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
                         ->whereIn('pacientes.sexo', [$fem, $masc])
                         ->latest('controls.fecha_control');
+    }
 
-    /* $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-                    ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-                    ->where('paciente_patologia.patologia_id', 8)
-                    ->where('controls.asmaClasif', $asma)
-                    ->union(DB::table('pacientes')
-                        ->join('controls', 'controls.paciente_id', 'pacientes.id')
-                        ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-                        ->where('paciente_patologia.patologia_id', 8)
-                        ->where('pacientes.espirometriaVigente', '>=', Carbon::now()->subYear(1)))
-                        ->get() */;
+    public function asmaControl($fem, $masc, $control)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.asmaControl', $control)
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
+    }
+
+    public function epocControl($fem, $masc, $control)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->where('controls.tipo_control', 'Kinesiologo')
+                    ->where('controls.epocControl', $control)
+                    ->whereYear('controls.fecha_control', '2023')
+                    ->whereIn('sexo', [$fem, $masc])
+                    ->whereNull('pacientes.egreso')
+                    ->latest('controls.fecha_control');
     }
 }

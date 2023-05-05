@@ -31,7 +31,7 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="#">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
+                            <a href="{{route('estadisticas.seccion-p3d')}}">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
                         </h4>
                     </div>
                     <div class="row">

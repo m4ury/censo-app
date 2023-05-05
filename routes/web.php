@@ -72,7 +72,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/estadisticas.seccion-p5a', 'EstadisticaController@seccionP5a')->name('estadisticas.seccion-p5a');
     Route::get('/estadisticas.seccion-p5b', 'EstadisticaController@seccionP5b')->name('estadisticas.seccion-p5b');
-    Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
+    //Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
     Route::get('/estadisticas.encuestas', 'EstadisticaController@encuestas')->name('estadisticas.encuestas');
     //Route::get('/estadisticas.rayos', 'EstadisticaController@rayos')->name('estadisticas.rayos');
     Route::get('/estadisticas.piedm', 'EstadisticaController@piedmr')->name('estadisticas.piedm');
@@ -83,11 +83,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.sm', 'EstadisticaController@sm')->name('estadisticas.sm');
     Route::get('/estadisticas.am', 'EstadisticaController@am')->name('estadisticas.am');
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
-
-
     //Route::get('/estadisticas.ens', 'EstadisticaController@ens')->name('estadisticas.ens');
     //Route::get('/estadisticas.ensDm2', 'EstadisticaController@ensDm2')->name('estadisticas.ensDm2');
-
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
+    Route::get('/estadisticas.seccion-p3d', 'EstadisticaController@seccionP3d')->name('estadisticas.seccion-p3d');
 
 });

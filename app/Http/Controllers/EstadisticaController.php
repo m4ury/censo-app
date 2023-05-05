@@ -4127,7 +4127,6 @@ class EstadisticaController extends Controller
 
         //sbor Severo
         $sborSevero = $all->sborSevero('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-
         $sborSeveroM = $all->sborSevero(null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
         $sborSevero_espVig = $all->espiromVigente('Leve', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
         $sborSevero_OriginM = $all->sborSevero(null, 'Masculino')->get()->whereBetween('grupo', [0, 4])->where('pueblo_originario', 1)->count();
@@ -4136,7 +4135,6 @@ class EstadisticaController extends Controller
         $sborSeveroF = $all->sborSevero(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
         $sborSevero_OriginF = $all->sborSevero(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->where('pueblo_originario', 1)->count();
         $sborSevero_04F = $all->sborSevero(null, 'Femenino')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
-
 
         //epoc A
         $epocA = $all->epocA('Femenino', 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
@@ -5305,7 +5303,511 @@ class EstadisticaController extends Controller
             'otrasResp_1014M',
             'otrasResp_1014F'
         ));
-}
+    }
+
+    public function seccionp3d(){
+        $all = new Paciente;
+
+        $asmaControl = $all->asmaControl('Femenino', 'Masculino', 'Controlado')->get()->unique('rut')->count();
+        $asmaControlM = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->unique('rut')->count();
+        //$asmaControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaControl_OriginM = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaControl_04M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaControl_59M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaControl_1014M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaControl_1519M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaControl_2024M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaControl_2529M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaControl_3034M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaControl_3539M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaControl_4044M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaControl_4549M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaControl_5054M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaControl_5559M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaControl_6064M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaControl_6569M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaControl_7074M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaControl_7579M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaControl_80M = $all->asmaControl(null, 'Masculino', 'Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asmaControlF = $all->asmaControl('Femenino', null, 'Controlado')->get()->unique('rut')->count();
+        $asmaControl_OriginF = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaControl_04F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaControl_59F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaControl_1014F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaControl_1519F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaControl_2024F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaControl_2529F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaControl_3034F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaControl_3539F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaControl_4044F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaControl_4549F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaControl_5054F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaControl_5559F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaControl_6064F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaControl_6569F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaControl_7074F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaControl_7579F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaControl_80F = $all->asmaControl(null, 'Femenino', 'Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+
+        $asmaParcial = $all->asmaControl('Femenino', 'Masculino', 'Parcialmente Controlado')->get()->unique('rut')->count();
+        $asmaParcialM = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->unique('rut')->count();
+        //$asmaControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaParcial_OriginM = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaParcial_04M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaParcial_59M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaParcial_1014M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaParcial_1519M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaParcial_2024M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaParcial_2529M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaParcial_3034M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaParcial_3539M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaParcial_4044M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaParcial_4549M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaParcial_5054M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaParcial_5559M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaParcial_6064M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaParcial_6569M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaParcial_7074M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaParcial_7579M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaParcial_80M = $all->asmaControl(null, 'Masculino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asmaParcialF = $all->asmaControl('Femenino', null, 'Parcialmente Controlado')->get()->unique('rut')->count();
+        $asmaParcial_OriginF = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaParcial_04F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaParcial_59F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaParcial_1014F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaParcial_1519F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaParcial_2024F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaParcial_2529F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaParcial_3034F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaParcial_3539F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaParcial_4044F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaParcial_4549F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaParcial_5054F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaParcial_5559F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaParcial_6064F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaParcial_6569F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaParcial_7074F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaParcial_7579F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaParcial_80F = $all->asmaControl(null, 'Femenino', 'Parcialmente Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+
+        $asmaNoControl = $all->asmaControl('Femenino', 'Masculino', 'No Controlado')->get()->unique('rut')->count();
+        $asmaNoControlM = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->unique('rut')->count();
+        //$asmaControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaNoControl_OriginM = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaNoControl_04M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaNoControl_59M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaNoControl_1014M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaNoControl_1519M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaNoControl_2024M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaNoControl_2529M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaNoControl_3034M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaNoControl_3539M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaNoControl_4044M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaNoControl_4549M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaNoControl_5054M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaNoControl_5559M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaNoControl_6064M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaNoControl_6569M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaNoControl_7074M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaNoControl_7579M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaNoControl_80M = $all->asmaControl(null, 'Masculino', 'No Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asmaNoControlF = $all->asmaControl('Femenino', null, 'No Controlado')->get()->unique('rut')->count();
+        $asmaNoControl_OriginF = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaNoControl_04F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaNoControl_59F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaNoControl_1014F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaNoControl_1519F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaNoControl_2024F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaNoControl_2529F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaNoControl_3034F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaNoControl_3539F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaNoControl_4044F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaNoControl_4549F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaNoControl_5054F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaNoControl_5559F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaNoControl_6064F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaNoControl_6569F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaNoControl_7074F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaNoControl_7579F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaNoControl_80F = $all->asmaControl(null, 'Femenino', 'No Controlado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+
+        $asmaNoEval = $all->asmaControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        $asmaNoEvalM = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        //$asmaControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $asmaNoEval_OriginM = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asmaNoEval_04M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaNoEval_59M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaNoEval_1014M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaNoEval_1519M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaNoEval_2024M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaNoEval_2529M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaNoEval_3034M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaNoEval_3539M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaNoEval_4044M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaNoEval_4549M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaNoEval_5054M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaNoEval_5559M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaNoEval_6064M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaNoEval_6569M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaNoEval_7074M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaNoEval_7579M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaNoEval_80M = $all->asmaControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asmaNoEvalF = $all->asmaControl('Femenino', null, 'No Evaluado')->get()->unique('rut')->count();
+        $asmaNoEval_OriginF = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [15, 120])->where('pueblo_originario', 1)->count();
+        $asmaNoEval_04F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asmaNoEval_59F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asmaNoEval_1014F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asmaNoEval_1519F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asmaNoEval_2024F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asmaNoEval_2529F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asmaNoEval_3034F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asmaNoEval_3539F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asmaNoEval_4044F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asmaNoEval_4549F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asmaNoEval_5054F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asmaNoEval_5559F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asmaNoEval_6064F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asmaNoEval_6569F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asmaNoEval_7074F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asmaNoEval_7579F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asmaNoEval_80F = $all->asmaControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+
+        $epocControl = $all->epocControl('Femenino', 'Masculino', 'Logra Control')->get()->unique('rut')->count();
+        $epocControlM = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->unique('rut')->count();
+        //$epocControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $epocControl_OriginM = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        /* $epocControl_04M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $epocControl_59M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $epocControl_1014M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $epocControl_1519M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $epocControl_2024M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $epocControl_2529M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $epocControl_3034M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $epocControl_3539M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count(); */
+        $epocControl_4044M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocControl_4549M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocControl_5054M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocControl_5559M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocControl_6064M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocControl_6569M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocControl_7074M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocControl_7579M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocControl_80M = $all->epocControl(null, 'Masculino', 'Logra Control')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epocControlF = $all->epocControl('Femenino', null, 'Logra Control')->get()->unique('rut')->count();
+        $epocControl_OriginF = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        /* $epocControl_04F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $epocControl_59F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $epocControl_1014F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $epocControl_1519F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $epocControl_2024F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $epocControl_2529F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $epocControl_3034F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $epocControl_3539F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count(); */
+        $epocControl_4044F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocControl_4549F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocControl_5054F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocControl_5559F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocControl_6064F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocControl_6569F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocControl_7074F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocControl_7579F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocControl_80F = $all->epocControl(null, 'Femenino', 'Logra Control')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epocNoControl = $all->epocControl('Femenino', 'Masculino', 'No Logra Control')->get()->unique('rut')->count();
+        $epocNoControlM = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->unique('rut')->count();
+        //$epocControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $epocNoControl_OriginM = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        $epocNoControl_4044M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocNoControl_4549M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocNoControl_5054M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocNoControl_5559M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocNoControl_6064M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocNoControl_6569M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocNoControl_7074M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocNoControl_7579M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocNoControl_80M = $all->epocControl(null, 'Masculino', 'No Logra Control')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epocNoControlF = $all->epocControl('Femenino', null, 'No Logra Control')->get()->unique('rut')->count();
+        $epocNoControl_OriginF = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        $epocNoControl_4044F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocNoControl_4549F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocNoControl_5054F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocNoControl_5559F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocNoControl_6064F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocNoControl_6569F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocNoControl_7074F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocNoControl_7579F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocNoControl_80F = $all->epocControl(null, 'Femenino', 'No Logra Control')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epocNoEval = $all->epocControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        $epocNoEvalM = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        //$epocControl_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
+        $epocNoEval_OriginM = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        $epocNoEval_4044M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocNoEval_4549M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocNoEval_5054M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocNoEval_5559M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocNoEval_6064M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocNoEval_6569M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocNoEval_7074M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocNoEval_7579M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocNoEval_80M = $all->epocControl(null, 'Masculino', 'No Evaluado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epocNoEvalF = $all->epocControl('Femenino', null, 'No Evaluado')->get()->unique('rut')->count();
+        $epocNoEval_OriginF = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
+        $epocNoEval_4044F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epocNoEval_4549F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epocNoEval_5054F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epocNoEval_5559F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epocNoEval_6064F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epocNoEval_6569F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epocNoEval_7074F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epocNoEval_7579F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epocNoEval_80F = $all->epocControl(null, 'Femenino', 'No Evaluado')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        return view('estadisticas.seccion-p3d', compact(
+            'asmaControl',
+            'asmaControlM',
+            'asmaControlF',
+            'asmaControl_1519M',
+            'asmaControl_1519F',
+            'asmaControl_2024M',
+            'asmaControl_2024F',
+            'asmaControl_2529M',
+            'asmaControl_2529F',
+            'asmaControl_3034M',
+            'asmaControl_3034F',
+            'asmaControl_3539M',
+            'asmaControl_3539F',
+            'asmaControl_4044M',
+            'asmaControl_4044F',
+            'asmaControl_4549M',
+            'asmaControl_4549F',
+            'asmaControl_5054M',
+            'asmaControl_5054F',
+            'asmaControl_5559M',
+            'asmaControl_5559F',
+            'asmaControl_6064M',
+            'asmaControl_6064F',
+            'asmaControl_6569M',
+            'asmaControl_6569F',
+            'asmaControl_7074M',
+            'asmaControl_7074F',
+            'asmaControl_7579M',
+            'asmaControl_7579F',
+            'asmaControl_80M',
+            'asmaControl_80F',
+            'asmaControl_04M',
+            'asmaControl_04F',
+            'asmaControl_59M',
+            'asmaControl_59F',
+            'asmaControl_1014M',
+            'asmaControl_1014F',
+            'asmaControl_OriginM',
+            'asmaControl_OriginF',
+
+            'asmaNoEval',
+            'asmaNoEvalM',
+            'asmaNoEvalF',
+            'asmaNoEval_1519M',
+            'asmaNoEval_1519F',
+            'asmaNoEval_2024M',
+            'asmaNoEval_2024F',
+            'asmaNoEval_2529M',
+            'asmaNoEval_2529F',
+            'asmaNoEval_3034M',
+            'asmaNoEval_3034F',
+            'asmaNoEval_3539M',
+            'asmaNoEval_3539F',
+            'asmaNoEval_4044M',
+            'asmaNoEval_4044F',
+            'asmaNoEval_4549M',
+            'asmaNoEval_4549F',
+            'asmaNoEval_5054M',
+            'asmaNoEval_5054F',
+            'asmaNoEval_5559M',
+            'asmaNoEval_5559F',
+            'asmaNoEval_6064M',
+            'asmaNoEval_6064F',
+            'asmaNoEval_6569M',
+            'asmaNoEval_6569F',
+            'asmaNoEval_7074M',
+            'asmaNoEval_7074F',
+            'asmaNoEval_7579M',
+            'asmaNoEval_7579F',
+            'asmaNoEval_80M',
+            'asmaNoEval_80F',
+            'asmaNoEval_04M',
+            'asmaNoEval_04F',
+            'asmaNoEval_59M',
+            'asmaNoEval_59F',
+            'asmaNoEval_1014M',
+            'asmaNoEval_1014F',
+            'asmaNoEval_OriginM',
+            'asmaNoEval_OriginF',
+
+            'asmaParcial',
+            'asmaParcialM',
+            'asmaParcialF',
+            'asmaParcial_1519M',
+            'asmaParcial_1519F',
+            'asmaParcial_2024M',
+            'asmaParcial_2024F',
+            'asmaParcial_2529M',
+            'asmaParcial_2529F',
+            'asmaParcial_3034M',
+            'asmaParcial_3034F',
+            'asmaParcial_3539M',
+            'asmaParcial_3539F',
+            'asmaParcial_4044M',
+            'asmaParcial_4044F',
+            'asmaParcial_4549M',
+            'asmaParcial_4549F',
+            'asmaParcial_5054M',
+            'asmaParcial_5054F',
+            'asmaParcial_5559M',
+            'asmaParcial_5559F',
+            'asmaParcial_6064M',
+            'asmaParcial_6064F',
+            'asmaParcial_6569M',
+            'asmaParcial_6569F',
+            'asmaParcial_7074M',
+            'asmaParcial_7074F',
+            'asmaParcial_7579M',
+            'asmaParcial_7579F',
+            'asmaParcial_80M',
+            'asmaParcial_80F',
+            'asmaParcial_04M',
+            'asmaParcial_04F',
+            'asmaParcial_59M',
+            'asmaParcial_59F',
+            'asmaParcial_1014M',
+            'asmaParcial_1014F',
+            'asmaParcial_OriginM',
+            'asmaParcial_OriginF',
+
+            'asmaNoControl',
+            'asmaNoControlM',
+            'asmaNoControlF',
+            'asmaNoControl_1519M',
+            'asmaNoControl_1519F',
+            'asmaNoControl_2024M',
+            'asmaNoControl_2024F',
+            'asmaNoControl_2529M',
+            'asmaNoControl_2529F',
+            'asmaNoControl_3034M',
+            'asmaNoControl_3034F',
+            'asmaNoControl_3539M',
+            'asmaNoControl_3539F',
+            'asmaNoControl_4044M',
+            'asmaNoControl_4044F',
+            'asmaNoControl_4549M',
+            'asmaNoControl_4549F',
+            'asmaNoControl_5054M',
+            'asmaNoControl_5054F',
+            'asmaNoControl_5559M',
+            'asmaNoControl_5559F',
+            'asmaNoControl_6064M',
+            'asmaNoControl_6064F',
+            'asmaNoControl_6569M',
+            'asmaNoControl_6569F',
+            'asmaNoControl_7074M',
+            'asmaNoControl_7074F',
+            'asmaNoControl_7579M',
+            'asmaNoControl_7579F',
+            'asmaNoControl_80M',
+            'asmaNoControl_80F',
+            'asmaNoControl_04M',
+            'asmaNoControl_04F',
+            'asmaNoControl_59M',
+            'asmaNoControl_59F',
+            'asmaNoControl_1014M',
+            'asmaNoControl_1014F',
+            'asmaNoControl_OriginM',
+            'asmaNoControl_OriginF',
+
+            'epocControl',
+            'epocControlM',
+            'epocControlF',
+            'epocControl_4044M',
+            'epocControl_4044F',
+            'epocControl_4549M',
+            'epocControl_4549F',
+            'epocControl_5054M',
+            'epocControl_5054F',
+            'epocControl_5559M',
+            'epocControl_5559F',
+            'epocControl_6064M',
+            'epocControl_6064F',
+            'epocControl_6569M',
+            'epocControl_6569F',
+            'epocControl_7074M',
+            'epocControl_7074F',
+            'epocControl_7579M',
+            'epocControl_7579F',
+            'epocControl_80M',
+            'epocControl_80F',
+            'epocControl_OriginM',
+            'epocControl_OriginF',
+
+            'epocNoControl',
+            'epocNoControlM',
+            'epocNoControlF',
+            'epocNoControl_4044M',
+            'epocNoControl_4044F',
+            'epocNoControl_4549M',
+            'epocNoControl_4549F',
+            'epocNoControl_5054M',
+            'epocNoControl_5054F',
+            'epocNoControl_5559M',
+            'epocNoControl_5559F',
+            'epocNoControl_6064M',
+            'epocNoControl_6064F',
+            'epocNoControl_6569M',
+            'epocNoControl_6569F',
+            'epocNoControl_7074M',
+            'epocNoControl_7074F',
+            'epocNoControl_7579M',
+            'epocNoControl_7579F',
+            'epocNoControl_80M',
+            'epocNoControl_80F',
+            'epocNoControl_OriginM',
+            'epocNoControl_OriginF',
+
+            'epocNoEval',
+            'epocNoEvalM',
+            'epocNoEvalF',
+            'epocNoEval_4044M',
+            'epocNoEval_4044F',
+            'epocNoEval_4549M',
+            'epocNoEval_4549F',
+            'epocNoEval_5054M',
+            'epocNoEval_5054F',
+            'epocNoEval_5559M',
+            'epocNoEval_5559F',
+            'epocNoEval_6064M',
+            'epocNoEval_6064F',
+            'epocNoEval_6569M',
+            'epocNoEval_6569F',
+            'epocNoEval_7074M',
+            'epocNoEval_7074F',
+            'epocNoEval_7579M',
+            'epocNoEval_7579F',
+            'epocNoEval_80M',
+            'epocNoEval_80F',
+            'epocNoEval_OriginM',
+            'epocNoEval_OriginF',
+        ));
+    }
 
 
 
@@ -5748,102 +6250,6 @@ class EstadisticaController extends Controller
             'totalSeccionB_7579F',
             'totalSeccionB_80M',
             'totalSeccionB_80F'
-        ));
-    }
-
-    public function programacion()
-    {
-        //x compensacion y riesgo
-        $all = new Paciente;
-        //compensado rcv bajo
-        $compensados_rBajo = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'bajo')->count();
-        $compensados_rBajo1519 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [15, 19])->count();
-        $compensados_rBajo2064 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [20, 64])->count();
-        $compensados_rBajo65mas = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'bajo')->get()->where('grupo', '>=', 65)->count();
-
-        //compensado rcv alto
-        $compensados_rAlto = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'alto')->count();
-        $compensados_rAlto1519 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [15, 19])->count();
-        $compensados_rAlto2064 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [20, 64])->count();
-        $compensados_rAlto65mas = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'alto')->get()->where('grupo', '>=', 65)->count();
-        //compensado rcv moderado
-        $compensados_rMod = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'moderado')->count();
-        $compensados_rMod1519 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [15, 19])->count();
-        $compensados_rMod2064 = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [20, 64])->count();
-        $compensados_rMod65mas = $all->pscv()->where('compensado', '=', 1)->where('riesgo_cv', '=', 'moderado')->get()->where('grupo', '>=', 65)->count();
-
-
-        //no compensados
-        $noCompensados_rBajo = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'bajo')->count();
-        $noCompensados_rBajo1519 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [15, 19])->count();
-        $noCompensados_rBajo2064 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [20, 64])->count();
-        $noCompensados_rBajo65mas = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'bajo')->get()->where('grupo', '>=', 65)->count();
-
-        $noCompensados_rMod = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'moderado')->count();
-        $noCompensados_rMod1519 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [15, 19])->count();
-        $noCompensados_rMod2064 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [20, 64])->count();
-        $noCompensados_rMod65mas = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'moderado')->get()->where('grupo', '>=', 65)->count();
-
-        $noCompensados_rAlto = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'alto')->count();
-        $noCompensados_rAlto1519 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [15, 19])->count();
-        $noCompensados_rAlto2064 = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [20, 64])->count();
-        $noCompensados_rAlto65mas = $all->pscv()->where('compensado', '=', 2)->where('riesgo_cv', '=', 'alto')->get()->where('grupo', '>=', 65)->count();
-
-        $rAlto = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'alto')->count();
-        $rMod = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'moderado')->count();
-        $rBajo = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'bajo')->count();
-
-        $rAlto1519 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [15, 19])->count();
-        $rMod1519 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [15, 19])->count();
-        $rBajo1519 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [15, 19])->count();
-
-        $rAlto2064 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'alto')->get()->whereBetween('grupo', [20, 64])->count();
-        $rMod2064 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'moderado')->get()->whereBetween('grupo', [20, 64])->count();
-        $rBajo2064 = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'bajo')->get()->whereBetween('grupo', [20, 64])->count();
-
-        $rAlto65mas = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'alto')->get()->where('grupo', '>=', 65)->count();
-        $rMod65mas = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'moderado')->get()->where('grupo', '>=', 65)->count();
-        $rBajo65mas = $all->pscv()->whereIn('compensado', [1, 2])->where('riesgo_cv', '=', 'bajo')->get()->where('grupo', '>=', 65)->count();
-
-
-
-        return view('estadisticas.programacion', compact(
-            'compensados_rBajo',
-            'compensados_rBajo1519',
-            'compensados_rBajo2064',
-            'compensados_rBajo65mas',
-            'compensados_rMod',
-            'compensados_rMod1519',
-            'compensados_rMod2064',
-            'compensados_rMod65mas',
-            'compensados_rAlto',
-            'compensados_rAlto1519',
-            'compensados_rAlto2064',
-            'compensados_rAlto65mas',
-            'noCompensados_rBajo',
-            'noCompensados_rBajo1519',
-            'noCompensados_rBajo2064',
-            'noCompensados_rBajo65mas',
-            'noCompensados_rMod',
-            'noCompensados_rMod1519',
-            'noCompensados_rMod2064',
-            'noCompensados_rMod65mas',
-            'noCompensados_rAlto',
-            'noCompensados_rAlto1519',
-            'noCompensados_rAlto2064',
-            'noCompensados_rAlto65mas',
-            'rAlto',
-            'rMod',
-            'rBajo',
-            'rBajo1519',
-            'rBajo2064',
-            'rBajo65mas',
-            'rAlto1519',
-            'rAlto2064',
-            'rAlto65mas',
-            'rMod1519',
-            'rMod2064',
-            'rMod65mas'
         ));
     }
 
