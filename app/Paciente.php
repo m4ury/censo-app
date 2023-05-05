@@ -152,6 +152,17 @@ class Paciente extends Model
                         ->where('patologias.nombre_patologia', 'SALUD MENTAL');
     }
 
+    public function trHumor($fem, $masc, $dep)
+    {
+    return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+        ->where('controls.tipo_control', 'Psicologo')
+        ->where('controls.trHumor', $dep)
+        ->whereYear('controls.fecha_control', '2023')
+        ->whereIn('pacientes.sexo', [$fem, $masc])
+        ->whereNull('pacientes.egreso')
+        ->latest('controls.fecha_control');
+    }
+
     public function dlp()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
