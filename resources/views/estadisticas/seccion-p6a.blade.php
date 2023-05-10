@@ -1464,47 +1464,143 @@
                                 </tr>
                                 <tr>
                                     <th class="text-bold" colspan="2" nowrap="">ESQUIZOFRENIA</th>
+                                    <td>{{$esquizo}}</td>
+                                        <td>{{$esquizoM}}</td>
+                                        <td>{{$esquizoF}}</td>
+                                        <td>{{$esquizo_04M}}</td>
+                                        <td>{{$esquizo_04F}}</td>
+                                        <td>{{$esquizo_59M}}</td>
+                                        <td>{{$esquizo_59F}}</td>
+                                        <td>{{$esquizo_1014M}}</td>
+                                        <td>{{$esquizo_1014F}}</td>
+                                        <td>{{$esquizo_1519M}}</td>
+                                        <td>{{$esquizo_1519F}}</td>
+                                        <td>{{$esquizo_2024M}}</td>
+                                        <td>{{$esquizo_2024F}}</td>
+                                        <td>{{$esquizo_2529M}}</td>
+                                        <td>{{$esquizo_2529F}}</td>
+                                        <td>{{$esquizo_3034M}}</td>
+                                        <td>{{$esquizo_3034F}}</td>
+                                        <td>{{$esquizo_3539M}}</td>
+                                        <td>{{$esquizo_3539F}}</td>
+                                        <td>{{$esquizo_4044M}}</td>
+                                        <td>{{$esquizo_4044F}}</td>
+                                        <td>{{$esquizo_4549M}}</td>
+                                        <td>{{$esquizo_4549F}}</td>
+                                        <td>{{$esquizo_5054M}}</td>
+                                        <td>{{$esquizo_5054F}}</td>
+                                        <td>{{$esquizo_5559M}}</td>
+                                        <td>{{$esquizo_5559F}}</td>
+                                        <td>{{$esquizo_6064M}}</td>
+                                        <td>{{$esquizo_6064F}}</td>
+                                        <td>{{$esquizo_6569M}}</td>
+                                        <td>{{$esquizo_6569F}}</td>
+                                        <td>{{$esquizo_7074M}}</td>
+                                        <td>{{$esquizo_7074F}}</td>
+                                        <td>{{$esquizo_7579M}}</td>
+                                        <td>{{$esquizo_7579F}}</td>
+                                        <td>{{$esquizo_80M}}</td>
+                                        <td>{{$esquizo_80F}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{$esquizo_OriginM}}</td>
+                                        <td>{{$esquizo_OriginF}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-bold" colspan="2" nowrap="">PRIMER EPISODIO ESQUIZOFRENIA CON OCUPACION REGULAR</th>
+                                    <td>{{$epEsquizo}}</td>
+                                        <td>{{$epEsquizoM}}</td>
+                                        <td>{{$epEsquizoF}}</td>
+                                        <td>{{$epEsquizo_04M}}</td>
+                                        <td>{{$epEsquizo_04F}}</td>
+                                        <td>{{$epEsquizo_59M}}</td>
+                                        <td>{{$epEsquizo_59F}}</td>
+                                        <td>{{$epEsquizo_1014M}}</td>
+                                        <td>{{$epEsquizo_1014F}}</td>
+                                        <td>{{$epEsquizo_1519M}}</td>
+                                        <td>{{$epEsquizo_1519F}}</td>
+                                        <td>{{$epEsquizo_2024M}}</td>
+                                        <td>{{$epEsquizo_2024F}}</td>
+                                        <td>{{$epEsquizo_2529M}}</td>
+                                        <td>{{$epEsquizo_2529F}}</td>
+                                        <td>{{$epEsquizo_3034M}}</td>
+                                        <td>{{$epEsquizo_3034F}}</td>
+                                        <td>{{$epEsquizo_3539M}}</td>
+                                        <td>{{$epEsquizo_3539F}}</td>
+                                        <td>{{$epEsquizo_4044M}}</td>
+                                        <td>{{$epEsquizo_4044F}}</td>
+                                        <td>{{$epEsquizo_4549M}}</td>
+                                        <td>{{$epEsquizo_4549F}}</td>
+                                        <td>{{$epEsquizo_5054M}}</td>
+                                        <td>{{$epEsquizo_5054F}}</td>
+                                        <td>{{$epEsquizo_5559M}}</td>
+                                        <td>{{$epEsquizo_5559F}}</td>
+                                        <td>{{$epEsquizo_6064M}}</td>
+                                        <td>{{$epEsquizo_6064F}}</td>
+                                        <td>{{$epEsquizo_6569M}}</td>
+                                        <td>{{$epEsquizo_6569F}}</td>
+                                        <td>{{$epEsquizo_7074M}}</td>
+                                        <td>{{$epEsquizo_7074F}}</td>
+                                        <td>{{$epEsquizo_7579M}}</td>
+                                        <td>{{$epEsquizo_7579F}}</td>
+                                        <td>{{$epEsquizo_80M}}</td>
+                                        <td>{{$epEsquizo_80F}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{$epEsquizo_OriginM}}</td>
+                                        <td>{{$epEsquizo_OriginF}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-bold" colspan="2" nowrap="">TRASTORNOS DE LA CONDUCTA ALIMENTARIA</th>
+                                    <td>{{$trCondAlim}}</td>
+                                        <td>{{$trCondAlimM}}</td>
+                                        <td>{{$trCondAlimF}}</td>
+                                        <td>{{$trCondAlim_04M}}</td>
+                                        <td>{{$trCondAlim_04F}}</td>
+                                        <td>{{$trCondAlim_59M}}</td>
+                                        <td>{{$trCondAlim_59F}}</td>
+                                        <td>{{$trCondAlim_1014M}}</td>
+                                        <td>{{$trCondAlim_1014F}}</td>
+                                        <td>{{$trCondAlim_1519M}}</td>
+                                        <td>{{$trCondAlim_1519F}}</td>
+                                        <td>{{$trCondAlim_2024M}}</td>
+                                        <td>{{$trCondAlim_2024F}}</td>
+                                        <td>{{$trCondAlim_2529M}}</td>
+                                        <td>{{$trCondAlim_2529F}}</td>
+                                        <td>{{$trCondAlim_3034M}}</td>
+                                        <td>{{$trCondAlim_3034F}}</td>
+                                        <td>{{$trCondAlim_3539M}}</td>
+                                        <td>{{$trCondAlim_3539F}}</td>
+                                        <td>{{$trCondAlim_4044M}}</td>
+                                        <td>{{$trCondAlim_4044F}}</td>
+                                        <td>{{$trCondAlim_4549M}}</td>
+                                        <td>{{$trCondAlim_4549F}}</td>
+                                        <td>{{$trCondAlim_5054M}}</td>
+                                        <td>{{$trCondAlim_5054F}}</td>
+                                        <td>{{$trCondAlim_5559M}}</td>
+                                        <td>{{$trCondAlim_5559F}}</td>
+                                        <td>{{$trCondAlim_6064M}}</td>
+                                        <td>{{$trCondAlim_6064F}}</td>
+                                        <td>{{$trCondAlim_6569M}}</td>
+                                        <td>{{$trCondAlim_6569F}}</td>
+                                        <td>{{$trCondAlim_7074M}}</td>
+                                        <td>{{$trCondAlim_7074F}}</td>
+                                        <td>{{$trCondAlim_7579M}}</td>
+                                        <td>{{$trCondAlim_7579F}}</td>
+                                        <td>{{$trCondAlim_80M}}</td>
+                                        <td>{{$trCondAlim_80F}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{$trCondAlim_OriginM}}</td>
+                                        <td>{{$trCondAlim_OriginF}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

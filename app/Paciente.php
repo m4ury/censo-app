@@ -207,6 +207,17 @@ class Paciente extends Model
         ->latest('controls.fecha_control');
     }
 
+    public function diagSm($fem, $masc, $diag)
+    {
+    return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+        ->where('controls.tipo_control', 'Psicologo')
+        ->where('controls.demencias', $diag)
+        ->whereYear('controls.fecha_control', '2023')
+        ->whereIn('pacientes.sexo', [$fem, $masc])
+        ->whereNull('pacientes.egreso')
+        ->latest('controls.fecha_control');
+    }
+
     public function dlp()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
