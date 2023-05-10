@@ -7213,6 +7213,88 @@ class EstadisticaController extends Controller
         $trCondAlim_7579F = $all->diagSm(null, 'Femenino', 'trCondAlim')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
         $trCondAlim_80F = $all->diagSm(null, 'Femenino', 'trCondAlim')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
+        $retrasoMental = $all->diagSm('Femenino', 'Masculino', 'retrasoMental')->get()->unique('rut')->count();
+        $retrasoMentalM = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->unique('rut')->count();
+        $retrasoMental_OriginM = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $retrasoMental_04M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $retrasoMental_59M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $retrasoMental_1014M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $retrasoMental_1519M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $retrasoMental_2024M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $retrasoMental_2529M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $retrasoMental_3034M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $retrasoMental_3539M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $retrasoMental_4044M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $retrasoMental_4549M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $retrasoMental_5054M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $retrasoMental_5559M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $retrasoMental_6064M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $retrasoMental_6569M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $retrasoMental_7074M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $retrasoMental_7579M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $retrasoMental_80M = $all->diagSm(null, 'Masculino', 'retrasoMental')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $retrasoMentalF = $all->diagSm('Femenino', null, 'retrasoMental')->get()->unique('rut')->count();
+        $retrasoMental_OriginF = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $retrasoMental_04F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $retrasoMental_59F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $retrasoMental_1014F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $retrasoMental_1519F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $retrasoMental_2024F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $retrasoMental_2529F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $retrasoMental_3034F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $retrasoMental_3539F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $retrasoMental_4044F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $retrasoMental_4549F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $retrasoMental_5054F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $retrasoMental_5559F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $retrasoMental_6064F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $retrasoMental_6569F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $retrasoMental_7074F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $retrasoMental_7579F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $retrasoMental_80F = $all->diagSm(null, 'Femenino', 'retrasoMental')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trPersonalidad = $all->diagSm('Femenino', 'Masculino', 'trPersonalidad')->get()->unique('rut')->count();
+        $trPersonalidadM = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->unique('rut')->count();
+        $trPersonalidad_OriginM = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trPersonalidad_04M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trPersonalidad_59M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trPersonalidad_1014M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trPersonalidad_1519M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trPersonalidad_2024M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trPersonalidad_2529M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trPersonalidad_3034M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trPersonalidad_3539M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trPersonalidad_4044M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trPersonalidad_4549M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trPersonalidad_5054M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trPersonalidad_5559M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trPersonalidad_6064M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trPersonalidad_6569M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trPersonalidad_7074M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trPersonalidad_7579M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trPersonalidad_80M = $all->diagSm(null, 'Masculino', 'trPersonalidad')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trPersonalidadF = $all->diagSm('Femenino', null, 'trPersonalidad')->get()->unique('rut')->count();
+        $trPersonalidad_OriginF = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trPersonalidad_04F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trPersonalidad_59F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trPersonalidad_1014F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trPersonalidad_1519F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trPersonalidad_2024F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trPersonalidad_2529F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trPersonalidad_3034F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trPersonalidad_3539F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trPersonalidad_4044F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trPersonalidad_4549F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trPersonalidad_5054F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trPersonalidad_5559F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trPersonalidad_6064F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trPersonalidad_6569F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trPersonalidad_7074F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trPersonalidad_7579F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trPersonalidad_80F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
         return view('estadisticas.seccion-p6a', compact(
             'sm',
             'smM',
@@ -8133,7 +8215,87 @@ class EstadisticaController extends Controller
             'trCondAlim_80M',
             'trCondAlim_80F',
             'trCondAlim_OriginM',
-            'trCondAlim_OriginF'
+            'trCondAlim_OriginF',
+
+            'retrasoMental',
+            'retrasoMentalM',
+            'retrasoMentalF',
+            'retrasoMental_04M',
+            'retrasoMental_04F',
+            'retrasoMental_59M',
+            'retrasoMental_59F',
+            'retrasoMental_1014M',
+            'retrasoMental_1014F',
+            'retrasoMental_1519M',
+            'retrasoMental_1519F',
+            'retrasoMental_2024M',
+            'retrasoMental_2024F',
+            'retrasoMental_2529M',
+            'retrasoMental_2529F',
+            'retrasoMental_3034M',
+            'retrasoMental_3034F',
+            'retrasoMental_3539M',
+            'retrasoMental_3539F',
+            'retrasoMental_4044M',
+            'retrasoMental_4044F',
+            'retrasoMental_4549M',
+            'retrasoMental_4549F',
+            'retrasoMental_5054M',
+            'retrasoMental_5054F',
+            'retrasoMental_5559M',
+            'retrasoMental_5559F',
+            'retrasoMental_6064M',
+            'retrasoMental_6064F',
+            'retrasoMental_6569M',
+            'retrasoMental_6569F',
+            'retrasoMental_7074M',
+            'retrasoMental_7074F',
+            'retrasoMental_7579M',
+            'retrasoMental_7579F',
+            'retrasoMental_80M',
+            'retrasoMental_80F',
+            'retrasoMental_OriginM',
+            'retrasoMental_OriginF',
+
+            'trPersonalidad',
+            'trPersonalidadM',
+            'trPersonalidadF',
+            'trPersonalidad_04M',
+            'trPersonalidad_04F',
+            'trPersonalidad_59M',
+            'trPersonalidad_59F',
+            'trPersonalidad_1014M',
+            'trPersonalidad_1014F',
+            'trPersonalidad_1519M',
+            'trPersonalidad_1519F',
+            'trPersonalidad_2024M',
+            'trPersonalidad_2024F',
+            'trPersonalidad_2529M',
+            'trPersonalidad_2529F',
+            'trPersonalidad_3034M',
+            'trPersonalidad_3034F',
+            'trPersonalidad_3539M',
+            'trPersonalidad_3539F',
+            'trPersonalidad_4044M',
+            'trPersonalidad_4044F',
+            'trPersonalidad_4549M',
+            'trPersonalidad_4549F',
+            'trPersonalidad_5054M',
+            'trPersonalidad_5054F',
+            'trPersonalidad_5559M',
+            'trPersonalidad_5559F',
+            'trPersonalidad_6064M',
+            'trPersonalidad_6064F',
+            'trPersonalidad_6569M',
+            'trPersonalidad_6569F',
+            'trPersonalidad_7074M',
+            'trPersonalidad_7074F',
+            'trPersonalidad_7579M',
+            'trPersonalidad_7579F',
+            'trPersonalidad_80M',
+            'trPersonalidad_80F',
+            'trPersonalidad_OriginM',
+            'trPersonalidad_OriginF'
         ));
     }
 
