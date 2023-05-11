@@ -7295,6 +7295,293 @@ class EstadisticaController extends Controller
         $trPersonalidad_7579F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
         $trPersonalidad_80F = $all->diagSm(null, 'Femenino', 'trPersonalidad')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
+        $epilepsia = $all->diagSm('Femenino', 'Masculino', 'epilepsia')->get()->unique('rut')->count();
+        $epilepsiaM = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->unique('rut')->count();
+        $epilepsia_OriginM = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $epilepsia_04M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $epilepsia_59M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $epilepsia_1014M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $epilepsia_1519M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $epilepsia_2024M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $epilepsia_2529M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $epilepsia_3034M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $epilepsia_3539M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $epilepsia_4044M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epilepsia_4549M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epilepsia_5054M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epilepsia_5559M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epilepsia_6064M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epilepsia_6569M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epilepsia_7074M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epilepsia_7579M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epilepsia_80M = $all->diagSm(null, 'Masculino', 'epilepsia')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $epilepsiaF = $all->diagSm('Femenino', null, 'epilepsia')->get()->unique('rut')->count();
+        $epilepsia_OriginF = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $epilepsia_04F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $epilepsia_59F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $epilepsia_1014F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $epilepsia_1519F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $epilepsia_2024F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $epilepsia_2529F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $epilepsia_3034F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $epilepsia_3539F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $epilepsia_4044F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $epilepsia_4549F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $epilepsia_5054F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $epilepsia_5559F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $epilepsia_6064F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $epilepsia_6569F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $epilepsia_7074F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $epilepsia_7579F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $epilepsia_80F = $all->diagSm(null, 'Femenino', 'epilepsia')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $otras = $all->diagSm('Femenino', 'Masculino', 'otras')->get()->unique('rut')->count();
+        $otrasM = $all->diagSm(null, 'Masculino', 'otras')->get()->unique('rut')->count();
+        $otras_OriginM = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $otras_04M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $otras_59M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $otras_1014M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $otras_1519M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $otras_2024M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $otras_2529M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $otras_3034M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $otras_3539M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $otras_4044M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $otras_4549M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $otras_5054M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $otras_5559M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $otras_6064M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $otras_6569M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $otras_7074M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $otras_7579M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $otras_80M = $all->diagSm(null, 'Masculino', 'otras')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $otrasF = $all->diagSm('Femenino', null, 'otras')->get()->unique('rut')->count();
+        $otras_OriginF = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $otras_04F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $otras_59F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $otras_1014F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $otras_1519F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $otras_2024F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $otras_2529F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $otras_3034F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $otras_3539F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $otras_4044F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $otras_4549F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $otras_5054F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $otras_5559F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $otras_6064F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $otras_6569F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $otras_7074F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $otras_7579F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $otras_80F = $all->diagSm(null, 'Femenino', 'otras')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $autismo = $all->trDesarrollo('Femenino', 'Masculino', 'autismo')->get()->unique('rut')->count();
+        $autismoM = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->unique('rut')->count();
+        $autismo_OriginM = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $autismo_04M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $autismo_59M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $autismo_1014M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $autismo_1519M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $autismo_2024M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $autismo_2529M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $autismo_3034M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $autismo_3539M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $autismo_4044M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $autismo_4549M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $autismo_5054M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $autismo_5559M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $autismo_6064M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $autismo_6569M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $autismo_7074M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $autismo_7579M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $autismo_80M = $all->trDesarrollo(null, 'Masculino', 'autismo')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $autismoF = $all->trDesarrollo('Femenino', null, 'autismo')->get()->unique('rut')->count();
+        $autismo_OriginF = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $autismo_04F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $autismo_59F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $autismo_1014F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $autismo_1519F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $autismo_2024F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $autismo_2529F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $autismo_3034F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $autismo_3539F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $autismo_4044F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $autismo_4549F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $autismo_5054F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $autismo_5559F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $autismo_6064F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $autismo_6569F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $autismo_7074F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $autismo_7579F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $autismo_80F = $all->trDesarrollo(null, 'Femenino', 'autismo')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $asperger = $all->trDesarrollo('Femenino', 'Masculino', 'asperger')->get()->unique('rut')->count();
+        $aspergerM = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->unique('rut')->count();
+        $asperger_OriginM = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asperger_04M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asperger_59M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asperger_1014M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asperger_1519M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asperger_2024M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asperger_2529M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asperger_3034M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asperger_3539M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asperger_4044M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asperger_4549M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asperger_5054M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asperger_5559M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asperger_6064M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asperger_6569M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asperger_7074M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asperger_7579M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asperger_80M = $all->trDesarrollo(null, 'Masculino', 'asperger')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $aspergerF = $all->trDesarrollo('Femenino', null, 'asperger')->get()->unique('rut')->count();
+        $asperger_OriginF = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $asperger_04F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $asperger_59F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $asperger_1014F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $asperger_1519F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $asperger_2024F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $asperger_2529F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $asperger_3034F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $asperger_3539F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $asperger_4044F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $asperger_4549F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $asperger_5054F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $asperger_5559F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $asperger_6064F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $asperger_6569F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $asperger_7074F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $asperger_7579F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $asperger_80F = $all->trDesarrollo(null, 'Femenino', 'asperger')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $rett = $all->trDesarrollo('Femenino', 'Masculino', 'rett')->get()->unique('rut')->count();
+        $rettM = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->unique('rut')->count();
+        $rett_OriginM = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $rett_04M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $rett_59M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $rett_1014M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $rett_1519M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $rett_2024M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $rett_2529M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $rett_3034M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $rett_3539M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $rett_4044M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $rett_4549M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $rett_5054M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $rett_5559M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $rett_6064M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $rett_6569M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $rett_7074M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $rett_7579M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $rett_80M = $all->trDesarrollo(null, 'Masculino', 'rett')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $rettF = $all->trDesarrollo('Femenino', null, 'rett')->get()->unique('rut')->count();
+        $rett_OriginF = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $rett_04F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $rett_59F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $rett_1014F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $rett_1519F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $rett_2024F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $rett_2529F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $rett_3034F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $rett_3539F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $rett_4044F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $rett_4549F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $rett_5054F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $rett_5559F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $rett_6064F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $rett_6569F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $rett_7074F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $rett_7579F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $rett_80F = $all->trDesarrollo(null, 'Femenino', 'rett')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trDesinteg = $all->trDesarrollo('Femenino', 'Masculino', 'trDesinteg')->get()->unique('rut')->count();
+        $trDesintegM = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->unique('rut')->count();
+        $trDesinteg_OriginM = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trDesinteg_04M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trDesinteg_59M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trDesinteg_1014M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trDesinteg_1519M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trDesinteg_2024M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trDesinteg_2529M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trDesinteg_3034M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trDesinteg_3539M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trDesinteg_4044M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trDesinteg_4549M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trDesinteg_5054M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trDesinteg_5559M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trDesinteg_6064M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trDesinteg_6569M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trDesinteg_7074M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trDesinteg_7579M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trDesinteg_80M = $all->trDesarrollo(null, 'Masculino', 'trDesinteg')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trDesintegF = $all->trDesarrollo('Femenino', null, 'trDesinteg')->get()->unique('rut')->count();
+        $trDesinteg_OriginF = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trDesinteg_04F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trDesinteg_59F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trDesinteg_1014F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trDesinteg_1519F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trDesinteg_2024F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trDesinteg_2529F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trDesinteg_3034F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trDesinteg_3539F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trDesinteg_4044F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trDesinteg_4549F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trDesinteg_5054F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trDesinteg_5559F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trDesinteg_6064F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trDesinteg_6569F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trDesinteg_7074F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trDesinteg_7579F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trDesinteg_80F = $all->trDesarrollo(null, 'Femenino', 'trDesinteg')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trNOespecif = $all->trDesarrollo('Femenino', 'Masculino', 'trNOespecif')->get()->unique('rut')->count();
+        $trNOespecifM = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->unique('rut')->count();
+        $trNOespecif_OriginM = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trNOespecif_04M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trNOespecif_59M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trNOespecif_1014M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trNOespecif_1519M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trNOespecif_2024M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trNOespecif_2529M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trNOespecif_3034M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trNOespecif_3539M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trNOespecif_4044M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trNOespecif_4549M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trNOespecif_5054M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trNOespecif_5559M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trNOespecif_6064M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trNOespecif_6569M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trNOespecif_7074M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trNOespecif_7579M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trNOespecif_80M = $all->trDesarrollo(null, 'Masculino', 'trNOespecif')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
+        $trNOespecifF = $all->trDesarrollo('Femenino', null, 'trNOespecif')->get()->unique('rut')->count();
+        $trNOespecif_OriginF = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
+        $trNOespecif_04F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
+        $trNOespecif_59F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [5, 9])->unique('rut')->count();
+        $trNOespecif_1014F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [10, 14])->unique('rut')->count();
+        $trNOespecif_1519F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count();
+        $trNOespecif_2024F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count();
+        $trNOespecif_2529F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count();
+        $trNOespecif_3034F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count();
+        $trNOespecif_3539F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count();
+        $trNOespecif_4044F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
+        $trNOespecif_4549F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
+        $trNOespecif_5054F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count();
+        $trNOespecif_5559F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [55, 59])->unique('rut')->count();
+        $trNOespecif_6064F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [60, 64])->unique('rut')->count();
+        $trNOespecif_6569F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [65, 69])->unique('rut')->count();
+        $trNOespecif_7074F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [70, 74])->unique('rut')->count();
+        $trNOespecif_7579F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [75, 79])->unique('rut')->count();
+        $trNOespecif_80F = $all->trDesarrollo(null, 'Femenino', 'trNOespecif')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
+
         return view('estadisticas.seccion-p6a', compact(
             'sm',
             'smM',
@@ -8295,7 +8582,287 @@ class EstadisticaController extends Controller
             'trPersonalidad_80M',
             'trPersonalidad_80F',
             'trPersonalidad_OriginM',
-            'trPersonalidad_OriginF'
+            'trPersonalidad_OriginF',
+
+            'autismo',
+            'autismoM',
+            'autismoF',
+            'autismo_04M',
+            'autismo_04F',
+            'autismo_59M',
+            'autismo_59F',
+            'autismo_1014M',
+            'autismo_1014F',
+            'autismo_1519M',
+            'autismo_1519F',
+            'autismo_2024M',
+            'autismo_2024F',
+            'autismo_2529M',
+            'autismo_2529F',
+            'autismo_3034M',
+            'autismo_3034F',
+            'autismo_3539M',
+            'autismo_3539F',
+            'autismo_4044M',
+            'autismo_4044F',
+            'autismo_4549M',
+            'autismo_4549F',
+            'autismo_5054M',
+            'autismo_5054F',
+            'autismo_5559M',
+            'autismo_5559F',
+            'autismo_6064M',
+            'autismo_6064F',
+            'autismo_6569M',
+            'autismo_6569F',
+            'autismo_7074M',
+            'autismo_7074F',
+            'autismo_7579M',
+            'autismo_7579F',
+            'autismo_80M',
+            'autismo_80F',
+            'autismo_OriginM',
+            'autismo_OriginF',
+
+            'asperger',
+            'aspergerM',
+            'aspergerF',
+            'asperger_04M',
+            'asperger_04F',
+            'asperger_59M',
+            'asperger_59F',
+            'asperger_1014M',
+            'asperger_1014F',
+            'asperger_1519M',
+            'asperger_1519F',
+            'asperger_2024M',
+            'asperger_2024F',
+            'asperger_2529M',
+            'asperger_2529F',
+            'asperger_3034M',
+            'asperger_3034F',
+            'asperger_3539M',
+            'asperger_3539F',
+            'asperger_4044M',
+            'asperger_4044F',
+            'asperger_4549M',
+            'asperger_4549F',
+            'asperger_5054M',
+            'asperger_5054F',
+            'asperger_5559M',
+            'asperger_5559F',
+            'asperger_6064M',
+            'asperger_6064F',
+            'asperger_6569M',
+            'asperger_6569F',
+            'asperger_7074M',
+            'asperger_7074F',
+            'asperger_7579M',
+            'asperger_7579F',
+            'asperger_80M',
+            'asperger_80F',
+            'asperger_OriginM',
+            'asperger_OriginF',
+
+            'rett',
+            'rettM',
+            'rettF',
+            'rett_04M',
+            'rett_04F',
+            'rett_59M',
+            'rett_59F',
+            'rett_1014M',
+            'rett_1014F',
+            'rett_1519M',
+            'rett_1519F',
+            'rett_2024M',
+            'rett_2024F',
+            'rett_2529M',
+            'rett_2529F',
+            'rett_3034M',
+            'rett_3034F',
+            'rett_3539M',
+            'rett_3539F',
+            'rett_4044M',
+            'rett_4044F',
+            'rett_4549M',
+            'rett_4549F',
+            'rett_5054M',
+            'rett_5054F',
+            'rett_5559M',
+            'rett_5559F',
+            'rett_6064M',
+            'rett_6064F',
+            'rett_6569M',
+            'rett_6569F',
+            'rett_7074M',
+            'rett_7074F',
+            'rett_7579M',
+            'rett_7579F',
+            'rett_80M',
+            'rett_80F',
+            'rett_OriginM',
+            'rett_OriginF',
+
+            'trDesinteg',
+            'trDesintegM',
+            'trDesintegF',
+            'trDesinteg_04M',
+            'trDesinteg_04F',
+            'trDesinteg_59M',
+            'trDesinteg_59F',
+            'trDesinteg_1014M',
+            'trDesinteg_1014F',
+            'trDesinteg_1519M',
+            'trDesinteg_1519F',
+            'trDesinteg_2024M',
+            'trDesinteg_2024F',
+            'trDesinteg_2529M',
+            'trDesinteg_2529F',
+            'trDesinteg_3034M',
+            'trDesinteg_3034F',
+            'trDesinteg_3539M',
+            'trDesinteg_3539F',
+            'trDesinteg_4044M',
+            'trDesinteg_4044F',
+            'trDesinteg_4549M',
+            'trDesinteg_4549F',
+            'trDesinteg_5054M',
+            'trDesinteg_5054F',
+            'trDesinteg_5559M',
+            'trDesinteg_5559F',
+            'trDesinteg_6064M',
+            'trDesinteg_6064F',
+            'trDesinteg_6569M',
+            'trDesinteg_6569F',
+            'trDesinteg_7074M',
+            'trDesinteg_7074F',
+            'trDesinteg_7579M',
+            'trDesinteg_7579F',
+            'trDesinteg_80M',
+            'trDesinteg_80F',
+            'trDesinteg_OriginM',
+            'trDesinteg_OriginF',
+
+            'trNOespecif',
+            'trNOespecifM',
+            'trNOespecifF',
+            'trNOespecif_04M',
+            'trNOespecif_04F',
+            'trNOespecif_59M',
+            'trNOespecif_59F',
+            'trNOespecif_1014M',
+            'trNOespecif_1014F',
+            'trNOespecif_1519M',
+            'trNOespecif_1519F',
+            'trNOespecif_2024M',
+            'trNOespecif_2024F',
+            'trNOespecif_2529M',
+            'trNOespecif_2529F',
+            'trNOespecif_3034M',
+            'trNOespecif_3034F',
+            'trNOespecif_3539M',
+            'trNOespecif_3539F',
+            'trNOespecif_4044M',
+            'trNOespecif_4044F',
+            'trNOespecif_4549M',
+            'trNOespecif_4549F',
+            'trNOespecif_5054M',
+            'trNOespecif_5054F',
+            'trNOespecif_5559M',
+            'trNOespecif_5559F',
+            'trNOespecif_6064M',
+            'trNOespecif_6064F',
+            'trNOespecif_6569M',
+            'trNOespecif_6569F',
+            'trNOespecif_7074M',
+            'trNOespecif_7074F',
+            'trNOespecif_7579M',
+            'trNOespecif_7579F',
+            'trNOespecif_80M',
+            'trNOespecif_80F',
+            'trNOespecif_OriginM',
+            'trNOespecif_OriginF',
+
+            'epilepsia',
+            'epilepsiaM',
+            'epilepsiaF',
+            'epilepsia_04M',
+            'epilepsia_04F',
+            'epilepsia_59M',
+            'epilepsia_59F',
+            'epilepsia_1014M',
+            'epilepsia_1014F',
+            'epilepsia_1519M',
+            'epilepsia_1519F',
+            'epilepsia_2024M',
+            'epilepsia_2024F',
+            'epilepsia_2529M',
+            'epilepsia_2529F',
+            'epilepsia_3034M',
+            'epilepsia_3034F',
+            'epilepsia_3539M',
+            'epilepsia_3539F',
+            'epilepsia_4044M',
+            'epilepsia_4044F',
+            'epilepsia_4549M',
+            'epilepsia_4549F',
+            'epilepsia_5054M',
+            'epilepsia_5054F',
+            'epilepsia_5559M',
+            'epilepsia_5559F',
+            'epilepsia_6064M',
+            'epilepsia_6064F',
+            'epilepsia_6569M',
+            'epilepsia_6569F',
+            'epilepsia_7074M',
+            'epilepsia_7074F',
+            'epilepsia_7579M',
+            'epilepsia_7579F',
+            'epilepsia_80M',
+            'epilepsia_80F',
+            'epilepsia_OriginM',
+            'epilepsia_OriginF',
+
+            'otras',
+            'otrasM',
+            'otrasF',
+            'otras_04M',
+            'otras_04F',
+            'otras_59M',
+            'otras_59F',
+            'otras_1014M',
+            'otras_1014F',
+            'otras_1519M',
+            'otras_1519F',
+            'otras_2024M',
+            'otras_2024F',
+            'otras_2529M',
+            'otras_2529F',
+            'otras_3034M',
+            'otras_3034F',
+            'otras_3539M',
+            'otras_3539F',
+            'otras_4044M',
+            'otras_4044F',
+            'otras_4549M',
+            'otras_4549F',
+            'otras_5054M',
+            'otras_5054F',
+            'otras_5559M',
+            'otras_5559F',
+            'otras_6064M',
+            'otras_6064F',
+            'otras_6569M',
+            'otras_6569F',
+            'otras_7074M',
+            'otras_7074F',
+            'otras_7579M',
+            'otras_7579F',
+            'otras_80M',
+            'otras_80F',
+            'otras_OriginM',
+            'otras_OriginF'
         ));
     }
 
