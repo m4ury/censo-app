@@ -121,15 +121,30 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-5">
+                        <div class="col-sm">
                             {!! Form::label('pueblo_originario_label', 'Originario', ['class' => 'col-sm
                             col-form-label']) !!}
                             {!! Form::checkbox('pueblo_originario', 1, old('pueblo_originario',
                             $paciente->pueblo_originario == 1 ?true:false) ,['class' => 'form-control form-control']) !!}
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm">
                             {!! Form::label('migrante_label', 'Pob. Migrante', ['class' => 'col-sm col-form-label']) !!}
                             {!! Form::checkbox('migrante', 1, old('migrante', $paciente->migrante == 1 ?true:false),['class' =>
+                            'form-control form-control']) !!}
+                        </div>
+                        <div class="col-sm">
+                            {!! Form::label('embarazada_label', 'Embarazada', ['class' => 'col-sm col-form-label']) !!}
+                            {!! Form::checkbox('embarazada', 1, old('embarazada', $paciente->embarazada == 1 ?true:false),['class' =>
+                            'form-control form-control']) !!}
+                        </div>
+                        <div class="col-sm">
+                            {!! Form::label('sename_label', 'SENAME', ['class' => 'col-sm col-form-label']) !!}
+                            {!! Form::checkbox('sename', 1, old('sename', $paciente->sename == 1 ?true:false),['class' =>
+                            'form-control form-control']) !!}
+                        </div>
+                        <div class="col-sm">
+                            {!! Form::label('mejor_ninez_label', 'Mejor Niñez', ['class' => 'col-sm col-form-label']) !!}
+                            {!! Form::checkbox('mejor_ninez', 1, old('mejor_ninez', $paciente->mejor_ninez == 1 ?true:false),['class' =>
                             'form-control form-control']) !!}
                         </div>
                     </div>

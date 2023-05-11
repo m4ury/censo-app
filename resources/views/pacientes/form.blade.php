@@ -114,10 +114,23 @@
         <div class="col-sm-5">
             {!! Form::checkbox('pueblo_originario', 1, null ,['class' => 'form-control form-control']) !!}
         </div>
-
             {!! Form::label('migrante', 'Pob. Migrante', ['class' => 'col-sm col-form-label']) !!}
         <div class="col-sm-5">
             {!! Form::checkbox('migrante', 1, null, ['class' => 'form-control form-control']) !!}
+        </div>
+            {!! Form::label('sename', 'SENAME', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-5">
+            {!! Form::checkbox('sename', 1, null, ['class' => 'form-control form-control']) !!}
+        </div>
+        {!! Form::label('mejor_ninez', 'Mejor Niñez', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-5">
+            {!! Form::checkbox('mejor_ninez', 1, null, ['class' => 'form-control form-control']) !!}
+        </div>
+    </div>
+    <div class="row" id="embarazada">
+        {!! Form::label('embarazada', 'Embarazada', ['class' => 'col-sm col-form-label']) !!}
+        <div class="col-sm-5">
+            {!! Form::checkbox('embarazada', 1, null, ['class' => 'form-control form-control']) !!}
         </div>
     </div>
 

@@ -2,7 +2,7 @@
     {!! Form::label('tipo_control', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select('tipo_control', ['Medico'=> 'Medico', 'Enfermera' => 'Enfermera', 'Kinesiologo' =>
-        'Kinesiologo', 'Nutricionista' => 'Nutricionista', 'Psicologo' => 'Psicologo'], old('tipo_control', $control->tipo_control), ['class' =>
+        'Kinesiologo', 'Nutricionista' => 'Nutricionista', 'Psicologo' => 'Psicologo', 'Dentista' => 'Dentista'], old('tipo_control', $control->tipo_control), ['class' =>
         'form-control'.($errors->has('tipo_control') ? ' is-invalid' : ''), 'id' => 'tipo', 'placeholder'=> "Seleccione
         Profesional"]) !!}
         @if ($errors->has('tipo_control'))
@@ -192,8 +192,8 @@
 
 @section('js')
 <script>
-    $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm').select2({
+    $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl').select2({
             theme: "classic",
             width: '100%',
         });
@@ -242,7 +242,7 @@
         $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function () {
-            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo').hide();
+            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
             $('.presion_art, .peso_talla, .imc').show()
             var selection = $('#tipo').val();
             switch (selection) {
