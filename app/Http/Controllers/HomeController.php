@@ -30,7 +30,7 @@ class HomeController extends Controller
         $all = new Paciente;
         $totalPacientes = $all->pscv()->whereNull('egreso')->count();
         $dm2 = $all->dm2()->whereNull('egreso')->count();
-        $pieDm2_90 = round($dm2*90/100);
+        $pieDm2_90 = round($dm2 * 90 / 100);
         //dd($pieDm2_90);
         $hta = $all->hta()->whereNull('egreso')->count();
         $dlp = $all->dlp()->whereNull('egreso')->count();
@@ -38,40 +38,40 @@ class HomeController extends Controller
         $acv = $all->acv()->whereNull('egreso')->count();
 
         $usoInsulina = $all->dm2()
-        ->where('usoInsulina', '=', 1)
-        ->count();
+            ->where('usoInsulina', '=', 1)
+            ->count();
 
         $pieDm2 = $all->dm2()
-        ->join('controls', 'controls.paciente_id', 'pacientes.id')
-        ->whereIn('controls.evaluacionPie',['Maximo', 'Moderado', 'Bajo', 'Alto'])
-        ->whereYear('controls.fecha_control', '>','2022')
-        ->latest('controls.fecha_control')
-        ->get()
-        ->unique('rut')
-        ->count();
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
+            ->whereYear('controls.fecha_control', '>', '2022')
+            ->latest('controls.fecha_control')
+            ->get()
+            ->unique('rut')
+            ->count();
 
         $sm = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
-        ->where('paciente_patologia.patologia_id', 9)
-        ->whereNull('egreso')
-        ->count();
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso')
+            ->where('paciente_patologia.patologia_id', 9)
+            ->whereNull('egreso')
+            ->count();
 
         $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-        ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
-        ->where('paciente_patologia.patologia_id', 8)
-        ->whereNull('egreso')
-        ->count();
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso')
+            ->where('paciente_patologia.patologia_id', 8)
+            ->whereNull('egreso')
+            ->count();
 
-        $am = $all->select('id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento')
-        ->whereNull('egreso')
-        ->get()
-        ->where('grupo', '>', 64)
-        ->count();
+        $am = $all->select('id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'egreso')
+            ->whereNull('egreso')
+            ->get()
+            ->where('grupo', '>', 64)
+            ->count();
 
         $efam = $all->efam()
-        ->get()
-        ->where('grupo', '>', 64)
-        ->count();
+            ->get()
+            ->where('grupo', '>', 64)
+            ->count();
         //dd($efam);
 
         //x sexo
