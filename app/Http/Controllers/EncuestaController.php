@@ -6,24 +6,26 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EncuestaRequest;
 use App\Encuesta;
 use App\Paciente;
+use Illuminate\Support\Facades\DB;
 
 class EncuestaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    $encuestas = Encuesta::with('paciente')
-            ->whereYear('fecha_encuesta', 2023)
-            ->orderBy('num_encuestas', 'ASC')->get();
-    //dd($encuestas);
-
-        return view('encuestas.index', compact('encuestas'));
-
+        $q = $request->get('q');
+        $encuestas = Encuesta::with('paciente')
+            /* ->whereYear('fecha_encuesta', '>', 2022) */
+            ->orderBy('num_encuestas', 'ASC')
+            ->search($q)
+            ->get();
+        //dd($encuestas);
+        return view('encuestas.index', compact('encuestas', 'q'));
     }
 
     public function create()
     {
         //$paciente = Paciente::with('encuestas')->findOrFail($id);
-        $pacientes = Paciente::select(\DB::raw('CONCAT(nombres, " ", apellidoP, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
+        $pacientes = Paciente::select(DB::raw('CONCAT(nombres, " ", apellidoP, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
         $encuesta = new Encuesta;
 
         return view('encuestas.create', compact('pacientes', 'encuesta'));
@@ -78,10 +80,9 @@ class EncuestaController extends Controller
         $encuesta = Encuesta::findOrFail($id);
         //$paciente = Paciente::with('patologias')->findOrFail($encuesta->paciente->id);
         return view('encuestas.edit', compact('encuesta'));
-
     }
 
-        public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $encuesta = Encuesta::findOrFail($id);
 

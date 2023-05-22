@@ -14,15 +14,18 @@
             Nueva Encuesta
         </a>
     </div>
-    {{-- <div class="page-header">
-        {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET', 'class' => 'form-inline float-right pb-3']) !!}
-        {!! Form::select('q', [2022, 2023], ['class' => 'form-control', 'placeholder' => 'Busqueda por año', 'id' => 'q']) !!}
-        <button type="submit" class="btn btn-secondary btn-block form-control mt-2">
-            <span><i class="fas fa-search"> Buscar</i></span>
-        </button>
-        {!! Form::close() !!}
-    </div> --}}
     <div class="col-md-12 table-responsive">
+        <div class="col col-sm col-lg-2">
+            {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET']) !!}
+            {!! Form::selectYear('q', 2022, 2023, null, ['id' => 'q', 'placeholder' => 'Busqueda por año']) !!}
+            {!! Form::button('<i class="fas fa-search"> Buscar</i>', ['type' => 'submit', 'class' => 'btn
+            btn-primary btn-sm my-2'] ) !!}
+            {{-- <button type="submit" class="btn btn-secondary btn-block form-control">
+                <span><i class="fas fa-search"> Buscar</i></span>
+            </button> --}}
+            {!! Form::close() !!}
+        </div>
+
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
             <tr>

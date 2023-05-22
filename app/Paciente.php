@@ -704,28 +704,29 @@ class Paciente extends Model
 
     //****rem P5****
     //Seccion A
-    public function aSinRiesgo()
+    /* public function aSinRiesgo()
     {
-        return $this->whereFuncionalidad('SR')
-            ->whereNull('egreso');
+        return $this->efam()
+            ->where('rEfam', '=', 'autSinRiesgo');
+            //['autConRiesgo', 'autSinRiesgo', 'rDependencia']
     }
 
     public function aRiesgo()
     {
-        return $this->whereFuncionalidad('R')
-            ->whereNull('egreso');
+        return $this->efam()
+            ->where('rEfam', '=', 'autSinRiesgo');
     }
 
     public function riesgoDependencia()
     {
         return $this->whereFuncionalidad('RD')
             ->whereNull('egreso');
-    }
+    } */
 
     public function subEsfam()
     {
-        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])
-            ->whereNull('egreso');
+        return $this->efam()
+            ->whereIn('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia']);
     }
 
     public function depLeve()
@@ -781,8 +782,9 @@ class Paciente extends Model
 
     public function totalSeccion()
     {
-        return $this->whereIn('funcionalidad', ['SR', 'R', 'RD'])
-            ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+        return $this->efam()
+            ->where('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
+            ->whereIn('dependencia', ['L', 'M', 'G', 'T'])
             ->whereNull('egreso');
     }
 
@@ -791,14 +793,14 @@ class Paciente extends Model
     public function bajoPeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+            ->where('controls.tipo_control', 'Enfermera')
+            ->whereIn('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
             ->where('controls.imc_resultado', 'Bajo peso')
-            ->whereYear('controls.fecha_control', 2022)
+            ->whereYear('controls.fecha_control', 2023)
             ->whereIn(
                 'pacientes.rut',
                 DB::table('pacientes')
                     ->select('pacientes.rut')
-                    ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
                     ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
             )
             ->latest('controls.fecha_control');
@@ -809,14 +811,14 @@ class Paciente extends Model
     public function normal()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+            ->whereIn('controls.tipo_control', 'Enfermera')
+            ->whereIn('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
             ->where('controls.imc_resultado', 'Normal')
-            ->whereYear('controls.fecha_control', 2022)
+            ->whereYear('controls.fecha_control', 2023)
             ->whereIn(
                 'pacientes.rut',
                 DB::table('pacientes')
                     ->select('pacientes.rut')
-                    ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
                     ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
             )
             ->latest('controls.fecha_control');
@@ -825,14 +827,14 @@ class Paciente extends Model
     public function sobrePeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+            ->whereIn('controls.tipo_control', 'Enfermera')
+            ->whereIn('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
             ->where('controls.imc_resultado', 'Sobrepeso')
-            ->whereYear('controls.fecha_control', 2022)
+            ->whereYear('controls.fecha_control', 2023)
             ->whereIn(
                 'pacientes.rut',
                 DB::table('pacientes')
                     ->select('pacientes.rut')
-                    ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
                     ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
             )
             ->latest('controls.fecha_control');
@@ -841,15 +843,15 @@ class Paciente extends Model
     public function obeso()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+            ->whereIn('controls.tipo_control', 'Enfermera')
+            ->whereIn('rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
             ->where('controls.imc_resultado', 'Obesidad')
-            ->whereYear('controls.fecha_control', 2022)
+            ->whereYear('controls.fecha_control', 2023)
             ->whereIn(
                 'pacientes.rut',
                 DB::table('pacientes')
                     ->select('pacientes.rut')
-                    ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
-                    ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+                    ->whereIn('dependencia', ['L', 'M', 'G', 'T'])
             )
             ->latest('controls.fecha_control');
     }
@@ -857,15 +859,15 @@ class Paciente extends Model
     public function totalSeccionB()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Enfermera', 'Nutricionista', 'Medico'])
+            ->whereIn('controls.tipo_control', 'Enfermera')
+            ->whereIn('controls.rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia'])
             ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
-            ->whereYear('controls.fecha_control', 2022)
+            ->whereYear('controls.fecha_control', 2023)
             ->whereIn(
                 'pacientes.rut',
                 DB::table('pacientes')
                     ->select('pacientes.rut')
-                    ->whereIn('funcionalidad', ['SR', 'R', 'RD'])
-                    ->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+                    ->whereIn('dependencia', ['L', 'M', 'G', 'T'])
             )
             ->latest('controls.fecha_control');
     }

@@ -15,6 +15,6 @@ class Encuesta extends Model
 
     public function scopeSearch($query, $q)
     {
-        if ($q) return $query->whereYear('fecha_encuesta', "%$q%");
+        if ($q) return $query->whereYear('fecha_encuesta', '=', $q);
     }
 }

@@ -81,8 +81,8 @@
     @yield('body')
 
     @include('sweetalert::alert')
-	@auth
-     @include('adminlte::partials.footer.footer')
+    @auth
+        @include('adminlte::partials.footer.footer')
     @endauth
 
     {{-- Base Scripts --}}

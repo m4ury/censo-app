@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('pacientes', function (Blueprint $table) {
             $table->boolean('embarazada')->nullable();
             $table->boolean('sename')->nullable();
-            $table->boolean('nejor_ninez')->nullable();
+            $table->boolean('mejor_ninez')->nullable();
         });
     }
 
