@@ -18,7 +18,7 @@
                                 CONTROL</a>
                         </h4>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="#">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
                         </h4>
@@ -28,17 +28,17 @@
                             <a href="#">SECCIÓN C: POBLACION EN CONTROL EN PROGRAMA DE REHABILITACION PULMONAR EN SALA
                                 IRA-ERA</a>
                         </h4>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="{{route('estadisticas.seccion-p3d')}}">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
                         </h4>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="#">SECCIÓN E: RESULTADO DE ENCUESTA CALIDAD DE VIDA</a>
                         </h4>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -83,16 +83,15 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.seccion-p5a')}}">SECCION A: POBLACIÓN EN CONTROL POR CONDICIÓN DE
-                        FUNCIONALIDAD</a>
+                    <a href="{{route('estadisticas.seccion-p5a')}}">SECCIONES A y B</a>
                 </h4>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <h4 class="card-title text-bold mb-3">
                     <a href="{{route('estadisticas.seccion-p5b')}}">SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO
                         NUTRICIONAL</a>
                 </h4>
-            </div>
+            </div> --}}
         </div>
     </div>
 

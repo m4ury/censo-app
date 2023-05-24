@@ -349,7 +349,7 @@ $('.asmaClasif, epocClasif, sborClasif').change(function () {
 
 $('#funcionalidad').change(function () {
     $("#mensaje").empty();
-    var mensaje = "Favor edite paciente... <a class='btn bg-gradient-primary btn-sm' title='Editar' href='{{ route('pacientes.edit', $paciente->id) }}'> Editar Paciente <i class='fas fa-pen mx-2'></i></a>"
+    var mensaje = "No olvide editar paciente..."
     if ($('#funcionalidad').val() === 'rDependencia'){
         $('#mensaje').append(mensaje);
     }
