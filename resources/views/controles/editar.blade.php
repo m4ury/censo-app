@@ -29,11 +29,4 @@
             </div>
         </div>
     </div>
-    @section('js')
-        <script>
-            $('input.last').on('change', function () {
-                $('input.last').not(this).prop('checked', false);
-            });
-        </script>
-        @endsection
 @stop

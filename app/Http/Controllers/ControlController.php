@@ -49,7 +49,12 @@ class ControlController extends Controller
         $control->paciente_id = $request->paciente_id;
         $control->save();
 
-        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control creado con exito!');
+        if ($request->rEfam == "rDependencia") {
+            //dd($request->all());
+            return redirect('pacientes/' . $request->paciente_id . '/edit')->withSuccess('Control creado con exito!');
+        } else {
+            return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control creado con exito!');
+        }
     }
 
     public function show($id)
@@ -69,18 +74,23 @@ class ControlController extends Controller
     public function update(Request $request, $id)
     {
         $control = Control::findOrFail($id);
+        $paciente = Paciente::findOrFail($control->paciente_id);
         $control->update($request->all());
         //$control->pa_menor_140_90 = $request->pa_menor_140_90 ?? 2;
         //$control->pa_menor_150_90 = $request->pa_menor_150_90 ?? 2;
         //$control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? 2;
         $control->save();
-        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
+        if ($request->rEfam == 'rDependencia') {
+            return redirect('pacientes/' . $request->paciente_id . '/edit')->withSuccess('Control actualizado con exito!');
+        } else {
+            return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
+        }
     }
 
     public function destroy($id)
     {
         Control::destroy($id);
-        return redirect()->back()->withErrors('Control eliminado con exito!');
+        return redirect()->back()->withSuccess('Control eliminado con exito!');
     }
 
     public function prox(Request $request)
