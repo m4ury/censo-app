@@ -16,7 +16,7 @@
                 'class' => 'form-control' . ($errors->has('tipo_control') ? ' is-invalid' : ''),
                 'id' => 'tipo',
                 'placeholder' => "Seleccione
-                                                                                                                                                                                                                                                                                                                                        Profesional",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Profesional",
             ],
         ) !!}
         @if ($errors->has('tipo_control'))
@@ -35,7 +35,7 @@
         {!! Form::date('fecha_control', old('fecha_control', $control->fecha_control), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('fecha_control') ? ' is-invalid' : ''),
         ]) !!}
         @if ($errors->has('fecha_control'))
@@ -51,7 +51,7 @@
         {!! Form::number('sistolica', old('sistólica', $control->sistolica), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('sistolica') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo.: 120',
         ]) !!}
@@ -66,7 +66,7 @@
         {!! Form::number('diastolica', old('diastolica', $control->diastolica), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('diastolica') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 80',
         ]) !!}
@@ -83,7 +83,7 @@
         {!! Form::number('peso_actual', old('peso_actual', $control->peso_actual), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('peso_actual') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 88',
             'step' => 'any',
@@ -99,7 +99,7 @@
         {!! Form::number('talla_actual', old('talla_actual', $control->talla_actual), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('talla_actual') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 175',
         ]) !!}
@@ -124,7 +124,7 @@
         {!! Form::text('imc_resultado', old('imc_resultado', $control->imc_resultado), [
             'class' =>
                 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm' .
                 ($errors->has('imc_resultado') ? ' is-invalid' : ''),
             'placeholder' => 'Est. Nutricional.',
         ]) !!}
@@ -140,7 +140,7 @@
     <div class="col-sm">
         {!! Form::textarea('observacion', old('observacion', $control->observacion), [
             'class' => 'form-control
-                                                                                                                                                                                                                                                                                                                                        form-control-sm',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                form-control-sm',
             'placeholder' => 'Ingrese observación',
         ]) !!}
     </div>
@@ -173,8 +173,7 @@
         <div class="col-sm-2">
             {!! Form::date('proximo_control', old('proximo_control', $control->proximo_control), [
                 'class' =>
-                    'form-control
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            form-control-sm' .
+                    'form-control                                                                                                                                                                                                                                                                                                                                                                                                  form-control-sm' .
                     ($errors->has('proximo_control') ? ' is-invalid' : ''),
             ]) !!}
             @if ($errors->has('proximo_control'))
@@ -190,8 +189,7 @@
                 'tipo_atencion',
                 [
                     'Telefonico' => 'Telefonico',
-                    'Visita domiciliaria' => 'Visita
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            domiciliaria',
+                    'Visita domiciliaria' => 'Visita',
                     'Presencial' => 'Presencial',
                 ],
                 old('tipo_atencion', $control->tipo_atencion),
@@ -222,8 +220,7 @@
                 old('prox_tipo', $control->prox_tipo),
                 [
                     'class' =>
-                        'form-control
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            form-control-sm' .
+                        'form-control                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         form-control-sm' .
                         ($errors->has('prox_tipo') ? ' is-invalid' : ''),
                     'id' => 'prox_tipo',
                     'placeholder' => 'Seleccione Profesional',
@@ -264,7 +261,7 @@
 @section('js')
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -426,33 +423,36 @@
             $("#mensaje").empty();
             var mensaje = "";
             if ($('#funcionalidad').val() !== '') {
-                $('#barthel1, .barthel_label').hide();
+                $('#barthel1, .barthel_label, #rCaida, #rCaida_label, #uPodal, #uPodal_label, #rCaida_col, #uPodal_col')
+                    .hide();
                 //console.log("no va vacio");
                 if ($('#funcionalidad').val() === 'autConRiesgo') {
                     //console.log("autConRiesgo");
                     mensaje =
-                        "Derivar a Medico y/o educar adherencia a Programa que corresponda. Control de seguimiento antes de los 6 meses";
+                        "Control de seguimiento antes de los 6 meses";
                 } else if ($('#funcionalidad').val() === 'autSinRiesgo') {
                     mensaje = "Derivar acciones de promocion y prevencion.";
                 } else if ($('#funcionalidad').val() === 'rDependencia') {
                     mensaje =
-                        "Derivar a medico para diagnosticar y tratar factores de riesgo. Control de seguimiento antes de los 6 meses";
+                        "Control de seguimiento antes de los 6 meses";
                 }
                 $('#mensaje').append(mensaje);
             }
         })
 
+        $('#barthel2').hide();
         $('#barthel').change(function() {
             $('#funcionalidad_col, .funcionalidad_label').show();
             $("#mensaje").empty();
             var mensaje = "";
             if ($('#barthel').val() !== '') {
-                $('#funcionalidad_col, .funcionalidad_label').hide();
+                $('#funcionalidad_col, .funcionalidad_label, #barthel2').hide();
+                $('#barthel2').show();
                 if ($('#barthel').val() === 'dLeve' || $('#barthel').val() === 'dMod') {
                     mensaje = "Derivar a Medico para diagnosticos / Visita domiciliaria integral.";
                 } else if ($('#barthel').val() === 'dSevero' || $('#barthel').val() === 'dTotal') {
                     mensaje =
-                        "Programa de atencion domiciliaria con dependencia severa / Visita domiciliaria integral.";
+                        "Programa de at. domiciliaria dependencia severa / Visita domiciliaria integral.";
                 }
                 $('#mensaje').append(mensaje);
             }
