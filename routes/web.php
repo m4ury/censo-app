@@ -29,18 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('encuestas', 'EncuestaController');
     Route::resource('ciudadanas', 'CiudadanaController');
 
-
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
 
     //rutas para controles
-    Route::resource('controles', 'ControlController')->except('[index, create]');
-    Route::get('controles-all', 'ControlController@index')->name('controles-all');
+    Route::resource('controles', 'ControlController')->except('[index, create, show]');
+    //Route::get('controles-all', 'ControlController@index')->name('controles-all');
     Route::get('controles/pcte/{paciente?}', 'ControlController@controlsPcte')->name('controles');
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
-    Route::get('proximos', 'ControlController@prox')->name('proximos');
+    //Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
+    //Route::get('controles/{controle?}', 'ControlController@show')->name('controles.modal_control');
 
     //rutas para consultas
     Route::resource('consultas', 'ConsultaController')->except('[index, create]');
@@ -64,14 +64,25 @@ Route::middleware('auth')->group(function () {
     Route::get('pacientes/patologia/{paciente?}', 'PacientePatologiaController@create')->name('pacientes.patologia');
     Route::post('pacientes/patologia/{paciente?}', 'PacientePatologiaController@eliminarPatologia');
 
-    //rutas para estadisticas
+    //Estadisticas
+
+    //P3
+    Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
+    Route::get('/estadisticas.seccion-p3d', 'EstadisticaController@seccionP3d')->name('estadisticas.seccion-p3d');
+
+    //P4
     Route::get('/estadisticas', 'EstadisticaController@index')->name('estadisticas');
     Route::get('/estadisticas.seccion-a', 'EstadisticaController@seccionA')->name('estadisticas.seccion-a');
     Route::get('/estadisticas.seccion-b', 'EstadisticaController@seccionB')->name('estadisticas.seccion-b');
     Route::get('/estadisticas.seccion-c', 'EstadisticaController@seccionC')->name('estadisticas.seccion-c');
 
+    //P5
     Route::get('/estadisticas.seccion-p5a', 'EstadisticaController@seccionP5a')->name('estadisticas.seccion-p5a');
     Route::get('/estadisticas.seccion-p5b', 'EstadisticaController@seccionP5b')->name('estadisticas.seccion-p5b');
+
+    //P6
+    Route::get('/estadisticas.seccion-p6a', 'EstadisticaController@seccionP6a')->name('estadisticas.seccion-p6a');
+
     //Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
     Route::get('/estadisticas.encuestas', 'EstadisticaController@encuestas')->name('estadisticas.encuestas');
     //Route::get('/estadisticas.rayos', 'EstadisticaController@rayos')->name('estadisticas.rayos');
@@ -85,9 +96,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
     //Route::get('/estadisticas.ens', 'EstadisticaController@ens')->name('estadisticas.ens');
     //Route::get('/estadisticas.ensDm2', 'EstadisticaController@ensDm2')->name('estadisticas.ensDm2');
-    Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
-    Route::get('/estadisticas.seccion-p3d', 'EstadisticaController@seccionP3d')->name('estadisticas.seccion-p3d');
-    Route::get('/estadisticas.seccion-p6a', 'EstadisticaController@seccionP6a')->name('estadisticas.seccion-p6a');
-
-
 });

@@ -31,24 +31,24 @@
             ) !!}
         </div>
         <p class="badge badge-pill badge-info text-bold text-uppercase m-auto py-2 text-md" id="mensaje"></p>
-        {!! Form::label('rCaida_label', 'A.M. Con riesgo de caidas - Time Up and Go', [
+        {!! Form::label('rCaida_label', 'Riesgo de caidas - Timed Up and Go', [
             'class' => 'col-sm-3 col-form-label rCaida_label',
         ]) !!}
         <div class="col-sm-3" id="rCaida_col">
             {!! Form::select(
                 'rCaida',
-                ['r_leve' => 'Leve', 'r_normal' => 'Normal', 'r_alto' => 'Alto'],
+                ['r_leve' => 'riesgo Leve: 11 a 20 seg.', 'r_normal' => 'Normal: ≤ 10 seg.', 'r_alto' => 'riesgo Alto: > 20 seg.'],
                 old('rCaida', $control->rCaida),
                 ['class' => 'form-control', 'placeholder' => 'Seleccione riesgo', 'id' => 'rCaida'],
             ) !!}
         </div>
-        {!! Form::label('uPodal_label', 'A.M. Con riesgo de caidas - Unipodal', [
+        {!! Form::label('uPodal_label', 'Riesgo de caidas - Est. Unipodal', [
             'class' => 'col-sm-3 col-form-label uPodal_label',
         ]) !!}
-        <div class="col-sm-3">
+        <div class="col-sm-3" id="uPodal_col">
             {!! Form::select(
                 'uPodal',
-                ['u_normal' => 'Normal', 'u_alterado' => 'Alterado'],
+                ['u_normal' => 'Normal: ≥ 5 seg.', 'u_alterado' => 'Alterado: < 4 seg.'],
                 old('uPodal', $control->uPodal),
                 [
                     'class' => 'form-control form-control',
