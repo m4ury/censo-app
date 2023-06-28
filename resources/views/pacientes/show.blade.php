@@ -16,21 +16,18 @@
             </div>
             <div class="card-body">
                 <div class="form-group row nowrap">
-                        <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">{{
-                            $paciente->fullName() }}
-                        </span>
-                        <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">RUT.: {{ $paciente->rut
-                            }}</span>
-                        <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">Nº Ficha: {{ $paciente->ficha
-                            }}</span>
-                        <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Sector: @if($paciente->sector
-                            == "Celeste")
+                    <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">{{ $paciente->fullName() }}
+                    </span>
+                    <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">RUT.: {{ $paciente->rut }}</span>
+                    <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">Nº Ficha:
+                        {{ $paciente->ficha }}</span>
+                    <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Sector: @if ($paciente->sector == 'Celeste')
                             <i class="fas fa-square text-primary"></i> Celeste
-                            @elseif($paciente->sector == "Naranjo")
+                        @elseif($paciente->sector == 'Naranjo')
                             <i class="fas fa-square text-orange"></i> Naranjo
-                            @elseif($paciente->sector == "Blanco")
+                        @elseif($paciente->sector == 'Blanco')
                             <i class="fas fa-square text-white"></i> Blanco
-                            @endif </span>
+                        @endif </span>
                     <div class="col-sm text-right">
                         <a class="btn bg-gradient-primary btn-sm" title="Editar"
                             href="{{ route('pacientes.edit', $paciente->id) }}"> Editar Paciente <i
@@ -64,60 +61,64 @@
                                 <div class="card-body">
                                     <strong><i class="fas fa-map-marker-alt"></i> Dirección</strong>
                                     <p class="text-muted">
-                                        {{ $paciente->direccion }}, {{ $paciente->comuna ? : 'Hualañé' }}
+                                        {{ $paciente->direccion }}, {{ $paciente->comuna ?: 'Hualañé' }}
                                     </p>
                                     <hr>
                                     <strong><i class="fas fa-phone-alt mr-1"></i> Telefono</strong>
-                                    <p class="text-muted">{{ $paciente->telefono ? : 'Sin datos...'}}</p>
+                                    <p class="text-muted">{{ $paciente->telefono ?: 'Sin datos...' }}</p>
                                     <hr>
                                     <strong><i class="fas fa-heartbeat mr-1"></i> Riesgo Cardiovascular</strong>
                                     <br>
-                                    @if($paciente->riesgo_cv == 'MODERADO')
-                                    <p class="btn rounded-pill bg-gradient-warning">MODERADO</P>
+                                    @if ($paciente->riesgo_cv == 'MODERADO')
+                                        <p class="btn rounded-pill bg-gradient-warning">MODERADO</P>
                                     @elseif($paciente->riesgo_cv == 'ALTO')
-                                    <p class="btn rounded-pill bg-gradient-danger px-4">ALTO</P>
+                                        <p class="btn rounded-pill bg-gradient-danger px-4">ALTO</P>
                                     @elseif($paciente->riesgo_cv == 'BAJO')
-                                    <p class="btn rounded-pill bg-gradient-success px-4">BAJO</P>
+                                        <p class="btn rounded-pill bg-gradient-success px-4">BAJO</P>
                                     @else
-                                    <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                                        <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
                                     @endif
                                     <hr>
                                     <strong><i class="fas fa-disease mr-1"></i>Enfermedad Renal
                                         Cronica(ERC)</strong>
                                     <br>
-                                    <p class="btn badge-pill bg-gradient-info">{{ $paciente->erc ? : 'No se encontraron
-                                        datos.' }}</p>
+                                    <p class="btn badge-pill bg-gradient-info">
+                                        {{ $paciente->erc ?:
+                                            'No se encontraron
+                                                                                datos.' }}
+                                    </p>
                                     <hr>
-                                    @if($paciente->compensado == 1)
-                                    <strong><i class="fas fa-thumbs-up mr-1"></i>Compensado</strong>
-                                    <br>
-                                    <p class="btn rounded-pill bg-gradient-success">COMPENSADO</P>
+                                    @if ($paciente->compensado == 1)
+                                        <strong><i class="fas fa-thumbs-up mr-1"></i>Compensado</strong>
+                                        <br>
+                                        <p class="btn rounded-pill bg-gradient-success">COMPENSADO</P>
                                     @elseif($paciente->compensado == 2)
-                                    <strong><i class="fas fa-thumbs-down mr-1"></i>No Compensado</strong>
-                                    <br>
-                                    <p class="btn rounded-pill bg-gradient-danger">NO COMPENSADO</p>
+                                        <strong><i class="fas fa-thumbs-down mr-1"></i>No Compensado</strong>
+                                        <br>
+                                        <p class="btn rounded-pill bg-gradient-danger">NO COMPENSADO</p>
                                     @else
-                                    <strong><i class="fas fa-question-circle mr-1"></i>Compensado</strong>
-                                    <br>
-                                    <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                                        <strong><i class="fas fa-question-circle mr-1"></i>Compensado</strong>
+                                        <br>
+                                        <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
                                     @endif
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)
-                                @if($paciente->controls->count() > 0)
-                                <a href="{{ route('controles', $paciente->id) }}"><span class="text-bold">Ver Todos los
-                                        controles...</span></a>
+                                @if ($paciente->controls->count() > 0)
+                                    <a href="{{ route('controles', $paciente->id) }}"><span class="text-bold">Ver Todos
+                                            los
+                                            controles...</span></a>
                                 @else
-                                <p class="text-muted">No hay Controles aun, crea uno <i
-                                        class="far fa-laugh-wink fa-2x"></i></p>
+                                    <p class="text-muted">No hay Controles aun, crea uno <i
+                                            class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-consultas" role="tabpanel"
                                 aria-labelledby="vert-tabs-consultas-tab">
                                 @include('consultas.list_consultas', $paciente)
-                                {{-- @if($paciente->consultas->count() > 0)
+                                {{-- @if ($paciente->consultas->count() > 0)
                                 <a href="{{ route('consultas', $paciente->id) }}"><span class="text-bold">Ver Todas las
                                         consultas...</span></a>
                                 @else
@@ -129,9 +130,9 @@
                                 aria-labelledby="vert-tabs-patologias-tab">
                                 @include('patologias.list_patologias', $paciente)
 
-                                @if($paciente->patologias->count() == 0)
-                                <p class="text-muted">No hay Patologias aun...<i
-                                        class="far fa-laugh-wink fa-2x"></i></p>
+                                @if ($paciente->patologias->count() == 0)
+                                    <p class="text-muted">No hay Patologias aun...<i
+                                            class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
                         </div>
@@ -141,4 +142,11 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 @endsection

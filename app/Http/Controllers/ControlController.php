@@ -60,7 +60,7 @@ class ControlController extends Controller
     public function show($id)
     {
         $control = Control::findOrFail($id);
-        return response(['data', $control], 200);
+        return view('controles.show', compact('control'));
     }
 
     public function editar($id)

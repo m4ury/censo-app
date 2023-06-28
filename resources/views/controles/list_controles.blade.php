@@ -48,10 +48,9 @@
 
                                 {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE']) !!}
                                 <td>
-                                    <a data-toggle="modal" data-target="#productModal{{ $control->id }}"
-                                        title="Detalle" class="quick-view modal-view detail-link viewDetails"
-                                        href="#">
-                                        <i class="fas fa-eye text-secondary fa-sm"></i>
+                                    <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                        title="Detalle" href="{{ route('controles.show', $control->id) }}"><i
+                                            class="fas fa-eye info-md"></i>
                                     </a>
                                     <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                                         title="Editar" href="{{ url('controles/' . $control->id . '/editar') }}"><i
@@ -74,5 +73,4 @@
             </div>
         </div>
     </div>
-    @include('controles.modal_control')
 @endif

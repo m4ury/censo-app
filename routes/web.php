@@ -34,13 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
 
     //rutas para controles
-    Route::resource('controles', 'ControlController')->except('[index, create, show]');
+    Route::resource('controles', 'ControlController')->except('[index, create]');
     //Route::get('controles-all', 'ControlController@index')->name('controles-all');
     Route::get('controles/pcte/{paciente?}', 'ControlController@controlsPcte')->name('controles');
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
     //Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
-    //Route::get('controles/{controle?}', 'ControlController@show')->name('controles.modal_control');
 
     //rutas para consultas
     Route::resource('consultas', 'ConsultaController')->except('[index, create]');
