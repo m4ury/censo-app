@@ -49,12 +49,7 @@ class ControlController extends Controller
         $control->paciente_id = $request->paciente_id;
         $control->save();
 
-        if ($request->rEfam == "rDependencia") {
-            //dd($request->all());
-            return redirect('pacientes/' . $request->paciente_id . '/edit')->withSuccess('Control creado con exito!');
-        } else {
-            return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control creado con exito!');
-        }
+        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control creado con exito!');
     }
 
     public function show($id)
