@@ -26,7 +26,7 @@ class CreatePacientesTable extends Migration
             $table->string('direccion');
             $table->enum('comuna', ['Cauquenes', 'Chanco', 'Pelluhue', 'Curico', 'Hualane', 'Licanten', 'Molina', 'Rauco', 'Romeral', 'Sgda Familia', 'Teno', 'Vichuquen', 'Linares', 'Colbun', 'Longabi', 'Parral', 'Retiro', 'San Javier', 'Villa Alegre', 'Yerbas Buenas', 'Talca', 'Constitucion', 'Empedrado', 'Maule', 'Pelarco', 'Pencahue', 'Rio Claro', 'San Clemente', 'San Rafael', 'Curepto'])->nullable();
             $table->string('telefono')->nullable();
-            $table->enum('sector', ['Naranjo'=>'naranjo', 'Celeste'=>'celeste', 'Blanco'=>'blanco']);
+            $table->enum('sector', ['Naranjo'=>'Naranjo', 'Celeste'=>'Celeste', 'Blanco'=>'Blanco']);
             $table->boolean('migrante')->default(0);
             $table->boolean('pueblo_originario')->default(0);
             $table->timestamps();
