@@ -48,7 +48,7 @@
 
                                 {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE']) !!}
                                 <td>
-                                    <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                    <a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top"
                                         title="Detalle" href="{{ route('controles.show', $control->id) }}"><i
                                             class="fas fa-eye info-md"></i>
                                     </a>

@@ -15,7 +15,7 @@
             [
                 'class' => 'form-control' . ($errors->has('tipo_control') ? ' is-invalid' : ''),
                 'id' => 'tipo',
-                'placeholder' => "Seleccione Profesional",
+                'placeholder' => 'Seleccione Profesional',
             ],
         ) !!}
         @if ($errors->has('tipo_control'))
@@ -32,9 +32,7 @@
     {!! Form::label('fecha_control', 'Fecha Control', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
         {!! Form::date('fecha_control', old('fecha_control', $control->fecha_control), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('fecha_control') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('fecha_control') ? ' is-invalid' : ''),
         ]) !!}
         @if ($errors->has('fecha_control'))
             <span class="invalid-feedback">
@@ -47,9 +45,7 @@
     {!! Form::label('sistolica_label', 'Presion Art. Sistolica', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('sistolica', old('sistólica', $control->sistolica), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('sistolica') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('sistolica') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo.: 120',
         ]) !!}
         @if ($errors->has('sistolica'))
@@ -61,9 +57,7 @@
     {!! Form::label('diastolica_label', 'Presion Art. Diastólica', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('diastolica', old('diastolica', $control->diastolica), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('diastolica') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('diastolica') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 80',
         ]) !!}
         @if ($errors->has('diastolica'))
@@ -77,9 +71,7 @@
     {!! Form::label('peso_actual', 'Peso actual(Kg.)', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('peso_actual', old('peso_actual', $control->peso_actual), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('peso_actual') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('peso_actual') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 88',
             'step' => 'any',
         ]) !!}
@@ -92,9 +84,7 @@
     {!! Form::label('talla_actual', 'Talla actual(Cms.)', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::number('talla_actual', old('talla_actual', $control->talla_actual), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('talla_actual') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('talla_actual') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 175',
         ]) !!}
         @if ($errors->has('talla_actual'))
@@ -116,9 +106,7 @@
     {!! Form::label('imc_resultado', 'Estado Nutricional', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm-3">
         {!! Form::text('imc_resultado', old('imc_resultado', $control->imc_resultado), [
-            'class' =>
-                'form-control form-control-sm' .
-                ($errors->has('imc_resultado') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm' . ($errors->has('imc_resultado') ? ' is-invalid' : ''),
             'placeholder' => 'Est. Nutricional.',
         ]) !!}
         @if ($errors->has('imc_resultado'))
@@ -137,6 +125,10 @@
         ]) !!}
     </div>
 </div>
+
+@if ($paciente->grupo < 10)
+    @include('partials.dental')
+@endif
 
 @if ($paciente->grupo > 64)
     @include('partials.efam')
@@ -164,9 +156,7 @@
         {!! Form::label('proximo_control_label', 'Fecha prox. control', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-2">
             {!! Form::date('proximo_control', old('proximo_control', $control->proximo_control), [
-                'class' =>
-                    'form-control form-control-sm' .
-                    ($errors->has('proximo_control') ? ' is-invalid' : ''),
+                'class' => 'form-control form-control-sm' . ($errors->has('proximo_control') ? ' is-invalid' : ''),
             ]) !!}
             @if ($errors->has('proximo_control'))
                 <span class="invalid-feedback">
@@ -186,7 +176,7 @@
                 ],
                 old('tipo_atencion', $control->tipo_atencion),
                 [
-                    'class' => 'form-control form-control-sm' . ($errors->has('prox_tipo') ? ' is-invalid' : ''),
+                    'class' => 'form-control form-control-sm' . ($errors->has('tipo_atencion') ? ' is-invalid' : ''),
                     'id' => 'atencion',
                     'placeholder' => 'Seleccione',
                 ],
@@ -208,6 +198,7 @@
                     'Kinesiologo' => 'Kinesiologo',
                     'Nutricionista' => 'Nutricionista',
                     'Psicologo' => 'Psicologo',
+                    'Dentista' => 'Dentista',
                 ],
                 old('prox_tipo', $control->prox_tipo),
                 [
@@ -251,7 +242,7 @@
 @section('js')
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -322,6 +313,10 @@
                     break;
                 case 'Psicologo':
                     $('#Psicologo').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
+                    break;
+                case 'Dentista':
+                    $('#Dentista').show();
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
             }

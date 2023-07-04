@@ -45,6 +45,25 @@ class ControlController extends Controller
     {
 
         $control = new Control($request->except('_token'));
+
+        if ($request->tipo_control == 'Dentista') {
+            $control->tipo_atencion = 'Presencial';
+            $control->prox_tipo = 'Dentista';
+            if ($request->rCero == 'bajo') {
+                if ($control->paciente->get()->whereBetween('grupo', [1, 2])) {
+                    $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(12);
+                } elseif ($control->paciente->get()->whereBetween('grupo', [3, 9])) {
+                    $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(6);
+                }
+            } elseif ($request->rCero == 'alto') {
+                if ($control->paciente->get()->whereBetween('grupo', [1, 2])) {
+                    $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(6);
+                } elseif ($control->paciente->get()->whereBetween('grupo', [3, 9])) {
+                    $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(4);
+                }
+            }
+        }
+
         $control->user_id = Auth::user()->id;
         $control->paciente_id = $request->paciente_id;
         $control->save();
