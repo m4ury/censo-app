@@ -21,7 +21,7 @@ class Control extends Model
     public function scopeSearch($query, $q)
     {
         if ($q)
-        return $query->whereMonth('proximo_control', $q);
+        return $query->where('prox_tipo', $q);
     }
 
 }

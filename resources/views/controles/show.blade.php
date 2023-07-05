@@ -23,93 +23,109 @@
                             @if ($control->tipo_control == 'Psicologo')
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Trastornos mentales y del comportamiento debido Consumo de sust. psicotropicas
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->trConsumo ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->trConsumo ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Trastornos del humor
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->trHumor ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->trHumor ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Trastornos del comportamiento y emociones en infancia y adolescencia
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->trInfAdol ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->trInfAdol ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Trastornos de anciedad
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->trAns ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->trAns ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Demencias
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->demencias ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->demencias ?? '--' }}</span>
                                 </li>
                             @elseif ($control->tipo_control == 'Kinesiologo')
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     ASMA clasif.
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->asmaClasif ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->asmaClasif ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     ASMA nivel de control
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->asmaControl ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->asmaControl ?? '--' }}</span>
                                 </li>
                                 @if ($control->paciente->grupo < 5)
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         SBOR clasif.
-                                        <span class="badge badge-info badge-pill text-uppercase">{{ $control->sborClasif ?? '' }}</span>
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->sborClasif ?? '--' }}</span>
                                     </li>
                                 @endif
                                 @if ($control->paciente->grupo > 39)
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         EPOC clasif.
-                                        <span class="badge badge-info badge-pill text-uppercase">{{ $control->epocClasif ?? '' }}</span>
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->epocClasif ?? '--' }}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         EPOC nivel de control
-                                        <span class="badge badge-info badge-pill text-uppercase">{{ $control->epocControl ?? '' }}</span>
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->epocControl ?? '--' }}</span>
                                     </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Otras Enf. respiratorias cronicas
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->otras_enf ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->otras_enf ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Espirometria vigente
                                     <span
-                                        class="badge badge-info badge-pill text-uppercase">{{ $control->espirometriaVigente ?? '' }}</span>
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->espirometriaVigente ?? '--' }}</span>
                                 </li>
                             @elseif ($control->tipo_control == 'Enfermera')
                                 @if ($control->paciente->dm2())
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Evaluacion Pie diabetico
                                         <span
-                                            class="badge badge-info badge-pill text-uppercase">{{ $control->evaluacionPie ?? '' }}</span>
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->evaluacionPie ?? '--' }}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Ulceras Activas segun tipo curación
                                         <span
-                                            class="badge badge-info badge-pill text-uppercase">{{ $control->ulcerasActivas_TipoCuracion ?? '' }}</span>
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->ulcerasActivas_TipoCuracion ?? '--' }}</span>
                                     </li>
                                 @endif
                                 @if ($control->paciente->grupo > 64)
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Resultado EFAM
-                                        <span class="badge badge-info badge-pill text-uppercase">{{ $control->rEfam ?? '' }}</span>
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->rEfam ?? '--' }}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Riesgo de caidas - Timed Up and Go
-                                        <span class="badge badge-info badge-pill text-uppercase">{{ $control->rCaida ?? '' }}</span>
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->rCaida ?? '--' }}</span>
                                     </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Riesgo de caidas - Est. Unipodal
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->uPodal ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->uPodal ?? '--' }}</span>
                                 </li>
                             @elseif ($control->tipo_control == 'Dentista')
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Eval. Riesgo segun Pauta CERO
-                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase" style="font-size:medium">{{ $control->rCero ?? '' }}</span>
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->rCero ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Daño por Caries Segun Indice CEOD o COPD
-                                    <span class="badge badge-info badge-pill text-uppercase">{{ $control->dCaries ?? '' }}</span>
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->dCaries ?? '--' }}</span>
                                 </li>
                             @endif
                         </ul>
@@ -119,3 +135,8 @@
         </div>
     </div>
 @stop
+<style>
+    li.list-group-item.d-flex.justify-content-around.align-items-center span {
+        font-size: medium;
+    }
+</style>

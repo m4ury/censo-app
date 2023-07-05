@@ -111,7 +111,8 @@ class ControlController extends Controller
     {
 
         $q = $request->get('q');
-        $controles = Control::latest()
+        $controles = Control::latest('proximo_control')
+            ->where('proximo_control', '>', Carbon::yesterday())
             ->search($q)
             ->get();
 

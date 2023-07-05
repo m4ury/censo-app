@@ -282,20 +282,24 @@ return [
             'icon' => 'fas fa-fw fa-heartbeat text-info',
             'can' => 'rx'
         ],
-        /* ['header' => 'CONTROLES',
-        'can' => 'controles-all'],
+        [
+            'header' => 'CONTROLES',
+            'can' => 'controles-all'
+        ],
+        /*
         [
             'text' => 'Controles',
             'route' => 'controles-all',
             'icon' => 'fas fa-fw fa-hospital-user text-danger',
             'can' => 'controles-all'
         ],
+        */
         [
             'text' => 'Proximos Controles',
             'route' => 'proximos',
             'icon' => 'fas fa-fw fa-project-diagram text-yellow',
             'can' => 'controles-all'
-        ], */
+        ],
         [
             'header' => 'ESTADISTICAS',
             'can' => 'estadisticas'
