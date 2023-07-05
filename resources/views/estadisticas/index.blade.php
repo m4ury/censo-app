@@ -8,13 +8,32 @@
             <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h3 class="card-title text-bold">
+                        REM-P2. POBLACION EN CONTROL PROGRAMA NACIONAL DE SALUD DE LA INFANCIA
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: POBLACION EN CONTROL , SEGUN RIESGO
+                                ODONTOLOGICO Y DAÑO POR CARIES</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">
                         REM-P3. POBLACION EN CONTROL OTROS PROGRAMAS
                     </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{route('estadisticas.seccion-p3a')}}">SECCIÓN A: EXISTENCIA DE POBLACIÓN EN
+                            <a href="{{ route('estadisticas.seccion-p3a') }}">SECCIÓN A: EXISTENCIA DE POBLACIÓN EN
                                 CONTROL</a>
                         </h4>
                     </div>
@@ -31,7 +50,8 @@
                     </div> --}}
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{route('estadisticas.seccion-p3d')}}">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION RESPIRATORIA CRONICA</a>
+                            <a href="{{ route('estadisticas.seccion-p3d') }}">SECCIÓN D: NIVEL DE CONTROL DEPOBLACION
+                                RESPIRATORIA CRONICA</a>
                         </h4>
                     </div>
                     {{-- <div class="row">
@@ -54,18 +74,18 @@
                 <div class="card-body">
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{route('estadisticas.seccion-a')}}">SECCIÓN A: PROGRAMA SALUD CARDIOVASCULAR
+                            <a href="{{ route('estadisticas.seccion-a') }}">SECCIÓN A: PROGRAMA SALUD CARDIOVASCULAR
                                 (PSCV)</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{route('estadisticas.seccion-b')}}">SECCIÓN B: METAS DE COMPENSACIÓN</a>
+                            <a href="{{ route('estadisticas.seccion-b') }}">SECCIÓN B: METAS DE COMPENSACIÓN</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{route('estadisticas.seccion-c')}}">SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV
+                            <a href="{{ route('estadisticas.seccion-c') }}">SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV
                                 AL CORTE</a>
                         </h4>
                     </div>
@@ -83,7 +103,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.seccion-p5a')}}">SECCIONES A y B</a>
+                    <a href="{{ route('estadisticas.seccion-p5a') }}">SECCIONES A y B</a>
                 </h4>
             </div>
             {{-- <div class="row">
@@ -104,7 +124,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.seccion-p6a')}}">SECCION A.1: POBLACIÓN EN CONTROL EN APS AL CORTE</a>
+                    <a href="{{ route('estadisticas.seccion-p6a') }}">SECCION A.1: POBLACIÓN EN CONTROL EN APS AL CORTE</a>
                 </h4>
             </div>
         </div>
@@ -119,13 +139,13 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.encuestas')}}">ESTADISTICA SEMESTRAL ENCUESTAS</a>
+                    <a href="{{ route('estadisticas.encuestas') }}">ESTADISTICA SEMESTRAL ENCUESTAS</a>
                 </h4>
             </div>
         </div>
     </div>
 
-    {{--<div class="card card-info card-outline">
+    {{-- <div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
                 ESTADISTICA MENSUAL
@@ -138,7 +158,7 @@
                 </h4>
             </div>
         </div>
-    </div>--}}
+    </div> --}}
 
     <div class="card card-info card-outline">
         <div class="card-header">
@@ -149,17 +169,17 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.dm2')}}">TODOS</a>
+                    <a href="{{ route('estadisticas.dm2') }}">TODOS</a>
                 </h4>
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.dm2_descom')}}">DESCOMPENSADOS</a>
+                    <a href="{{ route('estadisticas.dm2_descom') }}">DESCOMPENSADOS</a>
                 </h4>
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.pie')}}">EVALUACION PIE DIABETICO</a>
+                    <a href="{{ route('estadisticas.pie') }}">EVALUACION PIE DIABETICO</a>
                 </h4>
             </div>
         </div>
@@ -174,7 +194,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.hta')}}">TODOS</a>
+                    <a href="{{ route('estadisticas.hta') }}">TODOS</a>
                 </h4>
             </div>
         </div>
@@ -189,7 +209,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.sm')}}">TODOS</a>
+                    <a href="{{ route('estadisticas.sm') }}">TODOS</a>
                 </h4>
             </div>
         </div>
@@ -204,7 +224,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.am')}}">TODOS</a>
+                    <a href="{{ route('estadisticas.am') }}">TODOS</a>
                 </h4>
             </div>
         </div>

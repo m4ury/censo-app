@@ -3926,6 +3926,50 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP2j()
+    {
+        $all = new Paciente;
+
+        $rCero_bajo = $all->rCero('Femenino', 'Masculino', 'bajo')->get()->unique('rut')->count();
+        $rCero_bajoM = $all->rCero(null, 'Masculino', 'bajo')->get()->unique('rut')->count();
+        $rCero_bajo_OriginM = $all->rCero(null, 'Masculino', 'bajo')->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->count();
+        $rCero_bajo_0M = $all->rCero(null, 'Masculino', 'bajo')->get()->where('grupo', '<', 1)->unique('rut')->count();
+        $rCero_bajo_12M = $all->rCero(null, 'Masculino', 'bajo')->get()->whereBetween('grupo', [1, 2])->unique('rut')->count();
+        $rCero_bajo_34M = $all->rCero(null, 'Masculino', 'bajo')->get()->whereBetween('grupo', [3, 4])->unique('rut')->count();
+        $rCero_bajo_56M = $all->rCero(null, 'Masculino', 'bajo')->get()->whereBetween('grupo', [5, 6])->unique('rut')->count();
+        $rCero_bajo_78M = $all->rCero(null, 'Masculino', 'bajo')->get()->whereBetween('grupo', [7, 8])->unique('rut')->count();
+        $rCero_bajo_9M = $all->rCero(null, 'Masculino', 'bajo')->get()->where('grupo', '<', 10)->unique('rut')->count();
+
+        $rCero_bajoF = $all->rCero('Femenino', null, 'bajo')->get()->unique('rut')->count();
+        $rCero_bajo_OriginF = $all->rCero(null, 'Femenino', 'bajo')->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->count();
+        $rCero_bajo_0F = $all->rCero(null, 'Femenino', 'bajo')->get()->where('grupo', '<', 1)->unique('rut')->count();
+        $rCero_bajo_12F = $all->rCero(null, 'Femenino', 'bajo')->get()->whereBetween('grupo', [1, 2])->unique('rut')->count();
+        $rCero_bajo_34F = $all->rCero(null, 'Femenino', 'bajo')->get()->whereBetween('grupo', [3, 4])->unique('rut')->count();
+        $rCero_bajo_56F = $all->rCero(null, 'Femenino', 'bajo')->get()->whereBetween('grupo', [5, 6])->unique('rut')->count();
+        $rCero_bajo_78F = $all->rCero(null, 'Femenino', 'bajo')->get()->whereBetween('grupo', [7, 8])->unique('rut')->count();
+        $rCero_bajo_9F = $all->rCero(null, 'Femenino', 'bajo')->get()->where('grupo', '<', 10)->unique('rut')->count();
+
+        return view('estadisticas.seccion-p2j', compact(
+            'rCero_bajo',
+            'rCero_bajoM',
+            'rCero_bajoF',
+            'rCero_bajo_0M',
+            'rCero_bajo_0F',
+            'rCero_bajo_12M',
+            'rCero_bajo_12F',
+            'rCero_bajo_34M',
+            'rCero_bajo_34F',
+            'rCero_bajo_56M',
+            'rCero_bajo_56F',
+            'rCero_bajo_78M',
+            'rCero_bajo_78F',
+            'rCero_bajo_9M',
+            'rCero_bajo_9F',
+            'rCero_bajo_OriginM',
+            'rCero_bajo_OriginF'
+        ));
+    }
+
     public function seccionP3a()
     {
         $all = new Paciente;

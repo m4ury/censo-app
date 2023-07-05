@@ -940,4 +940,26 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    public function rCero($fem, $masc, $riesgo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Dentista')
+            ->where('controls.epocControl', $riesgo)
+            ->whereYear('controls.fecha_control', '2023')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function dCaries($fem, $masc, $dano)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Dentista')
+            ->where('controls.epocControl', $dano)
+            ->whereYear('controls.fecha_control', '2023')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
 }
