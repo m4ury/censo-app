@@ -3935,27 +3935,27 @@ class EstadisticaController extends Controller
         $rCero_bajo_OriginM = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->count();
         $rCero_bajo_0M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 1)->unique('rut')->count();
         $rCero_bajo_1M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 1)->unique('rut')->count();
-        $rCero_bajo_2M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 2)->unique('rut')->count();
-        $rCero_bajo_3M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 3)->unique('rut')->count();
-        $rCero_bajo_4M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 4)->unique('rut')->count();
-        $rCero_bajo_5M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 5)->unique('rut')->count();
-        $rCero_bajo_6M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 6)->unique('rut')->count();
-        $rCero_bajo_7M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 7)->unique('rut')->count();
-        $rCero_bajo_8M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 8)->unique('rut')->count();
-        $rCero_bajo_9M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '>=', 9)->unique('rut')->count();
+        $rCero_bajo_2M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 2)->unique('rut')->count();
+        $rCero_bajo_3M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 3)->unique('rut')->count();
+        $rCero_bajo_4M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 4)->unique('rut')->count();
+        $rCero_bajo_5M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 5)->unique('rut')->count();
+        $rCero_bajo_6M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 6)->unique('rut')->count();
+        $rCero_bajo_7M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 7)->unique('rut')->count();
+        $rCero_bajo_8M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 8)->unique('rut')->count();
+        $rCero_bajo_9M = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 9)->unique('rut')->count();
 
         $rCero_bajoF = $all->rCero('Femenino', null)->where('rCero', '=', 'bajo')->get()->unique('rut')->count();
         $rCero_bajo_OriginF = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->count();
         $rCero_bajo_0F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 1)->unique('rut')->count();
         $rCero_bajo_1F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 1)->unique('rut')->count();
-        $rCero_bajo_2F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 2)->unique('rut')->count();
+        $rCero_bajo_2F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 2)->unique('rut')->count();
         $rCero_bajo_3F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 3)->unique('rut')->count();
-        $rCero_bajo_4F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 4)->unique('rut')->count();
+        $rCero_bajo_4F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 4)->unique('rut')->count();
         $rCero_bajo_5F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 5)->unique('rut')->count();
-        $rCero_bajo_6F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 6)->unique('rut')->count();
+        $rCero_bajo_6F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 6)->unique('rut')->count();
         $rCero_bajo_7F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 7)->unique('rut')->count();
-        $rCero_bajo_8F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<', 8)->unique('rut')->count();
-        $rCero_bajo_9F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '<=', 9)->unique('rut')->count();
+        $rCero_bajo_8F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 8)->unique('rut')->count();
+        $rCero_bajo_9F = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->where('grupo', '==', 9)->unique('rut')->count();
 
         return view('estadisticas.seccion-p2j', compact(
             'rCero_bajo',

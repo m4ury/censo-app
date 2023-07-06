@@ -56,7 +56,10 @@
                                     @else
                                     ' ' @endif>
                                 <td class="text-uppercase" nowrap="">{{ $control->paciente->fullName() }}</td>
-                                <td>{{ $control->paciente->rut }}</td>
+                                <td><a href="{{ route('pacientes.show', $control->paciente->id) }}" target="_blank">
+                                        {{ $control->paciente->rut }}
+                                    </a>
+                                </td>
                                 <td>{{ $control->paciente->edad() }}</td>
                                 <td>{{ $control->paciente->ficha }}</td>
                                 <td>{{ $control->paciente->telefono }}</td>
