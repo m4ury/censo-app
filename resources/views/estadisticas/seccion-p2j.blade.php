@@ -86,21 +86,23 @@
                             <tr>
                                 <th nowrap="" colspan="2" class="text-bold">TOTAL DE NIÑOS(AS) EN CONTROL CON
                                     ENFOQUE DE RIESGO ODONTOLOGICO</th>
-                                <td>{{ $rCero_bajo }}</td>
-                                <td>{{ $rCero_bajoM }}</td>
-                                <td>{{ $rCero_bajoF }}</td>
-                                <td>{{ $rCero_bajo_0M }}</td>
-                                <td>{{ $rCero_bajo_0F }}</td>
-                                <td>{{ $rCero_bajo_12M }}</td>
-                                <td>{{ $rCero_bajo_12F }}</td>
-                                <td>{{ $rCero_bajo_34M }}</td>
-                                <td>{{ $rCero_bajo_34F }}</td>
-                                <td>{{ $rCero_bajo_56M }}</td>
-                                <td>{{ $rCero_bajo_56F }}</td>
-                                <td>{{ $rCero_bajo_78M }}</td>
-                                <td>{{ $rCero_bajo_78F }}</td>
-                                <td>{{ $rCero_bajo_9M }}</td>
-                                <td>{{ $rCero_bajo_9F }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -123,9 +125,10 @@
                                 <th rowspan="4" style="vertical-align: middle">EVALUACION DE RIESGO SEGUN PAUTA CERO</th>
                             <tr>
                                 <th nowrap="">ALTO RIESGO</th>
-                                <td>{{ $rCero_bajo }}</td>
-                                <td>{{ $rCero_bajoM }}</td>
-                                <td>{{ $rCero_bajoF }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -158,32 +161,29 @@
                             </tr>
                             <tr>
                                 <th nowrap="">BAJO RIESGO</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $rCero_bajo }}</td>
+                                <td>{{ $rCero_bajoM }}</td>
+                                <td>{{ $rCero_bajoF }}</td>
+                                <td>{{ $rCero_bajo_0M }}</td>
+                                <td>{{ $rCero_bajo_0F }}</td>
+                                <td>{{ $rCero_bajo_1M }}</td>
+                                <td>{{ $rCero_bajo_1F }}</td>
+                                <td>{{ $rCero_bajo_2M }}</td>
+                                <td>{{ $rCero_bajo_2F }}</td>
+                                <td>{{ $rCero_bajo_3M }}</td>
+                                <td>{{ $rCero_bajo_3F }}</td>
+                                <td>{{ $rCero_bajo_4M }}</td>
+                                <td>{{ $rCero_bajo_4F }}</td>
+                                <td>{{ $rCero_bajo_5M }}</td>
+                                <td>{{ $rCero_bajo_5F }}</td>
+                                <td>{{ $rCero_bajo_6M }}</td>
+                                <td>{{ $rCero_bajo_6F }}</td>
+                                <td>{{ $rCero_bajo_7M }}</td>
+                                <td>{{ $rCero_bajo_7F }}</td>
+                                <td>{{ $rCero_bajo_8M }}</td>
+                                <td>{{ $rCero_bajo_8F }}</td>
+                                <td>{{ $rCero_bajo_9M }}</td>
+                                <td>{{ $rCero_bajo_9F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -225,44 +225,12 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <th rowspan="8" style="vertical-align: middle">EVALUACION DE DE DAÑO POR CARIES SEGUN
+                                <th rowspan="7" style="vertical-align: middle">EVALUACION DE DE DAÑO POR CARIES SEGUN
                                     INDICE ceod O COPD
                                 </th>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
                             <tr>
                                 <th> 1 a 2 </th>
                                 <td></td>
@@ -475,7 +443,7 @@
                             </tr>
                             </tr>
                             <tr>
-                                <th colspan="2">INASISTENTES A CONTROL ODONTOLOGICO</th>
+                                <th colspan="2" class="text-center">INASISTENTES A CONTROL ODONTOLOGICO</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
