@@ -29,7 +29,7 @@
                 <tbody>
                     @foreach ($fOjo as $paciente)
                         <tr>
-                            <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</td>
+                            <td>{{ $paciente->rut }}</td>
                             <td>{{ $paciente->ficha }}</td>
                             <td>{{ $paciente->fullName() }}</td>
                             <td>{{ $paciente->fondoOjoVigente }}</td>
