@@ -96,6 +96,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.sm', 'EstadisticaController@sm')->name('estadisticas.sm');
     Route::get('/estadisticas.am', 'EstadisticaController@am')->name('estadisticas.am');
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
+    Route::get('/estadisticas.fondoOjo', 'PacienteController@fondoOjo')->name('estadisticas.fondoOjo');
     //Route::get('/estadisticas.ens', 'EstadisticaController@ens')->name('estadisticas.ens');
     //Route::get('/estadisticas.ensDm2', 'EstadisticaController@ensDm2')->name('estadisticas.ensDm2');
 });

@@ -93,4 +93,12 @@ class PacienteController extends Controller
         Paciente::destroy($id);
         return response(['data' => null], 204);
     }
+
+    public function fondoOjo()
+    {
+        $paciente = new Paciente;
+        $fOjo = $paciente->fondoOjoVigente()->get();
+
+        return view('estadisticas.fondoOjo', compact('fOjo'));
+    }
 }
