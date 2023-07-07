@@ -86,29 +86,33 @@
                             <tr>
                                 <th nowrap="" colspan="2" class="text-bold">TOTAL DE NIÑOS(AS) EN CONTROL CON
                                     ENFOQUE DE RIESGO ODONTOLOGICO</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -125,29 +129,29 @@
                                 <th rowspan="4" style="vertical-align: middle">EVALUACION DE RIESGO SEGUN PAUTA CERO</th>
                             <tr>
                                 <th nowrap="">ALTO RIESGO</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->rCero('Femenino', 'Masculino')->where('rCero', '=', 'alto')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->where('rCero', '=', 'alto')->get()->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '<', 1)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '<', 1)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 1)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 1)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 2)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 2)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 3)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 3)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 4)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 4)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 5)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 5)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 6)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 6)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 7)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 7)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 8)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 8)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Masculino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 9)->unique('rut')->count()}}</td>
+                                <td>{{ $all->rCero('Femenino', null)->where('rCero', '=', 'alto')->get()->where('grupo', '==', 9)->unique('rut')->count()}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -161,29 +165,33 @@
                             </tr>
                             <tr>
                                 <th nowrap="">BAJO RIESGO</th>
-                                <td>{{ $rCero_bajo }}</td>
-                                <td>{{ $rCero_bajoM }}</td>
-                                <td>{{ $rCero_bajoF }}</td>
-                                <td>{{ $rCero_bajo_0M }}</td>
-                                <td>{{ $rCero_bajo_0F }}</td>
-                                <td>{{ $rCero_bajo_1M }}</td>
-                                <td>{{ $rCero_bajo_1F }}</td>
-                                <td>{{ $rCero_bajo_2M }}</td>
-                                <td>{{ $rCero_bajo_2F }}</td>
-                                <td>{{ $rCero_bajo_3M }}</td>
-                                <td>{{ $rCero_bajo_3F }}</td>
-                                <td>{{ $rCero_bajo_4M }}</td>
-                                <td>{{ $rCero_bajo_4F }}</td>
-                                <td>{{ $rCero_bajo_5M }}</td>
-                                <td>{{ $rCero_bajo_5F }}</td>
-                                <td>{{ $rCero_bajo_6M }}</td>
-                                <td>{{ $rCero_bajo_6F }}</td>
-                                <td>{{ $rCero_bajo_7M }}</td>
-                                <td>{{ $rCero_bajo_7F }}</td>
-                                <td>{{ $rCero_bajo_8M }}</td>
-                                <td>{{ $rCero_bajo_8F }}</td>
-                                <td>{{ $rCero_bajo_9M }}</td>
-                                <td>{{ $rCero_bajo_9F }}</td>
+                                <td>{{ $rCero_bajo->count() }}</td>
+                                <td>{{ $rCero_bajoM->count() }}</td>
+                                <td>{{ $rCero_bajoF->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '>', 1)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '>', 1)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $rCero_bajoM->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $rCero_bajoF->where('grupo', '==', 9)->count() }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -193,9 +201,53 @@
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
+                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->unique('rut')->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th rowspan="8" style="vertical-align: middle">EVALUACION DE DE DAÑO POR CARIES SEGUN
+                                    INDICE ceod O COPD
+                                </th>
+                            <tr>
+                                <th> 0 </th>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', 'none')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', 'none')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', 'none')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -228,13 +280,10 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th rowspan="7" style="vertical-align: middle">EVALUACION DE DE DAÑO POR CARIES SEGUN
-                                    INDICE ceod O COPD
-                                </th>
-                            <tr>
                                 <th> 1 a 2 </th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '1_2')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '1_2')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '1_2')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -268,8 +317,9 @@
                             </tr>
                             <tr>
                                 <th> 3 a 4</th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -303,8 +353,9 @@
                             </tr>
                             <tr>
                                 <th> 5 a 6 </th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -338,8 +389,9 @@
                             </tr>
                             <tr>
                                 <th> 7 a 8 </th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -373,8 +425,9 @@
                             </tr>
                             <tr>
                                 <th> 9 o mas </th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}</td>
+                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -408,6 +461,7 @@
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -444,8 +498,9 @@
                             </tr>
                             <tr>
                                 <th colspan="2" class="text-center">INASISTENTES A CONTROL ODONTOLOGICO</th>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->unique('rut')->count()}}</td>
+                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->unique('rut')->count()}}</td>
+                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->unique('rut')->count()}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

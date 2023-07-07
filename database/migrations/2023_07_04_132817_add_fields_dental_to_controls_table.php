@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('controls', function (Blueprint $table) {
             $table->enum('rCero', ['bajo', 'alto'])->nullable();
-            $table->enum('dCaries', ['nome', '1_2', '3_4', '5_6', '7_8', 'mas_9'])->nullable();
+            $table->enum('dCaries', ['none', '1_2', '3_4', '5_6', '7_8', 'mas_9'])->nullable();
         });
     }
 
