@@ -37,7 +37,7 @@
                                         class="badge badge-info badge-pill text-uppercase">{{ $control->trInfAdol ?? '--' }}</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
-                                    Trastornos de anciedad
+                                    Trastornos de ansiedad
                                     <span
                                         class="badge badge-info badge-pill text-uppercase">{{ $control->trAns ?? '--' }}</span>
                                 </li>
