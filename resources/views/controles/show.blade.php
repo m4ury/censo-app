@@ -46,6 +46,11 @@
                                     <span
                                         class="badge badge-info badge-pill text-uppercase">{{ $control->demencias ?? '--' }}</span>
                                 </li>
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    Otras
+                                    <span
+                                        class="badge badge-info badge-pill text-uppercase">{{ $control->diagSm ?? '--' }}</span>
+                                </li>
                             @elseif ($control->tipo_control == 'Kinesiologo')
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     ASMA clasif.
