@@ -36,7 +36,7 @@
         ]) !!}
         <div class="col-sm-3" id="rCaida_col">
             {!! Form::select(
-                'rCaida',
+                'rCaidas',
                 ['r_leve' => 'riesgo Leve: 11 a 20 seg.', 'r_normal' => 'Normal: ≤ 10 seg.', 'r_alto' => 'riesgo Alto: > 20 seg.'],
                 old('rCaida', $control->rCaida),
                 ['class' => 'form-control', 'placeholder' => 'Seleccione riesgo', 'id' => 'rCaida'],

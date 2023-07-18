@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SolicitudRequest extends FormRequest
@@ -24,8 +25,9 @@ class SolicitudRequest extends FormRequest
     public function rules()
     {
         return [
-            'sol_rut' => 'required|cl_rut|unique:solicitudes,sol_rut,NULL,sol_estado,sol_estado,solicitado'
+            'sol_rut' => [
+                'required', 'cl_rut', Rule::unique('solicitudes', 'sol_rut')->where(fn ($query) => $query->where('sol_estado', '!=', 'some'))
+            ]
         ];
     }
-
 }

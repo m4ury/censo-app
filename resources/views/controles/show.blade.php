@@ -113,7 +113,7 @@
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Riesgo de caidas - Timed Up and Go
                                         <span
-                                            class="badge badge-info badge-pill text-uppercase">{{ $control->rCaida ?? '--' }}</span>
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->rCaidas ?? '--' }}</span>
                                     </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
