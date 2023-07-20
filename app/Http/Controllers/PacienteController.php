@@ -6,6 +6,7 @@ use App\Http\Requests\PacienteRequest;
 use App\Paciente;
 use App\Patologia;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -59,7 +60,8 @@ class PacienteController extends Controller
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
             'erc' => 'required_with:riesgo_cv',
-            'direccion' => 'required'
+            'direccion' => 'required',
+            'postrado_oncol' => Rule::requiredIf($request->dependencia = 'G' or $request->dependencia = 'T'),
             //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);

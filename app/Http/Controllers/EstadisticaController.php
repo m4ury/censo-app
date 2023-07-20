@@ -5835,8 +5835,6 @@ class EstadisticaController extends Controller
         ));
     }
 
-
-
     public function seccionP5a()
     {
         $pacientes = new Paciente;

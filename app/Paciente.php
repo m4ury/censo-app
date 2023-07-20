@@ -731,7 +731,7 @@ class Paciente extends Model
     public function depSevera()
     {
         return $this->whereBetween('dependencia', ['G', 'T'])
-            ->where('postrado_oncol', '=', 'no oncologico')
+            ->where('postrado_oncol', 'no oncologico')
             ->whereNull('egreso');
     }
 
