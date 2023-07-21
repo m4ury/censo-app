@@ -10,6 +10,7 @@
                 'Nutricionista' => 'Nutricionista',
                 'Psicologo' => 'Psicologo',
                 'Dentista' => 'Dentista',
+                'Matrona' => 'Matrona',
             ],
             old('tipo_control', $control->tipo_control),
             [
@@ -126,6 +127,10 @@
     </div>
 </div>
 
+@if ($paciente->sexo == 'Femenino')
+    @include('partials.mater')
+@endif
+
 @if ($paciente->grupo < 10)
     @include('partials.dental')
 @endif
@@ -241,8 +246,8 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormonal')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -292,7 +297,7 @@
         $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
 
         $('#tipo').change(function() {
-            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista').hide();
+            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
             $('.presion_art, .peso_talla, .imc').show()
             var selection = $('#tipo').val();
             switch (selection) {
@@ -319,13 +324,16 @@
                     $('#Dentista').show();
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
+                case 'Matrona':
+                    $('#Matrona, #Nutricionista').show();
+                    break;
             }
         });
-        $('input.pa_14090').on('change', function() {
-            $('input.pa_14090').not(this).prop('checked', false);
+        $('input#pa_14090').on('change', function() {
+            $('input#pa_14090').not(this).prop('checked', false);
         });
-        $('input.pa_160100').on('change', function() {
-            $('input.pa_160100').not(this).prop('checked', false);
+        $('input#pa_160100').on('change', function() {
+            $('input#pa_160100').not(this).prop('checked', false);
         });
         $('input.estatinas').on('change', function() {
             $('input.estatinas').not(this).prop('checked', false);
@@ -352,23 +360,25 @@
         $('input.examenes1').on('change', function() {
             $('input.examenes1').not(this).prop('checked', false);
         });
-        $('input.examenes2').on('change', function() {
-            $('input.examenes2').not(this).prop('checked', false);
+
+        $('input.diu').on('change', function() {
+            $('input.diu').not(this).prop('checked', false);
         });
-        $('input.examenes3').on('change', function() {
-            $('input.examenes3').not(this).prop('checked', false);
+
+        $('input.preservativo').on('change', function() {
+            $('input.preservativo').not(this).prop('checked', false);
         });
     </script>
     <script>
-        $('input.pa_14090').on('click', function() {
-            if ($('input.pa_14090').is(':checked')) {
+        $('input#pa_14090').on('click', function() {
+            if ($('input#pa_14090').is(':checked')) {
                 $('.pa_160100').hide()
 
             } else $('.pa_160100').show()
         });
 
-        $('input.pa_160100').on('click', function() {
-            if ($('input.pa_160100').is(':checked')) {
+        $('input#pa_160100').on('click', function() {
+            if ($('input#pa_160100').is(':checked')) {
                 $('.pa_14090').hide()
 
             } else $('.pa_14090').show()

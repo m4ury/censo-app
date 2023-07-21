@@ -113,17 +113,6 @@
                                             class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
-                            {{-- <div class="tab-pane fade" id="vert-tabs-consultas" role="tabpanel"
-                                aria-labelledby="vert-tabs-consultas-tab">
-                                @include('consultas.list_consultas', $paciente)
-                                    @if ($paciente->consultas->count() > 0)
-                                <a href="{{ route('consultas', $paciente->id) }}"><span class="text-bold">Ver Todas las
-                                        consultas...</span></a>
-                                @else
-                                <p class="text-muted">No hay Consultas aun, crea una <i
-                                        class="far fa-laugh-wink fa-2x"></i></p>
-                                @endif
-                            </div> --}}
                             <div class="tab-pane fade" id="vert-tabs-patologias" role="tabpanel"
                                 aria-labelledby="vert-tabs-patologias-tab">
                                 @include('patologias.list_patologias', $paciente)
