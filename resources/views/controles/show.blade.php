@@ -165,6 +165,16 @@
                                     <span class="badge badge-info badge-pill text-uppercase text-uppercase"
                                         style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
                                 </li>
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    PAP Vigente
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->papVigente ?? '--' }}
+                                </li>
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    EMP Vigente
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->empVigente ?? '--' }}
+                                </li>
                             @endif
                         </ul>
                     </div>
