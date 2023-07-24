@@ -34,7 +34,6 @@
                     'id' => 'diu_levonorgest',
                 ]) !!}
             </div>
-
         </div>
 
         <div class="form-group row my-2 ml-2 mx-3">
@@ -79,6 +78,28 @@
             {!! Form::checkbox('condon_fem', 1, old('condon_fem', $control->condon_fem == 1 ? true : null), [
                 'class' => 'form-control my-2',
                 'id' => 'condon_fem',
+            ]) !!}
+        </div>
+    </div>
+
+    <div class="form-group row my-2 ml-2 mx-3" id="pap">
+        {!! Form::label('papVigente_label', 'PAP VIGENTE', [
+            'class' => 'col-sm-6 col-form-label',
+        ]) !!}
+        <div class="col-sm-6">
+            {!! Form::date('papVigente', old('papVigente', $control->papVigente), [
+                'class' => 'form-control',
+            ]) !!}
+        </div>
+    </div>
+
+    <div class="form-group row my-2 ml-2 mx-3" id="emp">
+        {!! Form::label('empVigente_label', 'EMP VIGENTE', [
+            'class' => 'col-sm-6 col-form-label',
+        ]) !!}
+        <div class="col-sm-6">
+            {!! Form::date('empVigente', old('empVigente', $control->empVigente), [
+                'class' => 'form-control',
             ]) !!}
         </div>
     </div>

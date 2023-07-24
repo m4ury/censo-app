@@ -170,29 +170,6 @@
             @endif
         </div>
 
-        {!! Form::label('prox_tipo_atencion_label', 'Modalidad prox. Control', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-2">
-            {!! Form::select(
-                'tipo_atencion',
-                [
-                    'Telefonico' => 'Telefonico',
-                    'Visita domiciliaria' => 'Visita',
-                    'Presencial' => 'Presencial',
-                ],
-                old('tipo_atencion', $control->tipo_atencion),
-                [
-                    'class' => 'form-control form-control-sm' . ($errors->has('tipo_atencion') ? ' is-invalid' : ''),
-                    'id' => 'atencion',
-                    'placeholder' => 'Seleccione',
-                ],
-            ) !!}
-            @if ($errors->has('tipo_atencion'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('tipo_atencion') }}</strong>
-                </span>
-            @endif
-        </div>
-
         {!! Form::label('prox_tipo_label', 'Prof. prox. Control', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-2">
             {!! Form::select(
@@ -204,6 +181,7 @@
                     'Nutricionista' => 'Nutricionista',
                     'Psicologo' => 'Psicologo',
                     'Dentista' => 'Dentista',
+                    'Matrona' => 'Matrona'
                 ],
                 old('prox_tipo', $control->prox_tipo),
                 [
@@ -217,28 +195,6 @@
                     <strong>{{ $errors->first('prox_tipo') }}</strong>
                 </span>
             @endif
-        </div>
-
-        <div class="form-group row my-2 ml-2">
-            {!! Form::label('examenes_label', 'Solicitud Examenes', ['class' => 'col-sm col-form-label text-bold']) !!}
-            <div class="col-sm">
-                {!! Form::label('examenes1_label', 'SI', ['class' => 'col-sm col-form-label text-bold']) !!}
-                {!! Form::checkbox('examen', 'SI', old('examen', $control->examen == 'SI' ? true : null), [
-                    'class' => 'form-control my-2 examenes1',
-                ]) !!}
-            </div>
-            <div class="col-sm">
-                {!! Form::label('examenes2_label', 'NO', ['class' => 'col-sm col-form-label text-bold']) !!}
-                {!! Form::checkbox('examen', 'NO', old('examen', $control->examen == 'NO' ? true : null), [
-                    'class' => 'form-control my-2 examenes1',
-                ]) !!}
-            </div>
-            <div class="col-sm">
-                {!! Form::label('examenes3_label', 'SI HBC', ['class' => 'col-sm col-form-label text-bold']) !!}
-                {!! Form::checkbox('examen', 'SI HBC', old('examen', $control->examen == 'SI HBC' ? true : null), [
-                    'class' => 'form-control my-2 examenes1',
-                ]) !!}
-            </div>
         </div>
 
     </div>

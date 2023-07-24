@@ -20,6 +20,8 @@ return new class extends Migration
             $table->boolean('diu_levonorgest')->nullable()->default(false);
             $table->boolean('esterilizacion')->nullable()->default(false);
             $table->boolean('condon_fem')->nullable()->default(false);
+            $table->date('empVigente')->nullable();
+            $table->date('papVigente')->nullable();
         });
     }
 

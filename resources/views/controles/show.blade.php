@@ -132,6 +132,39 @@
                                     <span
                                         class="badge badge-info badge-pill text-uppercase">{{ $control->dCaries ?? '--' }}</span>
                                 </li>
+                            @elseif ($control->tipo_control == 'Matrona')
+                                @if ($control->paciente->grupo < 60)
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
+                                        D.I.U T Con Cobre
+                                        <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                            style="font-size:medium">{{ $control->diu_cobre == 1 ? 'Si' : '--' }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
+                                        D.I.U Con Levonorgestrel
+                                        <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                            style="font-size:medium">{{ $control->diu_levonorgest == 1 ? 'Si' : '--' }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
+                                        Hormonal
+                                        <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                            style="font-size:medium">{{ $control->hormonal ?? '--' }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
+                                        Esterilizacion quirurgica
+                                        <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                            style="font-size:medium">{{ $control->esterilizacion == 1 ? 'Si' : '--' }}
+                                    </li>
+                                @endif
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    Condon Femenino
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->condon_fem == 1 ? 'Si' : '--' }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    Solo preservativo MAC
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
+                                </li>
                             @endif
                         </ul>
                     </div>
