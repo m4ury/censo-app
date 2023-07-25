@@ -154,17 +154,18 @@
                                         <span class="badge badge-info badge-pill text-uppercase text-uppercase"
                                             style="font-size:medium">{{ $control->esterilizacion == 1 ? 'Si' : '--' }}
                                     </li>
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    Solo preservativo MAC
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
+                                    </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     Condon Femenino
                                     <span class="badge badge-info badge-pill text-uppercase text-uppercase"
                                         style="font-size:medium">{{ $control->condon_fem == 1 ? 'Si' : '--' }}</span>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-around align-items-center">
-                                    Solo preservativo MAC
-                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
-                                        style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
-                                </li>
+
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
                                     PAP Vigente
                                     <span class="badge badge-info badge-pill text-uppercase text-uppercase"

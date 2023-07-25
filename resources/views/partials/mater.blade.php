@@ -2,19 +2,20 @@
     <div class="card-header text-bold text-danger">CONTROL SEGUN METODO DE REGULACION DE
         FERTILIDAD Y SEXUAL</div>
     {{-- pacientes de 70 años y mas --}}
-    <div class="form-group row my-2 ml-2 mx-3 preservativo">
-        {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
-            'class' => 'col-sm-3 col-form-label text-bold',
-        ]) !!}
-        <div class="col-sm-3">
-            {!! Form::checkbox('preservativo', 1, old('preservativo', $control->preservativo == 1 ? true : null), [
-                'class' => 'form-control my-2 preservativo',
-                'id' => 'preservativo',
-            ]) !!}
-        </div>
-    </div>
+
     {{-- pacientes hasta 59 años --}}
     @if ($paciente->grupo < 60)
+        <div class="form-group row my-2 ml-2 mx-3 preservativo">
+            {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
+                'class' => 'col-sm-3 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-3">
+                {!! Form::checkbox('preservativo', 1, old('preservativo', $control->preservativo == 1 ? true : null), [
+                    'class' => 'form-control my-2 preservativo',
+                    'id' => 'preservativo',
+                ]) !!}
+            </div>
+        </div>
         <div class="form-group row my-2 ml-2 mx-3 diu_cobre">
             {!! Form::label('diuCobre_label', 'D . I . U T CON COBRE', [
                 'class' => 'col-sm-3 col-form-label text-bold',
@@ -70,6 +71,7 @@
     @endif
 
     {{-- pacientes de 70 años y mas --}}
+
     <div class="form-group row my-2 ml-2 mx-3 preservativo">
         {!! Form::label('condonFem_label', 'CONDON FEMENINO', [
             'class' => 'col-sm-3 col-form-label text-bold',
