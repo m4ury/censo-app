@@ -231,7 +231,8 @@ class HomeController extends Controller
             'acv',
             'sala_era',
             'pieDm2_90',
-            'efam'
+            'efam',
+            'all'
         ));
     }
 }
