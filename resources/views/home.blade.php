@@ -13,7 +13,7 @@
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-check">G3</i>
+                        <i class="fas fa-user">G3</i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
@@ -27,7 +27,7 @@
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-check">G2</i>
+                        <i class="fas fa-user">G2</i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
@@ -41,12 +41,25 @@
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-check">G1</i>
+                        <i class="fas fa-user">G1</i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
+            {{-- <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-success">
+                    <div class="inner">
+                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '=', 0)->count() }}</h3>
+                        <p class="text-bold"> Personas sanas o sin condiciones detectadas</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user">G0</i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div> --}}
         </div>
         <div class="row align-self-center">
             <div class="col-lg-4 col-sm">

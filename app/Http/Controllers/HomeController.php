@@ -76,7 +76,7 @@ class HomeController extends Controller
 
         //x sexo
         $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->count();
-        /* $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
+        /* $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get();
         $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
 
         $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->count();
@@ -124,7 +124,7 @@ class HomeController extends Controller
         $in2024M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [20, 24])->count();
         $in1519M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [15, 19])->count();
 
-        $mas80N = $pacientes->pscv()->whereNull('egreso')->whereSector('naranjo')->get()->where('grupo', '>=', 80)->count();
+        /* $mas80N = $pacientes->pscv()->whereNull('egreso')->whereSector('naranjo')->get()->where('grupo', '>=', 80)->count();
         $in7579N = $pacientes->pscv()->whereNull('egreso')->whereSector('naranjo')->get()->whereBetween('grupo', [75, 79])->count();
         $in7074N = $pacientes->pscv()->whereNull('egreso')->whereSector('naranjo')->get()->whereBetween('grupo', [70, 74])->count();
         $in6569N = $pacientes->pscv()->whereNull('egreso')->whereSector('naranjo')->get()->whereBetween('grupo', [65, 69])->count();
@@ -152,7 +152,7 @@ class HomeController extends Controller
         $in3034C = $pacientes->pscv()->whereNull('egreso')->whereSector('celeste')->get()->whereBetween('grupo', [30, 34])->count();
         $in2529C = $pacientes->pscv()->whereNull('egreso')->whereSector('celeste')->get()->whereBetween('grupo', [25, 29])->count();
         $in2024C = $pacientes->pscv()->whereNull('egreso')->whereSector('celeste')->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519C = $pacientes->pscv()->whereNull('egreso')->whereSector('celeste')->get()->whereBetween('grupo', [15, 19])->count();
+        $in1519C = $pacientes->pscv()->whereNull('egreso')->whereSector('celeste')->get()->whereBetween('grupo', [15, 19])->count(); */
 
         return view('home', compact(
             'totalPacientes',
@@ -190,7 +190,7 @@ class HomeController extends Controller
             'in2024M',
             'in1519M',
 
-            'mas80C',
+            /* 'mas80C',
             'in7579C',
             'in7074C',
             'in6569C',
@@ -218,7 +218,7 @@ class HomeController extends Controller
             'in3034N',
             'in2529N',
             'in2024N',
-            'in1519N',
+            'in1519N', */
 
             'am',
             'sm',

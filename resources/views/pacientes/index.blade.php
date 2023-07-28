@@ -16,7 +16,7 @@
                 <tr>
                     <th>Rut</th>
                     <th>Nombre Completo</th>
-                    <th>Multimorbilidad</th>
+                    {{-- <th>Multimorbilidad</th> --}}
                     <th>Nº Ficha Clinica</th>
                     <th>Edad</th>
                     <th>Sexo</th>
@@ -26,11 +26,11 @@
             </thead>
             <tbody>
                 @foreach ($pacientes as $paciente)
-                {{-- dd($paciente->withCount('patologias')->having('patologias_count', '>', 4)->get('pacientes.rut')->first()) --}}
+                    {{-- dd($paciente->withCount('patologias')->having('patologias_count', '>', 4)->get('pacientes.rut')->first()) --}}
                     <tr>
                         <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                         <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                        <td>
+                        {{-- <td>
                             @if ($paciente->patologias->count() > 4)
                                 <p class="text-bold text-danger">G3</p>
                             @elseif ($paciente->patologias->count() <  5 and $paciente->patologias->count() > 1)
@@ -40,7 +40,7 @@
                             @else
                                 <p class="text-bold text-success">G0</p>
                             @endif
-                        </td>
+                        </td> --}}
                         <td>{{ $paciente->ficha }}
                             @if ($paciente->egreso != null)
                                 @switch($paciente->egreso)

@@ -61,7 +61,7 @@ class PacienteController extends Controller
             'apellidoP' => 'string|min:3',
             'erc' => 'required_with:riesgo_cv',
             'direccion' => 'required',
-            'postrado_oncol' => Rule::requiredIf($request->dependencia = 'G' or $request->dependencia = 'T'),
+            'postrado_oncol' => [Rule::when($request->dependencia == 'G' or $request->dependencia == 'T', 'required')],
             //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
             //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
