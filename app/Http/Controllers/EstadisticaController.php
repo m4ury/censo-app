@@ -3930,24 +3930,28 @@ class EstadisticaController extends Controller
     {
         $all = new Paciente;
 
-        $rCero_bajo = $all->rCero('Femenino', 'Masculino')->where('rCero', '=', 'bajo')->get()->unique('rut');
-        $rCero_bajoM = $all->rCero(null, 'Masculino')->where('rCero', '=', 'bajo')->get()->unique('rut');
-        $rCero_bajoF = $all->rCero(null, 'Femenino')->where('rCero', '=', 'bajo')->get()->unique('rut');
-        $rCero_bajo_Origin = $all->rCero('Femenino', 'Masculino')->where('rCero', '=', 'bajo')->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->unique('rut');
-        $inasistente = $all->inasist('Femenino', 'Masculino')->where('inasistente', true)->get()->unique('rut');
-        $inasistenteM = $all->inasist(null, 'Masculino')->where('inasistente', true)->get()->unique('rut');
-        $inasistenteF = $all->inasist('Femenino', null)->where('inasistente', true)->get()->unique('rut');
-        $inasistente_Origin = $all->inasist('Femenino', 'Masculino')->where('inasistente', true)->get()->whereBetween('grupo', [0, 9])->where('pueblo_originario', 1)->unique('rut');
+        $rCero = $all->rCero('Femenino', 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroM = $all->rCero(null, 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroF = $all->rCero(null, 'Femenino')->whereNotNull('rCero')->get()->unique('rut');
+
+        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
+
+        $inasistente = $all->inasist('Femenino', 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteM = $all->inasist(null, 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteF = $all->inasist('Femenino', null)->whereNotNull('inasistente')->get()->unique('rut');
 
         return view('estadisticas.seccion-p2j', compact(
-            'rCero_bajo',
-            'rCero_bajoM',
-            'rCero_bajoF',
-            'rCero_bajo_Origin',
+            'rCero',
+            'rCeroM',
+            'rCeroF',
+            'dCaries',
+            'dCariesM',
+            'dCariesF',
             'inasistente',
             'inasistenteM',
             'inasistenteF',
-            'inasistente_Origin',
             'all'
         ));
     }

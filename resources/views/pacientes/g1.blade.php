@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'pacientes G2')
+@section('title', 'pacientes G1')
 
 @section('content')
     <div class="col-md-12 table-responsive">

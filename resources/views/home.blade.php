@@ -143,9 +143,7 @@
         <div class="card-body">
             <div class="d-flex">
                 <p class="d-flex flex-column">
-                    <span>Pacientes x Rango etareo</span>
-                </p>
-                <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-bold">PSCV x Rango etareo</span>
                 </p>
             </div>
             <!-- /.d-flex -->
@@ -159,7 +157,8 @@
                     </div>
                 </div>
                 <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;" width="759"
-                    class="chartjs-render-monitor"></canvas>
+                    class="chartjs-render-monitor">
+                </canvas>
             </div>
         </div>
 
