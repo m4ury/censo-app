@@ -39,6 +39,7 @@ class HomeController extends Controller
 
         $usoInsulina = $all->dm2()
             ->where('usoInsulina', '=', 1)
+            ->whereNull('egreso')
             ->count();
 
         $pieDm2 = $all->dm2()

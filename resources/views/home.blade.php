@@ -9,27 +9,30 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 4)->count() }}</h3>
+                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 4)->whereNull('egreso')->count() }}
+                        </h3>
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user">G3</i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.g3') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-orange">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)->count() }}
+                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)->whereNull('egreso')->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user">G2</i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.g2') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -37,13 +40,15 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-warning">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '=', 1)->count() }}</h3>
+                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '=', 1)->whereNull('egreso')->count() }}
+                        </h3>
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user">G1</i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.g1') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>

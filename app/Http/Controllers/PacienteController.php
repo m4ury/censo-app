@@ -103,4 +103,28 @@ class PacienteController extends Controller
 
         return view('estadisticas.fondoOjo', compact('fOjo'));
     }
+
+    public function g3_list()
+    {
+        $paciente = new Paciente;
+        $g3 = $paciente->g3()->get();
+
+        return view('pacientes.g3', compact('g3'));
+    }
+
+    public function g2_list()
+    {
+        $paciente = new Paciente;
+        $g2 = $paciente->g2()->get();
+
+        return view('pacientes.g2', compact('g2'));
+    }
+
+    public function g1_list()
+    {
+        $paciente = new Paciente;
+        $g1 = $paciente->g1()->get();
+
+        return view('pacientes.g1', compact('g1'));
+    }
 }

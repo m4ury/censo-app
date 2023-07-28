@@ -973,4 +973,22 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    function g3()
+    {
+        return $this->withCount('patologias')->having('patologias_count', '>', 4)
+            ->whereNull('egreso');
+    }
+
+    function g2()
+    {
+        return $this->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
+            ->whereNull('egreso');
+    }
+
+    function g1()
+    {
+        return $this->withCount('patologias')->having('patologias_count', '=', 1)
+            ->whereNull('egreso');
+    }
 }

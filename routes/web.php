@@ -21,6 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::resource('pacientes', 'PacienteController');
+    Route::get('/pacientes.g3', 'PacienteController@g3_list')->name('pacientes.g3');
+    Route::get('/pacientes.g2', 'PacienteController@g2_list')->name('pacientes.g2');
+    Route::get('/pacientes.g1', 'PacienteController@g1_list')->name('pacientes.g1');
+
+
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');
     Route::get('patologias/{paciente?}', 'PatologiaController@index')->name('patologias');
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
@@ -97,6 +102,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.am', 'EstadisticaController@am')->name('estadisticas.am');
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
     Route::get('/estadisticas.fondoOjo', 'PacienteController@fondoOjo')->name('estadisticas.fondoOjo');
-    //Route::get('/estadisticas.ens', 'EstadisticaController@ens')->name('estadisticas.ens');
     //Route::get('/estadisticas.ensDm2', 'EstadisticaController@ensDm2')->name('estadisticas.ensDm2');
 });
