@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\newSolicitudCreada;
 use App\User;
+use App\Paciente;
 use App\Solicitud;
 //use Solicitud;
-use Illuminate\Http\Request;
-use App\Http\Requests\SolicitudRequest;
-use App\Mail\newSolicitudCreadaMail;
-use App\Notifications\newSolicitudCreadaNotification;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Events\newSolicitudCreada;
+use App\Mail\newSolicitudCreadaMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\SolicitudRequest;
+use App\Notifications\newSolicitudCreadaNotification;
 
 class SolicitudController extends Controller
 {
@@ -26,11 +27,12 @@ class SolicitudController extends Controller
 
     public function index()
     {
+        $paciente = new Paciente;
         $solicitudes = Solicitud::latest('created_at')
             ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario')
             ->get();
 
-        return view('solicitudes.index', compact('solicitudes'));
+        return view('solicitudes.index', compact('solicitudes', 'paciente'));
     }
 
     /**
@@ -54,7 +56,7 @@ class SolicitudController extends Controller
 
         $solicitud->save();
 
-        Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        //Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 

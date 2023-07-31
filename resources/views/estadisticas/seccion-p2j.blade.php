@@ -86,9 +86,10 @@
                             <tr>
                                 <th nowrap="" colspan="2" class="text-bold">TOTAL DE NIÑOS(AS) EN CONTROL CON
                                     ENFOQUE DE RIESGO ODONTOLOGICO</th>
-                                <td>{{ $rCero->count() }}</td>
-                                <td>{{ $rCeroM->count() }}</td>
-                                <td>{{ $rCeroF->count() }}</td>
+                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() + $all->dCaries('Femenino', 'Masculino')->get()->count() }}
+                                </td>
+                                <td>{{ $rCeroM->count() + $dCariesM->count() }}</td>
+                                <td>{{ $rCeroF->count() + $dCariesF->count() }}</td>
                                 <td>{{ $rCeroM->where('grupo', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $rCeroF->where('grupo', '<', 1)->count() }}
@@ -129,16 +130,16 @@
                                 </td>
                                 <td>{{ $rCeroF->where('grupo', '==', 9)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $rCeroF->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('migrante', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('migrante', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('discap', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('discap', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('sename', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('sename', 1)->count() }}</td>
                             </tr>
                             <tr>
                             <tr>
@@ -283,18 +284,20 @@
                                 </td>
                                 <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
                                 </td>
                                 <td></td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->where('pueblo_originario', 1)->count() }}
-                                </td>
                                 <td></td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}</td>
-                                <td></td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('sename', 1)->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('sename', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th rowspan="8" style="vertical-align: middle">EVALUACION DE DE DAÑO POR CARIES SEGUN
@@ -328,23 +331,23 @@
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
                                 <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCaries_origin->where('dCaries', '=', 'none')->where('sexo', 'Masculino')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_origin->where('dCaries', '=', 'none')->where('sexo', 'Femenino')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_migrante->where('dCaries', '=', 'none')->where('sexo', 'Masculino')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_migrante->where('dCaries', '=', 'none')->where('sexo', 'Femenino')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
                                 </td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $dCaries_mejorNinez->where('dCaries', '=', 'none')->where('sexo', 'Masculino')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_mejorNinez->where('dCaries', '=', 'none')->where('sexo', 'Femenino')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_sename->where('dCaries', '=', 'none')->where('sexo', 'Masculino')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('sename', 1)->count() }}
                                 </td>
-                                <td>{{ $dCaries_sename->where('dCaries', '=', 'none')->where('sexo', 'Femenino')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('sename', 1)->count() }}
                                 </td>
                             </tr>
                             <tr>
