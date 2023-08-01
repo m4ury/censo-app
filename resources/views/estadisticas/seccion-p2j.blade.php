@@ -83,63 +83,74 @@
                                 <th>Hombres</th>
                                 <th>Mujeres</th>
                             </tr>
-                            <tr>
-                                <th nowrap="" colspan="2" class="text-bold">TOTAL DE NIÑOS(AS) EN CONTROL CON
+                            <tr class="bg-gradient-light">
+                                <th nowrap="" colspan="2" class="text-bold text-info">TOTAL DE NIÑOS(AS) EN CONTROL
+                                    CON
                                     ENFOQUE DE RIESGO ODONTOLOGICO</th>
-                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() + $all->dCaries('Femenino', 'Masculino')->get()->count() }}
+                                <td>{{ $rCero->count() + $dCaries->count() }}
                                 </td>
                                 <td>{{ $rCeroM->count() + $dCariesM->count() }}</td>
                                 <td>{{ $rCeroF->count() + $dCariesF->count() }}</td>
-                                <td>{{ $rCeroM->where('grupo', '<', 1)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '<', 1)->count() + $dCariesM->where('grupo', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '<', 1)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '<', 1)->count() + $dCariesF->where('grupo', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 1)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 1)->count() + $dCariesM->where('grupo', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 1)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 1)->count() + $dCariesF->where('grupo', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 2)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 2)->count() + $dCariesM->where('grupo', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 2)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 2)->count() + $dCariesF->where('grupo', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 3)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 3)->count() + $dCariesM->where('grupo', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 3)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 3)->count() + $dCariesF->where('grupo', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 4)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 4)->count() + $dCariesM->where('grupo', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 4)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 4)->count() + $dCariesF->where('grupo', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 5)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 5)->count() + $dCariesM->where('grupo', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 5)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 5)->count() + $dCariesF->where('grupo', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 6)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 6)->count() + $dCariesM->where('grupo', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 6)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 6)->count() + $dCariesF->where('grupo', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 7)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 7)->count() + $dCariesM->where('grupo', '==', 7)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 7)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 7)->count() + $dCariesF->where('grupo', '==', 7)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 8)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 8)->count() + $dCariesM->where('grupo', '==', 8)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 8)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 8)->count() + $dCariesF->where('grupo', '==', 8)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('grupo', '==', 9)->count() }}
+                                <td>{{ $rCeroM->where('grupo', '==', 9)->count() + $dCariesM->where('grupo', '==', 9)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('grupo', '==', 9)->count() }}
+                                <td>{{ $rCeroF->where('grupo', '==', 9)->count() + $dCariesF->where('grupo', '==', 9)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('sename', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('sename', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('pueblo_originario', 1)->count() + $dCariesM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroF->where('pueblo_originario', 1)->count() + $dCariesF->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroM->where('migrante', 1)->count() + $dCariesM->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroF->where('migrante', 1)->count() + $dCariesF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroM->where('discap', 1)->count() + $dCariesM->where('discap', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroF->where('discap', 1)->count() + $dCariesF->where('discap', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroM->where('mejor_ninez', 1)->count() + $dCariesM->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroF->where('mejor_ninez', 1)->count() + $dCariesF->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroM->where('sename', 1)->count() + $dCariesM->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $rCeroF->where('sename', 1)->count() + $dCariesF->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             <tr>
                             <tr>
@@ -208,8 +219,8 @@
                                 <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
                                 <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
                                 <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '>', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '>', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
                                 <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
                                 <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
                                 <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
@@ -239,8 +250,8 @@
                                 <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('sename', 1)->count() }}</td>
                                 <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('sename', 1)->count() }}</td>
                             </tr>
-                            <tr>
-                                <th>TOTAL</th>
+                            <tr class="bg-gradient-light">
+                                <th class="text-info">TOTAL</th>
                                 <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() }}</td>
                                 <td>{{ $all->rCero(null, 'Masculino')->get()->count() }}</td>
                                 <td>{{ $all->rCero(null, 'Femenino')->get()->count() }}</td>
@@ -290,10 +301,10 @@
                                 </td>
                                 <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('migrante', 1)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('discap', 1)->count() }}</td>
+                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('discap', 1)->count() }}</td>
                                 <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
                                 <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
                                 <td>{{ $all->rCero(null, 'Masculino')->get()->where('sename', 1)->count() }}</td>
@@ -311,8 +322,8 @@
                                 </td>
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '>', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '>', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
                                 <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
                                 <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
@@ -339,8 +350,8 @@
                                 </td>
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
                                 <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
                                 </td>
                                 <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
@@ -352,234 +363,285 @@
                             </tr>
                             <tr>
                                 <th> 1 a 2 </th>
-                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $dCaries->where('dCaries', '=', '1_2')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '1_2')->unique('rut')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '1_2')->unique('rut')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> 3 a 4</th>
-                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}
+                                <td>{{ $dCaries->where('dCaries', '=', '3_4')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '3_4')->unique('rut')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '3_4')->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '3_4')->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> 5 a 6 </th>
-                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}
+                                <td>{{ $dCaries->where('dCaries', '=', '5_6')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '5_6')->unique('rut')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '5_6')->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '5_6')->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> 7 a 8 </th>
-                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}
+                                <td>{{ $dCaries->where('dCaries', '=', '7_8')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', '7_8')->unique('rut')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', '7_8')->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', '7_8')->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> 9 o mas </th>
-                                <td>{{ $all->dCaries('Femenino', 'Masculino')->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}
+                                <td>{{ $dCaries->where('dCaries', '=', 'mas_9')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries(null, 'Masculino')->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->count() }}
                                 </td>
-                                <td>{{ $all->dCaries('Femenino', null)->get()->where('dCaries', '=', 'mas_9')->unique('rut')->count() }}
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('dCaries', '=', 'mas_9')->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('dCaries', '=', 'mas_9')->where('sename', 1)->count() }}
+                                </td>
                             </tr>
-                            <tr>
-                                <th>TOTAL</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr class="bg-gradient-light">
+                                <th class="text-info">TOTAL</th>
+                                <td>{{ $dCaries->count() }}
+                                </td>
+                                <td>{{ $dCariesM->count() }}
+                                </td>
+                                <td>{{ $dCariesF->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('sename', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('sename', 1)->count() }}
+                                </td>
                             </tr>
                             </tr>
                             <tr>
