@@ -46,19 +46,24 @@ class ControlController extends Controller
 
         $control = new Control($request->except('_token'));
 
-        if ($request->tipo_control == 'Dentista') {
+        if ($request->tipo_control == "Dentista") {
             $control->tipo_atencion = 'Presencial';
             $control->prox_tipo = 'Dentista';
-            if ($request->rCero == 'bajo') {
-                if ($control->paciente->get()->whereBetween('grupo', [1, 2])) {
+            //dd($control->paciente->find($request->paciente_id)->grupo . ' ' . $request->rCero . ' ' . $request->tipo_control . ' ' . $request->fecha_control);
+            if ($request->rCero == "bajo") {
+                if ($control->paciente->find($request->paciente_id)->grupo > 0 && $control->paciente->find($request->paciente_id)->grupo < 3) {
+                    //echo ("rBajo grupo entre 1 y 2" . $control->paciente->find($request->paciente_id)->grupo);
                     $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(12);
-                } elseif ($control->paciente->get()->whereBetween('grupo', [3, 9])) {
+                } elseif ($control->paciente->find($request->paciente_id)->grupo > 2 && $control->paciente->find($request->paciente_id)->grupo < 10) {
+                    //echo ("rBajo grupo entre 3 y 9" . $control->paciente->find($request->paciente_id)->grupo);
                     $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(6);
                 }
-            } elseif ($request->rCero == 'alto') {
-                if ($control->paciente->get()->whereBetween('grupo', [1, 2])) {
+            } elseif ($request->rCero == "alto") {
+                if ($control->paciente->find($request->paciente_id)->grupo > 0 && $control->paciente->find($request->paciente_id)->grupo < 3) {
+                    //echo ("rAlto grupo entre 1 y 2" . $control->paciente->find($request->paciente_id)->grupo);
                     $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(6);
-                } elseif ($control->paciente->get()->whereBetween('grupo', [3, 9])) {
+                } elseif ($control->paciente->find($request->paciente_id)->grupo > 2 && $control->paciente->find($request->paciente_id)->grupo < 10) {
+                    //echo ("rAlto grupo entre 3 y 9" . $control->paciente->find($request->paciente_id)->grupo);
                     $control->proximo_control = Carbon::create($request->fecha_control)->addMonths(4);
                 }
             }
@@ -74,11 +79,13 @@ class ControlController extends Controller
     public function show($id)
     {
         $control = Control::findOrFail($id);
+        //dd(Carbon::create($control->fecha_control)->addMonths(4));
         return view('controles.show', compact('control'));
     }
 
     public function editar($id)
     {
+        // dd(Carbon::create($request->fecha_control)->addMonths(4));
         $control = Control::findOrFail($id);
         $paciente = Paciente::with('patologias')->findOrFail($control->paciente->id);
         return view('controles.editar', compact('control', 'paciente'));

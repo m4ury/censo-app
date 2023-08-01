@@ -46,7 +46,7 @@
                                 <td>{{ \Carbon\Carbon::parse($control->proximo_control)->format('d-m-Y') . ' - ' . $control->prox_tipo ?: '' }}
                                 </td>
 
-                                {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
                                 <td>
                                     <a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top"
                                         title="Detalle" href="{{ route('controles.show', $control->id) }}"><i
@@ -62,7 +62,6 @@
                                         'data-toggle' => 'tooltip',
                                         'data-placement' => 'top',
                                         'title' => 'Eliminar',
-                                        'onclick' => 'return confirm("seguro desea eliminar esta Control?")',
                                     ]) !!}
                                     {!! Form::close() !!}
                                 </td>

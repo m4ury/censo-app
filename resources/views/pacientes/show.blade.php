@@ -132,6 +132,46 @@
 @endsection
 @section('js')
 <script>
+    $(".confirm").on('submit', function(e) {
+        e.preventDefault();
+        //console.log('alerta');
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success mx-2',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Estas seguro?',
+            text: "No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borrar!',
+            cancelButtonText: 'No, cancelar!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                this.submit();
+                swalWithBootstrapButtons.fire(
+                    'Eliminado!',
+                    'registro Eliminado.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'Tranki.. no ha pasaso nada',
+                    'error'
+                )
+            }
+        })
+    })
+</script>
+<script>
     $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
