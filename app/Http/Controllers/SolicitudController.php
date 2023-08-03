@@ -65,7 +65,7 @@ class SolicitudController extends Controller
 
     public function show($id)
     {
-        $control = Control::findOrFail($id);
+        $control = Solicitud::findOrFail($id);
         return response(['data', $control], 200);
     }
 
@@ -90,7 +90,7 @@ class SolicitudController extends Controller
 
     public function destroy($id)
     {
-        Control::destroy($id);
+        Solicitud::destroy($id);
         return redirect()->back()->withErrors('Control eliminado con exito!');
     }
 }
