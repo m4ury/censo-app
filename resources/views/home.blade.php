@@ -266,7 +266,21 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-blue">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $sala_era }}</a></h3>
+                        <p>PACIENTES SALA IRA/ERA</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <a href="{{ route('estadisticas.sala_era') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-yellow">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $am }}</a></h3>
@@ -280,7 +294,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-3 col-sm">
                 <div class="small-box col-sm border border-warning">
                     <div class="inner">
                         <h3>{{ $efam }}</h3>
@@ -291,15 +305,15 @@
         </div>
         <div class="row">
             <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-blue">
+                <div class="small-box bg-gradient-pink">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $sala_era }}</a></h3>
-                        <p>PACIENTES SALA IRA/ERA</p>
+                        <h3 style="color:aliceblue">{{ $riesgo }}</a></h3>
+                        <p>NIÑOS NIÑAS RIESGO ODONT.</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <i class="fas fa-child"></i>
                     </div>
-                    <a href="{{ route('estadisticas.sala_era') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.riesgo') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>

@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
 
     //P2
     Route::get('/estadisticas.seccion-p2j', 'EstadisticaController@seccionP2j')->name('estadisticas.seccion-p2j');
+    Route::get('/pacientes.riesgo', 'PacienteController@pRiesgo_list')->name('pacientes.riesgo');
 
     //P3
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');

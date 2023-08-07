@@ -127,4 +127,12 @@ class PacienteController extends Controller
 
         return view('pacientes.g1', compact('g1'));
     }
+
+    public function pRiesgo_list()
+    {
+        $paciente = new Paciente;
+        $pRiesgo = $paciente->rCero('Femenino', 'Masculino')->get();
+
+        return view('pacientes.riesgo', compact('pRiesgo'));
+    }
 }

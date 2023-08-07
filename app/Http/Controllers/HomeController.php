@@ -36,6 +36,7 @@ class HomeController extends Controller
         $dlp = $all->dlp()->whereNull('egreso')->count();
         $iam = $all->iam()->whereNull('egreso')->count();
         $acv = $all->acv()->whereNull('egreso')->count();
+        $riesgo = $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count();
 
         $usoInsulina = $all->dm2()
             ->where('usoInsulina', '=', 1)
@@ -233,7 +234,8 @@ class HomeController extends Controller
             'sala_era',
             'pieDm2_90',
             'efam',
-            'all'
+            'all',
+            'riesgo'
         ));
     }
 }
