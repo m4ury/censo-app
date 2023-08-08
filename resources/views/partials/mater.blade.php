@@ -1,8 +1,7 @@
 <div class="card card-danger card-outline mb-3" id="Matrona">
-    <div class="card-header text-bold text-danger">CONTROL SEGUN METODO DE REGULACION DE
-        FERTILIDAD Y SEXUAL</div>
-    {{-- pacientes de 70 años y mas --}}
-
+    <div class="card-header text-bold text-danger">
+        <p class="text-bold text-uppercase m-auto py-2 text-md" id="tipo_mat"></p>
+    </div>
     {{-- pacientes hasta 59 años --}}
     @if ($paciente->grupo < 60)
         <div class="form-group row my-2 ml-2 mx-3 preservativo">
@@ -71,8 +70,7 @@
     @endif
 
     {{-- pacientes de 70 años y mas --}}
-
-    <div class="form-group row my-2 ml-2 mx-3 preservativo">
+    <div class="form-group row my-2 ml-2 mx-3 condon">
         {!! Form::label('condonFem_label', 'CONDON FEMENINO', [
             'class' => 'col-sm-3 col-form-label text-bold',
         ]) !!}
@@ -101,6 +99,17 @@
         ]) !!}
         <div class="col-sm-6">
             {!! Form::date('empVigente', old('empVigente', $control->empVigente), [
+                'class' => 'form-control',
+            ]) !!}
+        </div>
+    </div>
+
+    <div class="form-group row my-2 ml-2 mx-3" id="mamo">
+        {!! Form::label('mamoVigente_label', 'MAMO VIGENTE', [
+            'class' => 'col-sm-6 col-form-label',
+        ]) !!}
+        <div class="col-sm-6">
+            {!! Form::date('mamoVigente', old('mamoVigente', $control->mamoVigente), [
                 'class' => 'form-control',
             ]) !!}
         </div>

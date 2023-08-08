@@ -19,6 +19,8 @@
                         'Medico' => 'Medico',
                         'Kinesiologo' => 'Kinesiologo',
                         'Psicologo' => 'Psicologo',
+                        'Matrona' => 'Matrona',
+                        'Enfermera' => 'Enfermera',
                     ],
                     null,
                     ['class' => 'form-control', 'placeholder' => 'Busqueda Profesional', 'id' => 'q'],
@@ -56,7 +58,7 @@
                                     @else
                                     ' ' @endif>
                                 <td class="text-uppercase" nowrap="">{{ $control->paciente->fullName() }}</td>
-                                <td><a href="{{ route('pacientes.show', $control->paciente->id) }}" target="_blank">
+                                <td><a href="{{ route('pacientes.show', $control->paciente_id) }}" target="_blank">
                                         {{ $control->paciente->rut }}
                                     </a>
                                 </td>

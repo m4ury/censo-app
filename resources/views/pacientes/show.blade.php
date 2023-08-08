@@ -6,7 +6,7 @@
         <div class="card card-primary card-outline">
             <div class="card-header">
                 <h3 class="card-title">
-                    <a class="mx-3" href="{{ url('pacientes') }}" title="Atras">
+                    <a class="mx-3" href="{{ url()->previous() }}" title="Atras">
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
