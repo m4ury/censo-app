@@ -1,5 +1,48 @@
 <div class="card card-danger card-outline mb-3" id="Matrona">
     <div class="card-header text-bold text-danger">
+        <div class="form-group row climater">
+            {!! Form::label('climater_label', 'Control Climaterio', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm">
+                {!! Form::checkbox('climater', 1, old('climater', $control->climater == 1 ? true : null), [
+                    'class' => 'form-control my-2 climater',
+                    'id' => 'climater',
+                ]) !!}
+            </div>
+
+            {!! Form::label('ginec_label', 'Control Ginecologico', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm">
+                {!! Form::checkbox('ginec', 1, old('ginec', $control->ginec == 1 ? true : null), [
+                    'class' => 'form-control my-2 ginec',
+                    'id' => 'ginec',
+                ]) !!}
+            </div>
+
+            {!! Form::label('regulacion_label', 'Control de regulacion', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm">
+                {!! Form::checkbox('regulacion', 1, old('regulacion', $control->regulacion == 1 ? true : null), [
+                    'class' => 'form-control my-2 regulacion',
+                    'id' => 'regulacion',
+                ]) !!}
+            </div>
+
+        </div>
+        <div class="form-group row ingreso_climater">
+            {!! Form::label('ingreso_climater_label', 'Ingreso Climaterio', [
+                    'class' => 'col-sm-2 col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm-2">
+                {!! Form::checkbox('ingreso_climater', 1, old('ingreso_climater', $control->ingreso_climater == 1 ? true : null), [
+                    'class' => 'form-control my-2 ingreso_climater',
+                    'id' => 'ingreso_climater',
+                ]) !!}
+            </div>
+        </div>
         <p class="text-bold text-uppercase m-auto py-2 text-md" id="tipo_mat"></p>
     </div>
     {{-- pacientes hasta 59 años --}}

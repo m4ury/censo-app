@@ -355,6 +355,13 @@
             } else $('.hba1c7').show()
         });
 
+        $('input.check1').on('click', function() {
+            if ($('input.check1').is(':checked')) {
+                $('.hba1c7').hide()
+
+            } else $('.hba1c7').show()
+        });
+
         $('.asmaClasif, epocClasif, sborClasif').change(function() {
             $('#espirometria').hide()
             if ($('.asmaClasif').val() === 'Leve' || $('.asmaClasif').val() === 'Moderado' || $('.asmaClasif')
