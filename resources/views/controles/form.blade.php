@@ -181,7 +181,7 @@
                     'Nutricionista' => 'Nutricionista',
                     'Psicologo' => 'Psicologo',
                     'Dentista' => 'Dentista',
-                    'Matrona' => 'Matrona'
+                    'Matrona' => 'Matrona',
                 ],
                 old('prox_tipo', $control->prox_tipo),
                 [
@@ -203,7 +203,7 @@
 @section('js')
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormonal')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormonal, .trh')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -282,6 +282,7 @@
                     break;
                 case 'Matrona':
                     $('#Matrona, #Nutricionista').show();
+                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
                     break;
             }
         });
@@ -311,10 +312,6 @@
         });
         $('input.check10').on('change', function() {
             $('input.check10').not(this).prop('checked', false);
-        });
-
-        $('input.examenes1').on('change', function() {
-            $('input.examenes1').not(this).prop('checked', false);
         });
 
         $('input.diu').on('change', function() {
@@ -355,11 +352,18 @@
             } else $('.hba1c7').show()
         });
 
-        $('input.check1').on('click', function() {
-            if ($('input.check1').is(':checked')) {
-                $('.hba1c7').hide()
+        $('input.regulacion').on('click', function() {
+            if ($('input.regulacion').is(':checked')) {
+                $('.condon, .preservativo, .diu_cobre, .horm, .estqx').show();
+            } else
+                $('.condon, .preservativo, .diu_cobre, .horm, .estqx').hide();
+        });
 
-            } else $('.hba1c7').show()
+        $('input.climater').on('click', function() {
+            if ($('input.climater').is(':checked')) {
+                $('.climater_fields').show();
+            } else
+                $('.climater_fields').hide();
         });
 
         $('.asmaClasif, epocClasif, sborClasif').change(function() {

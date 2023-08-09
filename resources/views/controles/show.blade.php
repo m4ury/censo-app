@@ -155,9 +155,9 @@
                                             style="font-size:medium">{{ $control->esterilizacion == 1 ? 'Si' : '--' }}
                                     </li>
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
-                                    Solo preservativo MAC
-                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
-                                        style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
+                                        Solo preservativo MAC
+                                        <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                            style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
                                     </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">
@@ -175,6 +175,11 @@
                                     EMP Vigente
                                     <span class="badge badge-info badge-pill text-uppercase text-uppercase"
                                         style="font-size:medium">{{ $control->empVigente ?? '--' }}
+                                </li>
+                                <li class="list-group-item d-flex justify-content-around align-items-center">
+                                    MAMOGRAFIA Vigente
+                                    <span class="badge badge-info badge-pill text-uppercase text-uppercase"
+                                        style="font-size:medium">{{ $control->mamoVigente ?? '--' }}
                                 </li>
                             @endif
                         </ul>

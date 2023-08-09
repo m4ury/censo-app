@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::table('controls', function (Blueprint $table) {
-            //
+            $table->boolean('climater')->nullable()->default(false);
+            // $table->boolean('climater_ingreso')->nullable()->default(false);
+            $table->boolean('ginec')->nullable()->default(false);
+            $table->boolean('regulacion')->nullable()->default(false);
+            $table->date('mamoVigente')->nullable();
+            $table->enum('trh', ['Estradiol Micronizado 1mg', 'Estradiol Gel', 'Tibolona 2,5mg comp.'])->nullable();
+            $table->integer('pauta_mrs')->unsigned()->nullable();
         });
     }
 
@@ -26,12 +32,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('controls', function (Blueprint $table) {
-            $table->boolean('climater')->nullable()->default(false);
-            $table->boolean('climater_ingreso')->nullable()->default(false);
-            $table->boolean('ginec')->nullable()->default(false);
-            $table->boolean('regulacion')->nullable()->default(false);
-            $table->date('mamoVigente')->nullable();
-            $table->enum('mrh', ['Estradiol Micronizado 1mg', 'Estradiol Gel', 'Tibolona 2,5mg comp.'])->nullable();
+            //
         });
     }
 };
