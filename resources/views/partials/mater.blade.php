@@ -41,13 +41,18 @@
     @if ($paciente->grupo < 60)
         <div class="form-group row my-2 ml-2 mx-3 preservativo">
             {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
-                'class' => 'col-sm-3 col-form-label text-bold',
+                'class' => 'col-sm col-form-label text-bold',
             ]) !!}
-            <div class="col-sm-3">
-                {!! Form::checkbox('preservativo', 1, old('preservativo', $control->preservativo == 1 ? true : null), [
-                    'class' => 'form-control my-2 preservativo',
-                    'id' => 'preservativo',
-                ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'preservativo',
+                    [
+                        'Hombres' => 'Hombres',
+                        'Mujer' => 'Mujer',
+                    ],
+                    old('preservativo', $control->preservativo),
+                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione metodo'],
+                ) !!}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3 diu_cobre">
@@ -86,7 +91,7 @@
                         'anillo' => 'Anillo Vaginal',
                     ],
                     old('hormonal', $control->hormonal),
-                    ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione metodo'],
+                    ['class' => 'form-control form-control-sm hormon', 'placeholder' => 'Seleccione metodo'],
                 ) !!}
             </div>
         </div>
