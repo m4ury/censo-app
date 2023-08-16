@@ -74,7 +74,10 @@
                                 @endif
                         </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
-                        <td>{{ $solicitud->sol_comentario }}</td>
+
+                        <td>{!! $solicitud->sol_comentario ??
+                            \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->get() !!}
+                        </td>
                         @if (auth()->user()->someUser() ||
                                 auth()->user()->isAdmin())
                             <td>
