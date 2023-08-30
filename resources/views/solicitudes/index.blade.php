@@ -24,20 +24,42 @@
                         <td>{{ $solicitud->sol_fecha ? Carbon\Carbon::parse($solicitud->sol_fecha)->format('d-m-Y') : '' }}
                         </td>
                         <td>{{ $solicitud->sol_rut ? $solicitud->sol_rut : '' }}</td>
-                        <td>{!! Str::replace(
-                            ['{"nombres":"', ',', ':', '"', 'apellidoM', 'apellidoP', '}'],
-                            ' ',
-                            $paciente->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first(),
-                        ) ?:
-                            html_entity_decode('<span class="text-muted">Sin informacion en censo-app</span>') !!}
+                        <td>
+                            @if ($paciente->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first())
+                                {!! Str::replace(
+                                    ['{"nombres":"', ',', ':', '"', 'apellidoM', 'apellidoP', '}'],
+                                    ' ',
+                                    $paciente->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first(),
+                                ) !!}
+                            @elseif(\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first())
+                                {!! Str::replace(
+                                    ['[{"nombres":"', ',', ':', '"', 'apellidoM', 'apellidoP', '}]'],
+                                    ' ',
+                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->get(),
+                                ) !!}
+                            @else
+                                {!! html_entity_decode('<span class="text-muted">Sin informacion en censo-app ó en inscritos IV</span>') !!}
+                            @endif
                         </td>
-                        <td>{!! $solicitud->sol_ficha ?:
-                            Str::replace(
-                                ['{"ficha":', '}'],
-                                ' ',
-                                $paciente->select('ficha')->whereRut($solicitud->sol_rut)->first(),
-                            ) ?:
-                            html_entity_decode('<span class="text-muted">Sin informacion en censo-app</span>') !!}
+                        <td>
+                            @if ($solicitud->sol_ficha)
+                                {{ $solicitud->sol_ficha }}
+                            @elseif ($paciente->select('ficha')->whereRut($solicitud->sol_rut)->first())
+                                {!! Str::replace(
+                                    ['{"ficha":', '}'],
+                                    ' ',
+                                    $paciente->select('ficha')->whereRut($solicitud->sol_rut)->first(),
+                                ) !!}
+                            @elseif (\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('ficha')->whereRut($solicitud->sol_rut)->first())
+                                {!! Str::replace(
+                                    ['[{"ficha":', '}]'],
+                                    ' ',
+                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('ficha')->whereRut($solicitud->sol_rut)->get(),
+                                ) !!}
+                            @else
+                                {!! html_entity_decode('<span class="text-muted">Sin informacion en censo-app ó en inscritos IV</span>') !!}
+                            @endif
+
                         </td>
                         <td>{{ $solicitud->user ? $solicitud->user->fullUserName() : '' }}</td>
                         <td><span class="mr-2">
@@ -75,8 +97,19 @@
                         </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
 
-                        <td>{!! $solicitud->sol_comentario ??
-                            \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->get() !!}
+                        <td>
+                            @if ($solicitud->sol_comentario)
+                                {{ $solicitud->sol_comentario }}
+                            @elseif (\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->first())
+                                {!! Str::replace(
+                                    ['[{"sector":"', ',', ':', '"', 'ficha_familiar', '}]'],
+                                    ' ',
+                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->get(),
+                                ) !!}
+                            @else
+                                {!! html_entity_decode('<span class="text-muted">Sin informacion en inscritos IV </span>') !!}
+                            @endif
+
                         </td>
                         @if (auth()->user()->someUser() ||
                                 auth()->user()->isAdmin())
