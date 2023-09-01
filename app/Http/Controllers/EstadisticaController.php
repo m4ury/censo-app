@@ -3926,6 +3926,32 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP1a()
+    {
+        $all = new Paciente;
+
+        $diuCobre = $all->diu('controls.diu_cobre')->get()->unique('rut');
+        $diuLevonorgest = $all->diu('controls.diu_levonorgest')->get()->unique('rut');
+        $oralComb = $all->hormonal('oral_comb')->get()->unique('rut');
+        $oralProgest = $all->hormonal('oral_progest')->get()->unique('rut');
+        $inyectableComb = $all->hormonal('inyectable_comb')->get()->unique('rut');
+        $inyectableProgest = $all->hormonal('inyectable_progest')->get()->unique('rut');
+        $implanteEtonogest = $all->hormonal('implante_etonogest')->get()->unique('rut');
+        $anillo = $all->hormonal('anillo')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p1a', compact(
+            'diuCobre',
+            'diuLevonorgest',
+            'oralComb',
+            'oralProgest',
+            'inyectableComb',
+            'inyectableProgest',
+            'implanteEtonogest',
+            'anillo',
+            'all'
+        ));
+    }
+
     public function seccionP2j()
     {
         $all = new Paciente;

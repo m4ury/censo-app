@@ -8,6 +8,25 @@
             <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h3 class="card-title text-bold">
+                        REM-P1. POBLACIÓN EN CONTROL PROGRAMA DE SALUD DE LA MUJER
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p1a') }}">SECCION A: POBLACIÓN EN CONTROL SEGÚN MÉTODO DE
+                                REGULACIÓN DE FERTILIDAD Y SALUD SEXUAL</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title text-bold">
                         REM-P2. POBLACION EN CONTROL PROGRAMA NACIONAL DE SALUD DE LA INFANCIA
                     </h3>
                 </div>

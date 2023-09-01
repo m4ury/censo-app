@@ -991,4 +991,26 @@ class Paciente extends Model
         return $this->withCount('patologias')->having('patologias_count', '=', 1)
             ->whereNull('egreso');
     }
+
+    public function diu($metodo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where($metodo, true)
+            //->whereYear('controls.fecha_control', '2023')
+            ->where('sexo', 'Femenino')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function hormonal($metodo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.hormonal', $metodo)
+            //->whereYear('controls.fecha_control', '2023')
+            ->where('sexo', 'Femenino')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
 }
