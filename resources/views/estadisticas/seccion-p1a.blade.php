@@ -47,23 +47,23 @@
                                 </td>
                                 <td>{{ $diuCobre->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $diuCobre->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $diuCobre->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -82,23 +82,23 @@
                                 </td>
                                 <td>{{ $diuLevonorgest->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $diuLevonorgest->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $diuLevonorgest->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -119,23 +119,23 @@
                                 </td>
                                 <td>{{ $oralComb->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $oralComb->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $oralComb->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -154,23 +154,23 @@
                                 </td>
                                 <td>{{ $oralProgest->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $oralProgest->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $oralProgest->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -189,23 +189,23 @@
                                 </td>
                                 <td>{{ $inyectableComb->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $inyectableComb->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $inyectableComb->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -224,23 +224,23 @@
                                 </td>
                                 <td>{{ $inyectableProgest->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $inyectableProgest->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $inyectableProgest->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -258,23 +258,23 @@
                                 </td>
                                 <td>{{ $implanteEtonogest->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $implanteEtonogest->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $implanteEtonogest->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -328,23 +328,23 @@
                                 </td>
                                 <td>{{ $anillo->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [15, 19])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [20, 24])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [25, 29])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [30, 34])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [35, 39])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [40, 44])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [45, 49])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [50, 54])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $anillo->whereIn('grupo', [55, 59])->count() }}
+                                <td>{{ $anillo->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>

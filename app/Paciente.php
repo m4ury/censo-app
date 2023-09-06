@@ -524,7 +524,7 @@ class Paciente extends Model
     public function efam()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.rEfam', ['autConRiesgo', 'autSinRiesgo', 'rDependencia', 'autovalente'])
+            ->whereNotNull('controls.rEfam')
             ->whereYear('controls.fecha_control', 2023)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
