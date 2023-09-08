@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('controls', function (Blueprint $table) {
-            $table->enum('rEfam', ['rDependencia', 'autConRiesgo', 'autSinRiesgo'])->nullable();
-            $table->boolean('seguimiento')->default(false);
+            $table->enum('rBarthel', ['dLeve', 'dMod', 'dSevero', 'dTotal', 'Independiente'])->nullable();
         });
     }
 

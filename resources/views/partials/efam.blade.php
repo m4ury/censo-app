@@ -18,7 +18,7 @@
         {!! Form::label('barthel_label', 'Indice Barthel', ['class' => 'col-sm-3 col-form-label barthel_label']) !!}
         <div class="col-sm-3" id="barthel1">
             {!! Form::select(
-                'rEfam',
+                'rBarthel',
                 [
                     'dLeve' => 'Depend. Leve',
                     'dMod' => 'Depend. Moderado',
@@ -26,7 +26,7 @@
                     'dTotal' => 'Depend. Total',
                     'Independiente' => 'Independiente',
                 ],
-                old('rEfam', $control->rEfam),
+                old('rBarthel', $control->rBarthel),
                 ['class' => 'form-control', 'placeholder' => 'Resultado Ind. Barthel', 'id' => 'barthel'],
             ) !!}
         </div>

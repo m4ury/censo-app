@@ -170,33 +170,6 @@
             @endif
         </div>
 
-        {!! Form::label('prox_tipo_label', 'Prof. prox. Control', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-2">
-            {!! Form::select(
-                'prox_tipo',
-                [
-                    'Medico' => 'Medico',
-                    'Enfermera' => 'Enfermera',
-                    'Kinesiologo' => 'Kinesiologo',
-                    'Nutricionista' => 'Nutricionista',
-                    'Psicologo' => 'Psicologo',
-                    'Dentista' => 'Dentista',
-                    'Matrona' => 'Matrona',
-                ],
-                old('prox_tipo', $control->prox_tipo),
-                [
-                    'class' => 'form-control form-control-sm' . ($errors->has('prox_tipo') ? ' is-invalid' : ''),
-                    'id' => 'prox_tipo',
-                    'placeholder' => 'Seleccione Profesional',
-                ],
-            ) !!}
-            @if ($errors->has('prox_tipo'))
-                <span class="invalid-feedback">
-                    <strong>{{ $errors->first('prox_tipo') }}</strong>
-                </span>
-            @endif
-        </div>
-
     </div>
 </div>
 

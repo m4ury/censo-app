@@ -43,7 +43,7 @@ class ControlController extends Controller
 
     public function store(ControlRequest $request)
     {
-
+        // dd($request->all());
         $control = new Control($request->except('_token'));
 
         if ($request->tipo_control == "Dentista") {
@@ -70,6 +70,7 @@ class ControlController extends Controller
         }
 
         $control->user_id = Auth::user()->id;
+        $control->prox_tipo = $request->tipo_control;
         $control->paciente_id = $request->paciente_id;
         $control->save();
 
@@ -101,11 +102,8 @@ class ControlController extends Controller
         //$control->pa_menor_150_90 = $request->pa_menor_150_90 ?? 2;
         //$control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? 2;
         $control->save();
-        if ($request->rEfam == 'rDependencia') {
-            return redirect('pacientes/' . $request->paciente_id . '/edit')->withSuccess('Control actualizado con exito!');
-        } else {
-            return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
-        }
+
+        return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
     }
 
     public function destroy($id)

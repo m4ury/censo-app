@@ -111,6 +111,11 @@
                                             class="badge badge-info badge-pill text-uppercase">{{ $control->rEfam ?? '--' }}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
+                                        Resultado Barthel
+                                        <span
+                                            class="badge badge-info badge-pill text-uppercase">{{ $control->rBarthel ?? '--' }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Riesgo de caidas - Timed Up and Go
                                         <span
                                             class="badge badge-info badge-pill text-uppercase">{{ $control->rCaidas ?? '--' }}</span>
@@ -157,7 +162,7 @@
                                     <li class="list-group-item d-flex justify-content-around align-items-center">
                                         Solo preservativo MAC
                                         <span class="badge badge-info badge-pill text-uppercase text-uppercase"
-                                            style="font-size:medium">{{ $control->preservativo == 1 ? 'Si' : '--' }}
+                                            style="font-size:medium">{{ $control->preservativo ?? '--' }}
                                     </li>
                                 @endif
                                 <li class="list-group-item d-flex justify-content-around align-items-center">

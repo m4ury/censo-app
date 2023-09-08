@@ -21,7 +21,6 @@ class ControlRequest extends FormRequest
             'peso_actual' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required|numeric|min:1',
             'talla_actual' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required|numeric|min:1',
             'proximo_control' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required|after:fecha_control',
-            'prox_tipo' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required',
             'sistolica' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required',
             'diastolica' => 'exclude_if:tipo_control,Psicologo|exclude_if:tipo_control,Dentista|exclude_if:tipo_control,Kinesiologo|required',
             //'pa_menor_140_90' => 'required_if:tipo_control,Medico'
