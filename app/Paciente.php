@@ -530,6 +530,15 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    public function barthel()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereNotNull('controls.rBarthel')
+            ->whereYear('controls.fecha_control', 2023)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
     public function evaluacionPie_bajo()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')

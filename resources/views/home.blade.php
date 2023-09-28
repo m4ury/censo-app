@@ -297,7 +297,7 @@
             <div class="col-lg-3 col-sm">
                 <div class="small-box col-sm border border-warning">
                     <div class="inner">
-                        <h3>{{ $efam }}</h3>
+                        <h3>{{ $efam + $barthel }}</h3>
                         <p>EFAM REALIZADOS</p>
                     </div>
                 </div>

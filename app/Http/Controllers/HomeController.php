@@ -73,6 +73,13 @@ class HomeController extends Controller
         $efam = $all->efam()
             ->get()
             ->where('grupo', '>', 64)
+            ->unique('rut')
+            ->count();
+
+        $barthel = $all->barthel()
+            ->get()
+            ->where('grupo', '>', 64)
+            ->unique('rut')
             ->count();
         //dd($efam);
 
@@ -234,6 +241,7 @@ class HomeController extends Controller
             'sala_era',
             'pieDm2_90',
             'efam',
+            'barthel',
             'all',
             'riesgo'
         ));
