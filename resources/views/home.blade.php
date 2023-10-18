@@ -163,7 +163,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-primary">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $dm2 }}</a></h3>
@@ -177,7 +177,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg-3 col-sm">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
                         <h3>{{ $usoInsulina }}</h3>
@@ -185,7 +185,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg-3 col-sm">
                 <div class="small-box border border-primary">
                     <div class="inner">
                         <h3 style="color:black">{{ $pieDm2 }}</h3>
@@ -197,6 +197,20 @@
                         <i class="fas fa-user-injured"></i>
                     </div>
                     <a href="{{ route('estadisticas.pie') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box border border-primary">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $dm2 - $pieDm2 }}</h3>
+                        <p>SIN EVALUACION PIE DIABETICO</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <a href="{{ route('pacientes.sinEvalPie') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>

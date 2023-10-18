@@ -571,15 +571,9 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    public function SinEvaluacionPie()
-    {
-        return $this->dm2()
-            ->whereNotIn('pacientes.rut', $this->evaluacionPie()->get());
-    }
-
     public function evaluacionPie()
     {
-        return $this->pscv()->select('pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia', 'controls.fecha_control', 'controls.evaluacionPie')
+        return $this->select('pacientes.id', 'pacientes.nombres', 'pacientes.apellidoM', 'pacientes.apellidoP', 'pacientes.rut', 'pacientes.ficha', 'patologias.nombre_patologia', 'controls.fecha_control', 'controls.evaluacionPie', 'pacientes.telefono')
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
             ->join('patologias', 'paciente_patologia.patologia_id', 'patologias.id')

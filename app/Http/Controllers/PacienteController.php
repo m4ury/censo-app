@@ -135,4 +135,14 @@ class PacienteController extends Controller
 
         return view('pacientes.riesgo', compact('pRiesgo'));
     }
+
+    public function sinEvalPie_list()
+    {
+        $paciente = new Paciente;
+        $dm2 = $paciente->dm2()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
+        $eval = $paciente->evaluacionPie()->get()->unique('rut');
+        $noEval = $dm2->whereNotIn('rut', $eval->pluck('rut'));
+
+        return view('pacientes.sinEvalPie', compact('noEval'));
+    }
 }

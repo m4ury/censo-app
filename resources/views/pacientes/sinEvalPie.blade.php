@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'evaluaciones pie diabetico realizadas')
+@section('title', 'pie diabetico restantes')
 
 @section('content')
-    <div class="card card-success card-outline">
+    <div class="card card-primary card-outline">
         <div class="card-header">
 
             <h3 class="card-title">
@@ -11,8 +11,8 @@
                     <i class="fas fa-arrow-alt-circle-left"></i>
                     Volver
                 </a>
-                <i class="fas fa-user-check px-2" style="color:green"></i>
-                PACIENTES CON EVALUACION PIE DIABETICO REALIZADO
+                <i class="fas fa-user-times px-2" style="color:orangered"></i>
+                PACIENTES SIN CONTROL PIE DIABETICO
             </h3>
         </div>
         <div class="col-md-12 table-responsive pt-3">
@@ -23,19 +23,19 @@
                         <th>Rut</th>
                         <th>N° Ficha</th>
                         <th>Nombre completo</th>
-                        <th>Evaluacion</th>
-                        <th>patologia</th>
+                        <th>Telefono</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pacientes as $paciente)
+                    {{-- dd($noEval) --}}
+                    @foreach ($noEval->get() as $paciente)
                         <tr>
                             <td>{{ $paciente->fecha_control ?? '--' }}</td>
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->ficha }}</td>
-                            <td>{{ $paciente->fullName() }}</td>
-                            <td>{{ $paciente->evaluacionPie }}</td>
-                            <td>{{ $paciente->nombre_patologia }}</td>
+                            <td>{{ $paciente->nombres }}</td>
+                            <td>{{ $paciente->telefono }}</td>
+
                         </tr>
                     @endforeach
                 </tbody>

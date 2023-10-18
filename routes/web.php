@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.g3', 'PacienteController@g3_list')->name('pacientes.g3');
     Route::get('/pacientes.g2', 'PacienteController@g2_list')->name('pacientes.g2');
     Route::get('/pacientes.g1', 'PacienteController@g1_list')->name('pacientes.g1');
+    Route::get('/pacientes.sinEvalPie', 'PacienteController@sinEvalPie_list')->name('pacientes.sinEvalPie');
 
 
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');
