@@ -19,7 +19,6 @@
             <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
                 <thead class="thead-light">
                     <tr>
-                        <th>Fecha ultimo control</th>
                         <th>Rut</th>
                         <th>N° Ficha</th>
                         <th>Nombre completo</th>
@@ -30,10 +29,11 @@
                     {{-- dd($noEval) --}}
                     @foreach ($noEval->get() as $paciente)
                         <tr>
-                            <td>{{ $paciente->fecha_control ?? '--' }}</td>
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->ficha }}</td>
-                            <td>{{ $paciente->nombres }}</td>
+                            <td class="text-uppercase">{{ $paciente->nombres }} {{ $paciente->apellidoP ?? '' }}
+                                {{ $paciente->apellidoM ?? '' }}
+                            </td>
                             <td>{{ $paciente->telefono }}</td>
 
                         </tr>
