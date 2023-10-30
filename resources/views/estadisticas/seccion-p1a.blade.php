@@ -357,6 +357,151 @@
                                 </td>
                             </tr>
                             </tr>
+                            <tr>
+                            <tr>
+                                <th nowrap="" rowspan="3" style="vertical-align: middle">SÓLO PRESERVATIVO MAC</th>
+                            <tr>
+                                <th nowrap="">Mujer</th>
+                                <td>{{ $preservativoF->count() }}
+                                </td>
+                                <td>{{ $preservativoF->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $preservativoF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $preservativoF->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Hombre</th>
+                                <td>{{ $preservativoM->count() }}
+                                </td>
+                                <td>{{ $preservativoM->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $preservativoM->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $preservativoM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+
+                            <tr>
+                            <tr>
+                                <th nowrap="" rowspan="3" style="vertical-align: middle">ESTERILIZACIÓN QUIRURGICA</th>
+                            <tr>
+                                <th nowrap="">Mujer</th>
+                                <td>{{ $preservativoF->count() }}
+                                </td>
+                                <td>{{ $preservativoF->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $preservativoF->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $preservativoF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $preservativoF->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Hombre</th>
+                                <td>{{ $preservativoM->count() }}
+                                </td>
+                                <td>{{ $preservativoM->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $preservativoM->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $preservativoM->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $preservativoM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+
+                            </tr>
                         </thead>
                     </table>
                 </div>

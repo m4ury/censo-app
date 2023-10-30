@@ -1016,4 +1016,24 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    public function mac($sexo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.preservativo', $sexo)
+            //->whereYear('controls.fecha_control', '2023')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function estQx($sexo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.esterilizacion', $sexo)
+            //->whereYear('controls.fecha_control', '2023')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
 }

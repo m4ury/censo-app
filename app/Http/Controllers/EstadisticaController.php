@@ -3938,6 +3938,10 @@ class EstadisticaController extends Controller
         $inyectableProgest = $all->hormonal('inyectable_progest')->get()->unique('rut');
         $implanteEtonogest = $all->hormonal('implante_etonogest')->get()->unique('rut');
         $anillo = $all->hormonal('anillo')->get()->unique('rut');
+        $preservativoF = $all->mac('Mujer')->get()->unique('rut');
+        $preservativoM = $all->mac('Hombres')->get()->unique('rut');
+        $estQxF = $all->estQx('Mujer')->get()->unique('rut');
+        $estQxM = $all->estQx('Hombres')->get()->unique('rut');
 
         return view('estadisticas.seccion-p1a', compact(
             'diuCobre',
@@ -3948,6 +3952,8 @@ class EstadisticaController extends Controller
             'inyectableProgest',
             'implanteEtonogest',
             'anillo',
+            'preservativoF',
+            'preservativoM',
             'all'
         ));
     }
