@@ -434,68 +434,102 @@
                                 <th nowrap="" rowspan="3" style="vertical-align: middle">ESTERILIZACIÓN QUIRURGICA</th>
                             <tr>
                                 <th nowrap="">Mujer</th>
-                                <td>{{ $preservativoF->count() }}
+                                <td>{{ $estQxF->count() }}
                                 </td>
-                                <td>{{ $preservativoF->where('grupo', '<', 15)->count() }}
+                                <td>{{ $estQxF->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [15, 19])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [20, 24])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [25, 29])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [30, 34])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [35, 39])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [40, 44])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [45, 49])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [50, 54])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $preservativoF->whereBetween('grupo', [55, 59])->count() }}
+                                <td>{{ $estQxF->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $preservativoF->where('migrante', 1)->count() }}
+                                <td>{{ $estQxF->where('migrante', 1)->count() }}
                                 </td>
-                                <td>{{ $preservativoF->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $estQxF->where('pueblo_originario', 1)->count() }}
                                 </td>
                                 <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th nowrap="">Hombre</th>
-                                <td>{{ $preservativoM->count() }}
+                                <td>{{ $estQxM->count() }}
                                 </td>
-                                <td>{{ $preservativoM->where('grupo', '<', 15)->count() }}
+                                <td>{{ $estQxM->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [15, 19])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [20, 24])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [25, 29])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [30, 34])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [35, 39])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [40, 44])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [45, 49])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [50, 54])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
-                                <td>{{ $preservativoM->whereBetween('grupo', [55, 59])->count() }}
+                                <td>{{ $estQxM->whereBetween('grupo', [55, 59])->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $preservativoM->where('migrante', 1)->count() }}
+                                <td>{{ $estQxM->where('migrante', 1)->count() }}
                                 </td>
-                                <td>{{ $preservativoM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $estQxM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: double">
+                                <th nowrap="" colspan="2" class="text-center" >TOTAL</th>
+                                <td>{{ $totalMac->count() }}
+                                </td>
+                                <td>{{ $estQxF->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $estQxF->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $estQxF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $estQxF->where('pueblo_originario', 1)->count() }}
                                 </td>
                                 <td>
                                 </td>

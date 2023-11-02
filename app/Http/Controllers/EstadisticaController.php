@@ -3942,6 +3942,8 @@ class EstadisticaController extends Controller
         $preservativoM = $all->mac('Hombres')->get()->unique('rut');
         $estQxF = $all->estQx('Mujer')->get()->unique('rut');
         $estQxM = $all->estQx('Hombres')->get()->unique('rut');
+        $totalMac = $all->totalMac()->get()->unique('rut');
+
 
         return view('estadisticas.seccion-p1a', compact(
             'diuCobre',
@@ -3954,6 +3956,9 @@ class EstadisticaController extends Controller
             'anillo',
             'preservativoF',
             'preservativoM',
+            'estQxF',
+            'estQxM',
+            'totalMac',
             'all'
         ));
     }

@@ -51,7 +51,7 @@
                         'Mujer' => 'Mujer',
                     ],
                     old('preservativo', $control->preservativo),
-                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione metodo'],
+                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione'],
                 ) !!}
             </div>
         </div>
@@ -96,15 +96,20 @@
             </div>
         </div>
 
-        <div class="form-group row my-2 ml-2 mx-3 estqx">
+        <div class="form-group row my-2 ml-2 mx-3 esterilizacion">
             {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
-                'class' => 'col-sm-3 col-form-label text-bold',
+                'class' => 'col-sm col-form-label text-bold',
             ]) !!}
-            <div class="col-sm-3">
-                {!! Form::checkbox('esterilizacion', 1, old('esterilizacion', $control->esterilizacion == 1 ? true : null), [
-                    'class' => 'form-control my-2',
-                    'id' => 'esterilizacion',
-                ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'esterilizacion',
+                    [
+                        'Hombres' => 'Hombres',
+                        'Mujer' => 'Mujer',
+                    ],
+                    old('esterilizacion', $control->esterilizacion),
+                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione'],
+                ) !!}
             </div>
         </div>
     @endif
