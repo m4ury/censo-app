@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('sinEavalNut')->nullable()->default(false);
             $table->enum('indIMCEdad', ['+3 DS', '+2 DS', '+1 DS', '-2 DS', '-1 DS', 'promedio'])->nullable();
             $table->enum('indPeCinturaEdad', ['normal', 'rObesidadAbdm', 'obesidadAbdm'])->nullable();
-            $table->enum('evDPM', ['normal', 'normalResago', 'riesgo', 'retraso'])->nullable();
+            $table->enum('evDPM', ['normal', 'normalRezago', 'riesgo', 'retraso'])->nullable();
             $table->enum('scoreIra', ['leve', 'moderado', 'grave'])->nullable();
             $table->enum('diagPA', ['normal', 'elevada', 'hta_eI', 'hta_eII'])->nullable();
             $table->date('ctrlNut5to_mes')->nullable();

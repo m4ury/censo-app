@@ -139,7 +139,7 @@
     @include('partials.efam')
 @endif
 
-@if ($paciente->grupo < 5)
+@if ($paciente->grupo < 10)
     @include('partials.nino_sano')
 @endif
 
