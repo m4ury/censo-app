@@ -535,6 +535,41 @@
                                 </td>
                             </tr>
 
+                            <tr>
+                                <th nowrap="" colspan="2" class="text-center" > Mujeres en control con enfermedad cardiovascular (DM-HTA)</th>
+                                <td>{{ $enfCv->count() }}
+                                </td>
+                                <td>{{ $enfCv->where('grupo', '<', 15)->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $enfCv->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $enfCv->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $enfCv->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+
                             </tr>
                         </thead>
                     </table>

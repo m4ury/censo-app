@@ -3943,6 +3943,7 @@ class EstadisticaController extends Controller
         $estQxF = $all->estQx('Mujer')->get()->unique('rut');
         $estQxM = $all->estQx('Hombres')->get()->unique('rut');
         $totalMac = $all->totalMac()->get()->unique('rut');
+        $enfCv = $all->enfcv()->get()->unique('rut');
 
 
         return view('estadisticas.seccion-p1a', compact(
@@ -3959,6 +3960,7 @@ class EstadisticaController extends Controller
             'estQxF',
             'estQxM',
             'totalMac',
+            'enfCv',
             'all'
         ));
     }

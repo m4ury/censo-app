@@ -139,6 +139,10 @@
     @include('partials.efam')
 @endif
 
+@if ($paciente->grupo < 5)
+    @include('partials.nino_sano')
+@endif
+
 @foreach ($paciente->patologias as $patologia)
     @if ($patologia->nombre_patologia == 'HTA')
         @include('partials.hta')

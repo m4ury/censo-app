@@ -37,15 +37,15 @@ class Paciente extends Model
         return $this->hasMany(Consulta::class);
     }
 
-    public function efams()
+    /* public function efams()
     {
         return $this->hasMany(Control::class);
-    }
+    } */
 
-    public function examenes()
+    /* public function examenes()
     {
         return $this->hasMany(Examen::class);
-    }
+    } */
 
     public function encuestas()
     {
@@ -62,7 +62,7 @@ class Paciente extends Model
         if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
     }
 
-    //seccion A
+    //P4 seccion A
 
     public function rcv_bajo($fem = 'Femenino', $masc = 'Masculino', $grupo = [15, 120])
     {
@@ -309,7 +309,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', '=', 'HIPOTIROIDISMO');
     }
 
-    //seccion B Metaas de Compensacion
+    //P4 seccion B Metaas de Compensacion
 
     public function pa140()
     {
@@ -405,7 +405,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'TABAQUISMO');
     }
 
-    //seccion C Variables de seguimiento del PSCV al corte
+    //P4 seccion C Variables de seguimiento del PSCV al corte
 
     public function racVigente()
     {
@@ -1044,8 +1044,20 @@ class Paciente extends Model
             ->whereIn('controls.hormonal', ['oral_comb', 'oral_progest', 'inyectable_comb', 'inyectable_progest', 'implante_etonogest', 'anillo'])
             ->orWhere('controls.diu_cobre', true)
             ->orWhere('controls.diu_levonorgest', true)
+            ->orWhereIn('preservativo', ['Hombres', 'Mujer'])
+            ->orWhereIn('esterilizacion', ['Hombres', 'Mujer'])
             //->whereYear('controls.fecha_control', '2023')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
+    }
+
+    public function enfcv(){
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+        ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+        ->join('controls', 'controls.paciente_id', 'pacientes.id' )
+        ->where('sexo', 'Femenino')
+        ->where('controls.tipo_control', 'Matrona')
+        ->whereIn('nombre_patologia', ['HTA', 'DM2'])
+        ->whereNull('pacientes.egreso');
     }
 }
