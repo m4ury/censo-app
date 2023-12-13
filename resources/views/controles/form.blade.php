@@ -173,7 +173,6 @@
                 </span>
             @endif
         </div>
-
     </div>
 </div>
 
@@ -246,7 +245,7 @@
                     $('#Medico').hide();
                     break;
                 case 'Medico':
-                    $('#Medico, #Nutricionista').show();
+                    $('#Medico').show();
                     $('#Enfermera').hide();
                     break;
                 case 'Psicologo':
@@ -258,8 +257,11 @@
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
                 case 'Matrona':
-                    $('#Matrona, #Nutricionista').show();
+                    $('#Matrona').show();
                     $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
+                    break;
+                case 'Nutricionista':
+                    $('#Nutricionista').show();
                     break;
             }
         });

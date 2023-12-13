@@ -139,17 +139,17 @@
                                     {{ 'Entre 75 y 79' }}
                                 @break
 
-                                @default
+                                @case($paciente->edad() >= 80)
                                     {{ '80 y Más' }}
-                            @endswitch
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-@stop
-@section('plugins.Datatables', true)
+                                @endswitch
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @stop
+    @section('plugins.Datatables', true)
 @section('js')
     <script>
         $("#pacientes").DataTable({
