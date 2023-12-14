@@ -143,6 +143,10 @@
     @include('partials.nino_sano')
 @endif
 
+@if ($paciente->grupo < 4)
+    @include('partials.nut')
+@endif
+
 @foreach ($paciente->patologias as $patologia)
     @if ($patologia->nombre_patologia == 'HTA')
         @include('partials.hta')
@@ -179,7 +183,7 @@
 @section('js')
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso')
             .select2({
                 theme: "classic",
                 width: '100%',

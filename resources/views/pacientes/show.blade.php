@@ -49,9 +49,11 @@
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
-                            {{-- <a class="nav-link" id="vert-tabs-consultas-tab" data-toggle="pill"
-                                href="#vert-tabs-consultas" role="tab" aria-controls="vert-tabs-consultas"
-                                aria-selected="false">Consulta dental</a> --}}
+                            @if ($paciente->grupo < 10)
+                                <a class="nav-link" id="vert-tabs-nino_sano-tab" data-toggle="pill"
+                                    href="#vert-tabs-nino_sano" role="tab" aria-controls="vert-tabs-nino_sano"
+                                    aria-selected="false">Control Niño Sano</a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-9 col-sm-9">
@@ -101,11 +103,23 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="vert-tabs-nino_sano" role="tabpanel"
+                                aria-labelledby="vert-tabs-nino_sano-tab">
+                                <div class="form-group row">
+                                    <p class="text-uppercase text-bold">Control con Enfermera</p>
+                                    {{ $paciente->controls->where('tipo_control', 'Enfermera')->last() }}
+                                </div>
+                                <div class="form-group row">
+                                    <p class="text-uppercase text-bold">Control con Nutricionista</p>
+                                    {{ $paciente->controls->where('tipo_control', 'Nutricionista')->last() }}
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)
                                 @if ($paciente->controls->count() > 0)
-                                    <a href="{{ route('controles', $paciente->id) }}"><span class="text-bold">Ver Todos
+                                    <a href="{{ route('controles', $paciente->id) }}"><span class="text-bold">Ver
+                                            Todos
                                             los
                                             controles...</span></a>
                                 @else

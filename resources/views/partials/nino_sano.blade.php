@@ -1,4 +1,4 @@
-<div class="card card-purple card-outline mb-3" id="Enfermera">
+<div class="card card-blue card-outline mb-3" id="Enfermera">
     {{-- pacientes menor 1 mes y 60 meses control nutricional Enfermera --}}
     @if ($paciente->grupo < 5)
         <div class="card-header">
@@ -183,46 +183,41 @@
             ]) !!}
         </div>
     </div>
-</div>
-<div class="card card-purple card-outline mb-3" id="Nutricionista">
-    {{-- 5to mes control nutricional --}}
-    @if ($paciente->grupo < 1)
-        <div class="card-header">
-            CONTROL NUTRICIONAL QUINTO MES
+    {{-- diagnostico presion arterial pacientes menores de 10 años EU --}}
+    <div class="form-group row my-2 ml-2 mx-3 ">
+        {!! Form::label('diagPA_label', 'DIAGNOSTICO DE PRESION ARTERIAL', [
+            'class' => 'col-sm-3 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm-3">
+            {!! Form::select(
+                'diagPA',
+                [
+                    'normal' => 'NORMAL (PA menor al percentil 90)',
+                    'elevada' => 'PRESION ARTERIAL ELEVADA',
+                    'hta_eI' => 'HTA ESTADIO I',
+                    'hta_eII' => 'HTA ESTADIO II',
+                ],
+                old('diagPA', $control->diagPA),
+                ['class' => 'form-control form-control-sm diagPA', 'placeholder' => 'Seleccione'],
+            ) !!}
         </div>
+    </div>
+
+    @if ($paciente->grupo < 6)
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('ctrlNut5to_mes_label', 'Fecha control al 5to mes', [
+            {!! Form::label('malNutExceso_label', 'RIESGO MALNUTRICION POR EXCESO', [
                 'class' => 'col-sm-3 col-form-label text-bold',
             ]) !!}
             <div class="col-sm-3">
-                {!! Form::date('ctrlNut5to_mes', old('ctrlNut5to_mes', $control->ctrlNut5to_mes), [
-                    'class' => 'form-control form-control-sm' . ($errors->has('ctrlNut5to_mes') ? ' is-invalid' : ''),
-                ]) !!}
-                @if ($errors->has('ctrlNut5to_mes'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('ctrlNut5to_mes') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-        {{-- 3 años y 6 mes control nutricional --}}
-    @elseif ($paciente->grupo < 4 and $paciente->grupo >= 3)
-        <div class="card-header">
-            CONTROL NUTRICIONAL 3 AÑOS y 6 MESES
-        </div>
-        <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('ctrlNut3_6_meses_label', 'Fecha control al 5to mes', [
-                'class' => 'col-sm-3 col-form-label text-bold',
-            ]) !!}
-            <div class="col-sm-3">
-                {!! Form::date('ctrlNut3_6_meses', old('ctrlNut3_6_meses', $control->ctrlNut3_6_meses), [
-                    'class' => 'form-control form-control-sm' . ($errors->has('ctrlNut3_6_meses') ? ' is-invalid' : ''),
-                ]) !!}
-                @if ($errors->has('ctrlNut3_6_meses'))
-                    <span class="invalid-feedback">
-                        <strong>{{ $errors->first('ctrlNut3_6_meses') }}</strong>
-                    </span>
-                @endif
+                {!! Form::select(
+                    'malNutExceso',
+                    [
+                        'conRiesgo' => 'CON RIESGO',
+                        'sinRiesgo' => 'SIN RIESGO',
+                    ],
+                    old('malNutExceso', $control->malNutExceso),
+                    ['class' => 'form-control form-control-sm malNutExceso', 'placeholder' => 'Seleccione riesgo'],
+                ) !!}
             </div>
         </div>
     @endif
