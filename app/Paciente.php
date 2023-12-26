@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\returnSelf;
+
 class Paciente extends Model
 {
     protected $guarded = ['id'];
@@ -19,6 +21,15 @@ class Paciente extends Model
 
     public function edad()
     {
+        return Carbon::parse($this->fecha_nacimiento)->age;
+    }
+
+    public function edadEnMeses() {
+
+        if(Carbon::create($this->fecha_nacimiento)->age <= 9) {
+            return Carbon::create($this->fecha_nacimiento)->diff(Carbon::now())->format('%y Años, %m Meses y %d Dias');
+        }
+        else
         return Carbon::parse($this->fecha_nacimiento)->age;
     }
 

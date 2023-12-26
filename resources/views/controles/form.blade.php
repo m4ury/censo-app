@@ -249,7 +249,7 @@
                     $('#Medico').hide();
                     break;
                 case 'Medico':
-                    $('#Medico').show();
+                    $('#Medico, #Nutricionista').show();
                     $('#Enfermera').hide();
                     break;
                 case 'Psicologo':

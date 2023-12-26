@@ -64,7 +64,7 @@
                                 @endswitch
                             @endif
                         </td>
-                        <td>{{ $paciente->edad() }}</td>
+                        <td>{{ $paciente->edadEnMeses() }}</td>
                         <td>{{ $paciente->sexo }}</td>
                         <td>
                             @if ($paciente->sector == 'Celeste')
