@@ -127,9 +127,9 @@
     </div>
 </div>
 
-@if ($paciente->sexo == 'Femenino')
-    @include('partials.mater')
-@endif
+{{-- @if ($paciente->sexo == 'Femenino') --}}
+@include('partials.mater')
+{{-- @endif --}}
 
 @if ($paciente->grupo < 10)
     @include('partials.dental')
@@ -245,7 +245,7 @@
                     break;
                 case 'Kinesiologo':
                     $('#Kine').show();
-                    //$('#Enfermera').hide();
+                    $('.presion_art, .peso_talla, .imc').hide()
                     $('#Medico').hide();
                     break;
                 case 'Medico':
