@@ -1,6 +1,6 @@
 <div class="card card-danger card-outline mb-3" id="Matrona">
     <div class="card-header text-bold text-bold">
-        @if ($paciente->grupo > 9)
+        @if ($paciente->grupo > 9 and $paciente->sexo == 'Femenino')
             <div class="form-group row ginec">
                 {!! Form::label('ginec_label', 'Control Ginecologico', [
                     'class' => 'col-sm-2 col-form-label text-bold',
@@ -11,7 +11,6 @@
                         'id' => 'ginec',
                     ]) !!}
                 </div>
-
                 {!! Form::label('regulacion_label', 'Control de regulacion', [
                     'class' => 'col-sm-2 col-form-label text-bold',
                 ]) !!}
@@ -22,7 +21,7 @@
                     ]) !!}
                 </div>
             </div>
-        @elseif ($paciente->grupo < 10)
+        @elseif ($paciente->grupo < 1)
             {!! Form::label('diada_label', 'Control DIADA (Entre 7 y 10 dias)', [
                 'class' => 'col-sm-3 col-form-label text-bold',
             ]) !!}
@@ -34,7 +33,7 @@
             </div>
         @endif
         {{-- pacientes entre 45 y 64 años tipo control mater --}}
-        @if ($paciente->grupo > 30 && $paciente->grupo < 65)
+        @if ($paciente->grupo > 30 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
             <div class="form-group row climater">
                 {!! Form::label('climater_label', 'Control Climaterio', [
                     'class' => 'col-sm-2 col-form-label text-bold',
@@ -49,7 +48,7 @@
         @endif
     </div>
     {{-- pacientes hasta 59 años control de regulacion --}}
-    @if ($paciente->grupo < 60 and $paciente->grupo > 9)
+    @if ($paciente->grupo < 60 and $paciente->grupo > 9 && $paciente->sexo == 'Femenino')
         <div class="form-group row my-2 ml-2 mx-3 preservativo">
             {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
                 'class' => 'col-sm col-form-label text-bold',
@@ -86,7 +85,6 @@
                 ]) !!}
             </div>
         </div>
-
         <div class="form-group row my-2 ml-2 mx-3 horm">
             {!! Form::label('hormonal_label', 'HORMONAL', ['class' => 'col-sm col-form-label']) !!}
             <div class="col-sm">
@@ -106,7 +104,6 @@
                 ) !!}
             </div>
         </div>
-
         <div class="form-group row my-2 ml-2 mx-3 esterilizacion">
             {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
                 'class' => 'col-sm col-form-label text-bold',
@@ -149,7 +146,6 @@
                 'id' => 'pauta_mrs',
             ]) !!}
         </div>
-
         {!! Form::label('trh_label', 'Tipoo terapia Reemplazo Hormonal', [
             'class' => 'col-sm-6 col-form-label text-bold',
         ]) !!}
@@ -168,7 +164,7 @@
     </div>
 
     {{-- todas las pacientes programa de la mujer --}}
-    @if ($paciente->edad > 10)
+    @if ($paciente->sexo == 'Femenino')
         <div class="form-group row my-2 ml-2 mx-3" id="pap">
             {!! Form::label('papVigente_label', 'PAP VIGENTE', [
                 'class' => 'col-sm-6 col-form-label',
@@ -179,7 +175,6 @@
                 ]) !!}
             </div>
         </div>
-
         <div class="form-group row my-2 ml-2 mx-3" id="emp">
             {!! Form::label('empVigente_label', 'EMP VIGENTE', [
                 'class' => 'col-sm-6 col-form-label',
@@ -190,7 +185,6 @@
                 ]) !!}
             </div>
         </div>
-
         <div class="form-group row my-2 ml-2 mx-3" id="mamo">
             {!! Form::label('mamoVigente_label', 'MAMO VIGENTE', [
                 'class' => 'col-sm-6 col-form-label',
@@ -201,7 +195,6 @@
                 ]) !!}
             </div>
         </div>
-
         <hr>
         <div class="form-group row my-2 ml-2 mx-3">
             <div class="col col-sm text-muted">
