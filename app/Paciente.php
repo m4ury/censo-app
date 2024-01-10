@@ -24,13 +24,13 @@ class Paciente extends Model
         return Carbon::parse($this->fecha_nacimiento)->age;
     }
 
-    public function edadEnMeses() {
+    public function edadEnMeses()
+    {
 
-        if(Carbon::create($this->fecha_nacimiento)->age <= 9) {
+        if (Carbon::create($this->fecha_nacimiento)->age <= 9) {
             return Carbon::create($this->fecha_nacimiento)->diff(Carbon::now())->format('%y Años, %m Meses y %d Dias');
-        }
-        else
-        return Carbon::parse($this->fecha_nacimiento)->age;
+        } else
+            return Carbon::parse($this->fecha_nacimiento)->age;
     }
 
     public function getGrupoAttribute()
@@ -902,6 +902,15 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    public function epocEspiromVigente($fem, $masc, $clasif)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.epocClasif', $clasif)
+            ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+            ->whereIn('pacientes.sexo', [$fem, $masc])
+            ->latest('controls.fecha_control');
+    }
+
     public function epocB($fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1062,13 +1071,14 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    public function enfcv(){
+    public function enfcv()
+    {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-        ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-        ->join('controls', 'controls.paciente_id', 'pacientes.id' )
-        ->where('sexo', 'Femenino')
-        ->where('controls.tipo_control', 'Matrona')
-        ->whereIn('nombre_patologia', ['HTA', 'DM2'])
-        ->whereNull('pacientes.egreso');
+            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('sexo', 'Femenino')
+            ->where('controls.tipo_control', 'Matrona')
+            ->whereIn('nombre_patologia', ['HTA', 'DM2'])
+            ->whereNull('pacientes.egreso');
     }
 }

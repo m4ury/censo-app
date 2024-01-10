@@ -4208,7 +4208,7 @@ class EstadisticaController extends Controller
         //epoc A
         $epocA = $all->epocA('Femenino', 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
         $epocAM = $all->epocA(null, 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
-        $epocA_espVig = $all->espiromVigente('Leve', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
+        $epocA_espVig = $all->epocEspiromVigente('Femenino', 'Masculino', 'A')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
         $epocA_OriginM = $all->epocA(null, 'Masculino')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
         $epocA_4044M = $all->epocA(null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
         $epocA_4549M = $all->epocA(null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
@@ -4236,7 +4236,7 @@ class EstadisticaController extends Controller
         //epoc B
         $epocB = $all->epocB('Femenino', 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
         $epocBM = $all->epocB(null, 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
-        $epocB_espVig = $all->espiromVigente('Leve', 'Femenino', 'Masculino')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
+        $epocB_espVig = $all->epocEspiromVigente('Femenino', 'Masculino', 'B')->get()->whereBetween('grupo', [40, 120])->unique('rut')->count();
         $epocB_OriginM = $all->epocB(null, 'Masculino')->get()->whereBetween('grupo', [40, 120])->where('pueblo_originario', 1)->count();
         $epocB_4044M = $all->epocB(null, 'Masculino')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count();
         $epocB_4549M = $all->epocB(null, 'Masculino')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count();
@@ -5370,7 +5370,7 @@ class EstadisticaController extends Controller
             'otrasResp_59M',
             'otrasResp_59F',
             'otrasResp_1014M',
-            'otrasResp_1014F'
+            'otrasResp_1014F',
         ));
     }
 
@@ -9285,19 +9285,6 @@ class EstadisticaController extends Controller
             'notas_total'
         ));
     }
-
-    /* public function rayos(){
-        $examenes = new Examen;
-        $todas = $examenes->count();
-        return view('estadisticas.rayos', compact('todas'));
-    } */
-
-    /* public function piedmr(){
-        $all = new Paciente;
-        $pacientes = $all->SinEvaluacionPie()->get()->unique('rut');
-        //dd($pacientes);
-        return view('estadisticas.piedm', compact('pacientes'));
-    } */
 
     public function pie()
     {
