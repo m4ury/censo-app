@@ -3961,7 +3961,23 @@ class EstadisticaController extends Controller
             'estQxM',
             'totalMac',
             'enfCv',
-            'all'
+            'all',
+        ));
+    }
+
+    public function seccionP1f()
+    {
+        $all = new Paciente;
+        $climater = $all->climater()->get()->unique('rut');
+        $pautaMrs = $all->climater()->get()->where('pauta_mrs', '>', 0)->unique('rut');
+        $mrsElev = $all->climater()->get()->where('pauta_mrs', '>', 14)->unique('rut');
+
+
+
+        return view('estadisticas.seccion-p1f', compact(
+            'climater',
+            'pautaMrs',
+            'mrsElev'
         ));
     }
 

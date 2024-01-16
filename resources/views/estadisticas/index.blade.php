@@ -18,6 +18,11 @@
                                 REGULACIÓN DE FERTILIDAD Y SALUD SEXUAL</a>
                         </h4>
                     </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p1f') }}">SECCIONES F y F.1</a>
+                        </h4>
+                    </div>
                 </div>
             </div>
         </div>

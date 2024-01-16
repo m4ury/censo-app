@@ -164,7 +164,7 @@
     </div>
 
     {{-- todas las pacientes programa de la mujer --}}
-    @if ($paciente->sexo == 'Femenino')
+    @if ($paciente->sexo == 'Femenino' && $paciente->grupo > 9)
         <div class="form-group row my-2 ml-2 mx-3" id="pap">
             {!! Form::label('papVigente_label', 'PAP VIGENTE', [
                 'class' => 'col-sm-6 col-form-label',

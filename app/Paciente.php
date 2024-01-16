@@ -1081,4 +1081,14 @@ class Paciente extends Model
             ->whereIn('nombre_patologia', ['HTA', 'DM2'])
             ->whereNull('pacientes.egreso');
     }
+
+    public function climater()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.climater', true)
+            //->whereYear('controls.fecha_control', '2023')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
 }
