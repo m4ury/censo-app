@@ -1061,7 +1061,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
-            ->whereIn('controls.hormonal', ['oral_comb', 'oral_progest', 'inyectable_comb', 'inyectable_progest', 'implante_etonogest', 'anillo'])
+            ->whereNotNull('controls.hormonal')
             ->orWhere('controls.diu_cobre', true)
             ->orWhere('controls.diu_levonorgest', true)
             ->orWhereIn('preservativo', ['Hombres', 'Mujer'])

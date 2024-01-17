@@ -14,8 +14,7 @@
                 <div class="card-body">
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p1a') }}">SECCION A: POBLACIÓN EN CONTROL SEGÚN MÉTODO DE
-                                REGULACIÓN DE FERTILIDAD Y SALUD SEXUAL</a>
+                            <a href="{{ route('estadisticas.seccion-p1a') }}">SECCIONES A y H</a>
                         </h4>
                     </div>
                     <div class="row">
