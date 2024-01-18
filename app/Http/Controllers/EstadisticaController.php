@@ -6133,7 +6133,11 @@ class EstadisticaController extends Controller
         $totalSeccion_6569M = $subBarthel_6569M + $subEsfam_6569M;
         $totalSeccion_7074M = $subBarthel_7074M + $subEsfam_7074M;
         $totalSeccion_7579M = $subBarthel_7579M + $subEsfam_7579M;
-        $totalSeccion_80M = $subBarthel_80M + $subEsfam_80M;
+        $totalSeccion_8084M = $subBarthel_8084M + $subEsfam_8084M;
+        $totalSeccion_8589M = $subBarthel_8589M + $subEsfam_8589M;
+        $totalSeccion_9094M = $subBarthel_9094M + $subEsfam_9094M;
+        $totalSeccion_9599M = $subBarthel_9599M + $subEsfam_9599M;
+        $totalSeccion_100M = $subBarthel_100M + $subEsfam_100M;
         //dd($totalSeccion_7074M);
 
         //P5 SECCION B
@@ -6143,7 +6147,11 @@ class EstadisticaController extends Controller
         $bajoPeso_6569F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->unique('rut')->count();
         $bajoPeso_7074F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->unique('rut')->count();
         $bajoPeso_7579F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $bajoPeso_80F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->where('grupo', '>', 79)->unique('rut')->count();
+        $bajoPeso_8084F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [80, 84])->unique('rut')->count();
+        $bajoPeso_8589F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [85, 89])->unique('rut')->count();
+        $bajoPeso_9094F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [90, 94])->unique('rut')->count();
+        $bajoPeso_9599F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [95, 99])->unique('rut')->count();
+        $bajoPeso_100F = $pacientes->bajoPeso()->get()->where('sexo', 'Femenino')->where('grupo', '>', 100)->unique('rut')->count();
         //dd($bajoPeso_80F);
 
         $bajoPesoM = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 64)->unique('rut')->count();
@@ -6151,7 +6159,11 @@ class EstadisticaController extends Controller
         $bajoPeso_6569M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->unique('rut')->count();
         $bajoPeso_7074M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->unique('rut')->count();
         $bajoPeso_7579M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->unique('rut')->count();
-        $bajoPeso_80M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 79)->unique('rut')->count();
+        $bajoPeso_8084M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [80, 84])->unique('rut')->count();
+        $bajoPeso_8589M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [85, 89])->unique('rut')->count();
+        $bajoPeso_9094M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [90, 94])->unique('rut')->count();
+        $bajoPeso_9599M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [95, 99])->unique('rut')->count();
+        $bajoPeso_100M = $pacientes->bajoPeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 100)->unique('rut')->count();
 
         //NORMAL
         $normal = $pacientes->normal()->get()->whereBetween('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
@@ -6161,14 +6173,22 @@ class EstadisticaController extends Controller
         $normal_6569F = $pacientes->normal()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $normal_7074F = $pacientes->normal()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $normal_7579F = $pacientes->normal()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $normal_80F = $pacientes->normal()->get()->where('sexo', '=', 'Femenino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $normal_8084F = $pacientes->normal()->get()->where('sexo', 'Femenino')->whereIn('grupo', [80, 84])->unique('rut')->count();
+        $normal_8589F = $pacientes->normal()->get()->where('sexo', 'Femenino')->whereIn('grupo', [85, 89])->unique('rut')->count();
+        $normal_9094F = $pacientes->normal()->get()->where('sexo', 'Femenino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $normal_9599F = $pacientes->normal()->get()->where('sexo', 'Femenino')->whereIn('grupo', [95, 99])->unique('rut')->count();
+        $normal_100F = $pacientes->normal()->get()->where('sexo', 'Femenino')->where('grupo', '>', 100)->unique('rut')->count();
 
         $normalM = $pacientes->normal()->get()->where('sexo', '=', 'Masculino')->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
         $normal_6569M = $pacientes->normal()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $normal_7074M = $pacientes->normal()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $normal_7579M = $pacientes->normal()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $normal_80M = $pacientes->normal()->get()->where('sexo', '=', 'Masculino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $normal_8084M = $pacientes->normal()->get()->where('sexo', 'Masculino')->whereIn('grupo', [80, 84])->unique('rut')->count();
+        $normal_8589M = $pacientes->normal()->get()->where('sexo', 'Masculino')->whereIn('grupo', [85, 89])->unique('rut')->count();
+        $normal_9094M = $pacientes->normal()->get()->where('sexo', 'Masculino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $normal_9599M = $pacientes->normal()->get()->where('sexo', 'Masculino')->whereIn('grupo', [95, 99])->unique('rut')->count();
+        $normal_100M = $pacientes->normal()->get()->where('sexo', 'Masculino')->where('grupo', '>', 100)->unique('rut')->count();
 
         //SOBRE PESO
         $sobrePeso = $pacientes->sobrePeso()->get()->whereBetween('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
@@ -6178,14 +6198,22 @@ class EstadisticaController extends Controller
         $sobrePeso_6569F = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $sobrePeso_7074F = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $sobrePeso_7579F = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Femenino')->whereIn('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $sobrePeso_80F = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Femenino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $sobrePeso_8084F = $pacientes->sobrePeso()->get()->where('sexo', 'Femenino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $sobrePeso_8589F = $pacientes->sobrePeso()->get()->where('sexo', 'Femenino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $sobrePeso_9094F = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $sobrePeso_9599F = $pacientes->sobrePeso()->get()->where('sexo', 'Femenino')->whereIn('grupo', [95, 99])->unique('rut')->count();
+        $sobrePeso_100F = $pacientes->sobrePeso()->get()->where('sexo', 'Femenino')->where('grupo', '>', 100)->unique('rut')->count();
 
         $sobrePesoM = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Masculino')->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
         $sobrePeso_6569M = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $sobrePeso_7074M = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $sobrePeso_7579M = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Masculino')->whereIn('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $sobrePeso_80M = $pacientes->sobrePeso()->get()->where('sexo', '=', 'Masculino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $sobrePeso_8084M = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->whereIn('grupo', [80, 84])->unique('rut')->count();
+        $sobrePeso_8589M = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->whereIn('grupo', [85, 89])->unique('rut')->count();
+        $sobrePeso_9094M = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->whereIn('grupo', [90, 94])->unique('rut')->count();
+        $sobrePeso_9599M = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->whereIn('grupo', [95, 99])->unique('rut')->count();
+        $sobrePeso_100M = $pacientes->sobrePeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 100)->unique('rut')->count();
 
         //OBESO
         $obeso = $pacientes->obeso()->get()->whereBetween('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
@@ -6195,14 +6223,22 @@ class EstadisticaController extends Controller
         $obeso_6569F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $obeso_7074F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $obeso_7579F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $obeso_80F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $obeso_8084F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [80, 84])->unique('rut')->count();
+        $obeso_8589F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [85, 89])->unique('rut')->count();
+        $obeso_9094F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [90, 94])->unique('rut')->count();
+        $obeso_9599F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->whereBetween('grupo', [95, 99])->unique('rut')->count();
+        $obeso_100F = $pacientes->obeso()->get()->where('sexo', 'Femenino')->where('grupo', '>', 100)->unique('rut')->count();
 
         $obesoM = $pacientes->obeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 64)->unique('rut')->pluck('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
         $obeso_6569M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->unique('rut')->pluck('rut')->count();
         $obeso_7074M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->unique('rut')->pluck('rut')->count();
         $obeso_7579M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->unique('rut')->pluck('rut')->count();
-        $obeso_80M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 79)->unique('rut')->pluck('rut')->count();
+        $obeso_8084M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [80, 84])->unique('rut')->count();
+        $obeso_8589M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [85, 89])->unique('rut')->count();
+        $obeso_9094M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [90, 94])->unique('rut')->count();
+        $obeso_9599M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [95, 99])->unique('rut')->count();
+        $obeso_100M = $pacientes->obeso()->get()->where('sexo', 'Masculino')->where('grupo', '>', 100)->unique('rut')->count();
         //dd($obeso_80M);
         //total seccion B
         $totalSeccionB = $pacientes->totalSeccionB()->get()->where('grupo', '>', 64)->unique('rut')->count();
@@ -6212,7 +6248,11 @@ class EstadisticaController extends Controller
         $totalSeccionB_6569F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->unique('rut')->count();
         $totalSeccionB_7074F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->unique('rut')->count();
         $totalSeccionB_7579F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->unique('rut')->count();
-        $totalSeccionB_80F = $pacientes->totalSeccionB()->get()->where('grupo', '>', 79)->where('sexo', 'Femenino')->unique('rut')->count();
+        $totalSeccionB_8084F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [80, 84])->where('sexo', 'Femenino')->unique('rut')->count();
+        $totalSeccionB_8589F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [85, 89])->where('sexo', 'Femenino')->unique('rut')->count();
+        $totalSeccionB_9094F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [90, 94])->where('sexo', 'Femenino')->unique('rut')->count();
+        $totalSeccionB_9599F = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [95, 99])->where('sexo', 'Femenino')->unique('rut')->count();
+        $totalSeccionB_100F = $pacientes->totalSeccionB()->get()->where('grupo', '>', 100)->where('sexo', 'Femenino')->unique('rut')->count();
 
 
         $totalSeccionBM = $pacientes->totalSeccionB()->get()->where('sexo', 'Masculino')->where('grupo', '>', 64)->unique('rut')->count();
@@ -6220,7 +6260,11 @@ class EstadisticaController extends Controller
         $totalSeccionB_6569M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->unique('rut')->count();
         $totalSeccionB_7074M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->unique('rut')->count();
         $totalSeccionB_7579M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->unique('rut')->count();
-        $totalSeccionB_80M = $pacientes->totalSeccionB()->get()->where('grupo', '>', 79)->where('sexo', 'Masculino')->unique('rut')->count();
+        $totalSeccionB_8084M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [80, 84])->where('sexo', 'Masculino')->unique('rut')->count();
+        $totalSeccionB_8589M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [85, 89])->where('sexo', 'Masculino')->unique('rut')->count();
+        $totalSeccionB_9094M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [90, 94])->where('sexo', 'Masculino')->unique('rut')->count();
+        $totalSeccionB_9599M = $pacientes->totalSeccionB()->get()->whereBetween('grupo', [95, 99])->where('sexo', 'Masculino')->unique('rut')->count();
+        $totalSeccionB_100M = $pacientes->totalSeccionB()->get()->where('grupo', '>', 100)->where('sexo', 'Masculino')->unique('rut')->count();
 
         return view('estadisticas.seccion-p5a', compact(
             'aSinRiesgo',
@@ -6289,8 +6333,16 @@ class EstadisticaController extends Controller
             'subEsfam_7074F',
             'subEsfam_7579M',
             'subEsfam_7579F',
-            'subEsfam_80M',
-            'subEsfam_80F',
+            'subEsfam_8084M',
+            'subEsfam_8084F',
+            'subEsfam_8589M',
+            'subEsfam_8589F',
+            'subEsfam_9094M',
+            'subEsfam_9094F',
+            'subEsfam_9599M',
+            'subEsfam_9599F',
+            'subEsfam_100M',
+            'subEsfam_100F',
             'depLeve',
             'depLeveM',
             'depLeveF',
@@ -6300,8 +6352,16 @@ class EstadisticaController extends Controller
             'depLeve_7074F',
             'depLeve_7579M',
             'depLeve_7579F',
-            'depLeve_80M',
-            'depLeve_80F',
+            'depLeve_8084M',
+            'depLeve_8084F',
+            'depLeve_8589M',
+            'depLeve_8589F',
+            'depLeve_9094M',
+            'depLeve_9094F',
+            'depLeve_9599M',
+            'depLeve_9599F',
+            'depLeve_100M',
+            'depLeve_100F',
             'depMod',
             'depModM',
             'depModF',
@@ -6311,8 +6371,16 @@ class EstadisticaController extends Controller
             'depMod_7074F',
             'depMod_7579M',
             'depMod_7579F',
-            'depMod_80M',
-            'depMod_80F',
+            'depMod_8084M',
+            'depMod_8084F',
+            'depMod_8589M',
+            'depMod_8589F',
+            'depMod_9094M',
+            'depMod_9094F',
+            'depMod_9599M',
+            'depMod_9599F',
+            'depMod_100M',
+            'depMod_100F',
             'depGrave',
             'depGraveM',
             'depGraveF',
@@ -6322,8 +6390,16 @@ class EstadisticaController extends Controller
             'depGrave_7074F',
             'depGrave_7579M',
             'depGrave_7579F',
-            'depGrave_80M',
-            'depGrave_80F',
+            'depGrave_8084M',
+            'depGrave_8084F',
+            'depGrave_8589M',
+            'depGrave_8589F',
+            'depGrave_9094M',
+            'depGrave_9094F',
+            'depGrave_9599M',
+            'depGrave_9599F',
+            'depGrave_100M',
+            'depGrave_100F',
 
             'depTotal',
             'depTotalM',
@@ -6334,8 +6410,16 @@ class EstadisticaController extends Controller
             'depTotal_7074F',
             'depTotal_7579M',
             'depTotal_7579F',
-            'depTotal_80M',
-            'depTotal_80F',
+            'depTotal_8084M',
+            'depTotal_8084F',
+            'depTotal_8589M',
+            'depTotal_8589F',
+            'depTotal_9094M',
+            'depTotal_9094F',
+            'depTotal_9599M',
+            'depTotal_9599F',
+            'depTotal_100M',
+            'depTotal_100F',
 
             'subBarthel',
             'subBarthelM',
@@ -6346,8 +6430,17 @@ class EstadisticaController extends Controller
             'subBarthel_7074F',
             'subBarthel_7579M',
             'subBarthel_7579F',
-            'subBarthel_80M',
-            'subBarthel_80F',
+            'subBarthel_8084M',
+            'subBarthel_8084F',
+            'subBarthel_8589M',
+            'subBarthel_8589F',
+            'subBarthel_9094M',
+            'subBarthel_9094F',
+            'subBarthel_9599M',
+            'subBarthel_9599F',
+            'subBarthel_100M',
+            'subBarthel_100F',
+
             'totalSeccion',
             'totalSeccionM',
             'totalSeccionF',
@@ -6357,8 +6450,36 @@ class EstadisticaController extends Controller
             'totalSeccion_7074F',
             'totalSeccion_7579M',
             'totalSeccion_7579F',
-            'totalSeccion_80M',
-            'totalSeccion_80F',
+            'totalSeccion_8084M',
+            'totalSeccion_8084F',
+            'totalSeccion_8589M',
+            'totalSeccion_8589F',
+            'totalSeccion_9094M',
+            'totalSeccion_9094F',
+            'totalSeccion_9599M',
+            'totalSeccion_9599F',
+            'totalSeccion_100M',
+            'totalSeccion_100F',
+
+            'totalSeccionB',
+            'totalSeccionBM',
+            'totalSeccionBF',
+            'totalSeccionB_6569M',
+            'totalSeccionB_6569F',
+            'totalSeccionB_7074M',
+            'totalSeccionB_7074F',
+            'totalSeccionB_7579M',
+            'totalSeccionB_7579F',
+            'totalSeccionB_8084M',
+            'totalSeccionB_8084F',
+            'totalSeccionB_8589M',
+            'totalSeccionB_8589F',
+            'totalSeccionB_9094M',
+            'totalSeccionB_9094F',
+            'totalSeccionB_9599M',
+            'totalSeccionB_9599F',
+            'totalSeccionB_100M',
+            'totalSeccionB_100F',
 
             'bajoPeso',
             'bajoPesoM',
@@ -6369,8 +6490,17 @@ class EstadisticaController extends Controller
             'bajoPeso_7074F',
             'bajoPeso_7579M',
             'bajoPeso_7579F',
-            'bajoPeso_80M',
-            'bajoPeso_80F',
+            'bajoPeso_8084M',
+            'bajoPeso_8084F',
+            'bajoPeso_8589M',
+            'bajoPeso_8589F',
+            'bajoPeso_9094M',
+            'bajoPeso_9094F',
+            'bajoPeso_9599M',
+            'bajoPeso_9599F',
+            'bajoPeso_100M',
+            'bajoPeso_100F',
+
             'normal',
             'normalM',
             'normalF',
@@ -6380,8 +6510,17 @@ class EstadisticaController extends Controller
             'normal_7074F',
             'normal_7579M',
             'normal_7579F',
-            'normal_80M',
-            'normal_80F',
+            'normal_8084M',
+            'normal_8084F',
+            'normal_8589M',
+            'normal_8589F',
+            'normal_9094M',
+            'normal_9094F',
+            'normal_9599M',
+            'normal_9599F',
+            'normal_100M',
+            'normal_100F',
+
             'sobrePeso',
             'sobrePesoM',
             'sobrePesoF',
@@ -6391,8 +6530,17 @@ class EstadisticaController extends Controller
             'sobrePeso_7074F',
             'sobrePeso_7579M',
             'sobrePeso_7579F',
-            'sobrePeso_80M',
-            'sobrePeso_80F',
+            'sobrePeso_8084M',
+            'sobrePeso_8084F',
+            'sobrePeso_8589M',
+            'sobrePeso_8589F',
+            'sobrePeso_9094M',
+            'sobrePeso_9094F',
+            'sobrePeso_9599M',
+            'sobrePeso_9599F',
+            'sobrePeso_100M',
+            'sobrePeso_100F',
+
             'obeso',
             'obesoM',
             'obesoF',
@@ -6402,9 +6550,16 @@ class EstadisticaController extends Controller
             'obeso_7074F',
             'obeso_7579M',
             'obeso_7579F',
-            'obeso_80M',
-            'obeso_80F',
-
+            'obeso_8084M',
+            'obeso_8084F',
+            'obeso_8589M',
+            'obeso_8589F',
+            'obeso_9094M',
+            'obeso_9094F',
+            'obeso_9599M',
+            'obeso_9599F',
+            'obeso_100M',
+            'obeso_100F',
         ));
     }
 

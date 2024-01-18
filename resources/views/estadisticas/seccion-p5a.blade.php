@@ -126,16 +126,16 @@
                                 <td>{{ $riesgoDependencia_7074F }}</td>
                                 <td>{{ $riesgoDependencia_7579M }}</td>
                                 <td>{{ $riesgoDependencia_7579F }}</td>
-                                <td>{{ $riesgoDependencia_80M }}</td>
-                                <td>{{ $riesgoDependencia_80F }}</td>
-                                <td>{{ $riesgoDependencia_80M }}</td>
-                                <td>{{ $riesgoDependencia_80F }}</td>
-                                <td>{{ $riesgoDependencia_80M }}</td>
-                                <td>{{ $riesgoDependencia_80F }}</td>
-                                <td>{{ $riesgoDependencia_80M }}</td>
-                                <td>{{ $riesgoDependencia_80F }}</td>
-                                <td>{{ $riesgoDependencia_80M }}</td>
-                                <td>{{ $riesgoDependencia_80F }}</td>
+                                <td>{{ $riesgoDependencia_8084M }}</td>
+                                <td>{{ $riesgoDependencia_8084F }}</td>
+                                <td>{{ $riesgoDependencia_8589M }}</td>
+                                <td>{{ $riesgoDependencia_8589F }}</td>
+                                <td>{{ $riesgoDependencia_9094M }}</td>
+                                <td>{{ $riesgoDependencia_9094F }}</td>
+                                <td>{{ $riesgoDependencia_9599M }}</td>
+                                <td>{{ $riesgoDependencia_9599F }}</td>
+                                <td>{{ $riesgoDependencia_100M }}</td>
+                                <td>{{ $riesgoDependencia_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -152,16 +152,16 @@
                                 <td>{{ $subEsfam_7074F }}</td>
                                 <td>{{ $subEsfam_7579M }}</td>
                                 <td>{{ $subEsfam_7579F }}</td>
-                                <td>{{ $subEsfam_80M }}</td>
-                                <td>{{ $subEsfam_80F }}</td>
-                                <td>{{ $subEsfam_80M }}</td>
-                                <td>{{ $subEsfam_80F }}</td>
-                                <td>{{ $subEsfam_80M }}</td>
-                                <td>{{ $subEsfam_80F }}</td>
-                                <td>{{ $subEsfam_80M }}</td>
-                                <td>{{ $subEsfam_80F }}</td>
-                                <td>{{ $subEsfam_80M }}</td>
-                                <td>{{ $subEsfam_80F }}</td>
+                                <td>{{ $subEsfam_8084M }}</td>
+                                <td>{{ $subEsfam_8084F }}</td>
+                                <td>{{ $subEsfam_8589M }}</td>
+                                <td>{{ $subEsfam_8589F }}</td>
+                                <td>{{ $subEsfam_9094M }}</td>
+                                <td>{{ $subEsfam_9094F }}</td>
+                                <td>{{ $subEsfam_9599M }}</td>
+                                <td>{{ $subEsfam_9599F }}</td>
+                                <td>{{ $subEsfam_100M }}</td>
+                                <td>{{ $subEsfam_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -178,16 +178,16 @@
                                 <td>{{ $depLeve_7074F }}</td>
                                 <td>{{ $depLeve_7579M }}</td>
                                 <td>{{ $depLeve_7579F }}</td>
-                                <td>{{ $depLeve_80M }}</td>
-                                <td>{{ $depLeve_80F }}</td>
-                                <td>{{ $depLeve_80M }}</td>
-                                <td>{{ $depLeve_80F }}</td>
-                                <td>{{ $depLeve_80M }}</td>
-                                <td>{{ $depLeve_80F }}</td>
-                                <td>{{ $depLeve_80M }}</td>
-                                <td>{{ $depLeve_80F }}</td>
-                                <td>{{ $depLeve_80M }}</td>
-                                <td>{{ $depLeve_80F }}</td>
+                                <td>{{ $depLeve_8084M }}</td>
+                                <td>{{ $depLeve_8084F }}</td>
+                                <td>{{ $depLeve_8589M }}</td>
+                                <td>{{ $depLeve_8589F }}</td>
+                                <td>{{ $depLeve_9094M }}</td>
+                                <td>{{ $depLeve_9094F }}</td>
+                                <td>{{ $depLeve_9599M }}</td>
+                                <td>{{ $depLeve_9599F }}</td>
+                                <td>{{ $depLeve_100M }}</td>
+                                <td>{{ $depLeve_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -204,16 +204,16 @@
                                 <td>{{ $depMod_7074F }}</td>
                                 <td>{{ $depMod_7579M }}</td>
                                 <td>{{ $depMod_7579F }}</td>
-                                <td>{{ $depMod_80M }}</td>
-                                <td>{{ $depMod_80F }}</td>
-                                <td>{{ $depMod_80M }}</td>
-                                <td>{{ $depMod_80F }}</td>
-                                <td>{{ $depMod_80M }}</td>
-                                <td>{{ $depMod_80F }}</td>
-                                <td>{{ $depMod_80M }}</td>
-                                <td>{{ $depMod_80F }}</td>
-                                <td>{{ $depMod_80M }}</td>
-                                <td>{{ $depMod_80F }}</td>
+                                <td>{{ $depMod_8084M }}</td>
+                                <td>{{ $depMod_8084F }}</td>
+                                <td>{{ $depMod_8589M }}</td>
+                                <td>{{ $depMod_8589F }}</td>
+                                <td>{{ $depMod_9094M }}</td>
+                                <td>{{ $depMod_9094F }}</td>
+                                <td>{{ $depMod_9599M }}</td>
+                                <td>{{ $depMod_9599F }}</td>
+                                <td>{{ $depMod_100M }}</td>
+                                <td>{{ $depMod_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -230,16 +230,16 @@
                                 <td>{{ $depGrave_7074F }}</td>
                                 <td>{{ $depGrave_7579M }}</td>
                                 <td>{{ $depGrave_7579F }}</td>
-                                <td>{{ $depGrave_80M }}</td>
-                                <td>{{ $depGrave_80F }}</td>
-                                <td>{{ $depGrave_80M }}</td>
-                                <td>{{ $depGrave_80F }}</td>
-                                <td>{{ $depGrave_80M }}</td>
-                                <td>{{ $depGrave_80F }}</td>
-                                <td>{{ $depGrave_80M }}</td>
-                                <td>{{ $depGrave_80F }}</td>
-                                <td>{{ $depGrave_80M }}</td>
-                                <td>{{ $depGrave_80F }}</td>
+                                <td>{{ $depGrave_8084M }}</td>
+                                <td>{{ $depGrave_8084F }}</td>
+                                <td>{{ $depGrave_8589M }}</td>
+                                <td>{{ $depGrave_8589F }}</td>
+                                <td>{{ $depGrave_9094M }}</td>
+                                <td>{{ $depGrave_9094F }}</td>
+                                <td>{{ $depGrave_9599M }}</td>
+                                <td>{{ $depGrave_9599F }}</td>
+                                <td>{{ $depGrave_100M }}</td>
+                                <td>{{ $depGrave_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -256,16 +256,16 @@
                                 <td>{{ $depTotal_7074F }}</td>
                                 <td>{{ $depTotal_7579M }}</td>
                                 <td>{{ $depTotal_7579F }}</td>
-                                <td>{{ $depTotal_80M }}</td>
-                                <td>{{ $depTotal_80F }}</td>
-                                <td>{{ $depTotal_80M }}</td>
-                                <td>{{ $depTotal_80F }}</td>
-                                <td>{{ $depTotal_80M }}</td>
-                                <td>{{ $depTotal_80F }}</td>
-                                <td>{{ $depTotal_80M }}</td>
-                                <td>{{ $depTotal_80F }}</td>
-                                <td>{{ $depTotal_80M }}</td>
-                                <td>{{ $depTotal_80F }}</td>
+                                <td>{{ $depTotal_8084M }}</td>
+                                <td>{{ $depTotal_8084F }}</td>
+                                <td>{{ $depTotal_8589M }}</td>
+                                <td>{{ $depTotal_8589F }}</td>
+                                <td>{{ $depTotal_9094M }}</td>
+                                <td>{{ $depTotal_9094F }}</td>
+                                <td>{{ $depTotal_9599M }}</td>
+                                <td>{{ $depTotal_9599F }}</td>
+                                <td>{{ $depTotal_100M }}</td>
+                                <td>{{ $depTotal_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -283,16 +283,16 @@
                                 <td>{{ $subBarthel_7074F }}</td>
                                 <td>{{ $subBarthel_7579M }}</td>
                                 <td>{{ $subBarthel_7579F }}</td>
-                                <td>{{ $subBarthel_80M }}</td>
-                                <td>{{ $subBarthel_80F }}</td>
-                                <td>{{ $subBarthel_80M }}</td>
-                                <td>{{ $subBarthel_80F }}</td>
-                                <td>{{ $subBarthel_80M }}</td>
-                                <td>{{ $subBarthel_80F }}</td>
-                                <td>{{ $subBarthel_80M }}</td>
-                                <td>{{ $subBarthel_80F }}</td>
-                                <td>{{ $subBarthel_80M }}</td>
-                                <td>{{ $subBarthel_80F }}</td>
+                                <td>{{ $subBarthel_8084M }}</td>
+                                <td>{{ $subBarthel_8084F }}</td>
+                                <td>{{ $subBarthel_8589M }}</td>
+                                <td>{{ $subBarthel_8589F }}</td>
+                                <td>{{ $subBarthel_9094M }}</td>
+                                <td>{{ $subBarthel_9094F }}</td>
+                                <td>{{ $subBarthel_9599M }}</td>
+                                <td>{{ $subBarthel_9599F }}</td>
+                                <td>{{ $subBarthel_100M }}</td>
+                                <td>{{ $subBarthel_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -311,16 +311,16 @@
                                 <td>{{ $totalSeccion_7074F }}</td>
                                 <td>{{ $totalSeccion_7579M }}</td>
                                 <td>{{ $totalSeccion_7579F }}</td>
-                                <td>{{ $totalSeccion_80M }}</td>
-                                <td>{{ $totalSeccion_80F }}</td>
-                                <td>{{ $totalSeccion_80M }}</td>
-                                <td>{{ $totalSeccion_80F }}</td>
-                                <td>{{ $totalSeccion_80M }}</td>
-                                <td>{{ $totalSeccion_80F }}</td>
-                                <td>{{ $totalSeccion_80M }}</td>
-                                <td>{{ $totalSeccion_80F }}</td>
-                                <td>{{ $totalSeccion_80M }}</td>
-                                <td>{{ $totalSeccion_80F }}</td>
+                                <td>{{ $totalSeccion_8084M }}</td>
+                                <td>{{ $totalSeccion_8084F }}</td>
+                                <td>{{ $totalSeccion_8589M }}</td>
+                                <td>{{ $totalSeccion_8589F }}</td>
+                                <td>{{ $totalSeccion_9094M }}</td>
+                                <td>{{ $totalSeccion_9094F }}</td>
+                                <td>{{ $totalSeccion_9599M }}</td>
+                                <td>{{ $totalSeccion_9599F }}</td>
+                                <td>{{ $totalSeccion_100M }}</td>
+                                <td>{{ $totalSeccion_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -353,10 +353,22 @@
                                 <th nowrap="" colspan="2">65 a 69 años</th>
                                 <th nowrap="" colspan="2">70 a 74 años</th>
                                 <th nowrap="" colspan="2">75 a 79 años</th>
-                                <th nowrap="" colspan="2">80 y mas años</th>
+                                <th nowrap="" colspan="2">80 a 84 años</th>
+                                <th nowrap="" colspan="2">85 a 89 años</th>
+                                <th nowrap="" colspan="2">90 a 94 años</th>
+                                <th nowrap="" colspan="2">95 a 99 años</th>
+                                <th nowrap="" colspan="2">100 y mas años</th>
                             </tr>
                             <tr>
                                 <th>Ambos Sexos</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
                                 <th>Hombres</th>
                                 <th>Mujeres</th>
                                 <th>Hombres</th>
@@ -383,8 +395,16 @@
                                 <td>{{ $bajoPeso_7074F }}</td>
                                 <td>{{ $bajoPeso_7579M }}</td>
                                 <td>{{ $bajoPeso_7579F }}</td>
-                                <td>{{ $bajoPeso_80M }}</td>
-                                <td>{{ $bajoPeso_80F }}</td>
+                                <td>{{ $bajoPeso_8084M }}</td>
+                                <td>{{ $bajoPeso_8084F }}</td>
+                                <td>{{ $bajoPeso_8589M }}</td>
+                                <td>{{ $bajoPeso_8589F }}</td>
+                                <td>{{ $bajoPeso_9094M }}</td>
+                                <td>{{ $bajoPeso_9094F }}</td>
+                                <td>{{ $bajoPeso_9599M }}</td>
+                                <td>{{ $bajoPeso_9599F }}</td>
+                                <td>{{ $bajoPeso_100M }}</td>
+                                <td>{{ $bajoPeso_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -402,8 +422,16 @@
                                 <td>{{ $normal_7074F }}</td>
                                 <td>{{ $normal_7579M }}</td>
                                 <td>{{ $normal_7579F }}</td>
-                                <td>{{ $normal_80M }}</td>
-                                <td>{{ $normal_80F }}</td>
+                                <td>{{ $normal_8084M }}</td>
+                                <td>{{ $normal_8084F }}</td>
+                                <td>{{ $normal_8589M }}</td>
+                                <td>{{ $normal_8589F }}</td>
+                                <td>{{ $normal_9094M }}</td>
+                                <td>{{ $normal_9094F }}</td>
+                                <td>{{ $normal_9599M }}</td>
+                                <td>{{ $normal_9599F }}</td>
+                                <td>{{ $normal_100M }}</td>
+                                <td>{{ $normal_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -421,8 +449,16 @@
                                 <td>{{ $sobrePeso_7074F }}</td>
                                 <td>{{ $sobrePeso_7579M }}</td>
                                 <td>{{ $sobrePeso_7579F }}</td>
-                                <td>{{ $sobrePeso_80M }}</td>
-                                <td>{{ $sobrePeso_80F }}</td>
+                                <td>{{ $sobrePeso_8084M }}</td>
+                                <td>{{ $sobrePeso_8084F }}</td>
+                                <td>{{ $sobrePeso_8589M }}</td>
+                                <td>{{ $sobrePeso_8589F }}</td>
+                                <td>{{ $sobrePeso_9094M }}</td>
+                                <td>{{ $sobrePeso_9094F }}</td>
+                                <td>{{ $sobrePeso_9599M }}</td>
+                                <td>{{ $sobrePeso_9599F }}</td>
+                                <td>{{ $sobrePeso_100M }}</td>
+                                <td>{{ $sobrePeso_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -439,8 +475,16 @@
                                 <td>{{ $obeso_7074F }}</td>
                                 <td>{{ $obeso_7579M }}</td>
                                 <td>{{ $obeso_7579F }}</td>
-                                <td>{{ $obeso_80M }}</td>
-                                <td>{{ $obeso_80F }}</td>
+                                <td>{{ $obeso_8084M }}</td>
+                                <td>{{ $obeso_8084F }}</td>
+                                <td>{{ $obeso_8589M }}</td>
+                                <td>{{ $obeso_8589F }}</td>
+                                <td>{{ $obeso_9094M }}</td>
+                                <td>{{ $obeso_9094F }}</td>
+                                <td>{{ $obeso_9599M }}</td>
+                                <td>{{ $obeso_9599F }}</td>
+                                <td>{{ $obeso_100M }}</td>
+                                <td>{{ $obeso_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -457,8 +501,16 @@
                                 <td>{{ $totalSeccionB_7074F }}</td>
                                 <td>{{ $totalSeccionB_7579M }}</td>
                                 <td>{{ $totalSeccionB_7579F }}</td>
-                                <td>{{ $totalSeccionB_80M }}</td>
-                                <td>{{ $totalSeccionB_80F }}</td>
+                                <td>{{ $totalSeccionB_8084M }}</td>
+                                <td>{{ $totalSeccionB_8084F }}</td>
+                                <td>{{ $totalSeccionB_8589M }}</td>
+                                <td>{{ $totalSeccionB_8589F }}</td>
+                                <td>{{ $totalSeccionB_9094M }}</td>
+                                <td>{{ $totalSeccionB_9094F }}</td>
+                                <td>{{ $totalSeccionB_9599M }}</td>
+                                <td>{{ $totalSeccionB_9599F }}</td>
+                                <td>{{ $totalSeccionB_100M }}</td>
+                                <td>{{ $totalSeccionB_100F }}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
