@@ -19,9 +19,11 @@
             <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
                 <thead class="thead-light">
                     <tr>
-                        <th>Rut</th>
-                        <th>N° Ficha</th>
                         <th>Nombre completo</th>
+                        <th>Rut</th>
+                        <th>Fecha nacimiento</th>
+                        <th>Nombre Establecimiento</th>
+                        <th>Comuna</th>
                         <th>Telefono</th>
                         <th>Sector</th>
                     </tr>
@@ -29,24 +31,26 @@
                 <tbody>
                     @foreach ($sala_era as $paciente)
                         <tr>
-                            <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
-                            <td>{{ $paciente->ficha }}</td>
                             <td>{{ $paciente->fullName() }}</td>
+                            <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
+                            <td>{{ $paciente->fecha_nacimiento }}</td>
+                            <td>Hospital de Hualañe</td>
+                            <th>Hualañe</th>
                             <td>{{ $paciente->telefono }}</td>
                             <td>
-                                    <span class="mr-2">
-                                @if ($paciente->sector == 'Celeste')
-                                    <i class="fas fa-square text-primary"></i>
-                                    </span> Celeste
-                                @elseif($paciente->sector == 'Naranjo')
-                                    <i class="fas fa-square text-orange"></i>
-                                    </span> Naranjo
-                                @elseif($paciente->sector == 'Blanco')
-                                    <i class="fas fa-square text-white"></i>
-                                    </span> Blanco
-                                @endif
-                            </td>
-                        </tr>
+                                <span class="mr-2">
+                                    @if ($paciente->sector == 'Celeste')
+                                        <i class="fas fa-square text-primary"></i>
+                                </span> Celeste
+                            @elseif($paciente->sector == 'Naranjo')
+                                <i class="fas fa-square text-orange"></i>
+                                </span> Naranjo
+                            @elseif($paciente->sector == 'Blanco')
+                                <i class="fas fa-square text-white"></i>
+                                </span> Blanco
+                    @endif
+                    </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>

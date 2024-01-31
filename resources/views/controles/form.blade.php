@@ -250,7 +250,7 @@
                     break;
                 case 'Medico':
                     $('#Medico, #Nutricionista').show();
-                    $('#Enfermera').hide();
+                    $('#Enfermera, .nut').hide();
                     break;
                 case 'Psicologo':
                     $('#Psicologo').show();
@@ -265,7 +265,8 @@
                     $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
                     break;
                 case 'Nutricionista':
-                    $('#Nutricionista').show();
+                    $('#Nutricionista, #Enfermera').show();
+                    $('.pieDaibetico').hide();
                     break;
             }
         });

@@ -1,4 +1,4 @@
-<div class="card card-purple card-outline mb-3" id="Nutricionista">
+<div class="card card-purple card-outline mb-3 nut" id="Nutricionista">
     {{-- 5to mes control nutricional --}}
     @if ($paciente->grupo < 1)
         <div class="card-header">

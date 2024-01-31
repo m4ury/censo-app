@@ -29,7 +29,7 @@ class SolicitudController extends Controller
     {
         $paciente = new Paciente;
         $solicitudes = Solicitud::latest('created_at')
-            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario')
+            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario', 'sol_receptor')
             ->get();
 
         return view('solicitudes.index', compact('solicitudes', 'paciente'));
@@ -84,6 +84,9 @@ class SolicitudController extends Controller
         //dd($request->all());
         $solicitud->update($request->all());
         $solicitud->modificador_id = Auth::user()->id;
+        if ($request->sol_estado == "some") {
+            $solicitud->sol_receptor = Auth::user()->fullUserName();
+        }
         $solicitud->save();
         return redirect('solicitudes')->withSuccess('Solicitud actualizado con exito!');
     }

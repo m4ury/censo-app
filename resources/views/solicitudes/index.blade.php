@@ -13,6 +13,7 @@
                     <th>N° Ficha</th>
                     <th>Solicitante</th>
                     <th>estado</th>
+                    <th>Receptor (SOME)</th>
                     <th>Ultima modificacion</th>
                     <th>Comentario</th>
                     <th>Acciones</th>
@@ -62,7 +63,7 @@
 
                         </td>
                         <td>{{ $solicitud->user ? $solicitud->user->fullUserName() : '' }}</td>
-                        <td><span class="mr-2">
+                        <td nowrap=""><span class="mr-2">
                                 @if ($solicitud->sol_estado == 'solicitado')
                                     <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P> <i
                                         class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
@@ -95,6 +96,7 @@
                                         dias</span>
                                 @endif
                         </td>
+                        <td>{{ $solicitud->sol_receptor }}</td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
 
                         <td>

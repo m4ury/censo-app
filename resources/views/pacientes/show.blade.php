@@ -106,12 +106,56 @@
                             <div class="tab-pane fade" id="vert-tabs-nino_sano" role="tabpanel"
                                 aria-labelledby="vert-tabs-nino_sano-tab">
                                 <div class="form-group row">
-                                    <p class="text-uppercase text-bold">Control con Enfermera</p>
-                                    {{ $paciente->controls->where('tipo_control', 'Enfermera')->last() }}
+                                    <div class="col">
+                                        @if ($paciente->controls->where('tipo_control', 'Matrona')->count() > 0)
+                                            <p class="text-muted">Control con <span
+                                                    class="text-uppercase text-bold">Matrona </span>: <i
+                                                    class="far fa-check fa-2x text-success mx-3"></i></p>
+                                            Fecha Control: {!! $paciente->controls->where('tipo_control', 'Matrona')->pluck('fecha_control')->last() ?? '--' !!}
+                                        @else
+                                            <p class="text-muted">No existe Control con <span
+                                                    class="text-uppercase text-bold">Matrona </span><i
+                                                    class="far fa-times fa-2x text-warning mx-3"></i></p>
+                                        @endif
+                                    </div>
+                                    <div class="col">
+                                        @if ($paciente->controls->where('tipo_control', 'Medico')->count() > 0)
+                                            <p class="text-muted">Control con <span
+                                                    class="text-uppercase text-bold">Medico </span>: <i
+                                                    class="far fa-check fa-2x text-success mx-3"></i></p>
+                                            Fecha Control: {!! $paciente->controls->where('tipo_control', 'Medico')->pluck('fecha_control')->last() ?? '--' !!}
+                                        @else
+                                            <p class="text-muted">No existe Control con <span
+                                                    class="text-uppercase text-bold">Medico </span><i
+                                                    class="far fa-times fa-2x text-warning mx-3"></i></p>
+                                        @endif
+                                    </div>
+                                    <div class="col">
+                                        @if ($paciente->controls->where('tipo_control', 'Enfermera')->count() > 0)
+                                            <p class="text-muted">Control con <span
+                                                    class="text-uppercase text-bold">Enfermera </span>: <i
+                                                    class="far fa-check fa-2x text-success mx-3"></i></p>
+                                            Fecha Control: {!! $paciente->controls->where('tipo_control', 'Enfermera')->pluck('fecha_control')->last() ?? '--' !!}
+                                        @else
+                                            <p class="text-muted">No existe Control con <span
+                                                    class="text-uppercase text-bold">Enfermera </span><i
+                                                    class="far fa-times fa-2x text-warning mx-3"></i></p>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group row">
-                                    <p class="text-uppercase text-bold">Control con Nutricionista</p>
-                                    {{ $paciente->controls->where('tipo_control', 'Nutricionista')->last() }}
+                                    <div class="col">
+                                        @if ($paciente->controls->where('tipo_control', 'Nutricionista')->count() > 0)
+                                            <p class="text-muted">Control con <span
+                                                    class="text-uppercase text-bold">Nutricionista </span>: <i
+                                                    class="far fa-check fa-2x text-success mx-3"></i></p>
+                                            Fecha Control: {!! $paciente->controls->where('tipo_control', 'Nutricionista')->pluck('fecha_control')->last() ?? '--' !!}
+                                        @else
+                                            <p class="text-muted">No existe Control con <span
+                                                    class="text-uppercase text-bold">Nutricionista </span><i
+                                                    class="far fa-times fa-2x text-warning mx-3"></i></p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
