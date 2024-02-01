@@ -22,6 +22,7 @@
                         <th>Nombre completo</th>
                         <th>Rut</th>
                         <th>Fecha nacimiento</th>
+                        <th>Edad</th>
                         <th>Nombre Establecimiento</th>
                         <th>Comuna</th>
                         <th>Telefono</th>
@@ -34,6 +35,7 @@
                             <td>{{ $paciente->fullName() }}</td>
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->fecha_nacimiento }}</td>
+                            <td>{{ $paciente->edad() }}</td>
                             <td>Hospital de Hualañe</td>
                             <th>Hualañe</th>
                             <td>{{ $paciente->telefono }}</td>

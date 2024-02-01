@@ -182,8 +182,8 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields').hide();
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vihSifilis')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -305,6 +305,9 @@
         $('input.preservativo').on('change', function() {
             $('input.preservativo').not(this).prop('checked', false);
         });
+        $('input.embarazo').on('change', function() {
+            $('input.embarazo').not(this).prop('checked', false);
+        });
     </script>
     <script>
         $('input#pa_14090').on('click', function() {
@@ -348,6 +351,13 @@
                 $('.climater_fields').show();
             } else
                 $('.climater_fields').hide();
+        });
+
+        $('input.embarazo').on('click', function() {
+            if ($('input.embarazo').is(':checked')) {
+                $('.embarazo_fields').show();
+            } else
+                $('.embarazo_fields').hide();
         });
 
         $('.asmaClasif, epocClasif, sborClasif').change(function() {

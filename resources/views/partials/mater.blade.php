@@ -11,7 +11,7 @@
                         'id' => 'ginec',
                     ]) !!}
                 </div>
-                {!! Form::label('regulacion_label', 'Control de regulacion', [
+                {!! Form::label('regulacion_label', 'Control Regulacion', [
                     'class' => 'col-sm-2 col-form-label text-bold',
                 ]) !!}
                 <div class="col-sm-2">
@@ -21,6 +21,7 @@
                     ]) !!}
                 </div>
             </div>
+            {{-- control diada --}}
         @elseif ($paciente->grupo < 1)
             {!! Form::label('diada_label', 'Control DIADA (Entre 7 y 10 dias)', [
                 'class' => 'col-sm-3 col-form-label text-bold',
@@ -32,6 +33,21 @@
                 ]) !!}
             </div>
         @endif
+        {{-- pacientes embarazadas --}}
+        @if ($paciente->embarazada)
+            <div class="form-group row embarazo">
+                {!! Form::label('embarazo_label', 'Control Embarazo', [
+                    'class' => 'col-sm-2 col-form-label text-bold',
+                ]) !!}
+                <div class="col-sm-2">
+                    {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? true : null), [
+                        'class' => 'form-control my-2 embarazo',
+                        'id' => 'embarazo',
+                    ]) !!}
+                </div>
+            </div>
+        @endif
+
         {{-- pacientes entre 45 y 64 años tipo control mater --}}
         @if ($paciente->grupo > 30 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
             <div class="form-group row climater">
@@ -104,7 +120,7 @@
                 ) !!}
             </div>
         </div>
-        <div class="form-group row my-2 ml-2 mx-3 esterilizacion">
+        <div class="form-group row my-2 ml-2 mx-3 estqx">
             {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
                 'class' => 'col-sm col-form-label text-bold',
             ]) !!}
@@ -116,7 +132,7 @@
                         'Mujer' => 'Mujer',
                     ],
                     old('esterilizacion', $control->esterilizacion),
-                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione'],
+                    ['class' => 'form-control form-control-sm esterilizacion', 'placeholder' => 'Seleccione'],
                 ) !!}
             </div>
         </div>
@@ -163,10 +179,79 @@
         </div>
     </div>
 
+    {{-- pacientes embarazadas --}}
+    <div class="form-group row my-2 ml-2 mx-3 embarazo_fields">
+        {!! Form::label('rPsicosocial_label', 'Gestante con Riesgo Psicosocial', [
+            'class' => 'col-sm-3 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::checkbox('rPsicosocial', 1, old('rPsicosocial', $control->rPsicosocial == 1 ? true : null), [
+                'class' => 'form-control my-2',
+                'id' => 'rPsicosocial',
+            ]) !!}
+        </div>
+        {!! Form::label('vGenero_label', 'Presenta Violencia de Genero', [
+            'class' => 'col-sm-2 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm-2">
+            {!! Form::checkbox('vGenero', 1, old('vGenero', $control->vGenero == 1 ? true : null), [
+                'class' => 'form-control my-2',
+                'id' => 'vGenero',
+            ]) !!}
+        </div>
+        {!! Form::label('aro_label', 'Gestante Presenta ARO', [
+            'class' => 'col-sm-2 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm-2">
+            {!! Form::checkbox('aro', 1, old('aro', $control->aro == 1 ? true : null), [
+                'class' => 'form-control my-2',
+                'id' => 'aro',
+            ]) !!}
+        </div>
+
+        {!! Form::label('ecoTrimest_label', 'Ecografia por Trimestre de Gestación (En el semestre)', [
+            'class' => 'col-sm-6 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::select(
+                'ecoTrimest',
+                [
+                    '11sem' => '<11 semanas',
+                    '11_13sem' => '11- 13+6 semanas',
+                    '2224sem' => '22-24 semanas',
+                    '3034sem' => '30-34 semanas',
+                ],
+                old('ecoTrimest', $control->ecoTrimest),
+                ['class' => 'form-control form-control-sm ecoTrimest', 'placeholder' => 'Seleccione'],
+            ) !!}
+        </div>
+
+        {!! Form::label(
+            'vihSifilis_label',
+            'Con TEST de VIH/SIFILIS tomado (En el semestre, Red Publica o Extrasistema)',
+            [
+                'class' => 'col-sm-6 col-form-label text-bold',
+            ],
+        ) !!}
+        <div class="col-sm">
+            {!! Form::select(
+                'vihSifilis',
+                [
+                    '1vih' => 'CON RESULTADO 1° VIH',
+                    '1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
+                    '2vih' => 'CON RESULTADO 2° VIH',
+                    '3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
+                ],
+                old('vihSifilis', $control->vihSifilis),
+                ['class' => 'form-control form-control-sm vihSifilis', 'placeholder' => 'Seleccione'],
+            ) !!}
+        </div>
+    </div>
+
     {{-- todas las pacientes programa de la mujer --}}
     @if ($paciente->sexo == 'Femenino' && $paciente->grupo > 9)
         <div class="form-group row my-2 ml-2 mx-3" id="pap">
-            {!! Form::label('papVigente_label', 'PAP VIGENTE', [
+            {!! Form::label('papVigente_label', 'PAP Vigente', [
                 'class' => 'col-sm-6 col-form-label',
             ]) !!}
             <div class="col-sm-6">
@@ -176,7 +261,7 @@
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3" id="emp">
-            {!! Form::label('empVigente_label', 'EMP VIGENTE', [
+            {!! Form::label('empVigente_label', 'EMP Vigente', [
                 'class' => 'col-sm-6 col-form-label',
             ]) !!}
             <div class="col-sm-6">
@@ -186,7 +271,7 @@
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3" id="mamo">
-            {!! Form::label('mamoVigente_label', 'MAMO VIGENTE', [
+            {!! Form::label('mamoVigente_label', 'MAMO Vigente', [
                 'class' => 'col-sm-6 col-form-label',
             ]) !!}
             <div class="col-sm-6">
