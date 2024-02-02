@@ -333,7 +333,63 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $pMujer->count() }}</a></h3>
+                        <p>PROGRAMA DE LA MUJER</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $pMujer->where('regulacion', 1)->count() }}</h3>
+                        <p>REGULACION FERTILIDAD</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $pMujer->where('embarazada', true)->count() }}</h3>
+                        <p>EMBARAZADAS</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-baby-carriage'></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $pMujer->where('climater', 1)->count() }}</h3>
+                        <p>CLIMATERIO</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('js')

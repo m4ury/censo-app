@@ -591,7 +591,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DM2')
             ->whereNull('pacientes.egreso')
             ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-            ->whereYear('controls.fecha_control', '>', 2022)
+            ->whereYear('controls.fecha_control', '>', 2023)
             ->latest('controls.fecha_control');
     }
 
@@ -604,7 +604,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DM2')
             ->whereNull('pacientes.egreso')
             ->where('controls.hba1cMayorIgual9Porcent', true)
-            ->whereYear('controls.fecha_control', '>', 2022)
+            ->where('controls.fecha_control', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 
@@ -991,7 +991,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Dentista')
             ->where('controls.inasistente', true)
-            ->whereYear('controls.fecha_control', '2023')
+            ->whereYear('controls.fecha_control', '2024')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');

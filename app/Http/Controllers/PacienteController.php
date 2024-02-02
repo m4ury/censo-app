@@ -149,10 +149,8 @@ class PacienteController extends Controller
     public function mac_list()
     {
         $paciente = new Paciente;
-        $dm2 = $paciente->dm2()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
-        $eval = $paciente->evaluacionPie()->get()->unique('rut');
-        $noEval = $dm2->whereNotIn('rut', $eval->pluck('rut'));
+        $pMujer = $paciente->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
 
-        return view('pacientes.sinEvalPie', compact('noEval'));
+        return view('pacientes.pMujer', compact('pMujer'));
     }
 }

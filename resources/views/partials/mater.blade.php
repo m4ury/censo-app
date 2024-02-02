@@ -120,22 +120,6 @@
                 ) !!}
             </div>
         </div>
-        <div class="form-group row my-2 ml-2 mx-3 estqx">
-            {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
-            <div class="col-sm">
-                {!! Form::select(
-                    'esterilizacion',
-                    [
-                        'Hombres' => 'Hombres',
-                        'Mujer' => 'Mujer',
-                    ],
-                    old('esterilizacion', $control->esterilizacion),
-                    ['class' => 'form-control form-control-sm esterilizacion', 'placeholder' => 'Seleccione'],
-                ) !!}
-            </div>
-        </div>
     @endif
 
     {{-- pacientes de 70 años y mas control de regulacion --}}
@@ -250,6 +234,23 @@
 
     {{-- todas las pacientes programa de la mujer --}}
     @if ($paciente->sexo == 'Femenino' && $paciente->grupo > 9)
+
+        <div class="form-group row my-2 ml-2 mx-3">
+            {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'esterilizacion',
+                    [
+                        'Hombres' => 'Hombres',
+                        'Mujer' => 'Mujer',
+                    ],
+                    old('esterilizacion', $control->esterilizacion),
+                    ['class' => 'form-control form-control-sm esterilizacion', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
+        </div>
         <div class="form-group row my-2 ml-2 mx-3" id="pap">
             {!! Form::label('papVigente_label', 'PAP Vigente', [
                 'class' => 'col-sm-6 col-form-label',
