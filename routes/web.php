@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('encuestas', 'EncuestaController');
     Route::resource('ciudadanas', 'CiudadanaController');
 
+    //rutas para IC
+    Route::resource('interconsultas', 'InterconsultaController');
+
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');

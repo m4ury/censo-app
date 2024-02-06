@@ -13,10 +13,8 @@ class Patologia extends Model
         return $this->belongsToMany(Paciente::class)->withPivot('created_at');
     }
 
-    /*public function paciente()
+    public function interconsultas()
     {
-        return $this->HasMany(subPatologias::class);
-    }*/
-
-
+        return $this->hasMany(Interconsulta::class);
+    }
 }

@@ -337,7 +337,7 @@
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $pMujer->count() }}</a></h3>
+                        <h3 style="color:aliceblue">{{ $all->totalMac()->get()->unique('rut')->count() }}</a></h3>
                         <p>PROGRAMA DE LA MUJER</p>
                     </div>
                     <div class="icon">

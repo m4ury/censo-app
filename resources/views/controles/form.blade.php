@@ -104,10 +104,10 @@
             'placeholder' => 'IMC',
         ]) !!}
     </div>
-    {!! Form::label('imc_resultado', 'Estado Nutricional', ['class' => 'col-sm-3 col-form-label']) !!}
+    {!! Form::label('imc_resultado_label', 'Estado Nutricional', ['class' => 'col-sm-3 col-form-label rImc_label']) !!}
     <div class="col-sm-3">
         {!! Form::text('imc_resultado', old('imc_resultado', $control->imc_resultado), [
-            'class' => 'form-control form-control-sm' . ($errors->has('imc_resultado') ? ' is-invalid' : ''),
+            'class' => 'form-control form-control-sm rImc' . ($errors->has('imc_resultado') ? ' is-invalid' : ''),
             'placeholder' => 'Est. Nutricional.',
         ]) !!}
         @if ($errors->has('imc_resultado'))
@@ -238,6 +238,9 @@
             var selection = $('#tipo').val();
             switch (selection) {
                 case 'Enfermera':
+                    if ('{{ $paciente->edad() }}' < 3) {
+                        $('.presion_art, .rImc, .rImc_label').hide()
+                    } else $('.presion_art, .rImc, .rImc_label').show()
                     $('#Enfermera').show();
                     $('#efam').show();
                     //$('#Kine').hide();
@@ -265,6 +268,9 @@
                     $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
                     break;
                 case 'Nutricionista':
+                    if ('{{ $paciente->edad() }}' < 3) {
+                        $('.presion_art, .rImc, .rImc_label').hide()
+                    } else $('.presion_art, .rImc, .rImc_label').show()
                     $('#Nutricionista, #Enfermera').show();
                     $('.pieDaibetico').hide();
                     break;

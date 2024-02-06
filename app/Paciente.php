@@ -43,6 +43,11 @@ class Paciente extends Model
         return $this->hasMany(Control::class);
     }
 
+    public function interconsultas()
+    {
+        return $this->hasMany(Interconsulta::class);
+    }
+
     public function consultas()
     {
         return $this->hasMany(Consulta::class);
@@ -1061,12 +1066,11 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
-            ->whereNotNull('controls.hormonal')
-            ->orWhere('controls.diu_cobre', true)
-            ->orWhere('controls.diu_levonorgest', true)
-            ->orWhereIn('preservativo', ['Hombres', 'Mujer'])
-            ->orWhereIn('esterilizacion', ['Hombres', 'Mujer'])
             //->whereYear('controls.fecha_control', '2023')
+            ->where('controls.regulacion', true)
+            ->orWhere('controls.climater', true)
+            ->orWhere('controls.ginec', true)
+            ->orWhere('controls.embarazo', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }

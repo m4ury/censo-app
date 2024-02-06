@@ -42,8 +42,10 @@ class PacienteController extends Controller
         $patologias = Patologia::all();
         $controles = $paciente->controls()->latest('fecha_control')->get();
         $consultas = $paciente->consultas()->latest('fecha_consulta')->get();
+        $interconsultas = $paciente->interconsultas()->latest('fecha_ic')->get();
 
-        return view('pacientes.show', compact('paciente', 'controles', 'consultas', 'patologias'));
+
+        return view('pacientes.show', compact('paciente', 'controles', 'consultas', 'patologias', 'interconsultas'));
     }
 
     public function edit($id)
@@ -146,7 +148,7 @@ class PacienteController extends Controller
         return view('pacientes.sinEvalPie', compact('noEval'));
     }
 
-    public function mac_list()
+    public function pMujer_list()
     {
         $paciente = new Paciente;
         $pMujer = $paciente->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');

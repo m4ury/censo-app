@@ -45,7 +45,12 @@
                                 aria-selected="true">Informacion del Paciente</a>
                             <a class="nav-link" id="vert-tabs-controles-tab" data-toggle="pill"
                                 href="#vert-tabs-controles" role="tab" aria-controls="vert-tabs-controles"
-                                aria-selected="false">Controles</a>
+                                aria-selected="false">Controles
+                            </a>
+
+                            <a class="nav-link" id="vert-tabs-ic-tab" data-toggle="pill" href="#vert-tabs-ic"
+                                role="tab" aria-controls="vert-tabs-ic" aria-selected="false">Interconsultas</a>
+
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
                                 aria-selected="false">Diagnosticos</a>
@@ -157,6 +162,19 @@
                                         @endif
                                     </div>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="vert-tabs-ic" role="tabpanel"
+                                aria-labelledby="vert-tabs-ic-tab">
+                                @include('interconsultas.list_ic', $paciente)
+                                @if ($paciente->interconsultas->count() > 0)
+                                    <a href="{{ route('interconsultas', $paciente->id) }}"><span class="text-bold">Ver
+                                            Todas
+                                            las
+                                            interconsultas...</span></a>
+                                @else
+                                    <p class="text-muted">No hay Controles aun, crea uno <i
+                                            class="far fa-laugh-wink fa-2x"></i></p>
+                                @endif
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">

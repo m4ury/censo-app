@@ -274,6 +274,11 @@ return [
             'icon' => 'fas fa-radiation text-yellow',
             'can' => 'rx'
         ],
+        [
+            'text' => 'Interconsultas',
+            'route' => 'interconsultas.index',
+            'icon' => 'fas fa-fw fa-hospital-user text-info',
+        ],
 
         //['header' => 'Patologias'],
         [
