@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Paciente;
+use App\Problema;
+use App\Patologia;
 use App\Interconsulta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,10 +36,11 @@ class InterconsultaController extends Controller
      */
     public function create()
     {
-        //$paciente = Paciente::with('patologias')->findOrFail();
         $pacientes = Paciente::select(DB::raw('CONCAT(nombres, " ", apellidoP, " - ", rut) AS full_name, id'))->pluck('full_name', 'id');
+        $problemas = Problema::select(DB::raw('CONCAT(nombre_problema, " ", " - ", numero_ges) AS full_problema, id'))->pluck('full_problema', 'id');
+        //$paciente = Paciente::with('problemas')->findOrFail($id);
         $ic = new Interconsulta;
-        return view('interconsultas.create', compact('pacientes', 'ic'));
+        return view('interconsultas.create', compact('pacientes', 'ic', 'problemas'));
     }
 
     /**

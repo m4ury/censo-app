@@ -1,0 +1,150 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Problema;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+class ProblemaSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $problemas = [
+            //patologias GES y No GES para Interconsultas
+
+            //GES
+            ['nombre_problema' => 'Enfermedad Renal Crónica Etapa 4 y 5: Adulto / Infantil', 'numero_ges' => 1, 'ges' => true],
+            ['nombre_problema' => 'Cardiopatias Congenitas Operables en menores de 15 años.', 'numero_ges' => 2, 'ges' => true],
+            ['nombre_problema' => 'Cancer Cervicouterino', 'numero_ges' => 3, 'ges' => true],
+            ['nombre_problema' => 'Alivio del Dolor y Cuidados Paliativos por Cáncer Avanzado', 'numero_ges' => 4, 'ges' => true],
+            ['nombre_problema' => 'Infarto Agudo del Miocardio', 'numero_ges' => 5, 'ges' => true],
+            ['nombre_problema' => 'Diabetes Mellitus Tipo 1', 'numero_ges' => 6, 'ges' => true],
+            ['nombre_problema' => 'Diabetes Mellitus Tipo 2', 'numero_ges' => 7, 'ges' => true],
+            ['nombre_problema' => 'Cancer de Mama en Personas de 15 Años y Más', 'numero_ges' => 8, 'ges' => true],
+            ['nombre_problema' => 'Disrrafias Espinales', 'numero_ges' => 9, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Quirúrgico de Escoliosis en Personas Menores de 25 Años', 'numero_ges' => 10, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Quirúrgico de Cataratas', 'numero_ges' => 11, 'ges' => true],
+            ['nombre_problema' => 'Endoprótesis Total de Cadera en Personas de 65 Años y Más con Artrosis de Cadera con Limitación Funcional Severa.', 'numero_ges' => 12, 'ges' => true],
+            ['nombre_problema' => 'Fisura Labiopalatina', 'numero_ges' => 13, 'ges' => true],
+            ['nombre_problema' => 'Cancer en Personas Menores de 15 Años.', 'numero_ges' => 14, 'ges' => true],
+            ['nombre_problema' => 'Esquizofrenia ', 'numero_ges' => 15, 'ges' => true],
+            ['nombre_problema' => 'Cancer de Testiculo en Personas de 15 Años y Más', 'numero_ges' => 16, 'ges' => true],
+            ['nombre_problema' => 'Linfomas en Personas de 15 Años y Más', 'numero_ges' => 17, 'ges' => true],
+            ['nombre_problema' => 'Sindrome Inmunodeficiencia Adquirida VIH/SIDA', 'numero_ges' => 18, 'ges' => true],
+            ['nombre_problema' => 'Infección Respiratoria Aguda (IRA) de Manejo Ambulatorio en Personas Menores de 5 Años.', 'numero_ges' => 19, 'ges' => true],
+            ['nombre_problema' => 'Neumonia Adquirida en la Comunidad de Manejo Ambulatorio en Personas de 65 Años y Más', 'numero_ges' => 20, 'ges' => true],
+            ['nombre_problema' => 'Hipertensión Arterial', 'numero_ges' => 21, 'ges' => true],
+            ['nombre_problema' => 'Epilepsia no Refractaria en Personas Desde 1 año y Menores de 15 Años', 'numero_ges' => 22, 'ges' => true],
+            ['nombre_problema' => 'Salud Oral Integral para Niños y Niñas de 6 años', 'numero_ges' => 23, 'ges' => true],
+            ['nombre_problema' => 'Prevencion de Parto Prematuro', 'numero_ges' => 24, 'ges' => true],
+            ['nombre_problema' => 'Trastorno de Generación del Impulso y Conducción en Personas de 15 Años y Más, que Requieren Marcapaso.', 'numero_ges' => 25, 'ges' => true],
+            ['nombre_problema' => 'Colecistectomía Preventiva del Cáncer de Vesícula en Personas de 35 a 49 Años', 'numero_ges' => 26, 'ges' => true],
+            ['nombre_problema' => 'Cancer Gastrico', 'numero_ges' => 27, 'ges' => true],
+            ['nombre_problema' => 'Cancer de Prostata en Personas de 15 Años y Más', 'numero_ges' => 28, 'ges' => true],
+            ['nombre_problema' => 'Vicios de Refraccion en Personas de 65 Años y Más', 'numero_ges' => 29, 'ges' => true],
+            ['nombre_problema' => 'Estrabismo en Personas Menores de 9 Años', 'numero_ges' => 30, 'ges' => true],
+            ['nombre_problema' => 'Retinopatia Diabetica', 'numero_ges' => 31, 'ges' => true],
+            ['nombre_problema' => 'Desprendimiento de Retina Regmatógeno no Traumático', 'numero_ges' => 32, 'ges' => true],
+            ['nombre_problema' => 'Hemofilia Adulto / Infantil', 'numero_ges' => 33, 'ges' => true],
+            ['nombre_problema' => 'Depresion en Personas de 15 Años y Más', 'numero_ges' => 34, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento de la Hiperplasia Benigna de Próstata en Personas Sintomáticas', 'numero_ges' => 35, 'ges' => true],
+            ['nombre_problema' => 'Ortesis en Personas de 65 años y Más', 'numero_ges' => 36, 'ges' => true],
+            ['nombre_problema' => 'Accidente Cerebrovascular Isquémico en Personas de 15 Años y Más', 'numero_ges' => 37, 'ges' => true],
+            ['nombre_problema' => 'Enfermedad Pulmonar Obstructiva Crónica de Tratamiento Ambulatorio', 'numero_ges' => 38, 'ges' => true],
+            ['nombre_problema' => 'Asma Bronquial moderada y Grave en Menores de 15 Años', 'numero_ges' => 39, 'ges' => true],
+            ['nombre_problema' => 'Sindrome de dificultad  Respiratoria en el recién Nacido', 'numero_ges' => 40, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Médico en Personas de 55 Años y Más con Artrosis Cadera y/o Rodilla, Leve o Moderada', 'numero_ges' => 41, 'ges' => true],
+            ['nombre_problema' => 'Hemorragia  Subaracnoidea Secundaria a Ruptura de Aneurismas Cerebrales', 'numero_ges' => 42, 'ges' => true],
+            ['nombre_problema' => 'Tumores primarios del Sistema Nervioso Central en Personas de 15 Años y Más', 'numero_ges' => 43, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Quirúrgico de Hernia del Nucleo Pulposo lumbar', 'numero_ges' => 44, 'ges' => true],
+            ['nombre_problema' => 'Leucemia en Personas de 15 Años y Más', 'numero_ges' => 45, 'ges' => true],
+            ['nombre_problema' => 'Urgencia Odontologica Ambulatoria.', 'numero_ges' => 46, 'ges' => true],
+            ['nombre_problema' => 'Salud Oral Integral del Adulto de 60 Años', 'numero_ges' => 47, 'ges' => true],
+            ['nombre_problema' => 'Politraumatizado Grave', 'numero_ges' => 48, 'ges' => true],
+            ['nombre_problema' => 'Traumatismo Cráneo Encefálico Moderado o Grave', 'numero_ges' => 49, 'ges' => true],
+            ['nombre_problema' => 'Trauma Ocular Grave', 'numero_ges' => 50, 'ges' => true],
+            ['nombre_problema' => 'Fibrosis Quistica', 'numero_ges' => 51, 'ges' => true],
+            ['nombre_problema' => 'Artritis Reumatoidea', 'numero_ges' => 52, 'ges' => true],
+            ['nombre_problema' => 'Consumo Perjudicial o Dependencia de Riesgo Bajo a Moderado de Alcohol y Drogas en Personas Menores de 20 Años.', 'numero_ges' => 53, 'ges' => true],
+            ['nombre_problema' => 'Analgesia del Parto', 'numero_ges' => 54, 'ges' => true],
+            ['nombre_problema' => 'Gran Quemado Adulto / Pediátrico', 'numero_ges' => 55, 'ges' => true],
+            ['nombre_problema' => 'Hipoacusia Bilteral en Personas de 65 Años y Más que requieren Audífono', 'numero_ges' => 56, 'ges' => true],
+            ['nombre_problema' => 'Retinopatía del Prematuro', 'numero_ges' => 57, 'ges' => true],
+            ['nombre_problema' => 'Displasia Broncopulmonar del Prematuro', 'numero_ges' => 58, 'ges' => true],
+            ['nombre_problema' => 'Hipoacusia Neurosensorial Bilateral del Prematuro', 'numero_ges' => 59, 'ges' => true],
+            ['nombre_problema' => 'Epilepsia no Refractaria en Personas De 15 Años y Más', 'numero_ges' => 60, 'ges' => true],
+            ['nombre_problema' => 'Asma Bronquial en Personas de 15 Años y Más', 'numero_ges' => 61, 'ges' => true],
+            ['nombre_problema' => 'Enfermedad de Parkinson', 'numero_ges' => 62, 'ges' => true],
+            ['nombre_problema' => 'Artritis Idiopática Juvenil', 'numero_ges' => 63, 'ges' => true],
+            ['nombre_problema' => 'Prevencion Secundaria Enfermedad Renal Crónica Terminal', 'numero_ges' => 64, 'ges' => true],
+            ['nombre_problema' => 'Displasia Luxante de Caderas', 'numero_ges' => 65, 'ges' => true],
+            ['nombre_problema' => 'Salud oral Integral de la Embarazada', 'numero_ges' => 66, 'ges' => true],
+            ['nombre_problema' => 'Esclerosis Multiple Remitente Recurrente', 'numero_ges' => 67, 'ges' => true],
+            ['nombre_problema' => 'Hepatitis  Crónica Por Virus Hepatitis B', 'numero_ges' => 68, 'ges' => true],
+            ['nombre_problema' => 'Hepatitis  Crónica Por Virus Hepatitis C', 'numero_ges' => 69, 'ges' => true],
+            ['nombre_problema' => 'Cancer Colorectal en Personas de 15 Años y Más', 'numero_ges' => 70, 'ges' => true],
+            ['nombre_problema' => 'Cáncer de Ovario Epitelial', 'numero_ges' => 71, 'ges' => true],
+            ['nombre_problema' => 'Cáncer Vesical en Personas de 15 Años y Más', 'numero_ges' => 72, 'ges' => true],
+            ['nombre_problema' => 'Osteosarcoma en Personas de 15 Años y Más', 'numero_ges' => 73, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Quirúrgico de Lesiones Crónicas de la Válvula Aórtica en Personas de 15 Años y Más', 'numero_ges' => 74, 'ges' => true],
+            ['nombre_problema' => 'Trastorno Bipolar en Personas de 15 Años y Más', 'numero_ges' => 75, 'ges' => true],
+            ['nombre_problema' => 'Hipotiroidismo en Personas de 15 Años y Más', 'numero_ges' => 76, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento de Hipoacusia Moderada en Menores de 4 Años', 'numero_ges' => 77, 'ges' => true],
+            ['nombre_problema' => 'Lupus Erimatoso Sistémico', 'numero_ges' => 78, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento Quirúrgico de Lesiones Crónicas de las Válvulas Mitral y Tricúspide en Personas de 15 Años y Más', 'numero_ges' => 79, 'ges' => true],
+            ['nombre_problema' => 'Tratamiento de Erradicación del Elicobacter Pylori', 'numero_ges' => 80, 'ges' => true],
+            ['nombre_problema' => 'Cáncer de Pulmón', 'numero_ges' => 81, 'ges' => true],
+            ['nombre_problema' => 'Cáncer de toroides', 'numero_ges' => 82, 'ges' => true],
+            ['nombre_problema' => 'Cánce Renal', 'numero_ges' => 83, 'ges' => true],
+            ['nombre_problema' => 'Mieloma Múltiple', 'numero_ges' => 84, 'ges' => true],
+            ['nombre_problema' => 'Enfermedad de Alzheimer y otras demencias', 'numero_ges' => 85, 'ges' => true],
+            ['nombre_problema' => 'Atención Integral de salud en Agresión Sexual Agudo', 'numero_ges' => 86, 'ges' => true],
+            ['nombre_problema' => 'Rehabilitación SARS COV-2', 'numero_ges' => 87, 'ges' => true],
+
+            // NO GES
+            ['nombre_problema' => 'Aro (Obstetrica)', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Broncopulmonar', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Cirujia Adulto', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Cirujia Infantil', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Cardiologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Coloproctologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Dermatologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Endocrinologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Endodoncia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Endoscopia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Gastroenterologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Ginecologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Infertilidad', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Maxilofacial', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Medicina General/Interna', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Nefrologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Neurologia Adulto', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Neurologia Infantil', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Odontopediatria', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Oftalmologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Ortodoncia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Otorrino', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Patologia Mamaria', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Pediatria', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Periodoncia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Protesis', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Trastornos temporales mandibulares y dolor Orofacial', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Reumatologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Psiquiatria Adulto', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Psiquiatria Infantil', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Traumatologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Urologia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Neurocirugia', 'numero_ges' => null, 'ges' => false],
+            ['nombre_problema' => 'Patologia Oral', 'numero_ges' => null, 'ges' => false],
+        ];
+        foreach ($problemas as $problema) {
+            Problema::updateOrCreate($problema);
+        }
+    }
+}

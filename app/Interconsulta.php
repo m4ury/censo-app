@@ -9,11 +9,6 @@ class Interconsulta extends Model
 {
     use HasFactory;
 
-    public function patologia()
-    {
-        return $this->belongsTo(Patologia::class);
-    }
-
     public function paciente()
     {
         return $this->belongsTo(Paciente::class);

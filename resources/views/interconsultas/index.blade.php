@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="col-sm-6 pb-3">
-        <a class="btn bg-gradient-success btn-sm" title="Nueva Interconsulta" href="{{ route('interconsultas.create') }}">
-            <i class="fas fa-user-plus">
+        <a class="btn bg-gradient-success btn-sm my-3" title="Nueva Interconsulta" href="{{ route('interconsultas.create') }}">
+            <i class="fas fa-invoice">
             </i>
-            Nuevo Interconsulta
+            Nueva Interconsulta
         </a>
     </div>
     <div class="col-md-12 table-responsive">
