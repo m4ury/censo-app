@@ -165,7 +165,7 @@
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-ic" role="tabpanel"
                                 aria-labelledby="vert-tabs-ic-tab">
-                                @include('interconsultas.list_ic', $paciente)
+                                {{-- @include('interconsultas.list_ic', $paciente)
                                 @if ($paciente->interconsultas->count() > 0)
                                     <a href="{{ route('interconsultas', $paciente->id) }}"><span class="text-bold">Ver
                                             Todas
@@ -174,7 +174,7 @@
                                 @else
                                     <p class="text-muted">No hay Controles aun, crea uno <i
                                             class="far fa-laugh-wink fa-2x"></i></p>
-                                @endif
+                                @endif --}}
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">

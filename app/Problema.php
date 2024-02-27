@@ -9,8 +9,8 @@ class Problema extends Model
 {
     use HasFactory;
 
-    public function interconsultas()
+    public function interconsulta()
     {
-        return $this->hasMany(Interconsulta::class);
+        return $this->hasOne(Interconsulta::class);
     }
 }

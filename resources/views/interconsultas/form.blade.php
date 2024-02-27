@@ -1,4 +1,4 @@
-<div class="form-group row">
+{{-- <div class="form-group row">
     {!! Form::label('rut_label', 'Rut Paciente:', ['class' => 'col-sm col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select('paciente_id', $pacientes, null, [
@@ -12,7 +12,7 @@
             </span>
         @endif
     </div>
-</div>
+</div> --}}
 <div class="form-group row" id="fechaHora_ic">
     {!! Form::label('fechaIc_label', 'Fecha Interconsulta', [
         'class' => 'col-sm-3 col-form-label',

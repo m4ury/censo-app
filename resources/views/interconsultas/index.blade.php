@@ -16,23 +16,32 @@
                 <tr>
                     <th>Fecha IC</th>
                     <th>Hora IC</th>
-                    <th>Nombre Paciente</th>
-                    <th>Rut</th>
-                    <th>Edad</th>
+                    <th>Estado Interconsulta</th>
                     <th>Retirado por</th>
+                    <th>Problema Salud</th>
+                    <th>GES / NO GES</th>
+                    <th>Rut</th>
+                    <th>Nombre Paciente</th>
+                    <th>Edad</th>
+                    <td>Acciones</td>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($interconsultas as $interconsulta)
                     <tr>
-                        <td>{{ $interconsulta->fecha_ic }}</td>
-                        <td>{{ $interconsulta->hora_ic }}</td>
-                        <td class="text-uppercase">{{ $interconsulta->paciente ?? '' }}</td>
-                        <td><a
-                                href="{{ route('interconsultas.show', $interconsulta->id) }}">{{ $interconsulta->paciente->rut ?? '' }}</a>
-                        </td>
-                        <td>{{ $interconsulta->paciente ?? '' }}</td>
+                        <td>{{ Carbon\Carbon::parse($interconsulta->fecha_ic)->format('d-m-Y') }}</td>
+                        <td>{{ Carbon\Carbon::parse($interconsulta->hora_ic)->format('G:i A') }}</td>
+                        <td class="text-uppercase text-bold">{{ $interconsulta->estado_ic }}</td>
                         <td>{{ $interconsulta->retirado_por }}</td>
+                        <td>{{ $interconsulta->problema->numero_ges ?? '--' }} -
+                            {{ $interconsulta->problema->nombre_problema ?? '--' }}
+                        </td>
+                        <td>{{ $interconsulta->problemas->ges ?? '--' }}</td>
+                        <td class="text-uppercase" nowrap="">{{ $interconsulta->paciente->rut ?? '' }}</td>
+                        <td>{{ $interconsulta->paciente->fullName() ?? '' }}
+                        </td>
+                        <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
+                        <td></td>
                     </tr>
                 @endforeach
             </tbody>

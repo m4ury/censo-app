@@ -8,6 +8,7 @@ use App\Patologia;
 use App\Interconsulta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreInterconsultaRequest;
 use App\Http\Requests\UpdateInterconsultaRequest;
 
@@ -18,15 +19,13 @@ class InterconsultaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $q = $request->get('q');
-        $interconsultas = Interconsulta::with('pacientes')
-            ->orderBy('fecha_ic')
-            ->search($q)
-            ->get();
+        $interconsultas = Interconsulta::with('paciente', 'problema')->get();
+        //dd($interconsultas);
 
-        return view('interconsultas.index', compact('interconsultas', 'q'));
+
+        return view('interconsultas.index', compact('interconsultas'));
     }
 
     /**
@@ -49,9 +48,28 @@ class InterconsultaController extends Controller
      * @param  \App\Http\Requests\StoreInterconsultaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInterconsultaRequest $request)
+    public function store(Request $request)
     {
-        Paciente::create($request->all());
+
+        $pcte = Paciente::firstOrNew(
+            ['rut' =>  request('rut')],
+            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM'), 'fecha_nacimiento' => request('fecha_nacimiento')]
+        );
+
+        $validator = Validator::make($request->all(), [
+            'rut' => 'cl_rut|unique:pacientes',
+            'nombres' => 'string|min:3',
+            'apellidoP' => 'string|min:3',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $pcte->save();
+
+        $ic = new Interconsulta($request->all());
+        $ic->problema_id = $request->problema_id;
+        $ic->paciente_id = $pcte->id;
+        $ic->save();
         //Alert::success('Nuevo Paciente ha sido cread@ con exito');
         return redirect('interconsultas')->withSuccess('Registro Creado con exito!');
     }
@@ -64,7 +82,6 @@ class InterconsultaController extends Controller
      */
     public function show(Interconsulta $interconsulta)
     {
-        //
     }
 
     /**
