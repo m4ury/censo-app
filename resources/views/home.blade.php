@@ -9,7 +9,12 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 4)->whereNull('egreso')->count() }}
+                        <h3>{{-- $all->withCount('patologias')->whereNotIn('patologia_id', [9])->having('patologias_count', '>', 4)->whereNull('egreso')->count() --}}
+                            {{ /* $all->whereHas('patologias', function ($query) {
+                                                                                                                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                                                                        }, '>', 4
+                                                                                                                        )->whereNull('egreso')->count() */
+                                $all->g3()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
                     </div>
@@ -24,7 +29,20 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-orange">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)->whereNull('egreso')->count() }}
+                        <h3>{{-- $all->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
+                        ->whereHas('patologias', function ($query){
+                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                            })
+                        ->whereNull('egreso')->dd() --}}
+                            {{ /* $all->whereHas(
+                                                                                            'patologias',
+                                                                                            function ($query) {
+                                                                                                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                                            },
+                                                                                            '>',
+                                                                                            1,
+                                                                                        )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso')->count() */
+                                $all->g2()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
                     </div>
@@ -40,7 +58,16 @@
             <div class="col-lg-4 col-sm">
                 <div class="small-box bg-gradient-warning">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '=', 1)->whereNull('egreso')->count() }}
+                        <h3>{{-- $all->withCount('patologias')->having('patologias_count', '=', 1)->whereNull('egreso')->count() --}}
+                            {{ /* $all->whereHas(
+                                                                'patologias',
+                                                                function ($query) {
+                                                                    $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                },
+                                                                '=',
+                                                                1,
+                                                            )->whereNull('egreso')->count() */
+                                $all->g1()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
                     </div>

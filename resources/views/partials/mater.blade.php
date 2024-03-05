@@ -209,26 +209,37 @@
                 ['class' => 'form-control form-control-sm ecoTrimest', 'placeholder' => 'Seleccione'],
             ) !!}
         </div>
-
-        {!! Form::label(
-            'vihSifilis_label',
-            'Con TEST de VIH/SIFILIS tomado (En el semestre, Red Publica o Extrasistema)',
-            [
-                'class' => 'col-sm-6 col-form-label text-bold',
-            ],
-        ) !!}
-        <div class="col-sm">
-            {!! Form::select(
-                'vihSifilis',
-                [
-                    '1vih' => 'CON RESULTADO 1° VIH',
-                    '1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
-                    '2vih' => 'CON RESULTADO 2° VIH',
-                    '3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
-                ],
-                old('vihSifilis', $control->vihSifilis),
-                ['class' => 'form-control form-control-sm vihSifilis', 'placeholder' => 'Seleccione'],
-            ) !!}
+        <div class="row my-2 ml-2 mx-3">
+            {!! Form::label('vih_label', 'Con TEST de VIH tomado (En el semestre, Red Publica o Extrasistema)', [
+                'class' => 'col-sm-4 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-2">
+                {!! Form::select(
+                    'vih',
+                    [
+                        '1vih' => 'CON RESULTADO 1° VIH',
+                        //'1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
+                        '2vih' => 'CON RESULTADO 2° VIH',
+                        //'3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
+                    ],
+                    old('vih', $control->vih),
+                    ['class' => 'form-control form-control-sm vih', 'placeholder' => 'VIH'],
+                ) !!}
+            </div>
+            {!! Form::label('sifilis_label', 'Con TEST de SIFILIS tomado (En el semestre, Red Publica o Extrasistema)', [
+                'class' => 'col-sm-4 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-2">
+                {!! Form::select(
+                    'sifilis',
+                    [
+                        '1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
+                        '3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
+                    ],
+                    old('sifilis', $control->sifilis),
+                    ['class' => 'form-control form-control-sm sifilis', 'placeholder' => 'Sifilis'],
+                ) !!}
+            </div>
         </div>
     </div>
 

@@ -1009,20 +1009,40 @@ class Paciente extends Model
 
     function g3()
     {
-        return $this->withCount('patologias')->having('patologias_count', '>', 4)
+        /* return $this->withCount('patologias')->having('patologias_count', '>', 4)
+            ->whereNull('egreso'); */
+        return $this->whereHas('patologias', function ($query) {
+            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+        }, '>', 4)
             ->whereNull('egreso');
     }
 
     function g2()
     {
-        return $this->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
-            ->whereNull('egreso');
+        return $this->whereHas(
+            'patologias',
+            function ($query) {
+                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+            },
+            '>',
+            1,
+        )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso');
+        /* $this->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
+            ->whereNull('egreso'); */
     }
 
     function g1()
     {
-        return $this->withCount('patologias')->having('patologias_count', '=', 1)
-            ->whereNull('egreso');
+        return $this->whereHas(
+            'patologias',
+            function ($query) {
+                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+            },
+            '=',
+            1,
+        )->whereNull('egreso');
+        /* ->withCount('patologias')->having('patologias_count', '=', 1)
+            ->whereNull('egreso'); */
     }
 
     public function diu($metodo)
