@@ -280,6 +280,12 @@ return [
             'icon' => 'fas fa-fw fa-hospital-user text-info',
         ],
 
+        [
+            'text' => 'Constancias GES',
+            'route' => 'constancias.index',
+            'icon' => 'fas fa-fw fa-hospital-user text-primary',
+        ],
+
         //['header' => 'Patologias'],
         [
             'text' => 'Patologias',

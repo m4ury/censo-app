@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
 
+     //rutas para constancias
+     Route::resource('constancias', 'ConstanciaController');
+
     //rutas para controles
     Route::resource('controles', 'ControlController')->except('[index, create]');
     //Route::get('controles-all', 'ControlController@index')->name('controles-all');

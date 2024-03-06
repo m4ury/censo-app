@@ -7,17 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Constancia extends Model
 {
+    protected $guarded = ['id'];
+
     use HasFactory;
 
-    public function paciente(){
+    public function paciente()
+    {
         return $this->belongsTo(Paciente::class);
     }
 
-    public function problema(){
+    public function problema()
+    {
         return $this->belongsTo(Problema::class);
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

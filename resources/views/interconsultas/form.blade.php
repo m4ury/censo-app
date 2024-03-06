@@ -1,10 +1,10 @@
-{{-- <div class="form-group row">
+<div class="form-group row">
     {!! Form::label('rut_label', 'Rut Paciente:', ['class' => 'col-sm col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select('paciente_id', $pacientes, null, [
             'class' => 'form-control form-control-sm' . ($errors->has('paciente_id') ? ' is-invalid' : ''),
             'placeholder' => 'Seleccione un rut',
-            'id' => 'rut',
+            'id' => 'pacientes',
         ]) !!}
         @if ($errors->has('paciente_id'))
             <span class="invalid-feedback">
@@ -12,7 +12,7 @@
             </span>
         @endif
     </div>
-</div> --}}
+</div>
 <div class="form-group row" id="fechaHora_ic">
     {!! Form::label('fechaIc_label', 'Fecha Interconsulta', [
         'class' => 'col-sm-3 col-form-label',
@@ -71,7 +71,7 @@
 </div>
 @section('js')
     <script>
-        $('#rut, #problema').select2({
+        $('#pacientes, #problema').select2({
             theme: "classic",
             width: "100%"
         })
