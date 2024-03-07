@@ -7,12 +7,10 @@
         <table id="constancias" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
                 <tr>
-                    <th>Fecha constancia</th>
                     <th>RUN</th>
                     <th>Nombre legal / Social</th>
                     <th>Problema Salud GES</th>
                     <th>Nº GES</th>
-                    <th>Informacion médica</th>
                     <th>Tipo atención</th>
                     <th>Fecha / Hora Notificación</th>
                     <th>Notifica</th>
@@ -22,8 +20,7 @@
             <tbody>
                 @foreach ($constancias as $constancia)
                     <tr>
-                        <td>{{ $constancia->fecha_constancia ?? Carbon\Carbon::parse($constancia->fecha_constancia)->format('d-m-Y')}}
-                        </td>
+
                         <td nowrap="">{{ $constancia->paciente->rut ?? '' }}</td>
                         <td>
                             {{ $constancia->paciente ? $constancia->paciente->fullName() : '' }} -
@@ -35,30 +32,35 @@
                         <td>
                             {{ $constancia->problema->numero_ges ?? '--' }}
                         </td>
+
                         <td>
-                            {{ $constancia->tipo_constancia }}
-                        </td>
-                        <td>
-                            {{ $constancia->presencial ? $constancia->presencial : $constancia->teleconsulta ?? '--' }}
+                            {{ $constancia->presencial ? 'Presencial' : 'Teleconsulta' }}
                         </td>
                         <td> {{ Carbon\Carbon::parse($constancia->fecha_notificacion)->format('d-m-Y G:i A') }}</td>
 
                         <td>{{ $constancia->user ? $constancia->user->fullUserName() : '' }}</td>
 
                         @if (auth()->user()->someUser() || auth()->user()->isAdmin())
-                        {!! Form::open(['route' => ['constancias.destroy', $constancia->id], 'method' => 'DELETE']) !!}
-                        <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
-                                href="{{ url('constancias/'.$constancia->id.'/editar') }}"><i class="fas fa-pen"></i></a>
-                            {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                            btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
-                            'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Constancia?")'] ) !!}
-                            {!! Form::close() !!}
+                            {!! Form::open(['route' => ['constancias.destroy', $constancia->id], 'method' => 'DELETE']) !!}
+                            <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                    title="Editar" href="{{ url('constancias/' . $constancia->id . '/editar') }}"><i
+                                        class="fas fa-pen"></i></a>
+                                {!! Form::button('<i class="fas fa-trash"></i>', [
+                                    'type' => 'submit',
+                                    'class' => 'btn
+                                                                                                                                                                                                                            btn-outline-danger btn-sm',
+                                    'data-toggle' => 'tooltip',
+                                    'data-placement' => 'top',
+                                    'title' => 'Eliminar',
+                                    'onclick' => 'return confirm("seguro desea eliminar esta Constancia?")',
+                                ]) !!}
+                                {!! Form::close() !!}
                                 <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                     title="Constancia" href="{{ url('constancias/' . $constancia->id) }}" target="_blank"><i
                                         class="fas fa-envelope"></i>
                                 </a>
-                        </td>
-                            @else
+                            </td>
+                        @else
                             <td class="text-muted">Opción deshabilitada para tu usuario</td>
                         @endif
 

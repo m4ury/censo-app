@@ -11,7 +11,7 @@
 <h4 class="text-bold">Información médica</h4>
 <div class="form-group row">
     {!! Form::label('problema_label', 'Problema de Salud GES:', ['class' => 'col-sm col-form-label']) !!}
-    <div class="col-sm-5">
+    <div class="col-sm">
         {!! Form::select('problema_id', $problemas, null, [
             'class' => 'form-control form-control-sm' . ($errors->has('problema_id') ? ' is-invalid' : ''),
             'placeholder' => 'Seleccione patologia',
@@ -23,29 +23,36 @@
             </span>
         @endif
     </div>
-
-    {!! Form::label('tipo_label', 'Tipo Constancia:', ['class' => 'col-sm-2 col-form-label']) !!}
+    {{-- Form::label('tipo_label', 'Tipo Constancia:', ['class' => 'col-sm-2 col-form-label']) --}}
+</div>
+<div class="row">
     <div class="col-sm">
-        {!! Form::select(
-            'tipo_constancia',
-            [
-                'sospecha' => 'Sospecha',
-                'diagnostico' => 'Diagnostico',
-                'tratamiento' => 'Tratamiento',
-                'seguimiento' => 'Seguimiento',
-            ],
-            null,
-            [
-                'class' => 'form-control form-control-sm' . ($errors->has('tipo_constancia') ? ' is-invalid' : ''),
-                'placeholder' => 'Seleccione tipo',
-                'id' => 'tipo_const',
-            ],
-        ) !!}
-        @if ($errors->has('tipo_constancia'))
-            <span class="invalid-feedback">
-                <strong>{{ $errors->first('tipo_constancia') }}</strong>
-            </span>
-        @endif
+        {!! Form::label('sospecha_label', 'Sospecha', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('sospecha', 1, old('sospecha', $const->sospecha), [
+            'class' => 'form-control my-2 sospecha',
+            'id' => 'sospecha',
+        ]) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('diagnostico_label', 'Diagnostico', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('diagnostico', 1, old('diagnostico', $const->diagnostico), [
+            'class' => 'form-control my-2 diagnostico',
+            'id' => 'diagnostico',
+        ]) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('tratamiento_label', 'Tratamiento', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('tratamiento', 1, old('tratamiento', $const->tratamiento), [
+            'class' => 'form-control my-2 tratamiento',
+            'id' => 'tratamiento',
+        ]) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('seguimiento_label', 'Seguimiento', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('seguimiento', 1, old('seguimiento', $const->seguimiento), [
+            'class' => 'form-control my-2 seguimiento',
+            'id' => 'seguimiento',
+        ]) !!}
     </div>
 </div>
 <hr>
@@ -62,7 +69,7 @@
     </div>
     <div class="col-sm">
         {!! Form::label('teleconsulta_label', 'Teleconsulta', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('teleconsulta', 0, old('teleconsulta', $const->teleconsulta), [
+        {!! Form::checkbox('teleconsulta', 1, old('teleconsulta', $const->teleconsulta), [
             'class' => 'form-control my-2 teleconsulta',
             'id' => 'teleconsulta',
         ]) !!}
@@ -70,12 +77,12 @@
 </div>
 <hr>
 <h4 class="text-bold">Constancia</h4>
-<div class="row py-3">
-    {!! Form::label('fecha_noti', 'Fecha y hora de notificación: ', ['class' => 'col-sm col-form-label text-bold']) !!}
+<div class="row py-2">
+    {!! Form::label('fecha_noti', 'Fecha y hora de notificación: ', ['class' => 'col-sm col-form-label']) !!}
     {!! Form::datetimeLocal(
         'fecha_notificacion',
         isset($const->fecha_notificacion) ? $const->fecha_notificacion : null,
-        ['class' => 'col-sm col-form-label'],
+        ['class' => 'col-sm form-control form-control-sm'],
     ) !!}
 </div>
 <div class="row py-3" id="teleconsulta_fields">
@@ -176,7 +183,6 @@
             @endif
         </div>
     </div>
-</div>
 </div>
 
 @section('js')

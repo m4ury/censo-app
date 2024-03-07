@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Paciente;
 use App\Problema;
 use App\Constancia;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -53,32 +54,48 @@ class ConstanciaController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         if ($request->rut) {
-        $pcte = Paciente::firstOrNew(
-            ['rut' =>  request('rut')],
-            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM'), 'fecha_nacimiento' => request('fecha_nacimiento'), 'direccion' => request('direccion'), 'prevision' => request('prevision'), 'email' => request('email'), 'telefono' => request('telefono'), 'nombre_social' => request('nombre_social'), 'comuna' => request('comuna')]);
+            $pcte = Paciente::firstOrNew(
+                ['rut' =>  request('rut')],
+                ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM'), 'fecha_nacimiento' => request('fecha_nacimiento'), 'direccion' => request('direccion'), 'prevision' => request('prevision'), 'email' => request('email'), 'telefono' => request('telefono'), 'nombre_social' => request('nombre_social'), 'comuna' => request('comuna')]
+            );
 
             $validator = Validator::make($request->all(), [
-                'rut' => 'cl_rut|unique:pacientes',
+                'rut' => 'cl_rut',
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
             }
             $pcte->save();
 
-        $const = new Constancia($request->except('_token'));
-        $const->problema_id = $request->problema_id;
-        $const->paciente_id = $pcte->id;
-        $const->user_id = Auth::user()->id;
-
-        $const->save();
-
-        }else{
             $const = new Constancia($request->except('_token'));
+            //$const->fecha_constancia = new Carbon()
+            $const->sospecha = $request->sospecha ?? null;
+            $const->diagnostico = $request->diagnostico ?? null;
+            $const->tratamiento = $request->tratamiento ?? null;
+            $const->seguimiento = $request->seguimiento ?? null;
+
+            $const->presencial = $request->presencial ?? null;
+            $const->teleconsulta = $request->teleconsulta ?? null;
+
+            $const->problema_id = $request->problema_id;
+            $const->paciente_id = $pcte->id;
+            $const->user_id = Auth::user()->id;
+            $const->save();
+        } else {
+            $const = new Constancia($request->except('_token'));
+            $const->sospecha = $request->sospecha ?? null;
+            $const->diagnostico = $request->diagnostico ?? null;
+            $const->tratamiento = $request->tratamiento ?? null;
+            $const->seguimiento = $request->seguimiento ?? null;
+
+            $const->presencial = $request->presencial ?? null;
+            $const->teleconsulta = $request->teleconsulta ?? null;
+
             $const->problema_id = $request->problema_id;
             $const->paciente_id = $request->paciente_id;
             $const->user_id = Auth::user()->id;
-
             $const->save();
         }
 

@@ -78,28 +78,12 @@
                                                     </span>
                                                 @endif
                                             </div>
-                                            {!! Form::label('email', 'Correo electrónico: ', ['class' => 'col-sm-2 col-form-label']) !!}
-                                            <div class="col-sm-4">
-                                                {!! Form::text('email', null, [
-                                                    'class' => 'form-control form-control-sm' . ($errors->has('email') ? ' is-invalid' : ''),
-                                                    'placeholder' => 'Ingrese Email',
-                                                ]) !!}
-                                                @if ($errors->has('email'))
-                                                    <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('email') }}</strong>
-                                                    </span>
-                                                @endif
-                                            </div>
                                         </div>
                                         <div class="form-group row">
                                             {!! Form::label('apellidos', 'Apellido Paterno', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
                                                 {!! Form::text('apellidoP', null, [
-                                                    'class' =>
-                                                        'form-control form-control-sm' .
-                                                        ($errors->has('apellidoP')
-                                                            ? 'is-invalid'
-                                                            : ''),
+                                                    'class' => 'form-control form-control-sm' . ($errors->has('apellidoP') ? 'is-invalid' : ''),
                                                     'placeholder' => 'Apellido Paterno',
                                                 ]) !!}
                                                 @if ($errors->has('apellidoP'))
@@ -111,11 +95,7 @@
                                             {!! Form::label('apellidos', 'Apellido Materno', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
                                                 {!! Form::text('apellidoM', null, [
-                                                    'class' =>
-                                                        'form-control form-control-sm' .
-                                                        ($errors->has('apellidoM')
-                                                            ? 'is-invalid'
-                                                            : ''),
+                                                    'class' => 'form-control form-control-sm' . ($errors->has('apellidoM') ? 'is-invalid' : ''),
                                                     'placeholder' => 'Apellido Materno',
                                                 ]) !!}
                                             </div>
@@ -133,7 +113,33 @@
                                                     </span>
                                                 @endif
                                             </div>
-                                            {!! Form::label('telefono', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
+                                            {!! Form::label('fechaNacimiento_label', 'Fecha nacimiento', ['class' => 'col-sm-2 col-form-label']) !!}
+                                            <div class="col-sm-4">
+                                                {!! Form::date('fecha_nacimiento', null, [
+                                                    'class' => 'form-control form-control-sm' . ($errors->has('fecha_nacimiento') ? ' is-invalid' : ''),
+                                                    'id' => 'fecha_nacimiento',
+                                                ]) !!}
+                                                @if ($errors->has('fecha_nacimiento'))
+                                                    <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('fecha_nacimiento') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            {!! Form::label('email_label', 'Correo electrónico: ', ['class' => 'col-sm-2 col-form-label']) !!}
+                                            <div class="col-sm-4">
+                                                {!! Form::text('email', null, [
+                                                    'class' => 'form-control form-control-sm' . ($errors->has('email') ? ' is-invalid' : ''),
+                                                    'placeholder' => 'Ingrese Email',
+                                                ]) !!}
+                                                @if ($errors->has('email'))
+                                                    <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                            {!! Form::label('telefono_label', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
                                                 {!! Form::tel('telefono', null, [
                                                     'class' => 'form-control form-control-sm' . ($errors->has('telefono') ? ' is-invalid' : ''),
@@ -208,7 +214,7 @@
 
                         @include('constancias.form')
                         <hr>
-                        <div class="row py-3">
+                        <div class="row">
                             <div class="col">
                                 {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block', 'id' => '']) }}
                             </div>
