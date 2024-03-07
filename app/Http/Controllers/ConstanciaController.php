@@ -25,8 +25,7 @@ class ConstanciaController extends Controller
         //$paciente = Paciente::with('problemas')->findOrFail($id);
         //$const = new Constancia;
         $paciente = new Paciente;
-        $constancias = Constancia::latest('created_at')
-            ->select('id', 'fecha_constancia', 'paciente_id', 'user_id')
+        $constancias = Constancia::with('paciente')
             ->get();
 
         return view('constancias.index', compact('constancias', 'paciente'));
@@ -54,11 +53,11 @@ class ConstanciaController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->rut) {
         $pcte = Paciente::firstOrNew(
             ['rut' =>  request('rut')],
-            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM'), 'fecha_nacimiento' => request('fecha_nacimiento')]
-        );
-        if ($request->rut) {
+            ['nombres' => request('nombres'), 'apellidoP' => request('apellidoP'), 'apellidoM' => request('apellidoM'), 'fecha_nacimiento' => request('fecha_nacimiento'), 'direccion' => request('direccion'), 'prevision' => request('prevision'), 'email' => request('email'), 'telefono' => request('telefono'), 'nombre_social' => request('nombre_social'), 'comuna' => request('comuna')]);
+
             $validator = Validator::make($request->all(), [
                 'rut' => 'cl_rut|unique:pacientes',
             ]);
@@ -66,7 +65,6 @@ class ConstanciaController extends Controller
                 return back()->withErrors($validator)->withInput();
             }
             $pcte->save();
-        }
 
         $const = new Constancia($request->except('_token'));
         $const->problema_id = $request->problema_id;
@@ -74,6 +72,16 @@ class ConstanciaController extends Controller
         $const->user_id = Auth::user()->id;
 
         $const->save();
+
+        }else{
+            $const = new Constancia($request->except('_token'));
+            $const->problema_id = $request->problema_id;
+            $const->paciente_id = $request->paciente_id;
+            $const->user_id = Auth::user()->id;
+
+            $const->save();
+        }
+
 
         return redirect('constancias')->withSuccess('Cosntancia creada con exito!');
     }
@@ -86,7 +94,8 @@ class ConstanciaController extends Controller
      */
     public function show(Constancia $constancia)
     {
-        //
+        $constancia = Constancia::findOrFail($constancia->id);
+        return view('constancias.show', compact('constancia'));
     }
 
     /**
@@ -120,6 +129,7 @@ class ConstanciaController extends Controller
      */
     public function destroy(Constancia $constancia)
     {
-        //
+        Constancia::destroy($constancia->id);
+        return redirect()->back()->withSuccess('Constancia eliminada con exito!');
     }
 }
