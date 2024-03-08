@@ -41,20 +41,18 @@
                         <td>{{ $constancia->user ? $constancia->user->fullUserName() : '' }}</td>
 
                         @if (auth()->user()->someUser() || auth()->user()->isAdmin())
-                            {!! Form::open(['route' => ['constancias.destroy', $constancia->id], 'method' => 'DELETE']) !!}
+                            {!! Form::open(['route' => ['constancias.destroy', $constancia->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
                             <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                                     title="Editar" href="{{ url('constancias/' . $constancia->id . '/editar') }}"><i
                                         class="fas fa-pen"></i></a>
-                                {!! Form::button('<i class="fas fa-trash"></i>', [
-                                    'type' => 'submit',
-                                    'class' => 'btn
-                                                                                                                                                                                                                            btn-outline-danger btn-sm',
-                                    'data-toggle' => 'tooltip',
-                                    'data-placement' => 'top',
-                                    'title' => 'Eliminar',
-                                    'onclick' => 'return confirm("seguro desea eliminar esta Constancia?")',
-                                ]) !!}
-                                {!! Form::close() !!}
+                                        {!! Form::button('<i class="fas fa-trash"></i>', [
+                                            'type' => 'submit',
+                                            'class' => 'btn btn-outline-danger btn-sm',
+                                            'data-toggle' => 'tooltip',
+                                            'data-placement' => 'top',
+                                            'title' => 'Eliminar',
+                                        ]) !!}
+                                        {!! Form::close() !!}
                                 <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                     title="Constancia" href="{{ url('constancias/' . $constancia->id) }}" target="_blank"><i
                                         class="fas fa-envelope"></i>
@@ -165,10 +163,5 @@
                 }
             })
         })
-    </script>
-    <script type="text/javascript">
-        @if (count($errors) > 0)
-            $('#constancia').modal('show');
-        @endif
     </script>
 @endsection
