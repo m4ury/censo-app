@@ -18,11 +18,16 @@
         <div class="col col-sm col-lg-2 mt-2">
             {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET', 'class' => 'form-inline float-left']) !!}
             <div class="form-group mx-sm-3 mb-2">
-                {!! Form::selectYear('q', 2022, 2023, null, [
-                    'id' => 'q',
-                    'placeholder' => 'Busqueda por año',
-                    'class' => 'form-control',
-                ]) !!}
+                {!! Form::select(
+                    'q',
+                    ['2022' => '2022', '2023' => '2023', '2024' => '2024'],
+                    \Carbon\Carbon::now()->format('YYYY'),
+                    [
+                        'id' => 'q',
+                        'placeholder' => 'Busqueda por año',
+                        'class' => 'form-control',
+                    ],
+                ) !!}
                 {{-- {!! Form::button('<i class="fas fa-search"> Buscar</i>', ['type' => 'submit', 'class' => 'btn
             btn-primary btn-sm my-2'] ) !!} --}}
             </div>
@@ -82,7 +87,7 @@
                                 {!! Form::button('<i class="fas fa-trash"></i>', [
                                     'type' => 'submit',
                                     'class' => 'btn
-                                                                                                                                                                                                                                                                                                                                            btn-outline-danger btn-sm',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            btn-outline-danger btn-sm',
                                     'data-toggle' => 'tooltip',
                                     'data-placement' => 'top',
                                     'title' => 'Eliminar',
