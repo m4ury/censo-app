@@ -346,6 +346,20 @@
         </div>
         <div class="row">
             <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-info">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $all->lactancia()->count() }}</a></h3>
+                        <p>CLINICA LACTANCIA MATERNA</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <a href="{{ route('pacientes.lactancia') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-pink">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $riesgo }}</a></h3>
@@ -398,7 +412,7 @@
                     <div class="icon">
                         <i class='fas fa-baby-carriage'></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="pacientes.embarazada" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -406,13 +420,13 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $pMujer->where('climater', 1)->count() }}</h3>
+                            {{ $pMujer->where('climater', true)->count() }}</h3>
                         <p>CLIMATERIO</p>
                     </div>
                     <div class="icon">
                         <i class='fas fa-female'></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="pacientes.climater" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>

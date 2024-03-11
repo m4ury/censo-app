@@ -1116,8 +1116,20 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.climater', true)
-            //->whereYear('controls.fecha_control', '2023')
+            ->whereYear('controls.fecha_control', '2024')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
+    }
+
+    public function lactancia()
+    {
+        return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'lactancia', 'ficha', 'sector', 'id')
+            ->where('lactancia', true);
+    }
+
+    public function embarazada()
+    {
+        return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'embarazada', 'ficha', 'sector', 'id')
+            ->where('embarazada', true);
     }
 }

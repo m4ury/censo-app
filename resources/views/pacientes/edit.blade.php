@@ -207,7 +207,7 @@
                                         'class' => 'form-control form-control',
                                     ]) !!}
                                 </div>
-                                @if ($paciente->grupo < 4)
+                                @if ($paciente->grupo < 2)
                                     <div class="col-sm">
                                         {!! Form::label('lactancia_label', 'Clinica lactancia Materna', ['class' => 'col-sm col-form-label']) !!}
                                         {!! Form::checkbox('lactancia', 1, old('lactancia', $paciente->lactancia == 1 ? true : false), [

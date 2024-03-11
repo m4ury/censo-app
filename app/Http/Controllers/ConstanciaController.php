@@ -123,7 +123,8 @@ class ConstanciaController extends Controller
      */
     public function edit(Constancia $constancia)
     {
-        //
+        $problemas = Problema::select(DB::raw('CONCAT(nombre_problema, " ", " - ", numero_ges) AS full_problema, id'))->pluck('full_problema', 'id');
+        return view('constancias.edit', compact('constancia', 'problemas'));
     }
 
     /**

@@ -12,7 +12,7 @@
 <div class="form-group row">
     {!! Form::label('problema_label', 'Problema de Salud GES:', ['class' => 'col-sm col-form-label']) !!}
     <div class="col-sm">
-        {!! Form::select('problema_id', $problemas, null, [
+        {!! Form::select('problema_id', $problemas, old('problema_id', $const->problema_id), [
             'class' => 'form-control form-control-sm' . ($errors->has('problema_id') ? ' is-invalid' : ''),
             'placeholder' => 'Seleccione patologia',
             'id' => 'problemas',
@@ -28,28 +28,28 @@
 <div class="row">
     <div class="col-sm">
         {!! Form::label('sospecha_label', 'Sospecha', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('sospecha', 1, old('sospecha', $const->sospecha), [
+        {!! Form::checkbox('sospecha', 1, old('sospecha', $const->sospecha ? true : null), [
             'class' => 'form-control my-2 sospecha',
             'id' => 'sospecha',
         ]) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('diagnostico_label', 'Diagnostico', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('diagnostico', 1, old('diagnostico', $const->diagnostico), [
+        {!! Form::checkbox('diagnostico', 1, old('diagnostico', $const->diagnostico ? true : null), [
             'class' => 'form-control my-2 diagnostico',
             'id' => 'diagnostico',
         ]) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('tratamiento_label', 'Tratamiento', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('tratamiento', 1, old('tratamiento', $const->tratamiento), [
+        {!! Form::checkbox('tratamiento', 1, old('tratamiento', $const->tratamiento ? true : null), [
             'class' => 'form-control my-2 tratamiento',
             'id' => 'tratamiento',
         ]) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('seguimiento_label', 'Seguimiento', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('seguimiento', 1, old('seguimiento', $const->seguimiento), [
+        {!! Form::checkbox('seguimiento', 1, old('seguimiento', $const->seguimiento ? true : null), [
             'class' => 'form-control my-2 seguimiento',
             'id' => 'seguimiento',
         ]) !!}
@@ -62,14 +62,14 @@
     </div>
     <div class="col-sm">
         {!! Form::label('presencial_label', 'Presencial', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('presencial', 1, old('presencial', $const->presencial), [
+        {!! Form::checkbox('presencial', 1, old('presencial', $const->presencial ? true : null), [
             'class' => 'form-control my-2 presencial',
             'id' => 'presencial',
         ]) !!}
     </div>
     <div class="col-sm">
         {!! Form::label('teleconsulta_label', 'Teleconsulta', ['class' => 'col-sm col-form-label text-bold']) !!}
-        {!! Form::checkbox('teleconsulta', 1, old('teleconsulta', $const->teleconsulta), [
+        {!! Form::checkbox('teleconsulta', 1, old('teleconsulta', $const->teleconsulta ? true : null), [
             'class' => 'form-control my-2 teleconsulta',
             'id' => 'teleconsulta',
         ]) !!}
@@ -80,8 +80,7 @@
 <div class="row py-2">
     {!! Form::label('fecha_noti', 'Fecha y hora de notificación: ', ['class' => 'col-sm col-form-label']) !!}
     {!! Form::datetimeLocal(
-        'fecha_notificacion',
-        isset($const->fecha_notificacion) ? $const->fecha_notificacion : null,
+        'fecha_notificacion', old('fecha_notificacion', $const->fecha_notificacion),
         ['class' => 'col-sm form-control form-control-sm'],
     ) !!}
 </div>
@@ -99,7 +98,7 @@
                 'carta certificada' => 'Carta certificada',
                 'otros' => 'Otros (idicar)',
             ],
-            null,
+            old('medio_conocimiento', $const->medio_conocimiento),
             [
                 'class' => 'form-control form-control-sm' . ($errors->has('medio_conociemiento') ? ' is-invalid' : ''),
                 'placeholder' => 'Seleccione tipo',
@@ -127,59 +126,62 @@
         </div>
     </div>
 </div>
-<div class="row" id="otra_persona">
-    <div class="col-sm">
-        <p class="mx-3">En caso de que la persona que tomó conocimiento no sea el/la paciente, identificar: </p>
-    </div>
-    <div class="col-sm">
+<p class="mx-3">
+    En caso de que la persona que tomó conocimiento no sea el/la paciente,
+
+    <a class="tex-primary text-bold" data-toggle="collapse" href="#multiCollapseExample2"
+       role="button" aria-expanded="false" aria-controls="multiCollapseExample2">
+        identificar
+    </a>
+</p>
+<div class="collapse multi-collapse" id="multiCollapseExample2">
+    <div class="row py-2">
         {!! Form::label('otroNombre_label', 'Nombre', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm">
-            {!! Form::text('otro_nombre', null, [
+        <div class="col-sm-6">
+            {!! Form::text('otro_nombre', old('otro_nombre', $const->otro_nombre), [
                 'class' => 'form-control form-control-sm' . ($errors->has('otro_nombre') ? ' is-invalid' : ''),
                 'placeholder' => 'Nombres',
             ]) !!}
             @if ($errors->has('otro_nombre'))
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('otro_nombre') }}</strong>
-                </span>
+                            <strong>{{ $errors->first('otro_nombre') }}</strong>
+                        </span>
             @endif
         </div>
         {!! Form::label('otroRun_label', 'RUN: ', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm">
-            {!! Form::text('otro_run', null, [
+            {!! Form::text('otro_run', old('otr_run', $const->otro_run), [
                 'class' => 'form-control form-control-sm' . ($errors->has('otro_run') ? ' is-invalid' : ''),
                 'placeholder' => 'RUN otra persona',
             ]) !!}
             @if ($errors->has('otro_run'))
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('otro_run') }}</strong>
-                </span>
+                            <strong>{{ $errors->first('otro_run') }}</strong>
+                        </span>
             @endif
         </div>
-    </div>
-    <div class="col-sm">
-        {!! Form::label('otroTelefono_label', 'Telefono', ['class' => 'col-sm col-form-label']) !!}
-        <div class="col-sm">
-            {!! Form::text('otro_telefono', null, [
+        {!! Form::label('otroTelefono_label', 'Telefono', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm-4">
+            {!! Form::text('otro_telefono', old('otro_telefono', $const->otro_telefono), [
                 'class' => 'form-control form-control-sm' . ($errors->has('otro_telefono') ? ' is-invalid' : ''),
                 'placeholder' => 'Telefono',
             ]) !!}
             @if ($errors->has('otro_telefono'))
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('otro_telefono') }}</strong>
-                </span>
+                            <strong>{{ $errors->first('otro_telefono') }}</strong>
+                        </span>
             @endif
         </div>
         {!! Form::label('otroMail_label', 'Correo electrónico: ', ['class' => 'col-sm col-form-label']) !!}
         <div class="col-sm">
-            {!! Form::text('otro_mail', null, [
+            {!! Form::text('otro_mail', old('otro_mail', $const->otro_mail), [
                 'class' => 'form-control form-control-sm' . ($errors->has('otro_mail') ? ' is-invalid' : ''),
                 'placeholder' => 'Mail otra persona',
             ]) !!}
             @if ($errors->has('otro_mail'))
                 <span class="invalid-feedback">
-                    <strong>{{ $errors->first('otro_mail') }}</strong>
-                </span>
+                            <strong>{{ $errors->first('otro_mail') }}</strong>
+                        </span>
             @endif
         </div>
     </div>
@@ -194,7 +196,7 @@
     </script>
     <script>
         $('#teleconsulta_fields').hide();
-        $('input#teleconsulta').on('click', function() {
+        $('input#teleconsulta').on('click', function () {
             if ($('input#teleconsulta').is(':checked')) {
                 $('#teleconsulta_fields').show();
             } else
@@ -202,17 +204,17 @@
         });
     </script>
     <script>
-        $('input#presencial').on('change', function() {
+        $('input#presencial').on('change', function () {
             $('input#teleconsulta').not(this).prop('checked', false);
             $('#teleconsulta_fields').hide();
         });
-        $('input.teleconsulta').on('change', function() {
+        $('input.teleconsulta').on('change', function () {
             $('input#presencial').not(this).prop('checked', false);
         });
     </script>
     <script>
         $('#otro_medio').hide()
-        $('#medio_con').change(function() {
+        $('#medio_con').change(function () {
             $('#otro_medio').hide()
             if ($('#medio_con').val() === 'otros') {
                 //console.log($('.asmaClasif').val())

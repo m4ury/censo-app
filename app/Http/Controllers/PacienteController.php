@@ -86,6 +86,7 @@ class PacienteController extends Controller
         $paciente->sename = $request->sename ?? 0;
         $paciente->embarazada = $request->embarazada ?? 0;
         $paciente->mejor_ninez = $request->mejor_ninez ?? 0;
+        $paciente->lactancia = $request->lactancia ?? 0;
         $paciente->update($request->all());
         //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
@@ -136,6 +137,30 @@ class PacienteController extends Controller
         $pRiesgo = $paciente->rCero('Femenino', 'Masculino')->get();
 
         return view('pacientes.riesgo', compact('pRiesgo'));
+    }
+
+    public function lactancia_list()
+    {
+        $paciente = new Paciente;
+        $lactancia = $paciente->lactancia()->get();
+
+        return view('pacientes.lactancia', compact('lactancia'));
+    }
+
+    public function embarazada_list()
+    {
+        $paciente = new Paciente;
+        $embarazadas = $paciente->embarazada()->get();
+
+        return view('pacientes.embarazada', compact('embarazadas'));
+    }
+
+    public function climater_list()
+    {
+        $paciente = new Paciente;
+        $climater = $paciente->climater()->get();
+
+        return view('pacientes.climater', compact('climater'));
     }
 
     public function sinEvalPie_list()

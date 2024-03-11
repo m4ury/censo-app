@@ -50,7 +50,7 @@ class HomeController extends Controller
         $riesgo = $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count();
 
         $usoInsulina = $all->dm2()
-            ->where('usoInsulina', '=', 1)
+            ->where('usoInsulina', true)
             ->whereNull('egreso')
             ->count();
 
