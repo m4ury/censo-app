@@ -92,7 +92,7 @@
     ) !!}
     <div class="col-sm">
         {!! Form::select(
-            'medio_conociemiento',
+            'medio_conocimiento',
             [
                 'correo electronico' => 'Correo electrónico',
                 'carta certificada' => 'Carta certificada',
@@ -100,14 +100,14 @@
             ],
             old('medio_conocimiento', $const->medio_conocimiento),
             [
-                'class' => 'form-control form-control-sm' . ($errors->has('medio_conociemiento') ? ' is-invalid' : ''),
+                'class' => 'form-control form-control-sm' . ($errors->has('medio_conocimiento') ? ' is-invalid' : ''),
                 'placeholder' => 'Seleccione tipo',
                 'id' => 'medio_con',
             ],
         ) !!}
-        @if ($errors->has('medio_conociemiento'))
+        @if ($errors->has('medio_conocimiento'))
             <span class="invalid-feedback">
-                <strong>{{ $errors->first('medio_conociemiento') }}</strong>
+                <strong>{{ $errors->first('medio_conocimiento') }}</strong>
             </span>
         @endif
     </div>

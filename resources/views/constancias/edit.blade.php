@@ -8,6 +8,8 @@
                 <div class="card card-default">
                     <div class="card-header">Editando constancia</div>
                     <div class="card-body">
+                        {{ Form::open(['action' => 'ConstanciaController@update', 'method' => 'POST', 'url' => 'constancias/' . $constancia->id, 'class' => 'form-horizontal']) }}
+                        @method('PUT')
                         <h4 class="text-bold">Información médica</h4>
                         <div class="form-group row">
                             {!! Form::label('problema_label', 'Problema de Salud GES:', ['class' => 'col-sm col-form-label']) !!}
@@ -91,7 +93,7 @@
                             ) !!}
                             <div class="col-sm">
                                 {!! Form::select(
-                                    'medio_conociemiento',
+                                    'medio_conocimiento',
                                     [
                                         'correo electronico' => 'Correo electrónico',
                                         'carta certificada' => 'Carta certificada',
@@ -99,14 +101,14 @@
                                     ],
                                     old('medio_conocimiento', $constancia->medio_conocimiento),
                                     [
-                                        'class' => 'form-control form-control-sm' . ($errors->has('medio_conociemiento') ? ' is-invalid' : ''),
+                                        'class' => 'form-control form-control-sm' . ($errors->has('medio_conocimiento') ? ' is-invalid' : ''),
                                         'placeholder' => 'Seleccione tipo',
                                         'id' => 'medio_con',
                                     ],
                                 ) !!}
-                                @if ($errors->has('medio_conociemiento'))
+                                @if ($errors->has('medio_conocimiento'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('medio_conociemiento') }}</strong>
+                                        <strong>{{ $errors->first('medio_conocimiento') }}</strong>
                                     </span>
                                 @endif
                             </div>

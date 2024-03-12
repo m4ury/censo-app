@@ -123,6 +123,10 @@ class ConstanciaController extends Controller
      */
     public function edit(Constancia $constancia)
     {
+        if (auth()->user()->isNot($constancia->user)) {
+            abort(403);
+        }
+
         $problemas = Problema::select(DB::raw('CONCAT(nombre_problema, " ", " - ", numero_ges) AS full_problema, id'))->pluck('full_problema', 'id');
         return view('constancias.edit', compact('constancia', 'problemas'));
     }
@@ -136,7 +140,22 @@ class ConstanciaController extends Controller
      */
     public function update(Request $request, Constancia $constancia)
     {
-        //
+        if (auth()->user()->isNot($constancia->user)) {
+            abort(403);
+        }
+        //dd($request->all());
+        $constancia->update($request->all());
+        $constancia->sospecha = $request->sospecha ?? null;
+        $constancia->diagnostico = $request->diagnostico ?? null;
+        $constancia->tratamiento = $request->tratamiento ?? null;
+        $constancia->seguimiento = $request->seguimiento ?? null;
+        $constancia->presencial = $request->presencial ?? null;
+        $constancia->teleconsulta = $request->teleconsulta ?? null;
+
+        $constancia->save();
+
+
+        return to_route('constancias.index')->withSuccess('Constancia actualizada con exito!');
     }
 
     /**

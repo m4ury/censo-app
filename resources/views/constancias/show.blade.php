@@ -11,7 +11,7 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<div class="container py-3">
+<div class="container py-2">
     <div class="row">
         <div class="col">
             <h2 class="text-center">
@@ -25,7 +25,7 @@
         Datos del Prestador
     </h4>
     <div class="row">
-        <div class="col-sm-3 col-form-label">
+        <div class="col-sm-4 col-form-label">
             <h6>Institución (Hospital, Clínica, Consultorio, etc.):</h6>
         </div>
         <div class="col-sm form-control">
@@ -51,13 +51,13 @@
         <div class="col-sm-3 col-form-label">
             <h6>Nombre persona que notifica: </h6>
         </div>
-        <div class="col-sm-6 form-control">
+        <div class="col-sm-9 form-control">
             <b class="text-uppercase">{{ $constancia->user->fullUserName() }}</b>
         </div>
-        <div class="col-sm col-form-label">
+        <div class="col-sm-2 col-form-label mt-2">
             <h6>RUN:</h6>
         </div>
-        <div class="col-sm form-control">
+        <div class="col-sm-3 form-control mt-2">
             <b>{{ Rut::parse($constancia->user->rut)->fix()->format() }}</b>
         </div>
     </div>
@@ -101,7 +101,7 @@
         <div class="col-sm-2 col-form-label">
             <h6>Diección: </h6>
         </div>
-        <div class="col-sm form-control">
+        <div class="col-sm-6 form-control">
             <b class="text-uppercase">{{ $constancia->paciente->direccion }}</b>
         </div>
         <div class="col-sm-2 col-form-label">
@@ -150,7 +150,7 @@
             <b class="text-uppercase">{{ $constancia->problema->numero_ges }}</b>
         </div>
     </div>
-    <div class="row py-3">
+    <div class="row py-2">
         <div class="col-sm text-center">
             <b class="text-uppercase">
                 <span>Sospecha</span> <i
@@ -188,7 +188,8 @@
     <div class="row">
         <div class="col-sm">
             <p>
-                Tomo conocimiento que tengo derecho a acceder a las Garantías Explícitas en Salud, en la medida que me
+                Tomo conocimiento que tengo derecho a acceder a las Garantías Explícitas en Salud, en la medida que
+                me
                 atiendan en la red de Prestadores que asigne el Fonasa o la Isapre, según corresponda.
             </p>
         </div>
@@ -198,7 +199,8 @@
             <h6>Fecha y hora de notificación:</h6>
         </div>
         <div class="col-sm form-control">
-            <b class="text-uppercase">{{ $constancia->fecha_notificacion }}</b>
+            <b
+                class="text-uppercase">{{ Carbon\Carbon::parse($constancia->fecha_notificacion)->format('d-m-Y G:i A') }}</b>
         </div>
     </div>
 
@@ -220,35 +222,48 @@
     <div class="row pt-5">
         <div class="col-sm">
             <h6 class="text-bold">
-                *En la modalidad de teleconsulta, en reemplazo de la firma o huella, se registrará el medio a través del
+                *En la modalidad de teleconsulta, en reemplazo de la firma o huella, se registrará el medio a través
+                del
                 cual el/la paciente o su representante tomó conocimiento:
             </h6>
         </div>
     </div>
 
     <div class="row py-3">
-        <div class="col-sm col-form-label">
+        <div class="col-sm-2 col-form-label">
             <h6>Correo electrónico: </h6>
         </div>
-        <div class="col-sm form-control">
-            <b class="text-uppercase">{{ $constancia->medio_conocimiento ?? '' }}</b>
-        </div>
-        <div class="col-sm col-form-label">
+        <p>
+            <b class="text-uppercase">
+                <i
+                    class="{{ $constancia->medio_conocimiento == 'correo electronico' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+            </b>
+        </p>
+        <div class="col-sm-2 col-form-label">
             <h6>Carta certificada: </h6>
         </div>
-        <div class="col-sm form-control">
-            <b class="text-uppercase">{{ $constancia->medio_conocimiento ?? '' }}</b>
-        </div>
-        <div class="col-sm col-form-label">
+        <p>
+            <b class="text-uppercase">
+                <i
+                    class="{{ $constancia->medio_conocimiento == 'carta certificada' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+            </b>
+        </p>
+        <div class="col-sm-2 col-form-label">
             <h6>Otros(indicar): </h6>
         </div>
-        <div class="col-sm-4 form-control">
-            <b
-                class="text-uppercase">{{ $constancia->medio_conocimiento = 'Otro' ? $constancia->otro_medio : '' }}</b>
-        </div>
+        <p>
+            <b class="text-uppercase">
+                <i
+                    class="{{ $constancia->medio_conocimiento == 'otros' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+            </b>
+            <b class="text-uppercase">
+                {{ $constancia->otro_medio ?? '' }}
+            </b>
+        </p>
     </div>
 
-    <h6 class="text-muted">En el caso que la persona que tomó conocimiento no sea el/la paciente, identificar: </h6>
+    <h6 class="text-muted">En el caso que la persona que tomó conocimiento no sea el/la paciente, identificar:
+    </h6>
     <div class="row">
         <div class="col-sm-2 col-form-label">
             <h6>Nombre: </h6>
@@ -283,12 +298,12 @@
         <div class="col-sm">
             <h6 class="text-bold">
                 Importante: Tenga presente que si no se cumplen las garantías usted puede reclamar ante Fonasa o la
-                Isapre, según coresponda. Si la respuesta no es satisfactoria, usted puede recurrir en segunda instancia
+                Isapre, según coresponda. Si la respuesta no es satisfactoria, usted puede recurrir en segunda
+                instancia
                 a la Superintendenciade Salud.
             </h6>
         </div>
     </div>
-
 </div>
 
 <style>
