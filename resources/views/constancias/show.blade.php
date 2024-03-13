@@ -11,7 +11,7 @@
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<div class="container py-2">
+<div class="container">
     <div class="row">
         <div class="col">
             <h2 class="text-center">
@@ -25,14 +25,14 @@
         Datos del Prestador
     </h4>
     <div class="row">
-        <div class="col-sm-4 col-form-label">
+        <div class="col-sm col-form-label">
             <h6>Institución (Hospital, Clínica, Consultorio, etc.):</h6>
         </div>
         <div class="col-sm form-control">
             <b>{{ env('APP_INST') }}</b>
         </div>
     </div>
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm-2 col-form-label">
             <h6>Direccion:</h6>
         </div>
@@ -42,12 +42,12 @@
         <div class="col-sm col-form-label">
             <h6>Ciudad:</h6>
         </div>
-        <div class="col-sm-4 form-control">
+        <div class="col-sm form-control">
             <b>{{ env('APP_CIUDAD') }}</b>
         </div>
     </div>
 
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm-3 col-form-label">
             <h6>Nombre persona que notifica: </h6>
         </div>
@@ -74,7 +74,7 @@
             <b class="text-uppercase">{{ $constancia->paciente->fullName() }}</b>
         </div>
     </div>
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm-2 col-form-label">
             <h6>Nombre social: </h6>
         </div>
@@ -97,7 +97,7 @@
             <b class="text-uppercase">{{ $constancia->paciente->prevision }}</b>
         </div>
     </div>
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm-2 col-form-label">
             <h6>Diección: </h6>
         </div>
@@ -111,7 +111,7 @@
             <b class="text-uppercase">{{ $constancia->paciente->comuna }}</b>
         </div>
     </div>
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm-2 col-form-label">
             <h6>Región: </h6>
         </div>
@@ -124,7 +124,7 @@
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->telefono }}</b>
         </div>
-        <div class="col-sm-2 col-form-label">
+        <div class="col-sm col-form-label">
             <h6>Correo electrónico: </h6>
         </div>
         <div class="col-sm form-control">
@@ -150,7 +150,7 @@
             <b class="text-uppercase">{{ $constancia->problema->numero_ges }}</b>
         </div>
     </div>
-    <div class="row py-2">
+    <div class="row">
         <div class="col-sm text-center">
             <b class="text-uppercase">
                 <span>Sospecha</span> <i
@@ -171,7 +171,7 @@
                 Tipo de atención
             </h4>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-sm text-center">
             <b class="text-uppercase">
                 <span>Presencial</span><i
                     class="{{ $constancia->presencial == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
@@ -205,13 +205,13 @@
     </div>
 
     <div class="row pt-5 mt-5 align-items-center">
-        <div class="col-sm mx-3 py-2 border-top border-primary text-center">
+        <div class="col-sm mx-3 border-top border-primary text-center">
             <h6 class="text-bold text-center">
                 Informé Problema de Salud GES
             </h6>
             <span class="text-muted">(Firma de persona que notifica)</span>
         </div>
-        <div class="col-sm mx-3 py-2 border-top border-primary text-center">
+        <div class="col-sm mx-3 border-top border-primary text-center">
             <h6 class="text-bold text-center">
                 Tomé conocimiento*
             </h6>
@@ -219,7 +219,7 @@
         </div>
     </div>
 
-    <div class="row pt-5">
+    <div class="row pt-3">
         <div class="col-sm">
             <h6 class="text-bold">
                 *En la modalidad de teleconsulta, en reemplazo de la firma o huella, se registrará el medio a través
@@ -229,8 +229,8 @@
         </div>
     </div>
 
-    <div class="row py-3">
-        <div class="col-sm-2 col-form-label">
+    <div class="row">
+        <div class="col-sm-3 col-form-label">
             <h6>Correo electrónico: </h6>
         </div>
         <p>
@@ -294,7 +294,7 @@
         </div>
     </div>
 
-    <div class="row pt-5">
+    <div class="row pt-3">
         <div class="col-sm">
             <h6 class="text-bold">
                 Importante: Tenga presente que si no se cumplen las garantías usted puede reclamar ante Fonasa o la
@@ -307,10 +307,6 @@
 </div>
 
 <style>
-    html {
-        font-size: large;
-    }
-
     body {
         background: #ffffff;
     }
