@@ -20,11 +20,9 @@
             <tbody>
                 @foreach ($constancias as $constancia)
                     <tr>
-
                         <td nowrap="">{{ $constancia->paciente->rut ?? '' }}</td>
                         <td>
-                            {{ $constancia->paciente ? $constancia->paciente->fullName() : '' }} -
-                            {{ $constancia->paciente->nombre_social ?? '' }}
+                            {{ $constancia->paciente ? $constancia->paciente->fullName() : $constancia->paciente->nombre_social }}
                         </td>
                         <td>
                             {{ $constancia->problema->nombre_problema ?? '--' }}
@@ -32,46 +30,39 @@
                         <td>
                             {{ $constancia->problema->numero_ges ?? '--' }}
                         </td>
-
                         <td>
                             {{ $constancia->presencial ? 'Presencial' : 'Teleconsulta' }}
                         </td>
                         <td> {{ Carbon\Carbon::parse($constancia->fecha_notificacion)->format('d-m-Y G:i A') }}</td>
 
                         <td>{{ $constancia->user ? $constancia->user->fullUserName() : '' }}</td>
+                        <td>
+                            @if (auth()->user()->is($constancia->user))
+                                {!! Form::open([
+                                    'route' => ['constancias.destroy', $constancia],
+                                    'method' => 'DELETE',
+                                    'class' => 'confirm',
+                                ]) !!}
+                                {!! Form::button('<i class="fas fa-trash"></i>', [
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-outline-danger btn-sm',
+                                    'data-toggle' => 'tooltip',
+                                    'data-placement' => 'top',
+                                    'title' => 'Eliminar',
+                                ]) !!}
 
-                        @if (auth()->user()->someUser() || auth()->user()->isAdmin())
-                            {!! Form::open([
-                                'route' => ['constancias.destroy', $constancia->id],
-                                'method' => 'DELETE',
-                                'class' => 'confirm',
-                            ]) !!}
-                            <td>
-                                @if (auth()->user()->is($constancia->user))
-                                    <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
-                                        title="Editar" href="{{ route('constancias.edit', $constancia) }}">
-                                        <i class="fas fa-pen">
-                                        </i>
-                                    </a>
-
-                                    {!! Form::button('<i class="fas fa-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-outline-danger btn-sm',
-                                        'data-toggle' => 'tooltip',
-                                        'data-placement' => 'top',
-                                        'title' => 'Eliminar',
-                                    ]) !!}
-                                    {!! Form::close() !!}
-                                @endif
-                                <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
-                                    title="Constancia" href="{{ route('constancias.show', $constancia) }}"
-                                    target="_blank"><i class="fas fa-envelope"></i>
+                                <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                                    title="Editar" href="{{ route('constancias.edit', $constancia) }}">
+                                    <i class="fas fa-pen">
+                                    </i>
                                 </a>
-                            </td>
-                        @else
-                            <td class="text-muted">Opción deshabilitada para tu usuario</td>
-                        @endif
-
+                            @endif
+                            {!! Form::close() !!}
+                            <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                                title="Constancia" href="{{ route('constancias.show', $constancia) }}" target="_blank"><i
+                                    class="fas fa-envelope"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
