@@ -109,6 +109,7 @@
         {!! Form::text('imc_resultado', old('imc_resultado', $control->imc_resultado), [
             'class' => 'form-control form-control-sm' . ($errors->has('imc_resultado') ? ' is-invalid' : ''),
             'placeholder' => 'Est. Nutricional.',
+            'id' => 'imc_resultado',
         ]) !!}
         @if ($errors->has('imc_resultado'))
             <span class="invalid-feedback">
@@ -198,8 +199,7 @@
             $('#imc').val(imcF);
             $('#imc_resultado').focus(function() {
                 var clasificacion;
-                var edad = '{{ $paciente->edad() }}';
-
+                var edad = "{{ $paciente->edad() }}";
                 if (edad >= 65) {
                     if (imc < 23) {
                         clasificacion = 'Bajo peso';

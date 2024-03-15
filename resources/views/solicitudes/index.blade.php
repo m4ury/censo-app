@@ -113,8 +113,7 @@
                             @endif
 
                         </td>
-                        @if (auth()->user()->someUser() ||
-                                auth()->user()->isAdmin())
+                        @if (auth()->user()->someUser() || auth()->user()->isAdmin())
                             <td>
                                 <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                     title="Editar" href="{{ url('solicitudes/' . $solicitud->id . '/edit') }}"><i
@@ -149,6 +148,9 @@
     <script>
         $.fn.dataTable.moment('DD-MM-YYYY');
         $("#pacientes").DataTable({
+            paging: true,
+            pagingType: 'first_last_numbers',
+            pageLength: 6,
             dom: 'Bfrtip',
             buttons: [
                 'colvis',
@@ -231,7 +233,7 @@
     </script>
     <script type="text/javascript">
         @if (count($errors) > 0)
-            $('#ciudadana').modal('show');
+            $('#solicitud').modal('show');
         @endif
     </script>
 @endsection

@@ -546,7 +546,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rEfam')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -555,7 +555,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
