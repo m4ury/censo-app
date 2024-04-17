@@ -6,36 +6,31 @@
     @php
         setlocale(LC_ALL, 'Spanish_Chile');
     @endphp
-
-    <div class="col-sm-6 pb-3">
-        <a class="btn bg-gradient-success btn-sm mt-3" title="Nueva Encuesta" href="{{ route('encuestas.create') }}">
-            <i class="fas fa-user-plus">
-            </i>
-            Nueva Encuesta
-        </a>
-    </div>
-    <div class="col col-md">
-        <div class="col col-sm col-lg-2 mt-2">
-            {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET', 'class' => 'form-inline float-left']) !!}
-            <div class="form-group mx-sm-3 mb-2">
-                {!! Form::select(
-                    'q',
-                    ['2022' => '2022', '2023' => '2023', '2024' => '2024'],
-                    \Carbon\Carbon::now()->format('YYYY'),
-                    [
-                        'id' => 'q',
-                        'placeholder' => 'Busqueda por año',
-                        'class' => 'form-control',
-                    ],
-                ) !!}
-                {{-- {!! Form::button('<i class="fas fa-search"> Buscar</i>', ['type' => 'submit', 'class' => 'btn
-            btn-primary btn-sm my-2'] ) !!} --}}
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">
-                <span><i class="fas fa-search"> Buscar</i></span>
-            </button>
-            {!! Form::close() !!}
+    <div class="row py-2">
+        <div class="col col-sm">
+            <a class="btn bg-gradient-success btn-sm" title="Nueva Encuesta" href="{{ route('encuestas.create') }}">
+                <i class="fas fa-user-plus">
+                </i>
+                Nueva Encuesta
+            </a>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-sm-2">
+            {!! Form::open(['route' => 'encuestas.index', 'method' => 'GET']) !!}
+            {!! Form::select('q', ['2022' => '2022', '2023' => '2023', '2024' => '2024'], \Request()->q, [
+                'id' => 'q',
+                'placeholder' => 'Por año',
+                'class' => 'col col-sm',
+            ]) !!}
+        </div>
+        <button type="submit" class="btn btn-primary float-right btn-xs">
+            <span><i class="fas fa-search p-auto"> Buscar</i></span>
+        </button>
+        {!! Form::close() !!}
+    </div>
+    <div class="row">
         <div class="col-md-12 table-responsive">
             <h3 class="header m-auto py-2 text-center">Encuestas <span
                     class="text-bold text-uppercase">{{ \Request()->q ?? 'Todas' }}</span></h3>
@@ -87,7 +82,7 @@
                                 {!! Form::button('<i class="fas fa-trash"></i>', [
                                     'type' => 'submit',
                                     'class' => 'btn
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            btn-outline-danger btn-sm',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                btn-outline-danger btn-sm',
                                     'data-toggle' => 'tooltip',
                                     'data-placement' => 'top',
                                     'title' => 'Eliminar',
@@ -100,6 +95,7 @@
             </table>
         </div>
     </div>
+
 @stop
 @section('plugins.Datatables', true)
 @section('js')
