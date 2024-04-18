@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Estadistica;
-use App\Paciente;
+use App\Examen;
 use App\Control;
 use App\Encuesta;
+use App\Paciente;
 use Carbon\Carbon;
-use App\Examen;
+use App\Estadistica;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstadisticaController extends Controller
 {
@@ -9321,132 +9323,139 @@ class EstadisticaController extends Controller
             'otras_80M',
             'otras_80F',
             'otras_OriginM',
-            'otras_OriginF'
+            'otras_OriginF',
+            'all'
         ));
     }
 
-    public function encuestas()
+    public function encuestas(Request $request)
     {
+        $end = $request->get('end');
+        $ini = $request->get('ini');
 
+        //dd($periodo, $request->all());
         $encuestas = new Encuesta;
+        //dd($encuestas);
+
+
         $todas = $encuestas->count();
-
         //derechos
-        $der1_all = $encuestas->whereIn('der_1', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der1_si = $encuestas->where('der_1', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der1_no = $encuestas->where('der_1', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der1_all = $encuestas->whereIn('der_1', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der2_all = $encuestas->whereIn('der_2', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der2_si = $encuestas->where('der_2', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der2_no = $encuestas->where('der_2', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der1_si = $encuestas->where('der_1', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der1_no = $encuestas->where('der_1', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der3_all = $encuestas->whereIn('der_3', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der3_si = $encuestas->where('der_3', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der3_no = $encuestas->where('der_3', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der2_all = $encuestas->whereIn('der_2', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der2_si = $encuestas->where('der_2', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der2_no = $encuestas->where('der_2', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der4_all = $encuestas->whereIn('der_4', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der4_si = $encuestas->where('der_4', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der4_no = $encuestas->where('der_4', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der3_all = $encuestas->whereIn('der_3', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der3_si = $encuestas->where('der_3', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der3_no = $encuestas->where('der_3', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der5_all = $encuestas->whereIn('der_5', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der5_si = $encuestas->where('der_5', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der5_no = $encuestas->where('der_5', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der4_all = $encuestas->whereIn('der_4', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der4_si = $encuestas->where('der_4', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der4_no = $encuestas->where('der_4', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der6_all = $encuestas->whereIn('der_6', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der6_si = $encuestas->where('der_6', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der6_no = $encuestas->where('der_6', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der5_all = $encuestas->whereIn('der_5', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der5_si = $encuestas->where('der_5', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der5_no = $encuestas->where('der_5', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der7_all = $encuestas->whereIn('der_7', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der7_si = $encuestas->where('der_7', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der7_no = $encuestas->where('der_7', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der6_all = $encuestas->whereIn('der_6', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der6_si = $encuestas->where('der_6', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der6_no = $encuestas->where('der_6', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der8_all = $encuestas->whereIn('der_8', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der8_si = $encuestas->where('der_8', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der8_no = $encuestas->where('der_8', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der7_all = $encuestas->whereIn('der_7', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der7_si = $encuestas->where('der_7', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der7_no = $encuestas->where('der_7', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der9_all = $encuestas->whereIn('der_9', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der9_si = $encuestas->where('der_9', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der9_no = $encuestas->where('der_9', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der8_all = $encuestas->whereIn('der_8', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der8_si = $encuestas->where('der_8', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der8_no = $encuestas->where('der_8', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der10_all = $encuestas->whereIn('der_10', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der10_si = $encuestas->where('der_10', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der10_no = $encuestas->where('der_10', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der9_all = $encuestas->whereIn('der_9', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der9_si = $encuestas->where('der_9', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der9_no = $encuestas->where('der_9', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der11_all = $encuestas->whereIn('der_11', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der11_si = $encuestas->where('der_11', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der11_no = $encuestas->where('der_11', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der10_all = $encuestas->whereIn('der_10', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der10_si = $encuestas->where('der_10', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der10_no = $encuestas->where('der_10', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der12_all = $encuestas->whereIn('der_12', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der12_si = $encuestas->where('der_12', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der12_no = $encuestas->where('der_12', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der11_all = $encuestas->whereIn('der_11', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der11_si = $encuestas->where('der_11', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der11_no = $encuestas->where('der_11', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der13_all = $encuestas->whereIn('der_13', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der13_si = $encuestas->where('der_13', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der13_no = $encuestas->where('der_13', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der12_all = $encuestas->whereIn('der_12', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der12_si = $encuestas->where('der_12', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der12_no = $encuestas->where('der_12', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der14_all = $encuestas->whereIn('der_14', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der14_si = $encuestas->where('der_14', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der14_no = $encuestas->where('der_14', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der13_all = $encuestas->whereIn('der_13', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der13_si = $encuestas->where('der_13', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der13_no = $encuestas->where('der_13', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der15_all = $encuestas->whereIn('der_15', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der15_si = $encuestas->where('der_15', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der15_no = $encuestas->where('der_15', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der14_all = $encuestas->whereIn('der_14', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der14_si = $encuestas->where('der_14', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der14_no = $encuestas->where('der_14', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $der16_all = $encuestas->whereIn('der_16', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der16_si = $encuestas->where('der_16', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $der16_no = $encuestas->where('der_16', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $der15_all = $encuestas->whereIn('der_15', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der15_si = $encuestas->where('der_15', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der15_no = $encuestas->where('der_15', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+
+        $der16_all = $encuestas->whereIn('der_16', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der16_si = $encuestas->where('der_16', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $der16_no = $encuestas->where('der_16', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
         //deberes
-        $deb1_all = $encuestas->whereIn('deb_1', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb1_si = $encuestas->where('deb_1', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb1_no = $encuestas->where('deb_1', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb1_all = $encuestas->whereIn('deb_1', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb1_si = $encuestas->where('deb_1', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb1_no = $encuestas->where('deb_1', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb2_all = $encuestas->whereIn('deb_2', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb2_si = $encuestas->where('deb_2', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb2_no = $encuestas->where('deb_2', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb2_all = $encuestas->whereIn('deb_2', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb2_si = $encuestas->where('deb_2', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb2_no = $encuestas->where('deb_2', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb3_all = $encuestas->whereIn('deb_3', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb3_si = $encuestas->where('deb_3', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb3_no = $encuestas->where('deb_3', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb3_all = $encuestas->whereIn('deb_3', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb3_si = $encuestas->where('deb_3', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb3_no = $encuestas->where('deb_3', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb4_all = $encuestas->whereIn('deb_4', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb4_si = $encuestas->where('deb_4', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb4_no = $encuestas->where('deb_4', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb4_all = $encuestas->whereIn('deb_4', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb4_si = $encuestas->where('deb_4', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb4_no = $encuestas->where('deb_4', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb5_all = $encuestas->whereIn('deb_5', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb5_si = $encuestas->where('deb_5', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb5_no = $encuestas->where('deb_5', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb5_all = $encuestas->whereIn('deb_5', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb5_si = $encuestas->where('deb_5', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb5_no = $encuestas->where('deb_5', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb6_all = $encuestas->whereIn('deb_6', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb6_si = $encuestas->where('deb_6', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb6_no = $encuestas->where('deb_6', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb6_all = $encuestas->whereIn('deb_6', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb6_si = $encuestas->where('deb_6', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb6_no = $encuestas->where('deb_6', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $deb7_all = $encuestas->whereIn('deb_7', [1, 0])->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb7_si = $encuestas->where('deb_7', '=', 1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $deb7_no = $encuestas->where('deb_7', '=', 0)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $deb7_all = $encuestas->whereIn('deb_7', [1, 0])->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb7_si = $encuestas->where('deb_7', '=', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $deb7_no = $encuestas->where('deb_7', '=', 0)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
         //atencion
-        $buena = $encuestas->whereAtencion('buena')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $regular = $encuestas->whereAtencion('regular')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $mala = $encuestas->whereAtencion('mala')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $buena = $encuestas->where('atencion', 'buena')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $regular = $encuestas->where('atencion', 'regular')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $mala = $encuestas->where('atencion', 'mala')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $at_total = $encuestas->whereIn('atencion', ['buena', 'mala', 'regular'])->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
         //funcion
-        $fun_buena = $encuestas->whereFuncion('buena')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $fun_regular = $encuestas->whereFuncion('regular')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $fun_mala = $encuestas->whereFuncion('mala')->whereYear('fecha_encuesta', '>', 2022)->count();
-        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $fun_buena = $encuestas->where('funcion', 'buena')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $fun_regular = $encuestas->where('funcion', 'regular')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $fun_mala = $encuestas->where('funcion', 'mala')->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $fun_total = $encuestas->whereIn('funcion', ['buena', 'mala', 'regular'])->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
         //notas
-        $nota_1 = $encuestas->whereNota(1)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_2 = $encuestas->whereNota(2)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_3 = $encuestas->whereNota(3)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_4 = $encuestas->whereNota(4)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_5 = $encuestas->whereNota(5)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_6 = $encuestas->whereNota(6)->whereYear('fecha_encuesta', '>', 2022)->count();
-        $nota_7 = $encuestas->whereNota(7)->whereYear('fecha_encuesta', '>', 2022)->count();
+        $nota_1 = $encuestas->where('nota', 1)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_2 = $encuestas->where('nota', 2)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_3 = $encuestas->where('nota', 3)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_4 = $encuestas->where('nota', 4)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_5 = $encuestas->where('nota', 5)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_6 = $encuestas->where('nota', 6)->whereBetween('fecha_encuesta', [$ini, $end])->count();
+        $nota_7 = $encuestas->where('nota', 7)->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
-        $notas_total = $encuestas->whereIn('nota', [1, 2, 3, 4, 5, 6, 7])->whereYear('fecha_encuesta', '>', 2022)->count();
+        $notas_total = $encuestas->whereIn('nota', [1, 2, 3, 4, 5, 6, 7])->whereBetween('fecha_encuesta', [$ini, $end])->count();
 
 
         return view('estadisticas.encuestas', compact(
