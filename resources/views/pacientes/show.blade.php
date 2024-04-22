@@ -48,8 +48,8 @@
                                 aria-selected="false">Controles
                             </a>
 
-                            <a class="nav-link" id="vert-tabs-ic-tab" data-toggle="pill" href="#vert-tabs-ic"
-                                role="tab" aria-controls="vert-tabs-ic" aria-selected="false">Interconsultas</a>
+                            {{-- <a class="nav-link" id="vert-tabs-ic-tab" data-toggle="pill" href="#vert-tabs-ic"
+                                role="tab" aria-controls="vert-tabs-ic" aria-selected="false">Interconsultas</a> --}}
 
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
@@ -93,18 +93,14 @@
                                         {{ $paciente->erc ?: 'No se encontraron datos.' }}
                                     </p>
                                     <hr>
-                                    @if ($paciente->compensado == 1)
-                                        <strong><i class="fas fa-thumbs-up mr-1"></i>Compensado</strong>
-                                        <br>
-                                        <p class="btn rounded-pill bg-gradient-success">COMPENSADO</P>
-                                    @elseif($paciente->compensado == 2)
-                                        <strong><i class="fas fa-thumbs-down mr-1"></i>No Compensado</strong>
-                                        <br>
-                                        <p class="btn rounded-pill bg-gradient-danger">NO COMPENSADO</p>
+                                    @if ($paciente->g3())
+                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
+                                    @elseif($paciente->g2())
+                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G2</strong>
                                     @else
-                                        <strong><i class="fas fa-question-circle mr-1"></i>Compensado</strong>
+                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-success"></i>G1</strong>
                                         <br>
-                                        <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                                        <p class="btn badge-pill bg-gradient-info">G0</p>
                                     @endif
                                 </div>
                             </div>
@@ -163,9 +159,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="vert-tabs-ic" role="tabpanel"
-                                aria-labelledby="vert-tabs-ic-tab">
-                                {{-- @include('interconsultas.list_ic', $paciente)
+                            {{-- <div class="tab-pane fade" id="vert-tabs-ic" role="tabpanel"
+                                aria-labelledby="vert-tabs-ic-tab"> --}}
+                            {{-- @include('interconsultas.list_ic', $paciente)
                                 @if ($paciente->interconsultas->count() > 0)
                                     <a href="{{ route('interconsultas', $paciente->id) }}"><span class="text-bold">Ver
                                             Todas
@@ -175,7 +171,7 @@
                                     <p class="text-muted">No hay Controles aun, crea uno <i
                                             class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif --}}
-                            </div>
+                            {{-- </div> --}}
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)

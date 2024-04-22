@@ -227,7 +227,7 @@
                         <div class="form-group row">
                             {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
                                 'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                        col-form-label',
+                                                                                                                                                                                                                                                                                                                                                                                                    col-form-label',
                             ]) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -251,7 +251,7 @@
                                 ) !!}
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             {!! Form::label('compensado_label', 'Compensado', ['class' => 'col-sm-3 col-form-label']) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -261,7 +261,7 @@
                                     ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'compensado'],
                                 ) !!}
                             </div>
-                        </div>
+                        </div> --}}
                         <hr>
                         <div class="form-group row">
                             {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}

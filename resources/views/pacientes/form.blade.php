@@ -1,8 +1,8 @@
 {{-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> --}}
 
 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <hr>
-    {{ Form::open(['action' => 'PacienteController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+
+    {{ Form::open(['action' => 'PacienteController@store', 'method' => 'POST', 'class' => 'form-horizontal py-3']) }}
     <div class="form-group row">
         {!! Form::label('rut', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-5">
@@ -18,12 +18,7 @@
         </div>
         <div class="col-sm-5">
             {!! Form::number('ficha', null, [
-                'class' =>
-                    'form-control form-control-sm' .
-                    ($errors->has('ficha')
-                        ? '
-                        is-invalid'
-                        : ''),
+                'class' => 'form-control form-control-sm' . ($errors->has('ficha') ? 'is-invalid' : ''),
                 'placeholder' => 'Nº Ficha',
             ]) !!}
             @if ($errors->has('ficha'))
@@ -52,12 +47,7 @@
         {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-5">
             {!! Form::text('apellidoP', null, [
-                'class' =>
-                    'form-control form-control-sm' .
-                    ($errors->has('apellidoP')
-                        ? '
-                        is-invalid'
-                        : ''),
+                'class' => 'form-control form-control-sm' . ($errors->has('apellidoP') ? 'is-invalid' : ''),
                 'placeholder' => 'Apellido Paterno',
             ]) !!}
             @if ($errors->has('apellidoP'))
@@ -68,12 +58,7 @@
         </div>
         <div class="col-sm-5">
             {!! Form::text('apellidoM', null, [
-                'class' =>
-                    'form-control form-control-sm' .
-                    ($errors->has('apellidoM')
-                        ? '
-                        is-invalid'
-                        : ''),
+                'class' => 'form-control form-control-sm' . ($errors->has('apellidoM') ? 'is-invalid' : ''),
                 'placeholder' => 'Apellido Materno',
             ]) !!}
         </div>
@@ -96,8 +81,8 @@
 
 
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <hr>
-    <div class="form-group row">
+
+    <div class="form-group row py-3">
         {!! Form::label('direccion', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-5">
             {!! Form::text('direccion', null, [
@@ -173,7 +158,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    {{-- <div class="form-group row">
         {!! Form::label('ingreso_label', 'Ingreso a PSCV', ['class' => 'col-sm col-form-label']) !!}
         <div class="col-sm-5">
             {!! Form::checkbox('ingreso', 1, null, ['class' => 'form-control form-control']) !!}
@@ -182,7 +167,7 @@
         <div class="col-sm-5">
             {!! Form::date('fecha_ingreso', null, ['class' => 'form-control form-control']) !!}
         </div>
-    </div>
+    </div> --}}
 
     <div class="form-group row">
         {!! Form::label('pueblo_originario', 'Originario', ['class' => 'col-sm col-form-label']) !!}
