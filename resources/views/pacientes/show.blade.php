@@ -28,6 +28,22 @@
                         @elseif($paciente->sector == 'Blanco')
                             <i class="fas fa-square text-white"></i> Blanco
                         @endif </span>
+                    <div class="col-sm">
+                        <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Multimorbilidad:
+                            @if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 4)
+                                <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
+                            @elseif(
+                                $paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 1 and
+                                    $paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() < 5)
+                                <strong><i class="fas fa-exclamation-triangle mr-1 text-orange"></i>G2</strong>
+                            @elseif($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() == 1)
+                                <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G1</strong>
+                                <br>
+                            @else
+                                <strong><i class="fas fa-exclamation-triangle mr-1 text-success"></i>G0</strong>
+                            @endif
+                        </span>
+                    </div>
                     <div class="col-sm text-right">
                         <a class="btn bg-gradient-primary btn-sm" title="Editar"
                             href="{{ route('pacientes.edit', $paciente->id) }}"> Editar Paciente <i
@@ -93,16 +109,21 @@
                                         {{ $paciente->erc ?: 'No se encontraron datos.' }}
                                     </p>
                                     <hr>
-                                    @if ($paciente->g3())
-                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
-                                    @elseif($paciente->g2())
-                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G2</strong>
-                                    @else
-                                        <strong><i class="fas fa-exclamation-triangle mr-1 text-success"></i>G1</strong>
-                                        <br>
-                                        <p class="btn badge-pill bg-gradient-info">G0</p>
-                                    @endif
                                 </div>
+
+                                @if ($paciente->compensado == 1)
+                                    <strong><i class="fas fa-thumbs-up mr-1"></i>Compensado</strong>
+                                    <br>
+                                    <p class="btn rounded-pill bg-gradient-success">COMPENSADO</P>
+                                @elseif($paciente->compensado == 2)
+                                    <strong><i class="fas fa-thumbs-down mr-1"></i>No Compensado</strong>
+                                    <br>
+                                    <p class="btn rounded-pill bg-gradient-danger">NO COMPENSADO</p>
+                                @else
+                                    <strong><i class="fas fa-question-circle mr-1"></i>Compensado</strong>
+                                    <br>
+                                    <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
+                                @endif
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-nino_sano" role="tabpanel"
                                 aria-labelledby="vert-tabs-nino_sano-tab">

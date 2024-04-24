@@ -41,11 +41,11 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
         $patologias = Patologia::all();
         $controles = $paciente->controls()->latest('fecha_control')->get();
-        $consultas = $paciente->consultas()->latest('fecha_consulta')->get();
-        $interconsultas = $paciente->interconsultas()->latest('fecha_ic')->get();
+        //$consultas = $paciente->consultas()->latest('fecha_consulta')->get();
+        //$interconsultas = $paciente->interconsultas()->latest('fecha_ic')->get();
+        //dd($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count());
 
-
-        return view('pacientes.show', compact('paciente', 'controles', 'consultas', 'patologias', 'interconsultas'));
+        return view('pacientes.show', compact('paciente', 'controles', 'patologias'));
     }
 
     public function edit($id)
