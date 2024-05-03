@@ -11,9 +11,9 @@
                     <div class="inner">
                         <h3>{{-- $all->withCount('patologias')->whereNotIn('patologia_id', [9])->having('patologias_count', '>', 4)->whereNull('egreso')->count() --}}
                             {{ /* $all->whereHas('patologias', function ($query) {
-                                                                                                                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                                                                        }, '>', 4
-                                                                                                                        )->whereNull('egreso')->count() */
+                                                                                                                                                        $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                                                                                                    }, '>', 4
+                                                                                                                                                    )->whereNull('egreso')->count() */
                                 $all->g3()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
@@ -35,13 +35,13 @@
                             })
                         ->whereNull('egreso')->dd() --}}
                             {{ /* $all->whereHas(
-                                                                                            'patologias',
-                                                                                            function ($query) {
-                                                                                                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                                            },
-                                                                                            '>',
-                                                                                            1,
-                                                                                        )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso')->count() */
+                                                                                                                        'patologias',
+                                                                                                                        function ($query) {
+                                                                                                                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                                                                        },
+                                                                                                                        '>',
+                                                                                                                        1,
+                                                                                                                    )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso')->count() */
                                 $all->g2()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
@@ -60,13 +60,13 @@
                     <div class="inner">
                         <h3>{{-- $all->withCount('patologias')->having('patologias_count', '=', 1)->whereNull('egreso')->count() --}}
                             {{ /* $all->whereHas(
-                                                                'patologias',
-                                                                function ($query) {
-                                                                    $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                },
-                                                                '=',
-                                                                1,
-                                                            )->whereNull('egreso')->count() */
+                                                                                            'patologias',
+                                                                                            function ($query) {
+                                                                                                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                                                                                            },
+                                                                                            '=',
+                                                                                            1,
+                                                                                        )->whereNull('egreso')->count() */
                                 $all->g1()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
@@ -375,7 +375,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $all->totalMac()->get()->unique('rut')->count() }}</a></h3>
@@ -388,7 +388,21 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $pMujer->where('ginec', 1)->count() }}</h3>
+                        <p>GINECOLOGICO</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm">
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
@@ -402,7 +416,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg-2 col-sm">
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
@@ -412,11 +426,12 @@
                     <div class="icon">
                         <i class='fas fa-baby-carriage'></i>
                     </div>
-                    <a href="pacientes.embarazada" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="pacientes.embarazada" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg-2 col-sm">
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
@@ -426,7 +441,8 @@
                     <div class="icon">
                         <i class='fas fa-female'></i>
                     </div>
-                    <a href="pacientes.climater" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="pacientes.climater" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -434,149 +450,6 @@
     </div>
 @endsection
 @section('js')
-    {{-- <script>
-        var ctx = document.getElementById('chartSector').getContext('2d');
-        var chartSector = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
-                datasets: [{
-                    label: 'Q Pacientes',
-                    data: [
-                        {{$in1519}}, {{$in2024}}, {{$in2529}}, {{$in3034}}, {{$in3539}}, {{$in4044}}, {{$in4549}}, {{$in5054}},{{$in5559}}, {{$in6064}},{{$in6569}}, {{$in7074}},{{$in7579}}, {{$mas80}}
-                    ],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(0, 0, 255, 0.2)',
-                        'rgba(0, 255, 0, 0.2)',
-                        'rgba(255, 255, 0, 0.2)',
-                        'rgba(0, 255, 255, 0.2)',
-                        'rgba(255, 0, 255, 0.2)',
-                        'rgba(128, 128, 128, 0.2)',
-                        'rgba(0, 128, 0, 0.2)',
-                        'rgba(0, 0, 128, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                animation: {
-                    duration: 1500,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script> --}}
-    {{-- <script>
-        var ctx = document.getElementById('chartSector').getContext('2d');
-        var chartSector = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
-                datasets: [
-                {
-                    label: 'Sector Naranjo',
-                    data: [
-                        {{$in1519N}}, {{$in2024N}}, {{$in2529N}}, {{$in3034N}}, {{$in3539N}}, {{$in4044N}}, {{$in4549N}}, {{$in5054N}},{{$in5559N}}, {{$in6064N}},{{$in6569N}}, {{$in7074N}},{{$in7579N}}, {{$mas80N}}
-                    ],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgb(255,165,0)',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Sector Celeste',
-                    data: [
-                        {{$in1519C}}, {{$in2024C}}, {{$in2529C}}, {{$in3034C}}, {{$in3539C}}, {{$in4044C}}, {{$in4549C}}, {{$in5054C}},{{$in5559C}}, {{$in6064C}},{{$in6569C}}, {{$in7074C}},{{$in7579C}}, {{$mas80C}}
-                    ],
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgb(0,255,255)',
-                    borderWidth: 2
-                }
-                ]
-            },
-            options: {
-                animation: {
-                    duration: 1500,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-</script> --}}
-
-    {{-- <script>
-    var ctx = document.getElementById('chartSector').getContext('2d');
-    var chartSector = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39', 'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64', 'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'],
-            datasets: [
-            {
-                label: 'Sector Naranjo',
-                data: [
-                    {{$in1519N}}, {{$in2024N}}, {{$in2529N}}, {{$in3034N}}, {{$in3539N}}, {{$in4044N}}, {{$in4549N}}, {{$in5054N}},{{$in5559N}}, {{$in6064N}},{{$in6569N}}, {{$in7074N}},{{$in7579N}}, {{$mas80N}}
-                ],
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgb(255,165,0)',
-                borderWidth: 2
-            },
-            {
-                label: 'Sector Celeste',
-                data: [
-                    {{$in1519C}}, {{$in2024C}}, {{$in2529C}}, {{$in3034C}}, {{$in3539C}}, {{$in4044C}}, {{$in4549C}}, {{$in5054C}},{{$in5559C}}, {{$in6064C}},{{$in6569C}}, {{$in7074C}},{{$in7579C}}, {{$mas80C}}
-                ],
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgb(0,255,255)',
-                borderWidth: 2
-            }
-            ]
-        },
-        options: {
-            responsive: true,
-            animation: {
-                duration: 1500,
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-</script> --}}
-
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {

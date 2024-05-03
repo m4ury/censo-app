@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Paciente;
-use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -30,7 +27,7 @@ class HomeController extends Controller
         $all = new Paciente;
         $pMujer = $all
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso', 'sexo', 'embarazada', 'controls.climater', 'controls.regulacion')
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso', 'sexo', 'embarazada', 'controls.climater', 'controls.regulacion', 'controls.ginec')
             ->where('controls.tipo_control', 'Matrona')
             ->whereNull('egreso')
             ->whereYear('controls.fecha_control', 2024)
