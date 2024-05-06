@@ -4,8 +4,8 @@
 
     {{ Form::open(['action' => 'PacienteController@store', 'method' => 'POST', 'class' => 'form-horizontal py-3']) }}
     <div class="form-group row">
-        {!! Form::label('rut', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        {!! Form::label('rut_label', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::text('rut', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('rut') ? ' is-invalid' : ''),
                 'placeholder' => 'Ej.: 16000000-K',
@@ -16,7 +16,8 @@
                 </span>
             @endif
         </div>
-        <div class="col-sm-5">
+        {!! Form::label('ficha_label', 'Num. ficha', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::number('ficha', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('ficha') ? 'is-invalid' : ''),
                 'placeholder' => 'Nº Ficha',
@@ -44,8 +45,8 @@
     </div>
 
     <div class="form-group row">
-        {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        {!! Form::label('apellidoP_label', 'Apellido paterno', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::text('apellidoP', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('apellidoP') ? 'is-invalid' : ''),
                 'placeholder' => 'Apellido Paterno',
@@ -56,7 +57,8 @@
                 </span>
             @endif
         </div>
-        <div class="col-sm-5">
+        {!! Form::label('apellidoM_label', 'Apellido materno', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::text('apellidoM', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('apellidoM') ? 'is-invalid' : ''),
                 'placeholder' => 'Apellido Materno',
@@ -66,10 +68,11 @@
 
     <div class="form-group row">
         {!! Form::label('fecha_nacimiento', 'Fecha Nac.', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        <div class="col-sm">
             {!! Form::date('fecha_nacimiento', null, ['class' => 'form-control form-control-sm']) !!}
         </div>
-        <div class="col-sm-5">
+        {!! Form::label('sexo_label', 'Sexo', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::select('sexo', ['Femenino' => 'Femenino', 'Masculino' => 'Masculino', 'Otro' => 'otro'], null, [
                 'class' => 'form-control form-control-sm',
                 'placeholder' => 'Seleccione Sexo',
@@ -79,12 +82,10 @@
     </div>
 </div>
 
-
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
     <div class="form-group row py-3">
-        {!! Form::label('direccion', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        {!! Form::label('direccion_label', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::text('direccion', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('direccion') ? ' is-invalid' : ''),
                 'placeholder' => 'Ej.: Calle, numero',
@@ -95,7 +96,8 @@
                 </span>
             @endif
         </div>
-        <div class="col-sm-5">
+        {!! Form::label('comuna_label', 'Comuna', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::select(
                 'comuna',
                 [
@@ -136,8 +138,8 @@
         </div>
     </div>
     <div class="form-group row">
-        {!! Form::label('telefono', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
-        <div class="col-sm-5">
+        {!! Form::label('telefono_label', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::tel('telefono', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('telefono') ? ' is-invalid' : ''),
                 'id' => 'phone',
@@ -149,7 +151,8 @@
                 </span>
             @endif
         </div>
-        <div class="col-sm-5">
+        {!! Form::label('sector_label', 'Sector', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm">
             {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, [
                 'class' => 'form-control form-control-sm',
                 'placeholder' => 'Seleccione Sector',

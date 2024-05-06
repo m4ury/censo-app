@@ -11,8 +11,8 @@
                         {{ Form::open(['action' => 'PacienteController@update', 'method' => 'POST', 'url' => 'pacientes/' . $paciente->id, 'class' => 'form-horizontal']) }}
                         @method('PUT')
                         <div class="form-group row">
-                            {!! Form::label('rut', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm-5">
+                            {!! Form::label('rut_label', 'Rut', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
                                 {!! Form::text('rut', old('rut') ?: $paciente->rut, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('rut') ? ' is-invalid' : old('rut')),
                                     'placeholder' => 'Ej.:16000000-K',
@@ -23,7 +23,8 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="col-sm-5">
+                            {!! Form::label('ficha_label', 'Num. ficha', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
                                 {!! Form::number('ficha', $paciente->ficha, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('ficha') ? ' is-invalid' : old('ficha')),
                                     'placeholder' => 'Nº Ficha',
@@ -51,8 +52,8 @@
                         </div>
 
                         <div class="form-group row">
-                            {!! Form::label('apellidos', 'Apellidos', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm-5">
+                            {!! Form::label('apellidoPaternoLabel', 'Apellido paterno', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
                                 {!! Form::text('apellidoP', $paciente->apellidoP, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('apellidoP') ? 'is-invalid' : ''),
                                     'placeholder' => 'Apellido Paterno',
@@ -63,7 +64,8 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="col-sm-5">
+                            {!! Form::label('apellido_maternoLabel', 'Apellido materno', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
                                 {!! Form::text('apellidoM', $paciente->apellidoM, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('apellidoM') ? ' is-invalid' : ''),
                                     'placeholder' => 'Apellido Materno',
@@ -77,33 +79,35 @@
                         </div>
                         <div class="form-group row">
                             {!! Form::label('fecha_nacimiento', 'Fecha Nac.', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm-5">
+                            <div class="col-sm">
                                 {!! Form::date('fecha_nacimiento', $paciente->fecha_nacimiento, [
                                     'class' => 'form-control form-control-sm',
                                 ]) !!}
                             </div>
-                            <div class="col-sm-5">
-                                {!! Form::tel('telefono', $paciente->telefono, [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('telefono') ? ' is-invalid' : ''),
-                                    'id' => 'phone',
-                                    'placeholder' => 'Télefono. Ejemplo: 988888888',
+                            {!! Form::label('sexo_label', 'Sexo', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
+                                {!! Form::select('sexo', ['Femenino' => 'Femenino', 'Masculino' => 'Masculino', 'Otro' => 'otro'], null, [
+                                    'class' => 'form-control form-control-sm',
+                                    'placeholder' => 'Seleccione Sexo',
+                                    'id' => 'sexo',
                                 ]) !!}
-                                @if ($errors->has('telefono'))
+                                @if ($errors->has('sexo'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                        <strong>{{ $errors->first('sexo') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
                             {!! Form::label('direccion_label', 'Dirección.', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm-5">
+                            <div class="col-sm">
                                 {!! Form::tel('direccion', $paciente->direccion, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('direccion') ? ' is-invalid' : ''),
                                     'placeholder' => 'Dirección',
                                 ]) !!}
                             </div>
-                            <div class="col-sm-5">
+                            {!! Form::label('comuna_label', 'Comuna', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
                                 {!! Form::select(
                                     'comuna',
                                     [
@@ -149,8 +153,21 @@
                         </div>
 
                         <div class="form-group row">
+                            {!! Form::label('telefono_label', 'Telefono', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
+                                {!! Form::tel('telefono', $paciente->telefono, [
+                                    'class' => 'form-control form-control-sm' . ($errors->has('telefono') ? ' is-invalid' : ''),
+                                    'id' => 'phone',
+                                    'placeholder' => 'Télefono. Ejemplo: 988888888',
+                                ]) !!}
+                                @if ($errors->has('telefono'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             {!! Form::label('sector_label', 'Sector.', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm-5">
+                            <div class="col-sm">
                                 {!! Form::select(
                                     'sector',
                                     ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'],
@@ -227,7 +244,7 @@
                         <div class="form-group row">
                             {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
                                 'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                                                    col-form-label',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    col-form-label',
                             ]) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -414,7 +431,7 @@
 @endsection
 @section('js')
     <script>
-        $('#riesgo_cv, #erc, #comuna, #sector, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso, #postrado_oncol')
+        $('#riesgo_cv, #erc, #comuna, #sector, #sexo, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso, #postrado_oncol')
             .select2({
                 theme: "classic",
                 width: '100%',
