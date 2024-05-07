@@ -64,7 +64,7 @@
     <hr>
 
     <h4 class="text-bold">
-        Antecedentes del paciente
+        Antecedentes del/la paciente
     </h4>
     <div class="row">
         <div class="col-sm-2 col-form-label">
@@ -99,7 +99,7 @@
     </div>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Domicilio: </h6>
+            <h6>Diección: </h6>
         </div>
         <div class="col-sm-6 form-control">
             <b class="text-uppercase">{{ $constancia->paciente->direccion }}</b>
@@ -155,14 +155,12 @@
             <b class="text-uppercase">
                 <span>Sospecha</span> <i
                     class="{{ $constancia->sospecha == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Diagnóstico y/o Etapificación</span><i
+                <span>Diagnostico</span><i
                     class="{{ $constancia->diagnostico == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
                 <span>Tratamiento</span><i
                     class="{{ $constancia->tratamiento == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
                 <span>Seguimiento</span><i
                     class="{{ $constancia->seguimiento == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Rehabilitación</span><i
-                    class="{{ $constancia->rehab == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
             </b>
         </div>
     </div>
@@ -224,9 +222,9 @@
     <div class="row pt-3">
         <div class="col-sm">
             <h6 class="text-bold">
-                *En la modalidad de teleconsulta, <span style="text-decoration-line: underline">en reemplazo de la firma o huella</span>, se registrará el medio a través
+                *En la modalidad de teleconsulta, en reemplazo de la firma o huella, se registrará el medio a través
                 del
-                cual el paciente o su representante tomó conocimiento:
+                cual el/la paciente o su representante tomó conocimiento:
             </h6>
         </div>
     </div>
@@ -264,7 +262,7 @@
         </p>
     </div>
 
-    <h6 class="text-muted">En el caso que la persona que tomó conocimiento no sea el paciente, identificar:
+    <h6 class="text-muted">En el caso que la persona que tomó conocimiento no sea el/la paciente, identificar:
     </h6>
     <div class="row">
         <div class="col-sm-2 col-form-label">
