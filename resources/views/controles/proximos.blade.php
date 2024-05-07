@@ -10,7 +10,12 @@
     @endphp
 --}}
         <div class="col col-sm mt-2">
-            {!! Form::open(['route' => 'proximos', 'method' => 'GET', 'class' => 'form-inline float-left']) !!}
+            {!! Form::open([
+                'route' => 'proximos',
+                'method' => 'GET',
+                'class' => 'form-inline float-left',
+                'id' => 'myForm',
+            ]) !!}
             <div class="form-group mx-sm-3 mb-2">
                 {!! Form::select(
                     'q',
@@ -22,14 +27,19 @@
                         'Matrona' => 'Matrona',
                         'Enfermera' => 'Enfermera',
                     ],
-                    null,
-                    ['class' => 'form-control', 'placeholder' => 'Busqueda Profesional', 'id' => 'q'],
+                    \Request()->q,
+                    [
+                        'class' => 'form-control m-auto',
+                        'placeholder' => 'Busqueda Profesional',
+                        'id' => 'q',
+                        'onchange' => 'submitForm()',
+                    ],
                 ) !!}
             </div>
 
-            <button type="submit" class="btn btn-primary mb-2">
+            {{-- <button type="submit" class="btn btn-primary mb-2">
                 <span><i class="fas fa-search"> Buscar</i></span>
-            </button>
+            </button> --}}
             {!! Form::close() !!}
         </div>
         <div class="col-md-12 table-responsive">
@@ -119,5 +129,10 @@
                 [6, 'asc']
             ],
         });
+    </script>
+    <script>
+        function submitForm() {
+            $('#myForm').submit();
+        }
     </script>
 @endsection

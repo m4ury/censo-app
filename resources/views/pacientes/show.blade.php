@@ -196,12 +196,12 @@
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)
-                                @if ($paciente->controls->count() > 0)
+                                @if ($paciente->controls->count() > 3)
                                     <a href="{{ route('controles', $paciente->id) }}"><span class="text-bold">Ver
                                             Todos
                                             los
                                             controles...</span></a>
-                                @else
+                                @elseif ($paciente->controls->count() == 0)
                                     <p class="text-muted">No hay Controles aun, crea uno <i
                                             class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
