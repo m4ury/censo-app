@@ -74,9 +74,20 @@
                                         dias</span>
                                 @elseif($solicitud->sol_estado == 'some')
                                     <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
+
+                                    @if ($solicitud->alta)
+                                        @if (Carbon\Carbon::create($solicitud->alta)->diffInDays($solicitud->updated_at) > 1)
+                                            <i class="fas fa-clock mx-2">
+                                                <span class="text-bold text-danger">
+                                                    {{ Carbon\Carbon::create($solicitud->alta)->diffInDays($solicitud->updated_at) }}
+                                                    Dias
+                                                </span>
+                                            </i>
+                                        @endif
+                                    @endif
                                 @elseif($solicitud->sol_estado == 'a_social')
-                                    <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
+                                    <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
                                         dias</span>
                                 @elseif($solicitud->sol_estado == 'psicologo')
                                     <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P> <i
@@ -91,12 +102,15 @@
                                         class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
                                         dias</span>
                                 @elseif($solicitud->sol_estado == 'acreditacion')
-                                    <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
+                                    <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
                                         dias</span>
                                 @endif
                         </td>
-                        <td>{{ $solicitud->sol_receptor }}</td>
+                        <td>
+                            {{ $solicitud->sol_receptor }}
+
+                        </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
 
                         <td>
@@ -119,15 +133,10 @@
                                     title="Editar" href="{{ url('solicitudes/' . $solicitud->id . '/edit') }}"><i
                                         class="fas fa-pen"></i>
                                 </a>
-                            @else
+                            </td>
+                        @else
                             <td class="text-muted">Opción deshabilitada para tu usuario</td>
                         @endif
-                        {{-- {!! Form::open(['route' => ['solicitudes.edit', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
-                            {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                            btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
-                            'Eliminar'] ) !!}
-                            {!! Form::close() !!} --}}
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
