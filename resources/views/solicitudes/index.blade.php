@@ -83,7 +83,8 @@
                                     @if ($solicitud->alta)
                                         {!! Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) > 1
                                             ? "<i class='fas fa-clock text-danger'></i><span class='mx-3 text-bold text-danger'>" .
-                                                Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) .
+                                                Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) -
+                                                1 .
                                                 ' Dias </span>'
                                             : '' !!}
                                     @endif

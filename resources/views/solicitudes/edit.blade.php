@@ -36,6 +36,16 @@
                                     ]) !!}
                                 </div>
                             </div>
+                            @elseif($solicitud->sol_estado == 'some')
+                            <div class="form-group row">
+                                {!! Form::label('alta_label', 'Fecha alta', ['class' => 'col-sm-2 col-form-label']) !!}
+                                <div class="col-sm-5">
+                                    {!! Form::date('alta', old('alta', $solicitud->alta), [
+                                        'class' => 'form-control form-control-sm',
+                                        'disabled' => 'disabled',
+                                    ]) !!}
+                                </div>
+                            </div>
                         @endif
 
                         <div class="form-group row">
