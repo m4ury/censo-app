@@ -74,16 +74,12 @@
                                         dias</span>
                                 @elseif($solicitud->sol_estado == 'some')
                                     <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
-
                                     @if ($solicitud->alta)
-                                        @if (Carbon\Carbon::create($solicitud->alta)->diffInDays($solicitud->updated_at) > 1)
-                                            <i class="fas fa-clock mx-2">
-                                                <span class="text-bold text-danger">
-                                                    {{ Carbon\Carbon::create($solicitud->alta)->diffInDays($solicitud->updated_at) }}
-                                                    Dias
-                                                </span>
-                                            </i>
-                                        @endif
+                                        {!! Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) > 1
+                                            ? "<i class='fas fa-clock text-danger'></i><span class='mx-3 text-bold text-danger'>" .
+                                                Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) .
+                                                ' Dias </span>'
+                                            : '' !!}
                                     @endif
                                 @elseif($solicitud->sol_estado == 'a_social')
                                     <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P>
