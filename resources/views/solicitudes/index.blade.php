@@ -3,7 +3,13 @@
 @section('title', 'Solicitudes')
 
 @section('content')
-    <div class="col-md-12 table-responsive pt-3">
+    <div class="col-md-12 table-responsive py-3">
+        <div class="form-group d-inline-flex align-self-stretch">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#solicitud"><i
+                    class="fas fa-calendar-check"></i>
+                Nueva Solicitud
+            </button>
+        </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
                 <tr>
@@ -137,12 +143,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="form-group d-inline-flex align-self-stretch">
-            <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#solicitud"><i
-                    class="fas fa-calendar-check"></i>
-                Nueva Solicitud
-            </button>
-        </div>
     </div>
     @include('solicitudes.modal')
 

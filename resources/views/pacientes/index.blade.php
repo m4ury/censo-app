@@ -3,7 +3,7 @@
 @section('title', 'pacientes')
 
 @section('content')
-    <div class="col-sm-6 pb-3">
+    <div class="col-sm-6 py-3">
         <a class="btn bg-gradient-success btn-sm" title="Nuevo Paciente" href="{{ route('pacientes.create') }}">
             <i class="fas fa-user-plus">
             </i>

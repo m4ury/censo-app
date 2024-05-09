@@ -3,7 +3,15 @@
 @section('title', 'Constancias GES')
 
 @section('content')
-    <div class="col-md-12 table-responsive pt-3">
+    <div class="col-md-12 table-responsive">
+        <div class="col-sm-6 py-3">
+            <a class="btn bg-gradient-success btn-sm my-3" title="Nueva Constancia GES"
+                href="{{ route('constancias.create') }}">
+                <i class="fas fa-invoice">
+                </i>
+                Nueva Constancia GES
+            </a>
+        </div>
         <table id="constancias" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
                 <tr>
@@ -67,17 +75,7 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="col-sm-6 pb-3">
-            <a class="btn bg-gradient-success btn-sm my-3" title="Nueva Constancia GES"
-                href="{{ route('constancias.create') }}">
-                <i class="fas fa-invoice">
-                </i>
-                Nueva Constancia GES
-            </a>
-        </div>
     </div>
-
-
 @stop
 @section('plugins.Datatables', true)
 @section('js')
@@ -85,6 +83,7 @@
     <script>
         $.fn.dataTable.moment('DD-MM-YYYY');
         $("#constancias").DataTable({
+            pageLength: 6,
             dom: 'Bfrtip',
             buttons: [
                 'colvis',
@@ -114,9 +113,9 @@
                     "sortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            order: [
+            /* order: [
                 [5, 'desc']
-            ],
+            ], */
         });
     </script>
 
