@@ -11,6 +11,7 @@
                 'Psicologo' => 'Psicologo',
                 'Dentista' => 'Dentista',
                 'Matrona' => 'Matrona',
+                'tens' => 'Tec. en Enfermeria',
             ],
             old('tipo_control', $control->tipo_control),
             [
@@ -150,6 +151,7 @@
 
 @foreach ($paciente->patologias as $patologia)
     @if ($patologia->nombre_patologia == 'HTA')
+        @include('partials.ecicep')
         @include('partials.hta')
     @elseif($patologia->nombre_patologia == 'DLP')
         @include('partials.dlp')
