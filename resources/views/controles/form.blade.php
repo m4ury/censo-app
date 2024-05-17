@@ -149,9 +149,12 @@
     @include('partials.nut')
 @endif
 
+@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 1)
+    @include('partials.ecicep')
+@endif
+
 @foreach ($paciente->patologias as $patologia)
     @if ($patologia->nombre_patologia == 'HTA')
-        @include('partials.ecicep')
         @include('partials.hta')
     @elseif($patologia->nombre_patologia == 'DLP')
         @include('partials.dlp')
@@ -185,7 +188,8 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens').hide();
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens')
+            .hide();
         $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por')
             .select2({
                 theme: "classic",
@@ -232,10 +236,10 @@
             })
         });
 
-        $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked");
+        /* $("#rac_vigente, #examenes1, .pa_14090, .pa_160100, .pa_15090").removeAttr("checked"); */
 
         $('#tipo').change(function() {
-            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona').hide();
+            $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, #tens').hide();
             $('.presion_art, .peso_talla, .imc').show()
             var selection = $('#tipo').val();
             switch (selection) {
@@ -259,6 +263,10 @@
                     break;
                 case 'Psicologo':
                     $('#Psicologo').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
+                    break;
+                case 'tens':
+                    $('#tens').show();
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
                 case 'Dentista':
@@ -321,16 +329,21 @@
         $('input#pa_14090').on('click', function() {
             if ($('input#pa_14090').is(':checked')) {
                 $('.pa_160100').hide()
-
             } else $('.pa_160100').show()
         });
 
         $('input#pa_160100').on('click', function() {
             if ($('input#pa_160100').is(':checked')) {
-                $('.pa_14090').hide()
-
-            } else $('.pa_14090').show()
+                $('.pa_14090, .pa_15090').hide()
+            } else $('.pa_14090, .pa_15090').show()
         });
+
+        $('input#pa_15090').on('click', function() {
+            if ($('input#pa_15090').is(':checked')) {
+                $('.pa_160100').hide()
+            } else $('.pa_160100').show()
+        });
+
 
         $('input.check').on('click', function() {
             if ($('input.check').is(':checked')) {
