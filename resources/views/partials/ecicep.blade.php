@@ -1,14 +1,30 @@
 <div class="card card-info card-outline mb-3" id="Medico">
-    <div class="card-header text-bold text-red text-center">INGRESO INTEGRAL ECICEP</div>
-    <div class="form-group row my-2 pa_14090">
-        {!! Form::label('pa_menor14090label', 'Presión arterial Menor a 140/90', [
-            'class' => 'col-sm col-form-label text-bold text-center',
+    <div class="card-header text-bold text-center">ECICEP</div>
+    <div class="form-group row my-2">
+        {!! Form::label('i_ecicepLabel', 'Ingreso Integral', [
+            'class' => 'col-sm-2 col-form-label text-bold ml-2',
         ]) !!}
-        <div class="col-sm">
-            {!! Form::checkbox('pa_menor_140_90', 1, old('pa_menor_140_90', $control->pa_menor_140_90 == 1 ? true : null), [
+        <div class="col-sm-3">
+            {!! Form::checkbox('i_ecicep', 1, old('i_ecicep', $control->i_ecicep == 1 ? true : null), [
                 'class' => 'form-control my-2',
-                'id' => 'pa_14090',
+                'id' => 'i_ecicep',
             ]) !!}
         </div>
+
+        {!! Form::label('realizadoPor_label', 'Realizado por', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'realizado_por',
+                    [
+                        'dupla' => 'Dupla (Médico + Profesional no médico)',
+                        'medico' => 'Médico',
+                        'no_medico' => 'Profesional No Médico'
+                    ],
+                    old('realizado_por', $control->realizado_por),
+                    ['class' => 'form-control form-control-sm realizado_por', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
     </div>
 </div>
