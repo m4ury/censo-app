@@ -172,6 +172,14 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'SALUD MENTAL');
     }
 
+    public function salaEra()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->whereNull('pacientes.egreso')
+            ->where('patologias.nombre_patologia', 'SALA ERA');
+    }
+
     public function trHumor($fem, $masc, $dep)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1017,6 +1025,18 @@ class Paciente extends Model
             ->whereNull('egreso');
     }
 
+    function ingresosG3()
+    {
+        return $this->g3()
+            ->whereIn(
+                'pacientes.rut',
+                DB::table('pacientes')
+                    ->select('pacientes.rut')
+                    ->join('controls', 'controls.paciente_id', '=', 'pacientes.id')
+                    ->where('controls.i_ecicep', true),
+            );
+    }
+
     function g2()
     {
         return $this->whereHas(
@@ -1027,8 +1047,18 @@ class Paciente extends Model
             '>',
             1,
         )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso');
-        /* $this->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
-            ->whereNull('egreso'); */
+    }
+
+    function ingresosG2()
+    {
+        return $this->g2()
+            ->whereIn(
+                'pacientes.rut',
+                DB::table('pacientes')
+                    ->select('pacientes.rut')
+                    ->join('controls', 'controls.paciente_id', '=', 'pacientes.id')
+                    ->where('controls.i_ecicep', true),
+            );
     }
 
     function g1()
@@ -1041,8 +1071,18 @@ class Paciente extends Model
             '=',
             1,
         )->whereNull('egreso');
-        /* ->withCount('patologias')->having('patologias_count', '=', 1)
-            ->whereNull('egreso'); */
+    }
+
+    function ingresosG1()
+    {
+        return $this->g1()
+            ->whereIn(
+                'pacientes.rut',
+                DB::table('pacientes')
+                    ->select('pacientes.rut')
+                    ->join('controls', 'controls.paciente_id', '=', 'pacientes.id')
+                    ->where('controls.i_ecicep', true),
+            );
     }
 
     public function diu($metodo)

@@ -5,16 +5,12 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-sm">
+        <div class="row pt-2">
+            <div class="col-lg-2 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3>{{-- $all->withCount('patologias')->whereNotIn('patologia_id', [9])->having('patologias_count', '>', 4)->whereNull('egreso')->count() --}}
-                            {{ /* $all->whereHas('patologias', function ($query) {
-                                                                                                                                                        $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                                                                                                    }, '>', 4
-                                                                                                                                                    )->whereNull('egreso')->count() */
-                                $all->g3()->count() }}
+                        <h3>
+                            {{ $all->g3()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
                     </div>
@@ -26,23 +22,25 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg-1 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $all->ingresosG3()->count() }}
+                        </h3>
+                        <p>INGRESOS ECICEP, <span
+                                class="text-bold text-red">{{ $all->ingresosG3()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG3()->count() * 100) / $all->g3()->count()) }}%
+                            </span></p>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm">
                 <div class="small-box bg-gradient-orange">
                     <div class="inner">
-                        <h3>{{-- $all->withCount('patologias')->having('patologias_count', '>', 1)->having('patologias_count', '<', 5)
-                        ->whereHas('patologias', function ($query){
-                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                            })
-                        ->whereNull('egreso')->dd() --}}
-                            {{ /* $all->whereHas(
-                                                                                                                        'patologias',
-                                                                                                                        function ($query) {
-                                                                                                                            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                                                                        },
-                                                                                                                        '>',
-                                                                                                                        1,
-                                                                                                                    )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso')->count() */
-                                $all->g2()->count() }}
+                        <h3>
+                            {{ $all->g2()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
                     </div>
@@ -54,20 +52,24 @@
                     </a>
                 </div>
             </div>
+            <div class="col-lg-1 col-sm">
+                <div class="small-box border border-orange">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $all->ingresosG2()->count() }}</h3>
+                        <p>INGRESOS ECICEP, <span
+                                class="text-bold text-red">{{ $all->ingresosG2()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG2()->count() * 100) / $all->g2()->count()) }}%
+                            </span></p>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
 
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg-2 col-sm">
                 <div class="small-box bg-gradient-warning">
                     <div class="inner">
-                        <h3>{{-- $all->withCount('patologias')->having('patologias_count', '=', 1)->whereNull('egreso')->count() --}}
-                            {{ /* $all->whereHas(
-                                                                                            'patologias',
-                                                                                            function ($query) {
-                                                                                                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
-                                                                                            },
-                                                                                            '=',
-                                                                                            1,
-                                                                                        )->whereNull('egreso')->count() */
-                                $all->g1()->count() }}
+                        <h3>
+                            {{ $all->g1()->count() }}
                         </h3>
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
                     </div>
@@ -79,19 +81,18 @@
                     </a>
                 </div>
             </div>
-            {{-- <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-success">
+            <div class="col-lg-1 col-sm">
+                <div class="small-box border border-warning">
                     <div class="inner">
-                        <h3>{{ $all->withCount('patologias')->having('patologias_count', '=', 0)->count() }}</h3>
-                        <p class="text-bold"> Personas sanas o sin condiciones detectadas</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user">G0</i>
+                        <h3 style="color:black">{{ $all->ingresosG1()->count() }}</h3>
+                        <p>INGRESOS ECICEP, <span
+                                class="text-bold text-red">{{ $all->ingresosG1()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG1()->count() * 100) / $all->g1()->count()) }}%
+                            </span></p>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <div class="row align-self-center">
             <div class="col-lg-4 col-sm">
@@ -183,8 +184,8 @@
                         <div class=""></div>
                     </div>
                 </div>
-                <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;" width="759"
-                    class="chartjs-render-monitor">
+                <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;"
+                    width="759" class="chartjs-render-monitor">
                 </canvas>
             </div>
         </div>

@@ -70,7 +70,7 @@ class ControlController extends Controller
         }
 
         $control->user_id = Auth::user()->id;
-        $control->prox_tipo = $request->tipo_control;
+        $control->prox_tipo = $request->tipo_control ?? null;
         $control->paciente_id = $request->paciente_id;
         $control->save();
 

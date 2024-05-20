@@ -7,7 +7,7 @@
         <div class="card-header">
 
             <h3 class="card-title">
-                <a class="btn bg-gradient-info btn-sm mr-3" title="Volver" href="{{ route('estadisticas') }}">
+                <a class="btn bg-gradient-info btn-sm mr-3" title="Volver" href="{{ url()->previous() }}">
                     <i class="fas fa-arrow-alt-circle-left"></i>
                     Volver
                 </a>
