@@ -149,7 +149,7 @@
     @include('partials.nut')
 @endif
 
-@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 1)
+@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1)
     @include('partials.ecicep')
 @endif
 

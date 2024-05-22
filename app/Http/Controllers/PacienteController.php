@@ -115,12 +115,29 @@ class PacienteController extends Controller
         return view('pacientes.g3', compact('g3'));
     }
 
+    //ingresos ecicep
     public function ig3_list()
     {
         $paciente = new Paciente;
-        $i_g3 = $paciente->ingresosG3()->get();
+        $g3 = $paciente->ingresosG3()->get();
 
-        return view('pacientes.i_g3', compact('i_g3'));
+        return view('pacientes.i_g3', compact('g3'));
+    }
+
+    public function ig2_list()
+    {
+        $paciente = new Paciente;
+        $g2 = $paciente->ingresosG2()->get();
+
+        return view('pacientes.i_g2', compact('g2'));
+    }
+
+    public function ig1_list()
+    {
+        $paciente = new Paciente;
+        $g1 = $paciente->ingresosG1()->get();
+
+        return view('pacientes.i_g1', compact('g1'));
     }
 
     public function g2_list()

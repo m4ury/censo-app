@@ -22,17 +22,17 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-1 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
                             {{ $all->ingresosG3()->count() }}
                         </h3>
-                        <p>INGRESOS ECICEP, <span
+                        <p>INGRESOS G3 ECICEP, <span
                                 class="text-bold text-red">{{ $all->ingresosG3()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG3()->count() * 100) / $all->g3()->count()) }}%
                             </span></p>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.i_g3') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -52,15 +52,15 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-1 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box border border-orange">
                     <div class="inner">
                         <h3 style="color:black">{{ $all->ingresosG2()->count() }}</h3>
-                        <p>INGRESOS ECICEP, <span
+                        <p>INGRESOS G2 ECICEP, <span
                                 class="text-bold text-red">{{ $all->ingresosG2()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG2()->count() * 100) / $all->g2()->count()) }}%
                             </span></p>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.i_g2') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -81,15 +81,15 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-1 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box border border-warning">
                     <div class="inner">
                         <h3 style="color:black">{{ $all->ingresosG1()->count() }}</h3>
-                        <p>INGRESOS ECICEP, <span
+                        <p>INGRESOS G1 ECICEP, <span
                                 class="text-bold text-red">{{ $all->ingresosG1()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG1()->count() * 100) / $all->g1()->count()) }}%
                             </span></p>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.i_g1') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>

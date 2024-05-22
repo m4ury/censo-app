@@ -1017,8 +1017,6 @@ class Paciente extends Model
 
     function g3()
     {
-        /* return $this->withCount('patologias')->having('patologias_count', '>', 4)
-            ->whereNull('egreso'); */
         return $this->whereHas('patologias', function ($query) {
             $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
         }, '>', 4)

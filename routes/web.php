@@ -22,6 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function () {
     Route::resource('pacientes', 'PacienteController');
     Route::get('/pacientes.g3', 'PacienteController@g3_list')->name('pacientes.g3');
+    Route::get('/pacientes.i_g3', 'PacienteController@ig3_list')->name('pacientes.i_g3');
+    Route::get('/pacientes.i_g2', 'PacienteController@ig2_list')->name('pacientes.i_g2');
+    Route::get('/pacientes.i_g1', 'PacienteController@ig1_list')->name('pacientes.i_g1');
+
+
     Route::get('/pacientes.g2', 'PacienteController@g2_list')->name('pacientes.g2');
     Route::get('/pacientes.g1', 'PacienteController@g1_list')->name('pacientes.g1');
     Route::get('/pacientes.sinEvalPie', 'PacienteController@sinEvalPie_list')->name('pacientes.sinEvalPie');
@@ -45,8 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('solicitudes', 'SolicitudController');
     Route::get('solicitudes.all', 'SolicitudController@all')->name('solicitudes-all');
 
-     //rutas para constancias
-     Route::resource('constancias', 'ConstanciaController');
+    //rutas para constancias
+    Route::resource('constancias', 'ConstanciaController');
 
     //rutas para controles
     Route::resource('controles', 'ControlController')->except('[index, create]');
