@@ -98,9 +98,13 @@ class ControlController extends Controller
         $control = Control::findOrFail($id);
         $paciente = Paciente::findOrFail($control->paciente_id);
         $control->update($request->all());
-        //$control->pa_menor_140_90 = $request->pa_menor_140_90 ?? 2;
-        //$control->pa_menor_150_90 = $request->pa_menor_150_90 ?? 2;
-        //$control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? 2;
+        $control->i_ecicep = $request->i_ecicep ?? null;
+        $control->pa_menor_140_90 = $request->pa_menor_140_90 ?? null;
+        $control->pa_menor_150_90 = $request->pa_menor_150_90 ?? null;
+        $control->pa_mayor_160_100 = $request->pa_mayor_160_100 ?? null;
+        $control->hba1cMenor7Porcent = $request->hba1cMenor7Porcent ?? null;
+        $control->hba1cMenor8Porcent = $request->hba1cMenor8Porcent ?? null;
+        $control->hba1cMayorIgual9Porcent = $request->hba1cMayorIgual9Porcent ?? null;
         $control->save();
 
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');
