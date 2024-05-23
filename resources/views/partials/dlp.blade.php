@@ -7,8 +7,16 @@
                 'ldl',
                 ['A' => 'Menor a 70', 'B' => 'Entre 70 a 99', 'C' => 'Mayor Igual a 100'],
                 old('ldl', $control->ldl),
-                ['class' => 'form-control form-control-sm ldl', 'placeholder' => 'Seleccione una opción'],
+                [
+                    'class' => 'form-control form-control-sm ldl' . ($errors->has('ldl') ? ' is-invalid' : ''),
+                    'placeholder' => 'Seleccione una opción',
+                ],
             ) !!}
+            @if ($errors->has('ldl'))
+                <span class="invalid-feedback">
+                    <strong>{{ $errors->first('ldl') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
 </div>

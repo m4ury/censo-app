@@ -101,11 +101,11 @@ class ControlController extends Controller
         $validator = Validator::make($request->all(), [
             //Medico
             //hta
-            'pa_menor_140_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA'), 'required')],
-            'pa_menor_150_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA'), 'required')],
+            'pa_menor_140_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA') && (!isset($request->pa_mayor_160_100)), 'required')],
+            'pa_menor_150_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA') && (!isset($request->pa_mayor_160_100)), 'required')],
             //dm2
-            'hba1cMenor7Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2'), 'required')],
-            'hba1cMenor8Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2'), 'required')],
+            'hba1cMenor7Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2') && (!isset($request->hba1cMayorIgual9Porcent)), 'required')],
+            'hba1cMenor8Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2') && (!isset($request->hba1cMayorIgual9Porcent)), 'required')],
             //dlp
             'ldl' => [Rule::when($request->tipo_control === 'Medico' && $paciente->patologias->pluck('nombre_patologia')->contains('DLP'), 'required')],
         ]);

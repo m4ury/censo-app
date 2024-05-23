@@ -7,9 +7,14 @@
             ]) !!}
             <div class="col-sm">
                 {!! Form::checkbox('pa_menor_150_90', 1, old('pa_menor_150_90', $control->pa_menor_150_90 == 1 ? true : null), [
-                    'class' => 'form-control my-2',
+                    'class' => 'form-control my-2 ' . ($errors->has('pa_menor_150_90') ? ' is-invalid' : ''),
                     'id' => 'pa_15090',
                 ]) !!}
+                @if ($errors->has('pa_menor_150_90'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('pa_menor_150_90') }}</strong>
+                    </span>
+                @endif
             </div>
             {{-- {!! Form::label('pa_menor15090label', 'Presion Menor a 150/90 NO', [
                 'class' => 'col-sm-3 col-form-label text-bold',
@@ -28,9 +33,14 @@
             ]) !!}
             <div class="col-sm">
                 {!! Form::checkbox('pa_menor_140_90', 1, old('pa_menor_140_90', $control->pa_menor_140_90 == 1 ? true : null), [
-                    'class' => 'form-control my-2',
+                    'class' => 'form-control my-2' . ($errors->has('pa_menor_140_90') ? ' is-invalid' : ''),
                     'id' => 'pa_14090',
                 ]) !!}
+                @if ($errors->has('pa_menor_140_90'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('pa_menor_140_90') }}</strong>
+                    </span>
+                @endif
             </div>
             {{-- {!! Form::label('pa_menor14090label', 'Presion Menor a 140/90 NO', [
                 'class' => 'col-sm-3 col-form-label text-bold',
