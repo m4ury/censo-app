@@ -8,7 +8,7 @@
                     'hba1cMenor8Porcent',
                     1,
                     old('hba1cMenor8Porcent', $control->hba1cMenor8Porcent == 1 ? true : null),
-                    ['class' => 'form-control my-2 check'],
+                    ['class' => 'form-control my-2 hba1c8'],
                 ) !!}
             </div>
             {{-- {!! Form::label('hba1cMenor8_label', 'HBA1C Menor a 8% NO', ['class' => 'col-sm-3 col-form-label']) !!}
@@ -39,7 +39,7 @@
                 'hba1cMayorIgual9Porcent',
                 1,
                 old('hba1cMayorIgual9Porcent', $control->hba1cMayorIgual9Porcent),
-                ['class' => 'form-control my-2 check1'],
+                ['class' => 'form-control my-2 hba1c9'],
             ) !!}
         </div>
         {{-- {!! Form::label('hba1cMayor9_label', 'HBA1C Mayor o igual a 9% NO', ['class' => 'col-sm-3 col-form-label']) !!}
@@ -51,7 +51,7 @@
         {!! Form::label('ldlMenor100_label', 'LDL Menor a 100', ['class' => 'col-sm col-form-label text-center']) !!}
         <div class="col-sm">
             {!! Form::checkbox('ldlMenor100', 1, old('ldlMenor100', $control->ldlMenor100), [
-                'class' => 'form-control my-2 check2',
+                'class' => 'form-control my-2 ldl100',
             ]) !!}
         </div>
         {{-- {!! Form::label('ldlMenor100_label', 'LDL Menor a 100 NO', ['class' => 'col-sm-3 col-form-label']) !!}

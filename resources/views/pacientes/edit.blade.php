@@ -86,11 +86,16 @@
                             </div>
                             {!! Form::label('sexo_label', 'Sexo', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
-                                {!! Form::select('sexo', ['Femenino' => 'Femenino', 'Masculino' => 'Masculino', 'Otro' => 'otro'], null, [
-                                    'class' => 'form-control form-control-sm',
-                                    'placeholder' => 'Seleccione Sexo',
-                                    'id' => 'sexo',
-                                ]) !!}
+                                {!! Form::select(
+                                    'sexo',
+                                    ['Femenino' => 'Femenino', 'Masculino' => 'Masculino', 'Otro' => 'otro'],
+                                    old('sexo', $paciente->sexo),
+                                    [
+                                        'class' => 'form-control form-control-sm',
+                                        'placeholder' => 'Seleccione Sexo',
+                                        'id' => 'sexo',
+                                    ],
+                                ) !!}
                                 @if ($errors->has('sexo'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('sexo') }}</strong>
@@ -244,7 +249,7 @@
                         <div class="form-group row">
                             {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
                                 'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    col-form-label',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                col-form-label',
                             ]) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(

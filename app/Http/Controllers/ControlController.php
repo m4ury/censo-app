@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Control;
 use App\Paciente;
 use App\Patologia;
-use Illuminate\Http\Request;
-use App\Http\Requests\ControlRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Alert;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Alert;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ControlRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ControlController extends Controller
 {
@@ -95,8 +96,25 @@ class ControlController extends Controller
 
     public function update(Request $request, $id)
     {
+        $paciente = Paciente::findOrFail($request->paciente_id);
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            //Medico
+            //hta
+            'pa_menor_140_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA'), 'required')],
+            'pa_menor_150_90' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('HTA'), 'required')],
+            //dm2
+            'hba1cMenor7Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo < 80 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2'), 'required')],
+            'hba1cMenor8Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2'), 'required')],
+            //dlp
+            'ldl' => [Rule::when($request->tipo_control === 'Medico' && $paciente->patologias->pluck('nombre_patologia')->contains('DLP'), 'required')],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
         $control = Control::findOrFail($id);
-        $paciente = Paciente::findOrFail($control->paciente_id);
         $control->update($request->all());
         $control->i_ecicep = $request->i_ecicep ?? null;
         $control->pa_menor_140_90 = $request->pa_menor_140_90 ?? null;

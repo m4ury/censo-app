@@ -1,5 +1,5 @@
 <div class="form-group row">
-    {!! Form::label('tipo_control', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
+    {!! Form::label('tipo_control_label', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
     <div class="col-sm">
         {!! Form::select(
             'tipo_control',
@@ -298,9 +298,9 @@
         $('input.check').on('change', function() {
             $('input.check').not(this).prop('checked', false);
         });
-        $('input.check1').on('change', function() {
-            $('input.check1').not(this).prop('checked', false);
-        });
+        /* $('input.hba1c9').on('change', function() {
+            $('input.hba1c9').not(this).prop('checked', false);
+        }); */
         $('input.check2').on('change', function() {
             $('input.check2').not(this).prop('checked', false);
         });
@@ -344,13 +344,21 @@
             } else $('.pa_160100').show()
         });
 
-
-        $('input.check').on('click', function() {
-            if ($('input.check').is(':checked')) {
+        $('input.hba1c8').on('click', function() {
+            if ($('input.hba1c8').is(':checked')) {
 
                 $('.hba1c9').hide()
 
             } else $('.hba1c9').show()
+        });
+
+
+        $('input.hba1c9').on('click', function() {
+            if ($('input.hba1c9').is(':checked')) {
+
+                $('.hba1c8').hide()
+
+            } else $('.hba1c8').show()
         });
 
         $('input.check1').on('click', function() {
