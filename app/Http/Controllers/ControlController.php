@@ -108,6 +108,10 @@ class ControlController extends Controller
             'hba1cMenor8Porcent' => [Rule::when($request->tipo_control === 'Medico' && $paciente->grupo > 79 && $paciente->patologias->pluck('nombre_patologia')->contains('DM2') && (!isset($request->hba1cMayorIgual9Porcent)), 'required')],
             //dlp
             'ldl' => [Rule::when($request->tipo_control === 'Medico' && $paciente->patologias->pluck('nombre_patologia')->contains('DLP'), 'required')],
+
+            //EU
+            'rEfam' => [Rule::when($request->tipo_control === 'Enfermera' && $paciente->grupo > 64 && (!isset($request->rBarthel)), 'required')],
+            'rBarthel' => [Rule::when($request->tipo_control === 'Enfermera' && $paciente->grupo > 64 && (!isset($request->rEfam)), 'required')],
         ]);
 
         if ($validator->fails()) {
