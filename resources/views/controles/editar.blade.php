@@ -2,13 +2,13 @@
 @section('title', 'editar-control')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-left">
-            <div class="col-sx-12 col-sm-12 col-lg-10">
+    <div class="container-fluid">
+        <div class="row pt-3">
+            <div class="col-sx-12 col-sm-12 col-lg">
                 <div class="card card-dark card-outline mb-3">
                     <div class="card-header">Editando control</div>
                     <div class="card-body">
-                        {{ Form::open(['action' => 'ControlController@update', 'method' => 'POST', 'url' => 'controles/'.$control->id, 'class' => 'form-horizontal']) }}
+                        {{ Form::open(['action' => 'ControlController@update', 'method' => 'POST', 'url' => 'controles/' . $control->id, 'class' => 'form-horizontal']) }}
                         @csrf
                         @method('PATCH')
                         @include('controles.form')
@@ -19,7 +19,7 @@
                             </div>
                             <div class="col">
                                 <a href="{{ route('pacientes.show', $paciente->id) }}" style="text-decoration:none">
-                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
+                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block']) }}
                                 </a>
                             </div>
                         </div>

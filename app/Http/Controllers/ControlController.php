@@ -112,6 +112,8 @@ class ControlController extends Controller
             //EU
             'rEfam' => [Rule::when($request->tipo_control === 'Enfermera' && $paciente->grupo > 64 && (!isset($request->rBarthel)), 'required')],
             'rBarthel' => [Rule::when($request->tipo_control === 'Enfermera' && $paciente->grupo > 64 && (!isset($request->rEfam)), 'required')],
+
+            'evaluacionPie' => [Rule::when($request->tipo_control === 'Enfermera' && $paciente->patologias->pluck('nombre_patologia')->contains('DM2'), 'required')],
         ]);
 
         if ($validator->fails()) {
@@ -148,5 +150,10 @@ class ControlController extends Controller
             ->get();
 
         return view('controles.proximos', compact('controles'));
+    }
+
+    public function excel()
+    {
+        return view('controles.excel');
     }
 }

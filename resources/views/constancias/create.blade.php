@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 @section('title', 'nueva-constancia GES')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-left">
+    <div class="container-fluid">
+        <div class="row pt-3">
             <div class="col-sx-12 col-sm-12 col-lg">
                 <div class="card card-info card-outline my-3">
                     <div class="card-header">

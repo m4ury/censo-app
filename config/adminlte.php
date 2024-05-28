@@ -225,28 +225,6 @@ return [
     */
 
     'menu' => [
-        /*[
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],*/
-        /*[
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],*/
-        /*['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'route' => 'perfil',
-            'icon' => 'fas fa-fw fa-user text-cyan',
-        ],*/
-        /*[
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],*/
-
         ['header' => 'PACIENTES'],
         [
             'text' => 'Pacientes',
@@ -269,42 +247,22 @@ return [
         ],
 
         [
-            'text' => 'Examenes RX',
-            'route' => 'examenes.index',
-            'icon' => 'fas fa-radiation text-yellow',
-            'can' => 'rx'
-        ],
-        [
-            'text' => 'Interconsultas',
-            'route' => 'interconsultas.index',
-            'icon' => 'fas fa-fw fa-hospital-user text-info',
-        ],
-
-        [
             'text' => 'Constancias GES',
             'route' => 'constancias.index',
-            'icon' => 'fas fa-fw fa-hospital-user text-primary',
-        ],
-
-        //['header' => 'Patologias'],
-        [
-            'text' => 'Patologias',
-            'route' => 'patologias.index',
-            'icon' => 'fas fa-fw fa-heartbeat text-info',
-            'can' => 'rx'
+            'icon' => 'fas fa-fw fa-file text-white',
+            'can' => 'some'
         ],
         [
             'header' => 'CONTROLES',
             'can' => 'controles-all'
         ],
-        /*
         [
-            'text' => 'Controles',
-            'route' => 'controles-all',
-            'icon' => 'fas fa-fw fa-hospital-user text-danger',
+            'text' => 'Importar Controles',
+            'route' => 'controles.excel',
+            'icon' => 'fas fa-fw fa-file-excel text-info',
             'can' => 'controles-all'
         ],
-        */
+
         [
             'text' => 'Proximos Controles',
             'route' => 'proximos',
@@ -321,60 +279,6 @@ return [
             'icon' => 'fas fa-fw fa-file-alt text-pink',
             'can' => 'estadisticas'
         ],
-        /*[
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],*/
-        /*['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ]*/
     ],
 
     /*
@@ -428,11 +332,6 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '../node_modules/datatables.net/js/jquery.dataTables.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
                     //'location' => '../node_modules/datatables.net-dt/js/dataTables.dataTables.min.js',
                     'location' => 'https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/af-2.5.3/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.js'
                 ],
@@ -441,16 +340,6 @@ return [
                     'asset' => false,
                     //'location' => '../node_modules/datatables.net-dt/css/jquery.dataTables.min.css',
                     'location' => 'https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.4/af-2.5.3/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/datatables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/dataTables.buttons.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.flash.min.js'
                 ],
                 [
                     'type' => 'js',
@@ -466,56 +355,6 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => 'vendor/datatables-plugins/pdfmake/vfs_fonts.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.html5.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.print.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill/js/dataTables.autoFill.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill-dt/css/autoFill.dataTables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-autofill-dt/js/autoFill.dataTables.min.js'
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons/js/buttons.colVis.min.js'
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons-dt/css/buttons.dataTables.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-buttons-dt/js/buttons.dataTables.min.js',
-                ],
-                [
-                    'type' => 'css',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-datetime/dist/dataTables.dateTime.min.css',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => '../node_modules/datatables.net-datetime/dist/dataTables.dateTime.min.js',
                 ],
             ],
         ],

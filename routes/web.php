@@ -60,6 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
     Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
+    Route::get('controles/excel', 'ControlController@excel')->name('controles.excel');
 
     //rutas para consultas
     Route::resource('consultas', 'ConsultaController')->except('[index, create]');

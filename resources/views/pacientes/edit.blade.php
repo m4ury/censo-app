@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-sx-12 col-sm-12 col-lg-8">
+        <div class="row pt-3">
+            <div class="col-sx-12 col-sm-12 col-lg">
                 <div class="card card card-success card-outline">
                     <div class="card-header"><i class="fas fa-user-edit mr-1"></i>Editando Paciente</div>
                     <div class="card-body">
@@ -249,7 +249,7 @@
                         <div class="form-group row">
                             {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
                                 'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                col-form-label',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            col-form-label',
                             ]) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
