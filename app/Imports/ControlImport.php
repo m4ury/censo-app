@@ -15,8 +15,8 @@ class ControlImport implements ToModel
     public function model(array $row)
     {
         return new Control([
-            'name' => $row['name'],
-            'email' => $row['email'],
+            'fecha_control' => $row['fecha_control'],
+            'tipo_control' => $row['tipo_control'],
         ]);
     }
 }

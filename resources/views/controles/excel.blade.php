@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        {{ Form::open(['action' => 'controles.excel', 'method' => 'POST']) }}
+        {{ Form::open(['action' => , 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
         {{ Form::file('file') }}
 
         <div class="row mt-3">
@@ -17,7 +17,7 @@
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
             </div>
             <div class="col">
-                <a href="{{ url('permisos') }}">
+                <a href="{{ url()->previous() }}">
                     {{ Form::button('Cancelar', ['class' => 'btn btn-secondary btn-lg btn-block']) }}
                 </a>
             </div>
