@@ -151,9 +151,4 @@ class ControlController extends Controller
 
         return view('controles.proximos', compact('controles'));
     }
-
-    public function excel()
-    {
-        return view('controles.excel');
-    }
 }

@@ -60,13 +60,16 @@ Route::middleware('auth')->group(function () {
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
     Route::get('proximos', 'ControlController@prox')->name('proximos');
     Route::get('controles/{controle?}/editar', 'ControlController@editar')->name('controles.editar');
-    Route::get('controles.excel', 'ControlController@excel')->name('controles.excel');
+
+    //importar controles excel
+    Route::get('controles.excel', 'ImportController@excel')->name('controles.excel');
+    Route::post('controles.import', 'ImportController@import')->name('controles.import');
 
     //rutas para consultas
-    Route::resource('consultas', 'ConsultaController')->except('[index, create]');
+    /* Route::resource('consultas', 'ConsultaController')->except('[index, create]');
     //Route::get('controles-all', 'ControlController@index')->name('controles-all');
     Route::get('consultas/pcte/{paciente?}', 'ConsultaController@consultasPcte')->name('consultas');
-    Route::get('consultas/create/{paciente?}', 'ConsultaController@create')->name('consultas.create');
+    Route::get('consultas/create/{paciente?}', 'ConsultaController@create')->name('consultas.create'); */
 
     //rutas para examenes
     /* Route::resource('examenes', 'ExamenController')->except('[index, create]');

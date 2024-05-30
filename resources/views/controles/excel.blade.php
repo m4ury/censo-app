@@ -4,12 +4,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
-                <h2 class="title">Cargar marcas</h2>
+                <h2 class="title">Cargar Controles</h2>
             </div>
         </div>
     </div>
     <div class="row">
-        {{ Form::open(['action' => , 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
+        {{ Form::open(['action' => 'ImportController@import', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
         {{ Form::file('file') }}
 
         <div class="row mt-3">
@@ -22,7 +22,6 @@
                 </a>
             </div>
         </div>
-
         {{ Form::close() }}
     </div>
 @endsection()
