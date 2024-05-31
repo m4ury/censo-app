@@ -54,6 +54,13 @@
             'id' => 'seguimiento',
         ]) !!}
     </div>
+    <div class="col-sm">
+        {!! Form::label('rehab_label', 'Rehabilitación', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('rehab', 1, old('rehab', $const->rehab ? true : null), [
+            'class' => 'form-control my-2 rehab',
+            'id' => 'rehab',
+        ]) !!}
+    </div>
 </div>
 <hr>
 <div class="form-group row">

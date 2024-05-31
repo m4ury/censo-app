@@ -29,9 +29,9 @@
                             </div>
                             <div class="col-2">
                                 <p class="text-bold">
-                                    <a class="btn btn-success" data-toggle="collapse" href="#multiCollapseExample1"
+                                    <a class="btn btn-success btn-sm" data-toggle="collapse" href="#multiCollapseExample1"
                                         role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
-                                        + Crea nuevo Paciente
+                                        <i class="fas fa-user-plus pr-2"></i>Nuevo Paciente
                                     </a>
                                 </p>
                             </div>
