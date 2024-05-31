@@ -622,7 +622,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DM2')
             ->whereNull('pacientes.egreso')
             ->where('controls.hba1cMayorIgual9Porcent', true)
-            ->where('controls.fecha_control', Carbon::now()->subYear(1))
+            ->whereYear('controls.fecha_control', '>', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 

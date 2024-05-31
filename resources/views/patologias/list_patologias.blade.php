@@ -242,11 +242,9 @@
 
                                     {{-- dd($paciente->controls->evaluacionPie) --}}
 
-                                    @if (Str::contains(
-                                            $paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(),
-                                            'Bajo'))
-                                        @if (Carbon\Carbon::parse(
-                                                $paciente->controls()->pluck('fecha_control')->last())->diffInDays(Carbon\Carbon::now()) <= 365)
+                                    @if (Str::contains($paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(), 'Bajo'))
+                                        @if (Carbon\Carbon::parse($paciente->controls()->pluck('fecha_control')->last())->diffInDays(Carbon\Carbon::now()) <=
+                                                365)
                                             <div class="col-sm">
                                                 <strong><i class="fas fa-stethoscope text-success"></i>
                                                     Evaluacion
@@ -268,11 +266,9 @@
                                                     Riesgo: Bajo - No Vigente</P>
                                             </div>
                                         @endif
-                                    @elseif (Str::contains(
-                                            $paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(),
-                                            'Moderado'))
-                                        @if (Carbon\Carbon::parse(
-                                                $paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <= 6)
+                                    @elseif (Str::contains($paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(), 'Moderado'))
+                                        @if (Carbon\Carbon::parse($paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <=
+                                                6)
                                             <div class="col-sm">
                                                 <strong><i class="fas fa-stethoscope text-warning"></i>
                                                     Evaluacion
@@ -293,11 +289,9 @@
                                                     Riesgo: Moderado - No Vigente</P>
                                             </div>
                                         @endif
-                                    @elseif (Str::contains(
-                                            $paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(),
-                                            'Alto'))
-                                        @if (Carbon\Carbon::parse(
-                                                $paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <= 6)
+                                    @elseif (Str::contains($paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(), 'Alto'))
+                                        @if (Carbon\Carbon::parse($paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <=
+                                                6)
                                             <div class="col-sm">
                                                 <strong><i class="fas fa-stethoscope text-danger"></i>
                                                     Evaluacion
@@ -318,11 +312,9 @@
                                                     Riesgo: Alto - No Vigente</P>
                                             </div>
                                         @endif
-                                    @elseif (Str::contains(
-                                            $paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(),
-                                            'Maximo'))
-                                        @if (Carbon\Carbon::parse(
-                                                $paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <= 3)
+                                    @elseif (Str::contains($paciente->controls()->pluck('evaluacionPie')->whereNotNull()->last(), 'Maximo'))
+                                        @if (Carbon\Carbon::parse($paciente->controls()->pluck('fecha_control')->last())->diffInMonths(Carbon\Carbon::now()) <=
+                                                3)
                                             <div class="col-sm">
                                                 <strong><i class="fas fa-stethoscope text-danger"></i>
                                                     Evaluacion
@@ -352,6 +344,56 @@
                                                 hay datos...
                                             </p>
                                         </div>
+                                    @endif
+                                    {{-- dm2 compensados o no compensados --}}
+                                    @if ($paciente->edadEnMeses() < 80)
+                                        @if ($paciente->controls()->pluck('hba1cMenor7Porcent')->whereNotNull()->last() == 1)
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-stethoscope text-success"></i>
+                                                    HBA1C Menor 7%
+                                                </strong>
+                                                <p class="btn rounded-pill bg-gradient-success">
+                                                    Compensado </P>
+                                            </div>
+                                        @elseif($paciente->controls()->pluck('hba1cMayorIgual9Porcent')->whereNotNull()->last() == 1)
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-stethoscope text-danger"></i>
+                                                    HBA1C Mayor o igual a 9%
+                                                </strong>
+                                                <p class="btn rounded-pill bg-gradient-danger">
+                                                    Descompensado </P>
+                                            </div>
+                                        @else
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-question-circle mr-1"></i>HBA1C </strong>
+                                                <p class="btn badge-pill bg-gradient-secondary">No hay datos...
+                                                </p>
+                                            </div>
+                                        @endif
+                                    @elseif ($paciente->edadEnMeses() > 79)
+                                        @if ($paciente->controls()->pluck('hba1cMenor8Porcent')->whereNotNull()->last() == 1)
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-stethoscope text-success"></i>
+                                                    HBA1C Menor 8%
+                                                </strong>
+                                                <p class="btn rounded-pill bg-gradient-success">
+                                                    Compensado </P>
+                                            </div>
+                                        @elseif($paciente->controls()->pluck('hba1cMayorIgual9Porcent')->whereNotNull()->last() == 1)
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-stethoscope text-danger"></i>
+                                                    HBA1C Mayor o igual a 9%
+                                                </strong>
+                                                <p class="btn rounded-pill bg-gradient-danger">
+                                                    Descompensado </P>
+                                            </div>
+                                        @else
+                                            <div class="col-sm">
+                                                <strong><i class="fas fa-question-circle mr-1"></i>HBA1C</strong>
+                                                <p class="btn badge-pill bg-gradient-secondary">No hay datos...
+                                                </p>
+                                            </div>
+                                        @endif
                                     @endif
                                 </div>
                             @endif

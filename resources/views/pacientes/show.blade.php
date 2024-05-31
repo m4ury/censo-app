@@ -108,22 +108,7 @@
                                     <p class="btn badge-pill bg-gradient-info">
                                         {{ $paciente->erc ?: 'No se encontraron datos.' }}
                                     </p>
-                                    <hr>
                                 </div>
-
-                                @if ($paciente->compensado == 1)
-                                    <strong><i class="fas fa-thumbs-up mr-1"></i>Compensado</strong>
-                                    <br>
-                                    <p class="btn rounded-pill bg-gradient-success">COMPENSADO</P>
-                                @elseif($paciente->compensado == 2)
-                                    <strong><i class="fas fa-thumbs-down mr-1"></i>No Compensado</strong>
-                                    <br>
-                                    <p class="btn rounded-pill bg-gradient-danger">NO COMPENSADO</p>
-                                @else
-                                    <strong><i class="fas fa-question-circle mr-1"></i>Compensado</strong>
-                                    <br>
-                                    <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
-                                @endif
                             </div>
                             <div class="tab-pane fade" id="vert-tabs-nino_sano" role="tabpanel"
                                 aria-labelledby="vert-tabs-nino_sano-tab">
@@ -180,19 +165,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="tab-pane fade" id="vert-tabs-ic" role="tabpanel"
-                                aria-labelledby="vert-tabs-ic-tab"> --}}
-                            {{-- @include('interconsultas.list_ic', $paciente)
-                                @if ($paciente->interconsultas->count() > 0)
-                                    <a href="{{ route('interconsultas', $paciente->id) }}"><span class="text-bold">Ver
-                                            Todas
-                                            las
-                                            interconsultas...</span></a>
-                                @else
-                                    <p class="text-muted">No hay Controles aun, crea uno <i
-                                            class="far fa-laugh-wink fa-2x"></i></p>
-                                @endif --}}
-                            {{-- </div> --}}
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)
