@@ -572,7 +572,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Bajo')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->latest('controls.fecha_control');
     }
 
@@ -580,7 +580,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Moderado')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->latest('controls.fecha_control');
     }
 
@@ -588,7 +588,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Alto')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->latest('controls.fecha_control');
     }
 
@@ -596,7 +596,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Maximo')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->latest('controls.fecha_control');
     }
 
@@ -609,7 +609,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DM2')
             ->whereNull('pacientes.egreso')
             ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-            ->whereYear('controls.fecha_control', '>', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             ->latest('controls.fecha_control');
     }
 

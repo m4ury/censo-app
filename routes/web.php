@@ -127,5 +127,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.am', 'EstadisticaController@am')->name('estadisticas.am');
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
     Route::get('/estadisticas.fondoOjo', 'PacienteController@fondoOjo')->name('estadisticas.fondoOjo');
-    //Route::get('/estadisticas.ensDm2', 'EstadisticaController@ensDm2')->name('estadisticas.ensDm2');
+    Route::get('/estadisticas.metas', 'EstadisticaController@metas')->name('estadisticas.metas');
 });

@@ -9771,151 +9771,49 @@ class EstadisticaController extends Controller
 
         return view('estadisticas.hta', compact('hta'));
     }
-    /* public function ens()
+
+    public function metas(Request $request)
     {
+        $end = $request->get('end');
+        $ini = $request->get('ini');
 
         $pacientes = new Paciente;
 
-        $mas80M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->where('grupo', '>=', 80)->count();
-        $in7579M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count();
-        $in7074M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count();
-        $in6569M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count();
-        $in6064M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count();
-        $in5559M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count();
-        $in5054M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count();
-        $in4549M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count();
-        $in4044M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count();
-        $in3539M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count();
-        $in3034M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count();
-        $in2529M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count();
-        $in2024M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count();
-        $in1519M = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count();
-
-        $mas80F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->where('grupo', '>=', 80)->count();
-        $in7579F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count();
-        $in7074F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count();
-        $in6569F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count();
-        $in6064F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count();
-        $in5559F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count();
-        $in5054F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count();
-        $in4549F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count();
-        $in4044F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count();
-        $in3539F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count();
-        $in3034F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count();
-        $in2529F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count();
-        $in2024F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count();
-        $in1519F = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count();
+        $pa140_90 = $pacientes->pa140()->get()->where('grupo', '>', 14)->unique('rut')->count();
+        $pa150 = $pacientes->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count();
+        $sumaPa = $pa140_90 + $pa150;
 
         $hta = $pacientes->hta()->whereNull('egreso')->whereIn('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 14)->count();
-        $htaM = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Masculino')->where('grupo', '>', 14)->count();
-        $htaF = $pacientes->hta()->whereNull('egreso')->where('sexo', 'Femenino')->where('grupo', '>', 14)->count();
 
-        return view('estadisticas.ens', compact(
+        $hbac17 = $pacientes->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count();
+        $hbac18 = $pacientes->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count();
+
+        $sumaHbac = $hbac17 + $hbac18;
+
+        $evPie = $pacientes->evaluacionPie()->get()->unique('rut')->count();
+
+        $dm2 = $pacientes->dm2()->whereNull('egreso')->get()->where('grupo', '>', 14)->count();
+
+        $porcentajeDm2 = ($dm2 > 0) ? ($sumaHbac / $dm2) * 100 : 0;
+
+        $porcentajeHta = ($hta > 0) ? ($sumaPa / $hta) * 100 : 0;
+
+        $porcentajePie = ($evPie > 0) ? ($evPie / $dm2) * 100 : 0;
+
+
+        return view('estadisticas.metas', compact(
             'hta',
-            'htaM',
-            'htaF',
-            'mas80M',
-            'in7579M',
-            'in7074M',
-            'in6569M',
-            'in6064M',
-            'in5559M',
-            'in5054M',
-            'in4549M',
-            'in4044M',
-            'in3539M',
-            'in3034M',
-            'in2529M',
-            'in2024M',
-            'in1519M',
-
-            'mas80F',
-            'in7579F',
-            'in7074F',
-            'in6569F',
-            'in6064F',
-            'in5559F',
-            'in5054F',
-            'in4549F',
-            'in4044F',
-            'in3539F',
-            'in3034F',
-            'in2529F',
-            'in2024F',
-            'in1519F'
+            'pa140_90',
+            'pa150',
+            'hbac17',
+            'hbac18',
+            'dm2',
+            'sumaPa',
+            'sumaHbac',
+            'porcentajeDm2',
+            'porcentajeHta',
+            'evPie',
+            'porcentajePie',
         ));
     }
-        public function ensDm2(){
-
-            $pacientes = new Paciente;
-                            //$all->dm2()->get()->whereBetween('grupo', [15, 19])->where('sexo', 'Femenino')->count();
-            $mas80M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->where('grupo', '>=', 80)->count();
-            $in7579M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count();
-            $in7074M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count();
-            $in6569M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count();
-            $in6064M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count();
-            $in5559M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count();
-            $in5054M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count();
-            $in4549M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count();
-            $in4044M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count();
-            $in3539M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count();
-            $in3034M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count();
-            $in2529M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count();
-            $in2024M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count();
-            $in1519M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count();
-
-            $mas80F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->where('grupo', '>=', 80)->count();
-            $in7579F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [75, 79])->count();
-            $in7074F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [70, 74])->count();
-            $in6569F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [65, 69])->count();
-            $in6064F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [60, 64])->count();
-            $in5559F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [55, 59])->count();
-            $in5054F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [50, 54])->count();
-            $in4549F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [45, 49])->count();
-            $in4044F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [40, 44])->count();
-            $in3539F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [35, 39])->count();
-            $in3034F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [30, 34])->count();
-            $in2529F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [25, 29])->count();
-            $in2024F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [20, 24])->count();
-            $in1519F = $pacientes->dm2()->whereNull('egreso')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count();
-
-            $dm2 = $pacientes->dm2()->get()->whereIn('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 14)->count();
-            $dm2M = $pacientes->dm2()->get()->where('sexo', 'Masculino')->where('grupo', '>', 14)->count();
-            $dm2F = $pacientes->dm2()->get()->where('sexo', 'Femenino')->where('grupo', '>', 14)->count();
-
-            return view('estadisticas.ensDm2', compact(
-                'dm2',
-                'dm2M',
-                'dm2F',
-                'mas80M',
-                'in7579M',
-                'in7074M',
-                'in6569M',
-                'in6064M',
-                'in5559M',
-                'in5054M',
-                'in4549M',
-                'in4044M',
-                'in3539M',
-                'in3034M',
-                'in2529M',
-                'in2024M',
-                'in1519M',
-
-                'mas80F',
-                'in7579F',
-                'in7074F',
-                'in6569F',
-                'in6064F',
-                'in5559F',
-                'in5054F',
-                'in4549F',
-                'in4044F',
-                'in3539F',
-                'in3034F',
-                'in2529F',
-                'in2024F',
-                'in1519F'
-            ));
-    } */
 }

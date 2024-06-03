@@ -279,6 +279,12 @@ return [
             'icon' => 'fas fa-fw fa-file-alt text-pink',
             'can' => 'estadisticas'
         ],
+        [
+            'text' => 'Metas Ley 18.834',
+            'route' => 'estadisticas.metas',
+            'icon' => 'fas fa-chart-pie text-green',
+            'can' => 'estadisticas'
+        ],
     ],
 
     /*
