@@ -34,10 +34,17 @@
         ]) !!}
     </div>
     <div class="col-sm">
-        {!! Form::label('diagnostico_label', 'Diagnostico', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::label('diagnostico_label', 'Confirmación', ['class' => 'col-sm col-form-label text-bold']) !!}
         {!! Form::checkbox('diagnostico', 1, old('diagnostico', $const->diagnostico ? true : null), [
             'class' => 'form-control my-2 diagnostico',
             'id' => 'diagnostico',
+        ]) !!}
+    </div>
+    <div class="col-sm">
+        {!! Form::label('etapificacion_label', 'Etapificación', ['class' => 'col-sm col-form-label text-bold']) !!}
+        {!! Form::checkbox('etapificacion', 1, old('etapificacion', $const->etapificacion ? true : null), [
+            'class' => 'form-control my-2 etapificacion',
+            'id' => 'etapificacion',
         ]) !!}
     </div>
     <div class="col-sm">

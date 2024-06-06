@@ -14,19 +14,19 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="text-center">
+            <h5 class="text-center text-uppercase">
                 Formulario de constancia información al paciente GES
-            </h2>
+            </h5>
         </div>
     </div>
     <p class="text-center">(Artículo 24°, Ley 19.966)</p>
     <hr>
-    <h4 class="text-bold">
+    <h5 class="text-bold text-uppercase">
         Datos del Prestador
-    </h4>
+    </h5>
     <div class="row">
         <div class="col-sm col-form-label">
-            <h6>Institución (Hospital, Clínica, Consultorio, etc.):</h6>
+            <h6>INSTITUCIÓN (Hospital, Clínica, Consultorio, etc.):</h6>
         </div>
         <div class="col-sm form-control">
             <b>{{ env('APP_INST') }}</b>
@@ -34,13 +34,13 @@
     </div>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Direccion:</h6>
+            <h6>DIRECCIÓN:</h6>
         </div>
         <div class="col-sm-5 form-control">
             <b>{{ env('APP_DIR') }}</b>
         </div>
         <div class="col-sm col-form-label">
-            <h6>Ciudad:</h6>
+            <h6>CIUDAD:</h6>
         </div>
         <div class="col-sm form-control">
             <b>{{ env('APP_CIUDAD') }}</b>
@@ -48,27 +48,26 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-3 col-form-label">
-            <h6>Nombre persona que notifica: </h6>
+        <div class="col-sm-4 col-form-label">
+            <h6>NOMBRE PERSONA QUE NOTIFICA: </h6>
         </div>
-        <div class="col-sm-9 form-control">
+        <div class="col-sm-8 form-control">
             <b class="text-uppercase">{{ $constancia->user->fullUserName() }}</b>
         </div>
-        <div class="col-sm-2 col-form-label mt-2">
+        <div class="col-sm-2 col-form-label">
             <h6>RUN:</h6>
         </div>
-        <div class="col-sm-3 form-control mt-2">
+        <div class="col-sm-3 form-control">
             <b>{{ Rut::parse($constancia->user->rut)->fix()->format() }}</b>
         </div>
     </div>
     <hr>
-
-    <h4 class="text-bold">
+    <h5 class="text-bold text-uppercase">
         Antecedentes del paciente
-    </h4>
+    </h5>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Nombre legal:</h6>
+            <h6>NOMBRE LEGAL:</h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->fullName() }}</b>
@@ -76,7 +75,7 @@
     </div>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Nombre social: </h6>
+            <h6>NOMBRE SOCIAL: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->nombre_social }}</b>
@@ -91,7 +90,7 @@
             <b class="text-uppercase">{{ Rut::parse($constancia->paciente->rut)->fix()->format() }}</b>
         </div>
         <div class="col-sm-2 col-form-label">
-            <h6>Previsión: </h6>
+            <h6>PREVISIÓN: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->prevision }}</b>
@@ -99,33 +98,33 @@
     </div>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Domicilio: </h6>
+            <h6>DOMICILIO: </h6>
         </div>
-        <div class="col-sm-6 form-control">
+        <div class="col-sm-3 form-control">
             <b class="text-uppercase">{{ $constancia->paciente->direccion }}</b>
         </div>
         <div class="col-sm-2 col-form-label">
-            <h6>Comuna: </h6>
+            <h6>COMUNA: </h6>
         </div>
-        <div class="col-sm form-control">
+        <div class="col-sm-2 form-control">
             <b class="text-uppercase">{{ $constancia->paciente->comuna }}</b>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-form-label">
-            <h6>Región: </h6>
+        <div class="col-sm col-form-label">
+            <h6>REGIÓN: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ env('APP_REGION') }}</b>
         </div>
+    </div>
+    <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Teléfono: </h6>
+            <h6>N° TELÉFONO: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->telefono }}</b>
         </div>
         <div class="col-sm col-form-label">
-            <h6>Correo electrónico: </h6>
+            <h6>CORREO ELECTRÓNICO: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->email }}</b>
@@ -133,14 +132,14 @@
     </div>
     <hr>
 
-    <h4 class="text-bold">
+    <h5 class="text-bold text-uppercase">
         Información médica
-    </h4>
+    </h5>
     <div class="row">
-        <div class="col-sm-2 col-form-label">
-            <h6>Problema de Salud GES:</h6>
+        <div class="col-sm-3 col-form-label">
+            <h6>PROBLEMA DE SALUD GES:</h6>
         </div>
-        <div class="col-sm-8 form-control">
+        <div class="col-sm-6 form-control">
             <b class="text-uppercase">{{ $constancia->problema->nombre_problema }}</b>
         </div>
         <div class="col-sm col-form-label">
@@ -151,54 +150,105 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm text-center">
-            <b class="text-uppercase">
-                <span>Sospecha</span> <i
-                    class="{{ $constancia->sospecha == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Diagnóstico y/o Etapificación</span><i
-                    class="{{ $constancia->diagnostico == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Tratamiento</span><i
-                    class="{{ $constancia->tratamiento == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Seguimiento</span><i
-                    class="{{ $constancia->seguimiento == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Rehabilitación</span><i
-                    class="{{ $constancia->rehab == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i class="fas fa-square fa-lg ml-auto"></i>
+                <span>Confirmación</span>
             </b>
         </div>
     </div>
-    <hr>
+    <hr class="text-muted" style="background-color: rgb(187, 181, 181); border:none; height: 2px;">
     <div class="row">
-        <div class="col-sm-3">
-            <h4 class="text-bold">
-                Tipo de atención
-            </h4>
+        <div class="col-sm-6 col-form-label mb-2">
+            <h6>PROBLEMA DE SALUD GES ONCOLÓGICO:</h6>
         </div>
-        <div class="col-sm text-center">
-            <b class="text-uppercase">
-                <span>Presencial</span><i
-                    class="{{ $constancia->presencial == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
-                <span>Teleconsulta</span><i
-                    class="{{ $constancia->teleconsulta == true ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+        <div class="col-sm-6 form-control mb-2">
+            <b class="text-uppercase"></b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->sospecha == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Sospecha</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->diagnostico == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Confirmación</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->etapificacion == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Etapificación</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->tratamiento == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Tratamiento</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->seguimiento == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Seguimiento</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->rehab == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <span>Rehabilitación</span>
             </b>
         </div>
     </div>
     <hr>
-
-    <h4 class="text-bold">
-        Constancia:
-    </h4>
     <div class="row">
         <div class="col-sm">
-            <p>
+            <h5 class="text-bold text-uppercase">
+                Tipo de atención
+            </h5>
+        </div>
+    </div>
+    <div class="row pt-2 text-center">
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->presencial == true ? 'fas fa-check-square fa-lg text-info ml-3' : 'fas fa-square fa-lg ml-3' }}"></i>
+                <span>Presencial</span>
+            </b>
+        </div>
+        <div class="col-sm">
+            <b class="text-bold">
+                <i
+                    class="{{ $constancia->teleconsulta == true ? 'fas fa-check-square fa-lg text-info ml-3' : 'fas fa-square fa-lg ml-3' }}"></i>
+                <span>Teleconsulta</span>
+            </b>
+        </div>
+    </div>
+    <hr>
+    <h5 class="text-bold text-uppercase" style="text-decoration-line: underline">
+        Constancia:
+    </h5>
+    <div class="row">
+        <div class="col-sm">
+            <p class="text-bold text-justify">
                 Tomo conocimiento que tengo derecho a acceder a las Garantías Explícitas en Salud, en la medida que
                 me
                 atiendan en la red de Prestadores que asigne el Fonasa o la Isapre, según corresponda.
             </p>
         </div>
     </div>
-    <div class="row pb-sm-5">
-        <div class="col-sm-3 col-form-label">
-            <h6>Fecha y hora de notificación:</h6>
+    <hr>
+    <div class="row pb-sm-4">
+        <div class="col-sm-4 col-form-label">
+            <h6>FECHA Y HORA DE NOTIFICACIÓN:</h6>
         </div>
         <div class="col-sm form-control">
             <b
@@ -206,69 +256,65 @@
         </div>
     </div>
 
-    <div class="row pt-5 mt-5 align-items-center">
+    <div class="row pt-4 mt-4 align-items-center">
         <div class="col-sm mx-3 border-top border-primary text-center">
-            <h6 class="text-bold text-center">
+            <h6 class="text-bold text-center text-uppercase">
                 Informé Problema de Salud GES
             </h6>
             <span class="text-muted">(Firma de persona que notifica)</span>
         </div>
         <div class="col-sm mx-3 border-top border-primary text-center">
-            <h6 class="text-bold text-center">
+            <h6 class="text-bold text-center text-uppercase">
                 Tomé conocimiento*
             </h6>
-            <span class="text-muted">(Firma o huella digital de paciente o representante)</span>
+            <span class="text-muted">(Firma o huella dactilar de paciente o representante)</span>
         </div>
     </div>
 
-    <div class="row pt-3">
+    <div class="row pt-2">
         <div class="col-sm">
             <h6 class="text-bold">
-                *En la modalidad de teleconsulta, <span style="text-decoration-line: underline">en reemplazo de la firma o huella</span>, se registrará el medio a través
-                del
-                cual el paciente o su representante tomó conocimiento:
+                En la modalidad de TELECONSULTA, <span style="text-decoration-line: underline">en ausencia de firma o
+                    huella</span>, se registrará el medio a través del cual el paciente o su representante tomó
+                conocimiento:
             </h6>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-3 col-form-label">
-            <h6>Correo electrónico: </h6>
-        </div>
-        <p>
-            <b class="text-uppercase">
+    <div class="row pt-2">
+        <div class="col-sm-3">
+            <b>
+                <span>Correo electrónico</span>
                 <i
-                    class="{{ $constancia->medio_conocimiento == 'correo electronico' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+                    class="{{ $constancia->medio_conocimiento == 'correo electronico' ? 'fas fa-check-square fa-lg text-info ml-3' : 'fas fa-square fa-lg ml-3' }}"></i>
             </b>
-        </p>
-        <div class="col-sm-2 col-form-label">
-            <h6>Carta certificada: </h6>
+
         </div>
-        <p>
-            <b class="text-uppercase">
+
+        <div class="col-sm-3">
+            <b>
+                <span>Carta certificada</span>
                 <i
-                    class="{{ $constancia->medio_conocimiento == 'carta certificada' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+                    class="{{ $constancia->medio_conocimiento == 'carta certificada' ? 'fas fa-check-square fa-lg text-info ml-3' : 'fas fa-square fa-lg ml-3' }}"></i>
             </b>
-        </p>
-        <div class="col-sm-2 col-form-label">
-            <h6>Otros(indicar): </h6>
+
         </div>
-        <p>
-            <b class="text-uppercase">
-                <i
-                    class="{{ $constancia->medio_conocimiento == 'otros' ? 'fas fa-check-square fa-lg text-info mx-3' : 'fas fa-square fa-lg mx-3' }}"></i>
+
+        <div class="col-sm-6">
+            <b>
+                <span>Otros (indicar)</span>
+                {{ $constancia->medio_conocimiento ?? '____________________________________________________' }}
             </b>
-            <b class="text-uppercase">
-                {{ $constancia->otro_medio ?? '' }}
-            </b>
-        </p>
+
+        </div>
     </div>
+
 
     <h6 class="text-muted">En el caso que la persona que tomó conocimiento no sea el paciente, identificar:
     </h6>
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Nombre: </h6>
+            <h6>NOMBRE: </h6>
         </div>
         <div class="col-sm-6 form-control">
             <b class="text-uppercase">{{ $constancia->otro_nombre ?? '' }}</b>
@@ -283,34 +329,39 @@
 
     <div class="row">
         <div class="col-sm-2 col-form-label">
-            <h6>Teléfono: </h6>
+            <h6>N° TELÉFONO: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->otro_telefono ?? '' }}</b>
         </div>
         <div class="col-sm-2 col-form-label">
-            <h6>Correo electrónico: </h6>
+            <h6>CORREO ELECTRÓNICO: </h6>
         </div>
         <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->otro_mail ?? '' }}</b>
         </div>
     </div>
 
-    <div class="row pt-3">
+    <div class="row">
         <div class="col-sm">
-            <h6 class="text-bold">
-                Importante: Tenga presente que si no se cumplen las garantías usted puede reclamar ante Fonasa o la
+            <h6 class="text-bold" style="text-decoration-line: underline">
+                IMPORTANTE:
+            </h6>
+            <P class="text-bold">
+                Tenga presente que si no se cumplen las garantías usted puede reclamar ante Fonasa o la
                 Isapre, según coresponda. Si la respuesta no es satisfactoria, usted puede recurrir en segunda
                 instancia
-                a la Superintendenciade Salud.
-            </h6>
+                a la Superintendencia de Salud.
+            </P>
         </div>
     </div>
+</div>
 </div>
 
 <style>
     body {
         background: #ffffff;
+        font-size: small;
     }
 
     hr {
