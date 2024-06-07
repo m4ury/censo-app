@@ -205,4 +205,12 @@ class PacienteController extends Controller
 
         return view('pacientes.pMujer', compact('pMujer'));
     }
+
+    public function paliativo_list()
+    {
+        $paciente = new Paciente;
+        $paliativo = $paciente->paliativo()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
+
+        return view('pacientes.paliativo', compact('paliativo'));
+    }
 }

@@ -338,6 +338,14 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', '=', 'HIPOTIROIDISMO');
     }
 
+    public function paliativo()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+            ->whereNull('pacientes.egreso')
+            ->where('patologias.nombre_patologia', '=', 'PALIATIVO UNIVERSAL');
+    }
+
     //P4 seccion B Metaas de Compensacion
 
     public function pa140()

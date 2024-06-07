@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.lactancia', 'PacienteController@lactancia_list')->name('pacientes.lactancia');
     Route::get('/pacientes.embarazada', 'PacienteController@embarazada_list')->name('pacientes.embarazada');
     Route::get('/pacientes.climater', 'PacienteController@climater_list')->name('pacientes.climater');
+    Route::get('/pacientes.paliativo', 'PacienteController@paliativo_list')->name('pacientes.paliativo');
 
 
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');
