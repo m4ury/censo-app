@@ -2,8 +2,8 @@
 @section('title', 'crear-encuesta')
 
 @section('content')
-    <div class="container-fluid"">
-        <div class="row pt-3">
+    <div class="container">
+        <div class="row justify-content-left">
             <div class="col-sx-12 col-sm-12 col-lg">
                 <div class="card card-info card-outline">
                     <div class="card-header">

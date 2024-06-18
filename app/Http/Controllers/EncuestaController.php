@@ -35,7 +35,7 @@ class EncuestaController extends Controller
     public function store(EncuestaRequest $request)
     {
 
-        $encuesta = new Encuesta($request->except('_token'));
+        $encuesta = new Encuesta($request->all());
         $encuesta->der_1 = $request->der_1 ?? null;
         $encuesta->der_2 = $request->der_2 ?? null;
         $encuesta->der_3 = $request->der_3 ?? null;

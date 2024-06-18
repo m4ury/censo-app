@@ -139,7 +139,7 @@
         <div class="col-sm-3 col-form-label">
             <h6>PROBLEMA DE SALUD GES:</h6>
         </div>
-        <div class="col-sm-6 form-control">
+        <div class="col-sm-7 form-control">
             <b class="text-uppercase">{{ $constancia->problema->nombre_problema }}</b>
         </div>
         <div class="col-sm col-form-label">
@@ -152,7 +152,8 @@
     <div class="row">
         <div class="col-sm">
             <b class="text-bold">
-                <i class="fas fa-square fa-lg ml-auto"></i>
+                <i
+                    class="{{ $constancia->diagnostico == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
                 <span>Confirmación</span>
             </b>
         </div>
@@ -174,8 +175,7 @@
         </div>
         <div class="col-sm">
             <b class="text-bold">
-                <i
-                    class="{{ $constancia->diagnostico == true ? 'fas fa-check-square fa-lg text-info ml-auto' : 'fas fa-square fa-lg ml-auto' }}"></i>
+                <i class="fas fa-square fa-lg ml-auto"></i>
                 <span>Confirmación</span>
             </b>
         </div>
@@ -265,7 +265,7 @@
         </div>
         <div class="col-sm mx-3 border-top border-primary text-center">
             <h6 class="text-bold text-center text-uppercase">
-                Tomé conocimiento*
+                Tomé conocimiento
             </h6>
             <span class="text-muted">(Firma o huella dactilar de paciente o representante)</span>
         </div>
@@ -302,8 +302,8 @@
 
         <div class="col-sm-6">
             <b>
-                <span>Otros (indicar)</span>
-                {{ $constancia->medio_conocimiento ?? '____________________________________________________' }}
+                <span>Otros (indicar): </span>
+                {{ $constancia->medio_conocimiento == 'otros' ? $constancia->otro_medio : '____________________________________________________' }}
             </b>
 
         </div>

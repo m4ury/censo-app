@@ -1,5 +1,6 @@
 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     {{ Form::open(['action' => 'EncuestaController@store', 'method' => 'POST', 'class' => 'form-horizontal pt-2']) }}
+    @csrf
 
     <div class="form-group row">
         {!! Form::label('num_encuestas_label', 'Num. Encuesta:', ['class' => 'col-sm col-form-label']) !!}
@@ -11,7 +12,7 @@
             {!! Form::date('fecha_encuesta', null, ['class' => 'form-control form-control-sm']) !!}
         </div>
 
-        {!! Form::label('rut', 'Rut Encuestado:', ['class' => 'col-sm-2 col-form-label']) !!}
+        {!! Form::label('rut_label', 'Rut Encuestado:', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-3">
             {!! Form::select('paciente_id', $pacientes, null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('paciente_id') ? ' is-invalid' : ''),

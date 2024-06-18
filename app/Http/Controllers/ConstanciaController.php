@@ -77,7 +77,6 @@ class ConstanciaController extends Controller
             $const->seguimiento = $request->seguimiento ?? null;
             $const->rehab = $request->rehab ?? null;
 
-
             $const->presencial = $request->presencial ?? null;
             $const->teleconsulta = $request->teleconsulta ?? null;
 
