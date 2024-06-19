@@ -30,7 +30,7 @@
                     <tr>
                         <td nowrap="">{{ $constancia->paciente->rut ?? '' }}</td>
                         <td>
-                            {{ $constancia->paciente ? $constancia->paciente->fullName() : $constancia->paciente->nombre_social }}
+                            {{ $constancia->paciente ? $constancia->paciente->fullName() : '' }}
                         </td>
                         <td>
                             {{ $constancia->problema->nombre_problema ?? '--' }}

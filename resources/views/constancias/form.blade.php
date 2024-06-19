@@ -1,13 +1,3 @@
-{{-- <div class="form-group row" id="fecha_const">
-    {!! Form::label('fechaConst_label', 'Fecha Constancia', [
-        'class' => 'col-sm-3 col-form-label',
-    ]) !!}
-    <div class="col-sm-3">
-        {!! Form::date('fecha_constancia', old('fecha_constancia', $const->fecha_constancia), [
-            'class' => 'form-control',
-        ]) !!}
-    </div>
-</div> --}}
 <h4 class="text-bold">Información médica</h4>
 <div class="form-group row">
     {!! Form::label('problema_label', 'Problema de Salud GES:', ['class' => 'col-sm col-form-label']) !!}
@@ -23,7 +13,6 @@
             </span>
         @endif
     </div>
-    {{-- Form::label('tipo_label', 'Tipo Constancia:', ['class' => 'col-sm-2 col-form-label']) --}}
 </div>
 <div class="row">
     <div class="col-sm">

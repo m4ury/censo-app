@@ -63,22 +63,39 @@ class ConstanciaController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'rut' => 'cl_rut',
+                'nombres' => 'required',
+                'apellidoP' => 'required',
+                'apellidoM' => 'required',
+                'fecha_nacimiento' => 'required',
+                'prevision' => 'required',
+                'telefono' => 'required',
+                'email' => 'required',
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
             }
             $pcte->save();
 
-            $const = new Constancia($request->except('_token'));
-            //$const->fecha_constancia = new Carbon()
-            $const->sospecha = $request->sospecha ?? null;
-            $const->diagnostico = $request->diagnostico ?? null;
-            $const->tratamiento = $request->tratamiento ?? null;
-            $const->seguimiento = $request->seguimiento ?? null;
-            $const->rehab = $request->rehab ?? null;
-
-            $const->presencial = $request->presencial ?? null;
-            $const->teleconsulta = $request->teleconsulta ?? null;
+            $const = new Constancia($request->all());
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'problema_id' => 'required',
+                ],
+                [
+                    'problema_id.required' => 'Debe seleccionar una problema de Salud GES',
+                ]
+            );
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+            $const->sospecha = $request->sospecha;
+            $const->diagnostico = $request->diagnostico;
+            $const->tratamiento = $request->tratamiento;
+            $const->seguimiento = $request->seguimiento;
+            $const->rehab = $request->rehab;
+            $const->presencial = $request->presencial;
+            $const->teleconsulta = $request->teleconsulta;
 
             $const->problema_id = $request->problema_id;
             $const->paciente_id = $pcte->id;
@@ -86,13 +103,25 @@ class ConstanciaController extends Controller
             $const->save();
         } else {
             $const = new Constancia($request->except('_token'));
-            $const->sospecha = $request->sospecha ?? null;
-            $const->diagnostico = $request->diagnostico ?? null;
-            $const->tratamiento = $request->tratamiento ?? null;
-            $const->seguimiento = $request->seguimiento ?? null;
-
-            $const->presencial = $request->presencial ?? null;
-            $const->teleconsulta = $request->teleconsulta ?? null;
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'problema_id' => 'required',
+                ],
+                [
+                    'problema_id.required' => 'Debe seleccionar una problema de Salud GES',
+                ]
+            );
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+            $const->sospecha = $request->sospecha;
+            $const->diagnostico = $request->diagnostico;
+            $const->tratamiento = $request->tratamiento;
+            $const->seguimiento = $request->seguimiento;
+            $const->rehab = $request->rehab;
+            $const->presencial = $request->presencial;
+            $const->teleconsulta = $request->teleconsulta;
 
             $const->problema_id = $request->problema_id;
             $const->paciente_id = $request->paciente_id;

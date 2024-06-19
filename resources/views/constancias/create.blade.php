@@ -10,6 +10,7 @@
                     </div>
                     <div class="card-body">
                         {{ Form::open(['action' => 'ConstanciaController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+                        @csrf
                         <h4 class="text-bold">Antecedentes del/la paciente</h4>
                         <div class="form-group row">
                             {!! Form::label('paciente_label', 'Busca y selecciona Paciente Existente:', [
@@ -57,11 +58,21 @@
 
                                             {!! Form::label('prevision_label', 'Prevision: ', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
-                                                {!! Form::select('prevision', ['FONASA', 'ISAPRE'], null, [
-                                                    'class' => 'form-control form-control-sm',
-                                                    'id' => 'prevision',
-                                                    'placeholder' => 'Seleccione Prevision',
-                                                ]) !!}
+                                                {!! Form::select(
+                                                    'prevision',
+                                                    ['FONASA A', 'FONASA B', 'FONASA C', 'FONASA D', 'ISAPRE', 'DIPRECA', 'CAPREDENA', 'otra'],
+                                                    null,
+                                                    [
+                                                        'class' => 'form-control form-control-sm' . ($errors->has('prevision') ? ' is-invalid' : ''),
+                                                        'id' => 'prevision',
+                                                        'placeholder' => 'Seleccione Prevision',
+                                                    ],
+                                                ) !!}
+                                                @if ($errors->has('prevision'))
+                                                    <span class="invalid-feedback">
+                                                        <strong>{{ $errors->first('prevision') }}</strong>
+                                                    </span>
+                                                @endif
                                             </div>
 
                                         </div>
@@ -80,9 +91,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            {!! Form::label('apellidos', 'Apellido Paterno', ['class' => 'col-sm-2 col-form-label']) !!}
+                                            {!! Form::label('apellidoP_label', 'Apellido Paterno', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
-                                                {!! Form::text('apellidoP', null, [
+                                                {!! Form::text('apellidoP', old('apellidoP') ?? null, [
                                                     'class' => 'form-control form-control-sm' . ($errors->has('apellidoP') ? 'is-invalid' : ''),
                                                     'placeholder' => 'Apellido Paterno',
                                                 ]) !!}
@@ -92,10 +103,10 @@
                                                     </span>
                                                 @endif
                                             </div>
-                                            {!! Form::label('apellidos', 'Apellido Materno', ['class' => 'col-sm-2 col-form-label']) !!}
+                                            {!! Form::label('apellidoM_label', 'Apellido Materno', ['class' => 'col-sm-2 col-form-label']) !!}
                                             <div class="col-sm-4">
-                                                {!! Form::text('apellidoM', null, [
-                                                    'class' => 'form-control form-control-sm' . ($errors->has('apellidoM') ? 'is-invalid' : ''),
+                                                {!! Form::text('apellidoM', old('apellidoM') ?? null, [
+                                                    'class' => 'form-control form-control-sm',
                                                     'placeholder' => 'Apellido Materno',
                                                 ]) !!}
                                             </div>
