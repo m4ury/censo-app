@@ -249,7 +249,7 @@
                         <div class="form-group row">
                             {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
                                 'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            col-form-label',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        col-form-label',
                             ]) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -305,11 +305,10 @@
                             </div>
                         </div>
 
-                        @if ($paciente->grupo > 4)
+                        @if ($paciente->edadEnMeses() > 1)
                             @include('partials.empam')
                         @endif
 
-                        <hr>
                         {{-- $paciente->patologias --}}
                         @if (
                             $paciente->patologias->contains('nombre_patologia', 'HTA') ||

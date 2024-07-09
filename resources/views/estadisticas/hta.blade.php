@@ -28,7 +28,7 @@
                 <tbody>
                     @foreach ($hta as $paciente)
                         <tr>
-                            <td>{{ $paciente->rut }}</td>
+                            <td><a href="{{ route('pacientes.show', $paciente) }}">{{ $paciente->rut }}</td>
                             <td>{{ $paciente->ficha }}</td>
                             <td>{{ $paciente->fullName() }}</td>
                             <td>

@@ -435,7 +435,7 @@
                                 <td>{{ $epocB_7579F }}</td>
                                 <td>{{ $epocB_80M }}</td>
                                 <td>{{ $epocB_80F }}</td>
-                                <td>{{$epocB_espVig}}</td>
+                                <td>{{ $epocB_espVig }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -958,7 +958,7 @@
                             <tr>
                                 <th rowspan="3" nowrap ="" class ="py-5" style="vertical-align: middle">
                                     DEPENDENCIA SEVERA</th>
-                                <th>ONCOLOGICA</th>
+                                <th>ONCOLÓGICA</th>
                                 <td>{{ $oncologico }}</td>
                                 <td>{{ $oncologicoM }}</td>
                                 <td>{{ $oncologicoF }}</td>
@@ -1001,7 +1001,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap ="">NO ONCOLOGICA</th>
+                                <th nowrap ="">NO ONCOLÓGICA</th>
                                 <td>{{ $depSevera }}</td>
                                 <td>{{ $depSeveraM }}</td>
                                 <td>{{ $depSeveraF }}</td>
@@ -1044,7 +1044,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap ="">CON ESCARAS (*)</th>
+                                <th nowrap ="">TOTAL DE PERSONAS CON LESIÓN POR PRESIÓN *</th>
                                 <td>{{ $escaras }}</td>
                                 <td>{{ $escarasM }}</td>
                                 <td>{{ $escarasF }}</td>
@@ -1088,7 +1088,7 @@
                             </tr>
 
                             <tr>
-                                <th rowspan="4" class ="py-5" style="vertical-align: middle">ATENCIÓN DOMICILIARIA
+                                <th rowspan="9" class ="py-5" style="vertical-align: middle">ATENCIÓN DOMICILIARIA
                                     POR DEPENDENCIA SEVERA</th>
                                 <th>TOTAL PERSONAS</th>
                                 <td>{{ $depSevera }}</td>
@@ -1133,7 +1133,179 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap ="">TOTAL PERSONAS CON ESCARAS</th>
+                                <th>ONCOLÓGICA</th>
+                                <td>{{ $oncologico }}</td>
+                                <td>{{ $oncologicoM }}</td>
+                                <td>{{ $oncologicoF }}</td>
+                                <td>{{ $oncologico_04M }}</td>
+                                <td>{{ $oncologico_04F }}</td>
+                                <td>{{ $oncologico_59M }}</td>
+                                <td>{{ $oncologico_59F }}</td>
+                                <td>{{ $oncologico_1014M }}</td>
+                                <td>{{ $oncologico_1014F }}</td>
+                                <td>{{ $oncologico_1519M }}</td>
+                                <td>{{ $oncologico_1519F }}</td>
+                                <td>{{ $oncologico_2024M }}</td>
+                                <td>{{ $oncologico_2024F }}</td>
+                                <td>{{ $oncologico_2529M }}</td>
+                                <td>{{ $oncologico_2529F }}</td>
+                                <td>{{ $oncologico_3034M }}</td>
+                                <td>{{ $oncologico_3034F }}</td>
+                                <td>{{ $oncologico_3539M }}</td>
+                                <td>{{ $oncologico_3539F }}</td>
+                                <td>{{ $oncologico_4044M }}</td>
+                                <td>{{ $oncologico_4044F }}</td>
+                                <td>{{ $oncologico_4549M }}</td>
+                                <td>{{ $oncologico_4549F }}</td>
+                                <td>{{ $oncologico_5054M }}</td>
+                                <td>{{ $oncologico_5054F }}</td>
+                                <td>{{ $oncologico_5559M }}</td>
+                                <td>{{ $oncologico_5559F }}</td>
+                                <td>{{ $oncologico_6064M }}</td>
+                                <td>{{ $oncologico_6064F }}</td>
+                                <td>{{ $oncologico_6569M }}</td>
+                                <td>{{ $oncologico_6569F }}</td>
+                                <td>{{ $oncologico_7074M }}</td>
+                                <td>{{ $oncologico_7074F }}</td>
+                                <td>{{ $oncologico_7579M }}</td>
+                                <td>{{ $oncologico_7579F }}</td>
+                                <td>{{ $oncologico_80M }}</td>
+                                <td>{{ $oncologico_80F }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap ="">NO ONCOLÓGICA</th>
+                                <td>{{ $depSevera }}</td>
+                                <td>{{ $depSeveraM }}</td>
+                                <td>{{ $depSeveraF }}</td>
+                                <td>{{ $depSevera_04M }}</td>
+                                <td>{{ $depSevera_04F }}</td>
+                                <td>{{ $depSevera_59M }}</td>
+                                <td>{{ $depSevera_59F }}</td>
+                                <td>{{ $depSevera_1014M }}</td>
+                                <td>{{ $depSevera_1014F }}</td>
+                                <td>{{ $depSevera_1519M }}</td>
+                                <td>{{ $depSevera_1519F }}</td>
+                                <td>{{ $depSevera_2024M }}</td>
+                                <td>{{ $depSevera_2024F }}</td>
+                                <td>{{ $depSevera_2529M }}</td>
+                                <td>{{ $depSevera_2529F }}</td>
+                                <td>{{ $depSevera_3034M }}</td>
+                                <td>{{ $depSevera_3034F }}</td>
+                                <td>{{ $depSevera_3539M }}</td>
+                                <td>{{ $depSevera_3539F }}</td>
+                                <td>{{ $depSevera_4044M }}</td>
+                                <td>{{ $depSevera_4044F }}</td>
+                                <td>{{ $depSevera_4549M }}</td>
+                                <td>{{ $depSevera_4549F }}</td>
+                                <td>{{ $depSevera_5054M }}</td>
+                                <td>{{ $depSevera_5054F }}</td>
+                                <td>{{ $depSevera_5559M }}</td>
+                                <td>{{ $depSevera_5559F }}</td>
+                                <td>{{ $depSevera_6064M }}</td>
+                                <td>{{ $depSevera_6064F }}</td>
+                                <td>{{ $depSevera_6569M }}</td>
+                                <td>{{ $depSevera_6569F }}</td>
+                                <td>{{ $depSevera_7074M }}</td>
+                                <td>{{ $depSevera_7074F }}</td>
+                                <td>{{ $depSevera_7579M }}</td>
+                                <td>{{ $depSevera_7579F }}</td>
+                                <td>{{ $depSevera_80M }}</td>
+                                <td>{{ $depSevera_80F }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap ="">CON DEMENCIA</th>
+                                <td>{{ $depSevera }}</td>
+                                <td>{{ $depSeveraM }}</td>
+                                <td>{{ $depSeveraF }}</td>
+                                <td>{{ $depSevera_04M }}</td>
+                                <td>{{ $depSevera_04F }}</td>
+                                <td>{{ $depSevera_59M }}</td>
+                                <td>{{ $depSevera_59F }}</td>
+                                <td>{{ $depSevera_1014M }}</td>
+                                <td>{{ $depSevera_1014F }}</td>
+                                <td>{{ $depSevera_1519M }}</td>
+                                <td>{{ $depSevera_1519F }}</td>
+                                <td>{{ $depSevera_2024M }}</td>
+                                <td>{{ $depSevera_2024F }}</td>
+                                <td>{{ $depSevera_2529M }}</td>
+                                <td>{{ $depSevera_2529F }}</td>
+                                <td>{{ $depSevera_3034M }}</td>
+                                <td>{{ $depSevera_3034F }}</td>
+                                <td>{{ $depSevera_3539M }}</td>
+                                <td>{{ $depSevera_3539F }}</td>
+                                <td>{{ $depSevera_4044M }}</td>
+                                <td>{{ $depSevera_4044F }}</td>
+                                <td>{{ $depSevera_4549M }}</td>
+                                <td>{{ $depSevera_4549F }}</td>
+                                <td>{{ $depSevera_5054M }}</td>
+                                <td>{{ $depSevera_5054F }}</td>
+                                <td>{{ $depSevera_5559M }}</td>
+                                <td>{{ $depSevera_5559F }}</td>
+                                <td>{{ $depSevera_6064M }}</td>
+                                <td>{{ $depSevera_6064F }}</td>
+                                <td>{{ $depSevera_6569M }}</td>
+                                <td>{{ $depSevera_6569F }}</td>
+                                <td>{{ $depSevera_7074M }}</td>
+                                <td>{{ $depSevera_7074F }}</td>
+                                <td>{{ $depSevera_7579M }}</td>
+                                <td>{{ $depSevera_7579F }}</td>
+                                <td>{{ $depSevera_80M }}</td>
+                                <td>{{ $depSevera_80F }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap ="">INSTITUCIONALIZADA</th>
+                                <td>{{ $depSevera }}</td>
+                                <td>{{ $depSeveraM }}</td>
+                                <td>{{ $depSeveraF }}</td>
+                                <td>{{ $depSevera_04M }}</td>
+                                <td>{{ $depSevera_04F }}</td>
+                                <td>{{ $depSevera_59M }}</td>
+                                <td>{{ $depSevera_59F }}</td>
+                                <td>{{ $depSevera_1014M }}</td>
+                                <td>{{ $depSevera_1014F }}</td>
+                                <td>{{ $depSevera_1519M }}</td>
+                                <td>{{ $depSevera_1519F }}</td>
+                                <td>{{ $depSevera_2024M }}</td>
+                                <td>{{ $depSevera_2024F }}</td>
+                                <td>{{ $depSevera_2529M }}</td>
+                                <td>{{ $depSevera_2529F }}</td>
+                                <td>{{ $depSevera_3034M }}</td>
+                                <td>{{ $depSevera_3034F }}</td>
+                                <td>{{ $depSevera_3539M }}</td>
+                                <td>{{ $depSevera_3539F }}</td>
+                                <td>{{ $depSevera_4044M }}</td>
+                                <td>{{ $depSevera_4044F }}</td>
+                                <td>{{ $depSevera_4549M }}</td>
+                                <td>{{ $depSevera_4549F }}</td>
+                                <td>{{ $depSevera_5054M }}</td>
+                                <td>{{ $depSevera_5054F }}</td>
+                                <td>{{ $depSevera_5559M }}</td>
+                                <td>{{ $depSevera_5559F }}</td>
+                                <td>{{ $depSevera_6064M }}</td>
+                                <td>{{ $depSevera_6064F }}</td>
+                                <td>{{ $depSevera_6569M }}</td>
+                                <td>{{ $depSevera_6569F }}</td>
+                                <td>{{ $depSevera_7074M }}</td>
+                                <td>{{ $depSevera_7074F }}</td>
+                                <td>{{ $depSevera_7579M }}</td>
+                                <td>{{ $depSevera_7579F }}</td>
+                                <td>{{ $depSevera_80M }}</td>
+                                <td>{{ $depSevera_80F }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap ="">TOTAL DE PERSONAS CON LESIÓN POR PRESIÓN *</th>
                                 <td>{{ $escaras }}</td>
                                 <td>{{ $escarasM }}</td>
                                 <td>{{ $escarasF }}</td>
@@ -1171,49 +1343,6 @@
                                 <td>{{ $escaras_7579F }}</td>
                                 <td>{{ $escaras_80M }}</td>
                                 <td>{{ $escaras_80F }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>TOTAL PERSONAS CON CUIDADOR QUE RECIBE APOYO MONETARIO</th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

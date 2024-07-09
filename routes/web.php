@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.embarazada', 'PacienteController@embarazada_list')->name('pacientes.embarazada');
     Route::get('/pacientes.climater', 'PacienteController@climater_list')->name('pacientes.climater');
     Route::get('/pacientes.paliativo', 'PacienteController@paliativo_list')->name('pacientes.paliativo');
+    Route::get('/pacientes.pscv', 'PacienteController@pscv_list')->name('pacientes.pscv');
+    Route::get('/pacientes.demencia', 'PacienteController@demencia_list')->name('pacientes.demencia');
+
+
 
 
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');

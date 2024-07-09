@@ -27,8 +27,8 @@ class Paciente extends Model
     public function edadEnMeses()
     {
 
-        if (Carbon::create($this->fecha_nacimiento)->age <= 9) {
-            return Carbon::create($this->fecha_nacimiento)->diff(Carbon::now())->format('%y Años, %m Meses y %d Dias');
+        if (Carbon::create($this->fecha_nacimiento)->age < 10) {
+            return Carbon::create($this->fecha_nacimiento)->diffInMonths(Carbon::now());
         } else
             return Carbon::parse($this->fecha_nacimiento)->age;
     }
@@ -344,6 +344,14 @@ class Paciente extends Model
             ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
             ->whereNull('pacientes.egreso')
             ->where('patologias.nombre_patologia', '=', 'PALIATIVO UNIVERSAL');
+    }
+
+    public function demencia()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->whereNull('pacientes.egreso')
+            ->where('patologias.nombre_patologia', 'DEMENCIA');
     }
 
     //P4 seccion B Metaas de Compensacion

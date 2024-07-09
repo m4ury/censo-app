@@ -9665,7 +9665,6 @@ class EstadisticaController extends Controller
     public function sala_era()
     {
         $all = new Paciente;
-
         $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
             ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo')
             ->where('paciente_patologia.patologia_id', 8)
@@ -9763,10 +9762,11 @@ class EstadisticaController extends Controller
     public function hta()
     {
         $all = new Paciente;
-        $hta = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono')
-            ->where('paciente_patologia.patologia_id', 1)
+        $hta = $all->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo')
             ->whereNull('egreso')
+            ->where('patologias.nombre_patologia', 'HTA')
             ->get();
 
         return view('estadisticas.hta', compact('hta'));

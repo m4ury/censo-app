@@ -17,7 +17,7 @@ class PacienteController extends Controller
     {
         $q = $request->get('q');
         $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso')
-            ->orderBy('rut')
+            ->orderBy('rut', 'asc')
             ->search($q)
             ->get();
 
@@ -212,5 +212,25 @@ class PacienteController extends Controller
         $paliativo = $paciente->paliativo()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
 
         return view('pacientes.paliativo', compact('paliativo'));
+    }
+
+    public function pscv_list()
+    {
+        $paciente = new Paciente;
+        $pscv = $paciente->pscv()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
+            ->get();
+
+        return view('pacientes.pscv', compact('pscv'));
+    }
+
+    public function demencia_list()
+    {
+        $paciente = new Paciente;
+        $demencia = $paciente->demencia()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
+            ->get();
+
+        return view('pacientes.demencia', compact('demencia'));
     }
 }
