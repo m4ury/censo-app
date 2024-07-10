@@ -1,4 +1,4 @@
-<div class="form-group row card card-primary card-outline mb-3 px-3">
+<div class="form-group row card card-primary card-outline mb-3 px-3" id="empam">
     <div class="card-header text-bold text-bold">Paciente Dependencia Severa</div>
     <div class="form-group row my-2 ml-2">
         {!! Form::label('dependencia_label', 'Dependencia', ['class' => 'col-sm-3 col-form-label']) !!}
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<div class="form-group row card card-primary card-outline mb-3 px-3">
+<div class="form-group row card card-primary card-outline mb-3 px-3" id="hd">
     <div class="card-header text-bold text-bold">Atencion Domiciliaria por Dependencia Severa</div>
     <div class="form-group row my-2 ml-2" style="padding-left: 0px;">
         {!! Form::label('institu_label', 'Institucionalizada', ['class' => 'col-sm-3 col-form-label']) !!}

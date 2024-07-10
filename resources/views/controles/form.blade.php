@@ -286,6 +286,7 @@
                     break;
             }
         });
+
         $('input#pa_14090').on('change', function() {
             $('input#pa_14090').not(this).prop('checked', false);
         });
@@ -325,6 +326,39 @@
             $('input.embarazo').not(this).prop('checked', false);
         });
     </script>
+
+    <script>
+                var selectedOption = $('#tipo').val();
+                if (selectedOption == 'Psicologo') {
+                    $('#Psicologo').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
+                }else if (selectedOption == 'Medico') {
+                    $('#Medico, #Nutricionista').show();
+                }else if (selectedOption == 'Enfermera') {
+                    $('#Enfermera, #efam').show();
+                    if ('{{ $paciente->edad() }}' < 3) {
+                        $('.presion_art, .rImc, .rImc_label').hide()
+                    } else $('.presion_art, .rImc, .rImc_label').show()
+                    $('#Medico, #Nutricionista').hide();
+                }else if (selectedOption == 'Kinesiologo') {
+                    $('#Kine').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
+                    $('#Medico').hide();
+                } else if (selectedOption == 'Nutricionista') {
+                    if ('{{ $paciente->edad() }}' < 3) {
+                        $('.presion_art, .rImc, .rImc_label').hide()
+                    } else $('.presion_art, .rImc, .rImc_label').show()
+                    $('#Nutricionista, #Enfermera').show();
+                    $('.pieDaibetico').hide();
+                }else if (selectedOption == 'Dentista') {
+                    $('#Dentista').show();
+                    $('.presion_art, .peso_talla, .imc').hide()
+                }else if (selectedOption == 'Matrona') {
+                    $('#Matrona').show();
+                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
+                }
+    </script>
+
     <script>
         $('input#pa_14090').on('click', function() {
             if ($('input#pa_14090').is(':checked')) {

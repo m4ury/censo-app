@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('ned')->default(false);
             $table->boolean('institu')->default(false);
             $table->boolean('cuidador')->default(false);
+            $table->boolean('postrado')->nullable()->default(false);
             $table->boolean('cuidador_capacit')->nullable()->default(false);
             $table->boolean('cuidador_examenPrev')->nullable()->default(false);
             $table->date('fecha_examenPrev')->nullable();

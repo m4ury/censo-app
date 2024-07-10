@@ -208,34 +208,34 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-2 col-sm-2">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
                         <h3>{{ $sumaHbac }}</h3>
                         <p>COMPENSADOS,<br>
                             (HbA1c < 8%)<span class="text-bold text-blue">
-                                {{ $sumaHbac == 0 ? '0' : round(($sumaHbac / $dm2) * 100, 2) }}%
+                                {{ $sumaHbac == 0 ? '0' : round(($sumaHbac / $dm2) * 100, 1) }}%
                                 </span></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-2 col-sm-2">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
                         <h3>{{ $descompDm2 }}</h3>
                         <p>DESCOMPENSADOS,<br>
                             (HbA1c >= 9%)<span class="text-bold text-red">
-                                {{ $descompDm2 == 0 ? '0' : round(($descompDm2 / $dm2) * 100, 2) }}%
+                                {{ $descompDm2 == 0 ? '0' : round(($descompDm2 / $dm2) * 100, 1) }}%
                             </span></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box border border-primary">
                     <div class="inner">
                         <h3 style="color:black">{{ $pieDm2 }}</h3>
                         <p>EVALUACIONES PIE DIABETICO, <span
-                                class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round(($pieDm2 * 100) / $pieDm2_90) }}%
+                                class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round(($pieDm2 * 100) / $pieDm2_90, 1) }}%
                             </span>** en base al 90%</p>
                     </div>
                     <div class="icon">
@@ -246,7 +246,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box border border-primary">
                     <div class="inner">
                         <h3 style="color:black">{{ $dm2 - $pieDm2 }}</h3>
@@ -276,31 +276,31 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-2 col-sm-2">
                 <div class="small-box col-sm border border-danger">
                     <div class="inner">
                         <h3>{{ $sumaPa }}</h3>
                         <p>COMPENSADOS,
                             <br>
                             (P. Arterial < 150/90 mmHg)<span class="text-bold text-blue">
-                                {{ $sumaPa == 0 ? '0' : round(($sumaPa / $hta) * 100, 2) }}%
+                                {{ $sumaPa == 0 ? '0' : round(($sumaPa / $hta) * 100, 1) }}%
                                 </span>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg col-sm">
+            <div class="col-lg-2 col-sm-2">
                 <div class="small-box col-sm border border-danger">
                     <div class="inner">
                         <h3>{{ $descompPa }}</h3>
                         <p>DESCOMPENSADOS,<br>
                             (P. Arterial > 160/100 mmHg)<span class="text-bold text-red">
-                                {{ $descompPa == 0 ? '0' : round(($descompPa / $hta) * 100, 2) }}%
+                                {{ $descompPa == 0 ? '0' : round(($descompPa / $hta) * 100, 1) }}%
                             </span></p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-green">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $sm }}</a></h3>
@@ -314,8 +314,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-blue">
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-info">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $sala_era }}</a></h3>
                         <p>PACIENTES SALA IRA/ERA</p>
@@ -363,7 +363,7 @@
             </div> --}}
         </div>
         <div class="row">
-            <div class="col-lg-2 col-sm">
+            <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-yellow">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $am }}</a></h3>
@@ -377,7 +377,16 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm">
+
+            <div class="col-lg col-sm">
+                <div class="small-box col-sm border border-warning">
+                    <div class="inner">
+                        <h3>{{ $efam + $barthel }}</h3>
+                        <p>EFAM REALIZADOS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-lime">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $all->paliativo()->count() }}</a></h3>
@@ -389,14 +398,6 @@
                     <a href="{{ route('pacientes.paliativo') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
                     </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm">
-                <div class="small-box col-sm border border-warning">
-                    <div class="inner">
-                        <h3>{{ $efam + $barthel }}</h3>
-                        <p>EFAM REALIZADOS</p>
-                    </div>
                 </div>
             </div>
         </div>

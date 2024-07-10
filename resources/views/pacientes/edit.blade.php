@@ -106,7 +106,7 @@
                         <div class="form-group row">
                             {!! Form::label('direccion_label', 'Dirección.', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
-                                {!! Form::tel('direccion', $paciente->direccion, [
+                                {!! Form::text('direccion', $paciente->direccion, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('direccion') ? ' is-invalid' : ''),
                                     'placeholder' => 'Dirección',
                                 ]) !!}
@@ -187,7 +187,6 @@
                         </div>
 
                         <div class="form-group row">
-
                             <div class="col-sm">
                                 {!! Form::label('pueblo_originario_label', 'Originario', [
                                     'class' => 'col-sm col-form-label',
@@ -212,6 +211,25 @@
                                     'class' => 'form-control form-control',
                                 ]) !!}
                             </div>
+                            @if ($paciente->edad() > 1)
+                                <div class="col-sm">
+                                    {!! Form::label('postradoLabel', 'Dependencia Severa', ['class' => 'col-sm col-form-label']) !!}
+                                    {!! Form::checkbox('postrado', 1, old('postrado', $paciente->postrado == 1 ? true : false), [
+                                        'class' => 'form-control form-control',
+                                        'id' => 'postradoToggle',
+                                    ]) !!}
+                                </div>
+                            @endif
+
+                            @if ($paciente->edad() > 19)
+                                <div class="col-sm">
+                                    {!! Form::label('cuidador_label', 'Cuidador', ['class' => 'col-sm col-form-label']) !!}
+                                    {!! Form::checkbox('cuidador', 1, old('cuidador', $paciente->cuidador == 1 ? true : false), [
+                                        'class' => 'form-control form-control',
+                                        'id' => 'cuidadorToggle',
+                                    ]) !!}
+                                </div>
+                            @endif
 
                             @if ($paciente->sexo == 'Femenino' and $paciente->grupo > 10)
                                 <div class="col-sm">
@@ -245,47 +263,35 @@
                                 </div>
                             @endif
                         </div>
-                        <hr>
-                        <div class="form-group row">
-                            {!! Form::label('riesgo_cv_label', 'Riesgo Cardiovascular', [
-                                'class' => 'col-sm-3
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        col-form-label',
-                            ]) !!}
-                            <div class="col-sm-3">
-                                {!! Form::select(
-                                    'riesgo_cv',
-                                    ['BAJO' => 'BAJO', 'MODERADO' => 'MODERADO', 'ALTO' => 'ALTO'],
-                                    old('riesgo_cv', $paciente->riesgo_cv),
-                                    ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'riesgo_cv'],
-                                ) !!}
+
+                        @if ($paciente->riesgo_cv)
+                            <div class="form-group row card card-info card-outline py-3">
+                                {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::select(
+                                        'riesgo_cv',
+                                        ['BAJO' => 'BAJO', 'MODERADO' => 'MODERADO', 'ALTO' => 'ALTO'],
+                                        old('riesgo_cv', $paciente->riesgo_cv),
+                                        ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'riesgo_cv'],
+                                    ) !!}
+                                </div>
+                                {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
+                                <div class="col-sm-3">
+                                    {!! Form::select(
+                                        'erc',
+                                        ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
+                                        old('erc', $paciente->erc),
+                                        [
+                                            'class' => 'form-control form-control',
+                                            'placeholder' => 'Seleccione',
+                                            'id' => 'erc',
+                                        ],
+                                    ) !!}
+                                </div>
                             </div>
-                            {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
-                            <div class="col-sm-3">
-                                {!! Form::select(
-                                    'erc',
-                                    ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
-                                    old('erc', $paciente->erc),
-                                    [
-                                        'class' => 'form-control form-control',
-                                        'placeholder' => 'Seleccione',
-                                        'id' => 'erc',
-                                    ],
-                                ) !!}
-                            </div>
-                        </div>
-                        {{-- <div class="form-group row">
-                            {!! Form::label('compensado_label', 'Compensado', ['class' => 'col-sm-3 col-form-label']) !!}
-                            <div class="col-sm-3">
-                                {!! Form::select(
-                                    'compensado',
-                                    [1 => 'Compensado', 2 => 'Descompensado'],
-                                    old('compensado', $paciente->compensado),
-                                    ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'compensado'],
-                                ) !!}
-                            </div>
-                        </div> --}}
-                        <hr>
-                        <div class="form-group row">
+                        @endif
+
+                        <div class="form-group row ml-2 py-3">
                             {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -305,9 +311,81 @@
                             </div>
                         </div>
 
-                        @if ($paciente->edadEnMeses() > 1)
-                            @include('partials.empam')
-                        @endif
+                        <!-- Campos adicionales para cuidadores -->
+                        <div class="row card card-info card-outline" id="additionalFields">
+                            <div class="card-header text-bold">Cuidador</div>
+
+                            <div class="form-group row my-2 ml-2">
+                                <div class="col-sm">
+                                    {!! Form::label('cuidador_capacitLabel', 'Capacitado', ['class' => 'col-sm col-form-label']) !!}
+                                    {!! Form::checkbox(
+                                        'cuidador_capacit',
+                                        1,
+                                        old('cuidador_capacit', $paciente->cuidador_capacit == 1 ? true : false),
+                                        [
+                                            'class' => 'form-control form-control',
+                                        ],
+                                    ) !!}
+                                </div>
+
+                                <div class="col-sm">
+                                    {!! Form::label('cuidador_evSobrecargaLabel', 'Con Evaluación Anual de Nivel de Sobrecarga', [
+                                        'class' => 'col-sm col-form-label',
+                                    ]) !!}
+                                    {!! Form::checkbox(
+                                        'cuidador_evSobrecarga',
+                                        1,
+                                        old('cuidador_evSobrecarga', $paciente->cuidador_evSobrecarga == 1 ? true : false),
+                                        [
+                                            'class' => 'form-control form-control',
+                                        ],
+                                    ) !!}
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-2 ml-2">
+                                <div class="col-sm-6">
+                                    {!! Form::label('cuidador_examenPrevLabel', 'Con Examen Preventivo vigente', [
+                                        'class' => 'col-sm col-form-label',
+                                    ]) !!}
+                                    {!! Form::checkbox(
+                                        'cuidador_examenPrev',
+                                        1,
+                                        old('cuidador_examenPrev', $paciente->cuidador_examenPrev == 1 ? true : false),
+                                        [
+                                            'class' => 'form-control',
+                                            'id' => 'cuidador_examenPrev',
+                                        ],
+                                    ) !!}
+                                </div>
+                                <div class="col-sm-3 fecha_examen">
+                                    {!! Form::label('fecha_examenLabel', 'Fecha Examen', ['class' => 'col-sm col-form-label']) !!}
+                                    <div class="col-sm">
+                                        {!! Form::date('fecha_examenPrev', $paciente->fecha_examenPrev, [
+                                            'class' => 'form-control',
+                                        ]) !!}
+                                    </div>
+                                </div>
+                                {{-- </div> --}}
+                                <div class="col-sm-3">
+                                    {!! Form::label('cuidador_apoyoMonetLabel', 'Apoyo Monetario', ['class' => 'col-sm col-form-label']) !!}
+                                    <div class="col-sm">
+                                        {!! Form::select(
+                                            'cuidador_apoyoMonet',
+                                            ['con apoyo' => 'Con Apoyo', 'sinn apoyo' => 'Sin apoyo', 'en espera' => 'En Espera'],
+                                            old('cuidador_apoyoMonet', $paciente->cuidador_apoyoMonet),
+                                            [
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Seleccione Sector',
+                                                'id' => 'cuidador_apoyoMonet',
+                                            ],
+                                        ) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @include('partials.empam')
 
                         {{-- $paciente->patologias --}}
                         @if (
@@ -435,7 +513,7 @@
 @endsection
 @section('js')
     <script>
-        $('#riesgo_cv, #erc, #comuna, #sector, #sexo, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso, #postrado_oncol')
+        $('#riesgo_cv, #erc, #comuna, #sector, #sexo, #compensado, #funcionalidad, #riesgoCaida, #unipodal, #dependencia, #egreso, #postrado_oncol, #cuidador_apoyoMonet')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -473,6 +551,26 @@
     </script>
 
     <script>
+        $('.fecha_examen').hide();
+        $('#cuidador_examenPrev').on('change', function() {
+            if ($('#cuidador_examenPrev').is(':checked')) {
+                $('.fecha_examen').show();
+            } else
+                $('.fecha_examen').hide();
+        });
+    </script>
+
+    <script>
+        $('#additionalFields').hide();
+        $('#cuidadorToggle').on('change', function() {
+            if ($('#cuidadorToggle').is(':checked')) {
+                $('#additionalFields').show();
+            } else
+                $('#additionalFields').hide();
+        });
+    </script>
+
+    <script>
         $('#postrados').hide();
         $('#dependencia').change(function() {
             $('#postrados').hide();
@@ -482,5 +580,31 @@
             }
 
         });
+    </script>
+
+    <script>
+        $('#empam, #hd').hide();
+        $('#postradoToggle').change(function() {
+            if ($('#postradoToggle').is(':checked')) {
+                $('#empam, #hd').show();
+            } else
+                $('#empam, #hd').hide();
+        });
+    </script>
+
+    <script>
+        var selectedOption = $('#additionalFields').val();
+        if ($('#cuidadorToggle, #cuidador_examenPrev').is(':checked')) {
+            $('#additionalFields, .fecha_examen').show();
+        } else
+            $('#additionalFields, .fecha_examen').hide();
+    </script>
+
+    <script>
+        var selectedOption = $('#postradoToggle').val();
+        if ($('#postradoToggle').is(':checked')) {
+            $('#empam, #hd, #postrados').show();
+        } else
+            $('#empam, #hd, #postrados').hide();
     </script>
 @endsection

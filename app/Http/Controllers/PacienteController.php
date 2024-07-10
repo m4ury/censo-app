@@ -87,6 +87,10 @@ class PacienteController extends Controller
         $paciente->embarazada = $request->embarazada ?? 0;
         $paciente->mejor_ninez = $request->mejor_ninez ?? 0;
         $paciente->lactancia = $request->lactancia ?? 0;
+        $paciente->cuidador = $request->cuidador ?? 0;
+        $paciente->cuidador_capacit = $request->cuidador_capacit ?? 0;
+        $paciente->cuidador_evSobrecarga = $request->cuidador_evSobrecarga ?? 0;
+        $paciente->cuidador_examenPrev = $request->cuidador_examenPrev ?? 0;
         $paciente->update($request->all());
         //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
