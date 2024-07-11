@@ -30,7 +30,7 @@
                         <td>{{ $paciente->ficha }}
                         </td>
                         <td>{{ $paciente->direccion ?? '' }} {{ $paciente->comuna ? ', ' . $paciente->comuna : '' }}</td>
-                        <td>{{ $paciente->edad() }}</td>
+                        <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
                         <td>{{ $paciente->sexo }}</td>
                         <td>
                             @if ($paciente->sector == 'Celeste')

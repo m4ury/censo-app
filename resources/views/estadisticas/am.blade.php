@@ -33,7 +33,7 @@
                     <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                     <td>{{ $paciente->ficha }}</td>
                     <td>{{ $paciente->fullName() }}</td>
-                    <td>{{ $paciente->edad() }}</td>
+                    <td>{{ $paciente->edad() . ' Años' }}</td>
                     <td>{{ $paciente->telefono }}</td>
                     <td><span class="mr-2">
                         @if($paciente->sector == 'Celeste')

@@ -37,7 +37,7 @@
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->fecha_nacimiento }}</td>
                             <td>{{ $paciente->sexo }}</td>
-                            <td>{{ $paciente->edad() }}</td>
+                            <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
                             <td>Hospital de Hualañe</td>
                             <th>Hualañe</th>
                             <td>{{ $paciente->telefono }}</td>

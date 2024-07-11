@@ -8,7 +8,7 @@
                     <div class="card-header"
                         style="position: -webkit-sticky; position:sticky; top:1.5em; z-index:2; box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);">
                         <input type="text" name="paciente"
-                            value="Paciente: {{ $paciente->fullName() }}       Edad: {{ $paciente->edad < 10 ? $paciente->edadEnMeses() : $paciente->edad }}"
+                            value="Paciente: {{ $paciente->fullName() }}       Edad: {{ $paciente->edad < 10 ? $paciente->edadEnMeses().' Meses' : $paciente->edad.' Años' }}"
                             class="form-control" disabled>
                     </div>
                     <div class="card-body">

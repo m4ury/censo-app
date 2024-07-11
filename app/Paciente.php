@@ -26,9 +26,9 @@ class Paciente extends Model
 
     public function edadEnMeses()
     {
-
         if (Carbon::create($this->fecha_nacimiento)->age < 10) {
-            return Carbon::create($this->fecha_nacimiento)->diffInMonths(Carbon::now());
+            //return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) < 1 ? Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' mes' : Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' meses';
+            return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now());
         } else
             return Carbon::parse($this->fecha_nacimiento)->age;
     }

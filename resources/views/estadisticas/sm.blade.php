@@ -35,7 +35,7 @@
                             <td>{{ $paciente->ficha }}</td>
                             <td>{{ $paciente->fullName() }}</td>
                             <td>{{ $paciente->sexo }}</td>
-                            <td>{{ $paciente->edad() }}</td>
+                            <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
                             <td>{{ $paciente->telefono }}</td>
                             <td><span class="mr-2">
                                     @if ($paciente->sector == 'Celeste')
