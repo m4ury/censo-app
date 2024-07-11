@@ -133,4 +133,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');
     Route::get('/estadisticas.fondoOjo', 'PacienteController@fondoOjo')->name('estadisticas.fondoOjo');
     Route::get('/estadisticas.metas', 'EstadisticaController@metas')->name('estadisticas.metas');
+    Route::get('/pacientes.postrados', 'PacienteController@postrados_list')->name('pacientes.postrados');
+    Route::get('/pacientes.cuidadores', 'PacienteController@cuidadores_list')->name('pacientes.cuidadores');
 });

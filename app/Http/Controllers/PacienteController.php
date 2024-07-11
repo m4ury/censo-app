@@ -237,4 +237,24 @@ class PacienteController extends Controller
 
         return view('pacientes.demencia', compact('demencia'));
     }
+
+    public function postrados_list()
+    {
+        $paciente = new Paciente;
+        $postrados = $paciente->postrados()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
+            ->get();
+
+        return view('pacientes.postrados', compact('postrados'));
+    }
+
+    public function cuidadores_list()
+    {
+        $paciente = new Paciente;
+        $cuidadores = $paciente->cuidadores()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
+            ->get();
+
+        return view('pacientes.cuidadores', compact('cuidadores'));
+    }
 }

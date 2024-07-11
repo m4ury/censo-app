@@ -1186,4 +1186,18 @@ class Paciente extends Model
         return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'embarazada', 'ficha', 'sector', 'id')
             ->where('embarazada', true);
     }
+
+    public function postrados()
+    {
+        return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'ficha', 'sector', 'id', 'postrado')
+            ->where('postrado', true)
+            ->whereNull('egreso');
+    }
+
+    public function cuidadores()
+    {
+        return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'id')
+            ->where('cuidador', true)
+            ->whereNull('egreso');
+    }
 }

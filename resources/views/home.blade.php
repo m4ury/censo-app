@@ -106,7 +106,7 @@
                         <p>Total Pacientes en Prog. Cardiovascular</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-heartbeat"></i>
                     </div>
                     <a href="{{ route('pacientes.pscv') }}" class="small-box-footer">Mas información <i
                             class="fas fa-arrow-circle-right"></i></a>
@@ -118,7 +118,7 @@
                 <div class="small-box bg-gradient-pink">
                     <div class="inner">
                         <h3>{{ $totalFemenino }}</h3>
-                        <p>Total Pacientes Mujeres</p>
+                        <p>Pacientes Mujeres</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-female"></i>
@@ -132,7 +132,7 @@
                 <div class="small-box bg-gradient-blue">
                     <div class="inner">
                         <h3>{{ $totalMasculino }}</h3>
-                        <p>Total Pacientes Hombres</p>
+                        <p>Pacientes Hombres</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-male"></i>
@@ -150,7 +150,7 @@
                         <p>Pacientes Sector Naranjo</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-hospital-user"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <a href="{{ url('/pacientes?q=naranjo') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
@@ -163,7 +163,7 @@
                         <p>Pacientes Sector Celeste</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-hospital-user"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
@@ -239,7 +239,7 @@
                             </span>** en base al 90%</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <i class="fas fa-shoe-prints"></i>
                     </div>
                     <a href="{{ route('estadisticas.pie') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
@@ -253,7 +253,7 @@
                         <p>SIN EVALUACION PIE DIABETICO</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <i class="fas fa-shoe-prints"></i>
                     </div>
                     <a href="{{ route('pacientes.sinEvalPie') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
@@ -307,7 +307,7 @@
                         <p>PACIENTES SALUD MENTAL</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <i class="fas fa-brain"></i>
                     </div>
                     <a href="{{ route('estadisticas.sm') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
@@ -321,7 +321,7 @@
                         <p>PACIENTES SALA IRA/ERA</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-injured"></i>
+                        <i class="fas fa-lungs-virus"></i>
                     </div>
                     <a href="{{ route('estadisticas.sala_era') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
@@ -386,6 +386,37 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg col-sm">
+                <div class="small-box border border-warning">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $all->postrados()->count() }}</a></h3>
+                        <p>PACIENTES DEP. SEVERA</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <a href="{{ route('pacientes.postrados') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg col-sm">
+                <div class="small-box border border-warning">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $all->cuidadores()->get()->count() }}</a></h3>
+                        <p>CUIDADORES</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <a href="{{ route('pacientes.cuidadores') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
             <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-lime">
                     <div class="inner">
