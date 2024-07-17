@@ -4012,6 +4012,15 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP2a()
+    {
+        $all = new Paciente;
+
+        return view('estadisticas.seccion-p2a', compact(
+            'all',
+        ));
+    }
+
     public function seccionP3a()
     {
         $all = new Paciente;
@@ -5388,6 +5397,7 @@ class EstadisticaController extends Controller
             'otrasResp_59F',
             'otrasResp_1014M',
             'otrasResp_1014F',
+            'all'
         ));
     }
 

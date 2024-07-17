@@ -354,6 +354,12 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DEMENCIA');
     }
 
+    public function depSeveroDemencia()
+    {
+        return $this->demencia()
+            ->where('pacientes.postrado', true);
+    }
+
     //P4 seccion B Metaas de Compensacion
 
     public function pa140()
