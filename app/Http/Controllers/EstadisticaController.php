@@ -4015,9 +4015,56 @@ class EstadisticaController extends Controller
     public function seccionP2a()
     {
         $all = new Paciente;
+        $rCero = $all->rCero('Femenino', 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroM = $all->rCero(null, 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroF = $all->rCero(null, 'Femenino')->whereNotNull('rCero')->get()->unique('rut');
+        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
+
+        $inasistente = $all->inasist('Femenino', 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteM = $all->inasist(null, 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteF = $all->inasist('Femenino', null)->whereNotNull('inasistente')->get()->unique('rut');
 
         return view('estadisticas.seccion-p2a', compact(
             'all',
+            'rCero',
+            'rCeroM',
+            'rCeroF',
+            'dCaries',
+            'dCariesM',
+            'dCariesF',
+            'inasistente',
+            'inasistenteM',
+            'inasistenteF',
+        ));
+    }
+
+    public function seccionP2a1()
+    {
+        $all = new Paciente;
+        $rCero = $all->rCero('Femenino', 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroM = $all->rCero(null, 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
+        $rCeroF = $all->rCero(null, 'Femenino')->whereNotNull('rCero')->get()->unique('rut');
+        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
+        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
+
+        $inasistente = $all->inasist('Femenino', 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteM = $all->inasist(null, 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
+        $inasistenteF = $all->inasist('Femenino', null)->whereNotNull('inasistente')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p2a1', compact(
+            'all',
+            'rCero',
+            'rCeroM',
+            'rCeroF',
+            'dCaries',
+            'dCariesM',
+            'dCariesF',
+            'inasistente',
+            'inasistenteM',
+            'inasistenteF',
         ));
     }
 

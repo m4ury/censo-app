@@ -26,7 +26,7 @@ class Paciente extends Model
 
     public function edadEnMeses()
     {
-        if (Carbon::create($this->fecha_nacimiento)->age < 10) {
+        if (Carbon::create($this->fecha_nacimiento)->age < 5) {
             //return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) < 1 ? Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' mes' : Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' meses';
             return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now());
         } else
@@ -833,7 +833,7 @@ class Paciente extends Model
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Normal')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             //->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
             ->latest('controls.fecha_control');
     }
@@ -842,7 +842,7 @@ class Paciente extends Model
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Sobrepeso')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             //->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
             ->latest('controls.fecha_control');
     }
@@ -851,7 +851,7 @@ class Paciente extends Model
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Obesidad')
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             //->whereIn('pacientes.dependencia', ['L', 'M', 'G', 'T'])
             ->latest('controls.fecha_control');
     }
@@ -860,7 +860,7 @@ class Paciente extends Model
     {
         return $this->efam()
             ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
-            ->whereYear('controls.fecha_control', 2023)
+            ->whereYear('controls.fecha_control', 2024)
             //->orwhereIn('dependencia', ['L', 'M', 'G', 'T'])
             ->latest('controls.fecha_control');
     }
@@ -1002,6 +1002,16 @@ class Paciente extends Model
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
+    }
+
+    public function estNutricional($fem, $masc)
+    {
+        return $this->controls()
+            ->where('tipo_control', 'Nutricionista')
+            ->whereYear('fecha_control', 2024)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('egreso')
+            ->latest('fecha_control');
     }
 
     public function rCero($fem, $masc)

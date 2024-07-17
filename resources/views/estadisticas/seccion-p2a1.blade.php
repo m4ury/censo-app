@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P2: Seccion A')
+@section('title', 'REM P2: Seccion A.1')
 
 @section('content')
     <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
-                    SECCION A: POBLACIÓN EN CONTROL, SEGÚN ESTADO NUTRICIONAL PARA NIÑOS MENOR DE UN MES- 59 MESES
+                    SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES
                 </h4>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
@@ -20,7 +20,7 @@
                                 <th class="text-center" colspan="2" rowspan="3">INDICADOR NUTRICIONAL Y PARÁMETROS DE
                                     MEDICIÓN</th>
                                 <th class="text-center" colspan="3" rowspan="2">TOTAL</th>
-                                <th class="text-center" colspan="28">GRUPOS DE EDAD (en meses) Y SEXO</th>
+                                <th class="text-center" colspan="28">GRUPOS DE EDAD (en meses - años) Y SEXO</th>
                                 <th colspan="2" rowspan="2">Pueblos Originarios</th>
                                 <th colspan="2" rowspan="2">Migrantes</th>
                             </tr>
@@ -118,10 +118,10 @@
                             </tr>
                             <tr>
                             <tr>
-                                <th rowspan="7" style="vertical-align: middle" nowrap>INDICADOR PESO/EDAD
+                                <th rowspan="8" style="vertical-align: middle" nowrap>INDICADOR IMC / EDAD
                                 </th>
                             <tr>
-                                <th nowrap="">+ 2 D.S. (>= +2.0)</th>
+                                <th nowrap="">+ 3 D.S. (>= 3.0)</th>
                                 <td>{{ $rCero->where('rCero', '=', 'alto')->count() }}
                                 </td>
                                 <td>{{ $rCeroM->where('rCero', '=', 'alto')->count() }}
@@ -178,7 +178,41 @@
                                 <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
-                                <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
+                                <th nowrap="">+ 2 D.S. (>= +2.0 a +2.9)</th>
+                                <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
+                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">+ 1 D.S. (>= +1.0 a +1.9)</th>
                                 <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
                                 <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
                                 <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
@@ -355,9 +389,51 @@
                                 <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
                                 </td>
                             </tr>
-
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
+                                <td>{{ $dCaries->count() }}
+                                </td>
+                                <td>{{ $dCariesM->count() }}
+                                </td>
+                                <td>{{ $dCariesF->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
+                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
+                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
+                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
+                                </td>
+                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">PROMEDIO (-0,9 A + 0,9)</th>
                                 <td>{{ $dCaries->count() }}
                                 </td>
                                 <td>{{ $dCariesM->count() }}
@@ -1395,7 +1471,8 @@
                             </tr>
                             </tr>
                             <tr>
-                                <th colspan="2">NIÑOS SIN EVALUACIÓN NUTRICIONAL POR CURSO DE VIDA (RECIÉN NACIDOS) O POR CONDICIÓN ESPECIAL DE SALUD</th>
+                                <th colspan="2">NIÑOS SIN EVALUACIÓN NUTRICIONAL POR CURSO DE VIDA (RECIÉN NACIDOS) O
+                                    POR CONDICIÓN ESPECIAL DE SALUD</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>

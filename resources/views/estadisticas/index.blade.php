@@ -42,6 +42,11 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p2a1') }}">SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
                             <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: POBLACION EN CONTROL , SEGUN RIESGO
                                 ODONTOLOGICO Y DAÑO POR CARIES</a>
                         </h4>
