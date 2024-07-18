@@ -198,7 +198,7 @@
                 <div class="small-box bg-gradient-primary">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $dm2 }}</a></h3>
-                        <p>PACIENTES DIABETICOS</p>
+                        <p>PACIENTES DIABÉTICOS</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-injured"></i>
@@ -234,9 +234,9 @@
                 <div class="small-box border border-primary">
                     <div class="inner">
                         <h3 style="color:black">{{ $pieDm2 }}</h3>
-                        <p>EVALUACIONES PIE DIABETICO, <span
-                                class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round(($pieDm2 * 100) / $pieDm2_90, 1) }}%
-                            </span>** en base al 90%</p>
+                        <p>EVALUACIÓN PIE DIABÉTICO, <span
+                                class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round(($pieDm2 * 100) / $dm2, 2) }}%
+                            </span></p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-shoe-prints"></i>
@@ -250,7 +250,7 @@
                 <div class="small-box border border-primary">
                     <div class="inner">
                         <h3 style="color:black">{{ $dm2 - $pieDm2 }}</h3>
-                        <p>SIN EVALUACION PIE DIABETICO</p>
+                        <p>SIN EVALUACIÓN PIE DIABÉTICO</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-shoe-prints"></i>
@@ -437,7 +437,7 @@
                 <div class="small-box bg-gradient-info">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $all->lactancia()->count() }}</a></h3>
-                        <p>CLINICA LACTANCIA MATERNA</p>
+                        <p>CLÍNICA LACTANCIA MATERNA</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-baby"></i>
@@ -481,7 +481,7 @@
                     <div class="inner">
                         <h3 style="color:black">
                             {{ $pMujer->where('ginec', 1)->count() }}</h3>
-                        <p>GINECOLOGICO</p>
+                        <p>GINECOLÓGICO</p>
                     </div>
                     <div class="icon">
                         <i class='fas fa-female'></i>
@@ -495,7 +495,7 @@
                     <div class="inner">
                         <h3 style="color:black">
                             {{ $pMujer->where('regulacion', 1)->count() }}</h3>
-                        <p>REGULACION FERTILIDAD</p>
+                        <p>REGULACIÓN FERTILIDAD</p>
                     </div>
                     <div class="icon">
                         <i class='fas fa-female'></i>

@@ -118,7 +118,7 @@
                             </tr>
                             <tr>
                             <tr>
-                                <th rowspan="8" style="vertical-align: middle" nowrap>INDICADOR IMC / EDAD
+                                <th rowspan="9" style="vertical-align: middle" nowrap>INDICADOR IMC / EDAD
                                 </th>
                             <tr>
                                 <th nowrap="">+ 3 D.S. (>= 3.0)</th>
@@ -478,7 +478,7 @@
                             </tr>
                             <tr>
                             <tr>
-                                <th rowspan="7" style="vertical-align: middle" nowrap>INDICADOR PESO/TALLA
+                                <th rowspan="7" style="vertical-align: middle" nowrap>INDICADOR TALLA / EDAD
                                 </th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>

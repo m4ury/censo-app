@@ -70,12 +70,6 @@ Route::middleware('auth')->group(function () {
     Route::get('controles.excel', 'ImportController@excel')->name('controles.excel');
     Route::post('controles.import', 'ImportController@import')->name('controles.import');
 
-    //rutas para consultas
-    /* Route::resource('consultas', 'ConsultaController')->except('[index, create]');
-    //Route::get('controles-all', 'ControlController@index')->name('controles-all');
-    Route::get('consultas/pcte/{paciente?}', 'ConsultaController@consultasPcte')->name('consultas');
-    Route::get('consultas/create/{paciente?}', 'ConsultaController@create')->name('consultas.create'); */
-
     //rutas para examenes
     /* Route::resource('examenes', 'ExamenController')->except('[index, create]');
     Route::get('examenes/create/{paciente?}', 'ExamenController@create')->name('examenes.create');
@@ -100,10 +94,10 @@ Route::middleware('auth')->group(function () {
 
 
     //P2
-    Route::get('/estadisticas.seccion-p2j', 'EstadisticaController@seccionP2j')->name('estadisticas.seccion-p2j');
     Route::get('/estadisticas.seccion-p2a', 'EstadisticaController@seccionP2a')->name('estadisticas.seccion-p2a');
-    Route::get('/estadisticas.seccion-p2b', 'EstadisticaController@seccionP2a1')->name('estadisticas.seccion-p2a1');
-    Route::get('/pacientes.riesgo', 'PacienteController@pRiesgo_list')->name('pacientes.riesgo');
+    Route::get('/estadisticas.seccion-p2a1', 'EstadisticaController@seccionP2a1')->name('estadisticas.seccion-p2a1');
+    Route::get('/estadisticas.seccion-p2j', 'EstadisticaController@seccionP2j')->name('estadisticas.seccion-p2j');
+
 
     //P3
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
@@ -137,4 +131,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.metas', 'EstadisticaController@metas')->name('estadisticas.metas');
     Route::get('/pacientes.postrados', 'PacienteController@postrados_list')->name('pacientes.postrados');
     Route::get('/pacientes.cuidadores', 'PacienteController@cuidadores_list')->name('pacientes.cuidadores');
+    Route::get('/pacientes.riesgo', 'PacienteController@pRiesgo_list')->name('pacientes.riesgo');
+
 });
