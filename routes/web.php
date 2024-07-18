@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.paliativo', 'PacienteController@paliativo_list')->name('pacientes.paliativo');
     Route::get('/pacientes.pscv', 'PacienteController@pscv_list')->name('pacientes.pscv');
     Route::get('/pacientes.demencia', 'PacienteController@demencia_list')->name('pacientes.demencia');
+    Route::get('/pacientes.pMujer', 'PacienteController@pMujer_list')->name('pacientes.pMujer');
+
 
 
 

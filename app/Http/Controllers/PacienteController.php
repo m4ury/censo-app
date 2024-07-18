@@ -205,8 +205,9 @@ class PacienteController extends Controller
     public function pMujer_list()
     {
         $paciente = new Paciente;
-        $pMujer = $paciente->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
-
+        $pMujer = $paciente->totalMac()
+        ->get()
+        ->unique('rut');
         return view('pacientes.pMujer', compact('pMujer'));
     }
 

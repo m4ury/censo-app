@@ -122,281 +122,331 @@
                                 </th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $ind2DS->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $ind2DSM->count() }}</td>
+                                <td>{{ $ind2DSF->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $ind2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('nombres', '<', 1)->count() }}
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $ind2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('controls        ', '<', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $ind1DS->count() }}
+                                </td>
+                                <td>{{ $ind1DSM->count() }}</td>
+                                <td>{{ $ind1DSF->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '<', 1)->count() }}
+                                </td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '<', 1)->count() }}
+                                </td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $ind1DS->count() + $ind2DS->count() }}</td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $ind1DSM->count() + $ind2DSM->count() }}</td>
+                                <td>{{ $ind1DSF->count() + $ind2DSF->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '<', 1)->count() + $ind2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '<', 1)->count() + $ind2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 1)->count() + $ind2DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 1)->count() + $ind2DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 2)->count() + $ind2DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 2)->count() + $ind2DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 3)->count() + $ind2DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 3)->count() + $ind2DSF->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 4)->count() + $ind2DSM->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 4)->count() + $ind2DSF->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 5)->count() + $ind2DSM->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 5)->count() + $ind2DSF->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $ind1DSM->where('edadEnMeses', '==', 6)->count() + $ind2DSM->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $ind1DSF->where('edadEnMeses', '==', 6)->count() + $ind2DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$ind2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$ind2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$ind2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$ind2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$ind2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$ind2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$ind2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$ind2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$ind2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$ind2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$ind2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$ind2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$ind2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$ind2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $ind_1DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $ind_1DSM->count() }}</td>
+                                <td>{{ $ind_1DSF->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $ind_2DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $ind_2DSM->count() }}</td>
+                                <td>{{ $ind_2DSF->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $ind_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $ind_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $ind_1DS->count() + $ind_2DS->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $ind_1DSM->count() + $ind_2DSM->count() }}</td>
+                                <td>{{ $ind_1DSF->count() + $ind_2DSF->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '<', 1)->count() + $ind_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '<', 1)->count() + $ind_2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 1)->count() + $ind_2DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 1)->count() + $ind_2DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 2)->count() + $ind_2DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 2)->count() + $ind_2DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 3)->count() + $ind_2DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 3)->count() + $ind_2DSF->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 4)->count() + $ind_2DSM->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 4)->count() + $ind_2DSF->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 5)->count() + $ind_2DSM->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 5)->count() + $ind_2DSF->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '==', 6)->count() + $ind_2DSM->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '==', 6)->count() + $ind_2DSF->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$ind_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$ind_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$ind_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$ind_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$ind_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$ind_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$ind_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$ind_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$ind_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$ind_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$ind_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$ind_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$ind_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$ind_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
                                 </td>
                             </tr>
                             </tr>
@@ -406,285 +456,331 @@
                                 </th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indPt2DS->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indPt2DSM->count() }}</td>
+                                <td>{{ $indPt2DSF->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('nombres', '<', 1)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('controls        ', '<', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt1DS->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt1DSM->count() }}</td>
+                                <td>{{ $indPt1DSF->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '<', 1)->count() }}
+                                </td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indPt1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $indPt2DS->count() + $indPt1DS->count() }}</td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $indPt2DSM->count() + $indPt1DSM->count() }}</td>
+                                <td>{{ $indPt2DSF->count() + $indPt1DSF->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '<', 1)->count() + $indPt1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '<', 1)->count() + $indPt1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 1)->count() + $indPt1DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 1)->count() + $indPt1DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 2)->count() + $indPt1DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 2)->count() + $indPt1DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 3)->count() + $indPt1DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 3)->count() + $indPt1DSF->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 4)->count() + $indPt1DSM->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 4)->count() + $indPt1DSF->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 5)->count() + $indPt1DSM->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 5)->count() + $indPt1DSF->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '==', 6)->count() + $indPt1DSM->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '==', 6)->count() + $indPt1DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indPt1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indPt1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indPt1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indPt1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indPt1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indPt1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indPt1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indPt1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indPt1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indPt1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indPt1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indPt1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indPt1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indPt1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indPt_1DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indPt_1DSM->count() }}</td>
+                                <td>{{ $indPt_1DSF->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indPt_2DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indPt_2DSM->count() }}</td>
+                                <td>{{ $indPt_2DSF->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indPt_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indPt_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $indPt_1DS->count() + $indPt_2DS->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $indPt_1DSM->count() + $indPt_2DSM->count() }}</td>
+                                <td>{{ $indPt_1DSF->count() + $indPt_2DSF->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '<', 1)->count() + $indPt_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '<', 1)->count() + $indPt_2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 1)->count() + $indPt_2DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 1)->count() + $indPt_2DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 2)->count() + $indPt_2DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 2)->count() + $indPt_2DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 3)->count() + $indPt_2DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 3)->count() + $indPt_2DSF->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 4)->count() + $indPt_2DSM->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 4)->count() + $indPt_2DSF->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 5)->count() + $indPt_2DSM->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 5)->count() + $indPt_2DSF->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '==', 6)->count() + $indPt_2DSM->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 6)->count() + $indPt_2DSF->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
                                 </td>
                             </tr>
                             </tr>
@@ -694,328 +790,377 @@
                                 <th rowspan="8" style="vertical-align: middle" nowrap>INDICADOR TALLA/EDAD</th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indTe2DS->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indTe2DSM->count() }}</td>
+                                <td>{{ $indTe2DSF->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('nombres', '<', 1)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('controls        ', '<', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe1DS->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe1DSM->count() }}</td>
+                                <td>{{ $indTe1DSF->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '<', 1)->count() }}
+                                </td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indTe1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $indTe2DS->count() + $indTe1DS->count() }}</td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $indTe2DSM->count() + $indTe1DSM->count() }}</td>
+                                <td>{{ $indTe2DSF->count() + $indTe1DSF->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '<', 1)->count() + $indTe1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '<', 1)->count() + $indTe1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 1)->count() + $indTe1DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 1)->count() + $indTe1DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 2)->count() + $indTe1DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 2)->count() + $indTe1DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 3)->count() + $indTe1DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 3)->count() + $indTe1DSF->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 4)->count() + $indTe1DSM->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 4)->count() + $indTe1DSF->where('edadEnMeses', '==', 4)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 5)->count() + $indTe1DSM->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 5)->count() + $indTe1DSF->where('edadEnMeses', '==', 5)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->count() }}
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '==', 6)->count() + $indTe1DSM->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '==', 6)->count() + $indTe1DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indTe1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indTe1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indTe1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indTe1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indTe1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indTe1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indTe1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indTe1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('migrante', 1)->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indTe1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indTe1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indTe1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indTe1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indTe1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indTe1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indTe_1DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indTe_1DSM->count() }}</td>
+                                <td>{{ $indTe_1DSF->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indTe_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $dCaries->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indTe_2DS->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indTe_2DSM->count() }}</td>
+                                <td>{{ $indTe_2DSF->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $indTe_2DS->count() + $indTe_1DS->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $indTe_2DSM->count() + $indTe_1DSM->count() }}</td>
+                                <td>{{ $indTe_2DSF->count() + $indTe_1DSF->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '<', 1)->count() + $indTe_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '<', 1)->count() + $indTe_1DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 1)->count() + $indTe_1DSM->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 1)->count() + $indTe_1DSF->where('edadEnMeses', '==', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 2)->count() + $indTe_1DSM->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 2)->count() + $indTe_1DSF->where('edadEnMeses', '==', 2)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 3)->count() + $indTe_1DSM->where('edadEnMeses', '==', 3)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 3)->count() + $indTe_1DSF->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 4)->count() + $indTe_1DSM->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 4)->count() + $indTe_1DSF->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 5)->count() + $indTe_1DSM->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 5)->count() + $indTe_1DSF->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '==', 6)->count() + $indTe_1DSM->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 6)->count() + $indTe_1DSF->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th nowrap="">PROMEDIO (-0,9 A + 0,9)</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $avgTe->count() }}
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $avgTeM->count() }}</td>
+                                <td>{{ $avgTeF->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td>{{ $avgTeF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $avgTeM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $avgTeF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             </tr>
@@ -1026,376 +1171,377 @@
                                 </th>
                             <tr>
                                 <th nowrap="">RIESGO DE DESNUTRIR/ DEFICIT PONDERAL*</th>
-                                <td>{{ $rCero->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $rDesnut->count() }}
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->count() }}
+                                <td>{{ $rDesnutM->count() }}</td>
+                                <td>{{ $rDesnutF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('nombres', '<', 1)->count() }}
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('controls        ', '<', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 2)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 3)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'alto')->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">DESNUTRIDO</th>
-                                <td>{{ $rCero->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $desnut->count() }}
                                 </td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $desnutM->count() }}</td>
+                                <td>{{ $desnutF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('migrante', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('discap', 1)->count() }}</td>
-                                <td>{{ $rCeroM->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $rCeroF->where('rCero', '=', 'bajo')->where('mejor_ninez', 1)->count() }}</td>
+                                <td class="bg-gradient-gray">
+                                </td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $desnutM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $desnutM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $desnutF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
                             </tr>
                             <tr>
                                 <th>SOBREPESO / RIESGO OBESIDAD</th>
-                                <td>{{ $all->rCero('Femenino', 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $sobrepeso->count() }}
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '<', 1)->count() }}
+                                <td>{{ $sobrepesoM->count() }}</td>
+                                <td>{{ $sobrepesoF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 1)->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 1)->count() }}
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $sobrepesoM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $sobrepesoF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 2)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 3)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 4)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 5)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 6)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 7)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 8)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('grupo', '==', 9)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Femenino')->get()->where('discap', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
-                                <td>{{ $all->rCero(null, 'Masculino')->get()->where('mejor_ninez', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>OBESO</th>
-                                <td>{{ $dCaries->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $obeso->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->count() }}
+                                <td>{{ $obesoM->count() }}</td>
+                                <td>{{ $obesoF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $obesoM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $obesoM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $obesoF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', 'none')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th>NORMAL</th>
-                                <td>{{ $dCaries->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $normal->count() }}
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->count() }}
+                                <td>{{ $normalM->count() }}</td>
+                                <td>{{ $normalF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $normalM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('dCaries', '=', '1_2')->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">SUBTOTAL</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $normal->count() }}
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $normalM->count() }}</td>
+                                <td>{{ $normalF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $normalM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr>
                                 <th nowrap="">DENUTRICION SECUNDARIA</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $desnutSec->count() }}
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $desnutSecM->count() }}</td>
+                                <td>{{ $desnutSecF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $desnutSecM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $desnutSecF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $dCaries->count() }}
+                                <td>{{ $normal->count() }}
                                 </td>
-                                <td>{{ $dCariesM->count() }}
+                                <td>{{ $normalM->count() }}</td>
+                                <td>{{ $normalF->count() }}</td>
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesF->count() }}
+                                <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $dCariesM->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '<', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 2)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 3)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 4)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 5)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 6)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 7)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 8)->count() }}</td>
-                                <td>{{ $dCariesM->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesF->where('grupo', '==', 9)->count() }}</td>
-                                <td>{{ $dCariesM->where('pueblo_originario', 1)->count() }}
+                                <td>{{ $normalM->where('edadEnMeses', '==', 1)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 1)->count() }} </td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 2)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 3)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 4)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 5)->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '==', 6)->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                <td>{{ $normalM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $normalF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
                                 </td>
-                                <td>{{ $dCariesF->where('pueblo_originario', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesF->where('migrante', 1)->count() }}
+                                <td>
                                 </td>
-                                <td>{{ $dCariesM->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesF->where('discap', 1)->count() }}</td>
-                                <td>{{ $dCariesM->where('mejor_ninez', 1)->count() }}
-                                </td>
-                                <td>{{ $dCariesF->where('mejor_ninez', 1)->count() }}
+                                <td>
                                 </td>
                             </tr>
                             </tr>
                             <tr>
-                                <th colspan="2">NIÑOS SIN EVALUACIÓN NUTRICIONAL POR CURSO DE VIDA (RECIÉN NACIDOS) O POR CONDICIÓN ESPECIAL DE SALUD</th>
+                                <th colspan="2">NIÑOS SIN EVALUACIÓN NUTRICIONAL POR CURSO DE VIDA (RECIÉN NACIDOS) O
+                                    POR CONDICIÓN ESPECIAL DE SALUD</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
