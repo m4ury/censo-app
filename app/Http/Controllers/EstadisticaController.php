@@ -4096,11 +4096,14 @@ class EstadisticaController extends Controller
         $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
         $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
 
-        //no se usan aca
+        $subtotal = $rDesnut->count() + $desnut->count() + $normal->count() + $sobrepeso->count() + $obeso->count();
+        $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count();
+        $subtotalF = $rDesnutF->count() + $desnutF->count() + $normalF->count() + $sobrepesoF->count() + $obesoF->count();
 
-        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
+        $total = $subtotal + $desnutSec->count();
+        $totalM = $subtotalM + $desnutSecM->count();
+        $totalF = $subtotalF + $desnutSecF->count();
+
 
         return view('estadisticas.seccion-p2a', compact(
             'all',
@@ -4181,37 +4184,194 @@ class EstadisticaController extends Controller
             'desnutSecM',
             'desnutSecF',
 
-            'dCaries',
-            'dCariesM',
-            'dCariesF',
+            'subtotal',
+            'subtotalM',
+            'subtotalF',
+
+            'total',
+            'totalM',
+            'totalF',
         ));
     }
 
     public function seccionP2a1()
     {
         $all = new Paciente;
-        $rCero = $all->rCero('Femenino', 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
-        $rCeroM = $all->rCero(null, 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
-        $rCeroF = $all->rCero(null, 'Femenino')->whereNotNull('rCero')->get()->unique('rut');
-        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
 
-        $inasistente = $all->inasist('Femenino', 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
-        $inasistenteM = $all->inasist(null, 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
-        $inasistenteF = $all->inasist('Femenino', null)->whereNotNull('inasistente')->get()->unique('rut');
+        //imc edad
+        $imc3DS = $all->imcEdad('Femenino', 'Masculino', '+3 DS')->get()->unique('rut');
+        $imc3DSM = $all->imcEdad(null, 'Masculino', '+3 DS')->get()->unique('rut');
+        $imc3DSF = $all->imcEdad('Femenino', null, '+3 DS')->get()->unique('rut');
+
+        $imc2DS = $all->imcEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
+        $imc2DSM = $all->imcEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
+        $imc2DSF = $all->imcEdad('Femenino', null, '+2 DS')->get()->unique('rut');
+
+        $imc1DS = $all->imcEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
+        $imc1DSM = $all->imcEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
+        $imc1DSF = $all->imcEdad('Femenino', null, '+1 DS')->get()->unique('rut');
+
+        $imc_2DS = $all->imcEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
+        $imc_2DSM = $all->imcEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
+        $imc_2DSF = $all->imcEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+
+        $imc_1DS = $all->imcEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
+        $imc_1DSM = $all->imcEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
+        $imc_1DSF = $all->imcEdad('Femenino', null, '-1 DS')->get()->unique('rut');
+
+        $imcAvg = $all->imcEdad('Femenino', 'Masculino', 'promedio')->get()->unique('rut');
+        $imcAvgM = $all->imcEdad(null, 'Masculino', 'promedio')->get()->unique('rut');
+        $imcAvgF = $all->imcEdad('Femenino', null, 'promedio')->get()->unique('rut');
+
+        //talla de edad
+        $indTe2DS = $all->tallaEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
+        $indTe2DSM = $all->tallaEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
+        $indTe2DSF = $all->tallaEdad('Femenino', null, '+2 DS')->get()->unique('rut');
+
+        $indTe1DS = $all->tallaEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
+        $indTe1DSM = $all->tallaEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
+        $indTe1DSF = $all->tallaEdad('Femenino', null, '+1 DS')->get()->unique('rut');
+
+        $indTe_1DS = $all->tallaEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
+        $indTe_1DSM = $all->tallaEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
+        $indTe_1DSF = $all->tallaEdad('Femenino', null, '-1 DS')->get()->unique('rut');
+
+        $indTe_2DS = $all->tallaEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
+        $indTe_2DSM = $all->tallaEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
+        $indTe_2DSF = $all->tallaEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+
+        $indTeAvg = $all->tallaEdad('Femenino', 'Masculino', 'promedio')->get()->unique('rut');
+        $indTeAvgM = $all->tallaEdad(null, 'Masculino', 'promedio')->get()->unique('rut');
+        $indTeAvgF = $all->tallaEdad('Femenino', null, 'promedio')->get()->unique('rut');
+
+        //perimetro cintura - edad
+        $pcintNormal = $all->perimCintura('Femenino', 'Masculino', 'normal')->get()->unique('rut');
+        $pcintNormalM = $all->perimCintura(null, 'Masculino', 'normal')->get()->unique('rut');
+        $pcintNormalF = $all->perimCintura('Femenino', null, 'normal')->get()->unique('rut');
+
+        $pcintRiesgo = $all->perimCintura('Femenino', 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
+        $pcintRiesgoM = $all->perimCintura(null, 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
+        $pcintRiesgoF = $all->perimCintura('Femenino', null, 'rObesidadAbdm')->get()->unique('rut');
+
+        $pcintObesidad = $all->perimCintura('Femenino', 'Masculino', 'obesidadAbdm')->get()->unique('rut');
+        $pcintObesidadM = $all->perimCintura(null, 'Masculino', 'obesidadAbdm')->get()->unique('rut');
+        $pcintObesidadF = $all->perimCintura('Femenino', null, 'obesidadAbdm')->get()->unique('rut');
+
+        //diagnostico nutricion integral
+        $rDesnut = $all->integral('Femenino', 'Masculino', 'riesgoDesNut')->get()->unique('rut');
+        $rDesnutM = $all->integral(null, 'Masculino', 'riesgoDesNut')->get()->unique('rut');
+        $rDesnutF = $all->integral('Femenino', null, 'riesgoDesNut')->get()->unique('rut');
+
+        $desnut = $all->integral('Femenino', 'Masculino', 'desnut')->get()->unique('rut');
+        $desnutM = $all->integral(null, 'Masculino', 'desnut')->get()->unique('rut');
+        $desnutF = $all->integral('Femenino', null, 'desnut')->get()->unique('rut');
+
+        $normal = $all->integral('Femenino', 'Masculino', 'normal')->get()->unique('rut');
+        $normalM = $all->integral(null, 'Masculino', 'normal')->get()->unique('rut');
+        $normalF = $all->integral('Femenino', null, 'normal')->get()->unique('rut');
+
+        $sobrepeso = $all->integral('Femenino', 'Masculino', 'sobrepeso')->get()->unique('rut');
+        $sobrepesoM = $all->integral(null, 'Masculino', 'sobrepeso')->get()->unique('rut');
+        $sobrepesoF = $all->integral('Femenino', null, 'sobrepeso')->get()->unique('rut');
+
+        $obeso = $all->integral('Femenino', 'Masculino', 'obeso')->get()->unique('rut');
+        $obesoM = $all->integral(null, 'Masculino', 'obeso')->get()->unique('rut');
+        $obesoF = $all->integral('Femenino', null, 'obeso')->get()->unique('rut');
+
+        $obesoSevero = $all->integral('Femenino', 'Masculino', 'obesoSevero')->get()->unique('rut');
+        $obesoSeveroM = $all->integral(null, 'Masculino', 'obesoSevero')->get()->unique('rut');
+        $obesoSeveroF = $all->integral('Femenino', null, 'obesoSevero')->get()->unique('rut');
+
+        $desnutSec = $all->integral('Femenino', 'Masculino', 'desnutSecund')->get()->unique('rut');
+        $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
+        $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
+
 
         return view('estadisticas.seccion-p2a1', compact(
             'all',
-            'rCero',
-            'rCeroM',
-            'rCeroF',
-            'dCaries',
-            'dCariesM',
-            'dCariesF',
-            'inasistente',
-            'inasistenteM',
-            'inasistenteF',
+            'imc3DS',
+            'imc3DSM',
+            'imc3DSF',
+
+            'imc2DS',
+            'imc2DSM',
+            'imc2DSF',
+
+            'imc1DS',
+            'imc1DSM',
+            'imc1DSF',
+
+            'imc_2DS',
+            'imc_2DSM',
+            'imc_2DSF',
+
+            'imc_1DS',
+            'imc_1DSM',
+            'imc_1DSF',
+
+            'imcAvg',
+            'imcAvgM',
+            'imcAvgF',
+
+            'indTe2DS',
+            'indTe2DSM',
+            'indTe2DSF',
+
+            'indTe1DS',
+            'indTe1DSM',
+            'indTe1DSF',
+
+            'indTe_1DS',
+            'indTe_1DSM',
+            'indTe_1DSF',
+
+            'indTe_2DS',
+            'indTe_2DSM',
+            'indTe_2DSF',
+
+            'indTeAvg',
+            'indTeAvgM',
+            'indTeAvgF',
+
+            'pcintNormal',
+            'pcintNormalM',
+            'pcintNormalF',
+
+            'pcintRiesgo',
+            'pcintRiesgoM',
+            'pcintRiesgoF',
+
+            'pcintObesidad',
+            'pcintObesidadM',
+            'pcintObesidadF',
+
+            'desnut',
+            'desnutM',
+            'desnutF',
+
+            'normal',
+            'normalM',
+            'normalF',
+
+            'sobrepeso',
+            'sobrepesoM',
+            'sobrepesoF',
+
+            'obeso',
+            'obesoM',
+            'obesoF',
+
+            'obesoSevero',
+            'obesoSeveroM',
+            'obesoSeveroF',
+
+            'rDesnut',
+            'rDesnutM',
+            'rDesnutF',
+
+            'desnutSec',
+            'desnutSecM',
+            'desnutSecF',
         ));
     }
 
@@ -6228,25 +6388,25 @@ class EstadisticaController extends Controller
         $depMod = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->count();
         $depModF = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->where('sexo', 'Femenino')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
-        $depMod_6569F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
-        $depMod_7074F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
-        $depMod_7579F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
-        $depMod_8084F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_8589F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_9094F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_9599F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_100F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_6569F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo','=', 'Femenino')->count();
+        $depMod_7074F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo','=', 'Femenino')->count();
+        $depMod_7579F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo','=', 'Femenino')->count();
+        $depMod_8084F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo','=', 'Femenino')->unique('rut')->count();
+        $depMod_8589F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo','=', 'Femenino')->unique('rut')->count();
+        $depMod_9094F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo','=', 'Femenino')->unique('rut')->count();
+        $depMod_9599F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo','=', 'Femenino')->unique('rut')->count();
+        $depMod_100F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo','=', 'Femenino')->unique('rut')->count();
 
         $depModM = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->where('sexo', '=', 'Masculino')->count();
         //$aspirinasOriginM = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
-        $depMod_6569M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
-        $depMod_7074M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
-        $depMod_7579M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
-        $depMod_8084M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_8589M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_9094M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_9599M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', 'Femenino')->unique('rut')->count();
-        $depMod_100M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_6569M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', '=', 'Masculino')->count();
+        $depMod_7074M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', '=', 'Masculino')->count();
+        $depMod_7579M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', '=', 'Masculino')->count();
+        $depMod_8084M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', '=', 'Femenino')->unique('rut')->count();
+        $depMod_8589M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', '=', 'Femenino')->unique('rut')->count();
+        $depMod_9094M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', '=', 'Femenino')->unique('rut')->count();
+        $depMod_9599M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', '=', 'Femenino')->unique('rut')->count();
+        $depMod_100M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', '=', 'Femenino')->unique('rut')->count();
 
         //DEPENDENCIA GRAVE
         $depGrave = $pacientes->barthel()->get()->where('rBarthel', '=', 'dSevero')->where('grupo', '>', 64)->count();
@@ -6297,8 +6457,10 @@ class EstadisticaController extends Controller
         $depTotal_100M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dTotal')->where('grupo', '>', 100)->where('sexo', 'Masculino')->unique('rut')->count();
 
         //SUBTOTAL BARTHEL
-        $subBarthel = $pacientes->subBarthel()->get()->where('grupo', '>', 64)->count();
-        $subBarthelF = $pacientes->subBarthel()->get()->where('grupo', '>', 64)->where('sexo', 'Femenino')->count();
+        //$subEsfam = $pacientes->efam()->whereIn('sexo', ['Femenino', 'Masculino'])->get()->unique('rut')->count();
+        $subBarthel = $pacientes->subBarthel()->whereIn('sexo', ['Femenino', 'Masculino'])->get()->unique('rut')->count();
+        //$subEsfamF = $pacientes->efam()->where('sexo', 'Femenino')->get()->unique('rut')->count();
+        $subBarthelF = $pacientes->subBarthel()->where('sexo', 'Femenino')->get()->unique('rut')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
         $subBarthel_6569F = $pacientes->subBarthel()->get()->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->unique('rut')->count();
         $subBarthel_7074F = $pacientes->subBarthel()->get()->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->unique('rut')->count();

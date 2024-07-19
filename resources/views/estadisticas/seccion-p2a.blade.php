@@ -246,33 +246,33 @@
                                 </td>
                                 <td>{{ $ind1DSF->where('edadEnMeses', '==', 6)->count() + $ind2DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$ind2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [7, 11])->count() + $ind2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$ind2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [7, 11])->count() + $ind2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$ind2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [12, 17])->count() + $ind2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$ind2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [12, 17])->count() + $ind2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$ind2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [18, 23])->count() + $ind2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$ind2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [18, 23])->count() + $ind2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$ind2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [24, 35])->count() + $ind2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$ind2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [24, 35])->count() + $ind2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$ind2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [36, 41])->count() + $ind2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$ind2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [36, 41])->count() + $ind2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$ind2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [42, 47])->count() + $ind2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$ind2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [42, 47])->count() + $ind2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$ind2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $ind1DSM->whereBetween('edadEnMeses', [48, 59])->count() + $ind2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$ind2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $ind1DSF->whereBetween('edadEnMeses', [48, 59])->count() + $ind2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -411,33 +411,33 @@
                                 </td>
                                 <td>{{ $ind_1DSF->where('edadEnMeses', '==', 6)->count() + $ind_2DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$ind_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [7, 11])->count() + $ind_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$ind_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [7, 11])->count() + $ind_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$ind_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [12, 17])->count() + $ind_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$ind_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [12, 17])->count() + $ind_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$ind_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [18, 23])->count() + $ind_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$ind_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [18, 23])->count() + $ind_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$ind_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [24, 35])->count() + $ind_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$ind_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [24, 35])->count() + $ind_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$ind_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [36, 41])->count() + $ind_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$ind_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [36, 41])->count() + $ind_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$ind_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [42, 47])->count() + $ind_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$ind_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [42, 47])->count() + $ind_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$ind_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $ind_1DSM->whereBetween('edadEnMeses', [48, 59])->count() + $ind_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$ind_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $ind_1DSF->whereBetween('edadEnMeses', [48, 59])->count() + $ind_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -580,33 +580,33 @@
                                 </td>
                                 <td>{{ $indPt2DSF->where('edadEnMeses', '==', 6)->count() + $indPt1DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indPt1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [7, 11])->count() + $indPt1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indPt1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [7, 11])->count() + $indPt1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indPt1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [12, 17])->count() + $indPt1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indPt1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [12, 17])->count() + $indPt1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indPt1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [18, 23])->count() + $indPt1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indPt1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [18, 23])->count() + $indPt1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indPt1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [24, 35])->count() + $indPt1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indPt1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [24, 35])->count() + $indPt1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indPt1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [36, 41])->count() + $indPt1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indPt1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [36, 41])->count() + $indPt1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indPt1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [42, 47])->count() + $indPt1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indPt1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [42, 47])->count() + $indPt1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indPt1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indPt2DSM->whereBetween('edadEnMeses', [48, 59])->count() + $indPt1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indPt1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indPt2DSF->whereBetween('edadEnMeses', [48, 59])->count() + $indPt1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -745,33 +745,33 @@
                                 </td>
                                 <td>{{ $indPt_1DSF->where('edadEnMeses', '==', 6)->count() + $indPt_2DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [7, 11])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [7, 11])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [12, 17])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [12, 17])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [18, 23])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [18, 23])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [24, 35])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [24, 35])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [36, 41])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [36, 41])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [42, 47])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [42, 47])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indPt_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indPt_1DSM->whereBetween('edadEnMeses', [48, 59])->count() + $indPt_2DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indPt_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indPt_1DSF->whereBetween('edadEnMeses', [48, 59])->count() + $indPt_2DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -914,33 +914,33 @@
                                 </td>
                                 <td>{{ $indTe2DSF->where('edadEnMeses', '==', 6)->count() + $indTe1DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indTe1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [7, 11])->count() + $indTe1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indTe1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [7, 11])->count() + $indTe1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indTe1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [12, 17])->count() + $indTe1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indTe1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [12, 17])->count() + $indTe1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indTe1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [18, 23])->count() + $indTe1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indTe1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [18, 23])->count() + $indTe1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indTe1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [24, 35])->count() + $indTe1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indTe1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [24, 35])->count() + $indTe1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indTe1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [36, 41])->count() + $indTe1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indTe1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [36, 41])->count() + $indTe1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indTe1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [42, 47])->count() + $indTe1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indTe1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [42, 47])->count() + $indTe1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indTe1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indTe2DSM->whereBetween('edadEnMeses', [48, 59])->count() + $indTe1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indTe1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indTe2DSF->whereBetween('edadEnMeses', [48, 59])->count() + $indTe1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -1079,33 +1079,33 @@
                                 </td>
                                 <td>{{ $indTe_2DSF->where('edadEnMeses', '==', 6)->count() + $indTe_1DSF->where('edadEnMeses', '==', 6)->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [7, 11])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [7, 11])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [7, 11])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [7, 11])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [7, 11])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [12, 17])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [12, 17])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [12, 17])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [12, 17])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [12, 17])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [18, 23])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [18, 23])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [18, 23])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [18, 23])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [18, 23])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [24, 35])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [24, 35])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [24, 35])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [24, 35])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [24, 35])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [36, 41])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [36, 41])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [36, 41])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [36, 41])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [36, 41])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [42, 47])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [42, 47])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [42, 47])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [42, 47])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [42, 47])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [48, 59])->count() +$indTe_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indTe_2DSM->whereBetween('edadEnMeses', [48, 59])->count() + $indTe_1DSM->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [48, 59])->count() +$indTe_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                <td>{{ $indTe_2DSF->whereBetween('edadEnMeses', [48, 59])->count() + $indTe_1DSF->whereBetween('edadEnMeses', [48, 59])->count() }}
                                 </td>
                                 </td>
                                 <td>
@@ -1399,43 +1399,69 @@
                                 <td>
                                 </td>
                             </tr>
-
+                            <!-- $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count() -->
                             <tr class="bg-gradient-light">
                                 <th class="text-info">SUBTOTAL</th>
-                                <td>{{ $normal->count() }}
+                                <td>{{ $subtotal }}</td>
                                 </td>
-                                <td>{{ $normalM->count() }}</td>
-                                <td>{{ $normalF->count() }}</td>
+                                <td>{{ $subtotalM }}</td>
+                                <td>{{ $subtotalF }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 1)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 1)->count() }} </td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 2)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 2)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 3)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 3)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 4)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 4)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 5)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 5)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 6)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 6)->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 1)->count() + $desnutM->where('edadEnMeses', '==', 1)->count() + $normalM->where('edadEnMeses', '==', 1)->count() + $sobrepesoM->where('edadEnMeses', '==', 1)->count() + $obesoM->where('edadEnMeses', '==', 1)->count() }}
+                                </td>
+                                <td> {{ $rDesnutF->where('edadEnMeses', '==', 1)->count() + $desnutF->where('edadEnMeses', '==', 1)->count() + $normalF->where('edadEnMeses', '==', 1)->count() + $sobrepesoF->where('edadEnMeses', '==', 1)->count() + $obesoF->where('edadEnMeses', '==', 1)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 2)->count() + $desnutM->where('edadEnMeses', '==', 2)->count() + $normalM->where('edadEnMeses', '==', 2)->count() + $sobrepesoM->where('edadEnMeses', '==', 2)->count() + $obesoM->where('edadEnMeses', '==', 2)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 2)->count() + $desnutF->where('edadEnMeses', '==', 2)->count() + $normalF->where('edadEnMeses', '==', 2)->count() + $sobrepesoF->where('edadEnMeses', '==', 2)->count() + $obesoF->where('edadEnMeses', '==', 2)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 3)->count() + $desnutM->where('edadEnMeses', '==', 3)->count() + $normalM->where('edadEnMeses', '==', 3)->count() + $sobrepesoM->where('edadEnMeses', '==', 3)->count() + $obesoM->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 3)->count() + $desnutF->where('edadEnMeses', '==', 3)->count() + $normalF->where('edadEnMeses', '==', 3)->count() + $sobrepesoF->where('edadEnMeses', '==', 3)->count() + $obesoF->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 4)->count() + $desnutM->where('edadEnMeses', '==', 4)->count() + $normalM->where('edadEnMeses', '==', 4)->count() + $sobrepesoM->where('edadEnMeses', '==', 4)->count() + $obesoM->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 4)->count() + $desnutF->where('edadEnMeses', '==', 4)->count() + $normalF->where('edadEnMeses', '==', 4)->count() + $sobrepesoF->where('edadEnMeses', '==', 4)->count() + $obesoF->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 5)->count() + $desnutM->where('edadEnMeses', '==', 5)->count() + $normalM->where('edadEnMeses', '==', 5)->count() + $sobrepesoM->where('edadEnMeses', '==', 5)->count() + $obesoM->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 5)->count() + $desnutF->where('edadEnMeses', '==', 5)->count() + $normalF->where('edadEnMeses', '==', 5)->count() + $sobrepesoF->where('edadEnMeses', '==', 5)->count() + $obesoF->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 6)->count() + $desnutM->where('edadEnMeses', '==', 6)->count() + $normalM->where('edadEnMeses', '==', 6)->count() + $sobrepesoM->where('edadEnMeses', '==', 6)->count() + $obesoM->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 6)->count() + $desnutF->where('edadEnMeses', '==', 6)->count() + $normalF->where('edadEnMeses', '==', 6)->count() + $sobrepesoF->where('edadEnMeses', '==', 6)->count() + $obesoF->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [7, 11])->count() + $desnutM->whereBetween('edadEnMeses', [7, 11])->count() + $normalM->whereBetween('edadEnMeses', [7, 11])->count() + $sobrepesoM->whereBetween('edadEnMeses', [7, 11])->count() + $obesoM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [7, 11])->count() + $desnutF->whereBetween('edadEnMeses', [7, 11])->count() + $normalF->whereBetween('edadEnMeses', [7, 11])->count() + $sobrepesoF->whereBetween('edadEnMeses', [7, 11])->count() + $obesoF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [12, 17])->count() + $desnutM->whereBetween('edadEnMeses', [12, 17])->count() + $normalM->whereBetween('edadEnMeses', [12, 17])->count() + $sobrepesoM->whereBetween('edadEnMeses', [12, 17])->count() + $obesoM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [12, 17])->count() + $desnutF->whereBetween('edadEnMeses', [12, 17])->count() + $normalF->whereBetween('edadEnMeses', [12, 17])->count() + $sobrepesoF->whereBetween('edadEnMeses', [12, 17])->count() + $obesoF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [18, 23])->count() + $desnutM->whereBetween('edadEnMeses', [18, 23])->count() + $normalM->whereBetween('edadEnMeses', [18, 23])->count() + $sobrepesoM->whereBetween('edadEnMeses', [18, 23])->count() + $obesoM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [18, 23])->count() + $desnutF->whereBetween('edadEnMeses', [18, 23])->count() + $normalF->whereBetween('edadEnMeses', [18, 23])->count() + $sobrepesoF->whereBetween('edadEnMeses', [18, 23])->count() + $obesoF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [24, 35])->count() + $desnutM->whereBetween('edadEnMeses', [24, 35])->count() + $normalM->whereBetween('edadEnMeses', [24, 35])->count() + $sobrepesoM->whereBetween('edadEnMeses', [24, 35])->count() + $obesoM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [24, 35])->count() + $desnutF->whereBetween('edadEnMeses', [24, 35])->count() + $normalF->whereBetween('edadEnMeses', [24, 35])->count() + $sobrepesoF->whereBetween('edadEnMeses', [24, 35])->count() + $obesoF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [36, 41])->count() + $desnutM->whereBetween('edadEnMeses', [36, 41])->count() + $normalM->whereBetween('edadEnMeses', [36, 41])->count() + $sobrepesoM->whereBetween('edadEnMeses', [36, 41])->count() + $obesoM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [36, 41])->count() + $desnutF->whereBetween('edadEnMeses', [36, 41])->count() + $normalF->whereBetween('edadEnMeses', [36, 41])->count() + $sobrepesoF->whereBetween('edadEnMeses', [36, 41])->count() + $obesoF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [42, 47])->count() + $desnutM->whereBetween('edadEnMeses', [42, 47])->count() + $normalM->whereBetween('edadEnMeses', [42, 47])->count() + $sobrepesoM->whereBetween('edadEnMeses', [42, 47])->count() + $obesoM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [42, 47])->count() + $desnutF->whereBetween('edadEnMeses', [42, 47])->count() + $normalF->whereBetween('edadEnMeses', [42, 47])->count() + $sobrepesoF->whereBetween('edadEnMeses', [42, 47])->count() + $obesoF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [48, 59])->count() + $desnutM->whereBetween('edadEnMeses', [48, 59])->count() + $normalM->whereBetween('edadEnMeses', [48, 59])->count() + $sobrepesoM->whereBetween('edadEnMeses', [48, 59])->count() + $obesoM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [48, 59])->count() + $desnutF->whereBetween('edadEnMeses', [48, 59])->count() + $normalF->whereBetween('edadEnMeses', [48, 59])->count() + $sobrepesoF->whereBetween('edadEnMeses', [48, 59])->count() + $obesoF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
                                 </td>
                                 <td>
                                 </td>
@@ -1494,40 +1520,66 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $normal->count() }}
+                                <td>{{ $total }}</td>
                                 </td>
-                                <td>{{ $normalM->count() }}</td>
-                                <td>{{ $normalF->count() }}</td>
+                                <td>{{ $totalM }}</td>
+                                <td>{{ $totalF }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
                                 </td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 1)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 1)->count() }} </td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 2)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 2)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 3)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 3)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 4)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 4)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 5)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 5)->count() }}</td>
-                                <td>{{ $normalM->where('edadEnMeses', '==', 6)->count() }}</td>
-                                <td>{{ $normalF->where('edadEnMeses', '==', 6)->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                <td>{{ $normalM->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                <td>{{ $normalF->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 1)->count() + $desnutM->where('edadEnMeses', '==', 1)->count() + $normalM->where('edadEnMeses', '==', 1)->count() + $sobrepesoM->where('edadEnMeses', '==', 1)->count() + $obesoM->where('edadEnMeses', '==', 1)->count() }}
+                                </td>
+                                <td> {{ $rDesnutF->where('edadEnMeses', '==', 1)->count() + $desnutF->where('edadEnMeses', '==', 1)->count() + $normalF->where('edadEnMeses', '==', 1)->count() + $sobrepesoF->where('edadEnMeses', '==', 1)->count() + $obesoF->where('edadEnMeses', '==', 1)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 2)->count() + $desnutM->where('edadEnMeses', '==', 2)->count() + $normalM->where('edadEnMeses', '==', 2)->count() + $sobrepesoM->where('edadEnMeses', '==', 2)->count() + $obesoM->where('edadEnMeses', '==', 2)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 2)->count() + $desnutF->where('edadEnMeses', '==', 2)->count() + $normalF->where('edadEnMeses', '==', 2)->count() + $sobrepesoF->where('edadEnMeses', '==', 2)->count() + $obesoF->where('edadEnMeses', '==', 2)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 3)->count() + $desnutM->where('edadEnMeses', '==', 3)->count() + $normalM->where('edadEnMeses', '==', 3)->count() + $sobrepesoM->where('edadEnMeses', '==', 3)->count() + $obesoM->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 3)->count() + $desnutF->where('edadEnMeses', '==', 3)->count() + $normalF->where('edadEnMeses', '==', 3)->count() + $sobrepesoF->where('edadEnMeses', '==', 3)->count() + $obesoF->where('edadEnMeses', '==', 3)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 4)->count() + $desnutM->where('edadEnMeses', '==', 4)->count() + $normalM->where('edadEnMeses', '==', 4)->count() + $sobrepesoM->where('edadEnMeses', '==', 4)->count() + $obesoM->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 4)->count() + $desnutF->where('edadEnMeses', '==', 4)->count() + $normalF->where('edadEnMeses', '==', 4)->count() + $sobrepesoF->where('edadEnMeses', '==', 4)->count() + $obesoF->where('edadEnMeses', '==', 4)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 5)->count() + $desnutM->where('edadEnMeses', '==', 5)->count() + $normalM->where('edadEnMeses', '==', 5)->count() + $sobrepesoM->where('edadEnMeses', '==', 5)->count() + $obesoM->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 5)->count() + $desnutF->where('edadEnMeses', '==', 5)->count() + $normalF->where('edadEnMeses', '==', 5)->count() + $sobrepesoF->where('edadEnMeses', '==', 5)->count() + $obesoF->where('edadEnMeses', '==', 5)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '==', 6)->count() + $desnutM->where('edadEnMeses', '==', 6)->count() + $normalM->where('edadEnMeses', '==', 6)->count() + $sobrepesoM->where('edadEnMeses', '==', 6)->count() + $obesoM->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '==', 6)->count() + $desnutF->where('edadEnMeses', '==', 6)->count() + $normalF->where('edadEnMeses', '==', 6)->count() + $sobrepesoF->where('edadEnMeses', '==', 6)->count() + $obesoF->where('edadEnMeses', '==', 6)->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [7, 11])->count() + $desnutM->whereBetween('edadEnMeses', [7, 11])->count() + $normalM->whereBetween('edadEnMeses', [7, 11])->count() + $sobrepesoM->whereBetween('edadEnMeses', [7, 11])->count() + $obesoM->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [7, 11])->count() + $desnutF->whereBetween('edadEnMeses', [7, 11])->count() + $normalF->whereBetween('edadEnMeses', [7, 11])->count() + $sobrepesoF->whereBetween('edadEnMeses', [7, 11])->count() + $obesoF->whereBetween('edadEnMeses', [7, 11])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [12, 17])->count() + $desnutM->whereBetween('edadEnMeses', [12, 17])->count() + $normalM->whereBetween('edadEnMeses', [12, 17])->count() + $sobrepesoM->whereBetween('edadEnMeses', [12, 17])->count() + $obesoM->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [12, 17])->count() + $desnutF->whereBetween('edadEnMeses', [12, 17])->count() + $normalF->whereBetween('edadEnMeses', [12, 17])->count() + $sobrepesoF->whereBetween('edadEnMeses', [12, 17])->count() + $obesoF->whereBetween('edadEnMeses', [12, 17])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [18, 23])->count() + $desnutM->whereBetween('edadEnMeses', [18, 23])->count() + $normalM->whereBetween('edadEnMeses', [18, 23])->count() + $sobrepesoM->whereBetween('edadEnMeses', [18, 23])->count() + $obesoM->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [18, 23])->count() + $desnutF->whereBetween('edadEnMeses', [18, 23])->count() + $normalF->whereBetween('edadEnMeses', [18, 23])->count() + $sobrepesoF->whereBetween('edadEnMeses', [18, 23])->count() + $obesoF->whereBetween('edadEnMeses', [18, 23])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [24, 35])->count() + $desnutM->whereBetween('edadEnMeses', [24, 35])->count() + $normalM->whereBetween('edadEnMeses', [24, 35])->count() + $sobrepesoM->whereBetween('edadEnMeses', [24, 35])->count() + $obesoM->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [24, 35])->count() + $desnutF->whereBetween('edadEnMeses', [24, 35])->count() + $normalF->whereBetween('edadEnMeses', [24, 35])->count() + $sobrepesoF->whereBetween('edadEnMeses', [24, 35])->count() + $obesoF->whereBetween('edadEnMeses', [24, 35])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [36, 41])->count() + $desnutM->whereBetween('edadEnMeses', [36, 41])->count() + $normalM->whereBetween('edadEnMeses', [36, 41])->count() + $sobrepesoM->whereBetween('edadEnMeses', [36, 41])->count() + $obesoM->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [36, 41])->count() + $desnutF->whereBetween('edadEnMeses', [36, 41])->count() + $normalF->whereBetween('edadEnMeses', [36, 41])->count() + $sobrepesoF->whereBetween('edadEnMeses', [36, 41])->count() + $obesoF->whereBetween('edadEnMeses', [36, 41])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [42, 47])->count() + $desnutM->whereBetween('edadEnMeses', [42, 47])->count() + $normalM->whereBetween('edadEnMeses', [42, 47])->count() + $sobrepesoM->whereBetween('edadEnMeses', [42, 47])->count() + $obesoM->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [42, 47])->count() + $desnutF->whereBetween('edadEnMeses', [42, 47])->count() + $normalF->whereBetween('edadEnMeses', [42, 47])->count() + $sobrepesoF->whereBetween('edadEnMeses', [42, 47])->count() + $obesoF->whereBetween('edadEnMeses', [42, 47])->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->whereBetween('edadEnMeses', [48, 59])->count() + $desnutM->whereBetween('edadEnMeses', [48, 59])->count() + $normalM->whereBetween('edadEnMeses', [48, 59])->count() + $sobrepesoM->whereBetween('edadEnMeses', [48, 59])->count() + $obesoM->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->whereBetween('edadEnMeses', [48, 59])->count() + $desnutF->whereBetween('edadEnMeses', [48, 59])->count() + $normalF->whereBetween('edadEnMeses', [48, 59])->count() + $sobrepesoF->whereBetween('edadEnMeses', [48, 59])->count() + $obesoF->whereBetween('edadEnMeses', [48, 59])->count() }}
+                                </td>
                                 </td>
                                 <td>
                                 </td>

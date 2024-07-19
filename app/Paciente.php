@@ -27,7 +27,6 @@ class Paciente extends Model
     public function EdadEnMeses()
     {
         if (Carbon::create($this->fecha_nacimiento)->age < 5) {
-            //return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) < 1 ? Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' mes' : Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' meses';
             return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now());
         } else
             return Carbon::parse($this->fecha_nacimiento)->age;
@@ -35,11 +34,7 @@ class Paciente extends Model
 
     public function getEdadEnMesesAttribute()
     {
-        if (Carbon::create($this->fecha_nacimiento)->age < 5) {
-            //return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) < 1 ? Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' mes' : Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now()) . ' meses';
-            return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now());
-        } else
-            return Carbon::parse($this->fecha_nacimiento)->age;
+        return Carbon::parse($this->fecha_nacimiento)->diffInMonths(Carbon::now());
     }
 
     public function getGrupoAttribute()
@@ -603,7 +598,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Bajo')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 
@@ -611,7 +606,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Moderado')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 
@@ -619,7 +614,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Alto')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 
@@ -627,7 +622,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Maximo')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
 
@@ -832,7 +827,7 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Bajo peso')
             ->whereYear('controls.fecha_control', 2024)
-            //->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -843,7 +838,7 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Normal')
             ->whereYear('controls.fecha_control', 2024)
-            //->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -852,7 +847,7 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Sobrepeso')
             ->whereYear('controls.fecha_control', 2024)
-            //->orWhereIn('dependencia', ['L', 'M', 'G', 'T'])
+            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -861,7 +856,7 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Obesidad')
             ->whereYear('controls.fecha_control', 2024)
-            //->whereIn('pacientes.dependencia', ['L', 'M', 'G', 'T'])
+            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -1048,6 +1043,26 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereYear('controls.fecha_control', 2024)
             ->where('controls.dNutInteg', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function imcEdad($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->where('controls.indIMCEdad', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function perimCintura($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->where('controls.indPeCinturaEdad', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
