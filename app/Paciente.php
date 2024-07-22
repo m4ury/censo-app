@@ -588,7 +588,7 @@ class Paciente extends Model
     public function barthel()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereNotNull('controls.rBarthel')
+            ->whereIn('controls.rBarthel', ['dMod', 'dLeve', 'dSevero', 'dTotal'])
             ->whereYear('controls.fecha_control', 2024)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -809,7 +809,9 @@ class Paciente extends Model
 
     public function subBarthel()
     {
-        return $this->whereIn('dependencia', ['L', 'M', 'G', 'T'])
+        return $this->barthel()
+            ->whereIn('controls.rBarthel', ['dMod', 'dLeve', 'dSevero', 'dTotal'])
+            ->whereYear('controls.fecha_control', 2024)
             ->whereNull('egreso');
     }
 
@@ -827,7 +829,6 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Bajo peso')
             ->whereYear('controls.fecha_control', 2024)
-            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -838,7 +839,6 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Normal')
             ->whereYear('controls.fecha_control', 2024)
-            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -847,7 +847,6 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Sobrepeso')
             ->whereYear('controls.fecha_control', 2024)
-            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -856,7 +855,6 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Obesidad')
             ->whereYear('controls.fecha_control', 2024)
-            ->orWhereIn('rBarthel', ['dSevero', 'dTotal', 'dLeve', 'dMod'])
             ->latest('controls.fecha_control');
     }
 
@@ -1067,6 +1065,57 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    public function psicomotor($fem, $masc, $ev)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->where('controls.evDPM', '=', $ev)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function riesgoIra($fem, $masc, $score)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->where('controls.scoreIra', '=', $score)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function quintoMes($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->wherenotNull('controls.ctrlNut5to_mes')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+    //ctrlNut3_6_meses
+    public function tercerAnio($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->wherenotNull('controls.ctrlNut3_6_meses')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function dgPa($fem, $masc, $dg)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2024)
+            ->wherenotNull('controls.diagPA')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
 
     public function rCero($fem, $masc)
     {

@@ -47,6 +47,16 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p2b') }}">SECCION B: POBLACION EN CONTROL SEGÚN RESULTADO DE EVALUACIÓN DEL DESARROLLO PSICOMOTOR</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p2cde') }}">SECCION C, D y F</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
                             <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: POBLACION EN CONTROL , SEGUN RIESGO
                                 ODONTOLOGICO Y DAÑO POR CARIES</a>
                         </h4>

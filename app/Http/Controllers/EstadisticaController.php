@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class EstadisticaController extends Controller
 {
+
     public function index()
     {
         return view('estadisticas.index');
@@ -23,6 +24,8 @@ class EstadisticaController extends Controller
      */
     public function seccionA()
     {
+        //ini_set('max_execution_time', 900);
+
         $all = new Paciente;
 
         //hta todos
@@ -4375,6 +4378,117 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP2b()
+    {
+        $all = new Paciente;
+
+        //ev DPM
+        $evNormal = $all->psicomotor('Femenino', 'Masculino', 'normal')->get()->unique('rut');
+        $evNormalM = $all->psicomotor(null, 'Masculino', 'normal')->get()->unique('rut');
+        $evNormalF = $all->psicomotor('Femenino', null, 'normal')->get()->unique('rut');
+
+        $evRiesgo = $all->psicomotor('Femenino', 'Masculino', 'riesgo')->get()->unique('rut');
+        $evRiesgoM = $all->psicomotor(null, 'Masculino', 'riesgo')->get()->unique('rut');
+        $evRiesgoF = $all->psicomotor('Femenino', null, 'riesgo')->get()->unique('rut');
+
+        $evNormalR = $all->psicomotor('Femenino', 'Masculino', 'normalRezago')->get()->unique('rut');
+        $evNormalRM = $all->psicomotor(null, 'Masculino', 'normalRezago')->get()->unique('rut');
+        $evNormalRF = $all->psicomotor('Femenino', null, 'normalRezago')->get()->unique('rut');
+
+        $evRetraso = $all->psicomotor('Femenino', 'Masculino', 'retraso')->get()->unique('rut');
+        $evRetrasoM = $all->psicomotor(null, 'Masculino', 'retraso')->get()->unique('rut');
+        $evRetrasoF = $all->psicomotor('Femenino', null, 'retraso')->get()->unique('rut');
+
+
+        return view('estadisticas.seccion-p2b', compact(
+            'evNormal',
+            'evNormalM',
+            'evNormalF',
+
+            'evNormalR',
+            'evNormalRM',
+            'evNormalRF',
+
+            'evRetraso',
+            'evRetrasoM',
+            'evRetrasoF',
+
+            'evRiesgo',
+            'evRiesgoM',
+            'evRiesgoF',
+        ));
+    }
+
+    public function seccionP2cde()
+    {
+        $all = new Paciente;
+
+        //score Ira
+        $scoreLeve = $all->riesgoIra('Femenino', 'Masculino', 'leve')->get()->unique('rut');
+        $scoreLeveM = $all->riesgoIra(null, 'Masculino', 'leve')->get()->unique('rut');
+        $scoreLeveF = $all->riesgoIra('Femenino', null, 'leve')->get()->unique('rut');
+
+        $scoreMod = $all->riesgoIra('Femenino', 'Masculino', 'moderado')->get()->unique('rut');
+        $scoreModM = $all->riesgoIra(null, 'Masculino', 'moderado')->get()->unique('rut');
+        $scoreModF = $all->riesgoIra('Femenino', null, 'moderado')->get()->unique('rut');
+
+        $scoreGrave = $all->riesgoIra('Femenino', 'Masculino', 'grave')->get()->unique('rut');
+        $scoreGraveM = $all->riesgoIra(null, 'Masculino', 'grave')->get()->unique('rut');
+        $scoreGraveF = $all->riesgoIra('Femenino', null, 'grave')->get()->unique('rut');
+
+        $quintoMes = $all->quintoMes('Femenino', 'Masculino')->get()->unique('rut');
+        $tresAnios = $all->tercerAnio('Femenino', 'Masculino')->get()->unique('rut');
+
+        $dgPAnormal = $all->dgPA('Femenino', 'Masculino', 'normal')->get()->unique('rut');
+        $dgPAnormalM = $all->dgPA(null, 'Masculino', 'normal')->get()->unique('rut');
+        $dgPAnormalF = $all->dgPA('Femenino', null, 'normal')->get()->unique('rut');
+
+        $dgPAelevada = $all->dgPA('Femenino', 'Masculino', 'elevada')->get()->unique('rut');
+        $dgPAelevadaM = $all->dgPA(null, 'Masculino', 'elevada')->get()->unique('rut');
+        $dgPAelevadaF = $all->dgPA('Femenino', null, 'elevada')->get()->unique('rut');
+
+        $dgPAhta1 = $all->dgPA('Femenino', 'Masculino', 'hta_eI')->get()->unique('rut');
+        $dgPAhta1M = $all->dgPA(null, 'Masculino', 'hta_eI')->get()->unique('rut');
+        $dgPAhta1F = $all->dgPA('Femenino', null, 'hta_eI')->get()->unique('rut');
+
+        $dgPAhta2 = $all->dgPA('Femenino', 'Masculino', 'hta_eII')->get()->unique('rut');
+        $dgPAhta2M = $all->dgPA(null, 'Masculino', 'hta_eII')->get()->unique('rut');
+        $dgPAhta2F = $all->dgPA('Femenino', null, 'hta_eII')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p2cde', compact(
+            'scoreLeve',
+            'scoreLeveM',
+            'scoreLeveF',
+
+            'scoreMod',
+            'scoreModM',
+            'scoreModF',
+
+            'scoreGrave',
+            'scoreGraveM',
+            'scoreGraveF',
+
+            'quintoMes',
+            'tresAnios',
+
+            'dgPAnormal',
+            'dgPAnormalM',
+            'dgPAnormalF',
+
+            'dgPAelevada',
+            'dgPAelevadaM',
+            'dgPAelevadaF',
+
+            'dgPAhta1',
+            'dgPAhta1M',
+            'dgPAhta1F',
+
+            'dgPAhta2',
+            'dgPAhta2M',
+            'dgPAhta2F',
+        ));
+    }
+
     public function seccionP3a()
     {
         $all = new Paciente;
@@ -6335,7 +6449,7 @@ class EstadisticaController extends Controller
         $riesgoDependencia_9599M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'rDependencia')->get()->whereBetween('grupo', [95, 99])->unique('rut')->count();
         $riesgoDependencia_100M = $pacientes->efam()->where('sexo', 'Masculino')->where('rEfam', 'rDependencia')->get()->where('grupo', '>', 100)->unique('rut')->count();
 
-        //SUBTOTAL ESFAM
+        //SUBTOTAL EFAM
         $subEsfam = $pacientes->efam()->whereIn('sexo', ['Femenino', 'Masculino'])->get()->unique('rut')->count();
 
         $subEsfamF = $pacientes->efam()->where('sexo', 'Femenino')->get()->unique('rut')->count();
@@ -6388,25 +6502,25 @@ class EstadisticaController extends Controller
         $depMod = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->count();
         $depModF = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->where('sexo', 'Femenino')->count();
         //$aspirinasOriginF = $pacientes->aspirinas()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
-        $depMod_6569F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo','=', 'Femenino')->count();
-        $depMod_7074F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo','=', 'Femenino')->count();
-        $depMod_7579F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo','=', 'Femenino')->count();
-        $depMod_8084F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo','=', 'Femenino')->unique('rut')->count();
-        $depMod_8589F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo','=', 'Femenino')->unique('rut')->count();
-        $depMod_9094F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo','=', 'Femenino')->unique('rut')->count();
-        $depMod_9599F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo','=', 'Femenino')->unique('rut')->count();
-        $depMod_100F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo','=', 'Femenino')->unique('rut')->count();
+        $depMod_6569F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', 'Femenino')->count();
+        $depMod_7074F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', 'Femenino')->count();
+        $depMod_7579F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count();
+        $depMod_8084F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_8589F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_9094F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_9599F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_100F = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', 'Femenino')->unique('rut')->count();
 
-        $depModM = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->where('sexo', '=', 'Masculino')->count();
+        $depModM = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 64)->where('sexo', 'Masculino')->count();
         //$aspirinasOriginM = $pacientes->aspirinas()->where('sexo', '=', 'Masculino')->where('pueblo_originario', '=', 1)->count();
-        $depMod_6569M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', '=', 'Masculino')->count();
-        $depMod_7074M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', '=', 'Masculino')->count();
-        $depMod_7579M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', '=', 'Masculino')->count();
-        $depMod_8084M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', '=', 'Femenino')->unique('rut')->count();
-        $depMod_8589M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', '=', 'Femenino')->unique('rut')->count();
-        $depMod_9094M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', '=', 'Femenino')->unique('rut')->count();
-        $depMod_9599M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', '=', 'Femenino')->unique('rut')->count();
-        $depMod_100M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', '=', 'Femenino')->unique('rut')->count();
+        $depMod_6569M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [65, 69])->where('sexo', 'Masculino')->count();
+        $depMod_7074M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [70, 74])->where('sexo', 'Masculino')->count();
+        $depMod_7579M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [75, 79])->where('sexo', 'Masculino')->count();
+        $depMod_8084M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [80, 84])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_8589M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [85, 89])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_9094M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [90, 94])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_9599M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->whereBetween('grupo', [95, 99])->where('sexo', 'Femenino')->unique('rut')->count();
+        $depMod_100M = $pacientes->barthel()->get()->where('rBarthel', '=', 'dMod')->where('grupo', '>', 100)->where('sexo', 'Femenino')->unique('rut')->count();
 
         //DEPENDENCIA GRAVE
         $depGrave = $pacientes->barthel()->get()->where('rBarthel', '=', 'dSevero')->where('grupo', '>', 64)->count();
@@ -7083,6 +7197,13 @@ class EstadisticaController extends Controller
 
     public function seccionP6a()
     {
+
+        ini_set('client_body_timeout', 99999999);
+        ini_set('cliennt_header_timeout', 99999999);
+        ini_set('keep_alive_timeout', 99999999);
+        ini_set('send_timeout', 99999999);
+        ini_set('max_input_time', 99999999);
+
         $all = new Paciente;
         //sm todos
         $sm = $all->sm()->count();
