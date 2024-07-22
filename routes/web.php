@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function () {
 
     //P1
     Route::get('/estadisticas.seccion-p1a', 'EstadisticaController@seccionP1a')->name('estadisticas.seccion-p1a');
+    Route::get('/estadisticas.seccion-p1b', 'EstadisticaController@seccionP1b')->name('estadisticas.seccion-p1b');
     Route::get('/estadisticas.seccion-p1f', 'EstadisticaController@seccionP1f')->name('estadisticas.seccion-p1f');
 
 
@@ -120,6 +121,9 @@ Route::middleware('auth')->group(function () {
     //P6
     Route::get('/estadisticas.seccion-p6a', 'EstadisticaController@seccionP6a')->name('estadisticas.seccion-p6a');
 
+    //P12
+    Route::get('/estadisticas.seccion-p12', 'EstadisticaController@seccionp12')->name('estadisticas.seccion-p12');
+
     //Route::get('/estadisticas.programacion', 'EstadisticaController@programacion')->name('estadisticas.programacion');
     Route::get('/estadisticas.encuestas', 'EstadisticaController@encuestas')->name('estadisticas.encuestas');
     //Route::get('/estadisticas.rayos', 'EstadisticaController@rayos')->name('estadisticas.rayos');
@@ -136,5 +140,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.postrados', 'PacienteController@postrados_list')->name('pacientes.postrados');
     Route::get('/pacientes.cuidadores', 'PacienteController@cuidadores_list')->name('pacientes.cuidadores');
     Route::get('/pacientes.riesgo', 'PacienteController@pRiesgo_list')->name('pacientes.riesgo');
-
 });

@@ -3969,6 +3969,23 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP1b()
+    {
+        $all = new Paciente;
+
+        $aro = $all->aro()->get()->unique('rut');
+        $riesgoPs = $all->rBiops()->get()->unique('rut');
+        $violenciaGen = $all->violenciaGen()->get()->unique('rut');
+        $embarazadas = $all->embarazo()->get()->unique('rut');
+
+        return view('estadisticas.seccion-p1b', compact(
+            'aro',
+            'riesgoPs',
+            'violenciaGen',
+            'embarazadas',
+        ));
+    }
+
     public function seccionP1f()
     {
         $all = new Paciente;
@@ -4455,6 +4472,12 @@ class EstadisticaController extends Controller
         $dgPAhta2M = $all->dgPA(null, 'Masculino', 'hta_eII')->get()->unique('rut');
         $dgPAhta2F = $all->dgPA('Femenino', null, 'hta_eII')->get()->unique('rut');
 
+        $malNutRiesgo = $all->malNut('Femenino', 'Masculino', 'conRiesgo')->get()->unique('rut');
+
+        $malNut = $all->malNut('Femenino', 'Masculino', 'sinRiesgo')->get()->unique('rut');
+
+
+
         return view('estadisticas.seccion-p2cde', compact(
             'scoreLeve',
             'scoreLeveM',
@@ -4486,6 +4509,11 @@ class EstadisticaController extends Controller
             'dgPAhta2',
             'dgPAhta2M',
             'dgPAhta2F',
+
+            'malNutRiesgo',
+
+            'malNut',
+
         ));
     }
 
@@ -9812,6 +9840,16 @@ class EstadisticaController extends Controller
             'otras_OriginM',
             'otras_OriginF',
             'all'
+        ));
+    }
+
+    public function seccionp12()
+    {
+        $all = new Paciente;
+        $mamoVigente = $all->mamoVigente()->get()->unique('rut');
+
+        return view('estadisticas.seccion-p12', compact(
+            'mamoVigente',
         ));
     }
 

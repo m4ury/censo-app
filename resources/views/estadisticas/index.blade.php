@@ -17,6 +17,12 @@
                             <a href="{{ route('estadisticas.seccion-p1a') }}">SECCIONES A y H</a>
                         </h4>
                     </div>
+                    <div class="row mb-3">
+                        <h4 class="card-title text-bold">
+                            <a href="{{ route('estadisticas.seccion-p1b') }}">SECCION B: GESTANTES EN CONTROL CON EVALUACIÓN RIESGO BIOPSICOSOCIAL
+                            </a>
+                        </h4>
+                    </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="{{ route('estadisticas.seccion-p1f') }}">SECCIONES F y F.1</a>
@@ -37,22 +43,25 @@
                 <div class="card-body">
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2a') }}">SECCIÓN A: POBLACION EN CONTROL , SEGUN ESTADO NUTRICIONAL PARA NIÑOS MENOR DE UN MES- 59 MESES</a>
+                            <a href="{{ route('estadisticas.seccion-p2a') }}">SECCIÓN A: POBLACION EN CONTROL , SEGUN ESTADO
+                                NUTRICIONAL PARA NIÑOS MENOR DE UN MES- 59 MESES</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2a1') }}">SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES</a>
+                            <a href="{{ route('estadisticas.seccion-p2a1') }}">SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN
+                                ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2b') }}">SECCION B: POBLACION EN CONTROL SEGÚN RESULTADO DE EVALUACIÓN DEL DESARROLLO PSICOMOTOR</a>
+                            <a href="{{ route('estadisticas.seccion-p2b') }}">SECCION B: POBLACION EN CONTROL SEGÚN
+                                RESULTADO DE EVALUACIÓN DEL DESARROLLO PSICOMOTOR</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2cde') }}">SECCION C, D y F</a>
+                            <a href="{{ route('estadisticas.seccion-p2cde') }}">SECCION C, D, F y G</a>
                         </h4>
                     </div>
                     <div class="row">
@@ -168,6 +177,23 @@
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
                     <a href="{{ route('estadisticas.seccion-p6a') }}">SECCION A.1: POBLACIÓN EN CONTROL EN APS AL CORTE</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-secondary card-outline">
+        <div class="card-header">
+            <h3 class="card-title text-bold">
+                REM-P12. PERSONAS CON TAMIZAJE PARA LA DETECCIÓN PRECOZ DE CÁNCER DE CUELLO UTERINO –
+                MAMOGRAFIA - EXAMEN FISICO DE MAMA VIGENTES Y PRODUCCION DE PAP Y VPH (SEMESTRAL)
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p12') }}">SECCION C: PROGRAMA DE CANCER DE MAMA: MUJERES CON
+                        MAMOGRAFÍA VIGENTE EN LOS ULTIMOS 2 AÑOS.</a>
                 </h4>
             </div>
         </div>
