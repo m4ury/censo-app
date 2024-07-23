@@ -82,6 +82,11 @@ class Paciente extends Model
         return $this->belongsToMany(Patologia::class)->withPivot('created_at');
     }
 
+    public function naneas()
+    {
+        return $this->belongsToMany(Naneas::class)->withPivot('created_at');
+    }
+
     public function scopeSearch($query, $q)
     {
         if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
