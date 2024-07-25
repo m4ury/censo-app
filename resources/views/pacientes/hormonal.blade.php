@@ -5,7 +5,39 @@
 @section('content')
     <div class="col-md-12 table-responsive">
         <div class="col text-center py-3">
-            <h3 class="text-bold">Pacientes Mujeres </h3>
+            <h3 class="text-bold">Pacientes Mujeres</h3>
+        </div>
+        <div class="row">
+            {!! Form::open([
+                'route' => 'pacientes.hormonal',
+                'method' => 'GET',
+                'class' => 'form-inline float-right',
+            ]) !!}
+            <div class="form-group mx-sm-3 mb-2">
+                {!! Form::select(
+                    'metodo',
+                    [
+                        'oral_comb' => 'Oral Combinado',
+                        'oral_progest' => 'Oral Progest',
+                        'inyectable_comb' => 'Inyectable Combinado',
+                        'inyectable_progest' => 'Inyectable Progest',
+                        'implante_etonogest' => 'Implante Etonogest',
+                        'anillo' => 'Anillo',
+                    ],
+                    \Request()->metodo,
+                    [
+                        'class' => 'form-control m-auto',
+                        'placeholder' => 'Busqueda Metodo',
+                        'id' => 'metodo',
+                        'onchange' => 'submitForm()',
+                    ],
+                ) !!}
+            </div>
+
+            {{-- <button type="submit" class="btn btn-primary mb-2">
+                <span><i class="fas fa-search"> Buscar</i></span>
+            </button> --}}
+            {!! Form::close() !!}
         </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
@@ -13,19 +45,20 @@
                     <th>Rut</th>
                     <th>Nombre Completo</th>
                     <th>Nº Ficha Clinica</th>
-                    <th>Direccion</th>
+                    <th>Metodo</th>
+                    <th>Fecha Control</th>
                     <th>Rango Etario</th>
                     <th>Sector</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pMujer as $paciente)
+                @foreach ($hormonal as $paciente)
                     <tr>
                         <td><a href="{{ route('pacientes.show', $paciente->paciente_id) }}">{{ $paciente->rut }}</a></td>
                         <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                        <td>{{ $paciente->ficha }}
-                        </td>
-                        <td>{{ $paciente->direccion ?? '' }} {{ $paciente->comuna ? ', ' . $paciente->comuna : '' }}</td>
+                        <td>{{ $paciente->ficha }}</td>
+                        <td>{{ $paciente->hormonal ?? '' }}</td>
+                        <td>{{ $paciente->fecha_control ?? '' }}</td>
                         <td>
                             @switch($paciente->edad())
                                 @case($paciente->edad() < 15)
@@ -143,8 +176,12 @@
                 }
             },
             order: [
-                [4, 'desc']
+                [4, 'asc']
             ],
         });
+
+        function submitForm() {
+            $('#myForm').submit();
+        }
     </script>
 @endsection

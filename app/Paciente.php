@@ -92,6 +92,12 @@ class Paciente extends Model
         if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
     }
 
+    public function scopeMetodo($query, $metodo)
+    {
+        if ($metodo) return $query->where('controls.hormonal', $metodo);
+    }
+
+
     //P4 seccion A
 
     public function rcv_bajo($fem = 'Femenino', $masc = 'Masculino', $grupo = [15, 120])

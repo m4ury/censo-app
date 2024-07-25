@@ -206,9 +206,24 @@ class PacienteController extends Controller
     {
         $paciente = new Paciente;
         $pMujer = $paciente->totalMac()
-        ->get()
-        ->unique('rut');
+            ->get()
+            ->unique('rut');
         return view('pacientes.pMujer', compact('pMujer'));
+    }
+
+    public function hormonal_list(Request $request)
+    {
+        $metodo = $request->get('metodo');
+
+        $paciente = new Paciente;
+        $hormonal = $paciente->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->whereNotNull('controls.hormonal')
+            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'hormonal', 'pacientes.id', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'pacientes.id', 'controls.paciente_id', 'fecha_control')
+            ->metodo($metodo)
+            ->get()
+            ->unique('rut');
+        return view('pacientes.hormonal', compact('hormonal'));
     }
 
     public function paliativo_list()

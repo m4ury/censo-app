@@ -188,9 +188,9 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof')
             .hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -275,7 +275,7 @@
                     break;
                 case 'Matrona':
                     $('#Matrona').show();
-                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
+                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields, .post_partoFields').hide();
                     break;
                 case 'Nutricionista':
                     if ('{{ $paciente->edad() }}' < 3) {
@@ -328,35 +328,35 @@
     </script>
 
     <script>
-                var selectedOption = $('#tipo').val();
-                if (selectedOption == 'Psicologo') {
-                    $('#Psicologo').show();
-                    $('.presion_art, .peso_talla, .imc').hide()
-                }else if (selectedOption == 'Medico') {
-                    $('#Medico, #Nutricionista').show();
-                }else if (selectedOption == 'Enfermera') {
-                    $('#Enfermera, #efam').show();
-                    if ('{{ $paciente->edad() }}' < 3) {
-                        $('.presion_art, .rImc, .rImc_label').hide()
-                    } else $('.presion_art, .rImc, .rImc_label').show()
-                    $('#Medico, #Nutricionista').hide();
-                }else if (selectedOption == 'Kinesiologo') {
-                    $('#Kine').show();
-                    $('.presion_art, .peso_talla, .imc').hide()
-                    $('#Medico').hide();
-                } else if (selectedOption == 'Nutricionista') {
-                    if ('{{ $paciente->edad() }}' < 3) {
-                        $('.presion_art, .rImc, .rImc_label').hide()
-                    } else $('.presion_art, .rImc, .rImc_label').show()
-                    $('#Nutricionista, #Enfermera').show();
-                    $('.pieDaibetico').hide();
-                }else if (selectedOption == 'Dentista') {
-                    $('#Dentista').show();
-                    $('.presion_art, .peso_talla, .imc').hide()
-                }else if (selectedOption == 'Matrona') {
-                    $('#Matrona').show();
-                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields').hide();
-                }
+        var selectedOption = $('#tipo').val();
+        if (selectedOption == 'Psicologo') {
+            $('#Psicologo').show();
+            $('.presion_art, .peso_talla, .imc').hide()
+        } else if (selectedOption == 'Medico') {
+            $('#Medico, #Nutricionista').show();
+        } else if (selectedOption == 'Enfermera') {
+            $('#Enfermera, #efam').show();
+            if ('{{ $paciente->edad() }}' < 3) {
+                $('.presion_art, .rImc, .rImc_label').hide()
+            } else $('.presion_art, .rImc, .rImc_label').show()
+            $('#Medico, #Nutricionista').hide();
+        } else if (selectedOption == 'Kinesiologo') {
+            $('#Kine').show();
+            $('.presion_art, .peso_talla, .imc').hide()
+            $('#Medico').hide();
+        } else if (selectedOption == 'Nutricionista') {
+            if ('{{ $paciente->edad() }}' < 3) {
+                $('.presion_art, .rImc, .rImc_label').hide()
+            } else $('.presion_art, .rImc, .rImc_label').show()
+            $('#Nutricionista, #Enfermera').show();
+            $('.pieDaibetico').hide();
+        } else if (selectedOption == 'Dentista') {
+            $('#Dentista').show();
+            $('.presion_art, .peso_talla, .imc').hide()
+        } else if (selectedOption == 'Matrona') {
+            $('#Matrona').show();
+            $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields, .post_partof').hide();
+        }
     </script>
 
     <script>
@@ -404,9 +404,19 @@
 
         $('input.regulacion').on('click', function() {
             if ($('input.regulacion').is(':checked')) {
-                $('.condon, .preservativo, .diu_cobre, .horm, .estqx').show();
+                $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').show()
+                $('input.ginec').prop('checked', false);
             } else
-                $('.condon, .preservativo, .diu_cobre, .horm, .estqx').hide();
+                $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').hide();
+        });
+
+        $('input.ginec').on('click', function() {
+            if ($('input.ginec').is(':checked')) {
+                $('.post_partof').show()
+                $('input.regulacion').prop('checked', false);
+            } else
+                $('.post_partof').hide();
+
         });
 
         $('input.climater').on('click', function() {

@@ -140,4 +140,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.postrados', 'PacienteController@postrados_list')->name('pacientes.postrados');
     Route::get('/pacientes.cuidadores', 'PacienteController@cuidadores_list')->name('pacientes.cuidadores');
     Route::get('/pacientes.riesgo', 'PacienteController@pRiesgo_list')->name('pacientes.riesgo');
+    Route::get('/pacientes.hormonal', 'PacienteController@hormonal_list')->name('pacientes.hormonal')->middleware('auth');
 });

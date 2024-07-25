@@ -11,6 +11,7 @@
                         'id' => 'ginec',
                     ]) !!}
                 </div>
+
                 {!! Form::label('regulacion_label', 'Control Regulacion', [
                     'class' => 'col-sm-2 col-form-label text-bold',
                 ]) !!}
@@ -292,6 +293,25 @@
                 ]) !!}
             </div>
         </div>
+
+        <div class="form-group row my-2 ml-2 mx-3 post_partof">
+            {!! Form::label('post_parto_label', 'Control POST-PARTO', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'post_parto',
+                    [
+                        'mes_3' => 'al 3° MES POST-PARTO',
+                        'mes_6' => 'al 6° MES POST-PARTO',
+                        'mes_8' => 'al 8° MES POST-PARTO',
+                    ],
+                    old('post_parto', $control->post_parto),
+                    ['class' => 'form-control form-control-sm post_parto', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
+        </div>
+
         <hr>
         <div class="form-group row my-2 ml-2 mx-3">
             <div class="col col-sm text-muted">
