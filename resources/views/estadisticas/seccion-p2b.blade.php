@@ -211,7 +211,7 @@
                                     </tr>
                                     <tr>
                                         <tr>
-                                            <th rowspan="8" style="vertical-align: middle" nowrap>evRetraso</th>
+                                            <th rowspan="8" style="vertical-align: middle" nowrap>RETRASO</th>
                                         <tr>
                                             <th nowrap="">Menor de 12 meses</th>
                                             <td>{{ $evRetraso->where('edadEnMeses', '<',  12)->count() }}</td>
