@@ -6,12 +6,14 @@
     <div class="col-md-12 table-responsive">
         <div class="col text-center py-3">
             <h3 class="text-bold">Pacientes Mujeres</h3>
+            <p class="text-bold text-uppercase">Metodo: <span class="text-red">{{ \Request()->metodo ?? 'Todos' }}</span></p>
         </div>
-        <div class="row">
+        <div class="row my-3">
             {!! Form::open([
                 'route' => 'pacientes.hormonal',
                 'method' => 'GET',
                 'class' => 'form-inline float-right',
+                'id' => 'myForm',
             ]) !!}
             <div class="form-group mx-sm-3 mb-2">
                 {!! Form::select(
@@ -183,5 +185,10 @@
         function submitForm() {
             $('#myForm').submit();
         }
+
+        $('#metodo').select2({
+            theme: "classic",
+            width: '100%',
+        });
     </script>
 @endsection
