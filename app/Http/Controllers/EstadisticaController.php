@@ -3986,6 +3986,23 @@ class EstadisticaController extends Controller
         ));
     }
 
+    public function seccionP1d()
+    {
+        $all = new Paciente;
+        $postParto = $all->postParto(['mes_3', 'mes_6', 'mes_8'])->get()->unique('rut');
+        $postParto3 = $all->postParto('mes_3')->get()->unique('rut');
+        $postParto6 = $all->postParto('mes_6')->get()->unique('rut');
+        $postParto8 = $all->postParto('mes_8')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p1d', compact(
+            'postParto',
+            'postParto3',
+            'postParto6',
+            'postParto8',
+            'all',
+        ));
+    }
+
     public function seccionP1f()
     {
         $all = new Paciente;

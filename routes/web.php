@@ -94,6 +94,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p1a', 'EstadisticaController@seccionP1a')->name('estadisticas.seccion-p1a');
     Route::get('/estadisticas.seccion-p1b', 'EstadisticaController@seccionP1b')->name('estadisticas.seccion-p1b');
     Route::get('/estadisticas.seccion-p1f', 'EstadisticaController@seccionP1f')->name('estadisticas.seccion-p1f');
+    Route::get('/estadisticas.seccion-p1d', 'EstadisticaController@seccionP1d')->name('estadisticas.seccion-p1d');
+
 
 
     //P2

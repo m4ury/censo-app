@@ -1342,6 +1342,16 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    public function postParto($meses)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->whereYear('controls.fecha_control', '2024')
+            ->where('controls.post_parto', $meses)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
     public function aro()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')

@@ -19,7 +19,15 @@
                     </div>
                     <div class="row mb-3">
                         <h4 class="card-title text-bold">
-                            <a href="{{ route('estadisticas.seccion-p1b') }}">SECCION B: GESTANTES EN CONTROL CON EVALUACIÓN RIESGO BIOPSICOSOCIAL
+                            <a href="{{ route('estadisticas.seccion-p1b') }}">SECCION B: GESTANTES EN CONTROL CON EVALUACIÓN
+                                RIESGO BIOPSICOSOCIAL
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="row mb-3">
+                        <h4 class="card-title text-bold">
+                            <a href="{{ route('estadisticas.seccion-p1d') }}">SECCION D: GESTANTES Y MUJERES DE 8° MES
+                                POST-PARTO EN CONTROL, SEGÚN ESTADO NUTRICIONAL
                             </a>
                         </h4>
                     </div>
