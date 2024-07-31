@@ -10208,10 +10208,15 @@ class EstadisticaController extends Controller
     {
         $all = new Paciente;
         $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo')
+        ->leftJoin('controls', 'controls.paciente_id', 'pacientes.id')
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo', 'controls.fecha_control', 'controls.tipo_control', 'controls.asmaClasif', 'controls.epocClasif', 'controls.sborClasif')
             ->where('paciente_patologia.patologia_id', 8)
+            ->where('controls.tipo_control', 'Kinesiologo')
             ->whereNull('egreso')
-            ->get();
+            ->latest('fecha_control')
+            ->get()
+            ->unique('rut');
+
 
         $mas80F = $all->salaEra()->whereNull('egreso')->whereSexo('Femenino')->get()->where('grupo', '>=', 80)->count();
         $in7579F = $all->salaEra()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [75, 79])->count();

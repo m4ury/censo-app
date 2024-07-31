@@ -28,6 +28,8 @@
                         <th>Comuna</th>
                         <th>Telefono</th>
                         <th>Sector</th>
+                        <th>Fecha ultimo control</th>
+                        <th>Diagnostico</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +39,8 @@
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->fecha_nacimiento }}</td>
                             <td>{{ $paciente->sexo }}</td>
-                            <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
+                            <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}
+                            </td>
                             <td>Hospital de Hualañe</td>
                             <th>Hualañe</th>
                             <td>{{ $paciente->telefono }}</td>
@@ -53,6 +56,16 @@
                                 <i class="fas fa-square text-white"></i>
                                 </span> Blanco
                     @endif
+                    </td>
+                    <td>{{ $paciente->fecha_control }}</td>
+                    <td>
+                        @if ($paciente->asmaClasif)
+                            <span class="text-bold"> ASMA {{ $paciente->asmaClasif }}</span>
+                        @elseif ($paciente->epocClasif)
+                            <span class="text-bold"> EPOC {{ $paciente->epocClasif }}</span>
+                        @elseif ($paciente->sborClasif)
+                            <span class="text-bold"> SBOR {{ $paciente->sborClasif }}</span>
+                        @endif
                     </td>
                     </tr>
                     @endforeach
