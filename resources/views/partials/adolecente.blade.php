@@ -67,7 +67,7 @@
                 'dNutInteg',
                 [
                     'deficitPondBajo' => 'DEFICIT PONDERADO BAJO PESO',
-                    'desnutrido' => 'DESNUTRIDO',
+                    'desnut' => 'DESNUTRIDO',
                     'sobrepeso' => 'SOBREPESO / RIESGO OBESIDAD',
                     'obeso' => 'OBESO',
                     'obesoSevero' => 'OBESO SEVERO',
@@ -99,4 +99,32 @@
                 ['class' => 'form-control form-control-sm eduTrab', 'placeholder' => 'Seleccione'],
             ) !!}
         </div>
+    </div>
+
+    <div class="form-group row my-2 ml-2 mx-3">
+        {!! Form::label('sexualidad_label', 'GINECO-UROLOGICO/ SEXUALIDAD', [
+            'class' => 'col-sm col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::select(
+                'sexualidad',
+                [
+                    'condPostergada' => 'ADOLESCENTES CON CONDUCTA POSTERGADORA',
+                    'condAnticipadora' => 'ADOLESCENTES CON CONDUCTA ANTICIPADORA',
+                    'condActiva' => 'ADOLESCENTES CON CONDUCTA ACTIVA',
+                    'trabJuvenil' => 'TRABAJO JUVENIL',
+                    'usoAnticonceptivo' => 'USO ACTUAL DE METODO ANTICONCEPTIVO	',
+                    'dobleProteccion' => 'USO ACTUAL DE DOBLE PROTECCIÓN',
+                    'primerEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO',
+                    'masEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE MAS DE UN EMBARAZO',
+                    'aborto' => 'ADOLESCENTE CON ANTECEDENTE DE ABORTO',
+                    'violenciaPareja' => 'ADOLESCENTE QUE PRESENTA VIOLENCIA DE PAREJA/POLOLO',
+                    'violenciaSexual' => 'ADOLESCENTE QUE PRESENTA O HA SIDO VICTIMA DE VIOLENCIA SEXUAL',
+                ],
+                old('sexualidad', $control->sexualidad),
+                ['class' => 'form-control form-control-sm sexualidad', 'placeholder' => 'Seleccione'],
+            ) !!}
+        </div>
+    </div>
+
 </div>
