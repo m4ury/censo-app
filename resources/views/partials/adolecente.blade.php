@@ -1,44 +1,44 @@
 <div class="card card-blue card-outline mb-3" id="Enfermera">
     {{-- pacientes entre 10 y 19 añosde edad control nutricional Enfermera / Nutricionista --}}
-        <div class="card-header text-bold">
-            CONTROL DE SALUD INTEGRAL DE ADOLECENTES, SEGUN ESTADO NUTRICIONAL
+    <div class="card-header text-bold">
+        CONTROL DE SALUD INTEGRAL DE ADOLECENTES
+    </div>
+    <div class="form-group row my-2 ml-2 mx-3">
+        {!! Form::label('indIMCEdad_label', 'INDICADOR IMC/EDAD', [
+            'class' => 'col-sm col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::select(
+                'indIMCEdad',
+                [
+                    '+3 DS' => '>= + 3 D.E. (Obesidad Severa)',
+                    '+2 DS' => '>= + 2.0 a + 2.9 D.E. (Obesidad)',
+                    '+1 DS' => '>= + 1.0 a + 1.9 D.E. (Sobrepeso)',
+                    '-2 DS' => '<= - 2.0 D.E. (Desnutrición)',
+                    '-1 DS' => '< = -1.0 a -1.9 D.E. (Bajo peso)',
+                    '-09 DS' => '- 0.9 a + 0.9 D.E. (Peso Normal)',
+                ],
+                old('indIMCEdad', $control->indIMCEdad),
+                ['class' => 'form-control form-control-sm indIMCEdad', 'placeholder' => 'Seleccione'],
+            ) !!}
         </div>
-        <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('indIMCEdad_label', 'INDICADOR IMC/EDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
-            <div class="col-sm">
-                {!! Form::select(
-                    'indIMCEdad',
-                    [
-                        '+3 DS' => '>= + 3 D.E. (Obesidad Severa)',
-                        '+2 DS' => '>= + 2.0 a + 2.9 D.E. (Obesidad)',
-                        '+1 DS' => '>= + 1.0 a + 1.9 D.E. (Sobrepeso)',
-                        '-2 DS' => '<= - 2.0 D.E. (Desnutrición)',
-                        '-1 DS' => '< = -1.0 a -1.9 D.E. (Bajo peso)',
-                        '-09 DS' => '- 0.9 a + 0.9 D.E. (Peso Normal)',
-                    ],
-                    old('indIMCEdad', $control->indIMCEdad),
-                    ['class' => 'form-control form-control-sm indIMCEdad', 'placeholder' => 'Seleccione'],
-                ) !!}
-            </div>
 
-            {!! Form::label('indPeCinturaEdad_label', 'INDICADOR PERIMETRO DE CINTURA / EDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
-            <div class="col-sm">
-                {!! Form::select(
-                    'indPeCinturaEdad',
-                    [
-                        'normal' => 'NORMAL (< p75)',
-                        'rObesidadAbdm' => 'RIESGO DE OBESIDAD ABDOMINAL (75 < p <90)',
-                        'obesidadAbdm' => 'OBESIDAD ABDOMINAL (> p90)',
-                    ],
-                    old('indPeCinturaEdad', $control->indPeCinturaEdad),
-                    ['class' => 'form-control form-control-sm indPeCinturaEdad', 'placeholder' => 'Seleccione'],
-                ) !!}
-            </div>
+        {!! Form::label('indPeCinturaEdad_label', 'INDICADOR PERIMETRO DE CINTURA / EDAD', [
+            'class' => 'col-sm col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::select(
+                'indPeCinturaEdad',
+                [
+                    'normal' => 'NORMAL (< p75)',
+                    'rObesidadAbdm' => 'RIESGO DE OBESIDAD ABDOMINAL (75 < p <90)',
+                    'obesidadAbdm' => 'OBESIDAD ABDOMINAL (> p90)',
+                ],
+                old('indPeCinturaEdad', $control->indPeCinturaEdad),
+                ['class' => 'form-control form-control-sm indPeCinturaEdad', 'placeholder' => 'Seleccione'],
+            ) !!}
         </div>
+    </div>
 
     <div class="form-group row my-2 ml-2 mx-3">
         {!! Form::label('indTallaEdad_label', 'INDICADOR TALLA/EDAD', [

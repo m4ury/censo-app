@@ -145,7 +145,7 @@
     @include('partials.nino_sano')
 @endif
 
-@if ($paciente->whereBetween('grupo', [10, 19]))
+@if ($paciente->grupo >= 10 and $paciente->grupo <= 19)
     @include('partials.adolecente')
 @endif
 
