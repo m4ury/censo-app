@@ -129,6 +129,26 @@
     </div>
 </div>
 
+@foreach ($paciente->patologias as $patologia)
+    @if ($patologia->nombre_patologia == 'HTA')
+        @include('partials.hta')
+    @elseif($patologia->nombre_patologia == 'DLP')
+        @include('partials.dlp')
+        {{-- @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' || $patologia->nombre_patologia == 'ANTECEDENTE ACV')
+@include('partials.acv_iam') --}}
+    @elseif($patologia->nombre_patologia == 'SALA ERA')
+        @include('partials.sala_era')
+    @elseif($patologia->nombre_patologia == 'DM2')
+        @include('partials.dm2')
+    @elseif($patologia->nombre_patologia == 'SALUD MENTAL')
+        @include('partials.salud_mental')
+    @endif
+@endforeach
+
+@if ($paciente->grupo >= 10 and $paciente->grupo <= 19)
+    @include('partials.adolecente')
+@endif
+
 {{-- @if ($paciente->sexo == 'Femenino') --}}
 @include('partials.mater')
 {{-- @endif --}}
@@ -145,9 +165,6 @@
     @include('partials.nino_sano')
 @endif
 
-@if ($paciente->grupo >= 10 and $paciente->grupo <= 19)
-    @include('partials.adolecente')
-@endif
 
 @if ($paciente->grupo < 4)
     @include('partials.nut')
@@ -156,22 +173,6 @@
 @if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1)
     @include('partials.ecicep')
 @endif
-
-@foreach ($paciente->patologias as $patologia)
-    @if ($patologia->nombre_patologia == 'HTA')
-        @include('partials.hta')
-    @elseif($patologia->nombre_patologia == 'DLP')
-        @include('partials.dlp')
-        {{-- @elseif($patologia->nombre_patologia == 'ANTECEDENTE IAM' || $patologia->nombre_patologia == 'ANTECEDENTE ACV')
-@include('partials.acv_iam') --}}
-    @elseif($patologia->nombre_patologia == 'SALA ERA')
-        @include('partials.sala_era')
-    @elseif($patologia->nombre_patologia == 'DM2')
-        @include('partials.dm2')
-    @elseif($patologia->nombre_patologia == 'SALUD MENTAL')
-        @include('partials.salud_mental')
-    @endif
-@endforeach
 
 <div class="card card-info card-outline" id="proximo">
     <div class="card-header text-bold text-bold">Proximo Control</div>
@@ -278,8 +279,9 @@
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
                 case 'Matrona':
-                    $('#Matrona').show();
-                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields, .post_partoFields').hide();
+                    $('#Matrona, #Nutricionista').show();
+                    $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields, .post_partoFields')
+                        .hide();
                     break;
                 case 'Nutricionista':
                     if ('{{ $paciente->edad() }}' < 3) {

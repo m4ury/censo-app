@@ -294,24 +294,25 @@
             </div>
         </div>
 
-        <div class="form-group row my-2 ml-2 mx-3 post_partof">
-            {!! Form::label('post_parto_label', 'Control POST-PARTO', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
-            <div class="col-sm">
-                {!! Form::select(
-                    'post_parto',
-                    [
-                        'mes_3' => 'al 3° MES POST-PARTO',
-                        'mes_6' => 'al 6° MES POST-PARTO',
-                        'mes_8' => 'al 8° MES POST-PARTO',
-                    ],
-                    old('post_parto', $control->post_parto),
-                    ['class' => 'form-control form-control-sm post_parto', 'placeholder' => 'Seleccione'],
-                ) !!}
+        @if ($paciente->grupo < 60 and $paciente->grupo > 14)
+            <div class="form-group row my-2 ml-2 mx-3 post_partof">
+                {!! Form::label('post_parto_label', 'Control POST-PARTO', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+                <div class="col-sm">
+                    {!! Form::select(
+                        'post_parto',
+                        [
+                            'mes_3' => 'al 3° MES POST-PARTO',
+                            'mes_6' => 'al 6° MES POST-PARTO',
+                            'mes_8' => 'al 8° MES POST-PARTO',
+                        ],
+                        old('post_parto', $control->post_parto),
+                        ['class' => 'form-control form-control-sm post_parto', 'placeholder' => 'Seleccione'],
+                    ) !!}
+                </div>
             </div>
-        </div>
-
+        @endif
         <hr>
         <div class="form-group row my-2 ml-2 mx-3">
             <div class="col col-sm text-muted">

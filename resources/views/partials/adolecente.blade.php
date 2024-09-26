@@ -1,5 +1,5 @@
-<div class="card card-blue card-outline mb-3" id="Enfermera">
-    {{-- pacientes entre 10 y 19 añosde edad control nutricional Enfermera / Nutricionista --}}
+<div class="card card-blue card-outline mb-3" id="Nutricionista">
+    {{-- pacientes entre 10 y 19 añosde edad control integral Matrona / Nutricionista --}}
     <div class="card-header text-bold">
         CONTROL DE SALUD INTEGRAL DE ADOLECENTES
     </div>
