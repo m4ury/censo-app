@@ -1,69 +1,71 @@
 <div class="card card-danger card-outline mb-3" id="Matrona">
-    <div class="card-header text-bold text-bold">
-        @if ($paciente->grupo > 9 and $paciente->sexo == 'Femenino')
-            <div class="form-group row ginec">
-                {!! Form::label('ginec_label', 'Control Ginecologico', [
-                    'class' => 'col-sm-2 col-form-label text-bold',
-                ]) !!}
-                <div class="col-sm-2">
-                    {!! Form::checkbox('ginec', 1, old('ginec', $control->ginec == 1 ? true : null), [
-                        'class' => 'form-control my-2 ginec',
-                        'id' => 'ginec',
-                    ]) !!}
-                </div>
 
-                {!! Form::label('regulacion_label', 'Control Regulacion', [
-                    'class' => 'col-sm-2 col-form-label text-bold',
-                ]) !!}
-                <div class="col-sm-2">
-                    {!! Form::checkbox('regulacion', 1, old('regulacion', $control->regulacion == 1 ? true : null), [
-                        'class' => 'form-control my-2 regulacion',
-                        'id' => 'regulacion',
-                    ]) !!}
-                </div>
-            </div>
-            {{-- control diada --}}
-        @elseif ($paciente->grupo < 1)
-            {!! Form::label('diada_label', 'Control DIADA (Entre 7 y 10 dias)', [
-                'class' => 'col-sm-3 col-form-label text-bold',
+    @if ($paciente->grupo > 9 and $paciente->sexo == 'Femenino')
+        <div class="card-header text-bold text-bold">
+            CONRTOL PROGRAMA DE LA MUJER
+        </div>
+        <div class="form-group row my-2 ml-2 mx-3 ginec">
+            {!! Form::label('ginec_label', 'Control Ginecologico', [
+                'class' => 'col-sm-2 col-form-label text-bold',
             ]) !!}
-            <div class="col-sm">
-                {!! Form::checkbox('diada', 1, old('diada', $control->diada == 1 ? true : null), [
-                    'class' => 'form-control my-2 diada',
-                    'id' => 'diada',
+            <div class="col-sm-2">
+                {!! Form::checkbox('ginec', 1, old('ginec', $control->ginec == 1 ? true : null), [
+                    'class' => 'form-control my-2 ginec',
+                    'id' => 'ginec',
                 ]) !!}
             </div>
-        @endif
-        {{-- pacientes embarazadas --}}
-        @if ($paciente->embarazada)
-            <div class="form-group row embarazo">
-                {!! Form::label('embarazo_label', 'Control Embarazo', [
-                    'class' => 'col-sm-2 col-form-label text-bold',
-                ]) !!}
-                <div class="col-sm-2">
-                    {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? true : null), [
-                        'class' => 'form-control my-2 embarazo',
-                        'id' => 'embarazo',
-                    ]) !!}
-                </div>
-            </div>
-        @endif
 
-        {{-- pacientes entre 45 y 64 años tipo control mater --}}
-        @if ($paciente->grupo > 30 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
-            <div class="form-group row climater">
-                {!! Form::label('climater_label', 'Control Climaterio', [
-                    'class' => 'col-sm-2 col-form-label text-bold',
+            {!! Form::label('regulacion_label', 'Control Regulacion', [
+                'class' => 'col-sm-2 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-2">
+                {!! Form::checkbox('regulacion', 1, old('regulacion', $control->regulacion == 1 ? true : null), [
+                    'class' => 'form-control my-2 regulacion',
+                    'id' => 'regulacion',
                 ]) !!}
-                <div class="col-sm-2">
-                    {!! Form::checkbox('climater', 1, old('climater', $control->climater == 1 ? true : null), [
-                        'class' => 'form-control my-2 climater',
-                        'id' => 'climater',
-                    ]) !!}
-                </div>
             </div>
-        @endif
-    </div>
+        </div>
+        {{-- control diada --}}
+    @elseif ($paciente->grupo < 1)
+        {!! Form::label('diada_label', 'Control DIADA (Entre 7 y 10 dias)', [
+            'class' => 'col-sm-3 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::checkbox('diada', 1, old('diada', $control->diada == 1 ? true : null), [
+                'class' => 'form-control my-2 diada',
+                'id' => 'diada',
+            ]) !!}
+        </div>
+    @endif
+    {{-- pacientes embarazadas --}}
+    @if ($paciente->embarazada)
+        <div class="form-group row my-2 ml-2 mx-3 embarazo">
+            {!! Form::label('embarazo_label', 'Control Embarazo', [
+                'class' => 'col-sm-2 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-2">
+                {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? true : null), [
+                    'class' => 'form-control my-2 embarazo',
+                    'id' => 'embarazo',
+                ]) !!}
+            </div>
+        </div>
+    @endif
+
+    {{-- pacientes entre 45 y 64 años tipo control mater --}}
+    @if ($paciente->grupo > 39 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
+        <div class="form-group row my-2 ml-2 mx-3 climater">
+            {!! Form::label('climater_label', 'Control Climaterio', [
+                'class' => 'col-sm-2 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-2">
+                {!! Form::checkbox('climater', 1, old('climater', $control->climater == 1 ? true : null), [
+                    'class' => 'form-control my-2 climater',
+                    'id' => 'climater',
+                ]) !!}
+            </div>
+        </div>
+    @endif
     {{-- pacientes hasta 59 años control de regulacion --}}
     @if ($paciente->grupo < 60 and $paciente->grupo > 9 && $paciente->sexo == 'Femenino')
         <div class="form-group row my-2 ml-2 mx-3 preservativo">
@@ -246,7 +248,6 @@
 
     {{-- todas las pacientes programa de la mujer --}}
     @if ($paciente->sexo == 'Femenino' && $paciente->grupo > 9)
-
         <div class="form-group row my-2 ml-2 mx-3">
             {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
                 'class' => 'col-sm col-form-label text-bold',
@@ -328,5 +329,4 @@
             @endforeach
         </div>
     @endif
-
 </div>

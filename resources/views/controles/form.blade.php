@@ -129,6 +129,10 @@
     </div>
 </div>
 
+@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1 and $paciente->controls->where('i_ecicep', true)->count() == 0)
+    @include('partials.ecicep')
+@endif
+
 @foreach ($paciente->patologias as $patologia)
     @if ($patologia->nombre_patologia == 'HTA')
         @include('partials.hta')
@@ -165,13 +169,8 @@
     @include('partials.nino_sano')
 @endif
 
-
 @if ($paciente->grupo < 4)
     @include('partials.nut')
-@endif
-
-@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1)
-    @include('partials.ecicep')
 @endif
 
 <div class="card card-info card-outline" id="proximo">
