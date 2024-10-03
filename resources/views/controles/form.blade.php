@@ -129,7 +129,9 @@
     </div>
 </div>
 
-@if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1 and $paciente->controls->where('i_ecicep', true)->count() == 0)
+@if (
+    $paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() >= 1 and
+        $paciente->controls->where('i_ecicep', true)->count() == 0)
     @include('partials.ecicep')
 @endif
 
@@ -174,7 +176,7 @@
 @endif
 
 <div class="card card-info card-outline" id="proximo">
-    <div class="card-header text-bold text-bold">Proximo Control</div>
+    <div class="card-header text-bold text-bold">PROXIMO CONTROL</div>
     <div class="card-body row">
         {!! Form::label('proximo_control_label', 'Fecha prox. control', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-2">
@@ -192,9 +194,9 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields')
             .hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -493,5 +495,14 @@
                 $('#mensaje').append(mensaje);
             } else $('.rCaida_label, #rCaida_col, .uPodal_label, #uPodal_col').hide();
         })
+    </script>
+
+    <script>
+        $('input#ci_adolecente').on('click', function() {
+            $('.fields').hide();
+            if ($('input#ci_adolecente').is(':checked')) {
+                $('.fields').show();
+            } else $('.fields').hide();
+        });
     </script>
 @endsection

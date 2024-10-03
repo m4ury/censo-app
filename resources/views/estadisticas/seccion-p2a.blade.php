@@ -122,11 +122,11 @@
                                 </th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $ind2DS->count() }}
+                                <td>{{ $ind2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $ind2DSM->count() }}</td>
-                                <td>{{ $ind2DSF->count() }}</td>
-                                <td>{{ $ind2DSM->where('edadEnMeses', '<', 1)->count() }}
+                                <td>{{ $ind2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind2DSM->where('edadEnMeses', '<=', 59)->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind2DSF->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
@@ -168,10 +168,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $ind1DS->count() }}
+                                <td>{{ $ind1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->count() }}</td>
-                                <td>{{ $ind1DSF->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $ind1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -214,10 +214,12 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $ind1DS->count() + $ind2DS->count() }}</td>
+                                <td>{{ $ind1DS->where('edadEnMeses', '<=', 59)->count() + $ind2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $ind1DSM->count() + $ind2DSM->count() }}</td>
-                                <td>{{ $ind1DSF->count() + $ind2DSF->count() }}</td>
+                                <td>{{ $ind1DSM->where('edadEnMeses', '<=', 59)->count() + $ind2DSM->where('edadEnMeses', '<=', 59)->count() }}
+                                </td>
+                                <td>{{ $ind1DSF->where('edadEnMeses', '<=', 59)->count() + $ind2DSF->where('edadEnMeses', '<=', 59)->count() }}
+                                </td>
                                 <td>{{ $ind1DSM->where('edadEnMeses', '<', 1)->count() + $ind2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind1DSF->where('edadEnMeses', '<', 1)->count() + $ind2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -286,10 +288,10 @@
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $ind_1DS->count() }}
+                                <td>{{ $ind_1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $ind_1DSM->count() }}</td>
-                                <td>{{ $ind_1DSF->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $ind_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind_1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -332,10 +334,10 @@
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $ind_2DS->count() }}
+                                <td>{{ $ind_2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $ind_2DSM->count() }}</td>
-                                <td>{{ $ind_2DSF->count() }}</td>
+                                <td>{{ $ind_2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind_2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $ind_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind_2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -379,10 +381,10 @@
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $ind_1DS->count() + $ind_2DS->count() }}</td>
+                                <td>{{ $ind_1DS->where('edadEnMeses', '<=', 59)->count() + $ind_2DS->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 </td>
-                                <td>{{ $ind_1DSM->count() + $ind_2DSM->count() }}</td>
-                                <td>{{ $ind_1DSF->count() + $ind_2DSF->count() }}</td>
+                                <td>{{ $ind_1DSM->where('edadEnMeses', '<=', 59)->count() + $ind_2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $ind_1DSF->where('edadEnMeses', '<=', 59)->count() + $ind_2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $ind_1DSM->where('edadEnMeses', '<', 1)->count() + $ind_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $ind_1DSF->where('edadEnMeses', '<', 1)->count() + $ind_2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -456,10 +458,10 @@
                                 </th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $indPt2DS->count() }}
+                                <td>{{ $indPt2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indPt2DSM->count() }}</td>
-                                <td>{{ $indPt2DSF->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -502,10 +504,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $indPt1DS->count() }}
+                                <td>{{ $indPt1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indPt1DSM->count() }}</td>
-                                <td>{{ $indPt1DSF->count() }}</td>
+                                <td>{{ $indPt1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -548,10 +550,10 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $indPt2DS->count() + $indPt1DS->count() }}</td>
+                                <td>{{ $indPt2DS->where('edadEnMeses', '<=', 59)->count() + $indPt1DS->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 </td>
-                                <td>{{ $indPt2DSM->count() + $indPt1DSM->count() }}</td>
-                                <td>{{ $indPt2DSF->count() + $indPt1DSF->count() }}</td>
+                                <td>{{ $indPt2DSM->where('edadEnMeses', '<=', 59)->count() + $indPt1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt2DSF->where('edadEnMeses', '<=', 59)->count() + $indPt1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt2DSM->where('edadEnMeses', '<', 1)->count() + $indPt1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt2DSF->where('edadEnMeses', '<', 1)->count() + $indPt1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -620,10 +622,10 @@
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $indPt_1DS->count() }}
+                                <td>{{ $indPt_1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indPt_1DSM->count() }}</td>
-                                <td>{{ $indPt_1DSF->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt_1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -666,10 +668,10 @@
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $indPt_2DS->count() }}
+                                <td>{{ $indPt_2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indPt_2DSM->count() }}</td>
-                                <td>{{ $indPt_2DSF->count() }}</td>
+                                <td>{{ $indPt_2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt_2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt_2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -713,10 +715,10 @@
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $indPt_1DS->count() + $indPt_2DS->count() }}</td>
+                                <td>{{ $indPt_1DS->where('edadEnMeses', '<=', 59)->count() + $indPt_2DS->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 </td>
-                                <td>{{ $indPt_1DSM->count() + $indPt_2DSM->count() }}</td>
-                                <td>{{ $indPt_1DSF->count() + $indPt_2DSF->count() }}</td>
+                                <td>{{ $indPt_1DSM->where('edadEnMeses', '<=', 59)->count() + $indPt_2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indPt_1DSF->where('edadEnMeses', '<=', 59)->count() + $indPt_2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indPt_1DSM->where('edadEnMeses', '<', 1)->count() + $indPt_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indPt_1DSF->where('edadEnMeses', '<', 1)->count() + $indPt_2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -790,10 +792,10 @@
                                 <th rowspan="8" style="vertical-align: middle" nowrap>INDICADOR TALLA/EDAD</th>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0)</th>
-                                <td>{{ $indTe2DS->count() }}
+                                <td>{{ $indTe2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indTe2DSM->count() }}</td>
-                                <td>{{ $indTe2DSF->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -836,10 +838,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
-                                <td>{{ $indTe1DS->count() }}
+                                <td>{{ $indTe1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indTe1DSM->count() }}</td>
-                                <td>{{ $indTe1DSF->count() }}</td>
+                                <td>{{ $indTe1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -882,10 +884,10 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $indTe2DS->count() + $indTe1DS->count() }}</td>
+                                <td>{{ $indTe2DS->where('edadEnMeses', '<=', 59)->count() + $indTe1DS->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 </td>
-                                <td>{{ $indTe2DSM->count() + $indTe1DSM->count() }}</td>
-                                <td>{{ $indTe2DSF->count() + $indTe1DSF->count() }}</td>
+                                <td>{{ $indTe2DSM->where('edadEnMeses', '<=', 59)->count() + $indTe1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe2DSF->where('edadEnMeses', '<=', 59)->count() + $indTe1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe2DSM->where('edadEnMeses', '<', 1)->count() + $indTe1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe2DSF->where('edadEnMeses', '<', 1)->count() + $indTe1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -954,10 +956,10 @@
                             </tr>
                             <tr>
                                 <th> - 1 D.S. (-1.0 a -1.9)</th>
-                                <td>{{ $indTe_1DS->count() }}
+                                <td>{{ $indTe_1DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indTe_1DSM->count() }}</td>
-                                <td>{{ $indTe_1DSF->count() }}</td>
+                                <td>{{ $indTe_1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe_1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe_1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -1000,10 +1002,10 @@
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
-                                <td>{{ $indTe_2DS->count() }}
+                                <td>{{ $indTe_2DS->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $indTe_2DSM->count() }}</td>
-                                <td>{{ $indTe_2DSF->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe_2DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe_2DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -1047,10 +1049,10 @@
 
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $indTe_2DS->count() + $indTe_1DS->count() }}</td>
+                                <td>{{ $indTe_2DS->where('edadEnMeses', '<=', 59)->count() + $indTe_1DS->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 </td>
-                                <td>{{ $indTe_2DSM->count() + $indTe_1DSM->count() }}</td>
-                                <td>{{ $indTe_2DSF->count() + $indTe_1DSF->count() }}</td>
+                                <td>{{ $indTe_2DSM->where('edadEnMeses', '<=', 59)->count() + $indTe_1DSM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $indTe_2DSF->where('edadEnMeses', '<=', 59)->count() + $indTe_1DSF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $indTe_2DSM->where('edadEnMeses', '<', 1)->count() + $indTe_1DSM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $indTe_2DSF->where('edadEnMeses', '<', 1)->count() + $indTe_1DSF->where('edadEnMeses', '<', 1)->count() }}
@@ -1119,10 +1121,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">PROMEDIO (-0,9 A + 0,9)</th>
-                                <td>{{ $avgTe->count() }}
+                                <td>{{ $avgTe->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $avgTeM->count() }}</td>
-                                <td>{{ $avgTeF->count() }}</td>
+                                <td>{{ $avgTeM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $avgTeF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td>{{ $avgTeM->where('edadEnMeses', '<', 1)->count() }}
                                 </td>
                                 <td>{{ $avgTeF->where('edadEnMeses', '<', 1)->count() }}
@@ -1171,10 +1173,10 @@
                                 </th>
                             <tr>
                                 <th nowrap="">RIESGO DE DESNUTRIR/ DEFICIT PONDERAL*</th>
-                                <td>{{ $rDesnut->count() }}
+                                <td>{{ $rDesnut->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->count() }}</td>
-                                <td>{{ $rDesnutF->count() }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1217,10 +1219,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">DESNUTRIDO</th>
-                                <td>{{ $desnut->count() }}
+                                <td>{{ $desnut->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $desnutM->count() }}</td>
-                                <td>{{ $desnutF->count() }}</td>
+                                <td>{{ $desnutM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $desnutF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1263,10 +1265,10 @@
                             </tr>
                             <tr>
                                 <th>SOBREPESO / RIESGO OBESIDAD</th>
-                                <td>{{ $sobrepeso->count() }}
+                                <td>{{ $sobrepeso->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $sobrepesoM->count() }}</td>
-                                <td>{{ $sobrepesoF->count() }}</td>
+                                <td>{{ $sobrepesoM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $sobrepesoF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1309,10 +1311,10 @@
                             </tr>
                             <tr>
                                 <th>OBESO</th>
-                                <td>{{ $obeso->count() }}
+                                <td>{{ $obeso->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $obesoM->count() }}</td>
-                                <td>{{ $obesoF->count() }}</td>
+                                <td>{{ $obesoM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $obesoF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1355,10 +1357,10 @@
                             </tr>
                             <tr>
                                 <th>NORMAL</th>
-                                <td>{{ $normal->count() }}
+                                <td>{{ $normal->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $normalM->count() }}</td>
-                                <td>{{ $normalF->count() }}</td>
+                                <td>{{ $normalM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $normalF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1474,10 +1476,10 @@
                             </tr>
                             <tr>
                                 <th nowrap="">DENUTRICION SECUNDARIA</th>
-                                <td>{{ $desnutSec->count() }}
+                                <td>{{ $desnutSec->where('edadEnMeses', '<=', 59)->count() }}
                                 </td>
-                                <td>{{ $desnutSecM->count() }}</td>
-                                <td>{{ $desnutSecF->count() }}</td>
+                                <td>{{ $desnutSecM->where('edadEnMeses', '<=', 59)->count() }}</td>
+                                <td>{{ $desnutSecF->where('edadEnMeses', '<=', 59)->count() }}</td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">

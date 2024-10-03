@@ -42,6 +42,13 @@ class Paciente extends Model
         return Carbon::parse($this->fecha_nacimiento)->age;
     }
 
+    public function getEdadControlAttribute()
+    {
+        if (Carbon::create($this->fecha_nacimiento)->age >= 10 and $this->controls->whereNotNull('paciente_id')->first()) {
+            return Carbon::parse($this->fecha_nacimiento)->diffInMonths($this->controls->first()->fecha_control);
+        }
+    }
+
     public function controls()
     {
         return $this->hasMany(Control::class);

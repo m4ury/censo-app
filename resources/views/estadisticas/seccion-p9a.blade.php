@@ -430,7 +430,8 @@
                             </tr>
 
                             <tr>
-                                <th rowspan="5" style="vertical-align: middle" nowrap>RANGOS PERCENTILARES PARA CIRCUNFERENCIA DE CINTURA
+                                <th rowspan="5" style="vertical-align: middle" nowrap>RANGOS PERCENTILARES PARA
+                                    CIRCUNFERENCIA DE CINTURA
                                 </th>
                             <tr>
                                 <th nowrap="">NORMAL (< p75)</th>
@@ -476,17 +477,24 @@
                             </tr>
                             <tr>
                                 <th nowrap="">OBESIDAD ABDOMINAL ( > p90)</th>
-                                <td>{{ $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }} </td>
-                                <td>{{ $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td>{{ $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
                                 <td>{{ $pcintObesidad->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintObesidadM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $pcintObesidadM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -497,17 +505,26 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $pcintNormal->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintNormalM->where('grupo', '>=', 10)->where('grupo','<=', 19)->count() + $pcintRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintNormalF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $pcintNormal->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() + $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
-                                <td>{{ $pcintNormal->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $pcintNormalM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $pcintNormalF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $pcintNormal->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidad->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidadM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() + $pcintObesidadF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
-                                <td>{{ $pcintNormal->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidad->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintNormalM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidadM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $pcintNormalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $pcintNormal->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidad->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidadM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $pcintNormalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>

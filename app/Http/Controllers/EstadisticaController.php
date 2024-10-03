@@ -9865,92 +9865,92 @@ class EstadisticaController extends Controller
         $all = new Paciente;
 
         //imc edad
-        $imc3DS = $all->imcEdad('Femenino', 'Masculino', '+3 DS')->get()->unique('rut');
-        $imc3DSM = $all->imcEdad(null, 'Masculino', '+3 DS')->get()->unique('rut');
-        $imc3DSF = $all->imcEdad('Femenino', null, '+3 DS')->get()->unique('rut');
+        $imc3DS = $all->imcEdad('Femenino', 'Masculino', '+3 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc3DSM = $all->imcEdad(null, 'Masculino', '+3 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc3DSF = $all->imcEdad('Femenino', null, '+3 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $imc2DS = $all->imcEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $imc2DSM = $all->imcEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $imc2DSF = $all->imcEdad('Femenino', null, '+2 DS')->get()->unique('rut');
+        $imc2DS = $all->imcEdad('Femenino', 'Masculino', '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc2DSM = $all->imcEdad(null, 'Masculino', '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc2DSF = $all->imcEdad('Femenino', null, '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $imc1DS = $all->imcEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $imc1DSM = $all->imcEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $imc1DSF = $all->imcEdad('Femenino', null, '+1 DS')->get()->unique('rut');
+        $imc1DS = $all->imcEdad('Femenino', 'Masculino', '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc1DSM = $all->imcEdad(null, 'Masculino', '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc1DSF = $all->imcEdad('Femenino', null, '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $imc_2DS = $all->imcEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $imc_2DSM = $all->imcEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $imc_2DSF = $all->imcEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+        $imc_2DS = $all->imcEdad('Femenino', 'Masculino', '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc_2DSM = $all->imcEdad(null, 'Masculino', '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc_2DSF = $all->imcEdad('Femenino', null, '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $imc_1DS = $all->imcEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $imc_1DSM = $all->imcEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $imc_1DSF = $all->imcEdad('Femenino', null, '-1 DS')->get()->unique('rut');
+        $imc_1DS = $all->imcEdad('Femenino', 'Masculino', '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc_1DSM = $all->imcEdad(null, 'Masculino', '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc_1DSF = $all->imcEdad('Femenino', null, '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $imc09DS = $all->imcEdad('Femenino', 'Masculino', '-09 DS')->get()->unique('rut');
-        $imc09DSM = $all->imcEdad(null, 'Masculino', '-09 DS')->get()->unique('rut');
-        $imc09DSF = $all->imcEdad('Femenino', null, '-09 DS')->get()->unique('rut');
+        $imc09DS = $all->imcEdad('Femenino', 'Masculino', '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc09DSM = $all->imcEdad(null, 'Masculino', '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $imc09DSF = $all->imcEdad('Femenino', null, '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
         //talla de edad
-        $indTe2DS = $all->tallaEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSM = $all->tallaEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSF = $all->tallaEdad('Femenino', null, '+2 DS')->get()->unique('rut');
+        $indTe2DS = $all->tallaEdad('Femenino', 'Masculino', '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe2DSM = $all->tallaEdad(null, 'Masculino', '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe2DSF = $all->tallaEdad('Femenino', null, '+2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $indTe1DS = $all->tallaEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSM = $all->tallaEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSF = $all->tallaEdad('Femenino', null, '+1 DS')->get()->unique('rut');
+        $indTe1DS = $all->tallaEdad('Femenino', 'Masculino', '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe1DSM = $all->tallaEdad(null, 'Masculino', '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe1DSF = $all->tallaEdad('Femenino', null, '+1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $indTe_1DS = $all->tallaEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSM = $all->tallaEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSF = $all->tallaEdad('Femenino', null, '-1 DS')->get()->unique('rut');
+        $indTe_1DS = $all->tallaEdad('Femenino', 'Masculino', '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_1DSM = $all->tallaEdad(null, 'Masculino', '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_1DSF = $all->tallaEdad('Femenino', null, '-1 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $indTe_2DS = $all->tallaEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSM = $all->tallaEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSF = $all->tallaEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+        $indTe_2DS = $all->tallaEdad('Femenino', 'Masculino', '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_2DSM = $all->tallaEdad(null, 'Masculino', '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_2DSF = $all->tallaEdad('Femenino', null, '-2 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $indTe_09DS = $all->tallaEdad('Femenino', 'Masculino', '-09 DS')->get()->unique('rut');
-        $indTe_09DSM = $all->tallaEdad(null, 'Masculino', '-09 DS')->get()->unique('rut');
-        $indTe_09DSF = $all->tallaEdad('Femenino', null, '-09 DS')->get()->unique('rut');
+        $indTe_09DS = $all->tallaEdad('Femenino', 'Masculino', '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_09DSM = $all->tallaEdad(null, 'Masculino', '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $indTe_09DSF = $all->tallaEdad('Femenino', null, '-09 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
         //perimetro cintura - edad
-        $pcintNormal = $all->perimCintura('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $pcintNormalM = $all->perimCintura(null, 'Masculino', 'normal')->get()->unique('rut');
-        $pcintNormalF = $all->perimCintura('Femenino', null, 'normal')->get()->unique('rut');
+        $pcintNormal = $all->perimCintura('Femenino', 'Masculino', 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintNormalM = $all->perimCintura(null, 'Masculino', 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintNormalF = $all->perimCintura('Femenino', null, 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $pcintRiesgo = $all->perimCintura('Femenino', 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
-        $pcintRiesgoM = $all->perimCintura(null, 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
-        $pcintRiesgoF = $all->perimCintura('Femenino', null, 'rObesidadAbdm')->get()->unique('rut');
+        $pcintRiesgo = $all->perimCintura('Femenino', 'Masculino', 'rObesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintRiesgoM = $all->perimCintura(null, 'Masculino', 'rObesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintRiesgoF = $all->perimCintura('Femenino', null, 'rObesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $pcintObesidad = $all->perimCintura('Femenino', 'Masculino', 'obesidadAbdm')->get()->unique('rut');
-        $pcintObesidadM = $all->perimCintura(null, 'Masculino', 'obesidadAbdm')->get()->unique('rut');
-        $pcintObesidadF = $all->perimCintura('Femenino', null, 'obesidadAbdm')->get()->unique('rut');
+        $pcintObesidad = $all->perimCintura('Femenino', 'Masculino', 'obesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintObesidadM = $all->perimCintura(null, 'Masculino', 'obesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $pcintObesidadF = $all->perimCintura('Femenino', null, 'obesidadAbdm')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
         //diagnostico nutricion integral
-        $rDesnut = $all->integral('Femenino', 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutM = $all->integral(null, 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutF = $all->integral('Femenino', null, 'riesgoDesNut')->get()->unique('rut');
+        $rDesnut = $all->integral('Femenino', 'Masculino', 'riesgoDesNut')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $rDesnutM = $all->integral(null, 'Masculino', 'riesgoDesNut')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $rDesnutF = $all->integral('Femenino', null, 'riesgoDesNut')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $desnut = $all->integral('Femenino', 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutM = $all->integral(null, 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutF = $all->integral('Femenino', null, 'desnut')->get()->unique('rut');
+        $desnut = $all->integral('Femenino', 'Masculino', 'desnut')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $desnutM = $all->integral(null, 'Masculino', 'desnut')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $desnutF = $all->integral('Femenino', null, 'desnut')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $normal = $all->integral('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $normalM = $all->integral(null, 'Masculino', 'normal')->get()->unique('rut');
-        $normalF = $all->integral('Femenino', null, 'normal')->get()->unique('rut');
+        $normal = $all->integral('Femenino', 'Masculino', 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $normalM = $all->integral(null, 'Masculino', 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $normalF = $all->integral('Femenino', null, 'normal')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $sobrepeso = $all->integral('Femenino', 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoM = $all->integral(null, 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoF = $all->integral('Femenino', null, 'sobrepeso')->get()->unique('rut');
+        $sobrepeso = $all->integral('Femenino', 'Masculino', 'sobrepeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $sobrepesoM = $all->integral(null, 'Masculino', 'sobrepeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $sobrepesoF = $all->integral('Femenino', null, 'sobrepeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $obeso = $all->integral('Femenino', 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoM = $all->integral(null, 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoF = $all->integral('Femenino', null, 'obeso')->get()->unique('rut');
+        $obeso = $all->integral('Femenino', 'Masculino', 'obeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $obesoM = $all->integral(null, 'Masculino', 'obeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $obesoF = $all->integral('Femenino', null, 'obeso')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $obesoSevero = $all->integral('Femenino', 'Masculino', 'obesoSevero')->get()->unique('rut');
-        $obesoSeveroM = $all->integral(null, 'Masculino', 'obesoSevero')->get()->unique('rut');
-        $obesoSeveroF = $all->integral('Femenino', null, 'obesoSevero')->get()->unique('rut');
+        $obesoSevero = $all->integral('Femenino', 'Masculino', 'obesoSevero')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $obesoSeveroM = $all->integral(null, 'Masculino', 'obesoSevero')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $obesoSeveroF = $all->integral('Femenino', null, 'obesoSevero')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
-        $desnutSec = $all->integral('Femenino', 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
+        $desnutSec = $all->integral('Femenino', 'Masculino', 'desnutSecund')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->where('controls.ci_adolecente', true)->get()->unique('rut');
+        $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->where('controls.ci_adolecente', true)->get()->unique('rut');
 
 
         return view('estadisticas.seccion-p9a', compact(
