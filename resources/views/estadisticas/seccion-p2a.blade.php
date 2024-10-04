@@ -1404,10 +1404,12 @@
                             <!-- $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count() -->
                             <tr class="bg-gradient-light">
                                 <th class="text-info">SUBTOTAL</th>
-                                <td>{{ $subtotal }}</td>
+                                <td>{{ $rDesnut->where('edadEnMeses', '<', '59')->count() + $desnut->where('edadEnMeses', '<', '59')->count() + $normal->where('edadEnMeses', '<', '59')->count() + $sobrepeso->where('edadEnMeses', '<', '59')->count() + $obeso->where('edadEnMeses', '<', '59')->count() }}
                                 </td>
-                                <td>{{ $subtotalM }}</td>
-                                <td>{{ $subtotalF }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '<', '59')->count() + $desnutM->where('edadEnMeses', '<', '59')->count() + $normalM->where('edadEnMeses', '<', '59')->count() + $sobrepesoM->where('edadEnMeses', '<', '59')->count() + $obesoM->where('edadEnMeses', '<', '59')->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '<', '59')->count() + $desnutF->where('edadEnMeses', '<', '59')->count() + $normalF->where('edadEnMeses', '<', '59')->count() + $sobrepesoF->where('edadEnMeses', '<', '59')->count() + $obesoF->where('edadEnMeses', '<', '59')->count() }}
+                                </td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">
@@ -1522,10 +1524,12 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $total }}</td>
+                                <td>{{ $rDesnut->where('edadEnMeses', '<', '59')->count() + $desnut->where('edadEnMeses', '<', '59')->count() + $normal->where('edadEnMeses', '<', '59')->count() + $sobrepeso->where('edadEnMeses', '<', '59')->count() + $obeso->where('edadEnMeses', '<', '59')->count() }}
                                 </td>
-                                <td>{{ $totalM }}</td>
-                                <td>{{ $totalF }}</td>
+                                <td>{{ $rDesnutM->where('edadEnMeses', '<', '59')->count() + $desnutM->where('edadEnMeses', '<', '59')->count() + $normalM->where('edadEnMeses', '<', '59')->count() + $sobrepesoM->where('edadEnMeses', '<', '59')->count() + $obesoM->where('edadEnMeses', '<', '59')->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('edadEnMeses', '<', '59')->count() + $desnutF->where('edadEnMeses', '<', '59')->count() + $normalF->where('edadEnMeses', '<', '59')->count() + $sobrepesoF->where('edadEnMeses', '<', '59')->count() + $obesoF->where('edadEnMeses', '<', '59')->count() }}
+                                </td>
                                 <td class="bg-gradient-gray">
                                 </td>
                                 <td class="bg-gradient-gray">

@@ -4133,14 +4133,6 @@ class EstadisticaController extends Controller
         $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
         $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
 
-        $subtotal = $rDesnut->count() + $desnut->count() + $normal->count() + $sobrepeso->count() + $obeso->count();
-        $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count();
-        $subtotalF = $rDesnutF->count() + $desnutF->count() + $normalF->count() + $sobrepesoF->count() + $obesoF->count();
-
-        $total = $subtotal + $desnutSec->count();
-        $totalM = $subtotalM + $desnutSecM->count();
-        $totalF = $subtotalF + $desnutSecF->count();
-
 
         return view('estadisticas.seccion-p2a', compact(
             'all',
@@ -4220,14 +4212,6 @@ class EstadisticaController extends Controller
             'desnutSec',
             'desnutSecM',
             'desnutSecF',
-
-            'subtotal',
-            'subtotalM',
-            'subtotalF',
-
-            'total',
-            'totalM',
-            'totalF',
         ));
     }
 
