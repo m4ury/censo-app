@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Naneas extends Model
+class Nanea extends Model
 {
     use HasFactory;
 

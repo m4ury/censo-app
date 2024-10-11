@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Naneas;
+use App\Nanea;
 use Illuminate\Http\Request;
 
-class NaneasController extends Controller
+class NaneaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class NaneasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Naneas  $naneas
+     * @param  \App\Nanea  $naneas
      * @return \Illuminate\Http\Response
      */
-    public function show(Naneas $naneas)
+    public function show(Nanea $naneas)
     {
         //
     }
@@ -52,10 +52,10 @@ class NaneasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Naneas  $naneas
+     * @param  \App\Nanea  $naneas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Naneas $naneas)
+    public function edit(Nanea $naneas)
     {
         //
     }
@@ -64,10 +64,10 @@ class NaneasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Naneas  $naneas
+     * @param  \App\Nanea  $naneas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Naneas $naneas)
+    public function update(Request $request, Nanea $naneas)
     {
         //
     }
@@ -75,10 +75,10 @@ class NaneasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Naneas  $naneas
+     * @param  \App\Nanea  $naneas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Naneas $naneas)
+    public function destroy(Nanea $naneas)
     {
         //
     }

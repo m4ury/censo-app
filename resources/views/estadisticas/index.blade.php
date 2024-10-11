@@ -51,19 +51,19 @@
                 <div class="card-body">
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2a') }}">SECCIÓN A: POBLACION EN CONTROL , SEGUN ESTADO
+                            <a href="{{ route('estadisticas.seccion-p2a') }}">SECCIÓN A: SEGUN ESTADO
                                 NUTRICIONAL PARA NIÑOS MENOR DE UN MES- 59 MESES</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2a1') }}">SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN
+                            <a href="{{ route('estadisticas.seccion-p2a1') }}">SECCION A.1: SEGÚN
                                 ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2b') }}">SECCION B: POBLACION EN CONTROL SEGÚN
+                            <a href="{{ route('estadisticas.seccion-p2b') }}">SECCION B: SEGÚN
                                 RESULTADO DE EVALUACIÓN DEL DESARROLLO PSICOMOTOR</a>
                         </h4>
                     </div>
@@ -74,7 +74,7 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: POBLACION EN CONTROL , SEGUN RIESGO
+                            <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: SEGUN RIESGO
                                 ODONTOLOGICO Y DAÑO POR CARIES</a>
                         </h4>
                     </div>
@@ -199,8 +199,22 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9a') }}">SECCION A: POBLACIÓN EN CONTROL DE SALUD INTEGRAL DE
-                        ADOLESCENTES, SEGÚN ESTADO NUTRICIONAL</a>
+                    <a href="{{ route('estadisticas.seccion-p9a') }}">SECCION A: SEGÚN ESTADO NUTRICIONAL</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9b') }}">SECCION B: SEGÚN EDUCACIÓN Y TRABAJO</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9c') }}">SECCION C: SEGÚN ÁREAS DE RIESGO</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9d') }}">SECCION D: SEGÚN AMBITOS GINECO-UROLOGICO/SEXUALIDAD</a>
                 </h4>
             </div>
         </div>

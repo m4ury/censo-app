@@ -39,9 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.pMujer', 'PacienteController@pMujer_list')->name('pacientes.pMujer');
 
 
-
-
-
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');
     Route::get('patologias/{paciente?}', 'PatologiaController@index')->name('patologias');
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
@@ -97,7 +94,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p1d', 'EstadisticaController@seccionP1d')->name('estadisticas.seccion-p1d');
 
 
-
     //P2
     Route::get('/estadisticas.seccion-p2a', 'EstadisticaController@seccionP2a')->name('estadisticas.seccion-p2a');
     Route::get('/estadisticas.seccion-p2a1', 'EstadisticaController@seccionP2a1')->name('estadisticas.seccion-p2a1');
@@ -123,8 +119,13 @@ Route::middleware('auth')->group(function () {
     //P6
     Route::get('/estadisticas.seccion-p6a', 'EstadisticaController@seccionP6a')->name('estadisticas.seccion-p6a');
 
-    //P2
+    //P9
     Route::get('/estadisticas.seccion-p9a', 'EstadisticaController@seccionP9a')->name('estadisticas.seccion-p9a');
+    Route::get('/estadisticas.seccion-p9b', 'EstadisticaController@seccionP9b')->name('estadisticas.seccion-p9b');
+    Route::get('/estadisticas.seccion-p9c', 'EstadisticaController@seccionP9c')->name('estadisticas.seccion-p9c');
+    Route::get('/estadisticas.seccion-p9d', 'EstadisticaController@seccionP9d')->name('estadisticas.seccion-p9d');
+
+
 
     //P12
     Route::get('/estadisticas.seccion-p12', 'EstadisticaController@seccionp12')->name('estadisticas.seccion-p12');

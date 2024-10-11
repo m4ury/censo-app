@@ -131,5 +131,50 @@
                 ) !!}
             </div>
         </div>
+
+        <div class="form-group row my-2 ml-2 mx-3">
+            {!! Form::label('areaRiesgo_label', 'SEGÚN ÁREAS DE RIESGO', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'areaRiesgo',
+                    [
+                        'ssr' => 'RIESGO SSR',
+                        'rSuicida' => 'RIESGO SUICIDA',
+                        'rSocial' => 'RIESGO SOCIAL',
+                        'rPsicoEmocional' => 'RIESGO PSICO EMOCIONAL',
+                        'violencia' => 'VIOLENCIA',
+                        'rOh_drogas' => 'RIESGO OH/DROGAS',
+                        'malNut_deficit' => 'MALNUTRICION POR DEFICIT',
+                        'malNut_exceso' => 'MALNUTRICION POR EXCESO',
+                        'rDesercion' => 'RIESGO DESERCIÓN ESCOLAR',
+                        'otroRiesgo' => 'OTRO',
+                    ],
+                    old('areaRiesgo', $control->areaRiesgo),
+                    ['class' => 'form-control form-control-sm areaRiesgo', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
+
+            {!! Form::label('consejeria_label', 'ADOLECENTE QUE RECIBE CONSEJERÍA', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
+                {!! Form::select(
+                    'consejeria',
+                    [
+                        'actFisica' => 'ACTIVIDAD FÍSICA',
+                        'alimSaludable' => 'ALIMENTACION SALUDABLE',
+                        'tabaquismo' => 'TABAQUISMO',
+                        'consumoDrogas' => 'CONSUMO DE DROGAS',
+                        'saludSexualReprod' => 'SALUD SEXUAL REPRODUCTIVA',
+                        'regulacionFecund' => 'REGULACION DE FECUNDIDAD',
+                        'prevITS_VIH' => 'PREVENCION VIH-ITS',
+                    ],
+                    old('consejeria', $control->consejeria),
+                    ['class' => 'form-control form-control-sm consejeria', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
+        </div>
     </div>
 </div>

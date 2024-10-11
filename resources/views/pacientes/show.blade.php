@@ -30,13 +30,13 @@
                         @endif </span>
                     <div class="col-sm">
                         <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Multimorbilidad:
-                            @if ($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 4)
+                            @if ($paciente->patologias->count() > 4)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
                             @elseif(
-                                $paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() > 1 and
-                                    $paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() < 5)
+                                $paciente->patologias->count() > 1 and
+                                    $paciente->patologias->count() < 5)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-orange"></i>G2</strong>
-                            @elseif($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count() == 1)
+                            @elseif($paciente->patologias->count() == 1)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G1</strong>
                                 <br>
                             @else

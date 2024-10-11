@@ -91,7 +91,7 @@ class Paciente extends Model
 
     public function naneas()
     {
-        return $this->belongsToMany(Naneas::class)->withPivot('created_at');
+        return $this->belongsToMany(Nanea::class)->withPivot('created_at');
     }
 
     public function scopeSearch($query, $q)
@@ -1026,7 +1026,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P2 seccion A y A.1
+    //P2 seccion A y A.1 - P9 seccion A
     public function pesoEdad($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1184,11 +1184,41 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    //P9 seccion B
+    public function eduTrabajo($fem, $masc, $param){
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.eduTrab', $param)
+            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.ci_adolecente', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P9 seccion C
+    public function areaRiesgo($fem, $masc, $param){
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.areaRiesgo', $param)
+            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.ci_adolecente', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P9 seccion D
+    public function sexualidad($fem, $masc, $param){
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.sexualidad', $param)
+            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.ci_adolecente', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
     //ECICEP
     function g3()
     {
         return $this->whereHas('patologias', function ($query) {
-            $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+            $query->whereNotNull('nombre_patologia');
         }, '>', 4)
             ->whereNull('egreso');
     }
@@ -1210,7 +1240,7 @@ class Paciente extends Model
         return $this->whereHas(
             'patologias',
             function ($query) {
-                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                $query->whereNotNull('nombre_patologia');
             },
             '>',
             1,
@@ -1234,7 +1264,7 @@ class Paciente extends Model
         return $this->whereHas(
             'patologias',
             function ($query) {
-                $query->where('nombre_patologia', '!=', 'SALUD MENTAL');
+                $query->whereNotNull('nombre_patologia');
             },
             '=',
             1,
