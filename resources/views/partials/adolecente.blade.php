@@ -1,7 +1,7 @@
 <div class="card card-blue card-outline mb-3" id="Nutricionista">
     {{-- pacientes entre 10 y 19 añosde edad control integral Matrona / Nutricionista --}}
     <div class="text-bold text-center ml-3 mr-3 py-2 row">
-        CONTROL DE SALUD INTEGRAL DE ADOLECENTES
+        CONTROL DE SALUD INTEGRAL DE ADOLESCENTES
         <div class="col-sm-2 pb-2">
             {!! Form::checkbox('ci_adolecente', 1, old('ci_adolecente', $control->ci_adolecente == 1 ? true : null), [
                 'class' => 'form-control col col-form-label',

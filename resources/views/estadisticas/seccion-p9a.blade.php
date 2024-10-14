@@ -22,8 +22,8 @@
                             </tr>
                             <tr>
                                 <th class="text-center" colspan="3">TOTAL</th>
-                                <th class="text-center" colspan="3">Adolecentes 10 a 14 años</th>
-                                <th class="text-center" colspan="3">Adolecentes 15 a 19 años</th>
+                                <th class="text-center" colspan="3">Adolescentes 10 a 14 años</th>
+                                <th class="text-center" colspan="3">Adolescentes 15 a 19 años</th>
                                 <th class="text-center" colspan="3">Pueblos Originarios</th>
                                 <th class="text-center" colspan="3">Migrantes</th>
                             </tr>
