@@ -32,20 +32,35 @@
                         </td>
                         <td>{{ $solicitud->sol_rut ? $solicitud->sol_rut : '' }}</td>
                         <td>
-                            @if ($paciente->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first())
-                                {!! Str::replace(
-                                    ['{"nombres":"', ',', ':', '"', 'apellidoM', 'apellidoP', '}'],
-                                    ' ',
-                                    $paciente->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first(),
-                                ) !!}
-                            @elseif(\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->first())
-                                {!! Str::replace(
-                                    ['[{"nombres":"', ',', ':', '"', 'apellidoM', 'apellidoP', '}]'],
-                                    ' ',
-                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('nombres', 'apellidoP', 'apellidoM')->whereRut($solicitud->sol_rut)->get(),
-                                ) !!}
+                            @php
+                                // Consultar en la base de datos principal
+                                $pacienteLocal = $paciente
+                                    ->select('nombres', 'apellidoP', 'apellidoM')
+                                    ->whereRut($solicitud->sol_rut)
+                                    ->first();
+
+                                // Si no existe en la base de datos local, consultar en la base de datos externa
+                                if (!$pacienteLocal) {
+                                    $pacienteExterno = \DB::connection('mysql_sfamiliar')
+                                        ->table('pacientes')
+                                        ->join('familias', 'familias.id', '=', 'pacientes.familia_id')
+                                        ->select('pacientes.nombres', 'pacientes.apellidoP', 'pacientes.apellidoM')
+                                        ->where('pacientes.rut', $solicitud->sol_rut)
+                                        ->first();
+                                }
+                            @endphp
+
+                            @if ($pacienteLocal)
+                                {{-- Mostrar datos del paciente de la base de datos principal --}}
+                                {{ $pacienteLocal->nombres }} {{ $pacienteLocal->apellidoP }}
+                                {{ $pacienteLocal->apellidoM }}
+                            @elseif ($pacienteExterno)
+                                {{-- Mostrar datos del paciente de la base de datos externa --}}
+                                {{ $pacienteExterno->nombres }} {{ $pacienteExterno->apellidoP }}
+                                {{ $pacienteExterno->apellidoM }}
                             @else
-                                {!! html_entity_decode('<span class="text-muted">Sin informacion en censo-app ó en inscritos IV</span>') !!}
+                                {{-- Mostrar mensaje si no se encuentra información en ninguna base de datos --}}
+                                <span class="text-muted">Sin información en censo-app o en inscritos IV</span>
                             @endif
                         </td>
                         <td>
