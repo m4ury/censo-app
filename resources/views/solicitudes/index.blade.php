@@ -30,7 +30,7 @@
                     <tr>
                         <td>{{ $solicitud->sol_fecha ? Carbon\Carbon::parse($solicitud->sol_fecha)->format('d-m-Y') : '' }}
                         </td>
-                        <td>{{ $solicitud->sol_rut ? $solicitud->sol_rut : '' }}</td>
+                        <td nowrap="">{{ $solicitud->sol_rut ? $solicitud->sol_rut : '' }}</td>
                         <td>
                             @php
                                 // Consultar en la base de datos principal
@@ -52,82 +52,97 @@
 
                             @if ($pacienteLocal)
                                 {{-- Mostrar datos del paciente de la base de datos principal --}}
-                                {{ $pacienteLocal->nombres }} {{ $pacienteLocal->apellidoP }}
-                                {{ $pacienteLocal->apellidoM }}
+                                {{ ucwords(strtolower($pacienteLocal->nombres)) . ' ' . ucwords(strtolower($pacienteLocal->apellidoP)) . ' ' . ucwords(strtolower($pacienteLocal->apellidoM)) }}
                             @elseif ($pacienteExterno)
                                 {{-- Mostrar datos del paciente de la base de datos externa --}}
-                                {{ $pacienteExterno->nombres }} {{ $pacienteExterno->apellidoP }}
-                                {{ $pacienteExterno->apellidoM }}
+                                {{ ucwords(strtolower($pacienteExterno->nombres)) . ' ' . ucwords(strtolower($pacienteExterno->apellidoP)) . ' ' . ucwords(strtolower($pacienteExterno->apellidoM)) }}
                             @else
                                 {{-- Mostrar mensaje si no se encuentra información en ninguna base de datos --}}
                                 <span class="text-muted">Sin información en censo-app o en inscritos IV</span>
                             @endif
                         </td>
                         <td>
-                            @if ($solicitud->sol_ficha)
-                                {{ $solicitud->sol_ficha }}
-                            @elseif ($paciente->select('ficha')->whereRut($solicitud->sol_rut)->first())
-                                {!! Str::replace(
-                                    ['{"ficha":', '}'],
-                                    ' ',
-                                    $paciente->select('ficha')->whereRut($solicitud->sol_rut)->first(),
-                                ) !!}
-                            @elseif (\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('ficha')->whereRut($solicitud->sol_rut)->first())
-                                {!! Str::replace(
-                                    ['[{"ficha":', '}]'],
-                                    ' ',
-                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('ficha')->whereRut($solicitud->sol_rut)->get(),
-                                ) !!}
-                            @else
-                                {!! html_entity_decode('<span class="text-muted">Sin informacion en censo-app ó en inscritos IV</span>') !!}
-                            @endif
+                            @php
+                                // Obtener la ficha desde la solicitud, base de datos local o externa
+                                $ficha =
+                                    $solicitud->sol_ficha ?:
+                                    optional(
+                                        $paciente
+                                            ->select('ficha')
+                                            ->whereRut($solicitud->sol_rut)
+                                            ->first(),
+                                    )->ficha ?:
+                                    optional(
+                                        \DB::connection('mysql_sfamiliar')
+                                            ->table('pacientes')
+                                            ->join('familias', 'familias.id', '=', 'pacientes.familia_id')
+                                            ->select('pacientes.ficha')
+                                            ->where('pacientes.rut', $solicitud->sol_rut)
+                                            ->first(),
+                                    )->ficha;
+                            @endphp
 
+                            @if ($ficha)
+                                {{-- Mostrar ficha si existe --}}
+                                {{ $ficha }}
+                            @else
+                                {{-- Mostrar mensaje si no hay ficha --}}
+                                <span class="text-muted">Sin información en censo-app o en inscritos IV</span>
+                            @endif
                         </td>
-                        <td>{{ $solicitud->user ? $solicitud->user->fullUserName() : '' }}</td>
-                        <td nowrap=""><span class="mr-2">
+                        <td class="text-capitalize">
+                            {{-- Mostrar el nombre completo del usuario si existe --}}
+                            {{ $solicitud->user ? ucwords(strtolower($solicitud->user->fullUserName())) : '' }}
+                        </td>
+                        <td nowrap="">
+                            <span class="mr-2">
+                                {{-- Mostrar el estado de la solicitud con estilos --}}
                                 @if ($solicitud->sol_estado == 'solicitado')
-                                    <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'medicina')
-                                    <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'some')
-                                    <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</P>
+                                    <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'medicina')
+                                    <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'some')
+                                    <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</p>
                                     @if ($solicitud->alta)
-                                        {!! Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) > 1
-                                            ? "<i class='fas fa-clock text-danger'></i><span class='mx-3 text-bold text-danger'>" .
-                                                Carbon\Carbon::create($solicitud->updated_at)->diffInWeekDays($solicitud->alta) -
-                                                1 .
-                                                ' Dias </span>'
-                                            : '' !!}
+                                        @php
+                                            $dias_diferencia = Carbon\Carbon::create(
+                                                $solicitud->updated_at,
+                                            )->diffInWeekDays($solicitud->alta);
+                                        @endphp
+                                        @if ($dias_diferencia > 1)
+                                            <i class="fas fa-clock text-danger"></i>
+                                            <span class="mx-3 text-bold text-danger">{{ $dias_diferencia - 1 }} Días</span>
+                                        @endif
                                     @endif
-                                @elseif($solicitud->sol_estado == 'a_social')
-                                    <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</P>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'psicologo')
-                                    <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGA</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'otros')
-                                    <p class="btn rounded-pill bg-gradient-info px-4">OTROS</P><i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'box medico')
-                                    <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MEDICO</P> <i
-                                        class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
-                                @elseif($solicitud->sol_estado == 'acreditacion')
-                                    <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACION</P>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::create(Carbon\Carbon::now())->diffInDays($solicitud->updated_at) }}
-                                        dias</span>
+                                @elseif ($solicitud->sol_estado == 'a_social')
+                                    <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'psicologo')
+                                    <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGÍA</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'otros')
+                                    <p class="btn rounded-pill bg-gradient-info px-4">OTROS</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'box medico')
+                                    <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MÉDICO</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
+                                @elseif ($solicitud->sol_estado == 'acreditacion')
+                                    <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACIÓN</p>
+                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                        días</span>
                                 @endif
+                            </span>
                         </td>
                         <td>
-                            {{ $solicitud->sol_receptor }}
-
+                            {{ ucwords(strtolower($solicitud->sol_receptor)) }}
                         </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
 
