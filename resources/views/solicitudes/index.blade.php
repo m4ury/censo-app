@@ -52,13 +52,13 @@
 
                             @if ($pacienteLocal)
                                 {{-- Mostrar datos del paciente de la base de datos principal --}}
-                                {{ ucwords(strtolower($pacienteLocal->nombres)) . ' ' . ucwords(strtolower($pacienteLocal->apellidoP)) . ' ' . ucwords(strtolower($pacienteLocal->apellidoM)) }}
+                                {{ strtoupper($pacienteLocal->nombres) . ' ' . strtoupper($pacienteLocal->apellidoP) . ' ' . strtoupper($pacienteLocal->apellidoM) }}
                             @elseif ($pacienteExterno)
                                 {{-- Mostrar datos del paciente de la base de datos externa --}}
-                                {{ ucwords(strtolower($pacienteExterno->nombres)) . ' ' . ucwords(strtolower($pacienteExterno->apellidoP)) . ' ' . ucwords(strtolower($pacienteExterno->apellidoM)) }}
+                                {{ strtoupper($pacienteExterno->nombres) . ' ' . strtoupper($pacienteExterno->apellidoP) . ' ' . strtoupper($pacienteExterno->apellidoM) }}
                             @else
                                 {{-- Mostrar mensaje si no se encuentra información en ninguna base de datos --}}
-                                <span class="text-muted">Sin información en censo-app o en inscritos IV</span>
+                                <span class="text-muted">No hay datos</span>
                             @endif
                         </td>
                         <td>
@@ -87,7 +87,7 @@
                                 {{ $ficha }}
                             @else
                                 {{-- Mostrar mensaje si no hay ficha --}}
-                                <span class="text-muted">Sin información en censo-app o en inscritos IV</span>
+                                <span class="text-muted text-center"> -- </span>
                             @endif
                         </td>
                         <td class="text-capitalize">
@@ -149,17 +149,14 @@
                         <td>
                             @if ($solicitud->sol_comentario)
                                 {{ $solicitud->sol_comentario }}
-                            @elseif (\DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->first())
-                                {!! Str::replace(
-                                    ['[{"sector":"', ',', ':', '"', 'ficha_familiar', '}]'],
-                                    ' ',
-                                    (string) \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->get(),
-                                ) !!}
+                            @elseif ($familia = \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->first())
+                                {{-- Mostrar el sector y la ficha familiar directamente --}}
+                                {{ $familia->sector }} - {{ $familia->ficha_familiar }}
                             @else
-                                {!! html_entity_decode('<span class="text-muted">Sin informacion en inscritos IV </span>') !!}
+                                {!! html_entity_decode('<span class="text-muted">Sin información en inscritos IV</span>') !!}
                             @endif
-
                         </td>
+
                         @if (auth()->user()->someUser() || auth()->user()->isAdmin())
                             <td>
                                 <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
@@ -168,7 +165,7 @@
                                 </a>
                             </td>
                         @else
-                            <td class="text-muted">Opción deshabilitada para tu usuario</td>
+                            <td class="text-muted">Opción deshabilitada</td>
                         @endif
                     </tr>
                 @endforeach
