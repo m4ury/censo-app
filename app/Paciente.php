@@ -1215,13 +1215,19 @@ class Paciente extends Model
     }
 
     //ECICEP
-    function g3()
-    {
-        return $this->whereHas('patologias', function ($query) {
-            $query->whereNotNull('nombre_patologia');
-        }, '>', 4)
-            ->whereNull('egreso');
-    }
+    public function g3()
+{
+    return $this->whereNull('egreso')
+        ->whereIn('id', function ($query) {
+            $query->select('paciente_patologia.paciente_id')
+                  ->from('paciente_patologia')
+                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) >= 5');
+        });
+
+}
+
 
     function ingresosG3()
     {
@@ -1237,14 +1243,14 @@ class Paciente extends Model
 
     function g2()
     {
-        return $this->whereHas(
-            'patologias',
-            function ($query) {
-                $query->whereNotNull('nombre_patologia');
-            },
-            '>',
-            1,
-        )->withCount('patologias')->having('patologias_count', '<', 5)->whereNull('egreso');
+        return $this->whereNull('egreso')
+        ->whereIn('id', function ($query) {
+            $query->select('paciente_patologia.paciente_id')
+                  ->from('paciente_patologia')
+                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) < 5 AND SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) > 1');
+        });
     }
 
     function ingresosG2()
@@ -1261,14 +1267,14 @@ class Paciente extends Model
 
     function g1()
     {
-        return $this->whereHas(
-            'patologias',
-            function ($query) {
-                $query->whereNotNull('nombre_patologia');
-            },
-            '=',
-            1,
-        )->whereNull('egreso');
+        return $this->whereNull('egreso')
+        ->whereIn('id', function ($query) {
+            $query->select('paciente_patologia.paciente_id')
+                  ->from('paciente_patologia')
+                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->havingRaw('SUM(CASE WHEN "2 PUNTOS" = 1 THEN 2 ELSE 1 END) = 1');
+        });
     }
 
     function ingresosG1()
