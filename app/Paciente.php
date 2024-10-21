@@ -83,10 +83,10 @@ class Paciente extends Model
     {
         return $this->hasMany(Encuesta::class);
     }
-
+    
     public function patologias()
     {
-        return $this->belongsToMany(Patologia::class)->withPivot('created_at');
+        return $this->belongsToMany(Patologia::class, 'paciente_patologia', 'paciente_id', 'patologia_id')->withPivot('created_at');
     }
 
     public function naneas()
@@ -1185,7 +1185,8 @@ class Paciente extends Model
     }
 
     //P9 seccion B
-    public function eduTrabajo($fem, $masc, $param){
+    public function eduTrabajo($fem, $masc, $param)
+    {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.eduTrab', $param)
             ->whereIn('sexo', [$fem, $masc])
@@ -1195,7 +1196,8 @@ class Paciente extends Model
     }
 
     //P9 seccion C
-    public function areaRiesgo($fem, $masc, $param){
+    public function areaRiesgo($fem, $masc, $param)
+    {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.areaRiesgo', $param)
             ->whereIn('sexo', [$fem, $masc])
@@ -1205,7 +1207,8 @@ class Paciente extends Model
     }
 
     //P9 seccion D
-    public function sexualidad($fem, $masc, $param){
+    public function sexualidad($fem, $masc, $param)
+    {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.sexualidad', $param)
             ->whereIn('sexo', [$fem, $masc])
@@ -1215,18 +1218,19 @@ class Paciente extends Model
     }
 
     //ECICEP
+
     public function g3()
 {
-    return $this->whereNull('egreso')
-        ->whereIn('id', function ($query) {
-            $query->select('paciente_patologia.paciente_id')
-                  ->from('paciente_patologia')
-                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) >= 5');
-        });
 
+    return $this->whereNull('egreso')
+        ->whereHas('patologias', function ($query) {
+            // Subconsulta que calcula los puntos por paciente
+            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->having('total_puntos', '>=', 5);
+        });
 }
+
 
 
     function ingresosG3()
@@ -1244,13 +1248,13 @@ class Paciente extends Model
     function g2()
     {
         return $this->whereNull('egreso')
-        ->whereIn('id', function ($query) {
-            $query->select('paciente_patologia.paciente_id')
-                  ->from('paciente_patologia')
-                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) < 5 AND SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) > 1');
-        });
+            ->whereIn('id', function ($query) {
+                $query->select('paciente_patologia.paciente_id')
+                    ->from('paciente_patologia')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->groupBy('paciente_patologia.paciente_id')
+                    ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) < 5 AND SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) > 1');
+            });
     }
 
     function ingresosG2()
@@ -1268,13 +1272,13 @@ class Paciente extends Model
     function g1()
     {
         return $this->whereNull('egreso')
-        ->whereIn('id', function ($query) {
-            $query->select('paciente_patologia.paciente_id')
-                  ->from('paciente_patologia')
-                  ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->havingRaw('SUM(CASE WHEN "2 PUNTOS" = 1 THEN 2 ELSE 1 END) = 1');
-        });
+            ->whereIn('id', function ($query) {
+                $query->select('paciente_patologia.paciente_id')
+                    ->from('paciente_patologia')
+                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+                    ->groupBy('paciente_patologia.paciente_id')
+                    ->havingRaw('SUM(CASE WHEN "2 PUNTOS" = 1 THEN 2 ELSE 1 END) = 1');
+            });
     }
 
     function ingresosG1()
