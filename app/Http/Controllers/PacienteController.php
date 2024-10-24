@@ -10,9 +10,40 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Services\GeocodingService;
+
 
 class PacienteController extends Controller
 {
+    protected $geocodingService;
+
+    public function __construct(GeocodingService $geocodingService)
+    {
+        $this->geocodingService = $geocodingService;
+    }
+
+    public function mostrarMapa()
+    {
+        // Obtener los pacientes de la base de datos
+        $pacientes = Paciente::whereNotNull('direccion')->get();
+
+        $pacientesConCoordenadas = [];
+
+        // Geocodificar la dirección de cada paciente
+        foreach ($pacientes as $paciente) {
+            $coordenadas = $this->geocodingService->geocodeAddress($paciente->direccion);
+
+            if ($coordenadas) {
+                $paciente->latitud = $coordenadas['lat'];
+                $paciente->longitud = $coordenadas['lng'];
+                $pacientesConCoordenadas[] = $paciente;
+            }
+        }
+
+        // Pasar los pacientes geocodificados a la vista
+        return view('pacientes.mapa', ['pacientes' => $pacientesConCoordenadas]);
+    }
+
     public function index(Request $request)
     {
         $q = $request->get('q');
