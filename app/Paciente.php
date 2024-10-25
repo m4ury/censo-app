@@ -83,7 +83,7 @@ class Paciente extends Model
     {
         return $this->hasMany(Encuesta::class);
     }
-    
+
     public function patologias()
     {
         return $this->belongsToMany(Patologia::class, 'paciente_patologia', 'paciente_id', 'patologia_id')->withPivot('created_at');
@@ -1248,13 +1248,12 @@ class Paciente extends Model
     function g2()
     {
         return $this->whereNull('egreso')
-            ->whereIn('id', function ($query) {
-                $query->select('paciente_patologia.paciente_id')
-                    ->from('paciente_patologia')
-                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-                    ->groupBy('paciente_patologia.paciente_id')
-                    ->havingRaw('SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) < 5 AND SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) > 1');
-            });
+        ->whereHas('patologias', function ($query) {
+            // Subconsulta que calcula los puntos por paciente
+            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->having('total_puntos', '>=', 2, 'AND', 'total_puntos', '<=', 4);
+        });
     }
 
     function ingresosG2()
@@ -1272,13 +1271,12 @@ class Paciente extends Model
     function g1()
     {
         return $this->whereNull('egreso')
-            ->whereIn('id', function ($query) {
-                $query->select('paciente_patologia.paciente_id')
-                    ->from('paciente_patologia')
-                    ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-                    ->groupBy('paciente_patologia.paciente_id')
-                    ->havingRaw('SUM(CASE WHEN "2 PUNTOS" = 1 THEN 2 ELSE 1 END) = 1');
-            });
+        ->whereHas('patologias', function ($query) {
+            // Subconsulta que calcula los puntos por paciente
+            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                  ->groupBy('paciente_patologia.paciente_id')
+                  ->having('total_puntos', '=', 1);
+        });
     }
 
     function ingresosG1()
