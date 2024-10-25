@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PacienteRequest;
 use App\Paciente;
 use App\Patologia;
-use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Services\GeocodingService;
 
 
@@ -22,32 +20,54 @@ class PacienteController extends Controller
         $this->geocodingService = $geocodingService;
     }
 
-    public function mostrarMapa()
+    /**
+     * Geocodificar direcciones de los pacientes
+     */
+    public function geocodePacientes()
     {
-        // Obtener los pacientes de la base de datos
-        $pacientes = Paciente::whereNotNull('direccion')->get();
+        // Obtener todos los pacientes que no tienen coordenadas
+        $pacientes = Paciente::with('patologias')
+            ->select('id', 'direccion')
+            ->whereNull('egreso')
+            ->whereNotNull('direccion')
+            ->whereNull('latitud')
+            ->orWhereNull('longitud')
+            ->limit(200)
+            ->get();
 
-        $pacientesConCoordenadas = [];
-
-        // Geocodificar la dirección de cada paciente
         foreach ($pacientes as $paciente) {
-            $coordenadas = $this->geocodingService->geocodeAddress($paciente->direccion);
+            // Geocodificar la dirección del paciente
+            $coordinates = $this->geocodingService->geocode($paciente->direccion);
 
-            if ($coordenadas) {
-                $paciente->latitud = $coordenadas['lat'];
-                $paciente->longitud = $coordenadas['lng'];
-                $pacientesConCoordenadas[] = $paciente;
+            if ($coordinates) {
+                // Guardar las coordenadas en la base de datos
+                $paciente->latitud = $coordinates['lat'];
+                $paciente->longitud = $coordinates['lon'];
+                $paciente->save();
             }
         }
 
-        // Pasar los pacientes geocodificados a la vista
-        return view('pacientes.mapa', ['pacientes' => $pacientesConCoordenadas]);
+        return response()->json(['message' => 'Geocodificación completa']);
+    }
+
+
+    public function mostrarMapa()
+    {
+        // Obtener todos los pacientes con coordenadas
+        $paciente = new Paciente;
+        $g3 = $paciente->g3()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
+        $g2 = $paciente->g2()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
+        $g1 = $paciente->g1()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
+
+
+        // Pasar los pacientes a la vista
+        return view('pacientes.mapa', compact('g1', 'g2', 'g3'));
     }
 
     public function index(Request $request)
     {
         $q = $request->get('q');
-        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso')
+        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'direccion', 'comuna')
             ->orderBy('rut', 'asc')
             ->search($q)
             ->get();
@@ -127,8 +147,7 @@ class PacienteController extends Controller
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
     }
 
-    public
-    function destroy($id)
+    public function destroy($id)
     {
         Paciente::destroy($id);
         return response(['data' => null], 204);

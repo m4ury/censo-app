@@ -149,5 +149,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.hormonal', 'PacienteController@hormonal_list')->name('pacientes.hormonal');
 
     //mapa
-    Route::get('/pacientes.mapa', 'PacienteController@mostrarMapa')->name('pacientes.mapa');
+    Route::get('/geocode', 'PacienteController@geocodePacientes')->name('geocode')->middleware('auth');
+    Route::get('/mapa', 'PacienteController@mostrarMapa')->name('mapa')->middleware('auth');
 });

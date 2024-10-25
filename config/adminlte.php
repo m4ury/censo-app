@@ -434,6 +434,21 @@ return [
                 ],
             ],
         ],
+        'Leaflet' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
+                ],
+            ],
+        ],
     ],
 
     /*
