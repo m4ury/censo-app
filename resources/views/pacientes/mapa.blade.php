@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 @section('content')
-@section('title', 'menu-paciente')
+@section('title', 'mapa-epidemiologico')
 <div class="row justify-content-center">
     <div class="col">
-        <h1>Mapa Epidemiologico</h1>
+        <h1>Mapa Epidemiológico</h1>
         <div id="map" style="height: 800px; width:100%;"></div>
     </div>
 
@@ -11,72 +11,67 @@
 @section('js')
     <script>
         // Inicializar el mapa centrado en una ubicación específica
-        var map = L.map('map').setView([-34.974300, -71.807935], 14);
+        const map = L.map('map').setView([-34.974300, -71.807935], 15);
 
         // Añadir capa base de OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 17,
-            attribution: '© OpenStreetMap contributors'
+            attribution: 'Hospital de Hualañe'
+        }).addTo(map);
+
+        // Definir los polígonos con un arreglo de coordenadas (lat, lon)
+        const sectorCeleste = [
+            [-35.06373239863361, -71.69496876613705],
+            [51.503, -0.06],
+            [51.51, -0.047],
+        ];
+
+        const sectorNaranjo = [
+            [51.52, -0.1],
+            [51.52, -0.12],
+            [51.513, -0.13],
+            [51.508, -0.11],
+        ];
+
+    // Crear el polígono para cada área con propiedades específicas (color, borde, etc.)
+        const celeste = L.polygon(sectorCeleste, {
+            color: "soft-blue",
+            fillColor: "#0000ff",
+            fillOpacity: 0.5,
+        }).addTo(map);
+
+        const naranjo = L.polygon(sectorNaranjo, {
+            color: "orange",
+            fillColor: "#ff0000",
+            fillOpacity: 0.5,
         }).addTo(map);
 
         // Array de pacientes desde el backend (Blade)
         var g3 = @json($g3);
-        var g2 = @json($g2);
-        var g1 = @json($g1);
+
 
         // Añadir marcadores al mapa
         g3.forEach(function(g3) {
-
-            // Crear un círculo en lugar de un marcador para dar color
-            L.marker([g3.latitud, g3.longitud], {
-                    color: 'red',
+            L.marker([g3.latitud, g3.longitud],{
+                    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    shadowSize: [41, 41],
                     radius: 7,
                     fillOpacity: 0.3,
-                    title: 'G3',
-                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                    shadowSize: [41, 41]
                 }).addTo(map)
                 .bindPopup(
-                    `<b>Rut.: </b>${g3.rut}<br>
+                `<b>Rut.: </b>${g3.rut}<br>
                 <b>Nombres: </b>${g3.nombres}<br>
                 <b>Apellidos: </b>${g3.apellidoP} ${g3.apellidoM}<br>
-                <b class="text-danger text-bold">G3</b>
-
-                `);
-        });
-        
-        g2.forEach(function(g2) {
-            L.marker([g2.latitud, g2.longitud], {
-                    color: 'orange',
-                    radius: 7,
-                    fillOpacity: 0.3,
-                    title: 'G2',
-                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                    shadowSize: [41, 41]
-                }).addTo(map)
-                .bindPopup(
-                    `<b>Rut.: </b>${g2.rut}<br>
-                <b>Nombres: </b>${g2.nombres}<br>
-                <b>Apellidos: </b>${g2.apellidoP} ${g2.apellidoM}<br>
-                <b class="text-waring text-bold">G2</b>
-
-                `);
-        });
-        g1.forEach(function(g1) {
-            L.marker([g1.latitud, g1.longitud], {
-                    color: 'red',
-                    radius: 8,
-                    fillOpacity: 0.3,
-                    title: 'G1',
-                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                    shadowSize: [41, 41]
-                }).addTo(map)
-                .bindPopup(
-                    `<b>Rut.: </b>${g1.rut}<br>
-                <b>Nombres: </b>${g1.nombres}<br>
-                <b>Apellidos: </b>${g1.apellidoP} ${g1.apellidoM}<br>
-                <b class="text-yellow text-bold">G1</b>
+                <b class="text-danger text-bold">G3</b><br>
+                <b>Direccion: </b>${g3.direccion} ${g3.comuna}<br>
+                <b>LAT: </b>${g3.latitud}<br>
+                <b>LNG: </b>${g3.longitud}<br>
                 `);
         });
     </script>
+
 @endsection

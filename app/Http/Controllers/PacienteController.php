@@ -17,6 +17,8 @@ class PacienteController extends Controller
 
     public function __construct(GeocodingService $geocodingService)
     {
+        ini_set('max_execution_time', 0); //descomentar
+
         $this->geocodingService = $geocodingService;
     }
 
@@ -27,9 +29,10 @@ class PacienteController extends Controller
     {
         // Obtener todos los pacientes que no tienen coordenadas
         $pacientes = Paciente::with('patologias')
-            ->select('id', 'direccion')
+            ->select('id', 'direccion', 'comuna')
             ->whereNull('egreso')
             ->whereNotNull('direccion')
+            ->whereNotNull('comuna')
             ->whereNull('latitud')
             ->orWhereNull('longitud')
             ->limit(200)
@@ -37,7 +40,7 @@ class PacienteController extends Controller
 
         foreach ($pacientes as $paciente) {
             // Geocodificar la dirección del paciente
-            $coordinates = $this->geocodingService->geocode($paciente->direccion);
+            $coordinates = $this->geocodingService->geocode($paciente->direccion . ', ' . $paciente->comuna. ', Chile');
 
             if ($coordinates) {
                 // Guardar las coordenadas en la base de datos
@@ -56,12 +59,11 @@ class PacienteController extends Controller
         // Obtener todos los pacientes con coordenadas
         $paciente = new Paciente;
         $g3 = $paciente->g3()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
-        $g2 = $paciente->g2()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
-        $g1 = $paciente->g1()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
+
 
 
         // Pasar los pacientes a la vista
-        return view('pacientes.mapa', compact('g1', 'g2', 'g3'));
+        return view('pacientes.mapa', compact('g3'));
     }
 
     public function index(Request $request)

@@ -2,42 +2,25 @@
 
 namespace App\Services;
 
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class GeocodingService
 {
-    protected $client;
-
-    public function __construct()
-    {
-        $this->client = new Client();
-    }
-
-    /**
-     * Geocodificar dirección utilizando Nominatim (OpenStreetMap)
-     * @param string $address
-     * @return array|null
-     */
     public function geocode($address)
     {
-        // Formatear la dirección para la URL
-        $url = 'https://nominatim.openstreetmap.org/search?format=json&q=' . urlencode($address);
+        $url = 'https://nominatim.openstreetmap.org/search';
 
-        // Realizar la solicitud a la API de Nominatim
-        $response = $this->client->get($url, [
-            'headers' => [
-                'User-Agent' => 'LaravelGeocoder' // Nominatim requiere que se use un User-Agent válido
-            ]
+        $response = Http::get($url, [
+            'q' => $address,
+            'format' => 'json',
+            'addressdetails' => 1,
+            'limit' => 1
         ]);
 
-        // Decodificar la respuesta JSON
-        $data = json_decode($response->getBody(), true);
-
-        // Verificar si se obtuvo una respuesta válida
-        if (isset($data[0])) {
+        if ($response->successful() && isset($response[0])) {
             return [
-                'lat' => $data[0]['lat'],
-                'lon' => $data[0]['lon']
+                'lat' => $response[0]['lat'],
+                'lon' => $response[0]['lon'],
             ];
         }
 
