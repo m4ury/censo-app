@@ -39,26 +39,27 @@ class GeocodeAddresses extends Command
     public function handle()
     {
         // Obtener pacientes que aún no tienen coordenadas geográficas
-        $pacientes = Paciente::with('patologias')
-            ->select('id', 'direccion', 'comuna')
+        $paciente = new Paciente;
+        $pacientes = $paciente->g3()
+            ->select('id', 'direccion', 'comuna', 'rut')
             ->whereNull('egreso')
             ->whereNotNull('direccion')
             ->whereNotNull('comuna')
             ->whereNull('latitud')
             ->orWhereNull('longitud')
-            ->limit(150)
+            ->limit(700)
             ->get();
 
         foreach ($pacientes as $paciente) {
             $address = $paciente->direccion;
-            $coordinates = $this->geocodingService->geocode($paciente->direccion . ', ' . $paciente->comuna. ', Chile');
+            $coordinates = $this->geocodingService->geocode($paciente->direccion . ', ' . $paciente->comuna . ', Chile');
 
 
             if ($coordinates) {
                 $paciente->latitud = $coordinates['lat'];
                 $paciente->longitud = $coordinates['lon'];
                 $paciente->save();
-                $this->info("Geocodificado: {$paciente->nombre} - {$address}");
+                $this->info("Geocodificado: {$paciente->rut} - {$address}");
             } else {
                 Log::warning("No se pudo geocodificar la dirección: {$address}");
             }
