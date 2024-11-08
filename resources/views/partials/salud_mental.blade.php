@@ -130,4 +130,15 @@
             ) !!}
         </div>
     </div>
+    <div class="form-group row my-2 ml-2 mx-3">
+        {!! Form::label('pci_label', 'Plan de Cuidado Integral Elaborado (PCI)', [
+            'class' => 'col-sm col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::checkbox('pci', 1, old('pci', $control->pci == 1 ? true : null), [
+                'class' => 'col col-sm form-control my-2 pci',
+                'id' => 'pci',
+            ]) !!}
+        </div>
+    </div>
 </div>

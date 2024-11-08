@@ -253,6 +253,12 @@ return [
             'can' => 'some'
         ],
         [
+            'text' => 'Mapa ECICEP (G3)',
+            'route' => 'mapa',
+            'icon' => 'fas fa-fw fa-map-marked-alt text-gray-600',
+            'can' => 'oirs'
+        ],
+        [
             'header' => 'CONTROLES',
             'can' => 'controles-all'
         ],

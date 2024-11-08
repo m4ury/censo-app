@@ -58,7 +58,7 @@ class PacienteController extends Controller
     {
         // Obtener todos los pacientes con coordenadas
         $paciente = new Paciente;
-        $g3 = $paciente->g3()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM')->whereNotNull('latitud')->get();
+        $g3 = $paciente->g3()->select('direccion', 'comuna', 'latitud', 'longitud', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'sector')->whereNotNull('latitud')->get();
 
 
 

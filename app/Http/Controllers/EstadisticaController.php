@@ -24,7 +24,7 @@ class EstadisticaController extends Controller
      */
     public function seccionA()
     {
-        //ini_set('max_execution_time', 900);
+        ini_set('max_execution_time', 900);
 
         $all = new Paciente;
 
@@ -7226,16 +7226,11 @@ class EstadisticaController extends Controller
 
     public function seccionP6a()
     {
-
-        ini_set('client_body_timeout', 99999999);
-        ini_set('cliennt_header_timeout', 99999999);
-        ini_set('keep_alive_timeout', 99999999);
-        ini_set('send_timeout', 99999999);
-        ini_set('max_input_time', 99999999);
+        ini_set('max_execution_time', 900);
+        ini_set('memory_limit', '1024M');
 
         $all = new Paciente;
-        //sm todos
-        $sm = $all->sm()->count();
+
         $smF = $all->sm()->where('sexo', '=', 'Femenino')->count();
         $smOriginF = $all->sm()->where('sexo', '=', 'Femenino')->where('pueblo_originario', '=', 1)->count();
         $sm_04F = $all->sm()->get()->whereBetween('grupo', [0, 4])->where('sexo', 'Femenino')->count();
@@ -7278,6 +7273,7 @@ class EstadisticaController extends Controller
 
 
         $depLeve = $all->trHumor('Femenino', 'Masculino', 'depLeve')->get()->unique('rut')->count();
+        $depLevePCI = $all->trHumor('Femenino', 'Masculino', 'depLeve')->get()->where('pci', 1)->unique('rut')->count();
         $depLeveM = $all->trHumor(null, 'Masculino', 'depLeve')->get()->unique('rut')->count();
         //$trHumor_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
         $depLeve_OriginM = $all->trHumor(null, 'Masculino', 'depLeve')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
@@ -7320,6 +7316,7 @@ class EstadisticaController extends Controller
         $depLeve_80F = $all->trHumor(null, 'Femenino', 'depLeve')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
         $depMod = $all->trHumor('Femenino', 'Masculino', 'depMod')->get()->unique('rut')->count();
+        $depModPCI = $all->trHumor('Femenino', 'Masculino', 'depMod')->get()->where('pci', 1)->unique('rut')->count();
         $depModM = $all->trHumor(null, 'Masculino', 'depMod')->get()->unique('rut')->count();
         //$trHumor_espVig = $all->espiromVigente('Femenino', 'Masculino')->get()->whereBetween('grupo', [0, 120])->unique('rut')->count();
         $depMod_OriginM = $all->trHumor(null, 'Masculino', 'depMod')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
@@ -7362,6 +7359,7 @@ class EstadisticaController extends Controller
         $depMod_80F = $all->trHumor(null, 'Femenino', 'depMod')->get()->whereBetween('grupo', [80, 120])->unique('rut')->count();
 
         $depGrave = $all->trHumor('Femenino', 'Masculino', 'depGrave')->get()->unique('rut')->count();
+        $depGravePCI = $all->trHumor('Femenino', 'Masculino', 'depGrave')->get()->where('pci', 1)->unique('rut')->count();
         $depGraveM = $all->trHumor(null, 'Masculino', 'depGrave')->get()->unique('rut')->count();
         $depGrave_OriginM = $all->trHumor(null, 'Masculino', 'depGrave')->get()->whereBetween('grupo', [0, 120])->where('pueblo_originario', 1)->count();
         $depGrave_04M = $all->trHumor(null, 'Masculino', 'depGrave')->get()->whereBetween('grupo', [0, 4])->unique('rut')->count();
@@ -8639,6 +8637,7 @@ class EstadisticaController extends Controller
             'depLeve_80F',
             'depLeve_OriginM',
             'depLeve_OriginF',
+            'depLevePCI',
 
             'depMod',
             'depModM',
@@ -8679,6 +8678,7 @@ class EstadisticaController extends Controller
             'depMod_80F',
             'depMod_OriginM',
             'depMod_OriginF',
+            'depModPCI',
 
             'depGrave',
             'depGraveM',
@@ -8719,6 +8719,7 @@ class EstadisticaController extends Controller
             'depGrave_80F',
             'depGrave_OriginM',
             'depGrave_OriginF',
+            'depGravePCI',
 
             'depPostPartoF',
             'depPostParto_1014F',

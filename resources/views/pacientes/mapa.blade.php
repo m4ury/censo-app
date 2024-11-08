@@ -3,7 +3,7 @@
 @section('title', 'mapa-epidemiologico')
 <div class="row justify-content-center">
     <div class="col">
-        <h1>Mapa Epidemiológico</h1>
+        <h1>Mapa Epidemiológico (G3)</h1>
         <div id="map" style="height: 900px; width:100%;"></div>
     </div>
 
@@ -11,7 +11,7 @@
 @section('js')
     <script>
         // Inicializar el mapa centrado en una ubicación específica
-        const map = L.map('map').setView([-34.974300, -71.807935], 15);
+        const map = L.map('map').setView([-35.02867080, -71.74547960], 12);
 
         // Añadir capa base de OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -83,6 +83,7 @@
                 <b>Direccion: </b>${g3.direccion} ${g3.comuna}<br>
                 <b>LAT: </b>${g3.latitud}<br>
                 <b>LNG: </b>${g3.longitud}<br>
+                <b>Sector: </b>${g3.sector}<br>
                 `);
         });
     </script>

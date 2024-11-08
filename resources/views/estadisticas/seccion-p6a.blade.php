@@ -492,7 +492,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                <td>{{$depLevePCI}}</td>
                             </tr>
                             <tr>
                                 <th>DEPRESION MODERADA</th>
@@ -540,7 +540,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                <td>{{$depModPCI}}</td>
                             </tr>
                             <tr>
                                 <th>DEPRESION GRAVE</th>
@@ -588,7 +588,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
+                                <td>{{$depGravePCI}}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">DEPRESION POST PARTO</th>
