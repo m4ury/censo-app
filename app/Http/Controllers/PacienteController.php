@@ -40,7 +40,7 @@ class PacienteController extends Controller
 
         foreach ($pacientes as $paciente) {
             // Geocodificar la dirección del paciente
-            $coordinates = $this->geocodingService->geocode($paciente->direccion . ', ' . $paciente->comuna. ', Chile');
+            $coordinates = $this->geocodingService->geocode($paciente->direccion . ', ' . $paciente->comuna . ', Chile');
 
             if ($coordinates) {
                 // Guardar las coordenadas en la base de datos
@@ -111,7 +111,7 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'rut' => 'cl_rut',
+            'rut' => ['cl_rut', Rule::unique('pacientes')->ignore($id)],
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
             'erc' => 'required_with:riesgo_cv',
@@ -144,6 +144,7 @@ class PacienteController extends Controller
         $paciente->cuidador_capacit = $request->cuidador_capacit ?? 0;
         $paciente->cuidador_evSobrecarga = $request->cuidador_evSobrecarga ?? 0;
         $paciente->cuidador_examenPrev = $request->cuidador_examenPrev ?? 0;
+        $paciente->postrado = $request->postrado ?? 0;
         $paciente->update($request->all());
         //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
