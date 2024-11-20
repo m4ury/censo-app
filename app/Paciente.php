@@ -107,9 +107,9 @@ class Paciente extends Model
 
     //P4 seccion A
 
-    public function rcv_bajo($fem = 'Femenino', $masc = 'Masculino', $grupo = [15, 120])
+    public function rcv_bajo()
     {
-        return $this->whereRiesgo_cv('BAJO')->whereNull("egreso")->whereIn('sexo', [$fem, $masc])->get()->whereBetween('grupo', $grupo);
+        return $this->whereRiesgo_cv('BAJO')->whereNull("egreso");
     }
 
     public function rcv_mod()
@@ -167,15 +167,15 @@ class Paciente extends Model
         return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])->whereNull("egreso");
     }
 
-    public function hta($fem = 'Femenino', $masc = 'Masculino', $grupo = [15, 120])
+    public function hta()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
             ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
             ->whereNull('pacientes.egreso')
-            ->whereIn('sexo', [$fem, $masc])
-            ->where('patologias.nombre_patologia', 'HTA')
-            ->get()
-            ->whereBetween('grupo', $grupo);
+            //->whereIn('sexo', [$fem, $masc])
+            ->where('patologias.nombre_patologia', 'HTA');
+            //->get()
+            //->whereBetween('grupo', $grupo);
     }
 
     public function dm2()
