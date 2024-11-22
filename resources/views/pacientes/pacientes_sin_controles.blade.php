@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'pctes salud mental')
+@section('title', 'pctes salud mental sin controles')
 
 @section('content')
     <div class="card card-primary card-outline">
-        <div class="card-header row">
+        <div class="card-header">
 
             <h3 class="card-title">
                 <a class="btn bg-gradient-info btn-sm mr-3" title="Volver" href="{{ url()->previous() }}">
@@ -12,14 +12,8 @@
                     Volver
                 </a>
                 <i class="fas fa-user-injured px-2" style="color:rgb(38, 0, 255)"></i>
-                PACIENTES SALUD MENTAL
+                PACIENTES SALUD MENTAL SIN CONTROLES
             </h3>
-            <div class="col col-sm-12 col-md-12 col-lg text-right">
-                <a class="btn bg-gradient-danger btn-sm mr-3" title="Sin Control"
-                    href="{{ route('pacientes.sinControles') }}">
-                    Ver sin Control
-                </a>
-            </div>
         </div>
         <div class="col-md-12 table-responsive pt-3">
             <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
@@ -35,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($sm as $paciente)
+                    @foreach ($pacientes as $paciente)
                         <tr>
                             <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                             <td>{{ $paciente->ficha }}</td>
@@ -58,27 +52,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="card-body">
-            <div class="d-flex">
-                <p class="d-flex flex-column">
-                    <span class="text-bold">Pacientes Salud Mental</span>
-                </p>
-            </div>
-            <!-- /.d-flex -->
-            <div class="position-relative mb-4">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <canvas id="myChart" height="200" style="display: block; width: 759px; height: 200px;" width="759"
-                    class="chartjs-render-monitor">
-                </canvas>
-            </div>
         </div>
     </div>
 @stop
@@ -120,61 +93,6 @@
             order: [
                 [0, 'desc']
             ],
-        });
-    </script>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Menor de 15', 'Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34',
-                    'Entre 35 y 39',
-                    'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64',
-                    'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'
-                ],
-                datasets: [{
-                        label: 'Hombres',
-                        data: [
-                            {{ $in15M }},
-                            {{ $in1519M }}, {{ $in2024M }}, {{ $in2529M }},
-                            {{ $in3034M }}, {{ $in3539M }}, {{ $in4044M }},
-                            {{ $in4549M }}, {{ $in5054M }}, {{ $in5559M }},
-                            {{ $in6064M }}, {{ $in6569M }}, {{ $in7074M }},
-                            {{ $in7579M }}, {{ $mas80M }}
-                        ],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgb(54, 162, 235)',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Mujeres',
-                        data: [
-                            {{ $in15F }},
-                            {{ $in1519F }}, {{ $in2024F }}, {{ $in2529F }},
-                            {{ $in3034F }}, {{ $in3539F }}, {{ $in4044F }},
-                            {{ $in4549F }}, {{ $in5054F }}, {{ $in5559F }},
-                            {{ $in6064F }}, {{ $in6569F }}, {{ $in7074F }},
-                            {{ $in7579F }}, {{ $mas80F }}
-                        ],
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2
-                    },
-                ]
-            },
-            options: {
-                responsive: true,
-                animation: {
-                    duration: 1500,
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
         });
     </script>
 @endsection

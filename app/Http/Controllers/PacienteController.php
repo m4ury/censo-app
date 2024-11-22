@@ -326,4 +326,15 @@ class PacienteController extends Controller
 
         return view('pacientes.cuidadores', compact('cuidadores'));
     }
+
+    public function pacientes_sin_controles()
+    {
+        $pacientes = Paciente::doesntHave('controls')
+            ->whereHas('patologias', function ($query) {
+                $query->where('nombre_patologia', 'SALUD MENTAL');
+            })
+            ->get();
+
+            return view('pacientes.pacientes_sin_controles', compact('pacientes'));
+    }
 }

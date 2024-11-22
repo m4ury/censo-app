@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.pscv', 'PacienteController@pscv_list')->name('pacientes.pscv');
     Route::get('/pacientes.demencia', 'PacienteController@demencia_list')->name('pacientes.demencia');
     Route::get('/pacientes.pMujer', 'PacienteController@pMujer_list')->name('pacientes.pMujer');
+    Route::get('/pacientes.sinControles', 'PacienteController@pacientes_sin_controles')->name('pacientes.sinControles');
 
 
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');
