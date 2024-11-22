@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PacienteRequest;
 use App\Paciente;
 use App\Patologia;
-use Illuminate\Validation\Rule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Services\GeocodingService;
+use App\Http\Requests\PacienteRequest;
+use Illuminate\Support\Facades\Validator;
 
 
 class PacienteController extends Controller
@@ -329,12 +330,29 @@ class PacienteController extends Controller
 
     public function pacientes_sin_controles()
     {
-        $pacientes = Paciente::doesntHave('controls')
-            ->whereHas('patologias', function ($query) {
-                $query->where('nombre_patologia', 'SALUD MENTAL');
+        $pacientes = Paciente::whereHas('patologias', function ($query) {
+            $query->where('nombre_patologia', 'SALUD MENTAL');
+        })
+            ->whereDoesntHave('controls', function ($query) {
+                $query->where('fecha_control', '>=', Carbon::now()->subYear())
+                    ->where('tipo_control', 'Psicologo')
+                    ->whereNull('pacientes.egreso');
             })
             ->get();
 
-            return view('pacientes.pacientes_sin_controles', compact('pacientes'));
+        return view('pacientes.pacientes_sin_controles', compact('pacientes'));
+    }
+
+    public function pscv_sin_controles()
+    {
+        $pacientes = Paciente::whereHas('patologias', function ($query) {
+            $query->whereNull('pacientes.egreso')->whereNotNull('riesgo_cv');
+        })
+            ->whereDoesntHave('controls', function ($query) {
+                $query->where('fecha_control', '>=', Carbon::now()->subYear());
+            })
+            ->get();
+
+        return view('pacientes.pscv_sin_controles', compact('pacientes'));
     }
 }
