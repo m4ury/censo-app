@@ -14,6 +14,12 @@
                 <i class="fas fa-user-injured px-2" style="color:rgb(38, 0, 255)"></i>
                 PACIENTES SALA IRA/ERA
             </h3>
+            <div class="col col-sm-12 col-md-12 col-lg text-right">
+                <a class="btn bg-gradient-danger btn-sm mr-3" title="Sin Control"
+                    href="{{ route('pacientes.salaEraSinControles') }}">
+                    Ver sin Control
+                </a>
+            </div>
         </div>
         <div class="col-md-12 table-responsive pt-3">
             <table id="pacientes" class="table table-hover table-md-responsive table-bordered">

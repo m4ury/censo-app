@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.pMujer', 'PacienteController@pMujer_list')->name('pacientes.pMujer');
     Route::get('/pacientes.sinControles', 'PacienteController@pacientes_sin_controles')->name('pacientes.sinControles');
     Route::get('/pacientes.pscvSinControles', 'PacienteController@pscv_sin_controles')->name('pacientes.pscvSinControles');
+    Route::get('/pacientes.salaEraSinControles', 'PacienteController@salaEra_sin_controles')->name('pacientes.salaEraSinControles');
 
 
     Route::resource('patologias', 'PatologiaController')->except('[index, create]');

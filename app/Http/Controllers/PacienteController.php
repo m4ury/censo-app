@@ -354,4 +354,19 @@ class PacienteController extends Controller
 
         return view('pacientes.pscv_sin_controles', compact('pacientes'));
     }
+
+    public function salaEra_sin_controles()
+    {
+        $pacientes = Paciente::whereNull('egreso') // Solo pacientes donde 'egreso' es NULL
+            ->whereHas('patologias', function ($query) {
+                $query->where('nombre_patologia', 'SALA ERA');
+            })
+            ->whereDoesntHave('controls', function ($query) {
+                $query->where('tipo_control', 'Kinesiologo')
+                    ->where('fecha_control', '>=', Carbon::now()->subYear());
+            })
+            ->get();
+
+        return view('pacientes.salaEra_sin_controles', compact('pacientes'));
+    }
 }
