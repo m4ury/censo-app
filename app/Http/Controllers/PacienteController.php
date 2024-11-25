@@ -330,13 +330,13 @@ class PacienteController extends Controller
 
     public function pacientes_sin_controles()
     {
-        $pacientes = Paciente::whereHas('patologias', function ($query) {
-            $query->where('nombre_patologia', 'SALUD MENTAL');
-        })
+        $pacientes = Paciente::whereNull('egreso') // Solo pacientes donde 'egreso' es NULL
+            ->whereHas('patologias', function ($query) {
+                $query->where('nombre_patologia', 'SALUD MENTAL');
+            })
             ->whereDoesntHave('controls', function ($query) {
-                $query->where('fecha_control', '>=', Carbon::now()->subYear())
-                    ->where('tipo_control', 'Psicologo')
-                    ->whereNull('pacientes.egreso');
+                $query->where('tipo_control', 'Psicologo')
+                    ->where('fecha_control', '>=', Carbon::now()->subYear());
             })
             ->get();
 
@@ -345,9 +345,8 @@ class PacienteController extends Controller
 
     public function pscv_sin_controles()
     {
-        $pacientes = Paciente::whereHas('patologias', function ($query) {
-            $query->whereNull('pacientes.egreso')->whereNotNull('riesgo_cv');
-        })
+        $pacientes = Paciente::whereNull('egreso') // Filtra pacientes donde 'egreso' es NULL
+            ->whereNotNull('riesgo_cv') // Filtra pacientes con algún valor en 'riesgo_cv'
             ->whereDoesntHave('controls', function ($query) {
                 $query->where('fecha_control', '>=', Carbon::now()->subYear());
             })
