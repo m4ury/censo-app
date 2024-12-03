@@ -38,7 +38,6 @@ class HomeController extends Controller
         $totalPacientes = $all->pscv()->get();
 
         $dm2 = $all->dm2()->whereNull('egreso')->count();
-        $pieDm2_90 = round($dm2 * 90 / 100);
         $hbac17 = $all->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count();
         $hbac18 = $all->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count();
         $sumaHbac = $hbac17 + $hbac18;
@@ -185,7 +184,6 @@ class HomeController extends Controller
             'iam',
             'acv',
             'sala_era',
-            'pieDm2_90',
             'efam',
             'barthel',
             'all',

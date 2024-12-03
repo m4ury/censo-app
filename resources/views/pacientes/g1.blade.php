@@ -6,6 +6,50 @@
     <div class="col-md-12 table-responsive">
         <div class="col text-center py-3">
             <h3 class="text-bold">Pacientes Multimorbilidad riesgo <span class="text-warning">Leve</span> </h3>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-gradient-info"><i class="fas fa-child"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">15-19 años</span>
+                            <span class="info-box-number"
+                                id="pacientes-total">{{ $g1->whereBetween('grupo', [15, 19])->count() }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-gradient-warning"><i class="fas fa-user"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">20-44 años</span>
+                            <span class="info-box-number"
+                                id="pacientes-total">{{ $g1->whereBetween('grupo', [20, 44])->count() }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-gradient-danger"><i class="fas fa-user-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">45-64 años</span>
+                            <span class="info-box-number"
+                                id="pacientes-total">{{ $g1->whereBetween('grupo', [45, 64])->count() }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-gradient-primary"><i class="fas fa-user-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">65 y mas</span>
+                            <span class="info-box-number"
+                                id="pacientes-total">{{ $g1->where('grupo', '>=', 65)->count() }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
@@ -28,7 +72,8 @@
                         <td>{{ $paciente->ficha }}
                         </td>
                         <td>{{ $paciente->direccion ?? '' }} {{ $paciente->comuna ? ', ' . $paciente->comuna : '' }}</td>
-                        <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
+                        <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}
+                        </td>
                         <td>{{ $paciente->sexo }}</td>
                         <td>
                             @if ($paciente->sector == 'Celeste')

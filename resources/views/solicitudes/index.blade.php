@@ -9,6 +9,46 @@
                     class="fas fa-calendar-check"></i>
                 Nueva Solicitud
             </button>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-info"><i class="fas fa-child"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Fuera del SOME</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $solicitudes->pluck('sol_estado', '!=', 'some')->count() }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-warning"><i class="fas fa-user"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">20-44 años</span>
+                        <span class="info-box-number" id="pacientes-total"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-danger"><i class="fas fa-user-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">45-64 años</span>
+                        <span class="info-box-number" id="pacientes-total"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-primary"><i class="fas fa-user-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">65 y mas</span>
+                        <span class="info-box-number" id="pacientes-total"></span>
+                    </div>
+                </div>
+            </div>
         </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">

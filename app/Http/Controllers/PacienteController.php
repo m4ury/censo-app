@@ -86,7 +86,6 @@ class PacienteController extends Controller
     public function store(PacienteRequest $request)
     {
         Paciente::create($request->all());
-        //Alert::success('Nuevo Paciente ha sido cread@ con exito');
         return redirect('pacientes')->withSuccess('Paciente Creado con exito!');
     }
 
@@ -291,11 +290,20 @@ class PacienteController extends Controller
     public function pscv_list()
     {
         $paciente = new Paciente;
+        $controles = $paciente->pscv()->join('controls', 'pacientes.id', 'controls.paciente_id')->latest('controls.fecha_control')->get();
+        $desCompensado = $controles->filter(function ($item) {
+            return $item->pa_mayor_160_100 === true //hta
+                || $item->hba1cMayorIgual9Porcent === true //dm2
+                || in_array($item->ldl, ['B', 'C']); //dlp B:>=70 y <=99, >100
+        })->unique('rut');
+
+        //dd($desCompensado->whereBetween('grupo', [20, 44])->pluck('rut'));
+
         $pscv = $paciente->pscv()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
             ->orderBy('rut', 'asc')
             ->get();
 
-        return view('pacientes.pscv', compact('pscv'));
+        return view('pacientes.pscv', compact('pscv', 'desCompensado'));
     }
 
     public function demencia_list()
