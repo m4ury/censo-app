@@ -14,38 +14,41 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-gradient-info"><i class="fas fa-child"></i></span>
+                    <span class="info-box-icon bg-gradient-info"><i class="fas fa-envelope"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Fuera del SOME</span>
                         <span class="info-box-number"
-                            id="pacientes-total">{{ $solicitudes->pluck('sol_estado', '!=', 'some')->count() }}</span>
+                            id="pacientes-total">{{ $solicitudes->where('sol_estado', '!=', 'some')->count() }}</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-gradient-warning"><i class="fas fa-user"></i></span>
+                    <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">20-44 años</span>
-                        <span class="info-box-number" id="pacientes-total"></span>
+                        <span class="info-box-text">Solicitado a SOME</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $solicitudes->where('sol_estado', '==', 'solicitado')->count() }}</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-gradient-danger"><i class="fas fa-user-alt"></i></span>
+                    <span class="info-box-icon bg-gradient-danger"><i class="fas fa-envelope"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">45-64 años</span>
-                        <span class="info-box-number" id="pacientes-total"></span>
+                        <span class="info-box-text">En Medicina</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $solicitudes->where('sol_estado', '==', 'medicina')->count() }}</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-gradient-primary"><i class="fas fa-user-alt"></i></span>
+                    <span class="info-box-icon bg-gradient-primary"><i class="fas fa-clock"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">65 y mas</span>
-                        <span class="info-box-number" id="pacientes-total"></span>
+                        <span class="info-box-text">Fuera de SOME + 30 dias</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $mas30 }}</span>
                     </div>
                 </div>
             </div>

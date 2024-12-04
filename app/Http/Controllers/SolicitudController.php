@@ -27,12 +27,18 @@ class SolicitudController extends Controller
 
     public function index()
     {
+
         $paciente = new Paciente;
         $solicitudes = Solicitud::latest('created_at')
             ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario', 'sol_receptor')
             ->get();
 
-        return view('solicitudes.index', compact('solicitudes', 'paciente'));
+        $mas30 = $solicitudes->filter(function ($mas30) {
+            return $mas30->sol_estado != 'some' && $mas30->sol_estado != 'solicitado' &&
+                Carbon::parse($mas30->updated_at)->diffInDays(Carbon::now()) > 30;
+        })->count();
+
+        return view('solicitudes.index', compact('solicitudes', 'paciente', 'mas30'));
     }
 
     /**

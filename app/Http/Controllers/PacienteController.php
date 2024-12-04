@@ -292,9 +292,8 @@ class PacienteController extends Controller
         $paciente = new Paciente;
         $controles = $paciente->pscv()->join('controls', 'pacientes.id', 'controls.paciente_id')->latest('controls.fecha_control')->get();
         $desCompensado = $controles->filter(function ($item) {
-            return $item->pa_mayor_160_100 === true //hta
-                || $item->hba1cMayorIgual9Porcent === true //dm2
-                || in_array($item->ldl, ['B', 'C']); //dlp B:>=70 y <=99, >100
+            return $item->pa_mayor_160_100 == 1//hta
+                || $item->hba1cMayorIgual9Porcent == 1; //dm2
         })->unique('rut');
 
         //dd($desCompensado->whereBetween('grupo', [20, 44])->pluck('rut'));
