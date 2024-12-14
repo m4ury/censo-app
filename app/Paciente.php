@@ -172,10 +172,7 @@ class Paciente extends Model
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
             ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
             ->whereNull('pacientes.egreso')
-            //->whereIn('sexo', [$fem, $masc])
             ->where('patologias.nombre_patologia', 'HTA');
-            //->get()
-            //->whereBetween('grupo', $grupo);
     }
 
     public function dm2()
@@ -448,7 +445,7 @@ class Paciente extends Model
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', '=', 'Medico')
             ->whereRiesgo_cv('ALTO')
-            ->where('controls.ldlMenor100', '=', 1)
+            ->where('controls.ldlMenor100', true)
             ->where('controls.fecha_control', '>=', Carbon::now()->subYear(1))
             ->latest('controls.fecha_control');
     }
@@ -457,7 +454,6 @@ class Paciente extends Model
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
             ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            //->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNull('pacientes.egreso')
             ->where('patologias.nombre_patologia', 'ANTECEDENTE ACV')
             ->where('pacientes.usoAspirinas', true);
@@ -467,7 +463,6 @@ class Paciente extends Model
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
             ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            //->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNull('pacientes.egreso')
             ->where('patologias.nombre_patologia', 'ANTECEDENTE IAM')
             ->where('pacientes.usoEstatinas', true);
@@ -529,13 +524,13 @@ class Paciente extends Model
     public function insulinaHba1C()
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+            ->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
             ->where('paciente_patologia.patologia_id', 2)
             ->where('controls.hba1cMenor8Porcent', true)
             ->where('pacientes.usoInsulina', true)
             ->union(DB::table('pacientes')
                 ->join('controls', 'controls.paciente_id', 'pacientes.id')
-                ->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
+                ->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
                 ->where('paciente_patologia.patologia_id', 2)
                 ->where('controls.hba1cMenor7Porcent', true)
                 ->where('pacientes.usoInsulina', true));
@@ -582,9 +577,10 @@ class Paciente extends Model
 
     public function usoIecaAraII()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->where('paciente_patologia.patologia_id', 2)
-            ->where('pacientes.usoIecaAraII', 1)
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+        ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->where('patologias.nombre_patologia', 'DM2')
+            ->where('pacientes.usoIecaAraII', true)
             ->whereIn('erc', ['IIIB', 'IV', 'V']);
     }
 
@@ -593,6 +589,10 @@ class Paciente extends Model
         return $this->where('ldlVigente', '>=', Carbon::now()->subYear(1));
     }
 
+    public function actFisica()
+    {
+        return $this->where('actFisica', true);
+    }
 
     //P5 seccion A
     public function efam()
