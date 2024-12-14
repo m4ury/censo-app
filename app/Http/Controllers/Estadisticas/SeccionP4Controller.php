@@ -79,7 +79,7 @@ class SeccionP4Controller extends Controller
         $pacientes = new Paciente;
 
         //PA 140 90
-        $pa140_90 = $pacientes->pa140()->get();
+        $pa140_90 = $pacientes->paMenor140()->get();
 
         //pa 150 90 +80
         $pa150 = $pacientes->pa150()->get();

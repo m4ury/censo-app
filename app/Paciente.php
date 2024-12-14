@@ -12,8 +12,6 @@ class Paciente extends Model
 {
     protected $guarded = ['id'];
 
-    /*protected $fillable = ['rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sexo', 'telefono', 'direccion', 'fecha_nacimiento', 'comuna', 'migrante', 'pueblo_originario', 'compensado', 'riesgo_cv', 'erc', 'racVigente', 'vfgVigente', 'fondoOjoVigente', 'ecgVigente', 'ldlVigente'];*/
-
     public function fullName()
     {
         return ucfirst($this->nombres ?? "") . " " . ucfirst($this->apellidoP ?? "") . " " . ucfirst($this->apellidoM ?? "");
@@ -42,11 +40,18 @@ class Paciente extends Model
         return Carbon::parse($this->fecha_nacimiento)->age;
     }
 
-    public function getEdadControlAttribute()
+    // Calcular edad en base a una fecha específica
+    public function getEdadControlAttribute($fechaControl)
     {
-        if (Carbon::create($this->fecha_nacimiento)->age >= 10 and $this->controls->whereNotNull('paciente_id')->first()) {
-            return Carbon::parse($this->fecha_nacimiento)->diffInMonths($this->controls->first()->fecha_control);
+        $fechaNacimiento = Carbon::parse($this->fecha_nacimiento);
+        $edadAnios = $fechaNacimiento->diffInYears($fechaControl);
+
+        if ($edadAnios < 1) {
+            // Si el paciente tiene menos de un año, devolver la edad en meses
+            return $fechaNacimiento->diffInMonths($fechaControl);
         }
+
+        return $edadAnios;
     }
 
     public function controls()
@@ -54,30 +59,10 @@ class Paciente extends Model
         return $this->hasMany(Control::class);
     }
 
-    public function interconsultas()
-    {
-        return $this->hasMany(Interconsulta::class);
-    }
-
     public function constancias()
     {
         return $this->hasMany(Constancia::class);
     }
-
-    public function consultas()
-    {
-        return $this->hasMany(Consulta::class);
-    }
-
-    /* public function efams()
-    {
-        return $this->hasMany(Control::class);
-    } */
-
-    /* public function examenes()
-    {
-        return $this->hasMany(Examen::class);
-    } */
 
     public function encuestas()
     {
@@ -167,36 +152,51 @@ class Paciente extends Model
         return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])->whereNull("egreso");
     }
 
-    public function hta()
+    public function scopeConPatologia($query, $patologia)
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'HTA');
+        return $query->whereHas('patologias', function ($q) use ($patologia) {
+            $q->whereIn('nombre_patologia', (array) $patologia);
+        })->whereNull('egreso');
     }
+
 
     public function dm2()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'DM2');
+        return Paciente::conPatologia('DM2');
+    }
+
+    public function hta()
+    {
+        return Paciente::conPatologia('HTA');
     }
 
     public function sm()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'SALUD MENTAL');
+        return Paciente::conPatologia('SALUD MENTAL');
     }
 
     public function salaEra()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'SALA ERA');
+        return Paciente::conPatologia('SALA ERA');
+    }
+
+    public function dlp()
+    {
+        return Paciente::conPatologia('DLP');
+    }
+    public function iam()
+    {
+        return Paciente::conPatologia('ANTECEDENTE IAM');
+    }
+
+    public function acv()
+    {
+        return Paciente::conPatologia('ANTECEDENTE ACV');
+    }
+
+    public function tbq()
+    {
+        return Paciente::conPatologia('TABAQUISMO');
     }
 
     //P6 seccion A
@@ -277,103 +277,46 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P4 seccion A
-    public function dlp()
-    {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            //->distinct('paciente_patologia.id', 'paciente_patologia.paciente_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'DLP');
-    }
-
-    public function iam()
-    {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'ANTECEDENTE IAM');
-    }
-
-    public function acv()
-    {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'ANTECEDENTE ACV');
-    }
-
-    public function tbq()
-    {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'TABAQUISMO');
-    }
 
     //P3 seccion A
     public function epilepsia()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'EPILEPSIA');
+        return Paciente::conPatologia('EPILEPSIA');
     }
 
     public function glaucoma()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'GLAUCOMA');
+        return Paciente::conPatologia('GLAUCOMA');
     }
 
     public function parkinson()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'ENF. PARKINSON');
+        return Paciente::conPatologia('ENF. PARKINSON');
     }
 
     public function artrosis()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'ARTROSIS RODILLA Y/O CADERA');
+        return Paciente::conPatologia('ARTROSIS RODILLA Y/O CADERA');
     }
 
     public function alivio_dolor()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'ALIVIO DOLOR');
+        return Paciente::conPatologia('ALIVIO DOLOR');
     }
 
     public function hipot()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'HIPOTIROIDISMO');
+        return Paciente::conPatologia('HIPOTIROIDISMO');
     }
 
     public function paliativo()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', '=', 'PALIATIVO UNIVERSAL');
+        return Paciente::conPatologia('PALIATIVO UNIVERSAL');
     }
 
     public function demencia()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'DEMENCIA');
+        return Paciente::conPatologia('DEMENCIA');
     }
 
     public function depSeveroDemencia()
@@ -382,17 +325,15 @@ class Paciente extends Model
             ->where('pacientes.postrado', true);
     }
 
-    //P4 seccion B Metaas de Compensacion
-    public function pa140()
+    //P4 seccion B Metas de Compensacion
+    public function scopePaMenor140($query)
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('paciente_patologia.patologia_id', '=', 1)
-            ->where('controls.pa_menor_140_90', true)
-            ->where('controls.tipo_control', 'Medico')
-            ->whereNull('pacientes.egreso')
-            ->where('controls.fecha_control', '>=', Carbon::now()->subYear(1))
-            ->latest('controls.fecha_control');
+        return $query->whereHas('controls', function ($q) {
+            $q->where('pa_menor_140_90', true)
+                ->where('tipo_control', 'Medico')
+                ->where('fecha_control', '>=', Carbon::now()->subYear(1));
+        })->whereNull('egreso')
+            ->latest();
     }
 
     public function pa150()
@@ -452,27 +393,23 @@ class Paciente extends Model
 
     public function aspirinas()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+        return Paciente::conPatologia('ANTECEDENTE ACV')
             ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'ANTECEDENTE ACV')
             ->where('pacientes.usoAspirinas', true);
     }
 
     public function estatinas()
     {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', '=', 'pacientes.id')
-            ->join('patologias', 'patologias.id', '=', 'paciente_patologia.patologia_id')
+        return Paciente::conPatologia('ANTECEDENTE IAM')
             ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'ANTECEDENTE IAM')
             ->where('pacientes.usoEstatinas', true);
     }
 
     public function fumador()
     {
-        return $this->estatinas()
-            ->whereNull('pacientes.egreso')
-            ->where('patologias.nombre_patologia', 'TABAQUISMO');
+        return Paciente::conPatologia('TABAQUISMO')
+        ->whereIn('pacientes.riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])
+            ->whereNull('pacientes.egreso');
     }
 
     //P4 seccion C Variables de seguimiento del PSCV al corte
@@ -578,7 +515,7 @@ class Paciente extends Model
     public function usoIecaAraII()
     {
         return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-        ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
             ->where('patologias.nombre_patologia', 'DM2')
             ->where('pacientes.usoIecaAraII', true)
             ->whereIn('erc', ['IIIB', 'IV', 'V']);
@@ -1220,16 +1157,16 @@ class Paciente extends Model
     //ECICEP
 
     public function g3()
-{
+    {
 
-    return $this->whereNull('egreso')
-        ->whereHas('patologias', function ($query) {
-            // Subconsulta que calcula los puntos por paciente
-            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->having('total_puntos', '>=', 5);
-        });
-}
+        return $this->whereNull('egreso')
+            ->whereHas('patologias', function ($query) {
+                // Subconsulta que calcula los puntos por paciente
+                $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                    ->groupBy('paciente_patologia.paciente_id')
+                    ->having('total_puntos', '>=', 5);
+            });
+    }
 
 
 
@@ -1248,12 +1185,12 @@ class Paciente extends Model
     function g2()
     {
         return $this->whereNull('egreso')
-        ->whereHas('patologias', function ($query) {
-            // Subconsulta que calcula los puntos por paciente
-            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->having('total_puntos', '>=', 2, 'AND', 'total_puntos', '<=', 4);
-        });
+            ->whereHas('patologias', function ($query) {
+                // Subconsulta que calcula los puntos por paciente
+                $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                    ->groupBy('paciente_patologia.paciente_id')
+                    ->having('total_puntos', '>=', 2, 'AND', 'total_puntos', '<=', 4);
+            });
     }
 
     function ingresosG2()
@@ -1271,12 +1208,12 @@ class Paciente extends Model
     function g1()
     {
         return $this->whereNull('egreso')
-        ->whereHas('patologias', function ($query) {
-            // Subconsulta que calcula los puntos por paciente
-            $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
-                  ->groupBy('paciente_patologia.paciente_id')
-                  ->having('total_puntos', '=', 1);
-        });
+            ->whereHas('patologias', function ($query) {
+                // Subconsulta que calcula los puntos por paciente
+                $query->selectRaw('paciente_patologia.paciente_id, SUM(CASE WHEN patologias.descripcion_patologia = "2 PUNTOS" THEN 2 ELSE 1 END) as total_puntos')
+                    ->groupBy('paciente_patologia.paciente_id')
+                    ->having('total_puntos', '=', 1);
+            });
     }
 
     function ingresosG1()

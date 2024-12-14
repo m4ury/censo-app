@@ -22,6 +22,11 @@
             </div>
         </div>
         <div class="col-md-12 table-responsive pt-3">
+            <div class="row justify-content-center">
+                <h3 class="col-md-12 text-center text-bold">
+                    Descompensados por Grupo etario
+                </h3>
+            </div>
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="info-box">
