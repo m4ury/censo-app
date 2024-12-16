@@ -44,7 +44,7 @@ class HomeController extends Controller
         $descompDm2 = $dm2 - $sumaHbac;
 
         $hta = $all->hta()->whereNull('egreso')->count();
-        $pa140_90 = $all->pa140()->get()->where('grupo', '>', 14)->unique('rut')->count();
+        $pa140_90 = $all->paMenor140()->get()->where('grupo', '>', 14)->unique('rut')->count();
         $pa150 = $all->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count();
         $sumaPa = $pa140_90 + $pa150;
         $descompPa = $hta - $sumaPa;

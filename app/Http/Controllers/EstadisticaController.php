@@ -4171,11 +4171,11 @@ class EstadisticaController extends Controller
 
         $pacientes = new Paciente;
 
-        $pa140_90 = $pacientes->pa140()->get()->where('grupo', '>', 14)->unique('rut')->count();
+        $pa140_90 = $pacientes->paMenor140()->get()->where('grupo', '>', 14)->unique('rut')->count();
         $pa150 = $pacientes->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count();
         $sumaPa = $pa140_90 + $pa150;
 
-        $hta = $pacientes->hta()->whereNull('egreso')->whereIn('sexo', ['Femenino', 'Masculino'])->where('grupo', '>', 14)->count();
+        $hta = $pacientes->hta()->whereNull('egreso')->whereIn('sexo', ['Femenino', 'Masculino'])->get()->where('grupo', '>', 14)->count();
 
         $hbac17 = $pacientes->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count();
         $hbac18 = $pacientes->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count();

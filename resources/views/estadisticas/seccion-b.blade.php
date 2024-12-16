@@ -113,10 +113,10 @@
                             <td>{{$pa140_90->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->unique('rut')->count() }}</td>
                             <td class="bg-gradient-gray"></td>
                             <td class="bg-gradient-gray"></td>
-                            <td>{{$pa140_90->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                            <td>{{$pa140_90->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
-                            <td>{{$pa140_90->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                             <td>{{$pa140_90->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                            <td>{{$pa140_90->where('origin', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$pa140_90->where('origin', true)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$pa140_90->where('migrante', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$pa140_90->where('migrante', true)->where('sexo', 'Femenino')->count() }}</td>
                         </tr>
                         <tr>
                             <th>PA < 150/90 mmHg</th>
@@ -351,6 +351,10 @@
                             <td>{{$aspirinas->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count() }}</td>
                             <td>{{$aspirinas->where('grupo', '>=', 80)->where('sexo', 'Masculino')->count() }}</td>
                             <td>{{$aspirinas->where('grupo', '>=', 80)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$aspirinas->where('origin', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$aspirinas->where('origin', true)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$aspirinas->where('migrante', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$aspirinas->where('migrante', true)->where('sexo', 'Femenino')->count() }}</td>
                         </tr>
                         <tr>
                             <th nowrap="">En tratamiento con Estatina</th>
@@ -385,6 +389,10 @@
                             <td>{{$estatinas->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count() }}</td>
                             <td>{{$estatinas->where('grupo', '>=', 80)->where('sexo', 'Masculino')->count() }}</td>
                             <td>{{$estatinas->where('grupo', '>=', 80)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$estatinas->where('origin', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$estatinas->where('origin', true)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$estatinas->where('migrante', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$estatinas->where('migrante', true)->where('sexo', 'Femenino')->count() }}</td>
                         </tr>
                         <tr>
                             <th nowrap="">Fumador actual</th>
@@ -419,6 +427,10 @@
                             <td>{{$fumador->whereBetween('grupo', [75, 79])->where('sexo', 'Femenino')->count() }}</td>
                             <td>{{$fumador->where('grupo', '>=', 80)->where('sexo', 'Masculino')->count() }}</td>
                             <td>{{$fumador->where('grupo', '>=', 80)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$fumador->where('origin', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$fumador->where('origin', true)->where('sexo', 'Femenino')->count() }}</td>
+                            <td>{{$fumador->where('migrante', true)->where('sexo', 'Masculino')->count() }}</td>
+                            <td>{{$fumador->where('migrante', true)->where('sexo', 'Femenino')->count() }}</td>
                         </tr>
                     </thead>
                 </table>
