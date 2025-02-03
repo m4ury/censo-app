@@ -94,9 +94,6 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
         $patologias = Patologia::all();
         $controles = $paciente->controls()->latest('fecha_control')->take(3)->get();
-        //$consultas = $paciente->consultas()->latest('fecha_consulta')->get();
-        //$interconsultas = $paciente->interconsultas()->latest('fecha_ic')->get();
-        //dd($paciente->patologias->whereNotIn('nombre_patologia', 'SALUD MENTAL')->count());
 
         return view('pacientes.show', compact('paciente', 'controles', 'patologias'));
     }
@@ -110,7 +107,7 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->except('rut'), [
             'rut' => ['cl_rut', Rule::unique('pacientes')->ignore($id)],
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
@@ -145,6 +142,7 @@ class PacienteController extends Controller
         $paciente->cuidador_evSobrecarga = $request->cuidador_evSobrecarga ?? 0;
         $paciente->cuidador_examenPrev = $request->cuidador_examenPrev ?? 0;
         $paciente->postrado = $request->postrado ?? 0;
+        $paciente->paciente_hd = $request->paciente_hd ?? 0;
         $paciente->update($request->all());
         //dd($paciente);
         return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');

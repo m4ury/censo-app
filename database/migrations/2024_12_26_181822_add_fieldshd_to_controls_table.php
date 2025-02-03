@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nanea_patologia', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('paciente_id')->nullable()->constrained('pacientes');
-            $table->foreignId('nanea_id')->nullable()->constrained('naneas');
-            $table->timestamps();
+        Schema::table('controls', function (Blueprint $table) {
+            $table->enum('tipo', ['ingreso_hd', 'reingreso', 'alta'])->nullable();
+            $table->enum('derivacion', ['aps', 'servicio urgencia', 'hospitalizacion'])->nullable();
         });
     }
 
@@ -28,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nanea_patologia');
+        Schema::table('controls', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -27,6 +27,7 @@
                                 <th colspan="2" rowspan="2">Poblacion Migrantes</th>
                                 <th rowspan="3" class="text-center" style="vertical-align: top">Niños, Niñas,
                                     Adolescentes y Jóvenes de Población SENAME</th>
+                                <th rowspan="3">Niños, Niñas, Adolescentes y Jóvenes de Población Mejor Niñez</th>
                                 <th rowspan="3" class="text-center" style="vertical-align: top">Plan Cuidado Integral
                                     Elaborado</th>
                             </tr>
@@ -133,24 +134,26 @@
                                 <td>{{ $sm->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $sm->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sm->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $sm->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $sm->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $sm->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $sm->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $sm->where('sename', true)->count() }}</td>
-                                <td></td>
+                                <td>{{$sm->where('mejor_ninez', true)->count() }}</td>
+                                <td>{{$sm->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
                                 <th colspan="2" nowrap="">
                                     FACTORES DE RIESGO Y CONDICIONANTES DE LA SALUD MENTAL
                                 </th>
                                 </th>
-                                <td class="bg-gradient-gray" colspan="45"></td>
+                                <td class="bg-gradient-gray" colspan="46"></td>
                                 </th>
                             <tr>
                                 <th rowspan="3" style="vertical-align: middle">VIOLENCIA</th>
                             <tr>
                                 <th>VICTIMA</th>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -244,10 +247,12 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             </tr>
                             <tr>
                                 <th colspan="2" nowrap="">ABUSO SEXUAL</th>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -344,9 +349,11 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>INTENTO</th>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -442,6 +449,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th rowspan="6" style="vertical-align: middle">TRASTORNOS DEL HUMOR(AFECTIVOS)
@@ -487,11 +495,12 @@
                                 <td>{{ $depLeve->where('sexo', '=', 'Femenino')->where('grupo', '>=', 80)->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $depLeve->where('sexo', '=', 'Masculino')->where('origin', true)->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', '=', 'Femenino')->where('origin', true)->count() }}</td>
+                                <td>{{ $depLeve->where('sexo', '=', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
+                                <td>{{ $depLeve->where('sexo', '=', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
                                 <td>{{ $depLeve->where('sexo', '=', 'Masculino')->where('migrante', true)->count() }}</td>
                                 <td>{{ $depLeve->where('sexo', '=', 'Femenino')->where('migrante', true)->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', '=', 'Masculino')->where('sename', true)->count() }}</td>
+                                <td>{{ $depLeve->where('sename', true)->count() }}</td>
+                                <td>{{$depLeve->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{$depLeve->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -535,11 +544,12 @@
                                 <td>{{ $depMod->where('sexo', '=', 'Femenino')->where('grupo', '>=', 80)->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $depMod->where('sexo', '=', 'Masculino')->where('origin', true)->count() }}</td>
-                                <td>{{ $depMod->where('sexo', '=', 'Femenino')->where('origin', true)->count() }}</td>
+                                <td>{{ $depMod->where('sexo', '=', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
+                                <td>{{ $depMod->where('sexo', '=', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
                                 <td>{{ $depMod->where('sexo', '=', 'Masculino')->where('migrante', true)->count() }}</td>
                                 <td>{{ $depMod->where('sexo', '=', 'Femenino')->where('migrante', true)->count() }}</td>
-                                <td>{{ $depMod->where('sexo', '=', 'Masculino')->where('sename', true)->count() }}</td>
+                                <td>{{ $depMod->where('sename', true)->count() }}</td>
+                                <td>{{$depMod->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{$depMod->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -583,11 +593,12 @@
                                 <td>{{ $depGrave->where('sexo', '=', 'Femenino')->where('grupo', '>=', 80)->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $depGrave->where('sexo', '=', 'Masculino')->where('origin', true)->count() }}</td>
-                                <td>{{ $depGrave->where('sexo', '=', 'Femenino')->where('origin', true)->count() }}</td>
+                                <td>{{ $depGrave->where('sexo', '=', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
+                                <td>{{ $depGrave->where('sexo', '=', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
                                 <td>{{ $depGrave->where('sexo', '=', 'Masculino')->where('migrante', true)->count() }}</td>
                                 <td>{{ $depGrave->where('sexo', '=', 'Femenino')->where('migrante', true)->count() }}</td>
-                                <td>{{ $depGrave->where('sexo', '=', 'Masculino')->where('sename', true)->count() }}</td>
+                                <td>{{ $depGrave->where('sename', true)->count() }}</td>
+                                <td>{{$depGrave->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{$depGrave->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -630,13 +641,14 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
+                                <td></td>
                                 <td class="bg-gradient-gray"></td>
+                                <td>{{ $depPostParto->where('pueblo_originario', true)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $depPostParto->where('origin', true)->count() }}</td>
-                                <td class="bg-gradient-gray"></td>
-                                <td class="bg-gradient-gray"></td>
-                                <td class="bg-gradient-gray"></td>
-                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $depPostParto->where('migrante', true)->count() }}</td>
+                                <td>{{$depPostParto->where('sename', true)->count() }}</td>
+                                <td>{{$depPostParto->where('mejor_ninez', true)->count() }}</td>
+                                <td>{{$depPostParto->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>TRASTORNO BIPOLAR</th>
@@ -679,11 +691,12 @@
                                 <td>{{ $trBipolar->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trBipolar->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trBipolar->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trBipolar->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trBipolar->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trBipolar->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trBipolar->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trBipolar->where('sename', true)->count() }}</td>
+                                <td>{{ $trBipolar->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trBipolar->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -730,11 +743,12 @@
                                 <td>{{ $alcohol->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $alcohol->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $alcohol->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $alcohol->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $alcohol->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $alcohol->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $alcohol->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $alcohol->where('sename', true)->count() }}</td>
+                                <td>{{ $alcohol->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $alcohol->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -778,11 +792,12 @@
                                 <td>{{ $drogas->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $drogas->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $drogas->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $drogas->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $drogas->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $drogas->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $drogas->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $drogas->where('sename', true)->count() }}</td>
+                                <td>{{ $drogas->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $drogas->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -826,11 +841,12 @@
                                 <td>{{ $policonsumo->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $policonsumo->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $policonsumo->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $policonsumo->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $policonsumo->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $policonsumo->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $policonsumo->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $policonsumo->where('sename', true)->count() }}</td>
+                                <td>{{ $policonsumo->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $policonsumo->where('pci', true)->count() }}</td>
                             </tr>
                             </tr>
@@ -878,11 +894,12 @@
                                 <td>{{ $trHiper->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trHiper->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trHiper->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trHiper->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trHiper->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trHiper->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trHiper->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trHiper->where('sename', true)->count() }}</td>
+                                <td>{{ $trHiper->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trHiper->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -926,11 +943,12 @@
                                 <td>{{ $trDis->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trDis->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trDis->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trDis->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trDis->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trDis->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trDis->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trDis->where('sename', true)->count() }}</td>
+                                <td>{{ $trDis->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trDis->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -974,11 +992,12 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $trAnsInf->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trAnsInf->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trAnsInf->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trAnsInf->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trAnsInf->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trAnsInf->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trAnsInf->where('sename', true)->count() }}</td>
+                                <td>{{ $trAnsInf->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trAnsInf->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1023,17 +1042,18 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $otrosTrsInfAdol->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $otrosTrsInfAdol->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $otrosTrsInfAdol->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $otrosTrsInfAdol->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otrosTrsInfAdol->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $otrosTrsInfAdol->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otrosTrsInfAdol->where('sename', true)->count() }}</td>
+                                <td>{{ $otrosTrsInfAdol->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $otrosTrsInfAdol->where('pci', true)->count() }}</td>
                             </tr>
                             </tr>
 
                             <tr>
-                                <th rowspan="7" style="vertical-align: middle">TRASTORNOS DE ANSIEDAD</th>
+                                <th rowspan="6" style="vertical-align: middle">TRASTORNOS DE ANSIEDAD</th>
                             <tr>
                                 <th>TRASTORNO DE ESTRÉS POST TRAUMATICO</th>
                                 <td>{{ $trEstresPostT->count() }}</td>
@@ -1075,63 +1095,16 @@
                                 <td>{{ $trEstresPostT->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trEstresPostT->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trEstresPostT->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trEstresPostT->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trEstresPostT->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trEstresPostT->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trEstresPostT->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trEstresPostT->where('sename', true)->count() }}</td>
+                                <td>{{ $trEstresPostT->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trEstresPostT->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
-                                <th nowrap="">TRASTORNO DE PANICO CON AGOROFOBIA</th>
-                                <td>{{ $trPanicoAgo->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [0, 4])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [0, 4])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [5, 9])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [5, 9])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [10, 14])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [10, 14])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [15, 19])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [15, 19])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [20, 24])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [20, 24])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [25, 29])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [25, 29])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [30, 34])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [30, 34])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [35, 39])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [35, 39])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [40, 44])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [40, 44])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [45, 49])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [45, 49])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [50, 54])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [50, 54])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [55, 59])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [55, 59])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [60, 64])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [60, 64])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [65, 69])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [65, 69])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [70, 74])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [70, 74])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [75, 79])->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->whereBetween('grupo', [75, 79])->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('grupo', '>=', 80)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td>{{ $trPanicoAgo->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('sename', true)->count() }}</td>
-                                <td>{{ $trPanicoAgo->where('pci', true)->count() }}</td>
-                            </tr>
-                            <tr>
-                                <th>TRASTORNO DE PANICO SIN AGOROFOBIA </th>
+                                <th>TRASTORNO DE PANICO</th>
                                 <td>{{ $trPanico->count() }}</td>
                                 <td>{{ $trPanico->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trPanico->where('sexo', '=', 'Femenino')->count() }}</td>
@@ -1171,11 +1144,12 @@
                                 <td>{{ $trPanico->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trPanico->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPanico->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trPanico->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trPanico->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trPanico->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trPanico->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trPanico->where('sename', true)->count() }}</td>
+                                <td>{{ $trPanico->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trPanico->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1219,11 +1193,12 @@
                                 <td>{{ $fobiaSocial->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $fobiaSocial->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $fobiaSocial->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $fobiaSocial->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $fobiaSocial->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $fobiaSocial->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $fobiaSocial->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $fobiaSocial->where('sename', true)->count() }}</td>
+                                <td>{{ $fobiaSocial->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $fobiaSocial->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1267,11 +1242,12 @@
                                 <td>{{ $trAnsGen->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trAnsGen->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trAnsGen->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trAnsGen->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trAnsGen->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trAnsGen->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trAnsGen->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trAnsGen->where('sename', true)->count() }}</td>
+                                <td>{{ $trAnsGen->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trAnsGen->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1315,11 +1291,12 @@
                                 <td>{{ $otrosTrAns->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $otrosTrAns->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $otrosTrAns->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $otrosTrAns->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $otrosTrAns->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otrosTrAns->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $otrosTrAns->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otrosTrAns->where('sename', true)->count() }}</td>
+                                <td>{{ $otrosTrAns->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $otrosTrAns->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1366,11 +1343,12 @@
                                 <td>{{ $leve->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $leve->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $leve->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $leve->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $leve->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $leve->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $leve->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $leve->where('sename', true)->count() }}</td>
+                                <td>{{ $leve->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $leve->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1414,11 +1392,12 @@
                                 <td>{{ $moderado->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $moderado->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $moderado->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $moderado->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $moderado->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $moderado->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $moderado->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $moderado->where('sename', true)->count() }}</td>
+                                <td>{{ $moderado->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $moderado->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1462,11 +1441,12 @@
                                 <td>{{ $avanzado->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $avanzado->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $avanzado->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $avanzado->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $avanzado->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $avanzado->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $avanzado->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $avanzado->where('sename', true)->count() }}</td>
+                                <td>{{ $avanzado->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $avanzado->where('pci', true)->count() }}</td>
                             </tr>
                             </tr>
@@ -1511,11 +1491,12 @@
                                 <td>{{ $esquizo->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $esquizo->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $esquizo->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $esquizo->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $esquizo->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $esquizo->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $esquizo->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $esquizo->where('sename', true)->count() }}</td>
+                                <td>{{ $esquizo->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $esquizo->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1560,11 +1541,12 @@
                                 <td>{{ $epEsquizo->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $epEsquizo->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $epEsquizo->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $epEsquizo->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $epEsquizo->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $epEsquizo->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $epEsquizo->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $epEsquizo->where('sename', true)->count() }}</td>
+                                <td>{{ $epEsquizo->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $epEsquizo->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1609,11 +1591,12 @@
                                 <td>{{ $trCondAlim->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trCondAlim->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trCondAlim->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trCondAlim->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trCondAlim->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trCondAlim->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trCondAlim->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trCondAlim->where('sename', true)->count() }}</td>
+                                <td>{{ $trCondAlim->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trCondAlim->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1657,11 +1640,12 @@
                                 <td>{{ $retrasoMental->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $retrasoMental->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $retrasoMental->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $retrasoMental->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $retrasoMental->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $retrasoMental->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $retrasoMental->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $retrasoMental->where('sename', true)->count() }}</td>
+                                <td>{{ $retrasoMental->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $retrasoMental->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1705,11 +1689,12 @@
                                 <td>{{ $trPersonalidad->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trPersonalidad->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trPersonalidad->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trPersonalidad->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trPersonalidad->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trPersonalidad->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trPersonalidad->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trPersonalidad->where('sename', true)->count() }}</td>
+                                <td>{{ $trPersonalidad->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trPersonalidad->where('pci', true)->count() }}</td>
                             </tr>
 
@@ -1757,11 +1742,12 @@
                                 <td>{{ $autismo->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $autismo->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $autismo->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $autismo->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $autismo->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $autismo->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $autismo->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $autismo->where('sename', true)->count() }}</td>
+                                <td>{{ $autismo->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $autismo->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1805,11 +1791,12 @@
                                 <td>{{ $asperger->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $asperger->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $asperger->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $asperger->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $asperger->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $asperger->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $asperger->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $asperger->where('sename', true)->count() }}</td>
+                                <td>{{ $asperger->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $asperger->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1853,11 +1840,12 @@
                                 <td>{{ $rett->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $rett->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $rett->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $rett->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $rett->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $rett->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $rett->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $rett->where('sename', true)->count() }}</td>
+                                <td>{{ $rett->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $rett->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1901,11 +1889,12 @@
                                 <td>{{ $trDesinteg->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trDesinteg->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trDesinteg->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trDesinteg->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trDesinteg->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trDesinteg->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trDesinteg->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trDesinteg->where('sename', true)->count() }}</td>
+                                <td>{{ $trDesinteg->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trDesinteg->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -1949,11 +1938,12 @@
                                 <td>{{ $trNOespecif->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $trNOespecif->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $trNOespecif->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $trNOespecif->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $trNOespecif->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trNOespecif->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $trNOespecif->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $trNOespecif->where('sename', true)->count() }}</td>
+                                <td>{{ $trNOespecif->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $trNOespecif->where('pci', true)->count() }}</td>
                             </tr>
                             </tr>
@@ -1998,11 +1988,12 @@
                                 <td>{{ $epilepsia->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $epilepsia->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $epilepsia->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $epilepsia->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $epilepsia->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $epilepsia->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $epilepsia->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $epilepsia->where('sename', true)->count() }}</td>
+                                <td>{{ $epilepsia->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $epilepsia->where('pci', true)->count() }}</td>
                             </tr>
                             <tr>
@@ -2046,11 +2037,12 @@
                                 <td>{{ $otras->where('grupo', '>=', 80)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td></td>
                                 <td></td>
-                                <td>{{ $otras->where('origin', true)->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $otras->where('origin', true)->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $otras->where('pueblo_originario', true)->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $otras->where('pueblo_originario', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otras->where('migrante', true)->where('sexo', '=', 'Masculino')->count() }}</td>
                                 <td>{{ $otras->where('migrante', true)->where('sexo', '=', 'Femenino')->count() }}</td>
                                 <td>{{ $otras->where('sename', true)->count() }}</td>
+                                <td>{{ $otras->where('mejor_ninez', true)->count() }}</td>
                                 <td>{{ $otras->where('pci', true)->count() }}</td>
                             </tr>
                             </tr>

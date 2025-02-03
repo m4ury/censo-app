@@ -55,7 +55,7 @@
                         <tr>
                             <td>{{ Carbon\Carbon::parse($encuesta->fecha_encuesta)->format('d-m-Y') }}</td>
                             <td>{{ $encuesta->num_encuestas }}</td>
-                            <td>{{ $encuesta->paciente->rut }}</td>
+                            <td nowrap>{{ $encuesta->paciente->rut }}</td>
                             <td class="text-uppercase">{{ $encuesta->paciente->fullName() }}</td>
                             <td>{{ $encuesta->paciente->ficha }}</td>
                             <td>{{ $encuesta->paciente->telefono ?? '--' }}</td>

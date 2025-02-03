@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNumEncuestaToEncuestasTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddNumEncuestaToEncuestasTable extends Migration
      */
     public function up()
     {
-        Schema::table('encuestas', function (Blueprint $table) {
-            $table->unsignedInteger('num_encuestas')->nullable();
+        Schema::table('controls', function (Blueprint $table) {
+            $table->boolean('visita_domiciliaria')->default(false)->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddNumEncuestaToEncuestasTable extends Migration
      */
     public function down()
     {
-        Schema::table('encuestas', function (Blueprint $table) {
+        Schema::table('controls', function (Blueprint $table) {
             //
         });
     }
-}
+};
