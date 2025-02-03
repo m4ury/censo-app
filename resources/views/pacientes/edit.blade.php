@@ -185,7 +185,7 @@
                                 ) !!}
                             </div>
                         </div>
-
+                        <hr class="my-4">
                         <div class="form-group row">
                             <div class="col-sm">
                                 {!! Form::label('pueblo_originario_label', 'Originario', [
@@ -206,7 +206,7 @@
                             </div>
 
                             <div class="col-sm">
-                                {!! Form::label('discap_label', 'Paciente con discapacidad', ['class' => 'col-sm col-form-label']) !!}
+                                {!! Form::label('discap_label', 'Con discapacidad', ['class' => 'col-sm col-form-label']) !!}
                                 {!! Form::checkbox('discap', 1, old('discap', $paciente->discap == 1 ? true : false), [
                                     'class' => 'form-control form-control',
                                 ]) !!}
@@ -217,6 +217,13 @@
                                     {!! Form::checkbox('postrado', 1, old('postrado', $paciente->postrado == 1 ? true : false), [
                                         'class' => 'form-control form-control',
                                         'id' => 'postradoToggle',
+                                    ]) !!}
+                                </div>
+                                <div class="col-sm">
+                                    {!! Form::label('pacienteHdLabel', 'HD', ['class' => 'col-sm col-form-label']) !!}
+                                    {!! Form::checkbox('paciente_hd', 1, old('paciente_hd', $paciente->paciente_hd == 1 ? true : false), [
+                                        'class' => 'form-control form-control',
+                                        'id' => 'paciente_hdToggle',
                                     ]) !!}
                                 </div>
                             @endif
@@ -263,9 +270,9 @@
                                 </div>
                             @endif
                         </div>
-
+                        <hr class="my-4">
                         @if ($paciente->riesgo_cv)
-                            <div class="form-group row card card-info card-outline py-3">
+                            <div class="form-group row py-3">
                                 {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
                                 <div class="col-sm-3">
                                     {!! Form::select(
@@ -282,7 +289,7 @@
                                         ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
                                         old('erc', $paciente->erc),
                                         [
-                                            'class' => 'form-control form-control',
+                                            'class' => 'form-control',
                                             'placeholder' => 'Seleccione',
                                             'id' => 'erc',
                                         ],
@@ -291,7 +298,7 @@
                             </div>
                         @endif
 
-                        <div class="form-group row ml-2 py-3">
+                        <div class="form-group row py-3">
                             {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}
                             <div class="col-sm-3">
                                 {!! Form::select(
@@ -299,7 +306,7 @@
                                     ['fallecido' => 'Fallecido', 'inasistente' => 'Inasistente', 'cambio_centro' => 'Cambio Hospital'],
                                     old('egreso', $paciente->egreso),
                                     [
-                                        'class' => 'form-control     form-control',
+                                        'class' => 'form-control',
                                         'placeholder' => 'Seleccione motivo Egr.',
                                         'id' => 'egreso',
                                     ],

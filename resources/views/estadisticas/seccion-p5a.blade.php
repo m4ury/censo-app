@@ -82,8 +82,8 @@
                                 <td>{{ $aSinRiesgo_9599F }}</td>
                                 <td>{{ $aSinRiesgo_100M }}</td>
                                 <td>{{ $aSinRiesgo_100F }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{  $aSinRiesgoOriginM }}</td>
+                                <td>{{  $aSinRiesgoOriginF }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -109,8 +109,8 @@
                                 <td>{{ $aRiesgo_9599F }}</td>
                                 <td>{{ $aRiesgo_100M }}</td>
                                 <td>{{ $aRiesgo_100F }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{  $aRiesgoOriginM }}</td>
+                                <td>{{  $aRiesgoOriginF }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>

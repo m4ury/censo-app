@@ -26,14 +26,23 @@
                     </div>
                     <div class="row mb-3">
                         <h4 class="card-title text-bold">
-                            <a href="{{ route('estadisticas.seccion-p1d') }}">SECCION D: GESTANTES Y MUJERES DE 8° MES
-                                POST-PARTO EN CONTROL, SEGÚN ESTADO NUTRICIONAL
+                            <a href="{{ route('estadisticas.seccion-p1d') }}">SECCIONES D y E
                             </a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="{{ route('estadisticas.seccion-p1f') }}">SECCIONES F y F.1</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p1g') }}">SECCION G: GESTANTES EN CONTROL CON ECOGRAFÍA POR TRIMESTRE DE GESTACION (EN EL SEMESTRE)</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p1i') }}">SECCION I: GESTANTES EN CONTROL CON TEST DE VIH/SIFILIS TOMADO (EN EL SEMESTRE, RED PÚBLICA O EXTRASISTEMA)</a>
                         </h4>
                     </div>
                 </div>
@@ -74,6 +83,11 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
+                            <a href="{{ route('estadisticas.seccion-p2h') }}">SECCION H: POBLACIÓN SEGÚN DIAGNÓSTICO DE NIÑOS, NIÑAS Y ADOLESCENTES CON NECESIDADES ESPECIALES DE ATENCIÓN EN SALUD (NANEAS)</a>
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <h4 class="card-title text-bold mb-3">
                             <a href="{{ route('estadisticas.seccion-p2j') }}">SECCIÓN J: SEGUN RIESGO
                                 ODONTOLOGICO Y DAÑO POR CARIES</a>
                         </h4>
@@ -97,12 +111,12 @@
                                 CONTROL</a>
                         </h4>
                     </div>
-                    {{-- <div class="row">
+                    <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="#">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
+                            <a href="{{ route('estadisticas.seccion-p3b') }}">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
                         </h4>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <h4 class="card-title text-bold mb-3">
                             <a href="#">SECCIÓN C: POBLACION EN CONTROL EN PROGRAMA DE REHABILITACION PULMONAR EN SALA
                                 IRA-ERA</a>
@@ -230,8 +244,7 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p12') }}">SECCION C: PROGRAMA DE CANCER DE MAMA: MUJERES CON
-                        MAMOGRAFÍA VIGENTE EN LOS ULTIMOS 2 AÑOS.</a>
+                    <a href="{{ route('estadisticas.seccion-p12') }}">SECCIONES C y D</a>
                 </h4>
             </div>
         </div>

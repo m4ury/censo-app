@@ -26,6 +26,29 @@
             </span>
         @endif
     </div>
+    @if($paciente->paciente_hd)
+        {!! Form::label('visita_domiciliaria_label', 'Visita Domiciliaria', [
+            'class' => 'col-sm col-form-label text-bold text-center',
+        ]) !!}
+        <div class="col-sm">
+            {!! Form::checkbox(
+                'visita_domiciliaria',
+                1,
+                old('visita_domiciliaria', $control->visita_domiciliaria == 1 ? true : null),
+                [
+                    'class' => 'form-control my-2',
+                    'id' => 'visita_domiciliaria',
+                ],
+            ) !!}
+    </div>
+    <div class="row">
+        <div class="col col-sm">
+            @if ($paciente->paciente_hd)
+                
+            @endif
+        </div>
+    </div>
+    @endif
 </div>
 
 {!! Form::hidden('paciente_id', $paciente->id) !!}
