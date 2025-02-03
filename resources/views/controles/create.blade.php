@@ -8,8 +8,8 @@
                     <div class="card-header"
                         style="position: -webkit-sticky; position:sticky; top:1.5em; z-index:2; box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);">
                         <input type="text" name="paciente"
-                            value="Paciente: {{ $paciente->fullName() }}       Edad: {{ $paciente->edad() < 10 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}"
-                            class="form-control" disabled>
+                            value="Paciente: {{ $paciente->fullName() }} - Edad: {{ $paciente->edad() < 10 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años ' }} {{ $paciente->paciente_hd ? '- HD ' : '' }} {{ $paciente->cuidador ? '- Cuidador ' : '' }} {{ $paciente->migrante ? '- Migrante ' : '' }} {{ $paciente->postrado ? '- Dependencia Severa ' : '' }} {{ $paciente->embarazada ? '- Embarazada ' : '' }}"
+                            class="form-control text-uppercase text-bold">
                     </div>
                     <div class="card-body">
                         {{ Form::open(['action' => 'ControlController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}

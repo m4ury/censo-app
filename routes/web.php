@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.salaEraSinControles', 'PacienteController@salaEra_sin_controles')->name('pacientes.salaEraSinControles');
 
 
-    Route::resource('patologias', 'PatologiaController')->except('[index, create]');
+    Route::resource('patologias', 'PatologiaController');
     Route::get('patologias/{paciente?}', 'PatologiaController@index')->name('patologias');
     Route::get('patologias/create/{paciente?}', 'PatologiaController@create')->name('patologias.crear');
 
@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('constancias', 'ConstanciaController');
 
     //rutas para controles
-    Route::resource('controles', 'ControlController')->except('[index, create]');
+    Route::resource('controles', 'ControlController')->except(['index', 'create']);
     //Route::get('controles-all', 'ControlController@index')->name('controles-all');
     Route::get('controles/pcte/{paciente?}', 'ControlController@controlsPcte')->name('controles');
     Route::get('controles/create/{paciente?}', 'ControlController@create')->name('controles.create');
@@ -95,18 +95,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p1b', 'EstadisticaController@seccionP1b')->name('estadisticas.seccion-p1b');
     Route::get('/estadisticas.seccion-p1f', 'EstadisticaController@seccionP1f')->name('estadisticas.seccion-p1f');
     Route::get('/estadisticas.seccion-p1d', 'EstadisticaController@seccionP1d')->name('estadisticas.seccion-p1d');
+    Route::get('/estadisticas.seccion-p1g', 'EstadisticaController@seccionP1g')->name('estadisticas.seccion-p1g');
+    Route::get('/estadisticas.seccion-p1i', 'EstadisticaController@seccionP1i')->name('estadisticas.seccion-p1i');
+
+
 
 
     //P2
-    Route::get('/estadisticas.seccion-p2a', 'EstadisticaController@seccionP2a')->name('estadisticas.seccion-p2a');
-    Route::get('/estadisticas.seccion-p2a1', 'EstadisticaController@seccionP2a1')->name('estadisticas.seccion-p2a1');
-    Route::get('/estadisticas.seccion-p2b', 'EstadisticaController@seccionP2b')->name('estadisticas.seccion-p2b');
-    Route::get('/estadisticas.seccion-p2cde', 'EstadisticaController@seccionP2cde')->name('estadisticas.seccion-p2cde');
-    Route::get('/estadisticas.seccion-p2j', 'EstadisticaController@seccionP2j')->name('estadisticas.seccion-p2j');
+    Route::get('/estadisticas.seccion-p2a', 'Estadisticas\SeccionP2Controller@seccionP2a')->name('estadisticas.seccion-p2a');
+    Route::get('/estadisticas.seccion-p2a1', 'Estadisticas\SeccionP2Controller@seccionP2a1')->name('estadisticas.seccion-p2a1');
+    Route::get('/estadisticas.seccion-p2b', 'Estadisticas\SeccionP2Controller@seccionP2b')->name('estadisticas.seccion-p2b');
+    Route::get('/estadisticas.seccion-p2cde', 'Estadisticas\SeccionP2Controller@seccionP2cde')->name('estadisticas.seccion-p2cde');
+    Route::get('/estadisticas.seccion-p2j', 'Estadisticas\SeccionP2Controller@seccionP2j')->name('estadisticas.seccion-p2j');
+    Route::get('/estadisticas.seccion-p2h', 'Estadisticas\SeccionP2Controller@seccionP2h')->name('estadisticas.seccion-p2h');
+
 
 
     //P3
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
+    Route::get('/estadisticas.seccion-p3b', 'EstadisticaController@seccionP3b')->name('estadisticas.seccion-p3b');
     Route::get('/estadisticas.seccion-p3d', 'EstadisticaController@seccionP3d')->name('estadisticas.seccion-p3d');
 
     //P4
@@ -128,6 +135,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p9b', 'EstadisticaController@seccionP9b')->name('estadisticas.seccion-p9b');
     Route::get('/estadisticas.seccion-p9c', 'EstadisticaController@seccionP9c')->name('estadisticas.seccion-p9c');
     Route::get('/estadisticas.seccion-p9d', 'EstadisticaController@seccionP9d')->name('estadisticas.seccion-p9d');
+    Route::get('/estadisticas.seccion-p9e', 'EstadisticaController@seccionP9e')->name('estadisticas.seccion-p9e');
+
 
 
 

@@ -14,7 +14,11 @@
                     Paciente
                 </h3>
             </div>
+            <div class="card-body" style="overflow-x: scroll;">
+
+            </div>
             <div class="card-body">
+                {{-- informacion del paciente activa por defecto --}}
                 <div class="form-group row nowrap">
                     <span class="badge badge-pill bg-gradient-warning badge mx-3 py-2">{{ $paciente->fullName() }}
                     </span>
@@ -58,22 +62,20 @@
                             aria-orientation="vertical">
                             <a class="nav-link active" id="vert-tabs-paciente-tab" data-toggle="pill"
                                 href="#vert-tabs-paciente" role="tab" aria-controls="vert-tabs-paciente"
-                                aria-selected="true">Informacion del Paciente</a>
+                                aria-selected="true">Informacion del Paciente
+                            </a>
                             <a class="nav-link" id="vert-tabs-controles-tab" data-toggle="pill"
                                 href="#vert-tabs-controles" role="tab" aria-controls="vert-tabs-controles"
                                 aria-selected="false">Controles
                             </a>
-
-                            {{-- <a class="nav-link" id="vert-tabs-ic-tab" data-toggle="pill" href="#vert-tabs-ic"
-                                role="tab" aria-controls="vert-tabs-ic" aria-selected="false">Interconsultas</a> --}}
-
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
-                                aria-selected="false">Diagnosticos</a>
+                                aria-selected="false">{{$paciente->grupo < 10 ? "Naneas" : "Diagnosticos"}}</a>
                             @if ($paciente->grupo < 10)
                                 <a class="nav-link" id="vert-tabs-nino_sano-tab" data-toggle="pill"
                                     href="#vert-tabs-nino_sano" role="tab" aria-controls="vert-tabs-nino_sano"
-                                    aria-selected="false">Control Niño Sano</a>
+                                    aria-selected="false">Control Niño Sano
+                                </a>
                             @endif
                         </div>
                     </div>
@@ -105,11 +107,12 @@
                                     <strong><i class="fas fa-disease mr-1"></i>Enfermedad Renal
                                         Cronica(ERC)</strong>
                                     <br>
-                                    <p class="btn badge-pill bg-gradient-info">
+                                    <p class="btn badge-pill bg-gradient-info px-4 text-uppercase text-bold">
                                         {{ $paciente->erc ?: 'No se encontraron datos.' }}
                                     </p>
                                 </div>
                             </div>
+                            {{-- Controles Niño Sano --}}
                             <div class="tab-pane fade" id="vert-tabs-nino_sano" role="tabpanel"
                                 aria-labelledby="vert-tabs-nino_sano-tab">
                                 <div class="form-group row">
@@ -165,6 +168,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- Controles --}}
                             <div class="tab-pane fade" id="vert-tabs-controles" role="tabpanel"
                                 aria-labelledby="vert-tabs-controles-tab">
                                 @include('controles.list_controles', $paciente)
@@ -178,12 +182,13 @@
                                             class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
+                            {{-- Patologias/Naneas --}}
                             <div class="tab-pane fade" id="vert-tabs-patologias" role="tabpanel"
                                 aria-labelledby="vert-tabs-patologias-tab">
                                 @include('patologias.list_patologias', $paciente)
 
                                 @if ($paciente->patologias->count() == 0)
-                                    <p class="text-muted">No hay Patologias aun...<i
+                                    <p class="text-muted">No hay {{$paciente->grupo < 10 ? "Naneas" : "Patologias"}} aun...<i
                                             class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>

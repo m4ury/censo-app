@@ -74,11 +74,6 @@ class Paciente extends Model
         return $this->belongsToMany(Patologia::class, 'paciente_patologia', 'paciente_id', 'patologia_id')->withPivot('created_at');
     }
 
-    public function naneas()
-    {
-        return $this->belongsToMany(Nanea::class)->withPivot('created_at');
-    }
-
     public function scopeSearch($query, $q)
     {
         if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
@@ -785,17 +780,23 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Bajo peso')
             ->whereYear('controls.fecha_control', 2024)
-            ->latest('controls.fecha_control');
+            ->latest('controls.fecha_control')
+                ->union(DB::table('pacientes')
+                ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                ->whereNotNull('controls.rBarthel')
+                ->whereYear('controls.fecha_control', 2024));
     }
-
-    /* return $this->join('controls', 'controls.paciente_id', 'pacientes.id')->where('controls.tipo_control', '=', 'Medico')->where('controls.hba1cMayorIgual9Porcent', '=', 1)->latest('controls.fecha_control'); */
 
     public function normal()
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Normal')
             ->whereYear('controls.fecha_control', 2024)
-            ->latest('controls.fecha_control');
+            ->latest('controls.fecha_control')
+            ->union(DB::table('pacientes')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereNotNull('controls.rBarthel')
+            ->whereYear('controls.fecha_control', 2024));
     }
 
     public function sobrePeso()
@@ -803,7 +804,11 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Sobrepeso')
             ->whereYear('controls.fecha_control', 2024)
-            ->latest('controls.fecha_control');
+            ->latest('controls.fecha_control')
+            ->union(DB::table('pacientes')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereNotNull('controls.rBarthel')
+            ->whereYear('controls.fecha_control', 2024));
     }
 
     public function obeso()
@@ -811,7 +816,11 @@ class Paciente extends Model
         return $this->efam()
             ->where('controls.imc_resultado', 'Obesidad')
             ->whereYear('controls.fecha_control', 2024)
-            ->latest('controls.fecha_control');
+            ->latest('controls.fecha_control')
+            ->union(DB::table('pacientes')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereNotNull('controls.rBarthel')
+            ->whereYear('controls.fecha_control', 2024));
     }
 
     public function totalSeccionB()
@@ -819,7 +828,6 @@ class Paciente extends Model
         return $this->efam()
             ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
             ->whereYear('controls.fecha_control', 2024)
-            //->orwhereIn('dependencia', ['L', 'M', 'G', 'T'])
             ->latest('controls.fecha_control');
     }
 
@@ -1087,6 +1095,15 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    //P2 seccion H - Naneas
+    public function naneas($patologia = null)
+{
+    return $this->whereHas('patologias', function ($query) use ($patologia) {
+        $query->where('nombre_patologia', $patologia)
+              ->where('naneas', 1); // Asegúrate de que 'naneas' está en la tabla patologias
+    })->whereNull('egreso');
+}
+
     //P2 seccion J
     public function rCero($fem, $masc)
     {
@@ -1309,6 +1326,7 @@ class Paciente extends Model
             ->where('controls.embarazo', true)
             ->where('controls.rPsicosocial', true)
             ->whereYear('controls.fecha_control', '2024')
+            ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1320,6 +1338,7 @@ class Paciente extends Model
             ->where('controls.embarazo', true)
             ->where('controls.vGenero', true)
             ->whereYear('controls.fecha_control', '2024')
+            ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1327,7 +1346,7 @@ class Paciente extends Model
     public function postParto($meses)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
+            ->whereIn('controls.tipo_control', ['Matrona', 'Nutricionista'])
             ->whereYear('controls.fecha_control', '2024')
             ->where('controls.post_parto', $meses)
             ->whereNull('pacientes.egreso')
@@ -1341,6 +1360,7 @@ class Paciente extends Model
             ->where('controls.embarazo', true)
             ->where('controls.aro', true)
             ->whereYear('controls.fecha_control', '2024')
+            ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1351,9 +1371,24 @@ class Paciente extends Model
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
             ->whereYear('controls.fecha_control', '2024')
+            ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    public function ecoTrimest($semana = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->where('controls.ecoTrimest', $semana)
+            ->whereYear('controls.fecha_control', '2024')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+
 
     public function lactancia()
     {
@@ -1387,6 +1422,15 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.mamoVigente', '<=', Carbon::now()->subYear(2))
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function papVigente()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.papVigente', '<=', Carbon::now()->subYear(3))
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
