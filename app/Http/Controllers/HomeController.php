@@ -30,7 +30,7 @@ class HomeController extends Controller
             ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso', 'sexo', 'embarazada', 'controls.climater', 'controls.regulacion', 'controls.ginec')
             ->where('controls.tipo_control', 'Matrona')
             ->whereNull('egreso')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->get()
             ->unique('rut');
@@ -63,7 +63,7 @@ class HomeController extends Controller
         $pieDm2 = $all->dm2()
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-            ->whereYear('controls.fecha_control', '>', '2023')
+            ->whereYear('controls.fecha_control', '>', '2024')
             ->latest('controls.fecha_control')
             ->get()
             ->unique('rut')
@@ -80,14 +80,14 @@ class HomeController extends Controller
             ->count();
 
         $efam = $all->efam()
-            ->whereYear('controls.fecha_control', '>', '2023')
+            ->whereYear('controls.fecha_control', '>', '2024')
             ->get()
             ->where('grupo', '>', 64)
             ->unique('rut')
             ->count();
 
         $barthel = $all->barthel()
-            ->whereYear('controls.fecha_control', '>', '2023')
+            ->whereYear('controls.fecha_control', '>', '2024')
             ->get()
             ->where('grupo', '>', 64)
             ->unique('rut')

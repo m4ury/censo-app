@@ -199,7 +199,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.trHumor', $dep)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -210,7 +210,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.trConsumo', $cons)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -221,7 +221,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.trInfAdol', $tr)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -232,7 +232,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.trAns', $tr)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -243,7 +243,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.demencias', $dem)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -254,7 +254,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.diagSm', $diag)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -265,7 +265,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Psicologo')
             ->where('controls.trDesarrollo', $tr)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -527,7 +527,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rEfam')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -536,7 +536,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereIn('controls.rBarthel', ['dMod', 'dLeve', 'dSevero', 'dTotal'])
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -583,7 +583,7 @@ class Paciente extends Model
             ->where('patologias.nombre_patologia', 'DM2')
             ->whereNull('pacientes.egreso')
             ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -679,7 +679,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.imc_resultado', 'Sobrepeso')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -687,7 +687,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.imc_resultado', 'Sobrepeso')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -695,7 +695,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.imc_resultado', 'Obesidad')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -703,7 +703,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.imc_resultado', 'Obesidad')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -758,7 +758,7 @@ class Paciente extends Model
     {
         return $this->barthel()
             ->whereIn('controls.rBarthel', ['dMod', 'dLeve', 'dSevero', 'dTotal'])
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->whereNull('egreso');
     }
 
@@ -775,55 +775,55 @@ class Paciente extends Model
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Bajo peso')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
                 ->union(DB::table('pacientes')
                 ->join('controls', 'controls.paciente_id', 'pacientes.id')
                 ->whereNotNull('controls.rBarthel')
-                ->whereYear('controls.fecha_control', 2024));
+                ->whereYear('controls.fecha_control', 2025));
     }
 
     public function normal()
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Normal')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2024));
+            ->whereYear('controls.fecha_control', 2025));
     }
 
     public function sobrePeso()
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Sobrepeso')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2024));
+            ->whereYear('controls.fecha_control', 2025));
     }
 
     public function obeso()
     {
         return $this->efam()
             ->where('controls.imc_resultado', 'Obesidad')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
             ->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2024));
+            ->whereYear('controls.fecha_control', 2025));
     }
 
     public function totalSeccionB()
     {
         return $this->efam()
             ->whereIn('controls.imc_resultado', ['Bajo peso', 'Normal', 'Sobrepeso', 'Obesidad'])
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control');
     }
 
@@ -833,7 +833,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaClasif', 'Leve')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -844,7 +844,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaClasif', 'Moderado')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -855,7 +855,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaClasif', 'Severo')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -866,7 +866,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.sborClasif', 'Leve')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -877,7 +877,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.sborClasif', 'Moderado')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -888,7 +888,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.sborClasif', 'Severo')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -899,7 +899,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.epocClasif', 'A')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -919,7 +919,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.epocClasif', 'B')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -930,7 +930,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.otras_enf', 'Otras respiratorias cronicas')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -950,7 +950,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaControl', $control)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -961,7 +961,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.epocControl', $control)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -971,7 +971,7 @@ class Paciente extends Model
     public function pesoEdad($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.indPesoEdad', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -981,7 +981,7 @@ class Paciente extends Model
     public function pesoTalla($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.indPesoTalla', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -991,7 +991,7 @@ class Paciente extends Model
     public function tallaEdad($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.indTallaEdad', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1001,7 +1001,7 @@ class Paciente extends Model
     public function integral($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.dNutInteg', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1011,7 +1011,7 @@ class Paciente extends Model
     public function imcEdad($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.indIMCEdad', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1021,7 +1021,7 @@ class Paciente extends Model
     public function perimCintura($fem, $masc, $ind)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.indPeCinturaEdad', '=', $ind)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1032,7 +1032,7 @@ class Paciente extends Model
     public function psicomotor($fem, $masc, $ev)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.evDPM', '=', $ev)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1043,7 +1043,7 @@ class Paciente extends Model
     public function riesgoIra($fem, $masc, $score)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.scoreIra', '=', $score)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1054,7 +1054,7 @@ class Paciente extends Model
     public function quintoMes($fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->wherenotNull('controls.ctrlNut5to_mes')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1064,7 +1064,7 @@ class Paciente extends Model
     public function tercerAnio($fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->wherenotNull('controls.ctrlNut3_6_meses')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1074,7 +1074,7 @@ class Paciente extends Model
     public function dgPa($fem, $masc, $dg)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.diagPA', '=', $dg)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1084,7 +1084,7 @@ class Paciente extends Model
     public function malNut($fem, $masc, $riesgo)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2024)
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.malNutExceso', '=', $riesgo)
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -1106,7 +1106,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Dentista')
             ->whereIn('controls.rCero', ['alto', 'bajo'])
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1117,7 +1117,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Dentista')
             ->whereNotNull('controls.dCaries')
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1128,7 +1128,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Dentista')
             ->where('controls.inasistente', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1238,7 +1238,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where($metodo, true)
-            //->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('sexo', 'Femenino')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1249,7 +1249,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.hormonal', $metodo)
-            //->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('sexo', 'Femenino')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1260,7 +1260,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.preservativo', $sexo)
-            //->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1270,7 +1270,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.esterilizacion', $sexo)
-            //->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1300,7 +1300,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.climater', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1312,7 +1312,7 @@ class Paciente extends Model
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
             ->where('controls.rPsicosocial', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1324,7 +1324,7 @@ class Paciente extends Model
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
             ->where('controls.vGenero', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1334,7 +1334,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereIn('controls.tipo_control', ['Matrona', 'Nutricionista'])
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('controls.post_parto', $meses)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1346,7 +1346,7 @@ class Paciente extends Model
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
             ->where('controls.aro', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1357,7 +1357,7 @@ class Paciente extends Model
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
@@ -1369,7 +1369,7 @@ class Paciente extends Model
             ->where('controls.tipo_control', 'Matrona')
             ->where('controls.embarazo', true)
             ->where('controls.ecoTrimest', $semana)
-            ->whereYear('controls.fecha_control', '2024')
+            ->whereYear('controls.fecha_control', '2025')
             ->where('pacientes.embarazada', true)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
