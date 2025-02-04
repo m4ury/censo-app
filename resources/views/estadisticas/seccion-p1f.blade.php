@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P1: Seccion A')
+@section('title', 'REM P1: Seccion F')
 
 @section('content')
     <div class="row justify-content-center">
