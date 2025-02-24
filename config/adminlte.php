@@ -410,19 +410,14 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
                 [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/sweetalert2/sweetalert2.min.css',
                 ],
-                [
-                    'type' => 'js',
-                    'asset' => true,
-                    'location' => 'vendor/sweetalert2/sweetalert2.min.js',
-                ]
             ],
         ],
         'Pace' => [
@@ -445,12 +440,12 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => true,
+                    'asset' => false,
                     'location' => 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
                 ],
             ],
