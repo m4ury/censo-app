@@ -156,8 +156,31 @@
                                 ) !!}
                             </div>
                         </div>
+                        <div class="row">
+                            <div id="map" style="height: 400px; margin-top: 20px;" class="col col-sm-6 form-group"></div>
 
-                        <div class="form-group row">
+                        <div class="col-sm form-group">
+                            {!! Form::label('latitud_label', 'Latitud:', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm">
+                                {!! Form::text('latitud', old('latitud', $paciente->latitud), [
+                                    'class' => 'form-control form-control-sm' . ($errors->has('latitud') ? ' is-invalid' : ''),
+                                    'id' => 'latitud',
+                                    'readonly' => 'readonly',
+                                ]) !!}
+                            </div>
+                            {!! Form::label('longitud_label', 'Longitud:', ['class' => 'col-sm-2 col-form-label']) !!}
+                            <div class="col-sm form-group">
+                                {!! Form::text('longitud', old('longitud', $paciente->longitud), [
+                                    'class' => 'form-control form-control-sm' . ($errors->has('longitud') ? ' is-invalid' : ''),
+                                    'id' => 'longitud',
+                                    'readonly' => 'readonly',
+                                ]) !!}
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group row pt-3">
                             {!! Form::label('telefono_label', 'Telefono', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
                                 {!! Form::tel('telefono', $paciente->telefono, [
@@ -613,5 +636,41 @@
             $('#empam, #hd, #postrados').show();
         } else
             $('#empam, #hd, #postrados').hide();
+    </script>
+
+    <script>
+        // Determinamos las coordenadas iniciales:
+        // Si existen latitud y longitud, se usan, de lo contrario se establecen unas por defecto.
+        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.9762037' }};
+        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.8052933' }};
+
+        // Inicializamos el mapa centrado en las coordenadas iniciales
+        var map = L.map('map').setView([initialLat, initialLng], 16);
+
+        // Cargamos el mapa base desde OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Hospital de Hualañe'
+        }).addTo(map);
+
+        var marker;
+
+        // Si el paciente ya tiene coordenadas, mostramos el marcador en esa posición
+        @if($paciente->latitud && $paciente->longitud)
+            marker = L.marker([{{ $paciente->latitud }}, {{ $paciente->longitud }}]).addTo(map);
+        @endif
+
+        // Al hacer clic en el mapa, se actualiza o se crea el marcador y se actualizan los campos del formulario
+        map.on('click', function(e) {
+            var lat = e.latlng.lat.toFixed(7);
+            var lng = e.latlng.lng.toFixed(7);
+
+            if (marker) {
+                marker.setLatLng(e.latlng);
+            } else {
+                marker = L.marker(e.latlng).addTo(map);
+            }
+            $('#latitud').val(lat);
+            $('#longitud').val(lng);
+        });
     </script>
 @endsection

@@ -41,4 +41,44 @@
             width: '100%'
         })
     </script>
+    <!-- Estilos y scripts de Leaflet -->
+   {{--  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script> --}}
+
+    <!-- Asegúrate de incluir Bootstrap JS (si aún no lo tienes) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Declaramos la variable para el mapa
+        var map, marker;
+
+        // Inicializamos el mapa solo cuando el modal se muestre
+        var mapModal = document.getElementById('mapModal');
+        mapModal.addEventListener('shown.bs.modal', function () {
+            if (!map) {
+                // Inicializamos el mapa en un punto de referencia
+                map = L.map('map').setView([-34.97712680, -71.7872429], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+
+                // Evento al hacer clic en el mapa para seleccionar la ubicación
+                map.on('click', function(e) {
+                    var lat = e.latlng.lat.toFixed(7);
+                    var lng = e.latlng.lng.toFixed(7);
+
+                    if (marker) {
+                        marker.setLatLng(e.latlng);
+                    } else {
+                        marker = L.marker(e.latlng).addTo(map);
+                    }
+                    $('#latitude').val(lat);
+                    $('#longitude').val(lng);
+                });
+            } else {
+                // Si el mapa ya fue inicializado, se actualizan sus dimensiones
+                map.invalidateSize();
+            }
+        });
+    </script>
 @endsection

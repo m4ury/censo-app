@@ -59,7 +59,7 @@
                 @foreach ($g3 as $paciente)
                     {{-- dd($paciente->withCount('patologias')->having('patologias_count', '>', 4)->get('pacientes.rut')->first()) --}}
                     <tr>
-                        <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
+                        <td nowrap ><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
                         <td class="text-uppercase">{{ $paciente->fullName() }}</td>
                         <td>{{ $paciente->ficha }}
                         </td>

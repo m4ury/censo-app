@@ -83,7 +83,7 @@
 </div>
 
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <div class="form-group row py-3">
+    <div class="form-group row pt-3">
         {!! Form::label('direccion_label', 'Direccion', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm">
             {!! Form::text('direccion', null, [
@@ -137,6 +137,17 @@
             ) !!}
         </div>
     </div>
+
+    <div class="form-group row">
+        <!-- Botón para abrir el modal con el mapa -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mapModal">
+            Mapa
+        </button>
+    </div>
+
+    @include('pacientes.modalMap')
+
+
     <div class="form-group row">
         {!! Form::label('telefono_label', 'Télefono.', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm">
@@ -209,4 +220,5 @@
         </div>
     </div>
 </div>
+
 {{ Form::close() }}
