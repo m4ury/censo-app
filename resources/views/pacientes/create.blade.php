@@ -57,7 +57,7 @@
         mapModal.addEventListener('shown.bs.modal', function () {
             if (!map) {
                 // Inicializamos el mapa en un punto de referencia
-                map = L.map('map').setView([-34.97712680, -71.7872429], 13);
+                map = L.map('map').setView([-34.8720687,-71.1674369], 14);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);

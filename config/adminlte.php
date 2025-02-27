@@ -240,11 +240,11 @@ return [
             'can' => 'oirs'
         ],
 
-        [
+        /* [
             'text' => 'Solicitudes',
             'route' => 'solicitudes.index',
             'icon' => 'fas fa-envelope-open-text text-fuccia',
-        ],
+        ], */
 
         [
             'text' => 'Constancias GES',
@@ -258,7 +258,7 @@ return [
             'icon' => 'fas fa-fw fa-map-marked-alt text-gray-600',
             'can' => 'oirs'
         ],
-        [
+        /* [
             'header' => 'CONTROLES',
             'can' => 'controles-all'
         ],
@@ -274,7 +274,7 @@ return [
             'route' => 'proximos',
             'icon' => 'fas fa-fw fa-project-diagram text-yellow',
             'can' => 'controles-all'
-        ],
+        ], */
         [
             'header' => 'ESTADISTICAS',
             'can' => 'estadisticas'
@@ -285,12 +285,12 @@ return [
             'icon' => 'fas fa-fw fa-file-alt text-pink',
             'can' => 'estadisticas'
         ],
-        [
+        /* [
             'text' => 'Metas Ley 18.834',
             'route' => 'estadisticas.metas',
             'icon' => 'fas fa-chart-pie text-green',
             'can' => 'estadisticas'
-        ],
+        ], */
     ],
 
     /*

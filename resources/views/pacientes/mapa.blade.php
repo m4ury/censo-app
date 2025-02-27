@@ -11,17 +11,17 @@
 @section('js')
     <script>
         // Inicializar el mapa centrado en una ubicación específica
-        const map = L.map('map').setView([-35.02867080, -71.74547960], 12);
+        const map = L.map('map').setView([-34.8720687,-71.1674369], 15);
 
         // Añadir capa base de OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 17,
-            attribution: 'Hospital de Hualañe'
+            attribution: 'Hospital de Teno'
         }).addTo(map);
 
         // Definir los polígonos con un arreglo de coordenadas (lat, lon)
         const sectorCeleste = [
-            [-34.943427, -71.765194], //rinconada el buche
+            /* [-34.943427, -71.765194], //rinconada el buche
             [-34.95233240, -71.78377210], //rinconada
             [-34.984208, -71.812620], //celeste - rio mataquito
             [-34.987965, -71.809587], //puente paula
@@ -36,7 +36,7 @@
             [-34.993785, -71.789843], //rio - rinconada 1.3
             [-34.990955, -71.785894], //rio - rio - el buche
             [-35.079160, -71.718613], //remolino
-            [-34.95468120, -71.74547960], //el buche
+            [-34.95468120, -71.74547960], //el buche */
         ];
 
         const sectorNaranjo = [

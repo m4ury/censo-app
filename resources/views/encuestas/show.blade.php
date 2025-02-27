@@ -46,7 +46,7 @@
 
         <div class="row text-justified pt-3">
             <p>
-                <dd>La siguiente encuesta tiene por finalidad conocer la percepción que tiene la comunidad respecto de la atención, servicios brindados y respeto por los dereres y derechos de los usuarios del Hospital Chileno Japonés de Hualañé.</dd>
+                <dd>La siguiente encuesta tiene por finalidad conocer la percepción que tiene la comunidad respecto de la atención, servicios brindados y respeto por los dereres y derechos de los usuarios del {{ env('APP_INST') }}.</dd>
                 <dd>Su respuesta es muy importante, ya que ello nos permitirá mejorar y superar aquellas falencias en beneficio de ustedes.</dd>
             </p>
         </div>

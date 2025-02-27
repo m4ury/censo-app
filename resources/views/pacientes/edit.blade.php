@@ -198,7 +198,7 @@
                             <div class="col-sm">
                                 {!! Form::select(
                                     'sector',
-                                    ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'],
+                                    ['Urbano' => 'Urbano', 'Rural' => 'Rural', 'Otros' => 'Otros'],
                                     old('sector', $paciente->sector),
                                     [
                                         'class' => 'form-control form-control-sm',
@@ -641,15 +641,17 @@
     <script>
         // Determinamos las coordenadas iniciales:
         // Si existen latitud y longitud, se usan, de lo contrario se establecen unas por defecto.
-        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.9762037' }};
-        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.8052933' }};
+        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.8720687' }};
+        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.1674369' }};
+
+        //-34.8720687,-71.1674369
 
         // Inicializamos el mapa centrado en las coordenadas iniciales
         var map = L.map('map').setView([initialLat, initialLng], 16);
 
         // Cargamos el mapa base desde OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Hospital de Hualañe'
+            attribution: 'Hospital de Teno'
         }).addTo(map);
 
         var marker;

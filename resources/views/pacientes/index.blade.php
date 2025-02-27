@@ -67,18 +67,18 @@
                         <td>{{ $paciente->edad() < 1 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
                         <td>{{ $paciente->sexo }}</td>
                         <td>
-                            @if ($paciente->sector == 'Celeste')
+                            @if ($paciente->sector == 'Urbano')
                                 <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i>
-                                </span> Celeste
-                            @elseif($paciente->sector == 'Naranjo')
+                                    <i class="fas fa-square text-yellow"></i>
+                                </span> Urbano
+                            @elseif($paciente->sector == 'Rural')
+                                <span class="mr-2">
+                                    <i class="fas fa-square text-success"></i>
+                                </span> Rural
+                            @elseif($paciente->sector == 'Otros')
                                 <span class="mr-2">
                                     <i class="fas fa-square text-orange"></i>
-                                </span> Naranjo
-                            @elseif($paciente->sector == 'Blanco')
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-white"></i>
-                                </span> Blanco
+                                </span> Otros
                             @endif
                         </td>
                         <td>

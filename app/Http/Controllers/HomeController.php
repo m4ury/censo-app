@@ -104,8 +104,8 @@ class HomeController extends Controller
         $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
 
         //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->whereNull('egreso')->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->whereNull('egreso')->count();
+        $totalRural = $all->pscv()->where('sector', '=', 'Rural')->whereNull('egreso')->count();
+        $totalUrbano = $all->pscv()->where('sector', '=', 'Urbano')->whereNull('egreso')->count();
 
         $pacientes = new Paciente;
         $mas80F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->where('grupo', '>=', 80)->count();
@@ -142,8 +142,8 @@ class HomeController extends Controller
             'totalPacientes',
             'totalMasculino',
             'totalFemenino',
-            'totalCeleste',
-            'totalNaranjo',
+            'totalRural',
+            'totalUrbano',
             'mas80F',
             'in7579F',
             'in7074F',

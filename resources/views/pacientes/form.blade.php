@@ -164,7 +164,7 @@
         </div>
         {!! Form::label('sector_label', 'Sector', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm">
-            {!! Form::select('sector', ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'], null, [
+            {!! Form::select('sector', ['Urbano' => 'Urbano', 'Rural' => 'Rural', 'Otros' => 'Otros'], null, [
                 'class' => 'form-control form-control-sm',
                 'placeholder' => 'Seleccione Sector',
                 'id' => 'sector',

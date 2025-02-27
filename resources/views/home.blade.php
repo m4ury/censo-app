@@ -144,28 +144,28 @@
 
             <div class="col-lg-2 col-sm">
                 <!-- small box -->
-                <div class="small-box bg-gradient-orange">
+                <div class="small-box bg-gradient-yellow">
                     <div class="inner">
-                        <h3>{{ $totalNaranjo }}</h3>
-                        <p>Pacientes Sector Naranjo</p>
+                        <h3>{{ $totalUrbano }}</h3>
+                        <p>Pacientes Sector Urbano</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=naranjo') }}" class="small-box-footer">More info <i
+                    <a href="{{ url('/pacientes?q=urbano') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-2 col-sm">
-                <div class="small-box bg-gradient-lightblue">
+                <div class="small-box bg-gradient-success">
                     <div class="inner">
-                        <h3>{{ $totalCeleste }}</h3>
-                        <p>Pacientes Sector Celeste</p>
+                        <h3>{{ $totalRural }}</h3>
+                        <p>Pacientes Sector Rural</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
+                    <a href="{{ url('/pacientes?q=rural') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -433,7 +433,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm">
+            <!-- <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-info">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $all->lactancia()->count() }}</a></h3>
@@ -446,7 +446,7 @@
                             class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-pink">
                     <div class="inner">
