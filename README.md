@@ -1,7 +1,7 @@
-1.- clonar el repositorio.
-2.- en la consola: composer require maatwebsite/excel
+1.- clonar el repositorio.\n
+2.- en la consola: composer require maatwebsite/excel.\n
 3.- composer install.
-4.- renombrar el archivo ".env.example" a ".env"
+4.- renombrar el archivo ".env.example" a ".env". 
     (opcional)
     modificar estas variables de entorno:
         APP_INST= (nombre de institucion, ej.: ej hospital de ....)
