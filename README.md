@@ -1,10 +1,28 @@
 1.- clonar el repositorio.
 2.- en la consola: composer require maatwebsite/excel
 3.- composer install.
-4.- en consola ejecutar: php artisan adminlte:install --only=main_views --force
+4.- renombrar el archivo ".env.example" a ".env"
+    (opcional)
+    modificar estas variables de entorno:
+        APP_INST= (nombre de institucion, ej.: ej hospital de ....)
+        APP_DIR= (direccion de institucion)
+        APP_CIUDAD= (ciudad)
+        APP_REGION= (region)
+        APP_LAT= (para trabajar con openMaps y geoReferencia)
+        APP_LNG= (para trabajar con openMaps y geoReferencia)
+        APP_SECTOR1= (sector 1, ej.: Rural)
+        APP_SECTOR2= (sector 2, ej.: Urbano)
+        APP_SECTOR3= (sector 3, ej.: Otro)
+        APP_COLOR_SECTOR1 = (color del sector 1)
+        APP_COLOR_SECTOR2 = (color del sector 2)
+        APP_COLOR_SECTOR3 = (color del sector 3)
+        
+5.- en consola ejecutar: 
+                         php artisan key:generate   
+                         php artisan adminlte:install --only=main_views --force
                          php artisan migrate
                          php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)
-5.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
+6.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
 
 
 
