@@ -1,3 +1,13 @@
+1.- clonar el repositorio.
+1.- en la consola: composer require maatwebsite/excel
+2.- composer install.
+3.- en consola ejecutar: php artisan adminlte:install --only=main_views --force
+                         php artisan migrate
+                         php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)
+4.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
+
+
+
 Plataforma web dedicada a la gestión y manejo de información de población bajo control de los distintos programas de salud y ciclo vital, control y seguimiento de fichas de papel, estadísticas, digitalización y automatización de tareas administrativas.
 
 Proporcionar información verídica, confiable y a tiempo de nuestros pacientes en control de los distintos programas de salud y ciclo vital, además entregar de manera consolidada reportes según se solicite y estadística semestral, avance en tiempo real de metas sanitarias más importantes, ej.: cantidad evaluaciones Pie diabético realizadas y pacientes diabéticos sin evaluar en el año en curso, cantidad EFAM realizados, Pacientes diabéticos e hipertensos bajo control y descompensados, Encuesta semestral de satisfacción usuaria, etc.
