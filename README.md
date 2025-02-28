@@ -1,10 +1,10 @@
 1.- clonar el repositorio.
-1.- en la consola: composer require maatwebsite/excel
-2.- composer install.
-3.- en consola ejecutar: php artisan adminlte:install --only=main_views --force
+2.- en la consola: composer require maatwebsite/excel
+3.- composer install.
+4.- en consola ejecutar: php artisan adminlte:install --only=main_views --force
                          php artisan migrate
                          php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)
-4.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
+5.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
 
 
 
