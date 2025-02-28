@@ -1,21 +1,23 @@
-1.- clonar el repositorio.\n
-2.- en la consola: composer require maatwebsite/excel.\n
-3.- composer install.
-4.- renombrar el archivo ".env.example" a ".env". 
-    (opcional)
-    modificar estas variables de entorno:
-        APP_INST= (nombre de institucion, ej.: ej hospital de ....)
-        APP_DIR= (direccion de institucion)
-        APP_CIUDAD= (ciudad)
-        APP_REGION= (region)
-        APP_LAT= (para trabajar con openMaps y geoReferencia)
-        APP_LNG= (para trabajar con openMaps y geoReferencia)
-        APP_SECTOR1= (sector 1, ej.: Rural)
-        APP_SECTOR2= (sector 2, ej.: Urbano)
-        APP_SECTOR3= (sector 3, ej.: Otro)
-        APP_COLOR_SECTOR1 = (color del sector 1)
-        APP_COLOR_SECTOR2 = (color del sector 2)
-        APP_COLOR_SECTOR3 = (color del sector 3)
+1.- clonar el repositorio.<br>
+2.- en la consola: composer require maatwebsite/excel.<br>
+3.- composer install.<br>
+4.- renombrar el archivo ".env.example" a ".env". <br> 
+    (opcional)<br>
+    modificar estas variables de entorno:<br>
+        APP_INST= (nombre de institucion, ej.: ej hospital de ....)<br>
+        APP_DIR= (direccion de institucion)<br>
+        APP_CIUDAD= (ciudad)<br>
+        APP_REGION= (region)<br>
+        <br>
+        APP_LAT= (para trabajar con openMaps y geoReferencia)<br>
+        APP_LNG= (para trabajar con openMaps y geoReferencia)<br>
+        <br>
+        APP_SECTOR1= (sector 1, ej.: Rural)<br>
+        APP_SECTOR2= (sector 2, ej.: Urbano)<br>
+        APP_SECTOR3= (sector 3, ej.: Otro)<br>
+        APP_COLOR_SECTOR1 = (color del sector 1)<br>
+        APP_COLOR_SECTOR2 = (color del sector 2)<br>
+        APP_COLOR_SECTOR3 = (color del sector 3)<br>
         
 5.- en consola ejecutar: 
                          php artisan key:generate   
