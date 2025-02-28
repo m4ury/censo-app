@@ -19,13 +19,12 @@
         APP_COLOR_SECTOR2 = (color del sector 2)<br>
         APP_COLOR_SECTOR3 = (color del sector 3)<br>
         
-5.- en consola ejecutar: 
-                         php artisan key:generate   
-                         php artisan adminlte:install --only=main_views --force
-                         php artisan migrate
-                         php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)
-6.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.
-
+5.- en consola ejecutar: <br>
+                         php artisan key:generate   <br>
+                         php artisan adminlte:install --only=main_views --force<br>
+                         php artisan migrate<br>
+                         php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)<br>
+6.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.<br>
 
 
 Plataforma web dedicada a la gestión y manejo de información de población bajo control de los distintos programas de salud y ciclo vital, control y seguimiento de fichas de papel, estadísticas, digitalización y automatización de tareas administrativas.
