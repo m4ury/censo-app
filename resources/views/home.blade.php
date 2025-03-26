@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="col-lg col-sm">
-                <div class="small-box border border-orange">
+                <div class="small-box border border-dark">
                     <div class="inner">
                         <h3 style="color:black">{{ $all->ingresosG2()->count() }}</h3>
                         <p>INGRESOS G2 ECICEP, <span
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="row align-self-center">
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg col-sm">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
@@ -166,6 +166,20 @@
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-dark">
+                    <div class="inner">
+                        <h3>{{ $totalBlanco }}</h3>
+                        <p>Pacientes Sector Blanco</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=blanco') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -328,39 +342,7 @@
                     </a>
                 </div>
             </div>
-            {{-- <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-secondary">
-                    <div class="inner">
-                        <h3>{{ $dlp }}</h3>
-                        <p>PACIENTES DISLIPIDEMICOS</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-info">
-                    <div class="inner">
-                        <h3>{{ $acv }}</h3>
-                        <p>CON ANTECEDENTES ACV</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-indigo">
-                    <div class="inner">
-                        <h3>{{ $iam }}</h3>
-                        <p>CON ANTECEDENTES IAM</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-injured"></i>
-                    </div>
-                </div>
-            </div> --}}
+
         </div>
         <div class="row">
             <div class="col-lg col-sm">
@@ -472,7 +454,8 @@
                     <div class="icon">
                         <i class="fas fa-female"></i>
                     </div>
-                    <a href="{{ route('pacientes.pMujer') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.pMujer') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>

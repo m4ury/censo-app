@@ -95,48 +95,45 @@ class HomeController extends Controller
         //dd($efam);
 
         //x sexo
-        $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->count();
-        /* $masculino2064 = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get();
-        $masculino65mas = $all->pscv()->where('sexo', '=', 'Masculino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
+        $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
 
-        $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->count();
-        /* $femenino2064 = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->whereBetween('grupo', [20, 64])->count();
-        $femenino65mas = $all->pscv()->where('sexo', '=', 'Femenino')->whereNull('egreso')->get()->where('grupo', '>=', 65)->count(); */
+        $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->count();
 
         //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->whereNull('egreso')->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->whereNull('egreso')->count();
+        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->count();
+        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->count();
+        $totalBlanco = $all->pscv()->where('sector', '=', 'blanco')->count();
 
         $pacientes = new Paciente;
-        $mas80F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->where('grupo', '>=', 80)->count();
-        $in7579F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [75, 79])->count();
-        $in7074F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [70, 74])->count();
-        $in6569F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [65, 69])->count();
-        $in6064F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [60, 64])->count();
-        $in5559F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [55, 59])->count();
-        $in5054F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [50, 54])->count();
-        $in4549F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [45, 49])->count();
-        $in4044F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [40, 44])->count();
-        $in3539F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [35, 39])->count();
-        $in3034F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [30, 34])->count();
-        $in2529F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [25, 29])->count();
-        $in2024F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519F = $pacientes->pscv()->whereNull('egreso')->whereSexo('Femenino')->get()->whereBetween('grupo', [15, 19])->count();
+        $mas80F = $pacientes->pscv()->whereSexo('Femenino')->get()->where('grupo', '>=', 80)->count();
+        $in7579F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [75, 79])->count();
+        $in7074F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [70, 74])->count();
+        $in6569F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [65, 69])->count();
+        $in6064F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [60, 64])->count();
+        $in5559F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [55, 59])->count();
+        $in5054F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [50, 54])->count();
+        $in4549F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [45, 49])->count();
+        $in4044F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [40, 44])->count();
+        $in3539F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [35, 39])->count();
+        $in3034F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [30, 34])->count();
+        $in2529F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [25, 29])->count();
+        $in2024F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [20, 24])->count();
+        $in1519F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [15, 19])->count();
 
-        $mas80M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->where('grupo', '>=', 80)->count();
-        $in7579M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [75, 79])->count();
-        $in7074M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [70, 74])->count();
-        $in6569M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [65, 69])->count();
-        $in6064M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [60, 64])->count();
-        $in5559M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [55, 59])->count();
-        $in5054M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [50, 54])->count();
-        $in4549M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [45, 49])->count();
-        $in4044M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [40, 44])->count();
-        $in3539M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [35, 39])->count();
-        $in3034M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [30, 34])->count();
-        $in2529M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [25, 29])->count();
-        $in2024M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519M = $pacientes->pscv()->whereNull('egreso')->whereSexo('Masculino')->get()->whereBetween('grupo', [15, 19])->count();
+        $mas80M = $pacientes->pscv()->whereSexo('Masculino')->get()->where('grupo', '>=', 80)->count();
+        $in7579M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [75, 79])->count();
+        $in7074M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [70, 74])->count();
+        $in6569M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [65, 69])->count();
+        $in6064M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [60, 64])->count();
+        $in5559M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [55, 59])->count();
+        $in5054M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [50, 54])->count();
+        $in4549M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [45, 49])->count();
+        $in4044M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [40, 44])->count();
+        $in3539M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [35, 39])->count();
+        $in3034M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [30, 34])->count();
+        $in2529M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [25, 29])->count();
+        $in2024M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [20, 24])->count();
+        $in1519M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [15, 19])->count();
 
         return view('home', compact(
             'totalPacientes',
@@ -144,6 +141,7 @@ class HomeController extends Controller
             'totalFemenino',
             'totalCeleste',
             'totalNaranjo',
+            'totalBlanco',
             'mas80F',
             'in7579F',
             'in7074F',
