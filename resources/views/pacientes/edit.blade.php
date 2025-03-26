@@ -104,13 +104,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('direccion_label', 'Dirección.', ['class' => 'col-sm-2 col-form-label']) !!}
+                        {!! Form::label('direccion_label', 'Dirección.', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
                                 {!! Form::text('direccion', $paciente->direccion, [
                                     'class' => 'form-control form-control-sm' . ($errors->has('direccion') ? ' is-invalid' : ''),
                                     'placeholder' => 'Dirección',
                                 ]) !!}
+                                
+                                @if ($errors->has('direccion'))
+                                    <span class="invalid-feedback d-block">
+                                        <strong>{{ $errors->first('direccion') }}</strong>
+                                    </span>
+                                @endif
                             </div>
+
                             {!! Form::label('comuna_label', 'Comuna', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
                                 {!! Form::select(
@@ -294,32 +301,37 @@
                             @endif
                         </div>
                         <hr class="my-4">
-                        @if ($paciente->riesgo_cv)
-                            <div class="form-group row py-3">
-                                {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
-                                <div class="col-sm-3">
-                                    {!! Form::select(
-                                        'riesgo_cv',
-                                        ['BAJO' => 'BAJO', 'MODERADO' => 'MODERADO', 'ALTO' => 'ALTO'],
-                                        old('riesgo_cv', $paciente->riesgo_cv),
-                                        ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'riesgo_cv'],
-                                    ) !!}
-                                </div>
-                                {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
-                                <div class="col-sm-3">
-                                    {!! Form::select(
-                                        'erc',
-                                        ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
-                                        old('erc', $paciente->erc),
-                                        [
-                                            'class' => 'form-control',
-                                            'placeholder' => 'Seleccione',
-                                            'id' => 'erc',
-                                        ],
-                                    ) !!}
-                                </div>
+                        <div class="form-group row py-3">
+                            {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::select(
+                                    'riesgo_cv',
+                                    ['Bajo' => 'Bajo', 'Moderado' => 'Moderado', 'Alto' => 'Alto'],
+                                    old('riesgo_cv', $paciente->riesgo_cv),
+                                    ['class' => 'form-control', 'placeholder' => 'Seleccione el riesgo', 'id' => 'riesgo_cv']
+                                ) !!}
                             </div>
-                        @endif
+
+                            {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::select(
+                                    'erc',
+                                    ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
+                                    old('erc', $paciente->erc),
+                                    [
+                                        'class' => 'form-control' . ($errors->has('erc') ? ' is-invalid' : ''),
+                                        'placeholder' => 'Seleccione el estadio',
+                                        'id' => 'erc'
+                                    ]
+                                ) !!}
+                                @if ($errors->has('erc'))
+                                    <span class="invalid-feedback d-block">
+                                        <strong>{{ $errors->first('erc') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group row py-3">
                             {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}
