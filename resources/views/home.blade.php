@@ -98,7 +98,7 @@
             </div>
         </div>
         <div class="row align-self-center">
-            <div class="col-lg-4 col-sm">
+            <div class="col-lg col-sm">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
@@ -166,6 +166,21 @@
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <a href="{{ url('/pacientes?q=rural') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-sm">
+                <!-- small box -->
+                <div class="small-box bg-gradient-orange">
+                    <div class="inner">
+                        <h3>{{ $totalOtros }}</h3>
+                        <p>Pacientes Sector Otros</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <a href="{{ url('/pacientes?q=otros') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>

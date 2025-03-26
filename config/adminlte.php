@@ -47,10 +47,10 @@ return [
 
     'logo' => '<b>Estadisticas</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => null,
+    'logo_img_class' => 'brand-image',
+    'logo_img_xl' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img_xl_class' => 'brand-image-xl',
+    'logo_img_alt' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
 
     /*
     |--------------------------------------------------------------------------
@@ -291,6 +291,10 @@ return [
             'icon' => 'fas fa-chart-pie text-green',
             'can' => 'estadisticas'
         ], */
+        [
+            'type' => 'darkmode-widget',
+            'topnav_right' => true,     // Or "topnav => true" to place on the left.
+        ]
     ],
 
     /*

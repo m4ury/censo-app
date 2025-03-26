@@ -76,7 +76,8 @@ class Paciente extends Model
 
     public function scopeSearch($query, $q)
     {
-        if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
+        if ($q) return $query->where('sexo', 'LIKE', "%$q%")->whereNull('egreso')->whereNotNull('riesgo_cv')->orWhere('sector', 'LIKE', "%$q%")->whereNull('egreso')->whereNotNull('riesgo_cv');
+
     }
 
     public function scopeMetodo($query, $metodo)
@@ -143,7 +144,7 @@ class Paciente extends Model
 
     public function pscv()
     {
-        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])->whereNull("egreso");
+        return $this->whereNull("egreso")->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO']);
     }
 
     public function scopeConPatologia($query, $patologia)
