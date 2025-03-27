@@ -1,13 +1,13 @@
 <?php return array (
   'freshwork/chilean-bundle' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Freshwork\\ChileanBundle\\Laravel\\ChileanBundleServiceProvider',
-    ),
     'aliases' => 
     array (
       'Rut' => 'Freshwork\\ChileanBundle\\Facades\\Rut',
+    ),
+    'providers' => 
+    array (
+      0 => 'Freshwork\\ChileanBundle\\Laravel\\ChileanBundleServiceProvider',
     ),
   ),
   'fruitcake/laravel-cors' => 
@@ -57,6 +57,17 @@
       0 => 'Laraveles\\Spanish\\SpanishServiceProvider',
     ),
   ),
+  'maatwebsite/excel' => 
+  array (
+    'aliases' => 
+    array (
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+    ),
+    'providers' => 
+    array (
+      0 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
@@ -80,24 +91,24 @@
   ),
   'realrashid/sweet-alert' => 
   array (
-    'providers' => 
-    array (
-      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
-    ),
     'aliases' => 
     array (
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
     ),
+    'providers' => 
+    array (
+      0 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
+    ),
   ),
   'spatie/laravel-ignition' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    ),
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+    'providers' => 
+    array (
+      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     ),
   ),
 );
