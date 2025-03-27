@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('permissions', 'PermissionController');
+Route::get('permissions/{permissionId?}/delete', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.delete');
+
+Route::resource('roles', 'RoleController');
+Route::get('roles/{roleId?}/delete', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
 
 Route::get('/', 'WelcomeController@index');
 
@@ -48,10 +55,6 @@ Route::middleware('auth')->group(function () {
 
     //rutas para OIRS
     Route::resource('encuestas', 'EncuestaController');
-    Route::resource('ciudadanas', 'CiudadanaController');
-
-    //rutas para IC
-    Route::resource('interconsultas', 'InterconsultaController');
 
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');

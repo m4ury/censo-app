@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 /*use Illuminate\Foundation\Auth\User;*/
 
-use app\User;
+use app\Models\User;
 use Composer\Util\AuthHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -40,7 +40,7 @@ class UserController extends Controller
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno,
             'email' => $request->email
-    ]);
+        ]);
         return redirect('perfil')->withSuccess('Usuario Actualizado con exito!');
     }
 }
