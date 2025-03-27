@@ -76,7 +76,7 @@ class Paciente extends Model
 
     public function scopeSearch($query, $q)
     {
-        if ($q) return $query->where('sexo', 'LIKE', "%$q%")->orWhere('sector', 'LIKE', "%$q%");
+        if ($q) return $query->where('sexo', 'LIKE', "%$q%")->whereNull('egreso')->whereNotNull('riesgo_cv')->orWhere('sector', 'LIKE', "%$q%")->whereNull('egreso')->whereNotNull('riesgo_cv');
     }
 
     public function scopeMetodo($query, $metodo)
@@ -103,47 +103,47 @@ class Paciente extends Model
 
     public function s_erc()
     {
-        return $this->pscv()->whereErc('sin')->whereNull("egreso");
+        return $this->pscv()->whereErc('sin');
     }
 
     public function ercI()
     {
-        return $this->pscv()->whereErc('I')->whereNull("egreso");
+        return $this->pscv()->whereErc('I');
     }
 
     public function ercII()
     {
-        return $this->pscv()->whereErc('II')->whereNull("egreso");
+        return $this->pscv()->whereErc('II');
     }
 
     public function ercIIIa()
     {
-        return $this->pscv()->whereErc('IIIA')->whereNull("egreso");
+        return $this->pscv()->whereErc('IIIA');
     }
 
     public function ercIIIb()
     {
-        return $this->pscv()->whereErc('IIIB')->whereNull("egreso");
+        return $this->pscv()->whereErc('IIIB');
     }
 
     public function ercIV()
     {
-        return $this->pscv()->whereErc('IV')->whereNull("egreso");
+        return $this->pscv()->whereErc('IV');
     }
 
     public function ercV()
     {
-        return $this->pscv()->whereErc('V')->whereNull("egreso");
+        return $this->pscv()->whereErc('V');
     }
 
     public function ercTotal()
     {
-        return $this->pscv()->whereIn('erc', ['sin', 'I', 'II', 'IIIA', 'IIIB', 'IV', 'V'])->whereNull("egreso");
+        return $this->pscv()->whereIn('erc', ['sin', 'I', 'II', 'IIIA', 'IIIB', 'IV', 'V']);
     }
 
     public function pscv()
     {
-        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['ALTO', 'BAJO', 'MODERADO'])->whereNull("egreso");
+        return $this->whereNull('egreso')->whereIn('riesgo_cv', ['Alto', 'Bajo', 'Moderado']);
     }
 
     public function scopeConPatologia($query, $patologia)
@@ -777,7 +777,7 @@ class Paciente extends Model
             ->where('controls.imc_resultado', 'Bajo peso')
             ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
-                ->union(DB::table('pacientes')
+            ->union(DB::table('pacientes')
                 ->join('controls', 'controls.paciente_id', 'pacientes.id')
                 ->whereNotNull('controls.rBarthel')
                 ->whereYear('controls.fecha_control', 2025));
@@ -790,9 +790,9 @@ class Paciente extends Model
             ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2025));
+                ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                ->whereNotNull('controls.rBarthel')
+                ->whereYear('controls.fecha_control', 2025));
     }
 
     public function sobrePeso()
@@ -802,9 +802,9 @@ class Paciente extends Model
             ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2025));
+                ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                ->whereNotNull('controls.rBarthel')
+                ->whereYear('controls.fecha_control', 2025));
     }
 
     public function obeso()
@@ -814,9 +814,9 @@ class Paciente extends Model
             ->whereYear('controls.fecha_control', 2025)
             ->latest('controls.fecha_control')
             ->union(DB::table('pacientes')
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereNotNull('controls.rBarthel')
-            ->whereYear('controls.fecha_control', 2025));
+                ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                ->whereNotNull('controls.rBarthel')
+                ->whereYear('controls.fecha_control', 2025));
     }
 
     public function totalSeccionB()
@@ -1093,12 +1093,12 @@ class Paciente extends Model
 
     //P2 seccion H - Naneas
     public function naneas($patologia = null)
-{
-    return $this->whereHas('patologias', function ($query) use ($patologia) {
-        $query->where('nombre_patologia', $patologia)
-              ->where('naneas', 1); // Asegúrate de que 'naneas' está en la tabla patologias
-    })->whereNull('egreso');
-}
+    {
+        return $this->whereHas('patologias', function ($query) use ($patologia) {
+            $query->where('nombre_patologia', $patologia)
+                ->where('naneas', 1); // Asegúrate de que 'naneas' está en la tabla patologias
+        })->whereNull('egreso');
+    }
 
     //P2 seccion J
     public function rCero($fem, $masc)

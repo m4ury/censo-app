@@ -1,3 +1,32 @@
+1.- clonar el repositorio.<br>
+2.- en la consola: composer require maatwebsite/excel.<br>
+3.- composer install.<br>
+4.- renombrar el archivo ".env.example" a ".env". <br> 
+    (opcional)<br>
+    modificar estas variables de entorno:<br>
+        APP_INST= (nombre de institucion, ej.: ej hospital de ....)<br>
+        APP_DIR= (direccion de institucion)<br>
+        APP_CIUDAD= (ciudad)<br>
+        APP_REGION= (region)<br>
+        <br>
+        APP_LAT= (para trabajar con openMaps y geoReferencia)<br>
+        APP_LNG= (para trabajar con openMaps y geoReferencia)<br>
+        <br>
+        APP_SECTOR1= (sector 1, ej.: Rural)<br>
+        APP_SECTOR2= (sector 2, ej.: Urbano)<br>
+        APP_SECTOR3= (sector 3, ej.: Otro)<br>
+        APP_COLOR_SECTOR1 = (color del sector 1)<br>
+        APP_COLOR_SECTOR2 = (color del sector 2)<br>
+        APP_COLOR_SECTOR3 = (color del sector 3)<br>
+        
+5.- en consola ejecutar: <br>
+                         php artisan key:generate   <br>
+                         php artisan adminlte:install --only=main_views --force<br>
+                         php artisan migrate<br>
+                         php artisan db:seed (esto cargara las patologias que se encuentren en la clase PatologiaSeeder)<br>
+6.- se debe asignar perfil "admin" para visualizar todas las opciones del sistema.<br>
+
+
 Plataforma web dedicada a la gestión y manejo de información de población bajo control de los distintos programas de salud y ciclo vital, control y seguimiento de fichas de papel, estadísticas, digitalización y automatización de tareas administrativas.
 
 Proporcionar información verídica, confiable y a tiempo de nuestros pacientes en control de los distintos programas de salud y ciclo vital, además entregar de manera consolidada reportes según se solicite y estadística semestral, avance en tiempo real de metas sanitarias más importantes, ej.: cantidad evaluaciones Pie diabético realizadas y pacientes diabéticos sin evaluar en el año en curso, cantidad EFAM realizados, Pacientes diabéticos e hipertensos bajo control y descompensados, Encuesta semestral de satisfacción usuaria, etc.

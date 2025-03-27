@@ -36,9 +36,7 @@
                         <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Multimorbilidad:
                             @if ($paciente->patologias->count() > 4)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
-                            @elseif(
-                                $paciente->patologias->count() > 1 and
-                                    $paciente->patologias->count() < 5)
+                            @elseif($paciente->patologias->count() > 1 and $paciente->patologias->count() < 5)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-orange"></i>G2</strong>
                             @elseif($paciente->patologias->count() == 1)
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G1</strong>
@@ -70,7 +68,7 @@
                             </a>
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
-                                aria-selected="false">{{$paciente->grupo < 10 ? "Naneas" : "Diagnosticos"}}</a>
+                                aria-selected="false">{{ $paciente->grupo < 10 ? 'Naneas' : 'Diagnosticos' }}</a>
                             @if ($paciente->grupo < 10)
                                 <a class="nav-link" id="vert-tabs-nino_sano-tab" data-toggle="pill"
                                     href="#vert-tabs-nino_sano" role="tab" aria-controls="vert-tabs-nino_sano"
@@ -94,11 +92,11 @@
                                     <hr>
                                     <strong><i class="fas fa-heartbeat mr-1"></i> Riesgo Cardiovascular</strong>
                                     <br>
-                                    @if ($paciente->riesgo_cv == 'MODERADO')
+                                    @if ($paciente->riesgo_cv == 'Moderado')
                                         <p class="btn rounded-pill bg-gradient-warning">MODERADO</P>
-                                    @elseif($paciente->riesgo_cv == 'ALTO')
+                                    @elseif($paciente->riesgo_cv == 'Alto')
                                         <p class="btn rounded-pill bg-gradient-danger px-4">ALTO</P>
-                                    @elseif($paciente->riesgo_cv == 'BAJO')
+                                    @elseif($paciente->riesgo_cv == 'Bajo')
                                         <p class="btn rounded-pill bg-gradient-success px-4">BAJO</P>
                                     @else
                                         <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
@@ -188,8 +186,8 @@
                                 @include('patologias.list_patologias', $paciente)
 
                                 @if ($paciente->patologias->count() == 0)
-                                    <p class="text-muted">No hay {{$paciente->grupo < 10 ? "Naneas" : "Patologias"}} aun...<i
-                                            class="far fa-laugh-wink fa-2x"></i></p>
+                                    <p class="text-muted">No hay {{ $paciente->grupo < 10 ? 'Naneas' : 'Patologias' }}
+                                        aun...<i class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
                         </div>

@@ -110,7 +110,14 @@
                                     'class' => 'form-control form-control-sm' . ($errors->has('direccion') ? ' is-invalid' : ''),
                                     'placeholder' => 'Dirección',
                                 ]) !!}
+
+                                @if ($errors->has('direccion'))
+                                    <span class="invalid-feedback d-block">
+                                        <strong>{{ $errors->first('direccion') }}</strong>
+                                    </span>
+                                @endif
                             </div>
+
                             {!! Form::label('comuna_label', 'Comuna', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm">
                                 {!! Form::select(
@@ -157,26 +164,27 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div id="map" style="height: 400px; margin-top: 20px;" class="col col-sm-6 form-group"></div>
+                            <div id="map" style="height: 400px; margin-top: 20px;" class="col col-sm-6 form-group">
+                            </div>
 
-                        <div class="col-sm form-group">
-                            {!! Form::label('latitud_label', 'Latitud:', ['class' => 'col-sm-2 col-form-label']) !!}
-                            <div class="col-sm">
-                                {!! Form::text('latitud', old('latitud', $paciente->latitud), [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('latitud') ? ' is-invalid' : ''),
-                                    'id' => 'latitud',
-                                    'readonly' => 'readonly',
-                                ]) !!}
-                            </div>
-                            {!! Form::label('longitud_label', 'Longitud:', ['class' => 'col-sm-2 col-form-label']) !!}
                             <div class="col-sm form-group">
-                                {!! Form::text('longitud', old('longitud', $paciente->longitud), [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('longitud') ? ' is-invalid' : ''),
-                                    'id' => 'longitud',
-                                    'readonly' => 'readonly',
-                                ]) !!}
+                                {!! Form::label('latitud_label', 'Latitud:', ['class' => 'col-sm-2 col-form-label']) !!}
+                                <div class="col-sm">
+                                    {!! Form::text('latitud', old('latitud', $paciente->latitud), [
+                                        'class' => 'form-control form-control-sm' . ($errors->has('latitud') ? ' is-invalid' : ''),
+                                        'id' => 'latitud',
+                                        'readonly' => 'readonly',
+                                    ]) !!}
+                                </div>
+                                {!! Form::label('longitud_label', 'Longitud:', ['class' => 'col-sm-2 col-form-label']) !!}
+                                <div class="col-sm form-group">
+                                    {!! Form::text('longitud', old('longitud', $paciente->longitud), [
+                                        'class' => 'form-control form-control-sm' . ($errors->has('longitud') ? ' is-invalid' : ''),
+                                        'id' => 'longitud',
+                                        'readonly' => 'readonly',
+                                    ]) !!}
+                                </div>
                             </div>
-                        </div>
                         </div>
 
 
@@ -198,7 +206,7 @@
                             <div class="col-sm">
                                 {!! Form::select(
                                     'sector',
-                                    ['Naranjo' => 'Naranjo', 'Celeste' => 'Celeste', 'Blanco' => 'Blanco'],
+                                    ['Celeste' => 'Celeste', 'Naranjo' => 'Naranjo', 'Blanco' => 'Blanco'],
                                     old('sector', $paciente->sector),
                                     [
                                         'class' => 'form-control form-control-sm',
@@ -294,32 +302,37 @@
                             @endif
                         </div>
                         <hr class="my-4">
-                        @if ($paciente->riesgo_cv)
-                            <div class="form-group row py-3">
-                                {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
-                                <div class="col-sm-3">
-                                    {!! Form::select(
-                                        'riesgo_cv',
-                                        ['BAJO' => 'BAJO', 'MODERADO' => 'MODERADO', 'ALTO' => 'ALTO'],
-                                        old('riesgo_cv', $paciente->riesgo_cv),
-                                        ['class' => 'form-control', 'placeholder' => 'Seleccione', 'id' => 'riesgo_cv'],
-                                    ) !!}
-                                </div>
-                                {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
-                                <div class="col-sm-3">
-                                    {!! Form::select(
-                                        'erc',
-                                        ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
-                                        old('erc', $paciente->erc),
-                                        [
-                                            'class' => 'form-control',
-                                            'placeholder' => 'Seleccione',
-                                            'id' => 'erc',
-                                        ],
-                                    ) !!}
-                                </div>
+                        <div class="form-group row py-3">
+                            {!! Form::label('riesgo_cvLabel', 'Riesgo Cardiovascular', ['class' => 'col-sm-3 col-form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::select(
+                                    'riesgo_cv',
+                                    ['Bajo' => 'Bajo', 'Moderado' => 'Moderado', 'Alto' => 'Alto'],
+                                    old('riesgo_cv', $paciente->riesgo_cv),
+                                    ['class' => 'form-control', 'placeholder' => 'Seleccione el riesgo', 'id' => 'riesgo_cv'],
+                                ) !!}
                             </div>
-                        @endif
+
+                            {!! Form::label('erc_label', 'Enf. Renal Crónica', ['class' => 'col-sm-3 col-form-label']) !!}
+                            <div class="col-sm-3">
+                                {!! Form::select(
+                                    'erc',
+                                    ['sin' => 'SIN', 'I' => 'I', 'II' => 'II', 'IIIA' => 'IIIA', 'IIIB' => 'IIIB', 'IV' => 'IV', 'V' => 'V'],
+                                    old('erc', $paciente->erc),
+                                    [
+                                        'class' => 'form-control' . ($errors->has('erc') ? ' is-invalid' : ''),
+                                        'placeholder' => 'Seleccione el estadio',
+                                        'id' => 'erc',
+                                    ],
+                                ) !!}
+                                @if ($errors->has('erc'))
+                                    <span class="invalid-feedback d-block">
+                                        <strong>{{ $errors->first('erc') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group row py-3">
                             {!! Form::label('egreso_label', 'Egreso', ['class' => 'col-sm-3 col-form-label']) !!}
@@ -641,21 +654,23 @@
     <script>
         // Determinamos las coordenadas iniciales:
         // Si existen latitud y longitud, se usan, de lo contrario se establecen unas por defecto.
-        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.9762037' }};
-        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.8052933' }};
+        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.8720687' }};
+        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.1674369' }};
+
+        //-34.8720687,-71.1674369
 
         // Inicializamos el mapa centrado en las coordenadas iniciales
         var map = L.map('map').setView([initialLat, initialLng], 16);
 
         // Cargamos el mapa base desde OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Hospital de Hualañe'
+            attribution: 'Hospital de Teno'
         }).addTo(map);
 
         var marker;
 
         // Si el paciente ya tiene coordenadas, mostramos el marcador en esa posición
-        @if($paciente->latitud && $paciente->longitud)
+        @if ($paciente->latitud && $paciente->longitud)
             marker = L.marker([{{ $paciente->latitud }}, {{ $paciente->longitud }}]).addTo(map);
         @endif
 
