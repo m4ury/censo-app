@@ -1,19 +1,22 @@
 @extends('adminlte::page')
 
-@section('title', 'permisos')
+@section('title', 'Roles')
 
 @section('content')
+
+@include('role-permission.nav-link')
+
     <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4>
-                        Permisos
-                        <a href="{{ url('permissions/create') }}" class="btn btn-primary float-end">Crea permiso</a>
+                        Roles
+                        <a href="{{ url('roles/create') }}" class="btn btn-primary float-right">Crea roles</a>
                     </h4>
                 </div>
                 <div class="card-body">
-                    <table id="permisos" class="table table-bordered table-striped">
+                    <table id="roles" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -22,14 +25,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($permissions as $permission)
+                            @foreach ($roles as $rol)
                                 <tr>
-                                    <td>{{ $permission->id }}</td>
-                                    <td>{{ $permission->name }}</td>
+                                    <td>{{ $rol->id }}</td>
+                                    <td>{{ $rol->name }}</td>
                                     <td>
-                                        <a href="{{ route('permissions.edit', $permission->id) }}"
-                                            class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('permissions.delete', $permission->id) }}"
+                                        <a href="{{ url('roles/'.$rol->id.'/give-permissions') }}"
+                                            class="btn btn-warning">Add / Edit Rol Permissions</a>
+                                            <a href="{{ route('roles.edit', $rol->id) }}"
+                                                class="btn btn-warning">Editar</a>
+                                        <a href="{{ route('roles.delete', $rol->id) }}"
                                             class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
@@ -44,7 +49,7 @@
 @section('plugins.Datatables', true)
 @section('js')
     <script>
-        $("#permisos").DataTable({
+        $("#roles").DataTable({
             dom: 'Bfrtip',
             language: {
                 "processing": "Procesando...",

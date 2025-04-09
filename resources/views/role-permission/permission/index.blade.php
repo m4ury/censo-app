@@ -3,13 +3,16 @@
 @section('title', 'permisos')
 
 @section('content')
+
+@include('role-permission.nav-link')
+
     <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4>
                         Permisos
-                        <a href="{{ url('permissions/create') }}" class="btn btn-primary float-end">Crea permiso</a>
+                        <a href="{{ url('permissions/create') }}" class="btn btn-primary float-right">Crea permiso</a>
                     </h4>
                 </div>
                 <div class="card-body">

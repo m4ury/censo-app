@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -17,6 +18,72 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
+
+    public function create()
+    {
+        $roles = Role::select('id', 'name')->pluck('name');
+        return view('users.create', compact('roles'));
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'rut' => 'required|string|min:3|rut_cl',
+            'name' => 'required|string|min:3',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+            'rut' => 'required|string|min:3',
+            'apellido_paterno' => 'required|string|min:3',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'rut' => $request->rut,
+            'apellido_paterno' => $request->apellido_paterno,
+        ]);
+        return redirect('users')->withSuccess('Usuario creado con exito!');
+    }
+    public function edit($id)
+    {
+        $user = User::find($id);
+        $roles = Role::select('id', 'name')->pluck('name');
+        return view('users.edit', compact('user', 'roles'));
+    }
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed',
+            'rut' => 'required|string|min:3',
+            'apellido_paterno' => 'required|string|min:3',
+            'apellido_materno' => 'required|string|min:3'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $user = User::find($id);
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'rut' => $request->rut,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno
+        ]);
+        return redirect('users')->withSuccess('Usuario actualizado con exito!');
+    }
+
 
     public function profile()
     {

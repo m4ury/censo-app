@@ -18,6 +18,8 @@ Route::resource('permissions', 'PermissionController');
 Route::get('permissions/{permissionId?}/delete', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.delete');
 
 Route::resource('roles', 'RoleController');
+Route::get('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionsToRole'])->name('roles.give-permissions');
+Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionsToRole'])->name('roles.give-permissions');
 Route::get('roles/{roleId?}/delete', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
 
 Route::get('/', 'WelcomeController@index');
@@ -83,6 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes'); */
 
     //rutas para perfil
+    Route::resource('users', 'UserController');
     Route::get('/perfil', 'UserController@profile')->name('perfil');
     Route::put('perfil', 'UserController@updateProfile');
 
