@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'permisos')
+@section('title', 'Permisos')
 
 @section('content')
 
@@ -19,7 +19,6 @@
                     <table id="permisos" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Acciones</th>
                             </tr>
@@ -27,8 +26,7 @@
                         <tbody>
                             @foreach ($permissions as $permission)
                                 <tr>
-                                    <td>{{ $permission->id }}</td>
-                                    <td>{{ $permission->name }}</td>
+                                    <td class="text-uppercase">{{ $permission->name }}</td>
                                     <td>
                                         <a href="{{ route('permissions.edit', $permission->id) }}"
                                             class="btn btn-success">Editar</a>
@@ -48,6 +46,9 @@
 @section('js')
     <script>
         $("#permisos").DataTable({
+            paging: true,
+            pagingType: 'first_last_numbers',
+            pageLength: 5,
             dom: 'Bfrtip',
             language: {
                 "processing": "Procesando...",

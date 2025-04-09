@@ -19,7 +19,6 @@
                     <table id="roles" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Acciones</th>
                             </tr>
@@ -27,8 +26,7 @@
                         <tbody>
                             @foreach ($roles as $rol)
                                 <tr>
-                                    <td>{{ $rol->id }}</td>
-                                    <td>{{ $rol->name }}</td>
+                                    <td class="text-uppercase">{{ $rol->name }}</td>
                                     <td>
                                         <a href="{{ url('roles/' . $rol->id . '/give-permissions') }}"
                                             class="btn btn-warning">Add / Edit Permissions</a>
