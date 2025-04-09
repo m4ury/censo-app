@@ -22,13 +22,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('role-permission.user.index', compact('users'));
     }
 
     public function create()
     {
         $roles = Role::select('id', 'name')->pluck('name');
-        return view('users.create', compact('roles'));
+        return view('role-permission.user.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -51,13 +51,13 @@ class UserController extends Controller
             'rut' => $request->rut,
             'apellido_paterno' => $request->apellido_paterno,
         ]);
-        return redirect('users')->withSuccess('Usuario creado con exito!');
+        return redirect('role-permission.user.index')->withSuccess('Usuario creado con exito!');
     }
     public function edit($id)
     {
         $user = User::find($id);
         $roles = Role::select('id', 'name')->pluck('name');
-        return view('users.edit', compact('user', 'roles'));
+        return view('role-permission.user.edit', compact('user', 'roles'));
     }
     public function update(Request $request, $id)
     {
