@@ -4,7 +4,7 @@
 
 @section('content')
 
-@include('role-permission.nav-link')
+    @include('role-permission.nav-link')
 
     <div class="row mt-4">
         <div class="col-md-12">
@@ -30,12 +30,10 @@
                                     <td>{{ $rol->id }}</td>
                                     <td>{{ $rol->name }}</td>
                                     <td>
-                                        <a href="{{ url('roles/'.$rol->id.'/give-permissions') }}"
-                                            class="btn btn-warning">Add / Edit Rol Permissions</a>
-                                            <a href="{{ route('roles.edit', $rol->id) }}"
-                                                class="btn btn-warning">Editar</a>
-                                        <a href="{{ route('roles.delete', $rol->id) }}"
-                                            class="btn btn-danger">Eliminar</a>
+                                        <a href="{{ url('roles/' . $rol->id . '/give-permissions') }}"
+                                            class="btn btn-warning">Add / Edit Permissions</a>
+                                        <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success">Editar</a>
+                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach

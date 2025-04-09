@@ -44,7 +44,7 @@ class RoleController extends Controller
             'name' => [
                 'required',
                 'string',
-                'unique:roles,name,'.$role->id,
+                'unique:roles,name,' . $role->id,
             ],
         ]);
 
@@ -66,21 +66,24 @@ class RoleController extends Controller
 
     public function givePermissionsToRole($roleId)
     {
-        $permissions = Permission::all();
+        $permissions = Permission::get();
         $role = Role::findOrFail($roleId);
-        return view('role-permission.role.give-permission', compact('role', 'permissions'));
+        $rolePermissions = $role->permissions()->pluck('id')->toArray();
+
+
+        return view('role-permission.role.give-permission', compact('role', 'permissions', 'rolePermissions'));
     }
 
     public function addPermissionsToRole(Request $request, $roleId)
     {
         $request->validate([
-            'permissions' => 'required|array',
+            'permissions' => 'required',
             'permissions.*' => 'exists:permissions,id',
         ]);
         $role = Role::findOrFail($roleId);
         $permissions = Permission::whereIn('id', $request->permissions)->get();
         $role->syncPermissions($permissions);
 
-        return redirect()->route('roles.index')->with('success', 'Permissions assigned to role successfully');
+        return redirect()->back()->with('success', 'Permissions assigned to role successfully');
     }
 }

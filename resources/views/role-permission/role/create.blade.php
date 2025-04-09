@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Crear Roles
-                        <a href="{{ url('roles') }}" class="btn btn-primary float-right">Atras</a>
+                        <a href="{{ url('roles') }}" class="btn btn-danger float-right">Atras</a>
                     </h4>
                 </div>
                 <div class="card-body">

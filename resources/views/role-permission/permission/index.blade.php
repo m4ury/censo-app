@@ -4,7 +4,7 @@
 
 @section('content')
 
-@include('role-permission.nav-link')
+    @include('role-permission.nav-link')
 
     <div class="row mt-4">
         <div class="col-md-12">
@@ -31,7 +31,7 @@
                                     <td>{{ $permission->name }}</td>
                                     <td>
                                         <a href="{{ route('permissions.edit', $permission->id) }}"
-                                            class="btn btn-warning">Editar</a>
+                                            class="btn btn-success">Editar</a>
                                         <a href="{{ route('permissions.delete', $permission->id) }}"
                                             class="btn btn-danger">Eliminar</a>
                                     </td>

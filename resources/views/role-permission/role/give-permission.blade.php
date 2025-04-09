@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
-@section('title', 'editar rol')
+@section('title', 'give permissions to rol')
 @section('content_header')
-    <h1>Editar Rol</h1>
+    <h1>Modificar Permisos de Rol</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Rol: {{ $role->name }}
-                        <a href="{{ url('roles') }}" class="btn btn-primary float-right">Atras</a>
+                        <a href="{{ url('roles') }}" class="btn btn-danger float-right">Atras</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -22,19 +22,17 @@
                         <label for="permisos">Permisos</label>
                         <div class="row">
                             @foreach ($permissions as $permission)
-                            <div class="col-md-2">
-                                <label for="">
-                                    {{html()->checkbox('permissions[]', false, $permission->id, ['class' => 'form-check-input checked:true?false'])}}
-                                    {{ $permission->name }}
-                                </label>
-                            </div>
+                                <div class="col-md-2">
+                                    <label for="">
+                                        {{ html()->checkbox('permissions[]', in_array($permission->id, $rolePermissions) ? 1 : false, $permission->id, ['class' => 'form-check-input']) }}
+                                        {{ $permission->name }}
+                                    </label>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                     <div class="mb-3">
-                        {{ html()->button('Guardar')
-                            ->class('btn btn-primary')
-                            ->type('submit') }}
+                        {{ html()->button('Guardar')->class('btn btn-primary')->type('submit') }}
                         {{ html()->form()->close() }}
                     </div>
                 </div>
