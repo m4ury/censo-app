@@ -31,7 +31,9 @@
                                         <a href="{{ url('roles/' . $rol->id . '/give-permissions') }}"
                                             class="btn btn-warning">Add / Edit Permissions</a>
                                         <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success">Editar</a>
-                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a>
+                                        {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a> --}}
+                                        {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger confirm" data-confirm-delete="true" type="submit">Eliminar</a> --}}
+                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

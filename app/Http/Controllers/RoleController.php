@@ -11,6 +11,10 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::get();
+        $title = 'Delete Rol!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
         return view('role-permission.role.index', compact('roles'));
     }
 
@@ -58,10 +62,11 @@ class RoleController extends Controller
 
     public function destroy($roleId)
     {
+
         $role = Role::find($roleId);
         $role->delete();
 
-        return redirect()->route('roles.index')->with('success', 'Rol deleted successfully');
+        return redirect()->route('roles.index')->withSuccess('Rol deleted successfully');
     }
 
     public function givePermissionsToRole($roleId)
@@ -84,6 +89,6 @@ class RoleController extends Controller
         $permissions = Permission::whereIn('id', $request->permissions)->get();
         $role->syncPermissions($permissions);
 
-        return redirect()->back()->with('success', 'Permissions assigned to role successfully');
+        return redirect()->back()->withSuccess('Permissions assigned to role successfully');
     }
 }
