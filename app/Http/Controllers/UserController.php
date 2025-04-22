@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 /*use Illuminate\Foundation\Auth\User;*/
 
-use app\Models\User;
+use App\Models\User;
 use Composer\Util\AuthHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -14,14 +14,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function __construct()
+    /* public function __construct()
     {
         $this->middleware('auth');
-    }
+    } */
 
     public function index()
     {
-        $users = User::all();
+        $users = User::get();
         return view('role-permission.user.index', compact('users'));
     }
 

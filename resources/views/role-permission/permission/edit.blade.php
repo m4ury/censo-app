@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Editar Permiso
-                        <a href="{{ url('permissions') }}" class="btn btn-primary float-end">Atras</a>
+                        <a href="{{ url('permissions') }}" class="btn btn-danger float-right">Atras</a>
                     </h4>
                 </div>
                 <div class="card-body">

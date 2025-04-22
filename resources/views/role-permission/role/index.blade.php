@@ -11,8 +11,8 @@
             <div class="card">
                 <div class="card-header">
                     <h4>
-                        Roles
-                        <a href="{{ url('roles/create') }}" class="btn btn-primary float-right">Crea roles</a>
+                        Perfiles
+                        <a href="{{ url('roles/create') }}" class="btn btn-primary float-right">Crea perfil</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -29,11 +29,12 @@
                                     <td class="text-uppercase">{{ $rol->name }}</td>
                                     <td>
                                         <a href="{{ url('roles/' . $rol->id . '/give-permissions') }}"
-                                            class="btn btn-warning">Add / Edit Permissions</a>
+                                            class="btn btn-warning">Agregar / Editar Permisos del Perfil</a>
                                         <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success">Editar</a>
                                         {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a> --}}
                                         {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger confirm" data-confirm-delete="true" type="submit">Eliminar</a> --}}
-                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger" data-confirm-delete="true">Delete</a>
+                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger"
+                                            data-confirm-delete="true">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -34,7 +34,7 @@ class RoleController extends Controller
         ]);
         $role = Role::create(['name' => $request->name]);
 
-        return redirect()->route('roles.index')->with('success', 'Rol created successfully');
+        return redirect()->route('roles.index')->withSuccess('Perfil creado con exito');
     }
 
     public function edit(Role $role)
@@ -57,7 +57,7 @@ class RoleController extends Controller
         ]);
         $role->save();
 
-        return redirect()->route('roles.index')->with('success', 'Rol updated successfully');
+        return redirect()->route('roles.index')->withSuccess('Perfil actualizado exitosamente');
     }
 
     public function destroy($roleId)
@@ -66,7 +66,7 @@ class RoleController extends Controller
         $role = Role::find($roleId);
         $role->delete();
 
-        return redirect()->route('roles.index')->withSuccess('Rol deleted successfully');
+        return redirect()->route('roles.index')->withSuccess('Perfil eliminado exitosamente');
     }
 
     public function givePermissionsToRole($roleId)
@@ -89,6 +89,6 @@ class RoleController extends Controller
         $permissions = Permission::whereIn('id', $request->permissions)->get();
         $role->syncPermissions($permissions);
 
-        return redirect()->back()->withSuccess('Permissions assigned to role successfully');
+        return redirect()->back()->withSuccess('Permiso(s) asignados al perfil de manera exitosa');
     }
 }

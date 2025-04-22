@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Crear Roles
+                    <h4>Crear Perfiles
                         <a href="{{ url('roles') }}" class="btn btn-danger float-right">Atras</a>
                     </h4>
                 </div>

@@ -22,6 +22,9 @@ Route::get('roles/{roleId?}/delete', [App\Http\Controllers\RoleController::class
 Route::get('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionsToRole'])->name('roles.give-permissions');
 Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionsToRole'])->name('roles.give-permissions');
 
+Route::resource('users', 'UserController');
+
+
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
@@ -85,7 +88,6 @@ Route::middleware('auth')->group(function () {
     Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes'); */
 
     //rutas para perfil
-    Route::resource('users', 'UserController');
     Route::get('/perfil', 'UserController@profile')->name('perfil');
     Route::put('perfil', 'UserController@updateProfile');
 

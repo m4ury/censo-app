@@ -2,7 +2,6 @@
 
 @section('title', 'editar rol')
 @section('content_header')
-    <h1>Editar Rol</h1>
 @stop
 
 @section('content')
@@ -10,7 +9,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Editar Rol
+                    <h4>Editar Perfil: {{ $role->name }}
                         <a href="{{ url('roles') }}" class="btn btn-primary float-right">Atras</a>
                     </h4>
                 </div>

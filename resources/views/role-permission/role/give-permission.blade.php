@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
-@section('title', 'give permissions to rol')
+@section('title', 'otorgar permisos al perfil')
 @section('content_header')
-    <h1>Modificar Permisos de Rol</h1>
+    <h1>Modificar Permisos de Perfil</h1>
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Rol: {{ $role->name }}
+                    <h4>Perfil: {{ $role->name }}
                         <a href="{{ url('roles') }}" class="btn btn-danger float-right">Atras</a>
                     </h4>
                 </div>
