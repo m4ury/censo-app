@@ -27,7 +27,7 @@
                         {{ Form::hidden('patologia_id', $patologia->id) }}
                         {{ Form::hidden('paciente_id', $paciente->id) }}
                         @if (auth()->user()->isAdmin() || auth()->user()->type == 'medico')
-                            {!! Form::button('<i class="fas fa-trash"> Eliminar </i>', [
+                            {!! Form::button('<i class="fas fa-trash"> Alta/Egreso </i>', [
                                 'type' => 'submit',
                                 'class' => 'btn btn-outline-danger btn-sm float-right',
                                 'data-toggle' => 'tooltip',
@@ -649,25 +649,6 @@
                 </div>
             </div>
             @endif
-            @if ($patologia->naneas == 1)
-            {{-- Naneas --}}
-            <div class="card card-info card-outline" id="Naneas">
-                <div class="card-header text-bold text-center">
-                    Naneas
-                </div>
-                <div class="card-body">
-                <div class="list-group-item list-group-item my-3 text-bold">
-                    <p class="btn btn-block badge-pill bg-gradient-{{ $patologia->color }}">
-                        {{ $patologia->nombre_patologia }}
-                        @if ($patologia->pivot->created_at == null)
-                            - No existen Datos
-                        @else
-                            Desde : {{ $patologia->pivot->created_at->format('d-m-Y') }}
-                        @endif
-                </div>
-            </div>
-            @endif
-
         @endforeach
     </div>
 @endif

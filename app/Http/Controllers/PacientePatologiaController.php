@@ -13,10 +13,10 @@ class PacientePatologiaController extends Controller
     public function create($id)
     {
         $paciente = Paciente::findOrFail($id);
-        $patologiasAsignadas = $paciente->patologias()->pluck('nombre_patologia', 'patologias.id');
+        $patologiasAsignadas = $paciente->patologias()->pluck('paciente_patologia.patologia_id')->toArray();
+
         $patologias = Patologia::whereNotIn('patologias.id', $patologiasAsignadas)
-                                  ->orderBy('nombre_patologia', 'ASC')
-                                    ->pluck('nombre_patologia', 'patologias.id');
+            ->pluck('nombre_patologia', 'patologias.id');
 
         $naneas = Patologia::where('naneas', 1)->pluck('nombre_patologia', 'patologias.id', 'naneas');
         //dd($naneas);
