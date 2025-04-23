@@ -23,6 +23,7 @@ Route::get('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleControlle
 Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionsToRole'])->name('roles.give-permissions');
 
 Route::resource('users', 'UserController');
+Route::get('users/{userId?}/delete', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
 
 Route::get('/', 'WelcomeController@index');

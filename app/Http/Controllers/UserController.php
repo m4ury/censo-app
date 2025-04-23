@@ -51,7 +51,7 @@ class UserController extends Controller
             'rut' => $request->rut,
             'apellido_paterno' => $request->apellido_paterno,
         ]);
-        return redirect('role-permission.user.index')->withSuccess('Usuario creado con exito!');
+        return back()->withSuccess('Usuario creado con exito!');
     }
     public function edit($id)
     {
