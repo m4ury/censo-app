@@ -8,7 +8,6 @@
     </div>
     <div class="card-body">
         @foreach ($paciente->patologias as $patologia)
-            @if ($patologia->naneas == 0)
             <div class="list-group">
                 <div class="list-group-item list-group-item my-3 text-bold ">
                     <p class="btn btn-block badge-pill bg-gradient-{{ $patologia->color }}">
@@ -648,7 +647,6 @@
                     @endif
                 </div>
             </div>
-            @endif
         @endforeach
     </div>
 @endif
