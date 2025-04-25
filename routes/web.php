@@ -18,6 +18,7 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/pacientes/{tipo}', 'HomeController@listadoPacientes')->name('pacientes.listado');
 
 Route::middleware('auth')->group(function () {
     Route::resource('pacientes', 'PacienteController');

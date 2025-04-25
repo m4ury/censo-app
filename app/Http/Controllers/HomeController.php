@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Paciente;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -23,175 +24,63 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //todos
-        $all = new Paciente;
-        $pMujer = $all
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'egreso', 'sexo', 'embarazada', 'controls.climater', 'controls.regulacion', 'controls.ginec')
-            ->where('controls.tipo_control', 'Matrona')
-            ->whereNull('egreso')
-            ->whereYear('controls.fecha_control', 2025)
-            ->latest('controls.fecha_control')
-            ->get()
-            ->unique('rut');
+        // Cachear los resultados para evitar consultas repetitivas
+        $data = Cache::remember('home_data', now()->addMinutes(10), function () {
+            $all = new Paciente;
 
-        $totalPacientes = $all->pscv()->get();
+            return [
+                'totalPacientes' => $all->pscv()->count(),
+                'dm2' => $all->dm2()->whereNull('egreso')->count(),
+                'hta' => $all->hta()->whereNull('egreso')->count(),
+                'dlp' => $all->dlp()->whereNull('egreso')->count(),
+                'iam' => $all->iam()->whereNull('egreso')->count(),
+                'acv' => $all->acv()->whereNull('egreso')->count(),
+                'demencia' => $all->demencia()->whereNull('egreso')->count(),
+                'riesgo' => $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count(),
+                'usoInsulina' => $all->dm2()->where('usoInsulina', true)->whereNull('egreso')->count(),
+                'pieDm2' => $all->dm2()
+                    ->join('controls', 'controls.paciente_id', 'pacientes.id')
+                    ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
+                    ->whereYear('controls.fecha_control', '>', '2024')
+                    ->distinct('pacientes.rut')
+                    ->count(),
+                'sm' => $all->sm()->count(),
+                'sala_era' => $all->salaEra()->count(),
+                'am' => $all->whereNull('egreso')->get()->where('grupo', '>', 64)->count(),
+                'efam' => $all->efam()->whereYear('controls.fecha_control', '>', '2024')->distinct('pacientes.rut')->count(),
+                'barthel' => $all->barthel()->whereYear('controls.fecha_control', '>', '2024')->distinct('pacientes.rut')->count(),
+                'totalMasculino' => $all->pscv()->where('sexo', '=', 'Masculino')->count(),
+                'totalFemenino' => $all->pscv()->where('sexo', '=', 'Femenino')->count(),
+                'totalCeleste' => $all->pscv()->where('sector', '=', 'celeste')->count(),
+                'totalNaranjo' => $all->pscv()->where('sector', '=', 'naranjo')->count(),
+                'totalBlanco' => $all->pscv()->where('sector', '=', 'blanco')->count(),
+                'g3' => $all->g3()->whereNull('egreso')->count(),
+                'ingresosG3' => $all->ingresosG3()->whereNull('egreso')->count(),
+                'g2' => $all->g2()->whereNull('egreso')->count(),
+                'ingresosG2' => $all->ingresosG2()->whereNull('egreso')->count(),
+                'g1' => $all->g1()->whereNull('egreso')->count(),
+                'ingresosG1' => $all->ingresosG1()->whereNull('egreso')->count(),
+            ];
+        });
 
-        $dm2 = $all->dm2()->whereNull('egreso')->count();
-        $hbac17 = $all->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count();
-        $hbac18 = $all->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count();
-        $sumaHbac = $hbac17 + $hbac18;
-        $descompDm2 = $dm2 - $sumaHbac;
+        return view('home', $data);
+    }
 
-        $hta = $all->hta()->whereNull('egreso')->count();
-        $pa140_90 = $all->paMenor140()->get()->where('grupo', '>', 14)->unique('rut')->count();
-        $pa150 = $all->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count();
-        $sumaPa = $pa140_90 + $pa150;
-        $descompPa = $hta - $sumaPa;
+    public function listadoPacientes($tipo)
+    {
+        $paciente = new Paciente(); // Instancia del modelo
 
-        $dlp = $all->dlp()->whereNull('egreso')->count();
-        $iam = $all->iam()->whereNull('egreso')->count();
-        $acv = $all->acv()->whereNull('egreso')->count();
-        $demencia = $all->demencia()->whereNull('egreso')->count();
-        $riesgo = $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count();
+        $pacientes = match ($tipo) {
+            'dm2' => $paciente->dm2()->whereNull('egreso')->get(),
+            'hta' => $paciente->hta()->whereNull('egreso')->get(),
+            'dlp' => $paciente->dlp()->whereNull('egreso')->get(),
+            'iam' => $paciente->iam()->whereNull('egreso')->get(),
+            'acv' => $paciente->acv()->whereNull('egreso')->get(),
+            'demencia' => $paciente->demencia()->whereNull('egreso')->get(),
+            'riesgo' => $paciente->rCero('Femenino', 'Masculino')->whereNull('egreso')->get(),
+            default => collect(),
+        };
 
-        $usoInsulina = $all->dm2()
-            ->where('usoInsulina', true)
-            ->whereNull('egreso')
-            ->count();
-
-        $pieDm2 = $all->dm2()
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-            ->whereYear('controls.fecha_control', '>', '2024')
-            ->latest('controls.fecha_control')
-            ->get()
-            ->unique('rut')
-            ->count();
-
-        $sm = $all->sm()->count();
-
-        $sala_era = $all->salaEra()->count();
-
-        $am = $all->select('id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'egreso')
-            ->whereNull('egreso')
-            ->get()
-            ->where('grupo', '>', 64)
-            ->count();
-
-        $efam = $all->efam()
-            ->whereYear('controls.fecha_control', '>', '2024')
-            ->get()
-            ->where('grupo', '>', 64)
-            ->unique('rut')
-            ->count();
-
-        $barthel = $all->barthel()
-            ->whereYear('controls.fecha_control', '>', '2024')
-            ->get()
-            ->where('grupo', '>', 64)
-            ->unique('rut')
-            ->count();
-        //dd($efam);
-
-        //x sexo
-        $totalMasculino = $all->pscv()->where('sexo', '=', 'Masculino')->count();
-
-        $totalFemenino = $all->pscv()->where('sexo', '=', 'Femenino')->count();
-
-        //x sector
-        $totalCeleste = $all->pscv()->where('sector', '=', 'celeste')->count();
-        $totalNaranjo = $all->pscv()->where('sector', '=', 'naranjo')->count();
-        $totalBlanco = $all->pscv()->where('sector', '=', 'blanco')->count();
-
-        $pacientes = new Paciente;
-        $mas80F = $pacientes->pscv()->whereSexo('Femenino')->get()->where('grupo', '>=', 80)->count();
-        $in7579F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [75, 79])->count();
-        $in7074F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [70, 74])->count();
-        $in6569F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [65, 69])->count();
-        $in6064F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [60, 64])->count();
-        $in5559F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [55, 59])->count();
-        $in5054F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [50, 54])->count();
-        $in4549F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [45, 49])->count();
-        $in4044F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [40, 44])->count();
-        $in3539F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [35, 39])->count();
-        $in3034F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [30, 34])->count();
-        $in2529F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [25, 29])->count();
-        $in2024F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519F = $pacientes->pscv()->whereSexo('Femenino')->get()->whereBetween('grupo', [15, 19])->count();
-
-        $mas80M = $pacientes->pscv()->whereSexo('Masculino')->get()->where('grupo', '>=', 80)->count();
-        $in7579M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [75, 79])->count();
-        $in7074M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [70, 74])->count();
-        $in6569M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [65, 69])->count();
-        $in6064M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [60, 64])->count();
-        $in5559M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [55, 59])->count();
-        $in5054M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [50, 54])->count();
-        $in4549M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [45, 49])->count();
-        $in4044M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [40, 44])->count();
-        $in3539M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [35, 39])->count();
-        $in3034M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [30, 34])->count();
-        $in2529M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [25, 29])->count();
-        $in2024M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [20, 24])->count();
-        $in1519M = $pacientes->pscv()->whereSexo('Masculino')->get()->whereBetween('grupo', [15, 19])->count();
-
-        return view('home', compact(
-            'totalPacientes',
-            'totalMasculino',
-            'totalFemenino',
-            'totalCeleste',
-            'totalNaranjo',
-            'totalBlanco',
-            'mas80F',
-            'in7579F',
-            'in7074F',
-            'in6569F',
-            'in6064F',
-            'in5559F',
-            'in5054F',
-            'in4549F',
-            'in4044F',
-            'in3539F',
-            'in3034F',
-            'in2529F',
-            'in2024F',
-            'in1519F',
-
-            'mas80M',
-            'in7579M',
-            'in7074M',
-            'in6569M',
-            'in6064M',
-            'in5559M',
-            'in5054M',
-            'in4549M',
-            'in4044M',
-            'in3539M',
-            'in3034M',
-            'in2529M',
-            'in2024M',
-            'in1519M',
-
-            'am',
-            'sm',
-            'dm2',
-            'hta',
-            'dlp',
-            'usoInsulina',
-            'pieDm2',
-            'iam',
-            'acv',
-            'sala_era',
-            'efam',
-            'barthel',
-            'all',
-            'riesgo',
-            'pMujer',
-            'demencia',
-            'sumaPa',
-            'sumaHbac',
-            'descompDm2',
-            'descompPa',
-        ));
+        return view('pacientes.listado', compact('pacientes', 'tipo'));
     }
 }
