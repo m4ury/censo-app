@@ -41,8 +41,9 @@
                         <td>
                             {{ $constancia->presencial ? 'Presencial' : 'Teleconsulta' }}
                         </td>
-                        <td> {{ Carbon\Carbon::parse($constancia->fecha_notificacion)->format('d-m-Y G:i A') }}</td>
-
+                        <td data-order="{{ $constancia->fecha_notificacion }}">
+                            {{ Carbon\Carbon::parse($constancia->fecha_notificacion)->format('d-m-Y h:i A') }}
+                        </td>
                         <td>{{ $constancia->user ? $constancia->user->fullUserName() : '' }}</td>
                         <td>
                             @if (auth()->user()->is($constancia->user))
@@ -81,44 +82,48 @@
 @section('js')
     <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
-        $.fn.dataTable.moment('DD-MM-YYYY');
-        $("#constancias").DataTable({
-            pageLength: 6,
-            dom: 'Bfrtip',
-            buttons: [
-                'colvis',
-                'excel',
-                'pdf',
-                'print',
-            ],
-            language: {
-                "processing": "Procesando...",
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "emptyTable": "Ningún dato disponible en esta tabla",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "search": "Buscar:",
-                "infoThousands": ",",
-                "loadingRecords": "Cargando...",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Último",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
+        $(document).ready(function() {
+            // Configura el formato de la fecha
+            $.fn.dataTable.moment('DD-MM-YYYY h:mm A');
+
+            // Inicializa DataTables
+            $("#constancias").DataTable({
+                pageLength: 6,
+                dom: 'Bfrtip',
+                buttons: [
+                    'colvis',
+                    'excel',
+                    'pdf',
+                    'print',
+                ],
+                language: {
+                    "processing": "Procesando...",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No se encontraron resultados",
+                    "emptyTable": "Ningún dato disponible en esta tabla",
+                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "search": "Buscar:",
+                    "infoThousands": ",",
+                    "loadingRecords": "Cargando...",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
                 },
-                "aria": {
-                    "sortAscending": ": Activar para ordenar la columna de manera ascendente",
-                    "sortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-            },
-            /* order: [
-                [5, 'desc']
-            ], */
+                order: [
+                    [5, 'desc'] // Ordenar por la columna 5 (Fecha / Hora Notificación) en orden descendente
+                ],
+            });
         });
     </script>
-
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()

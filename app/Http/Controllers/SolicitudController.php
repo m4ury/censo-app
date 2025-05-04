@@ -27,18 +27,42 @@ class SolicitudController extends Controller
 
     public function index()
     {
+        // Cargar solicitudes con relaciones necesarias
+        $solicitudes = Solicitud::with('user')->get();
 
-        $paciente = new Paciente;
-        $solicitudes = Solicitud::latest('created_at')
-            ->select('id', 'sol_fecha', 'sol_rut', 'sol_ficha', 'sol_estado', 'user_id', 'updated_at', 'sol_comentario', 'sol_receptor')
-            ->get();
+        // Obtener todos los RUTs de las solicitudes
+        $ruts = $solicitudes->pluck('sol_rut')->filter();
 
-        $mas30 = $solicitudes->filter(function ($mas30) {
-            return $mas30->sol_estado != 'some' && $mas30->sol_estado != 'solicitado' &&
-                Carbon::parse($mas30->updated_at)->diffInDays(Carbon::now()) > 30;
-        })->count();
+        // Consultar pacientes en la base de datos local
+        $pacientesLocales = Paciente::whereIn('rut', $ruts)
+            ->select('rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha')
+            ->get()
+            ->keyBy('rut'); // Indexar por RUT para acceso rápido
 
-        return view('solicitudes.index', compact('solicitudes', 'paciente', 'mas30'));
+        // Consultar pacientes en la base de datos externa
+        $pacientesExternos = \DB::connection('mysql_sfamiliar')
+            ->table('pacientes')
+            ->join('familias', 'familias.id', '=', 'pacientes.familia_id')
+            ->whereIn('pacientes.rut', $ruts)
+            ->select(
+                'pacientes.rut',
+                'pacientes.nombres',
+                'pacientes.apellidoP',
+                'pacientes.apellidoM',
+                'pacientes.ficha',
+                'familias.ficha_familiar',
+                'familias.sector' // Incluye el sector de la familia
+            )
+            ->get()
+            ->keyBy('rut'); // Indexar por RUT para acceso rápido
+
+            $mas30 = $solicitudes->filter(function ($mas30) {
+                return $mas30->sol_estado != 'some' && $mas30->sol_estado != 'solicitado' &&
+                    Carbon::parse($mas30->updated_at)->diffInDays(Carbon::now()) > 30;
+            })->count();
+
+        // Pasar datos a la vista
+        return view('solicitudes.index', compact('solicitudes', 'pacientesLocales', 'pacientesExternos', 'mas30'));
     }
 
     /**
