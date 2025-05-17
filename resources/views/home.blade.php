@@ -1,4 +1,5 @@
 @extends('adminlte::page')
+@section('title', 'Inicio')
 
 @section('content')
     <div class="container-fluid">
@@ -102,7 +103,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ $totalPacientes }}</h3>
+                        <h3>{{ $pscv }}</h3>
                         <p>Total Pacientes en Prog. Cardiovascular</p>
                     </div>
                     <div class="icon">
@@ -184,24 +185,48 @@
                 </div>
             </div>
         </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
-                <div class="card-header">Pacientes con DM2</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ $dm2 }}</h5>
-                </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">PSCV por Rango Etario y Sexo</h3>
+                <canvas id="pscvChart"></canvas>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
-                <div class="card-header">Pacientes con HTA</div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ $hta }}</h5>
-                    <a href="{{ route('pacientes.listado', 'hta') }}" class="btn btn-light btn-sm">More Info</a>
+
+    <div class="row">
+        <div class="col-lg-3 col-sm">
+            <div class="small-box bg-gradient-primary">
+                <div class="inner">
+                    <h3>{{ $dm2 }}</h3>
+                    <p>Pacientes Diabeticos</p>
                 </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+                <a href="{{ route('pacientes.listado', 'dm2') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-sm">
+            <div class="small-box bg-gradient-danger">
+                <div class="inner">
+                    <h3>{{ $hta }}</h3>
+                    <p>Pacientes Hipertensos</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+                <a href="{{ route('pacientes.listado', 'hta') }}" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-3">
             <div class="card text-white bg-danger mb-3">
                 <div class="card-header">Pacientes con DLP</div>

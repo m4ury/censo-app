@@ -29,7 +29,7 @@ class HomeController extends Controller
             $all = new Paciente;
 
             return [
-                'totalPacientes' => $all->pscv()->count(),
+                'pscv' => $all->pscv()->count(),
                 'dm2' => $all->dm2()->whereNull('egreso')->count(),
                 'hta' => $all->hta()->whereNull('egreso')->count(),
                 'dlp' => $all->dlp()->whereNull('egreso')->count(),
@@ -63,7 +63,35 @@ class HomeController extends Controller
             ];
         });
 
-        return view('home', $data);
+        $dataChart = Cache::remember('chart_data', now()->addMinutes(10), function () {
+        $all = new Paciente;
+
+        // Datos segmentados por rango etario y sexo
+        $pscvData = [
+            'rango1' => [
+                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [0, 18])->count(),
+                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [0, 18])->count(),
+            ],
+            'rango2' => [
+                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [19, 40])->count(),
+                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [19, 40])->count(),
+            ],
+            'rango3' => [
+                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [41, 60])->count(),
+                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [41, 60])->count(),
+            ],
+            'rango4' => [
+                'masculino' => $all->pscv()->where('sexo', 'Masculino')->where('edad', '>', 60)->count(),
+                'femenino' => $all->pscv()->where('sexo', 'Femenino')->where('edad', '>', 60)->count(),
+            ],
+        ];
+
+        return [
+            'pscvData' => $pscvData,
+        ];
+    });
+
+        return view('home', $data, $dataChart);
     }
 
     public function listadoPacientes($tipo)
