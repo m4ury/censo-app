@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Cachear los resultados para evitar consultas repetitivas
         $data = Cache::remember('home_data', now()->addMinutes(10), function () {
             $all = new Paciente;
 
@@ -64,34 +63,42 @@ class HomeController extends Controller
         });
 
         $dataChart = Cache::remember('chart_data', now()->addMinutes(10), function () {
-        $all = new Paciente;
+            $all = new Paciente;
 
-        // Datos segmentados por rango etario y sexo
-        $pscvData = [
-            'rango1' => [
-                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [0, 18])->count(),
-                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [0, 18])->count(),
-            ],
-            'rango2' => [
-                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [19, 40])->count(),
-                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [19, 40])->count(),
-            ],
-            'rango3' => [
-                'masculino' => $all->pscv()->where('sexo', 'Masculino')->whereBetween('edad', [41, 60])->count(),
-                'femenino' => $all->pscv()->where('sexo', 'Femenino')->whereBetween('edad', [41, 60])->count(),
-            ],
-            'rango4' => [
-                'masculino' => $all->pscv()->where('sexo', 'Masculino')->where('edad', '>', 60)->count(),
-                'femenino' => $all->pscv()->where('sexo', 'Femenino')->where('edad', '>', 60)->count(),
-            ],
-        ];
+            return [
+                'in1519M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count(),
+                'in2024M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [20, 24])->count(),
+                'in2529M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [25, 29])->count(),
+                'in3034M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [30, 34])->count(),
+                'in3539M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [35, 39])->count(),
+                'in4044M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [40, 44])->count(),
+                'in4549M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [45, 49])->count(),
+                'in5054M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [50, 54])->count(),
+                'in5559M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [55, 59])->count(),
+                'in6064M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [60, 64])->count(),
+                'in6569M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [65, 69])->count(),
+                'in7074M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [70, 74])->count(),
+                'in7579M' => $all->pscv()->where('sexo', 'Masculino')->get()->whereBetween('grupo', [75, 79])->count(),
+                'mas80M'  => $all->pscv()->where('sexo', 'Masculino')->get()->where('grupo', '>=', 80)->count(),
+                'in1519F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count(),
+                'in2024F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [20, 24])->count(),
+                'in2529F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [25, 29])->count(),
+                'in3034F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [30, 34])->count(),
+                'in3539F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [35, 39])->count(),
+                'in4044F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [40, 44])->count(),
+                'in4549F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [45, 49])->count(),
+                'in5054F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [50, 54])->count(),
+                'in5559F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [55, 59])->count(),
+                'in6064F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [60, 64])->count(),
+                'in6569F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [65, 69])->count(),
+                'in7074F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [70, 74])->count(),
+                'in7579F' => $all->pscv()->where('sexo', 'Femenino')->get()->whereBetween('grupo', [75, 79])->count(),
+                'mas80F'  => $all->pscv()->where('sexo', 'Femenino')->get()->where('grupo', '>=', 80)->count(),
+            ];
+        });
 
-        return [
-            'pscvData' => $pscvData,
-        ];
-    });
-
-        return view('home', $data, $dataChart);
+        // ¡IMPORTANTE! Combina ambos arrays para enviarlos a la vista
+        return view('home', array_merge($data, $dataChart));
     }
 
     public function listadoPacientes($tipo)
