@@ -45,13 +45,13 @@
                             </td>
                             <td>{{ $paciente->telefono }}</td>
                             <td><span class="mr-2">
-                                    @if ($paciente->sector == 'Celeste')
-                                        <i class="fas fa-square text-primary"></i>
-                                </span> Celeste
-                            @elseif($paciente->sector == 'Naranjo')
-                                <i class="fas fa-square text-orange"></i></span> Naranjo
-                            @elseif($paciente->sector == 'Blanco')
-                                <i class="fas fa-square text-white"></i></span> Blanco
+                                    @if ($paciente->sector == 'Urbano')
+                                        <i class="fas fa-square text-warning"></i>
+                                </span> Urbano
+                            @elseif($paciente->sector == 'Rural')
+                                <i class="fas fa-square text-success"></i></span> Rural
+                            @elseif($paciente->sector == 'Otros')
+                                <i class="fas fa-square text-orange"></i></span> Otros
                     @endif
                     </td>
                     </tr>

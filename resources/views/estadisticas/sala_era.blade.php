@@ -47,19 +47,19 @@
                             <td>{{ $paciente->sexo }}</td>
                             <td>{{ $paciente->edad() < 5 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}
                             </td>
-                            <td>Hospital de Hualañe</td>
-                            <th>Hualañe</th>
+                            <td>{{ env('APP_INST') }}</td>
+                            <th>{{ env('APP_CIUDAD') }}</th>
                             <td>{{ $paciente->telefono }}</td>
                             <td>
                                 <span class="mr-2">
-                                    @if ($paciente->sector == 'Celeste')
-                                        <i class="fas fa-square text-primary"></i>
-                                </span> Celeste
-                            @elseif($paciente->sector == 'Naranjo')
+                                    @if ($paciente->sector == 'Urbano')
+                                        <i class="fas fa-square text-yellow"></i>
+                                </span> Urbano
+                            @elseif($paciente->sector == 'Rural')
+                                <i class="fas fa-square text-success"></i>
+                                </span> Rural
+                            @elseif($paciente->sector == 'Otros')
                                 <i class="fas fa-square text-orange"></i>
-                                </span> Naranjo
-                            @elseif($paciente->sector == 'Blanco')
-                                <i class="fas fa-square text-white"></i>
                                 </span> Blanco
                     @endif
                     </td>

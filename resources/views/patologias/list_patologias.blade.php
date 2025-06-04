@@ -578,7 +578,7 @@
                                         Demencias (incluye Alzheimer)
                                     </strong>
                                     <p class="btn rounded-pill bg-gradient-warning">
-                                        {{ $paciente->controls()->pluck('demencia')->whereNotNull()->last() }} </P>
+                                        {{ $paciente->controls()->pluck('demencias')->whereNotNull()->last() }} </P>
                                 </div>
                                 @elseif($paciente->controls()->pluck('trDesarrollo')->whereNotNull()->last())
                                 <div class="col-sm">

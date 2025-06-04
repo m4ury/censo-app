@@ -246,12 +246,12 @@ return [
             'icon' => 'fas fa-envelope-open-text text-fuccia',
         ], */
 
-        [
+       /*  [
             'text' => 'Constancias GES',
             'route' => 'constancias.index',
             'icon' => 'fas fa-fw fa-file text-white',
             'can' => 'some'
-        ],
+        ], */
         [
             'text' => 'Mapa ECICEP (G3)',
             'route' => 'mapa',
