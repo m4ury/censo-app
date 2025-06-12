@@ -10,19 +10,17 @@
             <div class="row">
                     {!! Form::label('Latitud_label', 'Latitud', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm">
-                    {!! Form::text('latitud', null, [
+                    {!! Form::text('latitud', old('latitud', $paciente->latitud ?? ''), [
                     'class' => 'form-control form-control-sm' . ($errors->has('Latitud') ? ' is-invalid' : ''),
                     'id' => 'latitude',
-                    'readonly' => 'readonly',
                 ]) !!}
                 </div>
 
                 {!! Form::label('Longitud_label', 'Longitud', ['class' => 'col-sm-2 col-form-label']) !!}
                 <div class="col-sm">
-                    {!! Form::text('longitud', null, [
+                    {!! Form::text('longitud', old('latitud', $paciente->longitud ?? ''), [
                     'class' => 'form-control form-control-sm' . ($errors->has('Longitud') ? ' is-invalid' : ''),
                     'id' => 'longitude',
-                    'readonly' => 'readonly',
                 ]) !!}
                 </div>
             </div>

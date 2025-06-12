@@ -29,7 +29,7 @@
             <h6>INSTITUCIÓN (Hospital, Clínica, Consultorio, etc.):</h6>
         </div>
         <div class="col-sm form-control">
-            <b>{{ env('APP_INST') }}</b>
+            <b class="text-uppercase">{{ env('APP_INST') }}</b>
         </div>
     </div>
     <div class="row">
@@ -37,13 +37,13 @@
             <h6>DIRECCIÓN:</h6>
         </div>
         <div class="col-sm-5 form-control">
-            <b>{{ env('APP_DIR') }}</b>
+            <b class="text-uppercase">{{ env('APP_DIR') }}</b>
         </div>
         <div class="col-sm col-form-label">
             <h6>CIUDAD:</h6>
         </div>
         <div class="col-sm form-control">
-            <b>{{ env('APP_CIUDAD') }}</b>
+            <b class="text-uppercase">{{ env('APP_CIUDAD') }}</b>
         </div>
     </div>
 
@@ -93,26 +93,26 @@
             <h6>PREVISIÓN: </h6>
         </div>
         <div class="col-sm form-control">
-            <b class="text-uppercase">{{ $constancia->paciente->prevision }}</b>
+            <b class="text-uppercase">{{ $constancia->paciente->prevision ?? 'FONASA' }}</b>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 col-form-label">
+        <div class="col-sm col-form-label">
             <h6>DOMICILIO: </h6>
         </div>
         <div class="col-sm-3 form-control">
             <b class="text-uppercase">{{ $constancia->paciente->direccion }}</b>
         </div>
-        <div class="col-sm-2 col-form-label">
+        <div class="col-sm col-form-label">
             <h6>COMUNA: </h6>
         </div>
-        <div class="col-sm-2 form-control">
+        <div class="col-sm form-control">
             <b class="text-uppercase">{{ $constancia->paciente->comuna }}</b>
         </div>
         <div class="col-sm col-form-label">
             <h6>REGIÓN: </h6>
         </div>
-        <div class="col-sm form-control">
+        <div class="col-sm-2 form-control">
             <b class="text-uppercase">{{ env('APP_REGION') }}</b>
         </div>
     </div>

@@ -173,7 +173,6 @@
                                     {!! Form::text('latitud', old('latitud', $paciente->latitud), [
                                         'class' => 'form-control form-control-sm' . ($errors->has('latitud') ? ' is-invalid' : ''),
                                         'id' => 'latitud',
-                                        'readonly' => 'readonly',
                                     ]) !!}
                                 </div>
                                 {!! Form::label('longitud_label', 'Longitud:', ['class' => 'col-sm-2 col-form-label']) !!}
@@ -181,7 +180,6 @@
                                     {!! Form::text('longitud', old('longitud', $paciente->longitud), [
                                         'class' => 'form-control form-control-sm' . ($errors->has('longitud') ? ' is-invalid' : ''),
                                         'id' => 'longitud',
-                                        'readonly' => 'readonly',
                                     ]) !!}
                                 </div>
                             </div>
@@ -654,8 +652,8 @@
     <script>
         // Determinamos las coordenadas iniciales:
         // Si existen latitud y longitud, se usan, de lo contrario se establecen unas por defecto.
-        var initialLat = {{ $paciente->latitud ? $paciente->latitud : '-34.8720687' }};
-        var initialLng = {{ $paciente->longitud ? $paciente->longitud : '-71.1674369' }};
+        var initialLat = {{ $paciente->latitud ? $paciente->latitud : env('APP_LAT') }};
+        var initialLng = {{ $paciente->longitud ? $paciente->longitud : env('APP_LNG') }};
 
         //-34.8720687,-71.1674369
 
@@ -664,7 +662,7 @@
 
         // Cargamos el mapa base desde OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Hospital de Teno'
+            attribution: "{{env('APP_INST')}}"
         }).addTo(map);
 
         var marker;

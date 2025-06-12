@@ -30,11 +30,18 @@ class HomeController extends Controller
             return [
                 'pscv' => $all->pscv()->count(),
                 'dm2' => $all->dm2()->whereNull('egreso')->count(),
+                'hbac17' => $all->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count(),
+                'hbac18' => $all->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count(),
+                /* $sumaHbac = $hbac17 + $hbac18,
+                $descompDm2 = $dm2 - $sumaHbac, */
                 'hta' => $all->hta()->whereNull('egreso')->count(),
+                'pa140_90' => $pa140_90 = $all->paMenor140()->get()->where('grupo', '>', 14)->unique('rut')->count(),
+                'pa150_90' => $pa150 = $all->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count(),
+                /* $sumaPa = $pa140_90 + $pa150;
+                $descompPa = $hta - $sumaPa; */
                 'dlp' => $all->dlp()->whereNull('egreso')->count(),
                 'iam' => $all->iam()->whereNull('egreso')->count(),
                 'acv' => $all->acv()->whereNull('egreso')->count(),
-                'demencia' => $all->demencia()->whereNull('egreso')->count(),
                 'riesgo' => $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count(),
                 'usoInsulina' => $all->dm2()->where('usoInsulina', true)->whereNull('egreso')->count(),
                 'pieDm2' => $all->dm2()
@@ -43,6 +50,16 @@ class HomeController extends Controller
                     ->whereYear('controls.fecha_control', '>', '2024')
                     ->distinct('pacientes.rut')
                     ->count(),
+                'pMujer' => $all->totalMac()
+                    ->whereNull('egreso')
+                    ->whereYear('fecha_control','>', '2024')
+                    ->get()
+                    ->unique('rut'),
+                'ginec' => $all->totalMac()->where('ginec', true)->count(),
+                'regulacion' => $all->totalMac()->where('regulacion', 1)->count(),
+                'climater' => $all->climater()->count(),
+                'embarazadas' => $all->embarazada()->whereNull('egreso')->count(),
+
                 'sm' => $all->sm()->count(),
                 'sala_era' => $all->salaEra()->count(),
                 'am' => $all->whereNull('egreso')->get()->where('grupo', '>', 64)->count(),
@@ -59,8 +76,13 @@ class HomeController extends Controller
                 'ingresosG2' => $all->ingresosG2()->whereNull('egreso')->count(),
                 'g1' => $all->g1()->whereNull('egreso')->count(),
                 'ingresosG1' => $all->ingresosG1()->whereNull('egreso')->count(),
+                'postrados' => $all->postrados()->whereNull('egreso')->count(),
+                'cuidadores' => $all->cuidadores()->whereNull('egreso')->count(),
+                'paliativos' => $all->paliativo()->whereNull('egreso')->count(),
+                'totalMac' => $all->totalMac()->get()->unique('rut')->whereNull('egreso')->count(),
             ];
         });
+
 
         $dataChart = Cache::remember('chart_data', now()->addMinutes(10), function () {
             $all = new Paciente;
@@ -111,8 +133,6 @@ class HomeController extends Controller
             'dlp' => $paciente->dlp()->whereNull('egreso')->get(),
             'iam' => $paciente->iam()->whereNull('egreso')->get(),
             'acv' => $paciente->acv()->whereNull('egreso')->get(),
-            'demencia' => $paciente->demencia()->whereNull('egreso')->get(),
-            'riesgo' => $paciente->rCero('Femenino', 'Masculino')->whereNull('egreso')->get(),
             default => collect(),
         };
 

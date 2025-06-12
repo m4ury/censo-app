@@ -1,6 +1,6 @@
 {{-- filepath: c:\laragon\www\censo-app.dev\resources\views\pacientes\listado.blade.php --}}
 @extends('adminlte::page')
-@section('title', 'pctes diabeticos')
+@section('title', 'pctes ' . ucfirst($tipo))
 
 @section('content')
     <div class="card card-primary card-outline">

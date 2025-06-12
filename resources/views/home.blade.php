@@ -4,7 +4,6 @@
 @section('content')
     <div class="container-fluid">
         <div class="row pt-2">
-
             <div class="col-lg-2 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
@@ -223,6 +222,65 @@
                     </a>
                 </div>
             </div>
+            @php
+                $sumaHbac = $hbac17 + $hbac18;
+                $descompDm2 = $dm2 - $sumaHbac;
+
+                $sumaPa = $pa140_90 + $pa150_90;
+                $descompPa = $hta - $sumaPa;
+            @endphp
+            <div class="col-lg-2 col-sm-2">
+                <div class="small-box col-sm border border-primary">
+                    <div class="inner">
+                        <h3>{{ $sumaHbac }}</h3>
+                        <p>COMPENSADOS,<br>
+                            (HbA1c < 8%)<span class="text-bold text-blue">
+                                {{ $sumaHbac == 0 ? '0' : round(($sumaHbac / $dm2) * 100, 1) }}%
+                                </span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <div class="small-box col-sm border border-primary">
+                    <div class="inner">
+                        <h3>{{ $descompDm2 }}</h3>
+                        <p>DESCOMPENSADOS,<br>
+                            (HbA1c >= 9%)<span class="text-bold text-red">
+                                {{ $descompDm2 == 0 ? '0' : round(($descompDm2 / $dm2) * 100, 1) }}%
+                            </span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm">
+                <div class="small-box border border-primary">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $pieDm2 }}</h3>
+                        <p>EVALUACIÓN PIE DIABÉTICO, <span
+                                class="text-bold text-red">{{ $pieDm2 == 0 ? 'No hay datos aun...' : round(($pieDm2 * 100) / $dm2, 2) }}%
+                            </span></p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <a href="{{ route('estadisticas.pie') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg col-sm">
+                <div class="small-box border border-primary">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $dm2 - $pieDm2 }}</h3>
+                        <p>SIN EVALUACIÓN PIE DIABÉTICO</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <a href="{{ route('pacientes.sinEvalPie') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-3 col-sm">
@@ -239,115 +297,218 @@
                     </a>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card text-white bg-danger mb-3">
-                    <div class="card-header">Pacientes con DLP</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $dlp }}</h5>
+            <div class="col-lg-2 col-sm-2">
+                <div class="small-box col-sm border border-danger">
+                    <div class="inner">
+                        <h3>{{ $sumaPa }}</h3>
+                        <p>COMPENSADOS,
+                            <br>
+                            (P. Arterial < 150/90 mmHg)<span class="text-bold text-blue">
+                                {{ $sumaPa == 0 ? '0' : round(($sumaPa / $hta) * 100, 1) }}%
+                                </span>
+                        </p>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <div class="small-box col-sm border border-danger">
+                    <div class="inner">
+                        <h3>{{ $descompPa }}</h3>
+                        <p>DESCOMPENSADOS,<br>
+                            (P. Arterial > 160/100 mmHg)<span class="text-bold text-red">
+                                {{ $descompPa == 0 ? '0' : round(($descompPa / $hta) * 100, 1) }}%
+                            </span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $sm }}</a></h3>
+                        <p>PACIENTES SALUD MENTAL</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <a href="{{ route('estadisticas.sm') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-info">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $sala_era }}</a></h3>
+                        <p>PACIENTES SALA IRA/ERA</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-lungs-virus"></i>
+                    </div>
+                    <a href="{{ route('estadisticas.sala_era') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        {{-- Indicadores adicionales --}}
         <div class="row">
-            <div class="col-md-3">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Pacientes con IAM</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $iam }}</h5>
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-yellow">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $am }}</a></h3>
+                        <p>PACIENTES ADULTO MAYOR</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-blind"></i>
+                    </div>
+                    <a href="{{ route('estadisticas.am') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg col-sm">
+                <div class="small-box col-sm border border-warning">
+                    <div class="inner">
+                        <h3>{{ $efam + $barthel }}</h3>
+                        <p>EFAM REALIZADOS</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-secondary mb-3">
-                    <div class="card-header">Pacientes con ACV</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $acv }}</h5>
+
+            <div class="col-lg col-sm">
+                <div class="small-box border border-warning">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $postrados }}</a></h3>
+                        <p>PACIENTES DEP. SEVERA</p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <a href="{{ route('pacientes.postrados') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-header">Pacientes con Demencia</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $demencia }}</h5>
+
+            <div class="col-lg col-sm">
+                <div class="small-box border border-warning">
+                    <div class="inner">
+                        <h3 style="color:black">{{ $cuidadores }}</a></h3>
+                        <p>CUIDADORES</p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <a href="{{ route('pacientes.cuidadores') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Pacientes en Riesgo</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $riesgo }}</h5>
+
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-lime">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $paliativos }}</a></h3>
+                        <p>PACIENTES PALIATIVO UNIV.</p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <a href="{{ route('pacientes.paliativo') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-        {{-- Indicadores específicos --}}
         <div class="row">
-            <div class="col-md-3">
-                <div class="card text-white bg-success mb-3">
-                    <div class="card-header">Uso de Insulina</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $usoInsulina }}</h5>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-pink">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $riesgo }}</a></h3>
+                        <p>NIÑOS NIÑAS RIESGO ODONT.</p>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Pie DM2</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $pieDm2 }}</h5>
+                    <div class="icon">
+                        <i class="fas fa-child"></i>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-danger mb-3">
-                    <div class="card-header">Sala ERA</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $sala_era }}</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-white bg-info mb-3">
-                    <div class="card-header">Adultos Mayores</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $am }}</h5>
-                    </div>
+                    <a href="{{ route('pacientes.riesgo') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-        {{-- Indicadores por sector --}}
         <div class="row">
-            <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
-                    <div class="card-header">Sector Celeste</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $totalCeleste }}</h5>
+            <div class="col-lg col-sm">
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $totalMac }}</a></h3>
+                        <p>PROGRAMA DE LA MUJER</p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <a href="{{ route('pacientes.pMujer') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-warning mb-3">
-                    <div class="card-header">Sector Naranjo</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $totalNaranjo }}</h5>
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $ginec }}</h3>
+                        <p>GINECOLÓGICO</p>
                     </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-white bg-secondary mb-3">
-                    <div class="card-header">Sector Blanco</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $totalBlanco }}</h5>
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $regulacion }}</h3>
+                        <p>REGULACIÓN FERTILIDAD</p>
                     </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="{{ route('pacientes.hormonal') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                        {{ $embarazadas }}</h3>
+                        <p>EMBARAZADAS</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-baby-carriage'></i>
+                    </div>
+                    <a href="pacientes.embarazada" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm">
+                <div class="small-box border border-danger">
+                    <div class="inner">
+                        <h3 style="color:black">
+                            {{ $climater }}</h3>
+                        <p>CLIMATERIO</p>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-female'></i>
+                    </div>
+                    <a href="pacientes.climater" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -395,7 +556,7 @@
             options: {
                 responsive: true,
                 animation: {
-                    duration: 1500,
+                    duration: 3500,
                 },
                 scales: {
                     y: {
