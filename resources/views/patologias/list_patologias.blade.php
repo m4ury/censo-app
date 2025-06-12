@@ -26,12 +26,12 @@
                         {{ Form::hidden('patologia_id', $patologia->id) }}
                         {{ Form::hidden('paciente_id', $paciente->id) }}
                         @if (auth()->user()->isAdmin() || auth()->user()->type == 'medico')
-                            {!! Form::button('<i class="fas fa-trash"> Eliminar </i>', [
+                            {!! Form::button('<i class="fas fa-trash"> Egreso/Alta </i>', [
                                 'type' => 'submit',
                                 'class' => 'btn btn-outline-danger btn-sm float-right',
                                 'data-toggle' => 'tooltip',
                                 'data-placement' => 'top',
-                                'title' => 'Eliminar',
+                                'title' => 'Egreso / Alta',
                             ]) !!}
                         @endif
                         {{ Form::close() }}
@@ -591,7 +591,7 @@
                                             Demencias (incluye Alzheimer)
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('demencia')->whereNotNull()->last() }}
+                                            {{ $paciente->controls()->pluck('demencias')->whereNotNull()->last() }}
                                         </P>
                                     </div>
                                 @elseif($paciente->controls()->pluck('trDesarrollo')->whereNotNull()->last())

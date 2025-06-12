@@ -111,6 +111,7 @@
         {!! Form::number('talla_actual', old('talla_actual', $control->talla_actual), [
             'class' => 'form-control form-control-sm' . ($errors->has('talla_actual') ? ' is-invalid' : ''),
             'placeholder' => 'Ejemplo: 175',
+            'step' => 'any',
         ]) !!}
         @if ($errors->has('talla_actual'))
             <span class="invalid-feedback">
