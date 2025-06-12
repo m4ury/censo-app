@@ -1,3 +1,4 @@
+{{-- filepath: c:\laragon\www\censo-app.dev\resources\views\pacientes\index.blade.php --}}
 @extends('adminlte::page')
 
 @section('title', 'pacientes')
@@ -5,8 +6,7 @@
 @section('content')
     <div class="col-sm-6 py-3">
         <a class="btn bg-gradient-success btn-sm" title="Nuevo Paciente" href="{{ route('pacientes.create') }}">
-            <i class="fas fa-user-plus">
-            </i>
+            <i class="fas fa-user-plus"></i>
             Nuevo Paciente
         </a>
     </div>
@@ -16,7 +16,6 @@
                 <tr>
                     <th>Rut</th>
                     <th>Nombre Completo</th>
-                    {{-- <th>Multimorbilidad</th> --}}
                     <th>Nº Ficha Clinica</th>
                     <th>Edad</th>
                     <th>Sexo</th>
@@ -25,134 +24,86 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pacientes as $paciente)
-                    {{-- dd($paciente->withCount('patologias')->having('patologias_count', '>', 4)->get('pacientes.rut')->first()) --}}
-                    <tr>
-                        <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
-                        <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                        {{-- <td>
-                            @if ($paciente->patologias->count() > 4)
-                                <p class="text-bold text-danger">G3</p>
-                            @elseif ($paciente->patologias->count() <  5 and $paciente->patologias->count() > 1)
-                                <p class="text-bold text-orange">G2</p>
-                            @elseif ($paciente->patologias->count() == 1)
-                                <p class="text-bold text-warning">G1</p>
-                            @else
-                                <p class="text-bold text-success">G0</p>
-                            @endif
-                        </td> --}}
-                        <td>{{ $paciente->ficha }}
-                            @if ($paciente->egreso != null)
-                                @switch($paciente->egreso)
-                                    @case('fallecido')
-                                        <span class="text-warning mx-2"><i class='fa fa-cross'></i>
-                                            {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format('d-m-Y') }}</span>
-                                    @break
+                {{-- El contenido se llenará por DataTables vía AJAX --}}
+            </tbody>
+        </table>
+    </div>
+@stop
 
-                                    @case('inasistente')
-                                        <span class="text-info mx-2"><i class='fas fa-sign-out-alt'></i>
-                                            {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format('d-m-Y') }}</span>
-                                    @break
-
-                                    @case('cambio_centro')
-                                        <span class="text-gray mx-2"><i class='fas fa-hospital'></i>
-                                            {{ Carbon\Carbon::parse($paciente->fecha_egreso)->format('d-m-Y') }}</span>
-                                    @break
-
-                                    @default
-                                        ""
-                                @endswitch
-                            @endif
-                        </td>
-                        <td>{{ $paciente->edad() < 1 ? $paciente->edadEnMeses() . ' Meses' : $paciente->edad() . ' Años' }}</td>
-                        <td>{{ $paciente->sexo }}</td>
-                        <td>
-                            @if ($paciente->sector == 'Celeste')
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i>
-                                </span> Celeste
-                            @elseif($paciente->sector == 'Naranjo')
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-orange"></i>
-                                </span> Naranjo
-                            @elseif($paciente->sector == 'Blanco')
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-white"></i>
-                                </span> Blanco
-                            @endif
-                        </td>
-                        <td>
-                            @switch($paciente->edad())
-                                @case($paciente->edad() < 15)
-                                    {{ 'Menor de 15' }}
-                                @break
-
-                                @case($paciente->edad() >= 15 && $paciente->edad() <= 19)
-                                    {{ 'Entre 15 y 19' }}
-                                @break
-
-                                @case($paciente->edad() >= 20 && $paciente->edad() <= 24)
-                                    {{ 'Entre 20 y 24' }}
-                                @break
-
-                                @case($paciente->edad() >= 25 && $paciente->edad() <= 29)
-                                    {{ 'Entre 25 y 29' }}
-                                @break
-
-                                @case($paciente->edad() >= 30 && $paciente->edad() <= 34)
-                                    {{ 'Entre 30 y 34' }}
-                                @break
-
-                                @case($paciente->edad() >= 35 && $paciente->edad() <= 39)
-                                    {{ 'Entre 35 y 39' }}
-                                @break
-
-                                @case($paciente->edad() >= 40 && $paciente->edad() <= 44)
-                                    {{ 'Entre 40 y 44' }}
-                                @break
-
-                                @case($paciente->edad() >= 45 && $paciente->edad() <= 49)
-                                    {{ 'Entre 45 y 49' }}
-                                @break
-
-                                @case($paciente->edad() >= 50 && $paciente->edad() <= 54)
-                                    {{ 'Entre 50 y 54' }}
-                                @break
-
-                                @case($paciente->edad() >= 55 && $paciente->edad() <= 59)
-                                    {{ 'Entre 55 y 59' }}
-                                @break
-
-                                @case($paciente->edad() >= 60 && $paciente->edad() <= 64)
-                                    {{ 'Entre 60 y 64' }}
-                                @break
-
-                                @case($paciente->edad() >= 65 && $paciente->edad() <= 69)
-                                    {{ 'Entre 65 y 69' }}
-                                @break
-
-                                @case($paciente->edad() >= 70 && $paciente->edad() <= 74)
-                                    {{ 'Entre 70 y 74' }}
-                                @break
-
-                                @case($paciente->edad() >= 75 && $paciente->edad() <= 79)
-                                    {{ 'Entre 75 y 79' }}
-                                @break
-
-                                @case($paciente->edad() >= 80)
-                                    {{ '80 y Más' }}
-                                @endswitch
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    @stop
-    @section('plugins.Datatables', true)
+@section('plugins.Datatables', true)
 @section('js')
     <script>
-        $("#pacientes").DataTable({
+        $('#pacientes').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ route('pacientes.index') }}',
+            columns: [{
+                    data: 'rut',
+                    name: 'rut',
+                    orderable: true,
+                    render: function(data, type, row) {
+                        // Solo para mostrar, el resto retorna el valor plano
+                        if (type === 'display') {
+                            return `<a href="/pacientes/${row.id}">${data}</a>`;
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: 'nombre_completo',
+                    name: 'nombre_completo',
+                    orderable: true
+                },
+                {
+                    data: 'ficha',
+                    name: 'ficha',
+                    orderable: true,
+                    render: function(data, type, row) {
+                        if (type !== 'display') {
+                            return data;
+                        }
+                        let ficha = data ? data : '';
+                        if (row.fallecido && row.fecha_fallecido) {
+                            ficha += `<span class="float-right text-warning" title="Fallecido el ${row.fecha_fallecido}">
+                                        <i class="fas fa-cross"></i> ${row.fecha_fallecido}
+                                      </span>`;
+                        }
+                        return ficha;
+                    }
+                },
+                {
+                    data: 'edad',
+                    name: 'edad',
+                    orderable: true
+                },
+                {
+                    data: 'sexo',
+                    name: 'sexo',
+                    orderable: true
+                },
+                {
+                    data: 'sector',
+                    name: 'sector',
+                    orderable: true,
+                    render: function(data, type, row) {
+                        if (type !== 'display') {
+                            return data;
+                        }
+                        if (data === 'Celeste')
+                            return '<span class="mr-2"><i class="fas fa-square text-primary"></i></span> Celeste';
+                        if (data === 'Naranjo')
+                            return '<span class="mr-2"><i class="fas fa-square text-orange"></i></span> Naranjo';
+                        if (data === 'Blanco')
+                            return '<span class="mr-2"><i class="fas fa-square text-white"></i></span> Blanco';
+                        return data;
+                    }
+                },
+                {
+                    data: 'grupo_etareo',
+                    name: 'grupo_etareo',
+                    orderable: true
+                }
+            ],
             dom: 'Bfrtip',
             buttons: [
                 'colvis',
@@ -182,6 +133,7 @@
                     "sortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
+            pageLength: 10,
         });
     </script>
 @endsection

@@ -69,13 +69,79 @@ class PacienteController extends Controller
 
     public function index(Request $request)
     {
-        $q = $request->get('q');
-        $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'edad', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'direccion', 'comuna')
-            ->orderBy('rut', 'asc')
-            ->search($q)
-            ->get();
+        if ($request->ajax()) {
+            $pacientes = Paciente::select('id', 'rut', 'nombres', 'apellidoP', 'apellidoM', 'ficha', 'fecha_nacimiento', 'sexo', 'sector', 'egreso', 'fecha_egreso')
+                ->orderBy('rut', 'asc');
 
-        return view('pacientes.index', compact('pacientes', 'q'));
+            // Filtro de búsqueda
+            if ($request->has('search') && $request->search['value'] != '') {
+                $search = $request->search['value'];
+                $pacientes->where(function ($q) use ($search) {
+                    $q->where('rut', 'like', "%$search%")
+                        ->orWhere('nombres', 'like', "%$search%")
+                        ->orWhere('apellidoP', 'like', "%$search%")
+                        ->orWhere('apellidoM', 'like', "%$search%")
+                        ->orWhere('ficha', 'like', "%{$search}%")
+                        ->orWhereRaw("CONCAT(pacientes.nombres, ' ', pacientes.apellidoP, ' ', pacientes.apellidoM) LIKE ?", ["%{$search}%"]);
+                });
+            }
+
+            $total = $pacientes->count();
+
+            $start = $request->start ?? 0;
+            $length = $request->length ?? 10;
+            $pacientes = $pacientes->skip($start)->take($length)->get();
+
+            // Formatea los datos para las columnas personalizadas
+            $data = $pacientes->map(function ($p) {
+                $ficha = $p->ficha ?? '';
+                $fallecido = ($p->egreso === 'fallecido') && $p->fecha_egreso;
+                $fechaFallecido = $fallecido ? Carbon::parse($p->fecha_egreso)->format('d-m-Y') : null;
+
+                return [
+                    'id' => $p->id,
+                    'rut' => $p->rut,
+                    'nombre_completo' => $p->fullName(),
+                    'ficha' => $ficha,
+                    'fallecido' => $fallecido,
+                    'fecha_fallecido' => $fechaFallecido,
+                    'edad' => $p->edad() < 1 ? $p->edadEnMeses() . ' Meses' : $p->edad() . ' Años',
+                    'sexo' => $p->sexo,
+                    'sector' => $p->sector,
+                    'grupo_etareo' => $this->grupoEtareo($p->edad()),
+                ];
+            });
+
+            return response()->json([
+                'draw' => intval($request->draw),
+                'recordsTotal' => $total,
+                'recordsFiltered' => $total,
+                'data' => $data,
+            ]);
+        }
+
+        return view('pacientes.index');
+    }
+
+    // Puedes agregar este método privado en el controlador:
+    private function grupoEtareo($edad)
+    {
+        if ($edad < 15) return 'Menor de 15';
+        if ($edad >= 15 && $edad <= 19) return 'Entre 15 y 19';
+        if ($edad >= 20 && $edad <= 24) return 'Entre 20 y 24';
+        if ($edad >= 25 && $edad <= 29) return 'Entre 25 y 29';
+        if ($edad >= 30 && $edad <= 34) return 'Entre 30 y 34';
+        if ($edad >= 35 && $edad <= 39) return 'Entre 35 y 39';
+        if ($edad >= 40 && $edad <= 44) return 'Entre 40 y 44';
+        if ($edad >= 45 && $edad <= 49) return 'Entre 45 y 49';
+        if ($edad >= 50 && $edad <= 54) return 'Entre 50 y 54';
+        if ($edad >= 55 && $edad <= 59) return 'Entre 55 y 59';
+        if ($edad >= 60 && $edad <= 64) return 'Entre 60 y 64';
+        if ($edad >= 65 && $edad <= 69) return 'Entre 65 y 69';
+        if ($edad >= 70 && $edad <= 74) return 'Entre 70 y 74';
+        if ($edad >= 75 && $edad <= 79) return 'Entre 75 y 79';
+        if ($edad >= 80) return '80 y Más';
+        return '';
     }
 
     public function create()
@@ -240,6 +306,7 @@ class PacienteController extends Controller
         $paciente = new Paciente;
         $climater = $paciente->climater()->get();
 
+
         return view('pacientes.climater', compact('climater'));
     }
 
@@ -290,7 +357,7 @@ class PacienteController extends Controller
         $paciente = new Paciente;
         $controles = $paciente->pscv()->join('controls', 'pacientes.id', 'controls.paciente_id')->latest('controls.fecha_control')->get();
         $desCompensado = $controles->filter(function ($item) {
-            return $item->pa_mayor_160_100 == 1//hta
+            return $item->pa_mayor_160_100 == 1 //hta
                 || $item->hba1cMayorIgual9Porcent == 1; //dm2
         })->unique('rut');
 

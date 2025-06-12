@@ -9,45 +9,47 @@
         </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">
-            <tr>
-                <th>Rut</th>
-                <th>Nombre Completo</th>
-                <th>Nº Ficha Clinica</th>
-                <th>Direccion</th>
-                <th>Edad</th>
-                <th>Sexo</th>
-                <th>Sector</th>
-                <th>Fecha Control</th>
-            </tr>
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre Completo</th>
+                    <th>Nº Ficha Clinica</th>
+                    <th>Direccion</th>
+                    <th>Edad</th>
+                    <th>Sexo</th>
+                    <th>Sector</th>
+                    <th>Fecha Control</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach ($climater as $paciente)
-                <tr>
-                    <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</a></td>
-                    <td class="text-uppercase">{{ $paciente->fullName() }}</td>
-                    <td>{{ $paciente->ficha }}
-                    </td>
-                    <td>{{ $paciente->direccion ?? '' }} {{ $paciente->comuna ? ', ' . $paciente->comuna : '' }}</td>
-                    <td>{{ $paciente->edad() . ' Años' }}</td>
-                    <td>{{ $paciente->sexo }}</td>
-                    <td>
-                        @if ($paciente->sector == 'Celeste')
-                            <span class="mr-2">
+                @foreach ($climater as $paciente)
+                    <tr>
+                        <td><a
+                                href="{{ route('pacientes.show', $paciente['paciente_id']) }}">{{ $paciente->rut }}</a>
+                        </td>
+                        <td class="text-uppercase">{{ $paciente->fullName() }}</td>
+                        <td>{{ $paciente->ficha }}
+                        </td>
+                        <td>{{ $paciente->direccion ?? '' }} {{ $paciente->comuna ? ', ' . $paciente->comuna : '' }}</td>
+                        <td>{{ $paciente->edad() . ' Años' }}</td>
+                        <td>{{ $paciente->sexo }}</td>
+                        <td>
+                            @if ($paciente->sector == 'Celeste')
+                                <span class="mr-2">
                                     <i class="fas fa-square text-primary"></i>
                                 </span> Celeste
-                        @elseif($paciente->sector == 'Naranjo')
-                            <span class="mr-2">
+                            @elseif($paciente->sector == 'Naranjo')
+                                <span class="mr-2">
                                     <i class="fas fa-square text-orange"></i>
                                 </span> Naranjo
-                        @elseif($paciente->sector == 'Blanco')
-                            <span class="mr-2">
+                            @elseif($paciente->sector == 'Blanco')
+                                <span class="mr-2">
                                     <i class="fas fa-square text-white"></i>
                                 </span> Blanco
-                        @endif
-                    </td>
-                    <td>{{ Carbon\Carbon::parse($paciente->fecha_control)->format('d-m-Y') }}</td>
-                </tr>
-            @endforeach
+                            @endif
+                        </td>
+                        <td>{{ Carbon\Carbon::parse($paciente->fecha_control)->format('d-m-Y') }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
