@@ -26,8 +26,7 @@ class ConstanciaController extends Controller
         //$paciente = Paciente::with('problemas')->findOrFail($id);
         //$const = new Constancia;
         $paciente = new Paciente;
-        $constancias = Constancia::with('paciente')
-            ->get();
+        $constancias = Constancia::with('paciente')->orderBy('fecha_notificacion', 'desc')->get();
 
         return view('constancias.index', compact('constancias', 'paciente'));
     }

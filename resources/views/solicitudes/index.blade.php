@@ -70,76 +70,38 @@
             </thead>
             <tbody>
                 @foreach ($solicitudes as $solicitud)
+                    @php
+                        // Buscar paciente en la base de datos local o externa
+                        $pacienteLocal = $pacientesLocales->get($solicitud->sol_rut);
+                        $pacienteExterno = $pacientesExternos->get($solicitud->sol_rut);
+                    @endphp
                     <tr>
-                        <td>{{ $solicitud->sol_fecha ? Carbon\Carbon::parse($solicitud->sol_fecha)->format('d-m-Y') : '' }}
-                        </td>
-                        <td nowrap="">{{ $solicitud->sol_rut ? $solicitud->sol_rut : '' }}</td>
+                        <td>{{ $solicitud->sol_fecha ? Carbon\Carbon::parse($solicitud->sol_fecha)->format('d-m-Y') : '' }}</td>
+                        <td nowrap="">{{ $solicitud->sol_rut ?? '' }}</td>
                         <td>
-                            @php
-                                // Consultar en la base de datos principal
-                                $pacienteLocal = $paciente
-                                    ->select('nombres', 'apellidoP', 'apellidoM')
-                                    ->whereRut($solicitud->sol_rut)
-                                    ->first();
-
-                                // Si no existe en la base de datos local, consultar en la base de datos externa
-                                if (!$pacienteLocal) {
-                                    $pacienteExterno = \DB::connection('mysql_sfamiliar')
-                                        ->table('pacientes')
-                                        ->join('familias', 'familias.id', '=', 'pacientes.familia_id')
-                                        ->select('pacientes.nombres', 'pacientes.apellidoP', 'pacientes.apellidoM')
-                                        ->where('pacientes.rut', $solicitud->sol_rut)
-                                        ->first();
-                                }
-                            @endphp
-
                             @if ($pacienteLocal)
-                                {{-- Mostrar datos del paciente de la base de datos principal --}}
                                 {{ strtoupper($pacienteLocal->nombres) . ' ' . strtoupper($pacienteLocal->apellidoP) . ' ' . strtoupper($pacienteLocal->apellidoM) }}
                             @elseif ($pacienteExterno)
-                                {{-- Mostrar datos del paciente de la base de datos externa --}}
                                 {{ strtoupper($pacienteExterno->nombres) . ' ' . strtoupper($pacienteExterno->apellidoP) . ' ' . strtoupper($pacienteExterno->apellidoM) }}
                             @else
-                                {{-- Mostrar mensaje si no se encuentra información en ninguna base de datos --}}
                                 <span class="text-muted">No hay datos</span>
                             @endif
                         </td>
                         <td>
-                            @php
-                                // Obtener la ficha desde la solicitud, base de datos local o externa
-                                $ficha =
-                                    $solicitud->sol_ficha ?:
-                                    optional(
-                                        $paciente
-                                            ->select('ficha')
-                                            ->whereRut($solicitud->sol_rut)
-                                            ->first(),
-                                    )->ficha ?:
-                                    optional(
-                                        \DB::connection('mysql_sfamiliar')
-                                            ->table('pacientes')
-                                            ->join('familias', 'familias.id', '=', 'pacientes.familia_id')
-                                            ->select('pacientes.ficha')
-                                            ->where('pacientes.rut', $solicitud->sol_rut)
-                                            ->first(),
-                                    )->ficha;
-                            @endphp
-
-                            @if ($ficha)
-                                {{-- Mostrar ficha si existe --}}
-                                {{ $ficha }}
+                            @if ($pacienteExterno)
+                                {{  $pacienteExterno->ficha }}
+                            @elseif ($pacienteLocal)
+                                {{ $pacienteLocal->ficha}}
                             @else
-                                {{-- Mostrar mensaje si no hay ficha --}}
-                                <span class="text-muted text-center"> -- </span>
+                                {{-- Si no hay paciente local ni externo, mostrar un mensaje --}}
+                                {{ $solicitud->sol_ficha ?? 'Sin información' }}
                             @endif
                         </td>
                         <td class="text-capitalize">
-                            {{-- Mostrar el nombre completo del usuario si existe --}}
                             {{ $solicitud->user ? ucwords(strtolower($solicitud->user->fullUserName())) : '' }}
                         </td>
                         <td nowrap="">
                             <span class="mr-2">
-                                {{-- Mostrar el estado de la solicitud con estilos --}}
                                 @if ($solicitud->sol_estado == 'solicitado')
                                     <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</p>
                                     <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
@@ -188,25 +150,20 @@
                             {{ ucwords(strtolower($solicitud->sol_receptor)) }}
                         </td>
                         <td> {{ Carbon\Carbon::parse($solicitud->updated_at)->format('d-m-Y G:i A') }}</td>
-
                         <td>
-                            @if ($solicitud->sol_comentario)
-                                {{ $solicitud->sol_comentario }}
-                            @elseif ($familia = \DB::connection('mysql_sfamiliar')->table('pacientes')->join('familias', 'familias.id', 'pacientes.familia_id')->select('familias.sector', 'familias.ficha_familiar')->whereRut($solicitud->sol_rut)->first())
-                                {{-- Mostrar el sector y la ficha familiar directamente --}}
-                                {{ $familia->sector }} - {{ $familia->ficha_familiar }}
+                            @if ($pacienteExterno)
+                                {{ $pacienteExterno->sector. ' - ' . $pacienteExterno->ficha_familiar }}
                             @else
-                                {!! html_entity_decode('<span class="text-muted">Sin información en inscritos IV</span>') !!}
+                                {{$solicitud->sol_comentario ?? 'Sin información'}}
                             @endif
                         </td>
-
                         @if (auth()->user()->someUser() || auth()->user()->isAdmin())
-                            <td>
-                                <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
-                                    title="Editar" href="{{ url('solicitudes/' . $solicitud->id . '/edit') }}"><i
-                                        class="fas fa-pen"></i>
-                                </a>
-                            </td>
+                        <td>
+                            <a class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="bottom"
+                                title="Editar" href="{{ url('solicitudes/' . $solicitud->id . '/edit') }}"><i
+                                    class="fas fa-pen"></i>
+                            </a>
+                        </td>
                         @else
                             <td class="text-muted">Opción deshabilitada</td>
                         @endif

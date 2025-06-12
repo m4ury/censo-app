@@ -18,6 +18,7 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/listado-pacientes/{tipo}', 'HomeController@listadoPacientes')->name('pacientes.listado');
 
 Route::middleware('auth')->group(function () {
     Route::resource('pacientes', 'PacienteController');
@@ -98,9 +99,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p1g', 'EstadisticaController@seccionP1g')->name('estadisticas.seccion-p1g');
     Route::get('/estadisticas.seccion-p1i', 'EstadisticaController@seccionP1i')->name('estadisticas.seccion-p1i');
 
-
-
-
     //P2
     Route::get('/estadisticas.seccion-p2a', 'Estadisticas\SeccionP2Controller@seccionP2a')->name('estadisticas.seccion-p2a');
     Route::get('/estadisticas.seccion-p2a1', 'Estadisticas\SeccionP2Controller@seccionP2a1')->name('estadisticas.seccion-p2a1');
@@ -108,8 +106,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p2cde', 'Estadisticas\SeccionP2Controller@seccionP2cde')->name('estadisticas.seccion-p2cde');
     Route::get('/estadisticas.seccion-p2j', 'Estadisticas\SeccionP2Controller@seccionP2j')->name('estadisticas.seccion-p2j');
     Route::get('/estadisticas.seccion-p2h', 'Estadisticas\SeccionP2Controller@seccionP2h')->name('estadisticas.seccion-p2h');
-
-
 
     //P3
     Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
@@ -137,9 +133,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p9d', 'EstadisticaController@seccionP9d')->name('estadisticas.seccion-p9d');
     Route::get('/estadisticas.seccion-p9e', 'EstadisticaController@seccionP9e')->name('estadisticas.seccion-p9e');
 
-
-
-
     //P12
     Route::get('/estadisticas.seccion-p12', 'EstadisticaController@seccionp12')->name('estadisticas.seccion-p12');
 
@@ -149,8 +142,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.piedm', 'EstadisticaController@piedmr')->name('estadisticas.piedm');
     Route::get('/estadisticas.pie', 'EstadisticaController@pie')->name('estadisticas.pie');
     Route::get('/estadisticas.dm2_descom', 'EstadisticaController@dm2Descom')->name('estadisticas.dm2_descom');
-    Route::get('/estadisticas.dm2', 'EstadisticaController@dm2')->name('estadisticas.dm2');
-    Route::get('/estadisticas.hta', 'EstadisticaController@hta')->name('estadisticas.hta');
+    //Route::get('/estadisticas.dm2', 'EstadisticaController@dm2')->name('estadisticas.dm2');
+    //Route::get('/estadisticas.hta', 'EstadisticaController@hta')->name('estadisticas.hta');
     Route::get('/estadisticas.sm', 'EstadisticaController@sm')->name('estadisticas.sm');
     Route::get('/estadisticas.am', 'EstadisticaController@am')->name('estadisticas.am');
     Route::get('/estadisticas.sala_era', 'EstadisticaController@sala_era')->name('estadisticas.sala_era');

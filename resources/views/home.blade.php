@@ -1,7 +1,5 @@
-{{-- @extends('layouts.app') --}}
 @extends('adminlte::page')
-
-@section('title', 'Dashboard')
+@section('title', 'Inicio')
 
 @section('content')
     <div class="container-fluid">
@@ -10,7 +8,7 @@
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
                         <h3>
-                            {{ $all->g3()->count() }}
+                            {{ $g3 }}
                         </h3>
                         <p class="text-bold"> Riesgo severo (5 o mas condiciones cronicas)</p>
                     </div>
@@ -26,10 +24,10 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $all->ingresosG3()->count() }}
+                            {{ $ingresosG3 }}
                         </h3>
                         <p>INGRESOS G3 ECICEP, <span
-                                class="text-bold text-red">{{ $all->ingresosG3()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG3()->count() * 100) / $all->g3()->count()) }}%
+                                class="text-bold text-red">{{ $ingresosG3 == 0 ? 'No hay datos aun...' : round(($ingresosG3 * 100) / $g3) }}%
                             </span></p>
                     </div>
                     <a href="{{ route('pacientes.i_g3') }}" class="small-box-footer">More info <i
@@ -41,7 +39,7 @@
                 <div class="small-box bg-gradient-orange">
                     <div class="inner">
                         <h3>
-                            {{ $all->g2()->count() }}
+                            {{ $g2 }}
                         </h3>
                         <p class="text-bold"> Riesgo moderado (2 a 4 condiciones cronicas)</p>
                     </div>
@@ -56,9 +54,9 @@
             <div class="col-lg col-sm">
                 <div class="small-box border border-dark">
                     <div class="inner">
-                        <h3 style="color:black">{{ $all->ingresosG2()->count() }}</h3>
+                        <h3 style="color:black">{{ $ingresosG2 }}</h3>
                         <p>INGRESOS G2 ECICEP, <span
-                                class="text-bold text-red">{{ $all->ingresosG2()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG2()->count() * 100) / $all->g2()->count()) }}%
+                                class="text-bold text-red">{{ $ingresosG2 == 0 ? 'No hay datos aun...' : round(($ingresosG2 * 100) / $g2) }}%
                             </span></p>
                     </div>
                     <a href="{{ route('pacientes.i_g2') }}" class="small-box-footer">More info <i
@@ -71,7 +69,7 @@
                 <div class="small-box bg-gradient-warning">
                     <div class="inner">
                         <h3>
-                            {{ $all->g1()->count() }}
+                            {{ $g1 }}
                         </h3>
                         <p class="text-bold"> Riesgo leve (1 condicion cronica)</p>
                     </div>
@@ -86,9 +84,9 @@
             <div class="col-lg col-sm">
                 <div class="small-box border border-warning">
                     <div class="inner">
-                        <h3 style="color:black">{{ $all->ingresosG1()->count() }}</h3>
+                        <h3 style="color:black">{{ $ingresosG1 }}</h3>
                         <p>INGRESOS G1 ECICEP, <span
-                                class="text-bold text-red">{{ $all->ingresosG1()->count() == 0 ? 'No hay datos aun...' : round(($all->ingresosG1()->count() * 100) / $all->g1()->count()) }}%
+                                class="text-bold text-red">{{ $ingresosG1 == 0 ? 'No hay datos aun...' : round(($ingresosG1 * 100) / $g1) }}%
                             </span></p>
                     </div>
                     <a href="{{ route('pacientes.i_g1') }}" class="small-box-footer">More info <i
@@ -97,12 +95,14 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row align-self-center">
             <div class="col-lg col-sm">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ $totalPacientes->count() }}</h3>
+                        <h3>{{ $pscv }}</h3>
                         <p>Total Pacientes en Prog. Cardiovascular</p>
                     </div>
                     <div class="icon">
@@ -211,17 +211,24 @@
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-primary">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $dm2 }}</a></h3>
-                        <p>PACIENTES DIABÉTICOS</p>
+                        <h3>{{ $dm2 }}</h3>
+                        <p>Pacientes Diabeticos</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-injured"></i>
                     </div>
-                    <a href="{{ route('estadisticas.dm2') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.listado', 'dm2') }}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
+            @php
+                $sumaHbac = $hbac17 + $hbac18;
+                $descompDm2 = $dm2 - $sumaHbac;
+
+                $sumaPa = $pa140_90 + $pa150_90;
+                $descompPa = $hta - $sumaPa;
+            @endphp
             <div class="col-lg-2 col-sm-2">
                 <div class="small-box col-sm border border-primary">
                     <div class="inner">
@@ -279,14 +286,14 @@
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $hta }}</a></h3>
-                        <p>PACIENTES HIPERTENSOS</p>
+                        <h3>{{ $hta }}</h3>
+                        <p>Pacientes Hipertensos</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user-injured"></i>
                     </div>
-                    <a href="{{ route('estadisticas.hta') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i>
+                    <a href="{{ route('pacientes.listado', 'hta') }}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -342,8 +349,8 @@
                     </a>
                 </div>
             </div>
-
         </div>
+
         <div class="row">
             <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-yellow">
@@ -372,7 +379,7 @@
             <div class="col-lg col-sm">
                 <div class="small-box border border-warning">
                     <div class="inner">
-                        <h3 style="color:black">{{ $all->postrados()->count() }}</a></h3>
+                        <h3 style="color:black">{{ $postrados }}</a></h3>
                         <p>PACIENTES DEP. SEVERA</p>
                     </div>
                     <div class="icon">
@@ -387,7 +394,7 @@
             <div class="col-lg col-sm">
                 <div class="small-box border border-warning">
                     <div class="inner">
-                        <h3 style="color:black">{{ $all->cuidadores()->get()->count() }}</a></h3>
+                        <h3 style="color:black">{{ $cuidadores }}</a></h3>
                         <p>CUIDADORES</p>
                     </div>
                     <div class="icon">
@@ -402,7 +409,7 @@
             <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-lime">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $all->paliativo()->count() }}</a></h3>
+                        <h3 style="color:aliceblue">{{ $paliativos }}</a></h3>
                         <p>PACIENTES PALIATIVO UNIV.</p>
                     </div>
                     <div class="icon">
@@ -415,20 +422,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-info">
-                    <div class="inner">
-                        <h3 style="color:aliceblue">{{ $all->lactancia()->count() }}</a></h3>
-                        <p>CLÍNICA LACTANCIA MATERNA</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-baby"></i>
-                    </div>
-                    <a href="{{ route('pacientes.lactancia') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
             <div class="col-lg-3 col-sm">
                 <div class="small-box bg-gradient-pink">
                     <div class="inner">
@@ -448,7 +441,7 @@
             <div class="col-lg col-sm">
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <h3 style="color:aliceblue">{{ $all->totalMac()->get()->unique('rut')->count() }}</a></h3>
+                        <h3 style="color:aliceblue">{{ $totalMac }}</a></h3>
                         <p>PROGRAMA DE LA MUJER</p>
                     </div>
                     <div class="icon">
@@ -463,7 +456,7 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $pMujer->where('ginec', 1)->count() }}</h3>
+                            {{ $ginec }}</h3>
                         <p>GINECOLÓGICO</p>
                     </div>
                     <div class="icon">
@@ -477,7 +470,7 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $pMujer->where('regulacion', 1)->count() }}</h3>
+                            {{ $regulacion }}</h3>
                         <p>REGULACIÓN FERTILIDAD</p>
                     </div>
                     <div class="icon">
@@ -492,7 +485,7 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $pMujer->where('embarazada', true)->count() }}</h3>
+                        {{ $embarazadas }}</h3>
                         <p>EMBARAZADAS</p>
                     </div>
                     <div class="icon">
@@ -507,7 +500,7 @@
                 <div class="small-box border border-danger">
                     <div class="inner">
                         <h3 style="color:black">
-                            {{ $pMujer->where('climater', true)->count() }}</h3>
+                            {{ $climater }}</h3>
                         <p>CLIMATERIO</p>
                     </div>
                     <div class="icon">
@@ -527,9 +520,10 @@
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39',
+                labels: [
+                    'Entre 15 y 19', 'Entre 20 y 24', 'Entre 25 y 29', 'Entre 30 y 34', 'Entre 35 y 39',
                     'Entre 40 y 44', 'Entre 45 y 49', 'Entre 50 y 54', 'Entre 55 y 59', 'Entre 60 y 64',
-                    'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Mas'
+                    'Entre 65 y 69', 'Entre 70 y 74', 'Entre 75 y 79', 'Entre 80 y Más'
                 ],
                 datasets: [{
                         label: 'Hombres',
@@ -540,8 +534,8 @@
                             {{ $in6064M }}, {{ $in6569M }}, {{ $in7074M }},
                             {{ $in7579M }}, {{ $mas80M }}
                         ],
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgb(54, 162, 235)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 2
                     },
                     {
@@ -553,23 +547,21 @@
                             {{ $in6064F }}, {{ $in6569F }}, {{ $in7074F }},
                             {{ $in7579F }}, {{ $mas80F }}
                         ],
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 2
-                    },
+                    }
                 ]
             },
             options: {
                 responsive: true,
                 animation: {
-                    duration: 1500,
+                    duration: 3500,
                 },
                 scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
         });
