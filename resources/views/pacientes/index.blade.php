@@ -33,6 +33,9 @@
 @section('plugins.Datatables', true)
 @section('js')
     <script>
+        window.appUrl = "{{ url('/') }}";
+    </script>
+    <script>
         $('#pacientes').DataTable({
             processing: true,
             serverSide: true,
@@ -44,7 +47,7 @@
                     render: function(data, type, row) {
                         // Solo para mostrar, el resto retorna el valor plano
                         if (type === 'display') {
-                            return `<a href="/pacientes/${row.id}">${data}</a>`;
+                            return `<a href="${window.appUrl}/pacientes/${row.id}">${data}</a>`;
                         }
                         return data;
                     }
