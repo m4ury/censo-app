@@ -37,12 +37,14 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p1g') }}">SECCION G: GESTANTES EN CONTROL CON ECOGRAFÍA POR TRIMESTRE DE GESTACION (EN EL SEMESTRE)</a>
+                            <a href="{{ route('estadisticas.seccion-p1g') }}">SECCION G: GESTANTES EN CONTROL CON ECOGRAFÍA
+                                POR TRIMESTRE DE GESTACION (EN EL SEMESTRE)</a>
                         </h4>
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p1i') }}">SECCION I: GESTANTES EN CONTROL CON TEST DE VIH/SIFILIS TOMADO (EN EL SEMESTRE, RED PÚBLICA O EXTRASISTEMA)</a>
+                            <a href="{{ route('estadisticas.seccion-p1i') }}">SECCION I: GESTANTES EN CONTROL CON TEST DE
+                                VIH/SIFILIS TOMADO (EN EL SEMESTRE, RED PÚBLICA O EXTRASISTEMA)</a>
                         </h4>
                     </div>
                 </div>
@@ -83,7 +85,8 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p2h') }}">SECCION H: POBLACIÓN SEGÚN DIAGNÓSTICO DE NIÑOS, NIÑAS Y ADOLESCENTES CON NECESIDADES ESPECIALES DE ATENCIÓN EN SALUD (NANEAS)</a>
+                            <a href="{{ route('estadisticas.seccion-p2h') }}">SECCION H: POBLACIÓN SEGÚN DIAGNÓSTICO DE
+                                NIÑOS, NIÑAS Y ADOLESCENTES CON NECESIDADES ESPECIALES DE ATENCIÓN EN SALUD (NANEAS)</a>
                         </h4>
                     </div>
                     <div class="row">
@@ -113,7 +116,8 @@
                     </div>
                     <div class="row">
                         <h4 class="card-title text-bold mb-3">
-                            <a href="{{ route('estadisticas.seccion-p3b') }}">SECCIÓN B: CUIDADORES DE PACIENTES CON DEPENDENCIA SEVERA</a>
+                            <a href="{{ route('estadisticas.seccion-p3b') }}">SECCIÓN B: CUIDADORES DE PACIENTES CON
+                                DEPENDENCIA SEVERA</a>
                         </h4>
                     </div>
                     {{-- <div class="row">
@@ -228,7 +232,8 @@
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9d') }}">SECCION D: SEGÚN AMBITOS GINECO-UROLOGICO/SEXUALIDAD</a>
+                    <a href="{{ route('estadisticas.seccion-p9d') }}">SECCION D: SEGÚN AMBITOS
+                        GINECO-UROLOGICO/SEXUALIDAD</a>
                 </h4>
             </div>
         </div>
@@ -265,21 +270,6 @@
         </div>
     </div>
 
-    {{-- <div class="card card-info card-outline">
-        <div class="card-header">
-            <h3 class="card-title text-bold">
-                ESTADISTICA MENSUAL
-            </h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{route('estadisticas.rayos')}}">EXAMENES RX</a>
-                </h4>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="card card-info card-outline">
         <div class="card-header">
             <h3 class="card-title text-bold">
@@ -289,75 +279,16 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.dm2') }}">TODOS</a>
-                </h4>
-            </div>
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
                     <a href="{{ route('estadisticas.dm2_descom') }}">DESCOMPENSADOS</a>
                 </h4>
             </div>
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.pie') }}">EVALUACION PIE DIABETICO</a>
-                </h4>
-            </div>
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('pacientes.sinEvalPie') }}">SIN EVALUACION PIE DIABETICO</a>
-                </h4>
-            </div>
-            <div class="row">
+            {{-- <div class="row">
                 <h4 class="card-title text-bold mb-3">
                     <a href="{{ route('estadisticas.fondoOjo') }}">EXAMEN FONDO DE OJO</a>
                 </h4>
-            </div>
+            </div> --}}
         </div>
     </div>
-
-    <div class="card card-info card-outline">
-        <div class="card-header">
-            <h3 class="card-title text-bold">
-                PACIENTES HIPERTENSOS
-            </h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.hta') }}">TODOS</a>
-                </h4>
-            </div>
-        </div>
-    </div>
-
-    <div class="card card-info card-outline">
-        <div class="card-header">
-            <h3 class="card-title text-bold">
-                PACIENTES SALUD MENTAL
-            </h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.sm') }}">TODOS</a>
-                </h4>
-            </div>
-        </div>
-    </div>
-
-    <div class="card card-info card-outline">
-        <div class="card-header">
-            <h3 class="card-title text-bold">
-                PACIENTES ADULTO MAYOR
-            </h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.am') }}">TODOS</a>
-                </h4>
-            </div>
-        </div>
     </div>
 
     {{-- <div class="card card-info card-outline">
