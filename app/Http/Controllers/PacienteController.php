@@ -10,6 +10,8 @@ use Illuminate\Validation\Rule;
 use App\Services\GeocodingService;
 use App\Http\Requests\PacienteRequest;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\PacientesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class PacienteController extends Controller
@@ -441,4 +443,10 @@ class PacienteController extends Controller
 
         return view('pacientes.salaEra_sin_controles', compact('pacientes'));
     }
+
+    public function export()
+    {
+        return Excel::download(new PacientesExport, 'pacientes.xlsx');
+    }
 }
+
