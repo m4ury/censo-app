@@ -16,7 +16,7 @@
             <div class="dt-buttons btn-group flex-wrap">
         <div class="btn-group my-3">
             <a class="btn btn-secondary btn-sm buttons-excel buttons-html5 px-4" tabindex="0" aria-controls="pacientes" href="{{ route('pacientes.export') }}">
-                <span>Excel</span>
+                <span>Exportar a Excel</span>
             </a>
         </div>
     </div>

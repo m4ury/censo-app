@@ -74,7 +74,7 @@
                             {{-- @endif --}}
                             <a class="nav-link" id="vert-tabs-patologias-tab" data-toggle="pill"
                                 href="#vert-tabs-patologias" role="tab" aria-controls="vert-tabs-patologias"
-                                aria-selected="false">{{ $paciente->grupo < 10 ? 'Naneas' : 'Diagnosticos' }}</a>
+                                aria-selected="false">Diagnosticos</a>
                             @if ($paciente->grupo < 10)
                                 <a class="nav-link" id="vert-tabs-nino_sano-tab" data-toggle="pill"
                                     href="#vert-tabs-nino_sano" role="tab" aria-controls="vert-tabs-nino_sano"
@@ -192,8 +192,7 @@
                                 @include('patologias.list_patologias', $paciente)
 
                                 @if ($paciente->patologias->count() == 0)
-                                    <p class="text-muted">No hay {{ $paciente->grupo < 10 ? 'Naneas' : 'Patologias' }}
-                                        aun...<i class="far fa-laugh-wink fa-2x"></i></p>
+                                    <p class="text-muted">No hay Patologias aun...<i class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
                             {{--Interconsultas--}}
