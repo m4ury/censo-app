@@ -543,10 +543,10 @@
                                 @endphp
 
                                 @if (empty($ultimaEspirometria) || $ultimaEspirometria == '0000/00/00')
-                                    <div class="col-sm-3">
+                                    <div class="col-sm">
                                         <strong><i class="fas fa-question-circle mr-1"></i>Espirometria
                                             Vigente</strong>
-                                        <p class="btn badge-pill bg-gradient-secondary ml-3">No hay información...
+                                        <p class="btn badge-pill bg-gradient-secondary">No hay información...
                                         </p>
                                     </div>
                                 @elseif (\Carbon\Carbon::parse($ultimaEspirometria)->diffInDays(\Carbon\Carbon::now()) <= 365)
@@ -558,9 +558,9 @@
                                         </p>
                                     </div>
                                 @else
-                                    <div class="col-sm-3">
-                                        <strong><i class="fas fa-thumbs-down text-danger mr-1"></i>Espirometria
-                                            Vigente: NO</strong>
+                                    <div class="col-sm">
+                                        <strong><i class="fas fa-thumbs-down text-danger mr-1"></i>Espirometria NO
+                                            Vigente</strong>
                                         <p class="btn rounded-pill bg-gradient-danger">
                                             fecha: {{ $ultimaEspirometria }}
                                         </p>

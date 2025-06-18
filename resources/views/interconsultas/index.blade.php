@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="col-sm-6 pb-3">
-        <a class="btn bg-gradient-success btn-sm my-3" title="Nueva Interconsulta" href="{{ route('interconsultas.create') }}">
-            <i class="fas fa-invoice">
-            </i>
-            Nueva Interconsulta
-        </a>
+        <form action="{{ route('interconsultas.importarExcel') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="archivo" required>
+            <button type="submit">Importar</button>
+        </form>
     </div>
     <div class="col-md-12 table-responsive">
         <table id="interconsultas" class="table table-hover table-md-responsive table-bordered">
