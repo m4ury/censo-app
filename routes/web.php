@@ -31,16 +31,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/pacientes.g2', 'PacienteController@g2_list')->name('pacientes.g2');
     Route::get('/pacientes.g1', 'PacienteController@g1_list')->name('pacientes.g1');
     Route::get('/pacientes.sinEvalPie', 'PacienteController@sinEvalPie_list')->name('pacientes.sinEvalPie');
-    Route::get('/pacientes.lactancia', 'PacienteController@lactancia_list')->name('pacientes.lactancia');
     Route::get('/pacientes.embarazada', 'PacienteController@embarazada_list')->name('pacientes.embarazada');
     Route::get('/pacientes.climater', 'PacienteController@climater_list')->name('pacientes.climater');
     Route::get('/pacientes.paliativo', 'PacienteController@paliativo_list')->name('pacientes.paliativo');
     Route::get('/pacientes.pscv', 'PacienteController@pscv_list')->name('pacientes.pscv');
-    Route::get('/pacientes.demencia', 'PacienteController@demencia_list')->name('pacientes.demencia');
+    /* Route::get('/pacientes.demencia', 'PacienteController@demencia_list')->name('pacientes.demencia'); */
     Route::get('/pacientes.pMujer', 'PacienteController@pMujer_list')->name('pacientes.pMujer');
     Route::get('/pacientes.sinControles', 'PacienteController@pacientes_sin_controles')->name('pacientes.sinControles');
     Route::get('/pacientes.pscvSinControles', 'PacienteController@pscv_sin_controles')->name('pacientes.pscvSinControles');
     Route::get('/pacientes.salaEraSinControles', 'PacienteController@salaEra_sin_controles')->name('pacientes.salaEraSinControles');
+    Route::get('/pacientes.export', 'PacienteController@export')->name('pacientes.export');
 
 
     Route::resource('patologias', 'PatologiaController');

@@ -43,7 +43,10 @@
                                 <td>{{ $control->imc }}</td>
                                 <td>{{ $control->imc_resultado }}</td>
                                 <td>{{ $control->observacion }}</td>
-                                <td>{{ \Carbon\Carbon::parse($control->proximo_control)->format('d-m-Y') . ' - ' . $control->prox_tipo ?: '' }}
+                                <td>
+                                    @if (!empty($control->proximo_control))
+                                        {{ \Carbon\Carbon::parse($control->proximo_control)->format('d/m/Y') }}
+                                    @endif
                                 </td>
 
                                 {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}

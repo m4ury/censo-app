@@ -4,14 +4,22 @@
 @section('title', 'pacientes')
 
 @section('content')
-    <div class="col-sm-6 py-3">
+    <div class="col-sm-6 pt-3">
         <a class="btn bg-gradient-success btn-sm" title="Nuevo Paciente" href="{{ route('pacientes.create') }}">
             <i class="fas fa-user-plus"></i>
             Nuevo Paciente
         </a>
     </div>
-    <div class="col-md-12 table-responsive">
+
+    <div class="col-sm-12 table-responsive">
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
+            <div class="dt-buttons btn-group flex-wrap">
+        <div class="btn-group my-3">
+            <a class="btn btn-secondary btn-sm buttons-excel buttons-html5 px-4" tabindex="0" aria-controls="pacientes" href="{{ route('pacientes.export') }}">
+                <span>Exportar a Excel</span>
+            </a>
+        </div>
+    </div>
             <thead class="thead-light">
                 <tr>
                     <th>Rut</th>
@@ -106,13 +114,6 @@
                     name: 'grupo_etareo',
                     orderable: true
                 }
-            ],
-            dom: 'Bfrtip',
-            buttons: [
-                'colvis',
-                'excel',
-                'pdf',
-                'print',
             ],
             language: {
                 "processing": "Procesando...",

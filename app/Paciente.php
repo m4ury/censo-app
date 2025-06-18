@@ -64,6 +64,11 @@ class Paciente extends Model
         return $this->hasMany(Constancia::class);
     }
 
+    public function interconsultas()
+    {
+        return $this->hasMany(Interconsulta::class);
+    }
+
     public function encuestas()
     {
         return $this->hasMany(Encuesta::class);

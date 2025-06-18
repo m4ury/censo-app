@@ -1,9 +1,9 @@
 @if ($paciente->patologias)
     <div class="col-sm mb-2">
-        <a class="btn bg-gradient-success btn-sm" title={{ $paciente->grupo < 10 ? 'Naneas' : 'Patologias' }}
+        <a class="btn bg-gradient-success btn-sm" title='Patologias'
             href="{{ route('pacientes.patologia', $paciente->id) }}">
             <i class="fas fa-money-check-alt"></i>
-            Nueva {{ $paciente->grupo < 10 ? 'Nanea' : 'Patologia' }}
+            Nueva Patologia
         </a>
     </div>
     <div class="card-body">
@@ -513,8 +513,7 @@
                                         </strong>
                                     </div>
                                 @endif
-                                @if (Carbon\Carbon::parse($paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last())->diffInDays(
-                                        Carbon\Carbon::now()) <= 365 && $paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last() != '0000/00/00')
+                                {{-- @if (Carbon\Carbon::parse($paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last())->diffInDays(Carbon\Carbon::now()) <= 365 && $paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last() != '0000/00/00')
                                     <div class="col-sm">
                                         <strong><i class="fas fa-thumbs-up text-success"></i> Espirometria Vigente
                                         </strong>
@@ -527,19 +526,44 @@
                                         Carbon\Carbon::now()) > 365)
                                     <div class="col-sm-3">
                                         <strong><i class="fas fa-thumbs-down text-danger mr-1"></i>Espirometria
-                                            Vigente:
-                                            NO</strong>
+                                            Vigente: NO
+                                        </strong>
                                         <p class="btn rounded-pill bg-gradient-danger">
                                             fecha:
                                             {{ $paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last() }}
                                         </p>
                                     </div>
-                                @else
+                                @else --}}
+                                @php
+                                    $ultimaEspirometria = $paciente
+                                        ->controls()
+                                        ->pluck('espirometriaVigente')
+                                        ->whereNotNull()
+                                        ->last();
+                                @endphp
+
+                                @if (empty($ultimaEspirometria) || $ultimaEspirometria == '0000/00/00')
                                     <div class="col-sm-3">
                                         <strong><i class="fas fa-question-circle mr-1"></i>Espirometria
                                             Vigente</strong>
-                                        <p class="btn badge-pill bg-gradient-secondary ml-3">No hay datos...</p>
-                                        {{-- $paciente->controls()->pluck('espirometriaVigente')->whereNotNull()->last() --}}
+                                        <p class="btn badge-pill bg-gradient-secondary ml-3">No hay información...
+                                        </p>
+                                    </div>
+                                @elseif (\Carbon\Carbon::parse($ultimaEspirometria)->diffInDays(\Carbon\Carbon::now()) <= 365)
+                                    <div class="col-sm">
+                                        <strong><i class="fas fa-thumbs-up text-success"></i> Espirometria
+                                            Vigente</strong>
+                                        <p class="btn rounded-pill bg-gradient-success">
+                                            fecha: {{ $ultimaEspirometria }}
+                                        </p>
+                                    </div>
+                                @else
+                                    <div class="col-sm-3">
+                                        <strong><i class="fas fa-thumbs-down text-danger mr-1"></i>Espirometria
+                                            Vigente: NO</strong>
+                                        <p class="btn rounded-pill bg-gradient-danger">
+                                            fecha: {{ $ultimaEspirometria }}
+                                        </p>
                                     </div>
                                 @endif
                             </div>
