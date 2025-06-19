@@ -13,6 +13,8 @@ class Interconsulta extends Model
         'paciente_id',
         'problema_id',
         'fecha_ic',
+        'fecha_citacion',
+        'correlativo',
         // otros campos...
     ];
 
