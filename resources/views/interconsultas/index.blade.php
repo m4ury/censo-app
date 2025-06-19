@@ -30,13 +30,16 @@
                 @foreach ($interconsultas as $interconsulta)
                     <tr>
                         <td nowrap="">{{ Carbon\Carbon::parse($interconsulta->fecha_ic)->format('d-m-Y') }}</td>
-                        <td class="text-uppercase" nowrap="">{{ $interconsulta->paciente->rut ?? '' }}</td>
-                        <td>{{ $interconsulta->paciente->fullName() ?? '' }}</td>
+                        <td class="text-uppercase" nowrap=""><a
+                                href="{{ route('pacientes.show', $interconsulta->paciente->id) }}">{{ $interconsulta->paciente->rut ?? '' }}</a>
+                        </td>
+                        <td class="text-uppercase">{{ $interconsulta->paciente->fullName() ?? '' }}</td>
                         <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
-                        <td>{{$interconsulta->created_at}}</td>
+                        <td>{{ $interconsulta->created_at }}</td>
                         <td>{{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y G:i A') }}</td>
                         <td class="text-uppercase text-bold">{{ $interconsulta->estado_ic }}</td>
-                        <td class="text-uppercase">{{ $interconsulta->ges == 1 ? $interconsulta->problema->numero_ges : '' }}
+                        <td class="text-uppercase">
+                            {{ $interconsulta->ges == 1 ? $interconsulta->problema->numero_ges : '' }}
                             {{ $interconsulta->problema->nombre_problema ?? '' }}
                         </td>
                         <td>{{ $interconsulta->retirado_por }}</td>
