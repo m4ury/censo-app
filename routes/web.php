@@ -157,4 +157,7 @@ Route::middleware('auth')->group(function () {
     //mapa
     Route::get('/geocode', 'PacienteController@geocodePacientes')->name('geocode')->middleware('auth');
     Route::get('/mapa', 'PacienteController@mostrarMapa')->name('mapa')->middleware('auth');
+
+    //Route::get('interconsultas/importar', 'InterconsultaController@formImportar')->name('interconsultas.formImportar');
+    Route::post('interconsultas/importar', 'InterconsultaController@importarExcel')->name('interconsultas.importarExcel');
 });
