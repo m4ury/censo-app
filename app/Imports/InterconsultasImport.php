@@ -26,26 +26,24 @@ class InterconsultasImport implements ToCollection
         foreach ($rows->skip(1) as $row) {
             $fechaCitacionRaw = $row[1];
 
-            // Detectar si es numérico (Excel) o string
-            if (is_numeric($fechaCitacionRaw)) {
-                $fechaCitacionCarbon = ExcelDate::excelToDateTimeObject($fechaCitacionRaw);
-            } else {
-                $fechaCitacionRaw = trim($fechaCitacionRaw);
-                try {
-                    $fechaCitacionCarbon = Carbon::createFromFormat('d-m-Y H:i', $fechaCitacionRaw);
-                } catch (\Exception $e) {
-                    try {
-                        $fechaCitacionCarbon = Carbon::createFromFormat('d-m-Y H:i:s', $fechaCitacionRaw);
-                    } catch (\Exception $e) {
-                        continue; // Si no se puede parsear, omitir fila
-                    }
-                }
-            }
+            // Validar y parsear fecha de citación
+        if (empty($fechaCitacionRaw)) {
+            continue; // Omitir si la fecha de citación está vacía
+        }
+        // Intentar parsear la fecha de citación
+        $fechaCitacionCarbon = ExcelDate::excelToDateTimeObject($fechaCitacionRaw)->format('Y-m-d H:i:s');
 
-            // Solo continuar si la fecha es hoy o en el futuro
-            /* if (!($fechaCitacionCarbon instanceof \Carbon\Carbon) || !($fechaCitacionCarbon->isToday() || $fechaCitacionCarbon->isFuture())) {
-                continue;
-            } */
+        try {
+        $fechaCitacion = Carbon::parse($fechaCitacionCarbon);
+        } catch (\Exception $e) {
+            continue; // No es una fecha válida
+        }
+
+        // Solo cargar si la fecha es hoy o posterior
+        if ($fechaCitacion->lessThan(\Carbon\Carbon::today())) {
+            //dd('Fecha de citación es anterior a hoy: ' . $fechaCitacionCarbon);
+            continue;
+        }
 
             $correlativo      = $row[0]; // columna A
             $nombreCompleto   = $row[3]; // columna D
@@ -59,20 +57,20 @@ class InterconsultasImport implements ToCollection
             $fechaNacimiento = null;
             if (!empty($fechaNacRaw)) {
                 try {
-                    $fechaNacimiento = \Carbon\Carbon::parse($fechaNacRaw)->format('Y-m-d'); // columna P
+                    $fechaNacimiento = ExcelDate::excelToDateTimeObject($fechaNacRaw)->format('Y-m-d');
+                    //$fechaNacimiento = \Carbon\Carbon::parse($fechaNacRaw)->format('Y-m-d'); // columna P
                 } catch (\Exception $e) {
                     $fechaNacimiento = null;
                 }
             }
 
-            if (empty($correlativo) || empty($fechaCitacionRaw && \Carbon\Carbon::parse($fechaCitacionRaw)->year() >= 2025)) {
-                continue;
-            }
+            //dd($fechaCitacion, $fechaNacRaw, $fechaNacimiento, $nombreCompleto, $rut, $especialidad, $correlativo);
+
+            //solo deberian cargarse solo 127 q su fecha citacion es desde hoy 21-06-2025 y en adelante. De 2361 registros q son desde 01-01-2020 a la fecha actual
 
             // Omitir si ya existe una interconsulta con ese correlativo
             $existe = \App\Interconsulta::where('correlativo', $correlativo)->exists();
             if ($existe) continue;
-
 
             // Extraer datos del Excel
             $fechaIngreso = null;
@@ -107,12 +105,30 @@ class InterconsultasImport implements ToCollection
 
             // Extraer nombre de especialidad antes del guion
             $nombreProblema = trim(explode('-', $especialidad)[0]);
-            if (str_contains($nombreProblema, 'OBTETRICIA')) {
+            if (str_contains($nombreProblema, 'OBSTETRICIA')) {
                 $nombreProblemaBD = 'Aro (Obstetrica)';
             } elseif (str_contains($nombreProblema, 'MEDICINA')) {
                 $nombreProblemaBD = 'Medicina General/Interna';
             } elseif (str_contains($nombreProblema, 'MAXILOFACIAL')) {
                 $nombreProblemaBD = 'Maxilofacial';
+            } elseif (str_contains($nombreProblema, 'TRAUMATOLOGIA')) {
+                $nombreProblemaBD = 'Traumatologia';
+            } elseif (str_contains($nombreProblema, 'OTORRINOLARINGOLOGIA')) {
+                $nombreProblemaBD = 'Otorrino';
+            } elseif (str_contains($nombreProblema, 'CIRUGIA')) {
+                $nombreProblemaBD = 'Cirugia Adulto';
+            } elseif (str_contains($nombreProblema, 'NEUROLOGIA PEDIATRICA')) {
+                $nombreProblemaBD = 'Neurologia Infantil';
+            } elseif (str_contains($nombreProblema, 'GASTROENTEROLOGIA PEDIATRICA')) {
+                $nombreProblemaBD = 'Gastroenterologia';
+            } elseif (str_contains($nombreProblema, 'ENDOCRINOLOGIA')) {
+                $nombreProblemaBD = 'Endocrinologia';
+            } elseif (str_contains($nombreProblema, 'NEFROLOGIA')) {
+                $nombreProblemaBD = 'Nefrologia';
+            } elseif (str_contains($nombreProblema, 'REHABILITACION: PROTESIS')) {
+                $nombreProblemaBD = 'Protesis';
+            } elseif (str_contains($nombreProblema, 'DOLOR OROFACIAL')) {
+                $nombreProblemaBD = 'Trastornos temporales mandibulares y dolor Orofacial';
             } else {
                 $nombreProblemaBD = $nombreProblema;
             }
@@ -125,7 +141,7 @@ class InterconsultasImport implements ToCollection
                     'paciente_id'     => $paciente->id,
                     'problema_id'     => $problema->id,
                     'fecha_ic'        => $fechaIngreso,
-                    'fecha_citacion'  => $fechaCitacionCarbon->format('Y-m-d H:i:s'),
+                    'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
             }

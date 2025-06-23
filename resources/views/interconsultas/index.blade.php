@@ -18,11 +18,11 @@
                     <th>Rut</th>
                     <th>Nombre Paciente</th>
                     <th>Edad</th>
-                    <th>Fecha Emision</th>
                     <th>Fecha Citacion</th>
                     <th>Estado Interconsulta</th>
                     <th>Problema Salud</th>
                     <th>Retirado por</th>
+                    <th>Telefono contacto</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -35,7 +35,6 @@
                         </td>
                         <td class="text-uppercase">{{ $interconsulta->paciente->fullName() ?? '' }}</td>
                         <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
-                        <td>{{ $interconsulta->created_at }}</td>
                         <td>{{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y G:i A') }}</td>
                         <td class="text-uppercase text-bold">{{ $interconsulta->estado_ic }}</td>
                         <td class="text-uppercase">
@@ -43,6 +42,7 @@
                             {{ $interconsulta->problema->nombre_problema ?? '' }}
                         </td>
                         <td>{{ $interconsulta->retirado_por }}</td>
+                        <td>{{$interconsulta->paciente->telefono ?? ''}}</td>
                         <td>botones de accion</td>
                     </tr>
                 @endforeach
@@ -52,7 +52,11 @@
 @stop
 @section('plugins.Datatables', true)
 @section('js')
+<script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
+        // Configura el formato de la fecha
+        $.fn.dataTable.moment('DD-MM-YYYY h:mm:ss');
+
         $("#interconsultas").DataTable({
             dom: 'Bfrtip',
             buttons: [
@@ -83,6 +87,9 @@
                     "sortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
+            order: [
+                    [4, 'asc'] // Ordenar por la columna 5 (Fecha / Hora Notificación) en orden descendente
+                ]
         });
     </script>
 @endsection
