@@ -30,8 +30,30 @@ class InterconsultaController extends Controller
             'archivo' => 'required|file|mimes:xlsx,xls',
         ]);
 
+        $import = new InterconsultasImport;
         Excel::import(new InterconsultasImport, $request->file('archivo'));
 
-        return back()->with('success', 'Datos importados correctamente');
+        return back()->with('success', 'Datos importados correctamente')
+            ->with('importados', $import->importados)
+            ->with('pacientes', $import->pacientes)
+            ->with('success', 'Importación completada. Pacientes importados: ' . $import->pacientes . ', Interconsultas importadas: ' . $import->importados);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'estado_ic' => 'required',
+            // Agrega aquí otras validaciones según tus campos
+        ]);
+
+        $interconsulta = Interconsulta::findOrFail($id);
+        $interconsulta->estado_ic = $request->input('estado_ic');
+        $interconsulta->retirado_por = $request->input('retirado_por');
+        // Asigna aquí otros campos según tu modelo
+
+        $interconsulta->save();
+
+        return redirect()->route('interconsultas.index')
+            ->with('success', 'Interconsulta actualizada correctamente.');
     }
 }

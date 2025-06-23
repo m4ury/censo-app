@@ -15,11 +15,15 @@ use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
 
 class InterconsultasImport implements ToCollection
 {
+    public $importados = 0;
+    public $pacientes = 0;
+
     /**
      * @param array $row
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
+
     public function collection(Collection $rows)
     {
         // Omitir encabezado si existe
@@ -27,23 +31,23 @@ class InterconsultasImport implements ToCollection
             $fechaCitacionRaw = $row[1];
 
             // Validar y parsear fecha de citación
-        if (empty($fechaCitacionRaw)) {
-            continue; // Omitir si la fecha de citación está vacía
-        }
-        // Intentar parsear la fecha de citación
-        $fechaCitacionCarbon = ExcelDate::excelToDateTimeObject($fechaCitacionRaw)->format('Y-m-d H:i:s');
+            if (empty($fechaCitacionRaw)) {
+                continue; // Omitir si la fecha de citación está vacía
+            }
+            // Intentar parsear la fecha de citación
+            $fechaCitacionCarbon = ExcelDate::excelToDateTimeObject($fechaCitacionRaw)->format('Y-m-d H:i:s');
 
-        try {
-        $fechaCitacion = Carbon::parse($fechaCitacionCarbon);
-        } catch (\Exception $e) {
-            continue; // No es una fecha válida
-        }
+            try {
+                $fechaCitacion = Carbon::parse($fechaCitacionCarbon);
+            } catch (\Exception $e) {
+                continue; // No es una fecha válida
+            }
 
-        // Solo cargar si la fecha es hoy o posterior
-        if ($fechaCitacion->lessThan(\Carbon\Carbon::today())) {
-            //dd('Fecha de citación es anterior a hoy: ' . $fechaCitacionCarbon);
-            continue;
-        }
+            // Solo cargar si la fecha es hoy o posterior
+            if ($fechaCitacion->lessThan(\Carbon\Carbon::today())) {
+                //dd('Fecha de citación es anterior a hoy: ' . $fechaCitacionCarbon);
+                continue;
+            }
 
             $correlativo      = $row[0]; // columna A
             $nombreCompleto   = $row[3]; // columna D
@@ -101,6 +105,8 @@ class InterconsultasImport implements ToCollection
                     'comuna'            => $row[20] ?? '',
                     'egreso'            => null,
                 ]);
+                
+                $this->pacientes++;
             }
 
             // Extraer nombre de especialidad antes del guion
@@ -139,11 +145,13 @@ class InterconsultasImport implements ToCollection
             if ($paciente && $problema) {
                 \App\Interconsulta::create([
                     'paciente_id'     => $paciente->id,
-                    'problema_id'     => $problema->id,
+                    'problema_id'     => $problema->id ?? null,
                     'fecha_ic'        => $fechaIngreso,
                     'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
+
+                $this->importados++;
             }
         }
     }
