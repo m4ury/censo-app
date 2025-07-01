@@ -66,7 +66,7 @@
                                 href="#vert-tabs-controles" role="tab" aria-controls="vert-tabs-controles"
                                 aria-selected="false">Controles
                             </a>
-                            {{-- @if($paciente->interconsultas) --}}
+                            {{-- @if ($paciente->interconsultas) --}}
                             <a class="nav-link" id="vert-tabs-interconsultas-tab" data-toggle="pill"
                                 href="#vert-tabs-interconsultas" role="tab" aria-controls="vert-tabs-interconsultas"
                                 aria-selected="false">Interconsultas
@@ -192,12 +192,18 @@
                                 @include('patologias.list_patologias', $paciente)
 
                                 @if ($paciente->patologias->count() == 0)
-                                    <p class="text-muted">No hay Patologias aun...<i class="far fa-laugh-wink fa-2x"></i></p>
+                                    <p class="text-muted">No hay Patologias aun...<i
+                                            class="far fa-laugh-wink fa-2x"></i></p>
                                 @endif
                             </div>
-                            {{--Interconsultas--}}
+                            {{-- Interconsultas --}}
                             <div class="tab-pane fade" id="vert-tabs-interconsultas" role="tabpanel"
                                 aria-labelledby="vert-tabs-interconsultas-tab">
+                                @include('interconsultas.list_ic', $paciente)
+                                @if ($paciente->interconsultas->count() == 0)
+                                    <p class="text-muted">No hay Interconsultas aun...<i
+                                            class="far fa-laugh-wink fa-2x"></i></p>
+                                @endif
                             </div>
                         </div>
                     </div>
