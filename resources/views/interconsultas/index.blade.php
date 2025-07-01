@@ -8,47 +8,47 @@
     </div>
 
     <div class="row justify-content-center">
-        <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#importarModal">
+        <button type="button" class="btn btn-primary mx-2 mb-2" data-toggle="modal" data-target="#importarModal">
             <i class="fas fa-file-excel"></i> Importar Interconsultas
         </button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#importarModal">
+        {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#importarModal">
             <i class="fas fa-file-excel"></i> Exportar Excel
-        </button>
+        </button> --}}
     </div>
 
     <div class="row pt-2">
-            <div class="col-md col-sm col-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-gradient-info"><i class="fas fa-envelope"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Retiradas/Notificadas</span>
-                        <span class="info-box-number"
-                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'retirada')->count() }}</span>
-                    </div>
+        <div class="col-md col-sm col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-gradient-info"><i class="fas fa-envelope"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Retiradas/Notificadas</span>
+                    <span class="info-box-number"
+                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'retirada')->count() }}</span>
                 </div>
             </div>
-            <div class="col-md col-sm col-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Pendiente</span>
-                        <span class="info-box-number"
-                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'pendiente')->count() }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md col-sm col-12">
-                <div class="info-box">
-                    <span class="info-box-icon bg-gradient-danger"><i class="fas fa-envelope"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Rechazada</span>
-                        <span class="info-box-number"
-                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
+        <div class="col-md col-sm col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Pendiente</span>
+                    <span class="info-box-number"
+                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'pendiente')->count() }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md col-sm col-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-gradient-danger"><i class="fas fa-envelope"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Rechazada</span>
+                    <span class="info-box-number"
+                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <div class="col-md-12 table-responsive">
         <table id="interconsultas" class="table table-hover table-md-responsive table-bordered">
@@ -75,15 +75,16 @@
                         </td>
                         <td class="text-uppercase">{{ $interconsulta->paciente->fullName() ?? '' }}</td>
                         <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
-                        <td data-order="{{$interconsulta->fecha_citacion}}">
+                        <td data-order="{{ $interconsulta->fecha_citacion }}">
                             {{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
                         </td>
                         @php
-                            $estadoClass = [
-                                'retirada' => 'success',
-                                'rechazada' => 'danger',
-                                'pendiente' => 'info',
-                            ][$interconsulta->estado_ic] ?? 'secondary';
+                            $estadoClass =
+                                [
+                                    'retirada' => 'success',
+                                    'rechazada' => 'danger',
+                                    'pendiente' => 'info',
+                                ][$interconsulta->estado_ic] ?? 'secondary';
                         @endphp
 
                         <td class="text-uppercase text-bold text-{{ $estadoClass }}">
@@ -99,8 +100,10 @@
                         <td>{{ $interconsulta->retirado_por }}</td>
                         <td>{{ $interconsulta->paciente->telefono ?? '' }}</td>
                         <td>
-                            <button data-toggle="modal" data-target="#editModal-{{ $interconsulta->id }}">
-                                <i class="fas fa-edit">Editar</i>
+                            <button data-toggle="modal" data-target="#editModal-{{ $interconsulta->id }}"
+                                class="btn btn-sm btn-success border-indigo-500 btn-sm">
+                                <i class="fas fa-edit mx-auto"></i>
+                                Editar
                             </button>
                             @include('interconsultas.editModal', ['interconsulta' => $interconsulta])
                         </td>
@@ -180,6 +183,15 @@
             order: [
                 [4, 'asc'] // Ordenar por la columna 4 (Fecha / Hora Notificación) en orden descendente
             ]
+        });
+    </script>
+    <script>
+        $('#estado').select2({
+            theme: 'classic',
+            placeholder: 'Seleccione un estado',
+            allowClear: true,
+            width: '100%',
+            minimumResultsForSearch: Infinity // Oculta el campo de búsqueda
         });
     </script>
 @endsection
