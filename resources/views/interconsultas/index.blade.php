@@ -23,7 +23,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Retiradas/Notificadas</span>
                     <span class="info-box-number"
-                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'retirada')->count() }}</span>
+                        id="pacientes-total">{{ $interconsultas->whereIn('estado_ic', ['retirada', 'notificada'])->count() }}</span>
                 </div>
             </div>
         </div>
@@ -61,7 +61,8 @@
                     <th>Fecha Citacion</th>
                     <th>Estado Interconsulta</th>
                     <th>Problema Salud</th>
-                    <th>Retirado por</th>
+                    <th>Retirado/Notificado</th>
+                    <th>Observacion</th>
                     <th>Telefono contacto</th>
                     <th>Acciones</th>
                 </tr>
@@ -82,6 +83,7 @@
                             $estadoClass =
                                 [
                                     'retirada' => 'success',
+                                    'notificada' => 'success',
                                     'rechazada' => 'danger',
                                     'pendiente' => 'info',
                                 ][$interconsulta->estado_ic] ?? 'secondary';
@@ -98,6 +100,7 @@
                             {{ \Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
                         </td> --}}
                         <td>{{ $interconsulta->retirado_por }}</td>
+                        <td>{{ $interconsulta->observacion_ic ?? '' }}</td>
                         <td>{{ $interconsulta->paciente->telefono ?? '' }}</td>
                         <td>
                             <button data-toggle="modal" data-target="#editModal-{{ $interconsulta->id }}"

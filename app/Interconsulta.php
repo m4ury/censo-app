@@ -15,6 +15,9 @@ class Interconsulta extends Model
         'fecha_ic',
         'fecha_citacion',
         'correlativo',
+        'estado_ic',
+        'retirado_por',
+        'observacion_ic',
         // otros campos...
     ];
 

@@ -49,6 +49,7 @@ class InterconsultaController extends Controller
         $interconsulta = Interconsulta::findOrFail($id);
         $interconsulta->estado_ic = $request->input('estado_ic');
         $interconsulta->retirado_por = $request->input('retirado_por');
+        $interconsulta->observacion_ic = $request->input('observacion_ic');
         // Asigna aquí otros campos según tu modelo
 
         $interconsulta->save();
