@@ -105,7 +105,7 @@ class InterconsultasImport implements ToCollection
                     'comuna'            => $row[20] ?? '',
                     'egreso'            => null,
                 ]);
-                
+
                 $this->pacientes++;
             }
 
@@ -143,7 +143,7 @@ class InterconsultasImport implements ToCollection
 
             // Insertar en interconsultas solo si hay paciente y problema
             if ($paciente && $problema) {
-                \App\Interconsulta::create([
+                $importados = \App\Interconsulta::create([
                     'paciente_id'     => $paciente->id,
                     'problema_id'     => $problema->id ?? null,
                     'fecha_ic'        => $fechaIngreso,
@@ -152,7 +152,7 @@ class InterconsultasImport implements ToCollection
                 ]);
 
                 $this->importados++;
-            }
+                }
         }
     }
 }

@@ -7,11 +7,48 @@
         <h1 class="text-center">Monitoreo Interconsultas</h1>
     </div>
 
-    <div class="row justify-content-center my-4">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#importarModal">
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#importarModal">
             <i class="fas fa-file-excel"></i> Importar Interconsultas
         </button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#importarModal">
+            <i class="fas fa-file-excel"></i> Exportar Excel
+        </button>
     </div>
+
+    <div class="row pt-2">
+            <div class="col-md col-sm col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-info"><i class="fas fa-envelope"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Retiradas/Notificadas</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'retirada')->count() }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md col-sm col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Pendiente</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'pendiente')->count() }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md col-sm col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-gradient-danger"><i class="fas fa-envelope"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Rechazada</span>
+                        <span class="info-box-number"
+                            id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
     <div class="col-md-12 table-responsive">
         <table id="interconsultas" class="table table-hover table-md-responsive table-bordered">
@@ -38,28 +75,40 @@
                         </td>
                         <td class="text-uppercase">{{ $interconsulta->paciente->fullName() ?? '' }}</td>
                         <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
-                        <td>{{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y G:i A') }}</td>
-                        <td class="text-uppercase text-bold">{{ $interconsulta->estado_ic }}</td>
+                        <td data-order="{{$interconsulta->fecha_citacion}}">
+                            {{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
+                        </td>
+                        @php
+                            $estadoClass = [
+                                'retirada' => 'success',
+                                'rechazada' => 'danger',
+                                'pendiente' => 'info',
+                            ][$interconsulta->estado_ic] ?? 'secondary';
+                        @endphp
+
+                        <td class="text-uppercase text-bold text-{{ $estadoClass }}">
+                            {{ $interconsulta->estado_ic }}
+                        </td>
                         <td class="text-uppercase">
                             {{ $interconsulta->ges == 1 ? $interconsulta->problema->numero_ges : '' }}
                             {{ $interconsulta->problema->nombre_problema ?? '' }}
                         </td>
+                        {{-- <td data-order="{{ $interconsulta->fecha_citacion }}">
+                            {{ \Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
+                        </td> --}}
                         <td>{{ $interconsulta->retirado_por }}</td>
                         <td>{{ $interconsulta->paciente->telefono ?? '' }}</td>
                         <td>
-                            <button type="button" class="btn btn-success mb-3" data-toggle="modal"
-                                data-target="#editModal">
-                                <i class="fas fa-file-pen"></i> Editar
+                            <button data-toggle="modal" data-target="#editModal-{{ $interconsulta->id }}">
+                                <i class="fas fa-edit">Editar</i>
                             </button>
+                            @include('interconsultas.editModal', ['interconsulta' => $interconsulta])
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
-    <!-- Modal de edición -->
-    @include('interconsultas.editModal')
 
     <!-- Modal de importación -->
     <div class="modal fade" id="importarModal" tabindex="-1" aria-labelledby="importarModalLabel" aria-hidden="true">
@@ -93,17 +142,13 @@
     <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
         // Configura el formato de la fecha
-        $.fn.dataTable.moment('DD-MM-YYYY h:mm:ss');
+        $.fn.dataTable.moment('DD-MM-YYYY HH:MM:SS');
 
         $("#interconsultas").DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'colvis',
                 'excel',
-                'pdf',
-                'print',
             ],
-
             responsive: true,
             autoWidth: true,
             language: {
@@ -135,12 +180,6 @@
             order: [
                 [4, 'asc'] // Ordenar por la columna 4 (Fecha / Hora Notificación) en orden descendente
             ]
-        });
-    </script>
-    <script>
-        $('#estado').select2({
-            theme: "classic",
-            width: '100%',
         });
     </script>
 @endsection

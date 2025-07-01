@@ -1,4 +1,4 @@
-        <div class="modal fade py-3" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        <div class="modal fade py-3" id="editModal-{{$interconsulta->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -17,7 +17,7 @@
                                 {!! Form::select(
                                     'estado_ic',
                                     ['pendiente' => 'Pendiente', 'rechazada' => 'Rechazada', 'retirada' => 'Retirada'],
-                                    null,
+                                    old('estado_ic', $interconsulta->estado_ic ?? ''),
                                     [
                                         'class' => 'form-control form-control-sm' . ($errors->has('estado_ic') ? ' is-invalid' : ''),
                                         'placeholder' => 'Seleccione un estado',
@@ -34,10 +34,9 @@
                         <div class="form-group row">
                             {!! Form::label('retirado_por_label', 'Retirado por:', ['class' => 'col-sm col-form-label']) !!}
                             <div class="col-sm">
-                                {!! Form::text('retirado_por', null, [
+                                {!! Form::text('retirado_por', old('retirado_por', $interconsulta->retirado_por ?? ''), [
                                     'class' => 'form-control form-control-sm' . ($errors->has('retirado_por') ? ' is-invalid' : ''),
                                     'placeholder' => 'Ingrese el nombre de quien retira',
-                                    'id' => 'retirado_por',
                                 ]) !!}
                                 @if ($errors->has('retirado_por'))
                                     <span class="invalid-feedback">
@@ -66,3 +65,4 @@
                 </div>
             </div>
         </div>
+

@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class InterconsultaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $paciente = new Paciente;
         $interconsultas = Interconsulta::with('paciente', 'problema')->orderBy('fecha_citacion', 'asc')->get();
@@ -19,10 +19,10 @@ class InterconsultaController extends Controller
         return view('interconsultas.index', compact('interconsultas', 'paciente'));
     }
 
-    public function formImportar()
+    /* public function formImportar()
     {
         return view('interconsultas.importar');
-    }
+    } */
 
     public function importarExcel(Request $request)
     {
