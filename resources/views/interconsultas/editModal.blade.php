@@ -1,5 +1,5 @@
-        <div class="modal fade py-3" id="editModal-{{$interconsulta->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-            aria-hidden="true">
+        <div class="modal fade py-3" id="editModal-{{ $interconsulta->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="modelTitleId" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -16,7 +16,7 @@
                             <div class="col-sm">
                                 {!! Form::select(
                                     'estado_ic',
-                                    ['pendiente' => 'Pendiente', 'rechazada' => 'Rechazada', 'retirada' => 'Retirada'],
+                                    ['pendiente' => 'Pendiente', 'rechazada' => 'Rechazada', 'retirada' => 'Retirada', 'notificada' => 'Notificada'],
                                     old('estado_ic', $interconsulta->estado_ic ?? ''),
                                     [
                                         'class' => 'form-control form-control-sm' . ($errors->has('estado_ic') ? ' is-invalid' : ''),
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('retirado_por_label', 'Retirado por:', ['class' => 'col-sm col-form-label']) !!}
+                            {!! Form::label('retirado_por_label', 'Retirado / Notificado por:', ['class' => 'col-sm col-form-label']) !!}
                             <div class="col-sm">
                                 {!! Form::text('retirado_por', old('retirado_por', $interconsulta->retirado_por ?? ''), [
                                     'class' => 'form-control form-control-sm' . ($errors->has('retirado_por') ? ' is-invalid' : ''),
@@ -41,6 +41,21 @@
                                 @if ($errors->has('retirado_por'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('retirado_por') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            {!! Form::label('observacion_ic_label', 'Observación:', ['class' => 'col-sm col-form-label']) !!}
+                            <div class="col-sm">
+                                {!! Form::textarea('observacion_ic', old('observacion_ic', $interconsulta->observacion_ic ?? ''), [
+                                    'class' => 'form-control form-control-sm' . ($errors->has('observacion_ic') ? ' is-invalid' : ''),
+                                    'placeholder' => 'Ingrese una observación',
+                                    'rows' => 3,
+                                ]) !!}
+                                @if ($errors->has('observacion_ic'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('observacion_ic') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -65,4 +80,3 @@
                 </div>
             </div>
         </div>
-

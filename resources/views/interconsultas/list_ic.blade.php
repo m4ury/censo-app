@@ -9,6 +9,7 @@
                             <th>Fecha Interconsulta</th>
                             <th>Fecha/Hora Citación</th>
                             <th>Estado</th>
+                            <th>Observación</th>
                             <th>Especialidad</th>
                         </tr>
                     </thead>
@@ -18,6 +19,7 @@
                                 <td>{{ \Carbon\Carbon::parse($ic->fecha_ic)->format('d-m-Y') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($ic->fecha_citacion)->format('d-m-Y H:i') }}</td>
                                 <td class="text-uppercase">{{ $ic->estado_ic }}</td>
+                                <td>{{ $ic->observacion_ic ?? '' }}</td>
                                 <td class="text-uppercase">{{ $ic->problema->nombre_problema ?? '' }}</td>
                             </tr>
                         @endforeach
