@@ -54,8 +54,7 @@ class InterconsultasImport implements ToCollection
             $fechaNacRaw      = $row[15]; // columna P
             $rut = isset($row[2]) ? preg_replace('/\s+/u', '', $row[2]) : ''; // columna C
             if (!$rut) continue;
-            $especialidad = is_string($row[5]) ? trim($row[5]) : '';
-
+            $especialidad = is_string($row[5]) ? trim($row[5]) : ''; // columna F
 
             // Validar y parsear fecha de nacimiento
             $fechaNacimiento = null;
@@ -109,8 +108,11 @@ class InterconsultasImport implements ToCollection
                 $this->pacientes++;
             }
 
+
             // Extraer nombre de especialidad antes del guion
-            $nombreProblema = trim(explode('-', $especialidad)[0]);
+            $nombreProblema = trim(explode('-', $especialidad)[0] ?? '');
+            //dd($especialidad);
+
             if (str_contains($nombreProblema, 'OBSTETRICIA')) {
                 $nombreProblemaBD = 'Aro (Obstetrica)';
             } elseif (str_contains($nombreProblema, 'MEDICINA')) {
@@ -121,7 +123,9 @@ class InterconsultasImport implements ToCollection
                 $nombreProblemaBD = 'Traumatologia';
             } elseif (str_contains($nombreProblema, 'OTORRINOLARINGOLOGIA')) {
                 $nombreProblemaBD = 'Otorrino';
-            } elseif (str_contains($nombreProblema, 'CIRUGIA')) {
+            } elseif (str_contains($nombreProblema, 'CIRUGIA GENERAL')) {
+                $nombreProblemaBD = 'Cirugia Adulto';
+            } elseif (str_contains($nombreProblema, 'CIRUGIA PLASTICA Y REPARADORA')) {
                 $nombreProblemaBD = 'Cirugia Adulto';
             } elseif (str_contains($nombreProblema, 'NEUROLOGIA PEDIATRICA')) {
                 $nombreProblemaBD = 'Neurologia Infantil';
@@ -135,6 +139,8 @@ class InterconsultasImport implements ToCollection
                 $nombreProblemaBD = 'Protesis';
             } elseif (str_contains($nombreProblema, 'DOLOR OROFACIAL')) {
                 $nombreProblemaBD = 'Trastornos temporales mandibulares y dolor Orofacial';
+            } elseif (str_contains($nombreProblema, 'INFECTOLOGIA')) {
+                $nombreProblemaBD = 'Dermatologia';
             } else {
                 $nombreProblemaBD = $nombreProblema;
             }
@@ -145,14 +151,16 @@ class InterconsultasImport implements ToCollection
             if ($paciente && $problema) {
                 $importados = \App\Interconsulta::create([
                     'paciente_id'     => $paciente->id,
-                    'problema_id'     => $problema->id ?? null,
+                    'problema_id'     => $problema->id,
                     'fecha_ic'        => $fechaIngreso,
                     'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
-
-                $this->importados++;
-                }
+                // Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo);
+                Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellido . ' - ' . $problema->nombre_problema);
+            } else {
+                Log::warning('No se pudo importar interconsulta: Paciente o problema no encontrado. ' . $nombreProblemaBD . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellidoP . ' ' . $paciente->apellidoM);
+            }
         }
     }
 }
