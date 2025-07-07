@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
 use App\Paciente;
 use App\Problema;
 use App\Interconsulta;
 use Illuminate\Http\Request;
 use App\Imports\InterconsultasImport;
-use Maatwebsite\Excel\Facades\Excel;
 
 class InterconsultaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $paciente = new Paciente;
-        $interconsultas = Interconsulta::with('paciente', 'problema')->orderBy('fecha_citacion', 'asc')->get();
+        $mostrar_todos = $request->get('mostrar_todos');
 
-        return view('interconsultas.index', compact('interconsultas', 'paciente'));
+        $paciente = new Paciente;
+
+        $query = Interconsulta::with('paciente', 'problema')
+            ->orderBy('fecha_citacion', 'asc');
+
+        if ($mostrar_todos) {
+            // No aplicar ningún filtro
+        } else {
+            $maniana = \Carbon\Carbon::tomorrow()->startOfDay();
+            $query->where('fecha_citacion', '>=', $maniana)
+                ->where('estado_ic', '==', 'pendiente');
+        }
+
+        $interconsultas = $query->get();
+
+        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos'));
     }
 
     /* public function formImportar()

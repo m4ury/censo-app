@@ -27,6 +27,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md col-sm col-12">
             <div class="info-box">
                 <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
@@ -115,6 +116,10 @@
             </tbody>
         </table>
     </div>
+
+    <a href="{{ route('interconsultas.index', ['mostrar_todos' => 1]) }}" class="btn btn-dark mb-3">
+        Mostrar todos
+    </a>
 
     <!-- Modal de importación -->
     <div class="modal fade" id="importarModal" tabindex="-1" aria-labelledby="importarModalLabel" aria-hidden="true">
