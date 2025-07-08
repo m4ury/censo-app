@@ -7,13 +7,29 @@
         <h1 class="text-center">Monitoreo Interconsultas</h1>
     </div>
 
-    <div class="row justify-content-center">
-        <button type="button" class="btn btn-primary mx-2 mb-2" data-toggle="modal" data-target="#importarModal">
-            <i class="fas fa-file-excel"></i> Importar Interconsultas
-        </button>
-        {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#importarModal">
-            <i class="fas fa-file-excel"></i> Exportar Excel
-        </button> --}}
+    <div class="row mb-3">
+        <div class="col-auto">
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="filtroDropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Acciones
+                </button>
+                <div class="dropdown-menu" aria-labelledby="filtroDropdown">
+                    <a class="dropdown-item" href="{{ route('interconsultas.index') }}">
+                        Pendientes
+                    </a>
+                    <a class="dropdown-item" href="{{ route('interconsultas.index', ['mostrar_todos' => 1]) }}">
+                        Todas
+                    </a>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#importarModal">
+                        <i class="fas fa-file-excel"></i> Importar Interconsultas
+                    </button>
+                    <button type="button" class="dropdown-item" id="exportarExcelBtn">
+                        <i class="fas fa-file-excel"></i> Exportar Excel
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="row pt-2">
@@ -23,7 +39,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Retiradas/Notificadas</span>
                     <span class="info-box-number"
-                        id="pacientes-total">{{ $interconsultas->whereIn('estado_ic', ['retirada', 'notificada'])->count() }}</span>
+                        id="pacientes-total">{{ $todasInterconsultas->whereIn('estado_ic', ['retirada', 'notificada'])->count() }}</span>
                 </div>
             </div>
         </div>
@@ -44,7 +60,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Rechazada</span>
                     <span class="info-box-number"
-                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
+                        id="pacientes-total">{{ $todasInterconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
                 </div>
             </div>
         </div>
@@ -117,10 +133,6 @@
         </table>
     </div>
 
-    <a href="{{ route('interconsultas.index', ['mostrar_todos' => 1]) }}" class="btn btn-dark mb-3">
-        Mostrar todos
-    </a>
-
     <!-- Modal de importación -->
     <div class="modal fade" id="importarModal" tabindex="-1" aria-labelledby="importarModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -147,6 +159,24 @@
             </div>
         </div>
     </div>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('importados'))
+        <div class="alert alert-info">
+            Interconsultas importadas: {{ implode(', ', session('importados')) }}
+        </div>
+    @endif
+
+    @if(session('pacientes'))
+        <div class="alert alert-info">
+            Pacientes importados: {{ implode(', ', session('pacientes')) }}
+        </div>
+    @endif
 @stop
 @section('plugins.Datatables', true)
 @section('js')
@@ -202,4 +232,15 @@
             minimumResultsForSearch: Infinity // Oculta el campo de búsqueda
         });
     </script>
+    <script>
+        $('#exportarExcelBtn').on('click', function() {
+            // Dispara el botón de Excel de DataTables
+            $('.buttons-excel').click();
+        });
+    </script>
+    <style>
+        .dt-buttons {
+            display: none;
+        }
+    </style>
 @endsection

@@ -14,7 +14,6 @@ class InterconsultaController extends Controller
     public function index(Request $request)
     {
         $mostrar_todos = $request->get('mostrar_todos');
-
         $paciente = new Paciente;
 
         $query = Interconsulta::with('paciente', 'problema')
@@ -25,12 +24,15 @@ class InterconsultaController extends Controller
         } else {
             $maniana = \Carbon\Carbon::tomorrow()->startOfDay();
             $query->where('fecha_citacion', '>=', $maniana)
-                ->where('estado_ic', '==', 'pendiente');
+                ->where('estado_ic', 'pendiente');
         }
 
         $interconsultas = $query->get();
 
-        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos'));
+        // NUEVO: colección con todas las interconsultas
+        $todasInterconsultas = Interconsulta::with('paciente', 'problema')->get();
+
+        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos', 'todasInterconsultas'));
     }
 
     /* public function formImportar()
@@ -47,10 +49,10 @@ class InterconsultaController extends Controller
         $import = new InterconsultasImport;
         Excel::import(new InterconsultasImport, $request->file('archivo'));
 
-        return back()->with('success', 'Datos importados correctamente')
+        return back()
+            ->with('success', 'Importación completada. Pacientes importados: ' . count($import->pacientes) . ', Interconsultas importadas: ' . count($import->importados))
             ->with('importados', $import->importados)
-            ->with('pacientes', $import->pacientes)
-            ->with('success', 'Importación completada. Pacientes importados: ' . $import->pacientes . ', Interconsultas importadas: ' . $import->importados);
+            ->with('pacientes', $import->pacientes);
     }
 
     public function update(Request $request, $id)
