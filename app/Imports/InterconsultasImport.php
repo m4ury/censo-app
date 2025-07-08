@@ -15,8 +15,8 @@ use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
 
 class InterconsultasImport implements ToCollection
 {
-    public $importados = 0;
-    public $pacientes = 0;
+    public $importados = [];
+    public $pacientes = [];
 
     /**
      * @param array $row
@@ -105,7 +105,7 @@ class InterconsultasImport implements ToCollection
                     'egreso'            => null,
                 ]);
 
-                $this->pacientes++;
+                $this->pacientes[] = $paciente->id; // Guardar ID del paciente importado
             }
 
 
@@ -156,11 +156,23 @@ class InterconsultasImport implements ToCollection
                     'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
+                $this->importados[] = $importados->id; // Guardar ID de la interconsulta importada
+
                 // Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo);
                 Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellido . ' - ' . $problema->nombre_problema);
             } else {
                 Log::warning('No se pudo importar interconsulta: Paciente o problema no encontrado. ' . $nombreProblemaBD . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellidoP . ' ' . $paciente->apellidoM);
             }
         }
+    }
+
+    public function getImportdos()
+    {
+        return $this->importados;
+    }
+
+    public function getPacientes()
+    {
+        return $this->pacientes;
     }
 }

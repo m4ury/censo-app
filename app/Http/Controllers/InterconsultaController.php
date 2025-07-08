@@ -2,21 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use Maatwebsite\Excel\Facades\Excel;
 use App\Paciente;
 use App\Problema;
 use App\Interconsulta;
 use Illuminate\Http\Request;
 use App\Imports\InterconsultasImport;
-use Maatwebsite\Excel\Facades\Excel;
 
 class InterconsultaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $mostrar_todos = $request->get('mostrar_todos');
         $paciente = new Paciente;
-        $interconsultas = Interconsulta::with('paciente', 'problema')->orderBy('fecha_citacion', 'asc')->get();
 
-        return view('interconsultas.index', compact('interconsultas', 'paciente'));
+        $query = Interconsulta::with('paciente', 'problema')
+            ->orderBy('fecha_citacion', 'asc');
+
+        if ($mostrar_todos) {
+            // No aplicar ningún filtro
+        } else {
+            $maniana = \Carbon\Carbon::tomorrow()->startOfDay();
+            $query->where('fecha_citacion', '>=', $maniana)
+                ->where('estado_ic', 'pendiente');
+        }
+
+        $interconsultas = $query->get();
+
+        // NUEVO: colección con todas las interconsultas
+        $todasInterconsultas = Interconsulta::with('paciente', 'problema')->get();
+
+        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos', 'todasInterconsultas'));
     }
 
     /* public function formImportar()
@@ -33,10 +49,10 @@ class InterconsultaController extends Controller
         $import = new InterconsultasImport;
         Excel::import(new InterconsultasImport, $request->file('archivo'));
 
-        return back()->with('success', 'Datos importados correctamente')
+        return back()
+            ->with('success', 'Importación completada. Pacientes importados: ' . count($import->pacientes) . ', Interconsultas importadas: ' . count($import->importados))
             ->with('importados', $import->importados)
-            ->with('pacientes', $import->pacientes)
-            ->with('success', 'Importación completada. Pacientes importados: ' . $import->pacientes . ', Interconsultas importadas: ' . $import->importados);
+            ->with('pacientes', $import->pacientes);
     }
 
     public function update(Request $request, $id)
