@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class SeccionP2Controller extends Controller
 {
 
-public function seccionP2j()
+    public function seccionP2j()
     {
         $all = new Paciente;
 
@@ -468,6 +468,9 @@ public function seccionP2j()
 
         $malNut = $all->malNut('Femenino', 'Masculino', 'sinRiesgo')->get()->unique('rut');
 
+        $inasist = $all->inasist('Femenino', 'Masculino')->get()->unique('rut');
+
+
 
 
         return view('estadisticas.seccion-p2cde', compact(
@@ -506,15 +509,15 @@ public function seccionP2j()
 
             'malNut',
 
+            'inasist',
+
         ));
     }
 
     public function seccionP2h()
-{
-    $all = new Paciente;
+    {
+        $all = new Paciente;
 
-    return view('estadisticas.seccion-p2h', compact('all'));
-}
-
-
+        return view('estadisticas.seccion-p2h', compact('all'));
+    }
 }

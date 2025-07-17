@@ -73,6 +73,20 @@
                         ['class' => 'form-control form-control-sm scoreIra', 'placeholder' => 'Seleccione'],
                     ) !!}
                 </div>
+
+                {!! Form::label('vdi_label', 'RECIBE VISITA DOMICILIARIA INTEGRAL', [
+                    'class' => 'col-sm-3 col-form-label text-bold vdi_label',
+                ]) !!}
+                <div class="col-sm-3">
+                    {!! Form::checkbox(
+                        'visita_domiciliaria',
+                        1,
+                        old('visita_domiciliaria', $control->visita_domiciliaria == 1 ? true : null),
+                        [
+                            'class' => 'form-control my-2 vdi',
+                        ],
+                    ) !!}
+                </div>
             @endif
         </div>
         <hr>

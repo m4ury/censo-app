@@ -132,6 +132,8 @@ class ControlController extends Controller
         $control->embarazo = $request->embarazo ?? null;
         $control->climater = $request->climater ?? null;
         $control->ecoExtrasist = $request->ecoExtrasist ?? null;
+        $control->ecoTrimest = $request->ecoTrimest ?? null;
+        $control->visita_domiciliaria = $request->visita_domiciliaria ?? null;
         $control->save();
 
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');

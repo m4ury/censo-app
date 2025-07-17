@@ -1075,6 +1075,18 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    //P2 seccion E
+    public function insasist($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->wherenotNull('controls.inasistente')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
     //P2 seccion F
     public function dgPa($fem, $masc, $dg)
     {

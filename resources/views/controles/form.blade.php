@@ -26,7 +26,7 @@
             </span>
         @endif
     </div>
-    @if($paciente->paciente_hd)
+    @if ($paciente->paciente_hd)
         {!! Form::label('visita_domiciliaria_label', 'Visita Domiciliaria', [
             'class' => 'col-sm col-form-label text-bold text-center',
         ]) !!}
@@ -40,14 +40,13 @@
                     'id' => 'visita_domiciliaria',
                 ],
             ) !!}
-    </div>
-    <div class="row">
-        <div class="col col-sm">
-            @if ($paciente->paciente_hd)
-
-            @endif
         </div>
-    </div>
+        <div class="row">
+            <div class="col col-sm">
+                @if ($paciente->paciente_hd)
+                @endif
+            </div>
+        </div>
     @endif
 </div>
 
@@ -152,9 +151,7 @@
     </div>
 </div>
 
-@if (
-    $paciente->patologias->count() >= 1 and
-        $paciente->controls->where('i_ecicep', true)->count() == 0)
+@if ($paciente->patologias->count() >= 1 and $paciente->controls->where('i_ecicep', true)->count() == 0)
     @include('partials.ecicep')
 @endif
 
@@ -217,7 +214,7 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields, .vdi_label, .vdi')
             .hide();
         $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg, .areaRiesgo, .consejeria')
             .select2({
@@ -531,6 +528,12 @@
             if ($('input#ci_adolecente').is(':checked')) {
                 $('.fields').show();
             } else $('.fields').hide();
+        });
+
+        $('.scoreIra').change(function() {
+            if ($('.scoreIra').val() === 'moderado' || $('.scoreIra').val() === 'grave') {
+                $('.vdi_label, .vdi').show()
+            } else $('.vdi_label, .vdi').hide()
         });
     </script>
 @endsection

@@ -13,6 +13,9 @@
                     </a>
                     SECCION A.1: POBLACIÓN EN CONTROL, SEGÚN ESTADO NUTRICIONAL PARA NIÑOS AS DE 5 AÑOS A 9 AÑOS 11 MESES
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
                         <thead>
@@ -97,10 +100,14 @@
                                 <td>{{ $imc3DSM->where('grupo', '>=', 9)->where('edadEnMeses', '<=', 119)->count() }}</td>
                                 <!-- 9 a 9 años 11 meses -->
                                 <td>{{ $imc3DSF->where('grupo', '>=', 9)->where('edadEnMeses', '<=', 119)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imc3DSM->where('grupo', '>=', 5)->where('edadEnMeses', '<=', 119)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc3DSF->where('grupo', '>=', 5)->where('edadEnMeses', '<=', 119)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc3DSM->where('grupo', '>=', 5)->where('edadEnMeses', '<=', 119)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imc3DSF->where('grupo', '>=', 5)->where('edadEnMeses', '<=', 119)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 2 D.S. (>= +2.0 a +2.9)</th>
@@ -121,10 +128,14 @@
                                 <td>{{ $imc2DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $imc2DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $imc2DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imc2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imc2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (>= +1.0 a +1.9)</th>
@@ -141,10 +152,14 @@
                                 <td>{{ $imc1DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $imc1DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $imc1DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imc1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imc1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
@@ -195,10 +210,14 @@
                                 <td>{{ $imc_1DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $imc_1DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $imc_1DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imc_1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc_1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc_1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imc_1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
@@ -219,10 +238,14 @@
                                 <td>{{ $imc_2DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $imc_2DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $imc_2DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imc_2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc_2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imc_2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imc_2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
@@ -272,10 +295,14 @@
                                 <td>{{ $imcAvgF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $imcAvgM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $imcAvgF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $imcAvgM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imcAvgF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $imcAvgM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $imcAvgF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             </tr>
 
@@ -301,10 +328,14 @@
                                 <td>{{ $indTe2DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $indTe2DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $indTe2DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $indTe2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $indTe2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">+ 1 D.S. (+1.0 a +1.9)</th>
@@ -324,10 +355,14 @@
                                 <td>{{ $indTe1DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $indTe1DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $indTe1DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $indTe1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $indTe1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
@@ -380,10 +415,14 @@
                                 <td>{{ $indTe_1DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $indTe_1DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $indTe_1DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $indTe_1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe_1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe_1DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $indTe_1DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th> - 2 D.S. (<= -2.0)</th>
@@ -403,10 +442,14 @@
                                 <td>{{ $indTe_2DSF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $indTe_2DSM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $indTe_2DSF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $indTe_2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $indTe_2DSF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
 
                             <tr class="bg-gradient-light">
@@ -460,10 +503,14 @@
                                 <td>{{ $indTeAvgF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $indTeAvgM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $indTeAvgF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $indTeAvgM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTeAvgF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $indTeAvgM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $indTeAvgF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
 
                             <tr>
@@ -504,10 +551,14 @@
                                 <!-- 9 a 9 años 11 meses -->
                                 <td>{{ $pcintNormalF->where('grupo', '>=', 9)->where('edadEnMeses', '<=', 119)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $pcintNormalM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintNormalF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintNormalM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $pcintNormalF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap=""> RIESGO DE OBESIDAD ABDOMINAL (75 < p < 90) </th>
@@ -528,10 +579,14 @@
                                 <td>{{ $pcintRiesgoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $pcintRiesgoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $pcintRiesgoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $pcintRiesgoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintRiesgoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintRiesgoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $pcintRiesgoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">OBESIDAD ABDOMINAL ( > p90)</th>
@@ -548,10 +603,14 @@
                                 <td>{{ $pcintObesidadF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $pcintObesidadM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $pcintObesidadF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $pcintObesidadM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $pcintObesidadF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
@@ -606,10 +665,14 @@
                                 <td>{{ $rDesnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $rDesnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $rDesnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">DESNUTRIDO</th>
@@ -626,10 +689,14 @@
                                 <td>{{ $desnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $desnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $desnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>SOBREPESO / RIESGO OBESIDAD</th>
@@ -646,10 +713,14 @@
                                 <td>{{ $sobrepesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $sobrepesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $sobrepesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>OBESO</th>
@@ -666,10 +737,14 @@
                                 <td>{{ $obesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $obesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $obesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $obesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $obesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $obesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $obesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>OBESO SEVERO</th>
@@ -686,10 +761,14 @@
                                 <td>{{ $obesoSeveroF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $obesoSeveroM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $obesoSeveroF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $obesoSeveroM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $obesoSeveroF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $obesoSeveroM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $obesoSeveroF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th>NORMAL</th>
@@ -706,40 +785,44 @@
                                 <td>{{ $normalF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $normalM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $normalF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $normalM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $normalF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}
+                                </td>
+                                <td>{{ $normalM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
+                                <td>{{ $normalF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}
+                                </td>
                             </tr>
                             <!-- $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count() -->
                             <tr class="bg-gradient-light">
                                 <th class="text-info">SUBTOTAL</th>
-                                <td>{{ $rDesnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -761,39 +844,39 @@
                                 <td>{{ $desnutSecF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}</td>
                                 <td>{{ $desnutSecM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
                                 <td>{{ $desnutSecF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $desnutSecM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}</td>
+                                <td>{{ $desnutSecF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('pueblo_originario')->count() }}</td>
+                                <td>{{ $desnutSecM->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}</td>
+                                <td>{{ $desnutSecF->where('grupo', '>=', 5)->where('grupo', '<', 10)->where('migrante')->count() }}</td>
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th class="text-info">TOTAL</th>
-                                <td>{{ $rDesnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnut->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoM->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $desnutF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $sobrepesoF->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obeso->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $obesoSevero->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() + $normal->where('grupo', '>=', 5)->where('grupo', '<', 6)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoM->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $desnutF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $sobrepesoF->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obeso->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $obesoSevero->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() + $normal->where('grupo', '>=', 6)->where('grupo', '<', 7)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoM->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $desnutF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $sobrepesoF->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obeso->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $obesoSevero->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() + $normal->where('grupo', '>=', 7)->where('grupo', '<', 8)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoM->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $desnutF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $sobrepesoF->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obeso->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $obesoSevero->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() + $normal->where('grupo', '>=', 8)->where('grupo', '<', 9)->count() }}
                                 </td>
-                                <td>{{ $rDesnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoM->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}
                                 </td>
-                                <td>{{ $rDesnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count()}}
+                                <td>{{ $rDesnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $desnutF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $sobrepesoF->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obeso->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $obesoSevero->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() + $normal->where('grupo', '>=', 9)->where('grupo', '<', 10)->count() }}
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -821,24 +904,6 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                         </thead>
                     </table>
@@ -846,4 +911,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            var tabla = document.getElementById('sm');
+            var wb = XLSX.utils.table_to_book(tabla, {
+                sheet: "Estadísticas"
+            });
+            XLSX.writeFile(wb, 'P2_seccionA1.xlsx');
+        }
+    </script>
 @endsection
