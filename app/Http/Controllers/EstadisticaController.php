@@ -119,11 +119,24 @@ class EstadisticaController extends Controller
         $eco22_24 = $all->ecoTrimest('2224sem')->get()->unique('rut');
         $eco30_34 = $all->ecoTrimest('3034sem')->get()->unique('rut');
 
+        $ruts_eco11 = $eco11->pluck('rut')->toArray();
+        $ruts_eco11_13 = $eco11_13->pluck('rut')->toArray();
+        $ruts_eco22_24 = $eco22_24->pluck('rut')->toArray();
+        $ruts_eco30_34 = $eco30_34->pluck('rut')->toArray();
+
+        $all_ruts = array_merge($ruts_eco11, $ruts_eco11_13, $ruts_eco22_24, $ruts_eco30_34);
+        $rut_counts = array_count_values($all_ruts);
+
+        $ruts_repetidos = array_filter($rut_counts, function($count) {
+            return $count > 1;
+        });
+
         return view('estadisticas.seccion-p1g', compact(
             'eco11',
             'eco11_13',
             'eco22_24',
             'eco30_34',
+            'ruts_repetidos',
         ));
     }
 

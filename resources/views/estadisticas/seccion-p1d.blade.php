@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P1: Seccion D')
+@section('title', 'REM P1: Seccion D y E')
 
 @section('content')
     <div class="row justify-content-center">
@@ -13,8 +13,11 @@
                     </a>
                     SECCION D: GESTANTES Y MUJERES DE 8° MES POST-PARTO EN CONTROL, SEGÚN ESTADO NUTRICIONAL
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()" type="button">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="sm1" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" rowspan="2" style="width: 100%; padding: 10px;">POBLACIÓN</th>
@@ -274,11 +277,14 @@
                         </thead>
                     </table>
                 </div>
-                <h4 class="card-title text-bold mb-3 pt-3">
+                <h4 class="card-title text-bold mb-3 pt-2">
                 SECCION E: MUJERES Y GESTANTES EN CONTROL CON CONSULTA NUTRICIONAL
                 </h4>
+                <button class="btn btn-xs btn-success mx-2" onclick="exportarTablaExcel2()" type="button">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="sm2" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">MUJERES</th>
@@ -313,4 +319,23 @@
                 </div>
             </div>
         </div>
+    </div>
+    @endsection
+    @section('js')
+    <script>
+        function exportarTablaExcel() {
+            const table = document.getElementById('sm1');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: 'Sheet1'
+            });
+            XLSX.writeFile(workbook, 'P1_SeccionE.xlsx');
+        }
+        function exportarTablaExcel2() {
+            const table = document.getElementById('sm2');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: 'Sheet1'
+            });
+            XLSX.writeFile(workbook, 'P1_SeccionD.xlsx');
+        }
+    </script>
     @endsection

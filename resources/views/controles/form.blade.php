@@ -44,7 +44,7 @@
     <div class="row">
         <div class="col col-sm">
             @if ($paciente->paciente_hd)
-                
+
             @endif
         </div>
     </div>
@@ -432,6 +432,7 @@
             } else $('.hba1c7').show()
         });
 
+        // Control de regulacion
         $('input.regulacion').on('click', function() {
             if ($('input.regulacion').is(':checked')) {
                 $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').show()
@@ -440,6 +441,7 @@
                 $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').hide();
         });
 
+        // Control de ginecologico
         $('input.ginec').on('click', function() {
             if ($('input.ginec').is(':checked')) {
                 $('.post_partof').show()
@@ -449,6 +451,7 @@
 
         });
 
+        // Control de climaterio
         $('input.climater').on('click', function() {
             if ($('input.climater').is(':checked')) {
                 $('.climater_fields').show();
@@ -456,12 +459,14 @@
                 $('.climater_fields').hide();
         });
 
+        // Control de embarazo
         $('input.embarazo').on('click', function() {
             if ($('input.embarazo').is(':checked')) {
                 $('.embarazo_fields').show();
             } else
                 $('.embarazo_fields').hide();
         });
+
 
         $('.asmaClasif, epocClasif, sborClasif').change(function() {
             $('#espirometria').hide()

@@ -73,4 +73,26 @@ class InterconsultaController extends Controller
         return redirect()->route('interconsultas.index')
             ->with('success', 'Interconsulta actualizada correctamente.');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'paciente_id' => 'required|exists:pacientes,id',
+            'problema_id' => 'required|exists:problemas,id',
+            'fecha_citacion' => 'required|date',
+            'estado_ic' => 'required|string',
+        ]);
+
+        $interconsulta = new Interconsulta();
+        $interconsulta->paciente_id = $request->input('paciente_id');
+        $interconsulta->problema_id = $request->input('problema_id');
+        $interconsulta->fecha_citacion = $request->input('fecha_citacion');
+        $interconsulta->estado_ic = $request->input('estado_ic');
+        // Asigna aquí otros campos según tu modelo
+
+        $interconsulta->save();
+
+        return redirect()->route('interconsultas.index')
+            ->with('success', 'Interconsulta creada correctamente.');
+    }
 }

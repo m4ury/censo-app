@@ -129,6 +129,9 @@ class ControlController extends Controller
         $control->hba1cMenor7Porcent = $request->hba1cMenor7Porcent ?? null;
         $control->hba1cMenor8Porcent = $request->hba1cMenor8Porcent ?? null;
         $control->hba1cMayorIgual9Porcent = $request->hba1cMayorIgual9Porcent ?? null;
+        $control->embarazo = $request->embarazo ?? null;
+        $control->climater = $request->climater ?? null;
+        $control->ecoExtrasist = $request->ecoExtrasist ?? null;
         $control->save();
 
         return redirect('pacientes/' . $request->paciente_id)->withSuccess('Control actualizado con exito!');

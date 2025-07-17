@@ -13,17 +13,21 @@
                     </a>
                     SECCION A: POBLACIÓN EN CONTROL SEGÚN MÉTODO DE REGULACIÓN DE FERTILIDAD Y SALUD SEXUAL
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()" type="button">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="sm1" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" colspan="2" rowspan="2">MÉTODOS</th>
                                 <th class="text-center" rowspan="2">TOTAL</th>
-                                <th class="text-center" colspan="13">GRUPOS DE EDAD (en años)</th>
+                                <th class="text-center" colspan="13" rowspan="1">GRUPOS DE EDAD (en años)</th>
                                 <th rowspan="2">Pueblos Originarios</th>
-                                <th rowspan="2">Poblacion Migrantes</th>
+                                <th colspan="2" nowrap="">Poblacion Migrantes</th>
                                 <th rowspan="2">PV-VIH (personas viviendo con VIH)</th>
                             </tr>
+
                             <tr>
                                 <th nowrap="">
                                     Menor de 15 años </th>
@@ -39,7 +43,10 @@
                                 <th nowrap="">60 a 64 años</th>
                                 <th nowrap="">65 a 69 años</th>
                                 <th nowrap="">70 y más años</th>
+                                <th nowrap="">Menor de 20 años</th>
+                                <th nowrap="">20 años y mas</th>
                             </tr>
+
                             <tr>
                                 <th nowrap="" colspan="2">D . I . U T con Cobre</th>
                                 <td>{{ $diuCobre->count() }}
@@ -67,12 +74,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $diuCobre->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $diuCobre->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $diuCobre->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $diuCobre->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $diuCobre->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">D . I . U con Levonorgestrel</th>
@@ -101,12 +106,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $diuLevonorgest->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $diuLevonorgest->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $diuLevonorgest->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $diuLevonorgest->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $diuLevonorgest->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                             <tr>
@@ -138,12 +141,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $oralComb->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $oralComb->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $oralComb->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $oralComb->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $oralComb->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Oral Progestágeno</th>
@@ -172,12 +173,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $oralProgest->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $oralProgest->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $oralProgest->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $oralProgest->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $oralProgest->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Inyectable Combinado</th>
@@ -206,12 +205,11 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $inyectableComb->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $inyectableComb->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $inyectableComb->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $inyectableComb->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $inyectableComb->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
+                            </tr>
                             </tr>
                             <tr>
                                 <th nowrap="">Inyectable Progestágeno</th>
@@ -240,12 +238,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $inyectableProgest->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $inyectableProgest->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $inyectableProgest->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $inyectableProgest->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $inyectableProgest->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Implante Etonogestrel (3 años)</th>
@@ -274,12 +270,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $implanteEtonogest->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $implanteEtonogest->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $implanteEtonogest->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $implanteEtonogest->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $implanteEtonogest->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Implante Levonorgestrel (5 años)</th>
@@ -314,6 +308,7 @@
                                 </td>
                                 <td>
                                 </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Anillo Vaginal</th>
@@ -342,12 +337,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $anillo->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $anillo->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $anillo->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $anillo->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $anillo->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             </tr>
                             <tr>
@@ -380,12 +373,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $preservativoF->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $preservativoF->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $preservativoF->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $preservativoF->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $preservativoF->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Hombre</th>
@@ -414,12 +405,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $preservativoM->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $preservativoM->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $preservativoM->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $preservativoM->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $preservativoM->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
 
                             <tr>
@@ -453,12 +442,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $estQxF->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $estQxF->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $estQxF->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $estQxF->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $estQxF->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="">Hombre</th>
@@ -487,12 +474,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $estQxM->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $estQxM->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $estQxM->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $estQxM->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $estQxM->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr style="border-bottom: double">
                                 <th nowrap="" colspan="2" class="text-center">TOTAL</th>
@@ -521,12 +506,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $totalMac->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $totalMac->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $totalMac->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $totalMac->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $totalMac->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2" class="text-center"> Mujeres en control con enfermedad
@@ -556,12 +539,10 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $enfCv->where('migrante', 1)->count() }}
-                                </td>
-                                <td>{{ $enfCv->where('pueblo_originario', 1)->count() }}
-                                </td>
-                                <td>
-                                </td>
+                                <td>{{ $enfCv->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $enfCv->where('migrante', 1)->where('grupo', '<', 20)->count() }}</td>
+                                <td>{{ $enfCv->where('migrante', 1)->where('grupo', '>', 19)->count() }}</td>
+                                <td></td>
                             </tr>
                             </tr>
                         </thead>
@@ -573,8 +554,11 @@
                 <h4 class="card-title text-bold mb-3">
                     SECCION H: MUJERES BAJO CONTROL DE REGULACIÓN DE FERTILIDAD SEGÚN ESTADO NUTRICIONAL
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel2()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="sm2" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" rowspan="2">POBLACION</th>
@@ -722,3 +706,21 @@
         </div>
     </div>
 @endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            const table = document.getElementById('sm1');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: 'Sheet1'
+            });
+            XLSX.writeFile(workbook, 'P1_SeccionA.xlsx');
+        }
+        function exportarTablaExcel2() {
+            const table = document.getElementById('sm2');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: 'Sheet1'
+            });
+            XLSX.writeFile(workbook, 'P1_SeccionH.xlsx');
+        }
+    </script>
+    @endsection
