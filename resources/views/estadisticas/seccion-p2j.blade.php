@@ -13,6 +13,11 @@
                     </a>
                     REM P2 - SECCION J: POBLACION EN CONTROL, SEGUN RIESGO ODONTOLOGICO Y DAÑO POR CARIES
                 </h4>
+                    <div class="col-md-12">
+                        <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel()">
+                            <i class="fas fa-file-excel"></i> Descargar Excel
+                        </button>
+                    </div>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
                         <thead>
@@ -668,4 +673,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            var tabla = document.getElementById('sm');
+            var wb = XLSX.utils.table_to_book(tabla, {
+                sheet: "Estadísticas"
+            });
+            XLSX.writeFile(wb, 'P2_seccionJ.xlsx');
+        }
+    </script>
 @endsection

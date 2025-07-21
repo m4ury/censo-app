@@ -13,8 +13,13 @@
                 </a>
                 REM P4 - SECCIÓN C: VARIABLES DE SEGUIMIENTO DEL PSCV AL CORTE
             </h4>
+            <div class="col-md-12">
+                <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
+            </div>
             <div class="col-md-12 table-responsive">
-                <table class="table table-md-responsive table-bordered">
+                <table class="table table-md-responsive table-bordered" id="pscv">
                     <thead>
                         <tr>
                             <th class="text-center" colspan="2" rowspan="3">VARIABLES</th>
@@ -1370,4 +1375,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            var tabla = document.getElementById('pscv');
+            var wb = XLSX.utils.table_to_book(tabla, {
+                sheet: "Estadísticas"
+            });
+            XLSX.writeFile(wb, 'P4_seccionC.xlsx');
+        }
+    </script>
 @endsection

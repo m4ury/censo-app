@@ -15,7 +15,7 @@ class SeccionP3Controller extends Controller
 
         $asmaLeve = $all->asma('Femenino', 'Masculino', 'Leve')->get()->unique('rut');
         $asmaModerado = $all->asma('Femenino', 'Masculino', 'Moderado')->get()->unique('rut');
-        $asmaSevero = $all->asma('Femenino', 'Masculino')->get()->unique('rut');
+        $asmaSevero = $all->asma('Femenino', 'Masculino', 'Severo')->get()->unique('rut');
 
         //otras enfermedades
         $otrasResp = $all->otrasResp('Femenino', 'Masculino', 'Otras respiratorias cronicas')->get()->unique('rut');
@@ -30,9 +30,9 @@ class SeccionP3Controller extends Controller
         $sborSevero = $all->sbor('Femenino', 'Masculino', 'Severo')->get()->whereBetween('grupo', [0, 4])->unique('rut');
 
         //epoc A
-        $epocA = $all->epoc('Femenino', 'Masculino', 'A')->get()->whereBetween('grupo', [40, 120])->unique('rut');
+        $epocA = $all->epoc('Femenino', 'Masculino', 'A')->get()->unique('rut');
         //epoc B
-        $epocB = $all->epoc('Femenino', 'Masculino', 'B')->get()->whereBetween('grupo', [40, 120])->unique('rut');
+        $epocB = $all->epoc('Femenino', 'Masculino', 'B')->get()->unique('rut');
 
         //epilepsia todos
         $epilepsia = $all->epilepsia()->get();
@@ -67,6 +67,10 @@ class SeccionP3Controller extends Controller
         //ESCARAS
         $escaras = $all->escaras()->get();
 
+        //ESCARAS
+        $paliativo = $all->paliativo()->get();
+
+
 
         return view('estadisticas.seccion-p3a', compact(
             'depLeve',
@@ -93,7 +97,8 @@ class SeccionP3Controller extends Controller
             'asistVent',
             'fibrosis',
             'tea',
-            'all'
+            'all',
+            'paliativo'
         ));
     }
 
@@ -110,19 +115,19 @@ class SeccionP3Controller extends Controller
     {
         $all = new Paciente;
 
-        $asmaControl = $all->asmaControl('Femenino', 'Masculino', 'Controlado')->get()->unique('rut')->count();
+        $asmaControl = $all->asmaControl('Femenino', 'Masculino', 'Controlado')->get()->unique('rut');
 
-        $asmaParcial = $all->asmaControl('Femenino', 'Masculino', 'Parcialmente Controlado')->get()->unique('rut')->count();
+        $asmaParcial = $all->asmaControl('Femenino', 'Masculino', 'Parcialmente Controlado')->get()->unique('rut');
 
-        $asmaNoControl = $all->asmaControl('Femenino', 'Masculino', 'No Controlado')->get()->unique('rut')->count();
+        $asmaNoControl = $all->asmaControl('Femenino', 'Masculino', 'No Controlado')->get()->unique('rut');
 
-        $asmaNoEval = $all->asmaControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        $asmaNoEval = $all->asmaControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut');
 
-        $epocControl = $all->epocControl('Femenino', 'Masculino', 'Logra Control')->get()->unique('rut')->count();
+        $epocControl = $all->epocControl('Femenino', 'Masculino', 'Logra Control')->get()->unique('rut');
 
-        $epocNoControl = $all->epocControl('Femenino', 'Masculino', 'No Logra Control')->get()->unique('rut')->count();
+        $epocNoControl = $all->epocControl('Femenino', 'Masculino', 'No Logra Control')->get()->unique('rut');
 
-        $epocNoEval = $all->epocControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut')->count();
+        $epocNoEval = $all->epocControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut');
 
         return view('estadisticas.seccion-p3d', compact(
             'asmaControl',

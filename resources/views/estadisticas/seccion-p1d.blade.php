@@ -39,7 +39,8 @@
                             <tr>
                                 <th rowspan="6" class="text-center align-middle" style="width: 100%; padding: 10px;">
                                     <div style="font-weight: bold;">GESTANTES EN CONTROL</div>
-                                    <div style="font-style: italic; font-size: smaller;">(Información a la fecha de corte)</div>
+                                    <div style="font-style: italic; font-size: smaller;">(Información a la fecha de corte)
+                                    </div>
                                 </th>
                             </tr>
                             <tr>
@@ -136,23 +137,25 @@
                             </tr>
                             <tr>
                                 <th>Total</th>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->unique('rut')->count() }}</td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->where('grupo', '<', 15)->unique('rut')->count() }}</td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->where('grupo', '<', 15)->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->where('grupo', '<', 15)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [15, 19])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [20, 24])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [25, 29])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [30, 34])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [35, 39])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() + $all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() }}
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [40, 44])->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [45, 49])->unique('rut')->count() }}
+                                </td>
+                                <td>{{ $all->embarazo()->where('imc_resultado', 'Bajo peso')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Normal')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Sobrepeso')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() +$all->embarazo()->where('imc_resultado', 'Obesidad')->get()->whereBetween('grupo', [50, 54])->unique('rut')->count() }}
                                 </td>
                             </tr>
 
@@ -257,28 +260,28 @@
                                 </td>
                                 <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->where('grupo', '<', 15)->count() + $postParto8->where('imc_resultado', 'Normal')->where('grupo', '<', 15)->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->where('grupo', '<', 15)->count() + $postParto8->where('imc_resultado', 'Obesidad')->where('grupo', '<', 15)->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [15, 19])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [15, 19])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [15, 19])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [15, 19])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [15, 19])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [15, 19])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [15, 19])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [20, 24])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [20, 24])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [20, 24])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [20, 24])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [20, 24])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [20, 24])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [20, 24])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [20, 24])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [25, 29])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [25, 29])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [25, 29])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [25, 29])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [25, 29])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [25, 29])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [25, 29])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [25, 29])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [30, 34])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [30, 34])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [30, 34])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [30, 34])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [30, 34])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [30, 34])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [30, 34])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [30, 34])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [35, 39])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [35, 39])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [35, 39])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [35, 39])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [35, 39])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [35, 39])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [35, 39])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [35, 39])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [40, 44])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [40, 44])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [40, 44])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [40, 44])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [40, 44])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [40, 44])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [40, 44])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [40, 44])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [45, 49])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [45, 49])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [45, 49])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [45, 49])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [45, 49])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [45, 49])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [45, 49])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [45, 49])->count() }}
                                 </td>
-                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [50, 54])->count() + $postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [50, 54])->count() + $postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [50, 54])->count() + $postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [50, 54])->count() }}
+                                <td>{{ $postParto8->where('imc_resultado', 'Bajo peso')->whereBetween('grupo', [50, 54])->count() +$postParto8->where('imc_resultado', 'Normal')->whereBetween('grupo', [50, 54])->count() +$postParto8->where('imc_resultado', 'Sobrepeso')->whereBetween('grupo', [50, 54])->count() +$postParto8->where('imc_resultado', 'Obesidad')->whereBetween('grupo', [50, 54])->count() }}
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 </div>
                 <h4 class="card-title text-bold mb-3 pt-2">
-                SECCION E: MUJERES Y GESTANTES EN CONTROL CON CONSULTA NUTRICIONAL
+                    SECCION E: MUJERES Y GESTANTES EN CONTROL CON CONSULTA NUTRICIONAL
                 </h4>
                 <button class="btn btn-xs btn-success mx-2" onclick="exportarTablaExcel2()" type="button">
                     <i class="fas fa-file-excel"></i> Descargar Excel
@@ -320,22 +323,23 @@
             </div>
         </div>
     </div>
-    @endsection
-    @section('js')
+@endsection
+@section('js')
     <script>
         function exportarTablaExcel() {
             const table = document.getElementById('sm1');
             const workbook = XLSX.utils.table_to_book(table, {
                 sheet: 'Sheet1'
             });
-            XLSX.writeFile(workbook, 'P1_SeccionE.xlsx');
+            XLSX.writeFile(workbook, 'P1_SeccionD.xlsx');
         }
+
         function exportarTablaExcel2() {
             const table = document.getElementById('sm2');
             const workbook = XLSX.utils.table_to_book(table, {
                 sheet: 'Sheet1'
             });
-            XLSX.writeFile(workbook, 'P1_SeccionD.xlsx');
+            XLSX.writeFile(workbook, 'P1_SeccionE.xlsx');
         }
     </script>
-    @endsection
+@endsection

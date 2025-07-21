@@ -13,8 +13,11 @@
                     </a>
                     REM P3 - SECCIÓN A: EXISTENCIA DE POBLACIÓN EN CONTROL
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="pscv" class="table table-md-responsive table-bordered">
+                    <table id="resp" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" colspan="2" rowspan="3">PROGRAMAS</th>
@@ -91,10 +94,10 @@
                             <tr>
                                 <th>LEVE</th>
                                 <td>{{ $sborLeve->count() }}</td>
-                                <td>{{ $sborLeve->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborLeve->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $sborLeve->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborLeve->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Femenino')->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -135,10 +138,10 @@
                             <tr>
                                 <th>MODERADO</th>
                                 <td>{{ $sborModerado->count() }}</td>
-                                <td>{{ $sborModerado->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborModerado->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $sborModerado->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborModerado->where('sexo', '=', 'Femenino')->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Femenino')->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -178,10 +181,10 @@
                             <tr>
                                 <th>SEVERO</th>
                                 <td>{{ $sborSevero->count() }}</td>
-                                <td>{{ $sborSevero->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborSevero->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborSevero->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $sborSevero->where('sexo', '=', 'Masculino')->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -224,133 +227,232 @@
                             <tr>
                                 <th>LEVE</th>
                                 <td>{{ $asmaLeve->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $asmaLeve->where('sexo', '=', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Leve')->get()->unique('rut')->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
+                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Leve')->get()->unique('rut')->count() }}
+                                </td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>MODERADO</th>
                                 <td>{{ $asmaModerado->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $asmaModerado->where('sexo', '=', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Moderado')->get()->unique('rut')->count() }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Moderado')->get()->unique('rut')->count() }}
+                                </td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th>SEVERO</th>
                                 <td>{{ $asmaSevero->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $asmaSevero->where('sexo', '=', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Severo')->get()->unique('rut')->count() }}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Severo')->get()->unique('rut')->count() }}
+                                </td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -359,8 +461,8 @@
                             <tr>
                                 <th>TIPO A</th>
                                 <td>{{ $epocA->count() }}</td>
-                                <td>{{ $epocA->where('grupo', 'Masculino')->count() }}</td>
-                                <td>{{ $epocA->where('grupo', 'Femenino')->count()}}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Femenino')->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -377,21 +479,29 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
                                 <td>{{ $epocA->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
@@ -420,21 +530,29 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
                                 <td>{{ $epocB->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
@@ -447,38 +565,70 @@
                                 <td>{{ $otrasResp->count() }}</td>
                                 <td>{{ $otrasResp->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $otrasResp->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $otrasResp->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $otrasResp->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -490,38 +640,70 @@
                                 <td>{{ $oxigenoDep->count() }}</td>
                                 <td>{{ $oxigenoDep->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $oxigenoDep->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $oxigenoDep->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $oxigenoDep->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -533,38 +715,70 @@
                                 <td>{{ $asistVent->count() }}</td>
                                 <td>{{ $asistVent->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $asistVent->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $asistVent->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $asistVent->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $asistVent->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -576,32 +790,58 @@
                                 <td>{{ $fibrosis->count() }}</td>
                                 <td>{{ $fibrosis->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $fibrosis->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $fibrosis->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
@@ -619,38 +859,70 @@
                                 <td>{{ $epilepsia->count() }}</td>
                                 <td>{{ $epilepsia->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $epilepsia->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $epilepsia->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $epilepsia->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $epilepsia->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -662,38 +934,70 @@
                                 <td>{{ $glaucoma->count() }}</td>
                                 <td>{{ $glaucoma->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $glaucoma->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $glaucoma->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $glaucoma->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $glaucoma->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -705,38 +1009,70 @@
                                 <td>{{ $parkinson->count() }}</td>
                                 <td>{{ $parkinson->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $parkinson->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $parkinson->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $parkinson->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $parkinson->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -748,38 +1084,70 @@
                                 <td>{{ $artrosis->count() }}</td>
                                 <td>{{ $artrosis->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $artrosis->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $artrosis->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $artrosis->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $artrosis->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -791,38 +1159,70 @@
                                 <td>{{ $alivio_dolor->count() }}</td>
                                 <td>{{ $alivio_dolor->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $alivio_dolor->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $alivio_dolor->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $alivio_dolor->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $alivio_dolor->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -836,35 +1236,49 @@
                                 <td>{{ $hipot->where('sexo', 'Femenino')->count() }}</td>
                                 <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $hipot->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
                                 <td>{{ $hipot->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $hipot->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
@@ -877,38 +1291,68 @@
                                 <td>{{ $depLeve->count() }}</td>
                                 <td>{{ $depLeve->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $depLeve->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
                                 <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $depLeve->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $depLeve->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $depLeve->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -922,36 +1366,64 @@
                                 <td>{{ $depMod->where('sexo', 'Femenino')->count() }}</td>
                                 <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
                                 <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $depMod->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $depMod->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $depMod->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -965,38 +1437,70 @@
                                 <td>{{ $oncologico->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $oncologico->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1008,38 +1512,70 @@
                                 <td>{{ $depSevera->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1051,38 +1587,68 @@
                                 <td>{{ $escaras->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $escaras->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1091,44 +1657,76 @@
                             </tr>
 
                             <tr>
-                                <th rowspan="9" class ="py-5" style="vertical-align: middle">ATENCIÓN DOMICILIARIA
+                                <th rowspan="7" class ="py-5" style="vertical-align: middle">ATENCIÓN DOMICILIARIA
                                     POR DEPENDENCIA SEVERA</th>
                                 <th>TOTAL PERSONAS</th>
                                 <td>{{ $depSevera->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1140,38 +1738,70 @@
                                 <td>{{ $oncologico->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $oncologico->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $oncologico->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $oncologico->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1183,38 +1813,70 @@
                                 <td>{{ $depSevera->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $depSevera->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $depSevera->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $depSevera->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1226,125 +1888,223 @@
                                 <td>{{ $all->depSeveroDemencia()->count() }}</td>
                                 <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}</td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $all->depSeveroDemencia()->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <th nowrap ="">INSTITUCIONALIZADA</th>
-                            {{--depSeveroInstitu()--}}
-                            <td>{{ $all->where('institu', true)->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}</td>
-                            <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                                {{-- depSeveroInstitu() --}}
+                                <td>{{ $all->where('institu', true)->count() }}</td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $all->where('institu', true)->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th nowrap ="">TOTAL DE PERSONAS CON LESIÓN POR PRESIÓN *</th>
                                 <td>{{ $escaras->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [5,9])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}</td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $escaras->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
                                 <td>{{ $escaras->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $escaras->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
@@ -1356,41 +2116,315 @@
                                 <td>{{ $all->where('ned', true)->count() }}</td>
                                 <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->count() }}</td>
                                 <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}</td>
-                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}</td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->wherebetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Masculino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $all->where('ned', true)->where('sexo', 'Femenino')->get()->where('grupo', '>', 79)->count() }}
+                                </td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <th rowspan="4" class ="py-5" style="vertical-align: middle">Cuidados Paliativos
+                                    Universales</th>
+                                <th>Cuidados Paliativos Oncológico Progresivo</th>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->count() }}</td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>Cuidados Paliativos Oncológico No Progresivo</th>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->count() }}</td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'oncologico')->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap ="">Cuidados Paliativos No Oncológico</th>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->count() }}</td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [0, 4])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [5, 9])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [20, 24])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [25, 29])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [30, 34])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [35, 39])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [40, 44])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [45, 49])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [50, 54])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [55, 59])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [60, 64])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [65, 69])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [70, 74])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td>{{ $paliativo->where('postrado_oncol', 'no oncologico')->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
+                                </td>
+                                <td class="bg-gradient-gray"></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -1401,4 +2435,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            var tabla = document.getElementById('resp');
+            var wb = XLSX.utils.table_to_book(tabla, {
+                sheet: "Estadísticas"
+            });
+            XLSX.writeFile(wb, 'P3_seccionA.xlsx');
+        }
+    </script>
 @endsection

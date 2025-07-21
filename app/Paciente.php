@@ -10,6 +10,7 @@ use function PHPUnit\Framework\returnSelf;
 
 class Paciente extends Model
 {
+
     protected $guarded = ['id'];
 
     public function fullName()
@@ -89,8 +90,486 @@ class Paciente extends Model
         if ($metodo) return $query->where('controls.hormonal', $metodo);
     }
 
-    //P4 seccion A
+    public function scopeConPatologia($query, $patologia)
+    {
+        return $query->whereHas('patologias', function ($q) use ($patologia) {
+            $q->whereIn('nombre_patologia', (array) $patologia);
+        })->whereNull('egreso');
+    }
 
+    public function sm()
+    {
+        return Paciente::conPatologia('SALUD MENTAL');
+    }
+
+    public function salaEra()
+    {
+        return Paciente::conPatologia('SALA ERA');
+    }
+
+    //P1 seccion A
+    public function diu($metodo)
+    {
+
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where($metodo, true)
+            ->where('controls.fecha_control', '>=', \Carbon\Carbon::now()->subYear())
+            ->where('sexo', 'Femenino')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function hormonal($metodo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.hormonal', $metodo)
+            ->where('controls.fecha_control', '>=', \Carbon\Carbon::now()->subYear())
+            ->where('sexo', 'Femenino')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function mac($sexo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.preservativo', $sexo)
+            ->where('controls.fecha_control', '>=', \Carbon\Carbon::now()->subYear())
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function estQx($sexo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.esterilizacion', $sexo)
+            ->where('controls.fecha_control', '>=', \Carbon\Carbon::now()->subYear())
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function totalMac()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function enfcv()
+    {
+        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
+            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
+            ->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('sexo', 'Femenino')
+            ->where('controls.tipo_control', 'Matrona')
+            ->whereIn('nombre_patologia', ['HTA', 'DM2'])
+            ->whereNull('pacientes.egreso');
+    }
+
+    //P1 seccion F
+    public function climater()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.climater', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P1 seccion B
+    public function rBiops()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->where('controls.rPsicosocial', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function violenciaGen()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->where('controls.vGenero', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function postParto($meses)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereIn('controls.tipo_control', ['Matrona', 'Nutricionista'])
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('controls.post_parto', $meses)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function aro()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->where('controls.aro', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function embarazo()
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function ecoTrimest($semana = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Matrona')
+            ->where('controls.embarazo', true)
+            ->where('controls.ecoTrimest', $semana)
+            ->whereYear('controls.fecha_control', '2025')
+            ->where('pacientes.embarazada', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion A y A.1 - P9 seccion A
+    public function pesoEdad($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.indPesoEdad', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function pesoTalla($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.indPesoTalla', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function tallaEdad($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.indTallaEdad', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function integral($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.dNutInteg', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function imcEdad($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.indIMCEdad', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function perimCintura($fem, $masc, $ind)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.indPeCinturaEdad', '=', $ind)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion B
+    public function psicomotor($fem, $masc, $ev)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.evDPM', '=', $ev)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion C
+    public function riesgoIra($fem, $masc, $score)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.scoreIra', '=', $score)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion D
+    public function quintoMes($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->wherenotNull('controls.ctrlNut5to_mes')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function tercerAnio($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->wherenotNull('controls.ctrlNut3_6_meses')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion E
+    public function insasist($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->wherenotNull('controls.inasistente')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion F
+    public function dgPa($fem, $masc, $dg)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.diagPA', '=', $dg)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+    //P2 seccion G
+    public function malNut($fem, $masc, $riesgo)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.malNutExceso', '=', $riesgo)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P2 seccion H - Naneas
+    public function naneas($patologia = null)
+    {
+        return $this->whereHas('patologias', function ($query) use ($patologia) {
+            $query->where('nombre_patologia', $patologia)
+                ->where('naneas', 1); // Asegúrate de que 'naneas' está en la tabla patologias
+        })->whereNull('egreso');
+    }
+
+    //P2 seccion J
+    public function rCero($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Dentista')
+            ->whereIn('controls.rCero', ['alto', 'bajo'])
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function dCaries($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Dentista')
+            ->whereNotNull('controls.dCaries')
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function inasist($fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Dentista')
+            ->where('controls.inasistente', true)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P3 seccion A
+    public function epilepsia()
+    {
+        return Paciente::conPatologia('EPILEPSIA');
+    }
+
+    public function glaucoma()
+    {
+        return Paciente::conPatologia('GLAUCOMA');
+    }
+
+    public function parkinson()
+    {
+        return Paciente::conPatologia('ENF. PARKINSON');
+    }
+
+    public function artrosis()
+    {
+        return Paciente::conPatologia('ARTROSIS RODILLA Y/O CADERA');
+    }
+
+    public function alivio_dolor()
+    {
+        return Paciente::conPatologia('ALIVIO DOLOR');
+    }
+
+    public function hipot()
+    {
+        return Paciente::conPatologia('HIPOTIROIDISMO');
+    }
+
+    public function paliativo()
+    {
+        return Paciente::conPatologia('PALIATIVO UNIVERSAL');
+    }
+
+    public function demencia()
+    {
+        return Paciente::conPatologia('DEMENCIA');
+    }
+
+    public function depSeveroDemencia()
+    {
+        return $this->demencia()
+            ->where('pacientes.postrado', true);
+    }
+
+    //P3 seccion A
+    public function asma($fem, $masc, $clasif = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.asmaClasif', $clasif)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+
+    public function sbor($fem, $masc, $clasif = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.sborClasif', $clasif)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function epoc($fem, $masc, $clasif = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.epocClasif', $clasif)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function epocEspiromVigente($fem, $masc, $clasif)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.epocClasif', $clasif)
+            ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+            ->whereIn('pacientes.sexo', [$fem, $masc])
+            ->latest('controls.fecha_control');
+    }
+
+    public function otrasResp($fem, $masc, $enf = null)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.otras_enf', $enf)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function tea()
+    {
+        return Paciente::conPatologia('Trastorno Espectro Autista');
+    }
+
+    public function asmaEspiromVigente($clasif, $fem, $masc)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.asmaClasif', $clasif)
+            ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+            ->whereIn('pacientes.sexo', [$fem, $masc])
+            ->latest('controls.fecha_control');
+    }
+
+    //P3 seccion D
+    public function asmaControl($fem, $masc, $control)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.asmaControl', $control)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function epocControl($fem, $masc, $control)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_control', 'Kinesiologo')
+            ->where('controls.epocControl', $control)
+            ->whereYear('controls.fecha_control', '2025')
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P4 seccion A
     public function rcv_bajo()
     {
         return $this->whereRiesgo_cv('BAJO')->whereNull("egreso");
@@ -151,14 +630,6 @@ class Paciente extends Model
         return $this->whereNull('egreso')->whereIn('riesgo_cv', ['Alto', 'Bajo', 'Moderado']);
     }
 
-    public function scopeConPatologia($query, $patologia)
-    {
-        return $query->whereHas('patologias', function ($q) use ($patologia) {
-            $q->whereIn('nombre_patologia', (array) $patologia);
-        })->whereNull('egreso');
-    }
-
-
     public function dm2()
     {
         return Paciente::conPatologia('DM2');
@@ -167,16 +638,6 @@ class Paciente extends Model
     public function hta()
     {
         return Paciente::conPatologia('HTA');
-    }
-
-    public function sm()
-    {
-        return Paciente::conPatologia('SALUD MENTAL');
-    }
-
-    public function salaEra()
-    {
-        return Paciente::conPatologia('SALA ERA');
     }
 
     public function dlp()
@@ -196,132 +657,6 @@ class Paciente extends Model
     public function tbq()
     {
         return Paciente::conPatologia('TABAQUISMO');
-    }
-
-    //P6 seccion A
-    public function trHumor($fem, $masc, $dep)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.trHumor', $dep)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function trConsumo($fem, $masc, $cons)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.trConsumo', $cons)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function trInfAdol($fem, $masc, $tr)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.trInfAdol', $tr)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function trAns($fem, $masc, $tr)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.trAns', $tr)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function demencias($fem, $masc, $dem)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.demencias', $dem)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function diagSm($fem, $masc, $diag)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.diagSm', $diag)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function trDesarrollo($fem, $masc, $tr)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Psicologo')
-            ->where('controls.trDesarrollo', $tr)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-
-    //P3 seccion A
-    public function epilepsia()
-    {
-        return Paciente::conPatologia('EPILEPSIA');
-    }
-
-    public function glaucoma()
-    {
-        return Paciente::conPatologia('GLAUCOMA');
-    }
-
-    public function parkinson()
-    {
-        return Paciente::conPatologia('ENF. PARKINSON');
-    }
-
-    public function artrosis()
-    {
-        return Paciente::conPatologia('ARTROSIS RODILLA Y/O CADERA');
-    }
-
-    public function alivio_dolor()
-    {
-        return Paciente::conPatologia('ALIVIO DOLOR');
-    }
-
-    public function hipot()
-    {
-        return Paciente::conPatologia('HIPOTIROIDISMO');
-    }
-
-    public function paliativo()
-    {
-        return Paciente::conPatologia('PALIATIVO UNIVERSAL');
-    }
-
-    public function demencia()
-    {
-        return Paciente::conPatologia('DEMENCIA');
-    }
-
-    public function depSeveroDemencia()
-    {
-        return $this->demencia()
-            ->where('pacientes.postrado', true);
     }
 
     //P4 seccion B Metas de Compensacion
@@ -712,8 +1047,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //****rem P5****
-    //Seccion A
+    //P5 Seccion A
     public function depLeve()
     {
         return $this->whereDependencia('L')
@@ -775,7 +1109,7 @@ class Paciente extends Model
             ->whereNull('egreso');
     } */
 
-    //seccion B
+    //P5 seccion B
     public function bajoPeso()
     {
         return $this->efam()
@@ -832,273 +1166,92 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P3 seccion A
-    public function asma($fem, $masc, $clasif = null)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.asmaClasif', $clasif)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
+    //P6 seccion A
 
-
-    public function sbor($fem, $masc, $clasif = null)
+    public function trHumor($fem, $masc, $dep)
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.sborClasif', $clasif)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
 
-    public function epoc($fem, $masc, $clasif = null)
-    {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.epocClasif', $clasif)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function epocEspiromVigente($fem, $masc, $clasif)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.epocClasif', $clasif)
-            ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.trHumor', $dep)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
             ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->latest('controls.fecha_control');
-    }
-
-    public function otrasResp($fem, $masc, $enf = null)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.otras_enf', $enf)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function tea()
-    {
-        return Paciente::conPatologia('Trastorno Espectro Autista');
-    }
 
-    public function asmaEspiromVigente($clasif, $fem, $masc)
+    public function trConsumo($fem, $masc, $cons)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
+
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.asmaClasif', $clasif)
-            ->where('controls.espirometriaVigente', '>=', Carbon::now()->subYear(1))
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.trConsumo', $cons)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
             ->whereIn('pacientes.sexo', [$fem, $masc])
-            ->latest('controls.fecha_control');
-    }
-
-    //P3 seccion D
-    public function asmaControl($fem, $masc, $control)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.asmaControl', $control)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function epocControl($fem, $masc, $control)
+    public function trInfAdol($fem, $masc, $tr)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
+
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.epocControl', $control)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.trInfAdol', $tr)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    //P2 seccion A y A.1 - P9 seccion A
-    public function pesoEdad($fem, $masc, $ind)
+    public function trAns($fem, $masc, $tr)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.indPesoEdad', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.trAns', $tr)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function pesoTalla($fem, $masc, $ind)
+    public function demencias($fem, $masc, $dem)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.indPesoTalla', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.demencias', $dem)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function tallaEdad($fem, $masc, $ind)
+    public function diagSm($fem, $masc, $diag)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.indTallaEdad', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.diagSm', $diag)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function integral($fem, $masc, $ind)
+    public function trDesarrollo($fem, $masc, $tr)
     {
+        [$fechaInicio, $fechaCorte] = $this->rangoAnualCorte();
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.dNutInteg', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function imcEdad($fem, $masc, $ind)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.indIMCEdad', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function perimCintura($fem, $masc, $ind)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.indPeCinturaEdad', '=', $ind)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion B
-    public function psicomotor($fem, $masc, $ev)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.evDPM', '=', $ev)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion C
-    public function riesgoIra($fem, $masc, $score)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.scoreIra', '=', $score)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion D
-    public function quintoMes($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->wherenotNull('controls.ctrlNut5to_mes')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function tercerAnio($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->wherenotNull('controls.ctrlNut3_6_meses')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion E
-    public function insasist($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->wherenotNull('controls.inasistente')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion F
-    public function dgPa($fem, $masc, $dg)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.diagPA', '=', $dg)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-    //P2 seccion G
-    public function malNut($fem, $masc, $riesgo)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereYear('controls.fecha_control', 2025)
-            ->where('controls.malNutExceso', '=', $riesgo)
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P2 seccion H - Naneas
-    public function naneas($patologia = null)
-    {
-        return $this->whereHas('patologias', function ($query) use ($patologia) {
-            $query->where('nombre_patologia', $patologia)
-                ->where('naneas', 1); // Asegúrate de que 'naneas' está en la tabla patologias
-        })->whereNull('egreso');
-    }
-
-    //P2 seccion J
-    public function rCero($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Dentista')
-            ->whereIn('controls.rCero', ['alto', 'bajo'])
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function dCaries($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Dentista')
-            ->whereNotNull('controls.dCaries')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function inasist($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Dentista')
-            ->where('controls.inasistente', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.tipo_control', 'Psicologo')
+            ->where('controls.trDesarrollo', $tr)
+            ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
@@ -1201,151 +1354,6 @@ class Paciente extends Model
             );
     }
 
-    //P1 seccion A
-    public function diu($metodo)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where($metodo, true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('sexo', 'Femenino')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function hormonal($metodo)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.hormonal', $metodo)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('sexo', 'Femenino')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function mac($sexo)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.preservativo', $sexo)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function estQx($sexo)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.esterilizacion', $sexo)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function totalMac()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function enfcv()
-    {
-        return $this->join('paciente_patologia', 'paciente_patologia.paciente_id', 'pacientes.id')
-            ->join('patologias', 'patologias.id', 'paciente_patologia.patologia_id')
-            ->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('sexo', 'Femenino')
-            ->where('controls.tipo_control', 'Matrona')
-            ->whereIn('nombre_patologia', ['HTA', 'DM2'])
-            ->whereNull('pacientes.egreso');
-    }
-
-    //P1 seccion F
-    public function climater()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.climater', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    //P1 seccion B
-    public function rBiops()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.embarazo', true)
-            ->where('controls.rPsicosocial', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('pacientes.embarazada', true)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function violenciaGen()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.embarazo', true)
-            ->where('controls.vGenero', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('pacientes.embarazada', true)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function postParto($meses)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Matrona', 'Nutricionista'])
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('controls.post_parto', $meses)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function aro()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.embarazo', true)
-            ->where('controls.aro', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('pacientes.embarazada', true)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function embarazo()
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.embarazo', true)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('pacientes.embarazada', true)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function ecoTrimest($semana = null)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.embarazo', true)
-            ->where('controls.ecoTrimest', $semana)
-            ->whereYear('controls.fecha_control', '2025')
-            ->where('pacientes.embarazada', true)
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-
-
     public function lactancia()
     {
         return $this->select('nombres', 'apellidoP', 'apellidoM', 'fecha_nacimiento', 'sexo', 'rut', 'lactancia', 'ficha', 'sector', 'id')
@@ -1389,5 +1397,12 @@ class Paciente extends Model
             ->where('controls.papVigente', '<=', Carbon::now()->subYear(3))
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
+    }
+
+    private function rangoAnualCorte()
+    {
+        $fechaCorte = \Carbon\Carbon::create(null, 6, 30);
+        $fechaInicio = $fechaCorte->copy()->subYear()->addDay();
+        return [$fechaInicio->format('Y-m-d'), $fechaCorte->format('Y-m-d')];
     }
 }
