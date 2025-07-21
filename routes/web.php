@@ -108,9 +108,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p2h', 'Estadisticas\SeccionP2Controller@seccionP2h')->name('estadisticas.seccion-p2h');
 
     //P3
-    Route::get('/estadisticas.seccion-p3a', 'EstadisticaController@seccionP3a')->name('estadisticas.seccion-p3a');
-    Route::get('/estadisticas.seccion-p3b', 'EstadisticaController@seccionP3b')->name('estadisticas.seccion-p3b');
-    Route::get('/estadisticas.seccion-p3d', 'EstadisticaController@seccionP3d')->name('estadisticas.seccion-p3d');
+    Route::get('/estadisticas.seccion-p3a', 'Estadisticas\SeccionP3Controller@seccionP3a')->name('estadisticas.seccion-p3a');
+    Route::get('/estadisticas.seccion-p3b', 'Estadisticas\SeccionP3Controller@seccionP3b')->name('estadisticas.seccion-p3b');
+    Route::get('/estadisticas.seccion-p3d', 'Estadisticas\SeccionP3Controller@seccionP3d')->name('estadisticas.seccion-p3d');
 
     //P4
     Route::get('/estadisticas', 'EstadisticaController@index')->name('estadisticas');

@@ -833,77 +833,34 @@ class Paciente extends Model
     }
 
     //P3 seccion A
-    public function asmaLeve($fem, $masc)
+    public function asma($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.asmaClasif', 'Leve')
+            ->where('controls.asmaClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function asmaMod($fem, $masc)
+
+    public function sbor($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.asmaClasif', 'Moderado')
+            ->where('controls.sborClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function asmaSevero($fem, $masc)
+    public function epoc($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.asmaClasif', 'Severo')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function sborLeve($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.sborClasif', 'Leve')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function sborMod($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.sborClasif', 'Moderado')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function sborSevero($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.sborClasif', 'Severo')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
-    }
-
-    public function epocA($fem, $masc)
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.epocClasif', 'A')
+            ->where('controls.epocClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
@@ -919,29 +876,23 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    public function epocB($fem, $masc)
+    public function otrasResp($fem, $masc, $enf = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.epocClasif', 'B')
+            ->where('controls.otras_enf', $enf)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    public function otrasResp($fem, $masc)
+    public function tea()
     {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
-            ->where('controls.otras_enf', 'Otras respiratorias cronicas')
-            ->whereYear('controls.fecha_control', '2025')
-            ->whereIn('sexo', [$fem, $masc])
-            ->whereNull('pacientes.egreso')
-            ->latest('controls.fecha_control');
+        return Paciente::conPatologia('Trastorno Espectro Autista');
     }
 
-    public function espiromVigente($clasif, $fem, $masc)
+    public function asmaEspiromVigente($clasif, $fem, $masc)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.asmaClasif', $clasif)
@@ -950,6 +901,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    //P3 seccion D
     public function asmaControl($fem, $masc, $control)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')

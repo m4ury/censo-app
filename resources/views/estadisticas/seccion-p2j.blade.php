@@ -26,10 +26,7 @@
                                 <th class="text-center" colspan="2" rowspan="2" style="vertical-align: top">Usuarios
                                     con Discapacidad
                                 </th>
-                                <th class="text-center" colspan="2" rowspan="2" style="vertical-align: middle">Niños y
-                                    Niñas Red
-                                    Mejor Niñez
-                                </th>
+                                <th class="text-center" colspan="2" rowspan="2" style="vertical-align: middle">Niños, Niñas, Adolescentes y Jóvenes Mejor Niñez </th>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">
@@ -602,16 +599,14 @@
                             </tr>
                             <tr>
                                 <th colspan="2" class="text-center">INASISTENTES A CONTROL ODONTOLOGICO</th>
-                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '<', 1)->unique('rut')->count() }}
-                                </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '<', 1)->unique('rut')->count() }}
-                                </td>
+                                <td class="bg-gradient-gray"></td>">
+                                <td class="bg-gradient-gray"></td>
                                 <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
                                 </td>
                                 <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
@@ -672,4 +667,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
