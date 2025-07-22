@@ -14,7 +14,7 @@ class SeccionP9Controller extends Controller
         $all = new Paciente;
 
         //indicadores de peso edad
-        $pAdolescente = $all->pAdolescente('Femenino', 'Masculino')->get()->unique('rut');
+        $pAdolescente = $all->pAdolescente('Masculino', 'Femenino')->get()->unique('rut');
 
         //imc edad
         $imc3DS = $all->imcEdad('Femenino', 'Masculino', '+3 DS')->where('controls.ci_adolecente', true)->get()->unique('rut');
@@ -195,7 +195,8 @@ class SeccionP9Controller extends Controller
         ));
     }
 
-    public function seccionp9b(){
+    public function seccionp9b()
+    {
         $all = new Paciente;
         $estudia = $all->eduTrabajo('Femenino', 'Masculino', 'estudia')->get()->unique('rut');
         $estudiaM = $all->eduTrabajo(null, 'Masculino', 'estudia')->get()->unique('rut');
@@ -245,7 +246,8 @@ class SeccionP9Controller extends Controller
         ));
     }
 
-    public function seccionp9c(){
+    public function seccionp9c()
+    {
         $all = new Paciente;
         $ssr = $all->areaRiesgo('Femenino', 'Masculino', 'ssr')->get()->unique('rut');
         $ssrM = $all->areaRiesgo(null, 'Masculino', 'ssr')->get()->unique('rut');
@@ -323,7 +325,8 @@ class SeccionP9Controller extends Controller
         ));
     }
 
-    public function seccionp9d(){
+    public function seccionp9d()
+    {
         $all = new Paciente;
         $postergada = $all->sexualidad('Femenino', 'Masculino', 'condPostergada')->get()->unique('rut');
         $postergadaM = $all->sexualidad(null, 'Masculino', 'condPostergada')->get()->unique('rut');
@@ -357,13 +360,13 @@ class SeccionP9Controller extends Controller
         $abortoM = $all->sexualidad(null, 'Masculino', 'aborto')->get()->unique('rut');
         $abortoF = $all->sexualidad('Femenino', null, 'aborto')->get()->unique('rut');
 
-        $violenciaPareja = $all->sexualidad('Femenino', 'Masculino', 'violenciaPareja')->get()->unique('rut');
+        /* $violenciaPareja = $all->sexualidad('Femenino', 'Masculino', 'violenciaPareja')->get()->unique('rut');
         $violenciaParejaM = $all->sexualidad(null, 'Masculino', 'violenciaPareja')->get()->unique('rut');
         $violenciaParejaF = $all->sexualidad('Femenino', null, 'violenciaPareja')->get()->unique('rut');
 
         $violenciaSexual = $all->sexualidad('Femenino', 'Masculino', 'violenciaSexual')->get()->unique('rut');
         $violenciaSexualM = $all->sexualidad(null, 'Masculino', 'violenciaSexual')->get()->unique('rut');
-        $violenciaSexualF = $all->sexualidad('Femenino', null, 'violenciaSexual')->get()->unique('rut');
+        $violenciaSexualF = $all->sexualidad('Femenino', null, 'violenciaSexual')->get()->unique('rut'); */
 
 
         return view('estadisticas.seccion-p9d', compact(
@@ -392,12 +395,31 @@ class SeccionP9Controller extends Controller
             'aborto',
             'abortoM',
             'abortoF',
-            'violenciaPareja',
+            /* 'violenciaPareja',
             'violenciaParejaM',
             'violenciaParejaF',
             'violenciaSexual',
             'violenciaSexualM',
-            'violenciaSexualF'
+            'violenciaSexualF' */
+        ));
+    }
+
+    public function seccionp9f()
+    {
+        $all = new Paciente;
+        $violenciaPareja = $all->sexualidad('Femenino', 'Masculino', 'violenciaPareja')->get()->unique('rut');
+        $violenciaSexual = $all->sexualidad('Femenino', 'Masculino', 'violenciaSexual')->get()->unique('rut');
+        $violenciaIntraFamiliar = $all->sexualidad('Femenino', 'Masculino', 'violenciaIntrafamiliar')->get()->unique('rut');
+        $violenciaEscolar = $all->sexualidad('Femenino', 'Masculino', 'violenciaEscolar')->get()->unique('rut');
+        $violenciaVirtual = $all->sexualidad('Femenino', 'Masculino', 'violenciaVirtual')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p9f', compact(
+            'all',
+            'violenciaPareja',
+            'violenciaSexual',
+            'violenciaIntraFamiliar',
+            'violenciaEscolar',
+            'violenciaVirtual'
         ));
     }
 }

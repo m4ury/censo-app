@@ -11,7 +11,7 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
-                    SECCION B: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN EDUCACIÓN Y TRABAJO
+                    SECCION C: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN EDUCACIÓN Y TRABAJO
                 </h4>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
@@ -21,8 +21,8 @@
                             </tr>
                             <tr>
                                 <th class="text-center" colspan="3">TOTAL</th>
-                                <th class="text-center" colspan="3">Adolescentes 10 a 14 años</th>
-                                <th class="text-center" colspan="3">Adolescentes 15 a 19 años</th>
+                                <th class="text-center" colspan="3">10 a 14 años</th>
+                                <th class="text-center" colspan="3">15 a 19 años</th>
                                 <th class="text-center" colspan="3">Pueblos Originarios</th>
                                 <th class="text-center" colspan="3">Migrantes</th>
                             </tr>
@@ -54,7 +54,7 @@
                             </tr>
 
                             <tr>
-                                <th nowrap=""> ESTUDIA</th>
+                                <th nowrap="">Estudia</th>
                                 <td>{{ $estudia->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
                                 <td>{{ $estudiaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
                                 <td>{{ $estudiaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
@@ -75,7 +75,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap=""> DESERCION ESCOLAR</th>
+                                <th nowrap="">Desercion escolar</th>
                                 <td>{{ $disercion->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
                                 <td>{{ $disercionM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
                                 <td>{{ $disercionF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
@@ -96,14 +96,20 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap=""> TRABAJO INFANTIL</th>
-                                <td>{{ $trabajoInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $trabajoInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $trabajoInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <th nowrap="">Trabajo infantil</th>
+                                <td>{{ $trabajoInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $trabajoInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $trabajoInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
-                                <td>{{ $trabajoInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $trabajoInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $trabajoInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $trabajoInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $trabajoInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $trabajoInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td class="bg-gradient-gray"></td>
@@ -117,18 +123,22 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap=""> TRABAJO JUVENIL</th>
+                                <th nowrap="">Trabajo juvenil</th>
                                 <td>{{ $trabajoJuvenil->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $trabajoJuvenilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $trabajoJuvenilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $trabajoJuvenilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $trabajoJuvenilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
 
                                 <td>{{ $trabajoJuvenil->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $trabajoJuvenilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $trabajoJuvenilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $trabajoJuvenilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $trabajoJuvenilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -138,18 +148,27 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">PEORES FORMAS DE TRABAJO INFANTIL</th>
-                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Peores formas de trabajo infantil</th>
+                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
-                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
-                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $peorFormaTrabInfantil->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $peorFormaTrabInfantilF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -159,18 +178,27 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">SERVICIO DOMESTICO NO REMUNERADO PELIGROSO</th>
-                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Servicio doméstico no remunerado peligroso</th>
+                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
-                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}
+                                </td>
 
-                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $servDomesticoNoRemun->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
+                                <td>{{ $servDomesticoNoRemunF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>

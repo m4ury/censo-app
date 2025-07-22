@@ -131,7 +131,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-p9b', 'Estadisticas\SeccionP9Controller@seccionP9b')->name('estadisticas.seccion-p9b');
     Route::get('/estadisticas.seccion-p9c', 'Estadisticas\SeccionP9Controller@seccionP9c')->name('estadisticas.seccion-p9c');
     Route::get('/estadisticas.seccion-p9d', 'Estadisticas\SeccionP9Controller@seccionP9d')->name('estadisticas.seccion-p9d');
-    Route::get('/estadisticas.seccion-p9e', 'Estadisticas\SeccionP9Controller@seccionP9e')->name('estadisticas.seccion-p9e');
+    Route::get('/estadisticas.seccion-p9f', 'Estadisticas\SeccionP9Controller@seccionP9f')->name('estadisticas.seccion-p9f');
 
     //P12
     Route::get('/estadisticas.seccion-p12', 'EstadisticaController@seccionp12')->name('estadisticas.seccion-p12');

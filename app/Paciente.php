@@ -1258,18 +1258,21 @@ class Paciente extends Model
     }
 
     //P9 Seccion A
-    public function pAdolescente($fem, $masc){
+    public function pAdolescente($fem = null, $masc = null)
+    {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->whereYear('controls.fecha_control', 2025)
+            ->whereIn('pacientes.sexo', [$fem, $masc])
             ->where('controls.ci_adolecente', 1)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
 
-    //P9 seccion B
+    //P9 seccion C
     public function eduTrabajo($fem, $masc, $param)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
             ->where('controls.eduTrab', $param)
             ->whereIn('sexo', [$fem, $masc])
             ->where('controls.ci_adolecente', true)
@@ -1277,7 +1280,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P9 seccion C
+    //P9 seccion D
     public function areaRiesgo($fem, $masc, $param)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1288,11 +1291,21 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P9 seccion D
+    //P9 seccion E y F
     public function sexualidad($fem, $masc, $param)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.sexualidad', $param)
+            ->whereIn('sexo', [$fem, $masc])
+            ->where('controls.ci_adolecente', true)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    public function violencia($fem, $masc, $param)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.tipo_violencias', $param)
             ->whereIn('sexo', [$fem, $masc])
             ->where('controls.ci_adolecente', true)
             ->whereNull('pacientes.egreso')
