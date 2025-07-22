@@ -857,6 +857,7 @@ class Paciente extends Model
         return $this->where('ldlVigente', '>=', Carbon::now()->subYear(1));
     }
 
+
     public function actFisica()
     {
         return $this->where('actFisica', true);
@@ -1252,6 +1253,15 @@ class Paciente extends Model
             ->where('controls.trDesarrollo', $tr)
             ->whereBetween('controls.fecha_control', [$fechaInicio, $fechaCorte])
             ->whereIn('pacientes.sexo', [$fem, $masc])
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
+    //P9 Seccion A
+    public function pAdolescente($fem, $masc){
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->whereYear('controls.fecha_control', 2025)
+            ->where('controls.ci_adolecente', 1)
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
