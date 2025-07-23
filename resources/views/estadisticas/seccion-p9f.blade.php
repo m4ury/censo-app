@@ -73,12 +73,16 @@
                                 <td>{{ $violenciaIntraFamiliar->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $violenciaIntraFamiliar->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaIntraFamiliar->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaIntraFamiliar->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaIntraFamiliar->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaIntraFamiliar->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaIntraFamiliar->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">Violencia de pareja / pololeo</th>
@@ -103,12 +107,16 @@
                                 <td>{{ $violenciaPareja->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $violenciaPareja->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaPareja->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaPareja->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaPareja->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaPareja->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaPareja->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">Violencia sexual</th>
@@ -133,12 +141,16 @@
                                 <td>{{ $violenciaSexual->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $violenciaSexual->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaSexual->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexual->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexual->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaSexual->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexual->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">Violencia escolar o Bullyng</th>
@@ -163,12 +175,16 @@
                                 <td>{{ $violenciaEscolar->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $violenciaEscolar->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaEscolar->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaEscolar->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaEscolar->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaEscolar->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaEscolar->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
                             </tr>
                             <tr>
                                 <th nowrap="">Violencia virtual</th>
@@ -193,12 +209,16 @@
                                 <td>{{ $violenciaVirtual->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $violenciaVirtual->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaVirtual->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaVirtual->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaVirtual->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaVirtual->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaVirtual->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
                             </tr>
                         </thead>
                     </table>

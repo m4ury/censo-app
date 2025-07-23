@@ -216,7 +216,7 @@
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields, .vdi_label, .vdi')
             .hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg, .areaRiesgo, .consejeria')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg, .areaRiesgo, .consejeria, .tipo_violencias')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -288,7 +288,7 @@
                     $('#Enfermera, .nut').hide();
                     break;
                 case 'Psicologo':
-                    $('#Psicologo').show();
+                    $('#Psicologo, #Nutricionista').show();
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
                 case 'tens':

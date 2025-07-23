@@ -395,23 +395,17 @@ class SeccionP9Controller extends Controller
             'aborto',
             'abortoM',
             'abortoF',
-            /* 'violenciaPareja',
-            'violenciaParejaM',
-            'violenciaParejaF',
-            'violenciaSexual',
-            'violenciaSexualM',
-            'violenciaSexualF' */
         ));
     }
 
     public function seccionp9f()
     {
         $all = new Paciente;
-        $violenciaPareja = $all->sexualidad('Femenino', 'Masculino', 'violenciaPareja')->get()->unique('rut');
-        $violenciaSexual = $all->sexualidad('Femenino', 'Masculino', 'violenciaSexual')->get()->unique('rut');
-        $violenciaIntraFamiliar = $all->sexualidad('Femenino', 'Masculino', 'violenciaIntrafamiliar')->get()->unique('rut');
-        $violenciaEscolar = $all->sexualidad('Femenino', 'Masculino', 'violenciaEscolar')->get()->unique('rut');
-        $violenciaVirtual = $all->sexualidad('Femenino', 'Masculino', 'violenciaVirtual')->get()->unique('rut');
+        $violenciaPareja = $all->violencia('Femenino', 'Masculino', 'violenciaPareja')->get()->unique('rut');
+        $violenciaSexual = $all->violencia('Femenino', 'Masculino', 'violenciaSexual')->get()->unique('rut');
+        $violenciaIntraFamiliar = $all->violencia('Femenino', 'Masculino', 'violenciaIntrafamiliar')->get()->unique('rut');
+        $violenciaEscolar = $all->violencia('Femenino', 'Masculino', 'violenciaEscolar')->get()->unique('rut');
+        $violenciaVirtual = $all->violencia('Femenino', 'Masculino', 'violenciaVirtual')->get()->unique('rut');
 
         return view('estadisticas.seccion-p9f', compact(
             'all',
@@ -420,6 +414,29 @@ class SeccionP9Controller extends Controller
             'violenciaIntraFamiliar',
             'violenciaEscolar',
             'violenciaVirtual'
+        ));
+    }
+
+    public function seccionp9g()
+    {
+        $all = new Paciente;
+        $actFisica = $all->consejerias('Femenino', 'Masculino', 'actFisica')->get()->unique('rut');
+        $alimSaludable = $all->consejerias('Femenino', 'Masculino', 'alimSaludable')->get()->unique('rut');
+        $tabaquismo = $all->consejerias('Femenino', 'Masculino', 'tabaquismo')->get()->unique('rut');
+        $consumoDrogas = $all->consejerias('Femenino', 'Masculino', 'consumoDrogas')->get()->unique('rut');
+        $saludSexualReprod = $all->consejerias('Femenino', 'Masculino', 'saludSexualReprod')->get()->unique('rut');
+        $regulacionFecund = $all->consejerias('Femenino', 'Masculino', 'regulacionFecund')->get()->unique('rut');
+        $prevITS_VIH = $all->consejerias('Femenino', 'Masculino', 'prevITS_VIH')->get()->unique('rut');
+
+        return view('estadisticas.seccion-p9g', compact(
+            'all',
+            'actFisica',
+            'alimSaludable',
+            'tabaquismo',
+            'consumoDrogas',
+            'saludSexualReprod',
+            'regulacionFecund',
+            'prevITS_VIH'
         ));
     }
 }

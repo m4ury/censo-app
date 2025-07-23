@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('controls', function (Blueprint $table) {
-            $table->enum('tipo_violencias', ['vIntraFamiliar', 'vEscolar', 'vVirtual'])->nullable()
+            $table->enum('tipo_violencias', ['vIntraFamiliar', 'vEscolar', 'vVirtual', 'violenciaPareja','violenciaSexual'])->nullable()
                 ->after('sexualidad')
-                ->comment('Tipo de violencia: vIntraFamiliar, vEscolar, vVirtual');
+                ->comment('Tipo de violencia: vIntraFamiliar, vEscolar, vVirtual', 'violenciaPareja','violenciaSexual');
         });
     }
 

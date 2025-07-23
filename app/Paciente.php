@@ -1291,7 +1291,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
-    //P9 seccion E y F
+    //P9 seccion E
     public function sexualidad($fem, $masc, $param)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1302,6 +1302,7 @@ class Paciente extends Model
             ->latest('controls.fecha_control');
     }
 
+    //P9 seccion F
     public function violencia($fem, $masc, $param)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
@@ -1311,6 +1312,18 @@ class Paciente extends Model
             ->whereNull('pacientes.egreso')
             ->latest('controls.fecha_control');
     }
+
+    //P10 seccion G
+    public function consejerias($fem, $masc, $consejeria)
+    {
+        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+            ->where('controls.consejeria', $consejeria)
+            ->whereIn('sexo', [$fem, $masc])
+            ->whereYear('controls.fecha_control', 2025)
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control');
+    }
+
 
     //ECICEP
 
