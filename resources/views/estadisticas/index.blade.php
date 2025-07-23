@@ -217,23 +217,33 @@
         <div class="card-body">
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9a') }}">SECCION A: SEGÚN ESTADO NUTRICIONAL</a>
+                    <a href="{{ route('estadisticas.seccion-p9a') }}">SECCIONES A y B</a>
                 </h4>
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9b') }}">SECCION B: SEGÚN EDUCACIÓN Y TRABAJO</a>
+                    <a href="{{ route('estadisticas.seccion-p9b') }}">SECCION C: SEGÚN EDUCACIÓN Y TRABAJO</a>
                 </h4>
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9c') }}">SECCION C: SEGÚN ÁREAS DE RIESGO</a>
+                    <a href="{{ route('estadisticas.seccion-p9c') }}">SECCION D: SEGÚN ÁREAS DE RIESGO</a>
                 </h4>
             </div>
             <div class="row">
                 <h4 class="card-title text-bold mb-3">
-                    <a href="{{ route('estadisticas.seccion-p9d') }}">SECCION D: SEGÚN AMBITOS
+                    <a href="{{ route('estadisticas.seccion-p9d') }}">SECCION E: SEGÚN AMBITOS
                         GINECO-UROLOGICO/SEXUALIDAD</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9f') }}">SECCION F: SEGÚN TIPO DE VIOLENCIA</a>
+                </h4>
+            </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9g') }}">SECCION G: QUE RECIBE CONSEJERIA</a>
                 </h4>
             </div>
         </div>

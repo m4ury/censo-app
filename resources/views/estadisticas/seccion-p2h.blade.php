@@ -93,17 +93,10 @@
                             </tr>
                             <tr class="bg-gradient-light">
                                 <th nowrap="" colspan="2" class="text-bold text-info">TOTAL POBLACIÓN NANEAS BAJO CONTROL</th>
-                                <td>{{$all->naneas('Síndrome de Down')->count() + $all->naneas('Trastorno del Espectro Autista')->count() + $all->naneas('Parálisis Cerebral')->count() + $all->naneas('Epilepsia')->count()}}</td>
-                                <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->count() + $all->naneas('Epilepsia')->where('sexo', 'Masculino')->count()}}</td>
-                                <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->count() + $all->naneas('Epilepsia')->where('sexo', 'Femenino')->count()}}</td>
-                                <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count()}}</td>
-                                <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() + $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count()}}</td>
-                                <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count()}}</td>
-                                 <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() + $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count()}}</td>
-                                 <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count()}}</td>
-                                 <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() + $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count()}}</td>
-                                 <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count()}}</td>
-                                 <td>{{$all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() + $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count()}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -148,9 +141,9 @@
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Síndrome de Down</th>
-                                <td>{{ $all->naneas('Síndrome de Down')->count() }}</td>
-                                <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->naneas('Síndrome de Down')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
@@ -189,16 +182,16 @@
                                  <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [120, 168])->count() }}</td>
                                  <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [180, 228])->count() }}</td>
                                  <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [180, 228])->count() }}</td>
-                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Síndrome de Down')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Trastorno del Espectro Autista</th>
-                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->count() }}</td>
-                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->get()->whereBetween('grupo', [0,19])->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $all->naneas('Trastorno del Espectro Autista')->get()->whereBetween('grupo', [0,19])->where('sexo', 'Femenino')->count() }}</td>
                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
@@ -237,16 +230,16 @@
                                  <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [120, 168])->count() }}</td>
                                  <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [180, 228])->count() }}</td>
                                  <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [180, 228])->count() }}</td>
-                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Trastorno del Espectro Autista')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Parálisis Cerebral</th>
-                                <td>{{ $all->naneas('Parálisis Cerebral')->count() }}</td>
-                                <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->naneas('Parálisis Cerebral')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
                                 <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Parálisis Cerebral')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
@@ -292,9 +285,9 @@
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Epilepsia</th>
-                                <td>{{ $all->naneas('Epilepsia')->count() }}</td>
-                                <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->naneas('Epilepsia')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
@@ -333,16 +326,16 @@
                                  <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
                                  <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
                                  <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Epilepsia')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Otros trastornos del Neurodesarrollo (no incluye TEA)</th>
-                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->count() }}</td>
-                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
@@ -381,106 +374,106 @@
                                  <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
                                  <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
                                  <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('Otros trastornos del Neurodesarrollo')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Hipertensión Arterial</th>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->count() }}</td>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
-                                <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '4')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '4')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '5')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '5')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '6')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '6')->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Hipertensión Arterial')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
+                                <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '4')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '4')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '5')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '5')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '6')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '6')->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('HTA')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Enfermedad renal crónica</th>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->count() }}</td>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->count() }}</td>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->count() }}</td>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
-                                <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '4')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '4')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '5')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '5')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '6')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '6')->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->where('pueblo_originario', true)->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Masculino')->where('migrante', false)->count() }}</td>
-                                 <td>{{ $all->naneas('Enfermedad renal crónica')->where('sexo', 'Femenino')->where('migrante', false)->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '0')->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '0')->count() }}</td>
+                                <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '1')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '1')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '2')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '2')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '3')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '3')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '4')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '4')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '5')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '5')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->where('edadEnMeses', '6')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->where('edadEnMeses', '6')->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [7, 11])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [12, 17])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [18, 23])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [24, 35])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [36, 41])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [42, 47])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [48, 59])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('edadEnMeses', [60, 71])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [6, 7])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [8, 9])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [10, 14])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [15, 19])->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('pueblo_originario', true)->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Masculino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
+                                 <td>{{ $all->naneas('ERC')->where('sexo', 'Femenino')->get()->whereBetween('grupo', [0,19])->where('migrante', false)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">Otras Enfermedades cardiovasculares crónicas (no incluye Hipertensión Arterial ni Cardiopatías Congénitas)</th>

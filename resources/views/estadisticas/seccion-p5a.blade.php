@@ -13,6 +13,11 @@
                     </a>
                     REM P5 - SECCION A: POBLACIÓN EN CONTROL POR CONDICIÓN DE FUNCIONALIDAD
                 </h4>
+                <div class="col-md-12">
+                    <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel()">
+                        <i class="fas fa-file-excel"></i> Descargar Excel
+                    </button>
+                </div>
                 <div class="col-md-12 table-responsive">
                     <table id="pscv" class="table table-md-responsive table-bordered">
                         <thead>
@@ -82,8 +87,8 @@
                                 <td>{{ $aSinRiesgo_9599F }}</td>
                                 <td>{{ $aSinRiesgo_100M }}</td>
                                 <td>{{ $aSinRiesgo_100F }}</td>
-                                <td>{{  $aSinRiesgoOriginM }}</td>
-                                <td>{{  $aSinRiesgoOriginF }}</td>
+                                <td>{{ $aSinRiesgoOriginM }}</td>
+                                <td>{{ $aSinRiesgoOriginF }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -109,8 +114,8 @@
                                 <td>{{ $aRiesgo_9599F }}</td>
                                 <td>{{ $aRiesgo_100M }}</td>
                                 <td>{{ $aRiesgo_100F }}</td>
-                                <td>{{  $aRiesgoOriginM }}</td>
-                                <td>{{  $aRiesgoOriginF }}</td>
+                                <td>{{ $aRiesgoOriginM }}</td>
+                                <td>{{ $aRiesgoOriginF }}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -339,8 +344,13 @@
                     </a>
                     REM P5 - SECCION B: POBLACIÓN BAJO CONTROL POR ESTADO NUTRICIONAL
                 </h4>
+                <div class="col-md-12">
+                    <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel2()">
+                        <i class="fas fa-file-excel"></i> Descargar Excel
+                    </button>
+                </div>
                 <div class="col-md-12 table-responsive">
-                    <table id="pscv" class="table table-md-responsive table-bordered">
+                    <table id="pscv2" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" colspan="2" rowspan="3">ESTADO NUTRICIONAL</th>
@@ -521,5 +531,23 @@
                 </div>
             </div>
         </div>
+    @endsection
+    @section('js')
+        <script>
+            function exportarTablaExcel() {
+                var tabla = document.getElementById('pscv');
+                var wb = XLSX.utils.table_to_book(tabla, {
+                    sheet: "Estadísticas"
+                });
+                XLSX.writeFile(wb, 'P5_seccionA.xlsx');
+            }
 
+            function exportarTablaExcel2() {
+                var tabla = document.getElementById('pscv2');
+                var wb = XLSX.utils.table_to_book(tabla, {
+                    sheet: "Estadísticas"
+                });
+                XLSX.writeFile(wb, 'P5_seccionB.xlsx');
+            }
+        </script>
     @endsection

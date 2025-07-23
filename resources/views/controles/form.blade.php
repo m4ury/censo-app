@@ -26,7 +26,7 @@
             </span>
         @endif
     </div>
-    @if($paciente->paciente_hd)
+    @if ($paciente->paciente_hd)
         {!! Form::label('visita_domiciliaria_label', 'Visita Domiciliaria', [
             'class' => 'col-sm col-form-label text-bold text-center',
         ]) !!}
@@ -40,14 +40,13 @@
                     'id' => 'visita_domiciliaria',
                 ],
             ) !!}
-    </div>
-    <div class="row">
-        <div class="col col-sm">
-            @if ($paciente->paciente_hd)
-                
-            @endif
         </div>
-    </div>
+        <div class="row">
+            <div class="col col-sm">
+                @if ($paciente->paciente_hd)
+                @endif
+            </div>
+        </div>
     @endif
 </div>
 
@@ -153,9 +152,7 @@
     </div>
 </div>
 
-@if (
-    $paciente->patologias->count() >= 1 and
-        $paciente->controls->where('i_ecicep', true)->count() == 0)
+@if ($paciente->patologias->count() >= 1 and $paciente->controls->where('i_ecicep', true)->count() == 0)
     @include('partials.ecicep')
 @endif
 
@@ -218,9 +215,9 @@
 
 @section('js')
     <script>
-        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields')
+        $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields, .vdi_label, .vdi')
             .hide();
-        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg, .areaRiesgo, .consejeria')
+        $('#tipo, #prox_tipo, #atencion , .evaluacionPie, .ulcerasActivas, .asmaClasif, .asmaControl, .epocClasif, .epocControl, .otras_enf, .sborClasif, #funcionalidad, .trHumor, .trConsumo, .trInfAdol, .trAns, .demencias, .trDesarrollo, .diagSm, .ldl, #barthel, #rCaida, #uPodal, #rCero, #dCaries, .hormon, .trh, .preservat, .esterilizacion, .indPesoEdad, .indPesoTalla, .indTallaEdad, .dNutInteg, .indIMCEdad, .indPeCinturaEdad, .evDPM, .scoreIra, .diagPA, .malNutExceso, .ecoTrimest, .vih, .sifilis, .realizado_por, .post_parto, .eduTrab, .sexualidad, .imcEdad, .tallaEdad, .peCinturaEdad, .dNutInteg, .areaRiesgo, .consejeria, .tipo_violencias')
             .select2({
                 theme: "classic",
                 width: '100%',
@@ -292,7 +289,7 @@
                     $('#Enfermera, .nut').hide();
                     break;
                 case 'Psicologo':
-                    $('#Psicologo').show();
+                    $('#Psicologo, #Nutricionista').show();
                     $('.presion_art, .peso_talla, .imc').hide()
                     break;
                 case 'tens':
@@ -433,6 +430,7 @@
             } else $('.hba1c7').show()
         });
 
+        // Control de regulacion
         $('input.regulacion').on('click', function() {
             if ($('input.regulacion').is(':checked')) {
                 $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').show()
@@ -441,6 +439,7 @@
                 $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .post_partof').hide();
         });
 
+        // Control de ginecologico
         $('input.ginec').on('click', function() {
             if ($('input.ginec').is(':checked')) {
                 $('.post_partof').show()
@@ -450,6 +449,7 @@
 
         });
 
+        // Control de climaterio
         $('input.climater').on('click', function() {
             if ($('input.climater').is(':checked')) {
                 $('.climater_fields').show();
@@ -457,12 +457,14 @@
                 $('.climater_fields').hide();
         });
 
+        // Control de embarazo
         $('input.embarazo').on('click', function() {
             if ($('input.embarazo').is(':checked')) {
                 $('.embarazo_fields').show();
             } else
                 $('.embarazo_fields').hide();
         });
+
 
         $('.asmaClasif, epocClasif, sborClasif').change(function() {
             $('#espirometria').hide()
@@ -527,6 +529,12 @@
             if ($('input#ci_adolecente').is(':checked')) {
                 $('.fields').show();
             } else $('.fields').hide();
+        });
+
+        $('.scoreIra').change(function() {
+            if ($('.scoreIra').val() === 'moderado' || $('.scoreIra').val() === 'grave') {
+                $('.vdi_label, .vdi').show()
+            } else $('.vdi_label, .vdi').hide()
         });
     </script>
 @endsection

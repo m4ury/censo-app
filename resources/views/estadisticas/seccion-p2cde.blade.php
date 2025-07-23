@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P2: Secciones C, D y F')
+@section('title', 'REM P2: Secciones C, D, E y F')
 
 @section('content')
     <div class="row justify-content-center">
@@ -60,7 +60,8 @@
                                 <td>{{ $scoreMod->where('edadEnMeses', '=', 5)->count() }}</td>
                                 <td>{{ $scoreMod->where('edadEnMeses', '=', 6)->count() }}</td>
                                 <td>{{ $scoreMod->wherebetween('edadEnMeses', [7, 12])->count() }}</td>
-                                <td></td>
+                                <td>{{ $scoreMod->where('visita_domiciliaria', true)->wherebetween('edadEnMeses', [0, 12])->count() }}
+                                </td>
                                 <td>{{ $scoreMod->where('pueblo_originario', true)->count() }}</td>
                                 <td>{{ $scoreMod->where('migrante', true)->count() }}</td>
                             </tr>
@@ -75,11 +76,12 @@
                                 <td>{{ $scoreGrave->where('edadEnMeses', '=', 5)->count() }}</td>
                                 <td>{{ $scoreGrave->where('edadEnMeses', '=', 6)->count() }}</td>
                                 <td>{{ $scoreGrave->wherebetween('edadEnMeses', [7, 12])->count() }}</td>
-                                <td></td>
+                                <td>{{ $scoreGrave->where('visita_domiciliaria', true)->wherebetween('edadEnMeses', [0, 12])->count() }}
+                                </td>
                                 <td>{{ $scoreGrave->where('pueblo_originario', true)->count() }}</td>
                                 <td>{{ $scoreGrave->where('migrante', true)->count() }}</td>
                             </tr>
-                            <tr>
+                            <tr class="bg-gradient-light">
                                 <th nowrap="">TOTAL</th>
                                 <td>{{ $scoreLeve->wherebetween('edadEnMeses', [0, 12])->count() + $scoreMod->wherebetween('edadEnMeses', [0, 12])->count() + $scoreGrave->wherebetween('edadEnMeses', [0, 12])->count() }}
                                 </td>
@@ -99,7 +101,8 @@
                                 </td>
                                 <td>{{ $scoreLeve->wherebetween('edadEnMeses', [7, 12])->count() + $scoreMod->wherebetween('edadEnMeses', [7, 12])->count() + $scoreGrave->wherebetween('edadEnMeses', [7, 12])->count() }}
                                 </td>
-                                <td></td>
+                                <td>{{ $scoreMod->where('visita_domiciliaria', true)->wherebetween('edadEnMeses', [0, 12])->count() +$scoreGrave->where('visita_domiciliaria', true)->wherebetween('edadEnMeses', [0, 12])->count() }}
+                                </td>
                                 <td>{{ $scoreLeve->where('pueblo_originario', true)->count() + $scoreMod->where('pueblo_originario', true)->count() + $scoreGrave->where('pueblo_originario', true)->count() }}
                                 </td>
                                 <td>{{ $scoreLeve->where('migrante', true)->count() + $scoreMod->where('migrante', true)->count() + $scoreGrave->where('migrante', true)->count() }}
@@ -127,6 +130,45 @@
                             <tr>
                                 <th nowrap="">De los 3 años y 6 meses</th>
                                 <td>{{ $tresAnios->count() }}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h4 class="card-title text-bold mb-3">
+                    SECCION E: POBLACIÓN INASISTENTE A CONTROL DEL NIÑO SANO (AL CORTE)</h4>
+                <div class="col-md-12 table-responsive">
+                    <table id="sm" class="table table-md-responsive table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">EDAD</th>
+                                <th class="text-center">TOTAL</th>
+                            </tr>
+                            <tr>
+                                <th nowrap="">0 - 11 meses</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [0, 11])->count() }}</td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">12 - 24 meses</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [12, 24])->count() }}</td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">25 - 35 meses</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [25, 35])->count() }}</td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">36 - 59 meses</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [36, 59])->count() }}</td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">60 meses - 9 años</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [60, 108])->count() }}</td>
+                            </tr>
+                            <tr class="bg-gradient-light">
+                                <th nowrap="">Total</th>
+                                <td>{{ $inasist->whereBetween('edadEnMeses', [0, 108])->count() }}</td>
                             </tr>
                         </thead>
                     </table>
@@ -231,7 +273,6 @@
                                 <td>{{ $dgPAhta2F->wherebetween('edadEnMeses', [72, 108])->count() }}</td>
                                 <td></td>
                             </tr>
-
                         </thead>
                     </table>
                 </div>
@@ -247,7 +288,7 @@
                             <tr>
                                 <th class="text-center" rowspan="2" style="vertical-align: middle" nowrap>RESULTADO
                                 </th>
-                                <th class="text-center" rowspan="2">Total</th>
+                                <th class="text-center bg-gradient-light" rowspan="2">Total</th>
                                 <th colspan="6" nowrap class="text-center">GRUPOS DE EDAD (en meses)</th>
                             </tr>
                             <tr>
@@ -264,7 +305,8 @@
                                 </th>
                             </tr>
                             <tr>
-                                <td>{{ $malNut->wherebetween('edadEnMeses', [4, 71])->count() }}</td>
+                                <td class="bg-gradient-light">{{ $malNut->wherebetween('edadEnMeses', [4, 71])->count() }}
+                                </td>
                                 <td>{{ $malNut->wherebetween('edadEnMeses', [4, 11])->count() }}</td>
                                 <td>{{ $malNut->wherebetween('edadEnMeses', [12, 23])->count() }}</td>
                                 <td>{{ $malNut->wherebetween('edadEnMeses', [24, 35])->count() }}</td>
@@ -278,7 +320,8 @@
                                 </th>
                             </tr>
                             <tr>
-                                <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [4, 71])->count() }}</td>
+                                <td class="bg-gradient-light">
+                                    {{ $malNutRiesgo->wherebetween('edadEnMeses', [4, 71])->count() }}</td>
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [4, 11])->count() }}</td>
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [12, 23])->count() }}</td>
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [24, 35])->count() }}</td>
@@ -287,11 +330,11 @@
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [60, 71])->count() }}</td>
                             </tr>
 
-                            <tr>
+                            <tr class="bg-gradient-light">
                                 <th style="vertical-align: middle" nowrap rowspan="2">TOTAL
                                 </th>
                             </tr>
-                            <tr>
+                            <tr class="bg-gradient-light">
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [4, 71])->count() + $malNut->wherebetween('edadEnMeses', [4, 71])->count() }}
                                 </td>
                                 <td>{{ $malNutRiesgo->wherebetween('edadEnMeses', [4, 11])->count() + $malNut->wherebetween('edadEnMeses', [4, 11])->count() }}
@@ -312,7 +355,6 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

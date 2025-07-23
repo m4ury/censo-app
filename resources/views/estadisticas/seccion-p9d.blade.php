@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P9: Seccion D')
+@section('title', 'REM P9: Seccion E')
 
 @section('content')
     <div class="row justify-content-center">
@@ -11,7 +11,8 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
-                    SECCION D: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN AMBITOS GINECO-UROLOGICO/SEXUALIDAD
+                    SECCION E: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN AMBITOS
+                    GINECO-UROLOGICO/SEXUALIDAD
                 </h4>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
@@ -21,8 +22,8 @@
                             </tr>
                             <tr>
                                 <th class="text-center" colspan="3">TOTAL</th>
-                                <th class="text-center" colspan="3">Adolescentes 10 a 14 años</th>
-                                <th class="text-center" colspan="3">Adolescentes 15 a 19 años</th>
+                                <th class="text-center" colspan="3">10 a 14 años</th>
+                                <th class="text-center" colspan="3">15 a 19 años</th>
                                 <th class="text-center" colspan="3">Pueblos Originarios</th>
                                 <th class="text-center" colspan="3">Migrantes</th>
                             </tr>
@@ -54,39 +55,18 @@
                             </tr>
 
                             <tr>
-                                <th nowrap="">ADOLESCENTES CON CONDUCTA POSTERGADORA</th>
-                                <td>{{ $postergada->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $postergadaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $postergadaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Adolescentes con conducta postergadora</th>
+                                <td>{{ $postergada->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $postergadaM->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $postergadaF->whereBetween('grupo',[10, 19])->count() }}</td>
 
-                                <td>{{ $postergada->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $postergadaM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $postergadaF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $postergada->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $postergadaM->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $postergadaF->whereBetween('grupo',[10, 14])->count() }}</td>
 
-                                <td>{{ $postergada->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $postergadaM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $postergadaF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">ADOLESCENTES CON CONDUCTA ANTICIPADORA</th>
-                                <td>{{ $anticipadora->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $anticipadoraM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $anticipadoraF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $anticipadora->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $anticipadoraM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $anticipadoraF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $anticipadora->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $anticipadoraM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $anticipadoraF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $postergada->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $postergadaM->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $postergadaF->whereBetween('grupo',[15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -96,39 +76,18 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">ADOLESCENTES CON CONDUCTA ACTIVA</th>
-                                <td>{{ $activa->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $activaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $activaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Adolescentes con conducta anticipadora</th>
+                                <td>{{ $anticipadora->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $anticipadoraM->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $anticipadoraF->whereBetween('grupo',[10, 19])->count() }}</td>
 
-                                <td>{{ $activa->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $activaM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $activaF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $anticipadora->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $anticipadoraM->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $anticipadoraF->whereBetween('grupo',[10, 14])->count() }}</td>
 
-                                <td>{{ $activa->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $activaM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $activaF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">USO ACTUAL DE METODO ANTICONCEPTIVO</th>
-                                <td>{{ $usoAnticonceptivo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $usoAnticonceptivo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $usoAnticonceptivo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $usoAnticonceptivoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $anticipadora->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $anticipadoraM->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $anticipadoraF->whereBetween('grupo',[15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -138,39 +97,18 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">USO ACTUAL DE DOBLE PROTECCIÓN</th>
-                                <td>{{ $dobleProteccion->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $dobleProteccionM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $dobleProteccionF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Adolescentes con conducta activa</th>
+                                <td>{{ $activa->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $activaM->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $activaF->whereBetween('grupo',[10, 19])->count() }}</td>
 
-                                <td>{{ $dobleProteccion->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $dobleProteccionM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $dobleProteccionF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $activa->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $activaM->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $activaF->whereBetween('grupo',[10, 14])->count() }}</td>
 
-                                <td>{{ $dobleProteccion->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $dobleProteccionM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $dobleProteccionF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO</th>
-                                <td>{{ $primerEmbarazo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $primerEmbarazoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $primerEmbarazoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $primerEmbarazo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $primerEmbarazoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $primerEmbarazoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $primerEmbarazo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $primerEmbarazoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $primerEmbarazoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $activa->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $activaM->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $activaF->whereBetween('grupo',[15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -180,39 +118,27 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">ADOLESCENTE CON ANTECEDENTE DE MAS DE UN EMBARAZO</th>
-                                <td>{{ $masEmbarazo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $masEmbarazoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $masEmbarazoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Uso actual de método anticonceptivo</th>
+                                <td>{{ $usoAnticonceptivo->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoM->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoF->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
 
-                                <td>{{ $masEmbarazo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $masEmbarazoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $masEmbarazoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $usoAnticonceptivo->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoM->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoF->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
 
-                                <td>{{ $masEmbarazo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $masEmbarazoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $masEmbarazoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">ADOLESCENTE CON ANTECEDENTE DE ABORTO</th>
-                                <td>{{ $aborto->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $abortoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $abortoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $aborto->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $abortoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $abortoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $aborto->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $abortoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $abortoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $usoAnticonceptivo->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoM->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $usoAnticonceptivoF->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -222,18 +148,126 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <th nowrap="">Uso actual de doble protección</th>
+                                <td>{{ $dobleProteccion->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionM->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionF->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+
+                                <td>{{ $dobleProteccion->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionM->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionF->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+
+                                <td>{{ $dobleProteccion->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionM->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $dobleProteccionF->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Adolescente con antecedente de un primer embarazo</th>
+                                <td>{{ $primerEmbarazo->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $primerEmbarazoM->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $primerEmbarazoF->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+
+                                <td>{{ $primerEmbarazo->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $primerEmbarazoM->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $primerEmbarazoF->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+
+                                <td>{{ $primerEmbarazo->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $primerEmbarazoM->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $primerEmbarazoF->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Adolescente con antecedente de más de un embarazo</th>
+                                <td>{{ $masEmbarazo->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $masEmbarazoM->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $masEmbarazoF->whereBetween('grupo',[10, 19])->count() }}</td>
+
+                                <td>{{ $masEmbarazo->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $masEmbarazoM->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $masEmbarazoF->whereBetween('grupo',[10, 14])->count() }}</td>
+
+                                <td>{{ $masEmbarazo->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $masEmbarazoM->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $masEmbarazoF->whereBetween('grupo',[15, 19])->count() }}</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Adolescente con antecedente de aborto</th>
+                                <td>{{ $aborto->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $abortoM->whereBetween('grupo',[10, 19])->count() }}</td>
+                                <td>{{ $abortoF->whereBetween('grupo',[10, 19])->count() }}</td>
+
+                                <td>{{ $aborto->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $abortoM->whereBetween('grupo',[10, 14])->count() }}</td>
+                                <td>{{ $abortoF->whereBetween('grupo',[10, 14])->count() }}</td>
+
+                                <td>{{ $aborto->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $abortoM->whereBetween('grupo',[15, 19])->count() }}</td>
+                                <td>{{ $abortoF->whereBetween('grupo',[15, 19])->count() }}</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {{-- <tr>
                                 <th nowrap="">ADOLESCENTE QUE PRESENTA VIOLENCIA DE PAREJA/POLOLO</th>
-                                <td>{{ $violenciaPareja->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaParejaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaParejaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $violenciaPareja->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaM->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaF->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
 
-                                <td>{{ $violenciaPareja->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaParejaM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaParejaF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $violenciaPareja->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaM->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaF->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
 
-                                <td>{{ $violenciaPareja->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaParejaM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaParejaF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $violenciaPareja->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaM->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaParejaF->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -244,17 +278,26 @@
                             </tr>
                             <tr>
                                 <th nowrap="">ADOLESCENTE QUE PRESENTA O HA SIDO VICTIMA DE VIOLENCIA SEXUAL</th>
-                                <td>{{ $violenciaSexual->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaSexualM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaSexualF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $violenciaSexual->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualM->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualF->whereBetween('grupo',[10, 19])->count() }}
+                                </td>
 
-                                <td>{{ $violenciaSexual->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaSexualM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaSexualF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $violenciaSexual->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualM->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualF->whereBetween('grupo',[10, 14])->count() }}
+                                </td>
 
-                                <td>{{ $violenciaSexual->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaSexualM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaSexualF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $violenciaSexual->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualM->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
+                                <td>{{ $violenciaSexualF->whereBetween('grupo',[15, 19])->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -262,7 +305,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                            </tr>
+                            </tr> --}}
                         </thead>
                     </table>
                 </div>

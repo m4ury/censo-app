@@ -123,8 +123,6 @@
                         'primerEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO',
                         'masEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE MAS DE UN EMBARAZO',
                         'aborto' => 'ADOLESCENTE CON ANTECEDENTE DE ABORTO',
-                        'violenciaPareja' => 'ADOLESCENTE QUE PRESENTA VIOLENCIA DE PAREJA/POLOLO',
-                        'violenciaSexual' => 'ADOLESCENTE QUE PRESENTA O HA SIDO VICTIMA DE VIOLENCIA SEXUAL',
                     ],
                     old('sexualidad', $control->sexualidad),
                     ['class' => 'form-control form-control-sm sexualidad', 'placeholder' => 'Seleccione'],
@@ -173,6 +171,26 @@
                     ],
                     old('consejeria', $control->consejeria),
                     ['class' => 'form-control form-control-sm consejeria', 'placeholder' => 'Seleccione'],
+                ) !!}
+            </div>
+        </div>
+
+        <div class="form-group row my-2 ml-2 mx-3">
+            {!! Form::label('tipoViolencia_label', 'SEGUN TIPO DE VIOLENCIA', [
+                'class' => 'col-sm-3 col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm-3">
+                {!! Form::select(
+                    'tipo_violencias',
+                    [
+                        'vIntraFamiliar' => 'VIOLENCIA INTRAFAMILIAR',
+                        'vEscolar' => 'VIOLENCIA ESCOLAR o BULLYING',
+                        'vVirtual' => 'VIOLENCIA VIRTUAL',
+                        'violenciaPareja' => 'VIOLENCIA DE PAREJA / POLOLEO',
+                        'violenciaSexual' => 'VIOLENCIA SEXUAL',
+                    ],
+                    old('tipo_violencias', $control->tipo_violencias),
+                    ['class' => 'form-control form-control-sm tipo_violencias', 'placeholder' => 'Seleccione'],
                 ) !!}
             </div>
         </div>

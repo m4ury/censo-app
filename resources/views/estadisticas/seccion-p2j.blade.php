@@ -13,6 +13,11 @@
                     </a>
                     REM P2 - SECCION J: POBLACION EN CONTROL, SEGUN RIESGO ODONTOLOGICO Y DAÑO POR CARIES
                 </h4>
+                    <div class="col-md-12">
+                        <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel()">
+                            <i class="fas fa-file-excel"></i> Descargar Excel
+                        </button>
+                    </div>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
                         <thead>
@@ -26,10 +31,7 @@
                                 <th class="text-center" colspan="2" rowspan="2" style="vertical-align: top">Usuarios
                                     con Discapacidad
                                 </th>
-                                <th class="text-center" colspan="2" rowspan="2" style="vertical-align: middle">Niños y
-                                    Niñas Red
-                                    Mejor Niñez
-                                </th>
+                                <th class="text-center" colspan="2" rowspan="2" style="vertical-align: middle">Niños, Niñas, Adolescentes y Jóvenes Mejor Niñez </th>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">
@@ -602,16 +604,14 @@
                             </tr>
                             <tr>
                                 <th colspan="2" class="text-center">INASISTENTES A CONTROL ODONTOLOGICO</th>
-                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->unique('rut')->count() }}
+                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '<', 1)->unique('rut')->count() }}
-                                </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '<', 1)->unique('rut')->count() }}
-                                </td>
+                                <td class="bg-gradient-gray"></td>">
+                                <td class="bg-gradient-gray"></td>
                                 <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
                                 </td>
                                 <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
@@ -672,4 +672,16 @@
             </div>
         </div>
     </div>
+</div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            var tabla = document.getElementById('sm');
+            var wb = XLSX.utils.table_to_book(tabla, {
+                sheet: "Estadísticas"
+            });
+            XLSX.writeFile(wb, 'P2_seccionJ.xlsx');
+        }
+    </script>
 @endsection

@@ -3,6 +3,7 @@
 @section('title', 'REM P1: Seccion G')
 
 @section('content')
+{{-- dd($ruts_repetidos) --}}
     <div class="row justify-content-center">
         <div class="card card-primary card-outline">
             <div class="card-body">
@@ -13,6 +14,9 @@
                     </a>
                     SECCION G: GESTANTES EN CONTROL CON ECOGRAFÍA POR TRIMESTRE DE GESTACION (EN EL SEMESTRE)
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
                         <thead>
@@ -89,7 +93,7 @@
                                 <td>{{ $eco22_24->whereBetween('grupo', [50, 54])->count() }}</td>
                                 <td>{{ $eco30_34->whereBetween('grupo', [50, 54])->count() }}</td>
                             </tr>
-                            <tr class="text-center">
+                            <tr class="text-center bg-gradient-light">
                                 <th nowrap="">TOTAL</th>
                                 <td>{{ $eco11->count() }}</td>
                                 <td>{{ $eco11_13->count() }}</td>
@@ -97,8 +101,27 @@
                                 <td>{{ $eco30_34->count() }}</td>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr class="text-center">
+                                <th nowrap="">Gestantes con Ecografias del extrasistema </th>
+                                <td>{{ $eco11->where('ecoExtrasist')->count() }}</td>
+                                <td>{{ $eco11_13->where('ecoExtrasist')->count() }}</td>
+                                <td>{{ $eco22_24->where('ecoExtrasist')->count() }}</td>
+                                <td>{{ $eco30_34->where('ecoExtrasist')->count() }}</td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
+    </div>
+    @endsection
+    @section('js')
+     <script>
+    function exportarTablaExcel() {
+        var tabla = document.getElementById('sm');
+        var wb = XLSX.utils.table_to_book(tabla, {sheet:"Estadísticas"});
+        XLSX.writeFile(wb, 'P1_seccionG.xlsx');
+    }
+    </script>
     @endsection

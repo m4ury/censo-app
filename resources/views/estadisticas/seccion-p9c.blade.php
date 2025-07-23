@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P9: Seccion C')
+@section('title', 'REM P9: Seccion D')
 
 @section('content')
     <div class="row justify-content-center">
@@ -11,7 +11,7 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
-                    SECCION C: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN ÁREAS DE RIESGO
+                    SECCION D: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN ÁREAS DE RIESGO
                 </h4>
                 <div class="col-md-12 table-responsive">
                     <table id="sm" class="table table-md-responsive table-bordered">
@@ -21,8 +21,8 @@
                             </tr>
                             <tr>
                                 <th class="text-center" colspan="3">TOTAL</th>
-                                <th class="text-center" colspan="3">Adolescentes 10 a 14 años</th>
-                                <th class="text-center" colspan="3">Adolescentes 15 a 19 años</th>
+                                <th class="text-center" colspan="3">10 a 14 años</th>
+                                <th class="text-center" colspan="3">15 a 19 años</th>
                                 <th class="text-center" colspan="3">Pueblos Originarios</th>
                                 <th class="text-center" colspan="3">Migrantes</th>
                             </tr>
@@ -54,39 +54,18 @@
                             </tr>
 
                             <tr>
-                                <th nowrap="">RIESGO SSR</th>
-                                <td>{{ $ssr->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $ssrM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $ssrF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Riesgo SSR</th>
+                                <td>{{ $ssr->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $ssrM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $ssrF->whereBetween('grupo', [10, 19])->count() }}</td>
 
-                                <td>{{ $ssr->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $ssrM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $ssrF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $ssr->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $ssrM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $ssrF->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $ssr->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $ssrM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $ssrF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">RIESGO SUICIDA</th>
-                                <td>{{ $rSuicida->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSuicidaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSuicidaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $rSuicida->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rSuicidaM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rSuicidaF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $rSuicida->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSuicidaM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSuicidaF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $ssr->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $ssrM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $ssrF->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -96,39 +75,18 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">RIESGO SOCIAL</th>
-                                <td>{{ $rSocial->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSocialM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSocialF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Riesgo suicida</th>
+                                <td>{{ $rSuicida->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rSuicidaM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rSuicidaF->whereBetween('grupo', [10, 19])->count() }}</td>
 
-                                <td>{{ $rSocial->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rSocialM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rSocialF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $rSuicida->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rSuicidaM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rSuicidaF->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $rSocial->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSocialM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rSocialF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">RIESGO PSICOEMOCIONAL</th>
-                                <td>{{ $rPsicoEmocional->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $rPsicoEmocional->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $rPsicoEmocional->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rPsicoEmocionalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $rSuicida->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rSuicidaM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rSuicidaF->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -138,39 +96,18 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">VIOLENCIA</th>
-                                <td>{{ $violencia->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Riesgo social</th>
+                                <td>{{ $rSocial->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rSocialM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rSocialF->whereBetween('grupo', [10, 19])->count() }}</td>
 
-                                <td>{{ $violencia->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $violenciaF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $rSocial->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rSocialM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rSocialF->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $violencia->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $violenciaF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">RIESGO OH/DROGAS</th>
-                                <td>{{ $rOh_drogas->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rOh_drogasM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rOh_drogasF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $rOh_drogas->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rOh_drogasM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rOh_drogasF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $rOh_drogas->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rOh_drogasM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rOh_drogasF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $rSocial->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rSocialM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rSocialF->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -180,39 +117,27 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">MALNUTRICION POR DEFICIT</th>
-                                <td>{{ $malNut_deficit->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_deficitM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_deficitF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Riesgo psicoemocional</th>
+                                <td>{{ $rPsicoEmocional->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalM->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalF->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
 
-                                <td>{{ $malNut_deficit->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $malNut_deficitM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $malNut_deficitF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $rPsicoEmocional->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalM->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalF->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
 
-                                <td>{{ $malNut_deficit->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_deficitM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_deficitF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th nowrap="">MALNUTRICION POR EXCESO</th>
-                                <td>{{ $malNut_exceso->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_excesoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_excesoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-
-                                <td>{{ $malNut_exceso->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $malNut_excesoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $malNut_excesoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-
-                                <td>{{ $malNut_exceso->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_excesoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $malNut_excesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $rPsicoEmocional->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalM->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $rPsicoEmocionalF->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
 
                                 <td></td>
                                 <td></td>
@@ -222,18 +147,18 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">RIESGO DESERCIÓN ESCOLAR</th>
-                                <td>{{ $rDesercion->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rDesercionM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rDesercionF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Violencia</th>
+                                <td>{{ $violencia->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $violenciaF->whereBetween('grupo', [10, 19])->count() }}</td>
 
-                                <td>{{ $rDesercion->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rDesercionM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $rDesercionF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $violencia->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $violenciaM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $violenciaF->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $rDesercion->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rDesercionM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $rDesercionF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $violencia->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $violenciaM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $violenciaF->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>
@@ -243,18 +168,108 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <th nowrap="">OTRO</th>
-                                <td>{{ $otroRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $otroRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $otroRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 19)->count() }}</td>
+                                <th nowrap="">Riesgo Alcohol y otras drogas</th>
+                                <td>{{ $rOh_drogas->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rOh_drogasM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rOh_drogasF->whereBetween('grupo', [10, 19])->count() }}</td>
 
-                                <td>{{ $otroRiesgo->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $otroRiesgoM->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
-                                <td>{{ $otroRiesgoF->where('grupo', '>=', 10)->where('grupo', '<=', 14)->count() }}</td>
+                                <td>{{ $rOh_drogas->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rOh_drogasM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rOh_drogasF->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $otroRiesgo->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $otroRiesgoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                <td>{{ $otroRiesgoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                <td>{{ $rOh_drogas->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rOh_drogasM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rOh_drogasF->whereBetween('grupo', [15, 19])->count() }}</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Malnutrición por déficit</th>
+                                <td>{{ $malNut_deficit->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $malNut_deficitM->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+                                <td>{{ $malNut_deficitF->whereBetween('grupo', [10, 19])->count() }}
+                                </td>
+
+                                <td>{{ $malNut_deficit->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $malNut_deficitM->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+                                <td>{{ $malNut_deficitF->whereBetween('grupo', [10, 14])->count() }}
+                                </td>
+
+                                <td>{{ $malNut_deficit->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $malNut_deficitM->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+                                <td>{{ $malNut_deficitF->whereBetween('grupo', [15, 19])->count() }}
+                                </td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Malnutrición por exceso</th>
+                                <td>{{ $malNut_exceso->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $malNut_excesoM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $malNut_excesoF->whereBetween('grupo', [10, 19])->count() }}</td>
+
+                                <td>{{ $malNut_exceso->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $malNut_excesoM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $malNut_excesoF->whereBetween('grupo', [10, 14])->count() }}</td>
+
+                                <td>{{ $malNut_exceso->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $malNut_excesoM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $malNut_excesoF->whereBetween('grupo', [15, 19])->count() }}</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Riesgo deserción escolar</th>
+                                <td>{{ $rDesercion->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rDesercionM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $rDesercionF->whereBetween('grupo', [10, 19])->count() }}</td>
+
+                                <td>{{ $rDesercion->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rDesercionM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $rDesercionF->whereBetween('grupo', [10, 14])->count() }}</td>
+
+                                <td>{{ $rDesercion->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rDesercionM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $rDesercionF->whereBetween('grupo', [15, 19])->count() }}</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th nowrap="">Otro</th>
+                                <td>{{ $otroRiesgo->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $otroRiesgoM->whereBetween('grupo', [10, 19])->count() }}</td>
+                                <td>{{ $otroRiesgoF->whereBetween('grupo', [10, 19])->count() }}</td>
+
+                                <td>{{ $otroRiesgo->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $otroRiesgoM->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $otroRiesgoF->whereBetween('grupo', [10, 14])->count() }}</td>
+
+                                <td>{{ $otroRiesgo->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $otroRiesgoM->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $otroRiesgoF->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td></td>
                                 <td></td>

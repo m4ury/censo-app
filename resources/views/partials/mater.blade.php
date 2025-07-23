@@ -44,14 +44,13 @@
                 'class' => 'col-sm-2 col-form-label text-bold',
             ]) !!}
             <div class="col-sm-2">
-                {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? true : null), [
+                {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? 1 : 0), [
                     'class' => 'form-control my-2 embarazo',
                     'id' => 'embarazo',
                 ]) !!}
             </div>
         </div>
     @endif
-
     {{-- pacientes entre 45 y 64 años tipo control mater --}}
     @if ($paciente->grupo > 39 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
         <div class="form-group row my-2 ml-2 mx-3 climater">
@@ -68,7 +67,7 @@
     @endif
     {{-- pacientes hasta 59 años control de regulacion --}}
     @if ($paciente->grupo < 60 and $paciente->grupo > 9 && $paciente->sexo == 'Femenino')
-        <div class="form-group row my-2 ml-2 mx-3 preservativo">
+        <div class="form-group row pt-2 ml-2 mx-3 preservativo border-top border-danger rounded border-2">
             {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
                 'class' => 'col-sm col-form-label text-bold',
             ]) !!}
@@ -126,7 +125,7 @@
     @endif
 
     {{-- pacientes de 70 años y mas control de regulacion --}}
-    <div class="form-group row my-2 ml-2 mx-3 condon">
+    <div class="form-group row my-2 ml-2 mx-3 condon border-bottom border-danger rounded border-2">
         {!! Form::label('condonFem_label', 'CONDON FEMENINO', [
             'class' => 'col-sm-3 col-form-label text-bold',
         ]) !!}
@@ -139,7 +138,7 @@
     </div>
 
     {{-- pacientes control e ingreso climaterio --}}
-    <div class="form-group row my-2 ml-2 mx-3 climater_fields">
+    <div class="form-group row my-2 ml-2 mx-3 climater_fields border border-info rounded border-2">
         {!! Form::label('pautaMrs_label', 'Pauta MRS*', [
             'class' => 'col-sm-6 col-form-label text-bold',
         ]) !!}
@@ -167,7 +166,7 @@
     </div>
 
     {{-- pacientes embarazadas --}}
-    <div class="form-group row my-2 ml-2 mx-3 embarazo_fields">
+    <div class="form-group row my-2 ml-2 mx-3 embarazo_fields border border-primary rounded border-2">
         {!! Form::label('rPsicosocial_label', 'Gestante con Riesgo Psicosocial', [
             'class' => 'col-sm-3 col-form-label text-bold',
         ]) !!}
@@ -212,11 +211,19 @@
                 ['class' => 'form-control form-control-sm ecoTrimest', 'placeholder' => 'Seleccione'],
             ) !!}
         </div>
-        <div class="row my-2 ml-2 mx-3">
-            {!! Form::label('vih_label', 'Con TEST de VIH tomado (En el semestre, Red Publica o Extrasistema)', [
-                'class' => 'col-sm-4 col-form-label text-bold',
+        {!! Form::label('ecoExtaSist_label', 'Ecografia extrasistema', [
+            'class' => 'col-sm-2 col-form-label text-bold',
+        ]) !!}
+        <div class="col-sm-2">
+            {!! Form::checkbox('ecoExtrasist', 1, old('ecoExtrasist', $control->ecoExtrasist == 1 ? true : null), [
+                'class' => 'form-control my-2',
+                'id' => 'ecoExtrasist',
             ]) !!}
-            <div class="col-sm-2">
+        </div>
+            {!! Form::label('vih_label', 'Con TEST de VIH tomado (En el semestre, Red Publica o Extrasistema)', [
+                'class' => 'col-sm col-form-label text-bold',
+            ]) !!}
+            <div class="col-sm">
                 {!! Form::select(
                     'vih',
                     [
@@ -230,9 +237,9 @@
                 ) !!}
             </div>
             {!! Form::label('sifilis_label', 'Con TEST de SIFILIS tomado (En el semestre, Red Publica o Extrasistema)', [
-                'class' => 'col-sm-4 col-form-label text-bold',
+                'class' => 'col-sm col-form-label text-bold',
             ]) !!}
-            <div class="col-sm-2">
+            <div class="col-sm">
                 {!! Form::select(
                     'sifilis',
                     [
@@ -243,7 +250,6 @@
                     ['class' => 'form-control form-control-sm sifilis', 'placeholder' => 'Sifilis'],
                 ) !!}
             </div>
-        </div>
     </div>
 
     {{-- todas las pacientes programa de la mujer --}}
