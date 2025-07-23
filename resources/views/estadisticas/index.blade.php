@@ -241,6 +241,11 @@
                     <a href="{{ route('estadisticas.seccion-p9f') }}">SECCION F: SEGÚN TIPO DE VIOLENCIA</a>
                 </h4>
             </div>
+            <div class="row">
+                <h4 class="card-title text-bold mb-3">
+                    <a href="{{ route('estadisticas.seccion-p9g') }}">SECCION G: QUE RECIBE CONSEJERIA</a>
+                </h4>
+            </div>
         </div>
     </div>
 
