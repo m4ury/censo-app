@@ -24,6 +24,7 @@ Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleControlle
 
 Route::resource('users', 'UserController');
 Route::get('users/{userId?}/delete', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+Route::post('users/{id}/restore', [App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
 
 
 Route::get('/', 'WelcomeController@index');

@@ -27,24 +27,38 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                                <tr>
+                                <tr @if ($user->trashed()) class="table-danger" @endif>
                                     <td>{{ $user->rut }}</td>
-                                    <td class="text-uppercase">{{ $user->fullUserName() }}</td>
+                                    <td class="text-uppercase">
+                                        {{ $user->fullUserName() }}
+                                        @if ($user->trashed())
+                                            <span class="badge badge-danger ml-2">Eliminado</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" title="Editar Usuario"
-                                            href="{{ route('users.edit', $user->id) }}">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar Usuario"
-                                                onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        @if ($user->trashed())
+                                            <form action="{{ route('users.restore', $user->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success btn-sm">Restaurar</button>
+                                            </form>
+                                        @else
+                                            <a class="btn btn-primary btn-sm" title="Editar Usuario"
+                                                href="{{ route('users.edit', $user->id) }}">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    title="Eliminar Usuario"
+                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

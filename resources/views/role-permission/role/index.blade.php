@@ -8,7 +8,7 @@
 
     <div class="row mt-4">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-header">
                     <h4>
                         Perfiles

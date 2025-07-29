@@ -47,20 +47,20 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-4 col-form-label">
-            <h6>NOMBRE PERSONA QUE NOTIFICA: </h6>
+        <div class="row">
+            <div class="col-sm-4 col-form-label">
+                <h6>NOMBRE PERSONA QUE NOTIFICA: </h6>
+            </div>
+            <div class="col-sm-8 form-control">
+                <b class="text-uppercase">{{ $constancia->user->fullUserName() ?? '' }}</b>
+            </div>
+            <div class="col-sm-2 col-form-label">
+                <h6>RUN:</h6>
+            </div>
+            <div class="col-sm-3 form-control">
+                <b>{{ Rut::parse($constancia->user->rut)->fix()->format() ?? '' }}</b>
+            </div>
         </div>
-        <div class="col-sm-8 form-control">
-            <b class="text-uppercase">{{ $constancia->user->fullUserName() }}</b>
-        </div>
-        <div class="col-sm-2 col-form-label">
-            <h6>RUN:</h6>
-        </div>
-        <div class="col-sm-3 form-control">
-            <b>{{ Rut::parse($constancia->user->rut)->fix()->format() }}</b>
-        </div>
-    </div>
     <hr>
     <h5 class="text-bold text-uppercase">
         Antecedentes del paciente

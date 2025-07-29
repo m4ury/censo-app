@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
+use App\Control;
+use App\Solicitud;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\App;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use illuminate\contracts\auth\mustverifyemail;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Constancia;
 
 class User extends Authenticatable implements AuthenticatableContract, CanResetPasswordContract
 {
-    use CanResetPassword, Notifiable, HasRoles;
+    use CanResetPassword, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * the attributes that are mass assignable.
@@ -91,4 +95,17 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
     {
         return $this->type === 'some';
     }
+
+    public function constancias()
+    {
+        return $this->hasMany(\App\Constancia::class, 'user_id');
+    }
+
+    /* protected static function booted()
+    {
+        static::deleting(function ($user) {
+            // Deja las constancias sin usuario
+            $user->constancias()->update(['user_id' => null]);
+        });
+    } */
 }

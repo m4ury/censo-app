@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::withTrashed()->get();
         return view('role-permission.user.index', compact('users'));
     }
 
@@ -34,11 +34,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'rut' => 'required|string|min:3|rut_cl',
+            'rut' => 'required|string|min:3|cl_rut|unique:users,rut',
             'name' => 'required|string|min:3',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-            'rut' => 'required|string|min:3',
             'apellido_paterno' => 'required|string|min:3',
         ]);
         if ($validator->fails()) {
@@ -53,12 +52,14 @@ class UserController extends Controller
         ]);
         return back()->withSuccess('Usuario creado con exito!');
     }
+
     public function edit($id)
     {
         $user = User::find($id);
         $roles = Role::select('id', 'name')->pluck('name');
         return view('role-permission.user.edit', compact('user', 'roles'));
     }
+
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -109,5 +110,24 @@ class UserController extends Controller
             'email' => $request->email
         ]);
         return redirect('perfil')->withSuccess('Usuario Actualizado con exito!');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect('users')->withSuccess('Usuario eliminado con exito!');
+        }
+        return redirect('users')->withErrors('Usuario no encontrado.');
+    }
+    public function restore($id)
+    {
+        $user = \App\Models\User::withTrashed()->find($id);
+        if ($user && $user->trashed()) {
+            $user->restore();
+            return redirect('users')->withSuccess('Usuario restaurado con éxito!');
+        }
+        return redirect('users')->withErrors('Usuario no encontrado o no está eliminado.');
     }
 }
