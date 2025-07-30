@@ -27,12 +27,15 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Role::select('id', 'name')->pluck('name');
+        $roles = \Spatie\Permission\Models\Role::pluck('name', 'name');
+        //$roles = Role::get();
         return view('role-permission.user.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
+        //dd($request->all());
+        //dd($request->roles);
         $validator = Validator::make($request->all(), [
             'rut' => 'required|string|min:3|cl_rut|unique:users,rut',
             'name' => 'required|string|min:3',
@@ -50,13 +53,15 @@ class UserController extends Controller
             'rut' => $request->rut,
             'apellido_paterno' => $request->apellido_paterno,
         ]);
+        $user->syncRoles($request->roles);
+        $user->save();
         return back()->withSuccess('Usuario creado con exito!');
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::select('id', 'name')->pluck('name');
+        $roles = Role::pluck('name', 'name');
         return view('role-permission.user.edit', compact('user', 'roles'));
     }
 
@@ -68,7 +73,6 @@ class UserController extends Controller
             'password' => 'nullable|string|min:6|confirmed',
             'rut' => 'required|string|min:3',
             'apellido_paterno' => 'required|string|min:3',
-            'apellido_materno' => 'required|string|min:3'
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
@@ -82,6 +86,8 @@ class UserController extends Controller
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno
         ]);
+        $user->syncRoles($request->roles);
+        $user->save();
         return redirect('users')->withSuccess('Usuario actualizado con exito!');
     }
 

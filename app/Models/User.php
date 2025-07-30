@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Constancia;
+use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -32,7 +33,8 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
         'password',
         'rut',
         'apellido_paterno',
-        'apellido_materno'
+        'apellido_materno',
+        'type',
     ];
 
     /**
@@ -100,12 +102,4 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
     {
         return $this->hasMany(\App\Constancia::class, 'user_id');
     }
-
-    /* protected static function booted()
-    {
-        static::deleting(function ($user) {
-            // Deja las constancias sin usuario
-            $user->constancias()->update(['user_id' => null]);
-        });
-    } */
 }

@@ -22,6 +22,7 @@
                                 <th>Rut</th>
                                 <th>Nombre Completo</th>
                                 <th>Email</th>
+                                <th>Perfiles</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -36,6 +37,18 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if ($user->roles->count() > 0)
+                                            @foreach ($user->roles as $role)
+                                                <span class="badge badge-info">{{ $role->name }}</span>
+                                            @endforeach
+                                        @else
+                                            <span class="badge badge-secondary">Sin Perfiles</span>
+                                        @endif
+                                    </td>
+
+                                    <span class="badge badge-info"></span>
+                                    </td>
                                     <td>
                                         @if ($user->trashed())
                                             <form action="{{ route('users.restore', $user->id) }}" method="POST"

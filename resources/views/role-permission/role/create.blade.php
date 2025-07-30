@@ -16,7 +16,16 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
-                        {{ html()->text('name')->class('form-control')->required() }}
+                        {{ html()->text('name')->class('form-control' . ($errors->has('name') ? ' is-invalid' : ''))->required() }}
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        {{ html()->text('descripcion')->class('form-control') }}
                     </div>
                     <div class="mb-3">
                         {{ html()->submit('Guardar')->class('btn btn-primary') }}

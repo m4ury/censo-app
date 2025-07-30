@@ -33,8 +33,8 @@
                                         <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success">Editar</a>
                                         {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a> --}}
                                         {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger confirm" data-confirm-delete="true" type="submit">Eliminar</a> --}}
-                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger"
-                                            data-confirm-delete="true">Eliminar</a>
+                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger btn-delete"
+                                            data-id="{{ $rol->id }}">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -49,7 +49,6 @@
 @section('js')
     <script>
         $("#roles").DataTable({
-            dom: 'Bfrtip',
             language: {
                 "processing": "Procesando...",
                 "lengthMenu": "Mostrar _MENU_ registros",
@@ -72,6 +71,31 @@
                     "sortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: "¡No podrás revertir esto!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Sí, eliminar',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = href;
+                        }
+                    });
+                });
+            });
         });
     </script>
 @endsection

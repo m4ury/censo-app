@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Validator;
+
 
 class RoleController extends Controller
 {
@@ -25,14 +28,13 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:roles,name',
-            ],
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3|unique:roles,name',
         ]);
-        $role = Role::create(['name' => $request->name]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        $role = Role::create(['name' => $request->name, 'descripcion' => $request->descripcion]);
 
         return redirect()->route('roles.index')->withSuccess('Perfil creado con exito');
     }
@@ -44,16 +46,16 @@ class RoleController extends Controller
 
     public function update(Request $request, Role $role)
     {
-        $request->validate([
-            'name' => [
-                'required',
-                'string',
-                'unique:roles,name,' . $role->id,
-            ],
+       $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3|unique:roles,name,' .$role->id,
         ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
         $role->update([
             'name' => $request->name,
+            'descripcion' => $request->descripcion,
         ]);
         $role->save();
 
@@ -73,7 +75,10 @@ class RoleController extends Controller
     {
         $permissions = Permission::get();
         $role = Role::findOrFail($roleId);
-        $rolePermissions = $role->permissions()->pluck('id')->toArray();
+        $rolePermissions = DB::table('role_has_permissions')
+            ->where('role_id', $role->id)
+            ->pluck('permission_id', 'permission_id')
+            ->all();
 
 
         return view('role-permission.role.give-permission', compact('role', 'permissions', 'rolePermissions'));
