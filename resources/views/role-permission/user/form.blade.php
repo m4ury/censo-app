@@ -78,14 +78,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="roles" class="form-label">Perfiles</label>
-            <select name="roles[]" id="roles" class="form-control" multiple>
-                @foreach ($roles as $id => $roles)
-                    <option value="{{ $id }}" {{ (isset($user) && $user->roles->contains('id', $id)) ? 'selected' : '' }}>
-                        {{ $roles }}
-                    </option>
-                @endforeach
-            </select>
+            {{ html()->select('roles[]')->options($roles)->multiple()->class('form-control')->value(old('roles', isset($user) ? $user->roles->pluck('name')->toArray() : []))->id('roles') }}
         </div>
     </div>
-
 </div>

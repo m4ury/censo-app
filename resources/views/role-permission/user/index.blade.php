@@ -38,16 +38,13 @@
                                     </td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        @if ($user->roles->count() > 0)
-                                            @foreach ($user->roles as $role)
-                                                <span class="badge badge-info">{{ $role->name }}</span>
+                                        @if (!empty($user->getRoleNames()))
+                                            @foreach ($user->getRoleNames() as $role)
+                                                <span class="badge badge-info mx-1">{{ $role }}</span>
                                             @endforeach
                                         @else
                                             <span class="badge badge-secondary">Sin Perfiles</span>
                                         @endif
-                                    </td>
-
-                                    <span class="badge badge-info"></span>
                                     </td>
                                     <td>
                                         @if ($user->trashed())
@@ -84,7 +81,6 @@
         @section('js')
             <script>
                 $("#users").DataTable({
-                    dom: 'Bfrtip',
                     buttons: [
                         'colvis',
                         'excel',

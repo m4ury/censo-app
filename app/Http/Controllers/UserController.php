@@ -27,15 +27,13 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = \Spatie\Permission\Models\Role::pluck('name', 'name');
+        $roles = Role::pluck('name', 'name')->all();
         //$roles = Role::get();
         return view('role-permission.user.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
-        //dd($request->all());
-        //dd($request->roles);
         $validator = Validator::make($request->all(), [
             'rut' => 'required|string|min:3|cl_rut|unique:users,rut',
             'name' => 'required|string|min:3',
@@ -61,7 +59,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name', 'name');
+        $roles = Role::pluck('name', 'name')->all();
         return view('role-permission.user.edit', compact('user', 'roles'));
     }
 
@@ -77,17 +75,27 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
+        
         $user = User::find($id);
-        $user->update([
+        
+        // Preparar los datos para actualizar
+        $updateData = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
             'rut' => $request->rut,
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno
-        ]);
+        ];
+        
+        // Solo actualizar la contraseña si se proporciona una nueva
+        if ($request->filled('password')) {
+            $updateData['password'] = bcrypt($request->password);
+        }
+        
+        $user->update($updateData);
         $user->syncRoles($request->roles);
         $user->save();
+        
         return redirect('users')->withSuccess('Usuario actualizado con exito!');
     }
 
