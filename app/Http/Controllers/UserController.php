@@ -75,9 +75,9 @@ class UserController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-        
+
         $user = User::find($id);
-        
+
         // Preparar los datos para actualizar
         $updateData = [
             'name' => $request->name,
@@ -86,16 +86,16 @@ class UserController extends Controller
             'apellido_paterno' => $request->apellido_paterno,
             'apellido_materno' => $request->apellido_materno
         ];
-        
+
         // Solo actualizar la contraseña si se proporciona una nueva
         if ($request->filled('password')) {
             $updateData['password'] = bcrypt($request->password);
         }
-        
+
         $user->update($updateData);
         $user->syncRoles($request->roles);
         $user->save();
-        
+
         return redirect('users')->withSuccess('Usuario actualizado con exito!');
     }
 
@@ -137,7 +137,7 @@ class UserController extends Controller
     }
     public function restore($id)
     {
-        $user = \App\Models\User::withTrashed()->find($id);
+        $user = User::withTrashed()->find($id);
         if ($user && $user->trashed()) {
             $user->restore();
             return redirect('users')->withSuccess('Usuario restaurado con éxito!');

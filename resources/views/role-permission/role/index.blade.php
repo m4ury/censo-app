@@ -11,8 +11,9 @@
             <div class="card mt-3">
                 <div class="card-header">
                     <h4>
+                        <i class="fas fa-user-shield"></i>
                         Perfiles
-                        <a href="{{ url('roles/create') }}" class="btn btn-primary float-right">Crea perfil</a>
+                        <a href="{{ url('roles/create') }}" class="btn btn-primary btn-sm float-right">Crea perfil</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -20,6 +21,7 @@
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Permisos</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -28,12 +30,17 @@
                                 <tr>
                                     <td class="text-uppercase">{{ $rol->name }}</td>
                                     <td>
+                                        @if (!empty($rol->getPermissionNames()))
+                                            @foreach ($rol->getPermissionNames() as $permission)
+                                                <span class="badge badge-primary mx-1">{{ $permission }}</span>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td class="justify-content-center mx-3">
                                         <a href="{{ url('roles/' . $rol->id . '/give-permissions') }}"
-                                            class="btn btn-warning">Agregar / Editar Permisos del Perfil</a>
-                                        <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success">Editar</a>
-                                        {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger">Eliminar</a> --}}
-                                        {{-- <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger confirm" data-confirm-delete="true" type="submit">Eliminar</a> --}}
-                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger btn-delete"
+                                            class="btn btn-warning btn-sm">Agregar / Editar Permisos del Perfil</a>
+                                        <a href="{{ route('roles.edit', $rol->id) }}" class="btn btn-success btn-sm">Editar</a>
+                                        <a href="{{ route('roles.delete', $rol->id) }}" class="btn btn-danger btn-delete btn-sm"
                                             data-id="{{ $rol->id }}">Eliminar</a>
                                     </td>
                                 </tr>

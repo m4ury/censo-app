@@ -11,8 +11,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4>
+                        <i class="fas fa-users"></i>
                         Usuarios
-                        <a href="{{ url('users/create') }}" class="btn btn-primary float-right">Crear Usuario</a>
+                        <a href="{{ url('users/create') }}" class="btn btn-success btn-sm float-right">Crear Usuario</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -33,20 +34,18 @@
                                     <td class="text-uppercase">
                                         {{ $user->fullUserName() }}
                                         @if ($user->trashed())
-                                            <span class="badge badge-danger ml-2">Eliminado</span>
+                                            <span class="badge badge-danger ml-2">Deshabilitado</span>
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
-                                    <td>
+                                    <td class="text-center text-uppercase">
                                         @if (!empty($user->getRoleNames()))
                                             @foreach ($user->getRoleNames() as $role)
                                                 <span class="badge badge-info mx-1">{{ $role }}</span>
                                             @endforeach
-                                        @else
-                                            <span class="badge badge-secondary">Sin Perfiles</span>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="text-center text-uppercase">
                                         @if ($user->trashed())
                                             <form action="{{ route('users.restore', $user->id) }}" method="POST"
                                                 style="display:inline;">
@@ -63,8 +62,8 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
-                                                    title="Eliminar Usuario"
-                                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                                                    title="Deshabilitar Usuario"
+                                                    onclick="return confirm('¿Estás seguro de que deseas deshabilitar este usuario?')">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>

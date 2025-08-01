@@ -11,8 +11,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4>
+                        <i class="fas fa-key"></i>
                         Permisos
-                        <a href="{{ url('permissions/create') }}" class="btn btn-primary float-right">Crea permiso</a>
+                        <a href="{{ url('permissions/create') }}" class="btn btn-success btn-sm float-right">Crea permiso</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -29,9 +30,9 @@
                                     <td class="text-uppercase">{{ $permission->name }}</td>
                                     <td>
                                         <a href="{{ route('permissions.edit', $permission->id) }}"
-                                            class="btn btn-success">Editar</a>
+                                            class="btn btn-success btn-sm">Editar</a>
                                         <a href="{{ route('permissions.delete', $permission->id) }}"
-                                            class="btn btn-danger">Eliminar</a>
+                                            class="btn btn-danger btn-sm">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -48,8 +49,7 @@
         $("#permisos").DataTable({
             paging: true,
             pagingType: 'first_last_numbers',
-            pageLength: 5,
-            dom: 'Bfrtip',
+            pageLength: 10,
             language: {
                 "processing": "Procesando...",
                 "lengthMenu": "Mostrar _MENU_ registros",

@@ -4,10 +4,6 @@
 namespace App\Imports;
 
 use Illuminate\Support\Facades\Log;
-use App\Paciente;
-use App\Problema;
-use App\Interconsulta;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Carbon\Carbon;
@@ -141,6 +137,10 @@ class InterconsultasImport implements ToCollection
                 $nombreProblemaBD = 'Trastornos temporales mandibulares y dolor Orofacial';
             } elseif (str_contains($nombreProblema, 'INFECTOLOGIA')) {
                 $nombreProblemaBD = 'Dermatologia';
+            } elseif (str_contains($nombreProblema, 'PSIQUIATRIA PEDIATRICA Y DE LA ADOLESCENCIA')) {
+                $nombreProblemaBD = 'Psiquiatria Infantil';
+            } elseif (str_contains($nombreProblema, 'CIRUGIA PEDIATRICA')) {
+                $nombreProblemaBD = 'Cirugia Infantil';
             } else {
                 $nombreProblemaBD = $nombreProblema;
             }

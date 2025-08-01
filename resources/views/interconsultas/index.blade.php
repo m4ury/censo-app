@@ -21,11 +21,11 @@
                     <a class="dropdown-item" href="{{ route('interconsultas.index', ['mostrar_todos' => 1]) }}">
                         Todas
                     </a>
+                    {{-- <a class="dropdown-item" href="{{ route('interconsultas.create') }}">
+                        <i class="fas fa-plus"></i> Nueva Interconsulta
+                    </a> --}}
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#importarModal">
                         <i class="fas fa-file-excel"></i> Importar Interconsultas
-                    </button>
-                    <button type="button" class="dropdown-item" id="exportarExcelBtn">
-                        <i class="fas fa-file-excel"></i> Exportar Excel
                     </button>
                 </div>
             </div>
@@ -38,8 +38,7 @@
                 <span class="info-box-icon bg-gradient-info"><i class="fas fa-envelope"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Retiradas/Notificadas</span>
-                    <span class="info-box-number"
-                        id="pacientes-total">{{ $todasInterconsultas->whereIn('estado_ic', ['retirada', 'notificada'])->count() }}</span>
+                    <span class="info-box-number" id="pacientes-total">{{ $estadisticas['retiradas_notificadas'] }}</span>
                 </div>
             </div>
         </div>
@@ -49,8 +48,7 @@
                 <span class="info-box-icon bg-gradient-warning"><i class="fas fa-envelope"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Pendiente</span>
-                    <span class="info-box-number"
-                        id="pacientes-total">{{ $interconsultas->where('estado_ic', '==', 'pendiente')->count() }}</span>
+                    <span class="info-box-number" id="pacientes-total">{{ $estadisticas['pendientes'] }}</span>
                 </div>
             </div>
         </div>
@@ -59,8 +57,7 @@
                 <span class="info-box-icon bg-gradient-danger"><i class="fas fa-envelope"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Rechazada</span>
-                    <span class="info-box-number"
-                        id="pacientes-total">{{ $todasInterconsultas->where('estado_ic', '==', 'rechazada')->count() }}</span>
+                    <span class="info-box-number" id="pacientes-total">{{ $estadisticas['rechazadas'] }}</span>
                 </div>
             </div>
         </div>
@@ -86,26 +83,52 @@
             </thead>
             <tbody>
                 @foreach ($interconsultas as $interconsulta)
-                    <tr>
-                        <td nowrap="">{{ Carbon\Carbon::parse($interconsulta->fecha_ic)->format('d-m-Y') }}</td>
-                        <td class="text-uppercase" nowrap=""><a
-                                href="{{ route('pacientes.show', $interconsulta->paciente->id) }}">{{ $interconsulta->paciente->rut ?? '' }}</a>
-                        </td>
-                        <td class="text-uppercase">{{ $interconsulta->paciente->fullName() ?? '' }}</td>
-                        <td>{{ $interconsulta->paciente->edad() ?? '' }}</td>
-                        <td data-order="{{ $interconsulta->fecha_citacion }}">
-                            {{ Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
-                        </td>
-                        @php
-                            $estadoClass =
-                                [
-                                    'retirada' => 'success',
-                                    'notificada' => 'success',
-                                    'rechazada' => 'danger',
-                                    'pendiente' => 'info',
-                                ][$interconsulta->estado_ic] ?? 'secondary';
-                        @endphp
+                    @php
+                        // Pre-calcular valores para evitar múltiples llamadas
+                        $fechaIC = $interconsulta->fecha_ic
+                            ? \Carbon\Carbon::parse($interconsulta->fecha_ic)->format('d-m-Y')
+                            : '';
 
+                        // Formatear fecha de citación inteligentemente
+                        $fechaCitacion = '';
+                        if ($interconsulta->fecha_citacion) {
+                            $carbonFecha = \Carbon\Carbon::parse($interconsulta->fecha_citacion);
+                            if ($carbonFecha->format('H:i:s') === '00:00:00') {
+                                $fechaCitacion = $carbonFecha->format('d-m-Y');
+                            } else {
+                                $fechaCitacion = $carbonFecha->format('d-m-Y H:i');
+                            }
+                        }
+
+                        $fechaCitacionOrden = $interconsulta->fecha_citacion
+                            ? \Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('Y-m-d H:i:s')
+                            : '';
+
+                        $nombreCompleto = $interconsulta->paciente ? $interconsulta->paciente->fullName() : '';
+                        $edad = $interconsulta->paciente ? $interconsulta->paciente->edad() : '';
+                        $rut = $interconsulta->paciente ? $interconsulta->paciente->rut : '';
+                        $telefono = $interconsulta->paciente ? $interconsulta->paciente->telefono : '';
+
+                        $estadoClass =
+                            [
+                                'retirada' => 'success',
+                                'notificada' => 'success',
+                                'rechazada' => 'danger',
+                                'pendiente' => 'info',
+                            ][$interconsulta->estado_ic] ?? 'secondary';
+                    @endphp
+
+                    <tr>
+                        <td nowrap="">{{ $fechaIC }}</td>
+                        <td class="text-uppercase" nowrap="">
+                            @if ($interconsulta->paciente)
+                                <a
+                                    href="{{ route('pacientes.show', $interconsulta->paciente->id) }}">{{ $rut }}</a>
+                            @endif
+                        </td>
+                        <td class="text-uppercase">{{ $nombreCompleto }}</td>
+                        <td>{{ $edad }}</td>
+                        <td data-order="{{ $fechaCitacionOrden }}">{{ $fechaCitacion }}</td>
                         <td class="text-uppercase text-bold text-{{ $estadoClass }}">
                             {{ $interconsulta->estado_ic }}
                         </td>
@@ -113,12 +136,9 @@
                             {{ $interconsulta->ges == 1 ? $interconsulta->problema->numero_ges : '' }}
                             {{ $interconsulta->problema->nombre_problema ?? '' }}
                         </td>
-                        {{-- <td data-order="{{ $interconsulta->fecha_citacion }}">
-                            {{ \Carbon\Carbon::parse($interconsulta->fecha_citacion)->format('d-m-Y H:i') }}
-                        </td> --}}
                         <td>{{ $interconsulta->retirado_por }}</td>
                         <td>{{ $interconsulta->observacion_ic ?? '' }}</td>
-                        <td>{{ $interconsulta->paciente->telefono ?? '' }}</td>
+                        <td>{{ $telefono }}</td>
                         <td>
                             <button data-toggle="modal" data-target="#editModal-{{ $interconsulta->id }}"
                                 class="btn btn-sm btn-success border-indigo-500 btn-sm">
@@ -159,39 +179,22 @@
             </div>
         </div>
     </div>
-
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if(session('importados'))
-        <div class="alert alert-info">
-            Interconsultas importadas: {{ implode(', ', session('importados')) }}
-        </div>
-    @endif
-
-    @if(session('pacientes'))
-        <div class="alert alert-info">
-            Pacientes importados: {{ implode(', ', session('pacientes')) }}
-        </div>
-    @endif
 @stop
 @section('plugins.Datatables', true)
 @section('js')
     <script src="//cdn.datatables.net/plug-ins/1.12.1/sorting/datetime-moment.js"></script>
     <script>
-        // Configura el formato de la fecha
-        $.fn.dataTable.moment('DD-MM-YYYY HH:MM:SS');
+        // Configura el formato de la fecha para ordenamiento correcto
+        $.fn.dataTable.moment('DD-MM-YYYY HH:mm');
 
         $("#interconsultas").DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'excel',
-            ],
             responsive: true,
             autoWidth: true,
+            pageLength: 10, // Mostrar 10 registros por página
+            lengthMenu: [
+                [10, 20, 50, 100, -1],
+                [10, 20, 50, 100, "Todos"]
+            ], // Opciones de registros por página
             language: {
                 "processing": "Procesando...",
                 "lengthMenu": "Mostrar _MENU_ registros",
@@ -217,9 +220,8 @@
             processing: true,
             orderCellsTop: true,
             fixedHeader: true,
-            pageLength: 7,
             order: [
-                [4, 'asc'] // Ordenar por la columna 4 (Fecha / Hora Notificación) en orden descendente
+                [4, 'asc'] // Ordenar por la columna 4 (Fecha Citación) en orden ascendente
             ]
         });
     </script>
@@ -230,12 +232,6 @@
             allowClear: true,
             width: '100%',
             minimumResultsForSearch: Infinity // Oculta el campo de búsqueda
-        });
-    </script>
-    <script>
-        $('#exportarExcelBtn').on('click', function() {
-            // Dispara el botón de Excel de DataTables
-            $('.buttons-excel').click();
         });
     </script>
     <style>
