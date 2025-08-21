@@ -32,7 +32,7 @@ class InterconsultaController extends Controller
 
         $estadisticas = [
             'retiradas_notificadas' => Interconsulta::whereIn('estado_ic', ['retirada', 'notificada'])->count(),
-            'pendientes' => Interconsulta::where('estado_ic', 'pendiente')->count(),
+            'pendientes' => Interconsulta::where('estado_ic', 'pendiente')->where('fecha_citacion', '>=', \Carbon\Carbon::tomorrow()->startOfDay())->count(),
             'rechazadas' => Interconsulta::where('estado_ic', 'rechazada')->count(),
         ];
 

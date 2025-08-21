@@ -14,11 +14,10 @@ class ImportController extends Controller
         $request->validate([
             'file' => 'required|mimes:xls,xlsx'
         ]);
-
-        $file = $request->file('file');
-
-        $rows = Excel::import(new ControlImport, $file);
         
+        // Importar el archivo Excel usando ControlImport
+        Excel::import(new ControlImport, $request->file('file'));
+
         return redirect()->back()->with('success', 'Data imported successfully.');
     }
 
