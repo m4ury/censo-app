@@ -481,7 +481,7 @@ class Paciente extends Model
     public function asma($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
@@ -493,7 +493,7 @@ class Paciente extends Model
     public function sbor($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.sborClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
@@ -504,7 +504,7 @@ class Paciente extends Model
     public function epoc($fem, $masc, $clasif = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.epocClasif', $clasif)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
@@ -524,7 +524,7 @@ class Paciente extends Model
     public function otrasResp($fem, $masc, $enf = null)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.otras_enf', $enf)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
@@ -550,7 +550,7 @@ class Paciente extends Model
     public function asmaControl($fem, $masc, $control)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.asmaControl', $control)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
@@ -561,7 +561,7 @@ class Paciente extends Model
     public function epocControl($fem, $masc, $control)
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->where('controls.epocControl', $control)
             ->whereYear('controls.fecha_control', '2025')
             ->whereIn('sexo', [$fem, $masc])
