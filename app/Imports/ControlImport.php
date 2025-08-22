@@ -30,8 +30,10 @@ class ControlImport implements ToCollection
             // Suponiendo que:
             // Columna B (índice 1) → Fecha
             // Columna H (índice 7) → Paciente
-            // Columna Y (índice 24) → Nivel de control
-            // Columna AB (índice 27) → Categoría diagnóstica
+            // Columna W (índice 22) → Nivel de control
+            // Columna Y (índice 24) → Categoría diagnóstica
+
+            // REPORTES desde Julio 2025 en adelante
 
             $rawFecha = $row[1] ?? null;
             //dd($rawFecha);
@@ -78,8 +80,8 @@ class ControlImport implements ToCollection
             }
 
             $tipoControlRow = $row[6] ?? null;
-            $nivelControlRow = $row[24] ?? null;
-            $categDiagnosticaRow = $row[27] ?? null;
+            $nivelControlRow = $row[22] ?? null;
+            $categDiagnosticaRow = $row[24] ?? null;
 
             // Limpieza de datos ejemplo:
             $nivelControl = trim(preg_replace('/[\x{00A0}\s]+/u', ' ', $nivelControlRow ?? ''));
@@ -134,7 +136,14 @@ class ControlImport implements ToCollection
                     'apellidoP' => $paciente->apellidoP,
                     'apellidoM' => $paciente->apellidoM,
                     'fecha_nacimiento' => $paciente->fecha_nacimiento,
-    ]);
+                    'sexo' => $paciente->sexo,
+                ])->context([
+                    'fecha_control' => $fechaControlFormatted,
+                    'tipo_control' => $tipoControl,
+                    'nivel_control' => $nivelControl,
+                    'categ_diagnostica' => $categDiagnostica,
+                ])->tags(['importacion', 'paciente_nuevo'
+                ]);
 
                 // ID de la patología respiratorio sala era
                 $patologiaId = 8;
@@ -167,47 +176,11 @@ class ControlImport implements ToCollection
                 $campoControl = 'asmaControl';
                 $valorClasif = ucfirst(strtolower($categDiagnostica)); // Ej: 'Leve', 'Moderado', 'Severo'
                 $valorControl = ucfirst(strtolower($nivelControl)); // Ej: 'Controlado', etc.
-            } elseif (stripos($categDiagnosticaRow, 'epoc') !== false) {
-                $campoClasif = 'epocClasif';
-                $campoControl = 'epocControl';
-                $valorClasif = strtoupper($categDiagnostica); // Ej: 'A', 'B'
-                $valorControl = ucfirst(strtolower($nivelControl)); // Ej: 'Logra Control', etc.
-            } elseif (stripos($categDiagnosticaRow, 'sbor') !== false) {
-                $campoClasif = 'sborClasif';
-                $campoControl = 'sborControl';
-                $valorClasif = ucfirst(strtolower($categDiagnostica)); // Ej: 'Leve', 'Moderado', 'Severo'
-                $valorControl = ucfirst(strtolower($nivelControl)); // Ej: 'Controlado', etc.
-            } elseif (stripos($categDiagnosticaRow, 'otras') !== false) {
-                $campoClasif = 'otras_enf';
-                $valorClasif = ucfirst(strtolower($categDiagnostica));
-            }
-
-            if ($campoClasif === 'otras_enf') {
-                // Mapea frases a los valores válidos del enum
-                $otrasControlMap = [
-                    'Otras respiratorias cronicas',
-                    'Oxigeno dependiente',
-                    'Asistencia ventilatoria no invasiva o invasiva',
-                    'Fibrosis quistica',
-                ];
-                $valorClasifLower = strtolower($valorClasif);
-                $valorClasif = null;
-                foreach ($otrasControlMap as $key => $enumValue) {
-                    if (strpos($valorClasifLower, $key) !== false) {
-                        $valorClasif = $enumValue;
-                        break;
-                    }
-                }
-            }
-
-            //validar los parametros de asmaControl
-            if ($campoControl === 'asmaControl') {
-                // Mapea frases a los valores válidos del enum
                 $asmaControlMap = [
                     'asma controlada'      => 'Controlado',
-                    'asma parcialmente controlada'   => 'Parcialmente controlada',
-                    'no evaluado'        => 'No Evaluado',
-                    'no evaluado'        => 'No Controlado',
+                    'asma parcialmente controlada'   => 'Parcialmente Controlado',
+                    'no evaluada'        => 'No Evaluado',
+                    'asma no controlada'        => 'No Controlado',
                 ];
                 $valorControlLower = strtolower($valorControl);
                 $valorControl = null;
@@ -217,13 +190,47 @@ class ControlImport implements ToCollection
                         break;
                     }
                 }
-            }
+            } elseif (stripos($categDiagnosticaRow, 'epoc') !== false) {
+                $campoClasif = 'epocClasif';
+                $campoControl = 'epocControl';
+                $valorClasif = strtoupper($categDiagnostica); // Ej: 'A', 'B'
+                $valorControl = ucfirst(strtolower($nivelControl)); // Ej: 'Logra Control', etc.
+                $epocControlMap = [
+                    'epoc logra control'      => 'Logra Control',
+                    'epoc no logra control adecuado'   => 'No Logra Control',
+                    'no evaluada'        => 'No Evaluado',
+                ];
+                $valorControlLower = strtolower($valorControl);
+                $valorControl = null;
+                foreach ($epocControlMap as $key => $enumValue) {
+                    if (strpos($valorControlLower, $key) !== false) {
+                        $valorControl = $enumValue;
+                        break;
+                    }
+                }
+
+            } elseif (stripos($categDiagnosticaRow, 'sbor') !== false) {
+                $campoClasif = 'sborClasif';
+                $valorClasif = ucfirst(strtolower($categDiagnostica)); // Ej: 'Leve', 'Moderado', 'Severo'
+                $valorControl = null; // No se usa control para Sbor
+
+            } elseif (stripos($categDiagnosticaRow, 'otras') !== false) {
+                $campoClasif = 'otras_enf';
+                $valorClasif = 'Otras respiratorias cronicas';
+                $nivelControl = null; // No se usa nivel de control para otras patologías
+            } 
+
+                /* dd(
+                    $fechaControlFormatted, $rut, $apellidoP, $apellidoM, $nombres,
+                    $fechaNacimiento, $sexo, $tipoControl, $nivelControl, $campoClasif, $valorClasif, $campoControl, $valorControl
+                ); */
+
 
             // Validar por rango etario
             $permitido = false;
             if ($campoClasif === 'epocClasif') {
                 $permitido = $edad_anios > 39;
-            } elseif ($campoClasif === 'asmaClasif') {
+            } elseif ($campoClasif === 'asmaClasif' or $campoClasif === 'otras_enf') {
                 $permitido = true; // Asma puede ser cualquier edad
             } elseif ($campoClasif === 'sborClasif') {
                 $permitido = $edad_anios < 5;
@@ -241,24 +248,6 @@ class ControlImport implements ToCollection
                 }
             }
 
-            // Normalización y mapeo para epocControl
-            if ($campoControl === 'epocControl') {
-                // Mapea frases a los valores válidos del enum
-                $epocControlMap = [
-                    'logra control'      => 'Logra Control',
-                    'no logra control'   => 'No Logra Control',
-                    'no evaluado'        => 'No Evaluado',
-                ];
-                $valorControlLower = strtolower($valorControl);
-                $valorControl = null;
-                foreach ($epocControlMap as $key => $enumValue) {
-                    if (strpos($valorControlLower, $key) !== false) {
-                        $valorControl = $enumValue;
-                        break;
-                    }
-                }
-            }
-
 
             // Evitar duplicados antes de insertar
             if ($permitido && $paciente && $campoClasif && $valorClasif) {
@@ -268,7 +257,7 @@ class ControlImport implements ToCollection
                     ->where($campoClasif, $valorClasif)
                     ->exists();
 
-               /*  dd(
+                /* dd(
                 $fechaControlFormatted, $rut, $apellidoP, $apellidoM, $nombres,
                 $fechaNacimiento, $tipoControl, $nivelControl, $categDiagnostica
                 ); */

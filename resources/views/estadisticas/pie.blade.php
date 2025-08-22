@@ -24,7 +24,7 @@
                         <th>N° Ficha</th>
                         <th>Nombre completo</th>
                         <th>Evaluacion</th>
-                        <th>patologia</th>
+                        <th>Num. Contacto</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +35,7 @@
                             <td>{{ $paciente->ficha }}</td>
                             <td>{{ $paciente->fullName() }}</td>
                             <td>{{ $paciente->evaluacionPie }}</td>
-                            <td>{{ $paciente->nombre_patologia }}</td>
+                            <td>{{ $paciente->telefono }}</td>
                         </tr>
                     @endforeach
                 </tbody>
