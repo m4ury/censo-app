@@ -15,6 +15,25 @@ class ControlImport implements ToCollection
 {
     public function collection(Collection $rows)
     {
+
+        // Leer el valor de la celda B7 (fila 7, columna 2)
+    $origenRepo = null;
+    if (isset($rows[6]) && isset($rows[6][1])) { // Fila 7 es índice 6, columna B es índice 1
+        $origenRepo = trim($rows[6][1]);
+    }
+
+    // Determinar patologiaId según el repo
+    $patologiaId = 0; // Valor por defecto
+    if ($origenRepo === '06. PROGRAMAS RESPIRATORIOS') {
+        $patologiaId = 8;
+    } elseif ($origenRepo === '33. INSTRUMENTOS DE EVALUACIÓN ADULTO') {
+        $patologiaId = 2;
+    } elseif ($origenRepo === '08. PROGRAMA SALUD MENTAL') {
+        $patologiaId = 9;
+    }
+
+    //dd($origenRepo, $patologiaId ?? 'No identificado');
+
         $fila = 0;
         // Omitir encabezado si existe
         foreach ($rows as $row) {
@@ -33,7 +52,7 @@ class ControlImport implements ToCollection
             // Columna W (índice 22) → Nivel de control
             // Columna Y (índice 24) → Categoría diagnóstica
 
-            // REPORTES desde Julio 2025 en adelante
+            // REPORTES desde Junio 2025 en adelante
 
             $rawFecha = $row[1] ?? null;
             //dd($rawFecha);
@@ -220,12 +239,6 @@ class ControlImport implements ToCollection
                 $nivelControl = null; // No se usa nivel de control para otras patologías
             } 
 
-                /* dd(
-                    $fechaControlFormatted, $rut, $apellidoP, $apellidoM, $nombres,
-                    $fechaNacimiento, $sexo, $tipoControl, $nivelControl, $campoClasif, $valorClasif, $campoControl, $valorControl
-                ); */
-
-
             // Validar por rango etario
             $permitido = false;
             if ($campoClasif === 'epocClasif') {
@@ -248,7 +261,6 @@ class ControlImport implements ToCollection
                 }
             }
 
-
             // Evitar duplicados antes de insertar
             if ($permitido && $paciente && $campoClasif && $valorClasif) {
                 $existe = \App\Control::where('paciente_id', $paciente->id)
@@ -256,11 +268,6 @@ class ControlImport implements ToCollection
                     ->where('tipo_control', $tipoControl)
                     ->where($campoClasif, $valorClasif)
                     ->exists();
-
-                /* dd(
-                $fechaControlFormatted, $rut, $apellidoP, $apellidoM, $nombres,
-                $fechaNacimiento, $tipoControl, $nivelControl, $categDiagnostica
-                ); */
 
                 if (!$existe) {
                     $control = \App\Control::create([
