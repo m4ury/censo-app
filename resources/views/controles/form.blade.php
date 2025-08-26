@@ -284,8 +284,8 @@
                     $('#Medico').hide();
                     break;
                 case 'Medico':
-                    $('#Medico, #Nutricionista').show();
-                    $('#Enfermera, .nut').hide();
+                    $('#Medico, #Kine, #Enfermera, #efam').show();
+                    $('.nut').hide();
                     break;
                 case 'Psicologo':
                     $('#Psicologo, #Nutricionista').show();
@@ -357,10 +357,10 @@
     <script>
         var selectedOption = $('#tipo').val();
         if (selectedOption == 'Psicologo') {
-            $('#Psicologo').show();
+            $('#Psicologo, #Nutricionista').show();
             $('.presion_art, .peso_talla, .imc').hide()
         } else if (selectedOption == 'Medico') {
-            $('#Medico, #Nutricionista').show();
+            $('#Medico, #Kine, #Enfermera, #efam').show();
         } else if (selectedOption == 'Enfermera') {
             $('#Enfermera, #efam').show();
             if ('{{ $paciente->edad() }}' < 3) {
@@ -529,6 +529,11 @@
                 $('.fields').show();
             } else $('.fields').hide();
         });
+
+        var selectedOption = $('input#ci_adolecente').is(':checked');
+        if (selectedOption) {
+            $('.fields').show();
+        } else $('.fields').hide();
 
         $('.scoreIra').change(function() {
             if ($('.scoreIra').val() === 'moderado' || $('.scoreIra').val() === 'grave') {

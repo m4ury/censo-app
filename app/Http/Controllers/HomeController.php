@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Cache::remember('home_data', now()->addMinutes(10), function () {
+        $data = Cache::remember('home_data', now()->addMinutes(3), function () {
             $all = new Paciente;
 
             return [
@@ -84,7 +84,7 @@ class HomeController extends Controller
         });
 
 
-        $dataChart = Cache::remember('chart_data', now()->addMinutes(10), function () {
+        $dataChart = Cache::remember('chart_data', now()->addMinutes(3), function () {
             $all = new Paciente;
 
             return [
