@@ -14,6 +14,9 @@ use Freshwork\ChileanBundle\Rut;
 
 class ControlImport implements ToCollection
 {
+    private $pacientesCreados = 0;
+    private $controlesCreados = 0;
+
     public function collection(Collection $rows)
     {
 
@@ -246,7 +249,10 @@ class ControlImport implements ToCollection
                     'sexo' => $paciente->sexo,
                 ]);
 
-                // Verifica si ya existe la relación en la tabla pivot
+                $this->pacientesCreados++;
+            }
+
+            // Verifica si ya existe la relación en la tabla pivot
                 $yaTienePatologia = \DB::table('paciente_patologia')
                     ->where('paciente_id', $paciente->id)
                     ->where('patologia_id', $patologiaId)
@@ -261,7 +267,6 @@ class ControlImport implements ToCollection
                         'updated_at' => $fechaControlFormatted ?? now(),
                     ]);
                 }
-            }
 
             // Evitar duplicados antes de insertar.
             if ($paciente && $fechaControlFormatted) {
@@ -274,7 +279,7 @@ class ControlImport implements ToCollection
                         'fecha_control' => $fechaControlFormatted,
                         'tipo_control'  => !empty($tipoControl) ? $tipoControl : null,
                         'evaluacionPie' => $estimacionRiesgo,
-                        'observacion'   => 'Importado desde Registro de Prestaciones, reporte: ' . ($origenRepo ?? 'Desconocido'),
+                        'observacion'   => 'Importado desde Registro de Prestaciones, repositorio: ' . ($origenRepo ?? 'Desconocido'),
                     ];
 
                     if ($campoClasif) {
@@ -289,6 +294,7 @@ class ControlImport implements ToCollection
 
                     if (!$existe) {
                         $control = Control::create($searchData);
+                        $this->controlesCreados++;
 
                         // Loguear control creado
                         \Log::info('Control creado por importación', [
@@ -304,5 +310,15 @@ class ControlImport implements ToCollection
                 }
             }
         }
+    }
+
+    public function getPacientesCreados()
+    {
+        return $this->pacientesCreados;
+    }
+
+    public function getControlesCreados()
+    {
+        return $this->controlesCreados;
     }
 }

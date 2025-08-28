@@ -887,7 +887,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Bajo')
-            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
+            ->whereYear('controls.fecha_control', Carbon::now())
             ->latest('controls.fecha_control');
     }
 
@@ -895,7 +895,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Moderado')
-            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
+            ->whereYear('controls.fecha_control', Carbon::now())
             ->latest('controls.fecha_control');
     }
 
@@ -903,7 +903,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Alto')
-            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
+            ->whereYear('controls.fecha_control', Carbon::now())
             ->latest('controls.fecha_control');
     }
 
@@ -911,7 +911,7 @@ class Paciente extends Model
     {
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
             ->where('controls.evaluacionPie', 'Maximo')
-            ->whereYear('controls.fecha_control', Carbon::now()->subYear(1))
+            ->whereYear('controls.fecha_control', Carbon::now())
             ->latest('controls.fecha_control');
     }
 
