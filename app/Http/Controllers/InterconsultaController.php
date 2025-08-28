@@ -51,12 +51,15 @@ class InterconsultaController extends Controller
         ]);
 
         $import = new InterconsultasImport;
-        Excel::import(new InterconsultasImport, $request->file('archivo'));
+        Excel::import($import, $request->file('archivo'));
 
-        return back()
-            ->with('success', 'Importación completada. Pacientes importados: ' . count($import->pacientes) . ', Interconsultas importadas: ' . count($import->importados))
-            ->with('importados', $import->importados)
-            ->with('pacientes', $import->pacientes);
+        // Obtener los contadores
+        $pacientesCreados = $import->getPacientesCreados();
+        $interconsultasCreadas = $import->getInterconsultasCreadas();
+
+        $message = "Importación completada. Se crearon {$pacientesCreados} pacientes y se importaron {$interconsultasCreadas} interconsultas nuevas.";
+
+        return redirect()->back()->with('success', $message);
     }
 
     public function update(Request $request, $id)

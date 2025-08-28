@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Cache::remember('home_data', now()->addMinutes(3), function () {
+        $data = Cache::remember('home_data', now()->addMinutes(1), function () {
             $all = new Paciente;
 
             return [
@@ -63,6 +63,7 @@ class HomeController extends Controller
                 'sm' => $all->sm()->count(),
                 'sala_era' => $all->salaEra()->count(),
                 'am' => $all->whereNull('egreso')->get()->where('grupo', '>', 64)->count(),
+                'ninos' => $all->whereNull('egreso')->get()->whereBetween('grupo', [0, 9])->count(),
                 'efam' => $all->efam()->whereYear('controls.fecha_control', '>', '2024')->distinct('pacientes.rut')->count(),
                 'barthel' => $all->barthel()->whereYear('controls.fecha_control', '>', '2024')->distinct('pacientes.rut')->count(),
                 'totalMasculino' => $all->pscv()->where('sexo', '=', 'Masculino')->count(),
@@ -84,7 +85,7 @@ class HomeController extends Controller
         });
 
 
-        $dataChart = Cache::remember('chart_data', now()->addMinutes(3), function () {
+        $dataChart = Cache::remember('chart_data', now()->addMinutes(1), function () {
             $all = new Paciente;
 
             return [
@@ -133,6 +134,7 @@ class HomeController extends Controller
             'dlp' => $paciente->dlp()->whereNull('egreso')->get(),
             'iam' => $paciente->iam()->whereNull('egreso')->get(),
             'acv' => $paciente->acv()->whereNull('egreso')->get(),
+            'ninos' => $paciente->whereNull('egreso')->get()->whereBetween('grupo', [0, 9]),
             default => collect(),
         };
 

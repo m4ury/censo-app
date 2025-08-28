@@ -436,6 +436,20 @@
                     </a>
                 </div>
             </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-lime">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $ninos }}</a></h3>
+                        <p>NIÑOS NIÑAS</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <a href="{{ route('pacientes.listado', 'ninos') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg col-sm">

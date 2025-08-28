@@ -11,8 +11,8 @@ use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
 
 class InterconsultasImport implements ToCollection
 {
-    public $importados = [];
-    public $pacientes = [];
+    private $pacientesCreados = 0;
+    private $interconsultasCreadas = 0;
 
     /**
      * @param array $row
@@ -101,7 +101,7 @@ class InterconsultasImport implements ToCollection
                     'egreso'            => null,
                 ]);
 
-                $this->pacientes[] = $paciente->id; // Guardar ID del paciente importado
+                $this->pacientesCreados++;
             }
 
 
@@ -156,7 +156,7 @@ class InterconsultasImport implements ToCollection
                     'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
-                $this->importados[] = $importados->id; // Guardar ID de la interconsulta importada
+                $this->interconsultasCreadas++;
 
                 // Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo);
                 Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellido . ' - ' . $problema->nombre_problema);
@@ -166,13 +166,13 @@ class InterconsultasImport implements ToCollection
         }
     }
 
-    public function getImportdos()
+    public function getPacientesCreados()
     {
-        return $this->importados;
+        return $this->pacientesCreados;
     }
 
-    public function getPacientes()
+    public function getInterconsultasCreadas()
     {
-        return $this->pacientes;
+        return $this->interconsultasCreadas;
     }
 }

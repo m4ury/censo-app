@@ -46,8 +46,8 @@ class ControlImport implements ToCollection
 
             if ($origenRepo === '06. PROGRAMAS RESPIRATORIOS') {
                 $patologiaId = 8;
-                $nivelControlRow = $row[22] ?? null; // Columna W (índice 22)
-                $categDiagnosticaRow = $row[24] ?? null; // Columna Y (índice 24)
+                $nivelControlRow = $row[23] ?? null; // Columna W (índice 22), desde Julio 2025 Columna X (índice 23)
+                $categDiagnosticaRow = $row[25] ?? null; // Columna Y (índice 24) desde Julio 2025 Columna Z (índice 25)
 
                 $nivelControl = trim(preg_replace('/[\x{00A0}\s]+/u', ' ', $nivelControlRow ?? ''));
                 $categDiagnostica = strpos($categDiagnosticaRow, '-') !== false
@@ -139,6 +139,9 @@ class ControlImport implements ToCollection
                 }
             } elseif ($origenRepo === '08. PROGRAMA SALUD MENTAL') {
                 $patologiaId = 9;
+            } else {
+                // Si no se reconoce el repositorio, abortar y enviar un mensaje.
+                throw new \Exception("No es posible realizar la importación. El repositorio '" . ($origenRepo ?? 'desconocido') . "' no está soportado.");
             }
 
 

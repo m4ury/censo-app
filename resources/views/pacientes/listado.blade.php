@@ -22,40 +22,34 @@
                         <th>Rut</th>
                         <th>N° Ficha</th>
                         <th>Nombre completo</th>
+                        <th>Sexo</th>
+                        <th>Edad</th>
                         <th>Telefono</th>
                         <th>Sector</th>
                     </tr>
                 </thead>
                 <tbody>
-                @forelse ($pacientes as $paciente)
+                @foreach ($pacientes as $paciente)
                     <tr>
                         <td><a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->rut }}</td>
                         <td>{{ $paciente->ficha }}</td>
                         <td>{{ $paciente->fullName() }}</td>
+                        <td>{{ $paciente->sexo }}</td>
+                        <td>{{ $paciente->grupo }} años</td>
                         <td>{{ $paciente->telefono }}</td>
                         <td>
-                            @php
-                                $sectores = [
-                                    'Celeste' => ['text-primary', 'Celeste'],
-                                    'Naranjo' => ['text-orange', 'Naranjo'],
-                                    'Blanco'  => ['text-white', 'Blanco'],
-                                ];
-                                $sector = $paciente->sector;
-                            @endphp
-                            @if(isset($sectores[$sector]))
-                                <span class="mr-2">
-                                    <i class="fas fa-square {{ $sectores[$sector][0] }}"></i>
-                                </span> {{ $sectores[$sector][1] }}
-                            @else
-                                {{ $sector }}
+                            @if ($paciente->sector == "Celeste")
+                                <span><i class="fas fa-square" style="color:rgb(38, 0, 255)"></i> {{ $paciente->sector }} </span>
+                            @elseif ($paciente->sector == "Naranjo")
+                                <span><i class="fas fa-square" style="color:rgba(255, 102, 0, 1)"></i> {{ $paciente->sector }} </span>
+                            @elseif ($paciente->sector == "Blanco")
+                                <span><i class="fas fa-square" style="color:rgba(245, 244, 248, 1)"></i> {{ $paciente->sector }} </span>
+                                @else 
+                                Sin sector asignado
                             @endif
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="4" class="text-center">No hay pacientes disponibles.</td>
-                    </tr>
-                @endforelse
+                @endforeach
                 </tbody>
             </table>
         </div>

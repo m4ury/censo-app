@@ -12,21 +12,27 @@ class ImportController extends Controller
     {
 
         $request->validate([
-            'file' => 'required|mimes:xls,xlsx'
+            'file' => 'required|mimes:xlsx'
         ]);
 
-        $import = new ControlImport;
+        try {
+            $import = new ControlImport;
 
-        // Importar el archivo Excel
-        Excel::import($import, $request->file('file'));
+            // Importar el archivo Excel
+            Excel::import($import, $request->file('file'));
 
-        // Obtener los contadores
-        $pacientesCreados = $import->getPacientesCreados();
-        $controlesCreados = $import->getControlesCreados();
+            // Obtener los contadores
+            $pacientesCreados = $import->getPacientesCreados();
+            $controlesCreados = $import->getControlesCreados();
 
-        $message = "Importación completada. Se crearon {$pacientesCreados} pacientes y se importaron {$controlesCreados} controles nuevos.";
+            $message = "Importación completada. Se crearon {$pacientesCreados} pacientes y se importaron {$controlesCreados} controles nuevos.";
 
-        return redirect()->back()->with('success', $message);
+            return redirect()->back()->with('success', $message);
+            
+        } catch (\Exception $e) {
+            // Manejar el error y redirigir con un mensaje de error
+            return redirect()->back()->with('error', 'Error durante la importación: ' . $e->getMessage());
+        }
     }
 
     public function excel()
