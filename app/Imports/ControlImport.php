@@ -14,6 +14,17 @@ use Freshwork\ChileanBundle\Rut;
 
 class ControlImport implements ToCollection
 {
+    // Índices de columnas para reportes estándar
+    private const COL_RESP_STD_DIAGNOSTICO = 25; // Columna Z
+    private const COL_RESP_STD_CONTROL = 23; // Columna X
+
+    // Índices de columnas para reportes ECICEP
+    private const COL_RESP_ECICEP_DIAGNOSTICO = 26; // Columna AA
+    private const COL_RESP_ECICEP_CONTROL = 30; // Columna AE
+    private const COL_RESP_ECICEP_CLASIFICACION = 27; // Columna AB
+
+    private const COL_INASISTENCIA = 63; // Columna BL
+
     private $pacientesCreados = 0;
     private $controlesCreados = 0;
 
@@ -49,7 +60,7 @@ class ControlImport implements ToCollection
 
             if ($origenRepo === '06. PROGRAMAS RESPIRATORIOS' or $origenRepo === '09. ATENCIÓN INTEGRAL - ESTRATEGIA MULTIMORBILIDAD') {
                 $patologiaId = 8;
-                $inasistenciaRow = $row[63] ?? null; // Columna BL (índice 63)
+                $inasistenciaRow = $row[self::COL_INASISTENCIA] ?? null; // Columna BL
                 $prestacionRow = $rows[7][1] ?? null; // Columna B (índice 1) fila 8 (índice 7)
 
                 if (stripos($inasistenciaRow, 'inasistencia') !== false) {
@@ -57,21 +68,22 @@ class ControlImport implements ToCollection
                     continue;
                 }
 
-                $datosPatologia = $this->procesarDatosRespiratorios($row, 24, 22, $edad_anios);
-                $campoClasif = $datosPatologia['campoClasif'];
-                $campoControl = $datosPatologia['campoControl'];
-                $valorClasif = $datosPatologia['valorClasif'];
-                $valorControl = $datosPatologia['valorControl'];
-
                  //ECICEP complemento Respiratorio
                 if (stripos($prestacionRow, '3. respiratorio') !== false) {
-                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, 26, 31, $edad_anios);
+                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, self::COL_RESP_ECICEP_DIAGNOSTICO, self::COL_RESP_ECICEP_CONTROL, $edad_anios, self::COL_RESP_ECICEP_CLASIFICACION);
                     if ($datosPatologiaEcicep['campoClasif']) {
                         $campoClasif = $datosPatologiaEcicep['campoClasif'];
                         $campoControl = $datosPatologiaEcicep['campoControl'];
                         $valorClasif = $datosPatologiaEcicep['valorClasif'];
                         $valorControl = $datosPatologiaEcicep['valorControl'];
                     }
+                } else {
+                    // Si no es ECICEP, usar las columnas estándar
+                    $datosPatologia = $this->procesarDatosRespiratorios($row, self::COL_RESP_STD_DIAGNOSTICO, self::COL_RESP_STD_CONTROL, $edad_anios);
+                    $campoClasif = $datosPatologia['campoClasif'];
+                    $campoControl = $datosPatologia['campoControl'];
+                    $valorClasif = $datosPatologia['valorClasif'];
+                    $valorControl = $datosPatologia['valorControl'];
                 }
 
             } elseif ($origenRepo === '33. INSTRUMENTOS DE EVALUACIÓN ADULTO') {
@@ -115,11 +127,7 @@ class ControlImport implements ToCollection
                 $tipoControl = 'Psicologo';
             }
 
-            // Suponiendo que:
-            // Columna B (índice 1) → Fecha
-            // Columna H (índice 7) → Paciente
-
-
+            
             $rutRow = $row[7] ?? null;
             // Separar los datos por espacio
             $partes = explode(' ', trim($rutRow));
@@ -224,9 +232,9 @@ class ControlImport implements ToCollection
             // Evitar duplicados antes de insertar.
             if ($paciente && $fechaControlFormatted) {
                 // Un control debe tener al menos un dato además del paciente y la fecha.
-                $hasData = !empty($tipoControl) || ($campoClasif && $valorClasif) || $estimacionRiesgo;
-
-                if ($hasData) {
+                // Se considera que hay datos si se identifica un tipo de control, una patología o una evaluación de riesgo.
+                $hayDatosParaGuardar = !empty($tipoControl) || !is_null($campoClasif) || !is_null($estimacionRiesgo);
+                if ($hayDatosParaGuardar) {
                     $searchData = [
                         'paciente_id'   => $paciente->id,
                         'fecha_control' => $fechaControlFormatted,
@@ -277,34 +285,38 @@ class ControlImport implements ToCollection
         return $this->controlesCreados;
     }
 
-    private function procesarDatosRespiratorios($row, $categDiagnosticaIndex, $nivelControlIndex, $edad_anios)
+    private function procesarDatosRespiratorios($row, $categDiagnosticaIndex, $nivelControlIndex, $edad_anios, $clasifIndex = null)
     {
         $categDiagnosticaRow = $row[$categDiagnosticaIndex] ?? null;
         $nivelControlRow = $row[$nivelControlIndex] ?? null;
+
+        // Si no hay diagnóstico, no hay nada que procesar.
+        if (!$categDiagnosticaRow) {
+            return ['campoClasif' => null, 'campoControl' => null, 'valorClasif' => null, 'valorControl' => null];
+        }
 
         $campoClasif = null;
         $campoControl = null;
         $valorClasif = null;
         $valorControl = null;
-
-        if (!$categDiagnosticaRow) {
-            return compact('campoClasif', 'campoControl', 'valorClasif', 'valorControl');
-        }
-
         $nivelControl = trim(preg_replace('/[\x{00A0}\s]+/u', ' ', $nivelControlRow ?? ''));
-        $categDiagnostica = strpos($categDiagnosticaRow, '-') !== false
-            ? trim(explode('-', $categDiagnosticaRow)[1] ?? '')
-            : trim(preg_replace('/[\x{00A0}\s]+/u', ' ', $categDiagnosticaRow ?? ''));
 
-        // Extrae la última palabra de la categoría para obtener la clasificación (ej. 'Leve', 'Moderado', 'Severo')
-        $classificationParts = explode(' ', $categDiagnostica);
-        $classification = end($classificationParts);
+        // Lógica condicional para obtener la clasificación
+        if ($clasifIndex !== null) {
+            // Si se proporciona un índice de clasificación (caso ECICEP), tómalo de esa columna.
+            $classification = trim($row[$clasifIndex] ?? '');
+        } else {
+            // Si no, usa la lógica original: extrae la clasificación de la misma celda del diagnóstico.
+            $categDiagnostica = strpos($categDiagnosticaRow, '-') !== false ? trim(explode('-', $categDiagnosticaRow)[1] ?? '') : trim(preg_replace('/[\x{00A0}\s]+/u', ' ', $categDiagnosticaRow ?? ''));
+            $classificationParts = explode(' ', $categDiagnostica);
+            $classification = end($classificationParts);
+        }
 
         // Determinar tipo de patología y campo a usar
         if (stripos($categDiagnosticaRow, 'asma') !== false) {
             $campoClasif = 'asmaClasif';
             $campoControl = 'asmaControl';
-            $valorClasif = ucfirst(strtolower($classification)); // Ej: 'Leve', 'Moderado', 'Severo'
+            $valorClasif = $this->normalizeClassificationString($classification) ?? 'Leve';
 
             $asmaControlMap = [
                 'asma controlada' => 'Controlado',
@@ -323,8 +335,8 @@ class ControlImport implements ToCollection
         } elseif (stripos($categDiagnosticaRow, 'epoc') !== false || stripos($categDiagnosticaRow, 'enfermedad') !== false) {
             $campoClasif = 'epocClasif';
             $campoControl = 'epocControl';
-            $valorClasif = strtoupper($classification); // Ej: 'A', 'B'
-
+            // Se asigna directamente, la normalización a 'A' o 'B' se hace más abajo.
+            $valorClasif = $classification;
             $epocControlMap = [
                 'epoc logra control' => 'Logra Control',
                 'epoc no logra control adecuado' => 'No Logra Control',
@@ -341,7 +353,7 @@ class ControlImport implements ToCollection
         } elseif (stripos($categDiagnosticaRow, 'sbor') !== false) {
             $campoClasif = 'sborClasif';
             $campoControl = null;
-            $valorClasif = ucfirst(strtolower($classification)); // Ej: 'Leve', 'Moderado', 'Severo'
+            $valorClasif = $this->normalizeClassificationString($classification);
             $valorControl = null; // No se usa control para Sbor
         } elseif (stripos($categDiagnosticaRow, 'otras') !== false) {
             $campoClasif = 'otras_enf';
@@ -371,15 +383,44 @@ class ControlImport implements ToCollection
 
         // Normalización y mapeo para epocClasif
         if ($campoClasif === 'epocClasif') {
-            if (stripos($valorClasif, 'A') !== false) {
+            // Se busca una coincidencia exacta y no sensible a mayúsculas para 'A' o 'B'.
+            // Esto evita que se asigne 'A' si la clasificación es una palabra como "CRONICA" o "No Aplica".
+            $checkClasif = strtoupper(trim($valorClasif ?? ''));
+            if ($checkClasif === 'A') {
                 $valorClasif = 'A';
-            } elseif (stripos($valorClasif, 'B') !== false) {
+            } elseif ($checkClasif === 'B') {
                 $valorClasif = 'B';
             } else {
-                $valorClasif = null;
+                $valorClasif = 'A'; // Si no es exactamente 'A' o 'B', se anula.
             }
         }
 
         return compact('campoClasif', 'campoControl', 'valorClasif', 'valorControl');
+    }
+
+    private function normalizeClassificationString($string)
+    {
+        if (is_null($string)) {
+            return null;
+        }
+        
+        // Limpia espacios normales, no separables (nbsp), y otros caracteres de espacio.
+        $cleanedString = trim(preg_replace('/[\s\x{00A0}]+/u', ' ', $string));
+
+        if (empty($cleanedString)) {
+            return null;
+        }
+
+        $lowerCaseString = strtolower($cleanedString);
+
+        // Mapeo para corregir errores comunes o typos (como 'Moderado')
+        $map = [
+            'leve' => 'Leve',
+            'moderado' => 'Moderado',
+            'severo' => 'Severo',
+        ];
+
+        // Devuelve el valor mapeado o, si no existe, el valor original normalizado.
+        return $map[$lowerCaseString] ?? ucfirst($lowerCaseString);
     }
 }
