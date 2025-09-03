@@ -123,7 +123,7 @@
                     <div class="icon">
                         <i class="fas fa-female"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=femenino') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'totalFemenino') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                     <div class="icon">
                         <i class="fas fa-male"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=masculino') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'totalMasculino') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -152,12 +152,12 @@
                     <div class="icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=naranjo') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'totalNaranjo') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-2 col-sm">
-                <div class="small-box bg-gradient-lightblue">
+                <div class="small-box bg-gradient-lightblue">   
                     <div class="inner">
                         <h3>{{ $totalCeleste }}</h3>
                         <p>Pacientes Sector Celeste</p>
@@ -165,7 +165,7 @@
                     <div class="icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=celeste') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'totalCeleste') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <div class="icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <a href="{{ url('/pacientes?q=blanco') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'totalBlanco') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -361,7 +361,7 @@
                     <div class="icon">
                         <i class="fas fa-blind"></i>
                     </div>
-                    <a href="{{ route('estadisticas.am') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('pacientes.listado', 'am') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -440,12 +440,26 @@
                 <div class="small-box bg-gradient-lime">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $ninos }}</a></h3>
-                        <p>NIÑOS NIÑAS</p>
+                        <p>NIÑOS NIÑAS 0 a 9 Años</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-child"></i>
                     </div>
                     <a href="{{ route('pacientes.listado', 'ninos') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm">
+                <div class="small-box bg-gradient-green">
+                    <div class="inner">
+                        <h3 style="color:aliceblue">{{ $adolescentes }}</a></h3>
+                        <p>ADOLESCENTES 10 a 19 Años</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <a href="{{ route('pacientes.listado', 'adolescentes') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>

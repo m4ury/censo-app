@@ -89,6 +89,7 @@ return [
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => true,
     'layout_dark_mode' => null,
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -225,11 +226,19 @@ return [
     */
 
     'menu' => [
-        ['header' => 'PACIENTES'],
+        ['header' => 'PACIENTES',
+        'can' => 'oirs'        
+        ],
         [
             'text' => 'Pacientes',
             'route' => 'pacientes.index',
             'icon' => 'fas fa-fw fa-user-injured text-success',
+            'can' => 'oirs'
+        ],
+        [
+            'text' => 'Monitoreo Interconsultas',
+            'route' => 'interconsultas.index',
+            'icon' => 'fas fa-fw fa-envelope text-success',
             'can' => 'oirs'
         ],
 
@@ -238,12 +247,6 @@ return [
             'route' => 'encuestas.index',
             'icon' => 'fas fa-envelope text-pink',
             'can' => 'oirs'
-        ],
-
-        [
-            'text' => 'Solicitudes',
-            'route' => 'solicitudes.index',
-            'icon' => 'fas fa-envelope-open-text text-fuccia',
         ],
 
         [
@@ -258,23 +261,29 @@ return [
             'icon' => 'fas fa-fw fa-map-marked-alt text-gray-600',
             'can' => 'oirs'
         ],
+        ['header' => 'FICHAS'],
+        [
+            'text' => 'Solicitudes',
+            'route' => 'solicitudes.index',
+            'icon' => 'fas fa-envelope-open-text text-fuccia',
+        ],
         [
             'header' => 'CONTROLES',
-            'can' => 'controles-all'
+            'can' => 'estadisticas'
         ],
         [
             'text' => 'Importar Controles',
             'route' => 'controles.excel',
             'icon' => 'fas fa-fw fa-file-excel text-info',
-            'can' => 'controles-all'
+            'can' => 'estadisticas'
         ],
-
+/*
         [
             'text' => 'Proximos Controles',
             'route' => 'proximos',
             'icon' => 'fas fa-fw fa-project-diagram text-yellow',
             'can' => 'controles-all'
-        ],
+        ], */
         [
             'header' => 'ESTADISTICAS',
             'can' => 'estadisticas'
@@ -285,12 +294,16 @@ return [
             'icon' => 'fas fa-fw fa-file-alt text-pink',
             'can' => 'estadisticas'
         ],
-        [
+        /* [
             'text' => 'Metas Ley 18.834',
             'route' => 'estadisticas.metas',
             'icon' => 'fas fa-chart-pie text-green',
             'can' => 'estadisticas'
-        ],
+        ], */
+        [
+        'type' => 'darkmode-widget',
+        'topnav_right' => true,     // Or "topnav => true" to place on the left.
+        ]
     ],
 
     /*
@@ -447,6 +460,16 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css',
+                ],
+            ],
+        ],
+        'SheetJs' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js',
                 ],
             ],
         ],
