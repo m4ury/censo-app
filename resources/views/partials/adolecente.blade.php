@@ -117,7 +117,6 @@
                         'condPostergada' => 'ADOLESCENTES CON CONDUCTA POSTERGADORA',
                         'condAnticipadora' => 'ADOLESCENTES CON CONDUCTA ANTICIPADORA',
                         'condActiva' => 'ADOLESCENTES CON CONDUCTA ACTIVA',
-                        'trabJuvenil' => 'TRABAJO JUVENIL',
                         'usoAnticonceptivo' => 'USO ACTUAL DE METODO ANTICONCEPTIVO	',
                         'dobleProteccion' => 'USO ACTUAL DE DOBLE PROTECCIÓN',
                         'primerEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO',

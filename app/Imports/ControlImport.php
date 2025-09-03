@@ -100,8 +100,8 @@ class ControlImport implements ToCollection
                 } else {
                     $estimacionRiesgo = null;
                 }
-            } elseif ($origenRepo === '08. PROGRAMA SALUD MENTAL') {
-                $patologiaId = 9;
+            } elseif ($origenRepo === '02. PROGRAMA DEL ADOLESCENTE') {
+                
             } else {
                 // Si no se reconoce el repositorio, abortar y enviar un mensaje.
                 throw new \Exception("No es posible realizar la importación. El repositorio '" . ($origenRepo ?? 'desconocido') . "' no está soportado.");
