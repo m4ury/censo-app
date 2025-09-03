@@ -27,12 +27,16 @@ class InterconsultaController extends Controller
                 ->where('estado_ic', 'pendiente');
         }
 
+        // Cambiar esta línea:
         $interconsultas = $query->get();
 
-        // NUEVO: colección con todas las interconsultas
-        $todasInterconsultas = Interconsulta::with('paciente', 'problema')->get();
+        $estadisticas = [
+            'retiradas_notificadas' => Interconsulta::whereIn('estado_ic', ['retirada', 'notificada'])->count(),
+            'pendientes' => Interconsulta::where('estado_ic', 'pendiente')->where('fecha_citacion', '>=', \Carbon\Carbon::tomorrow()->startOfDay())->count(),
+            'rechazadas' => Interconsulta::where('estado_ic', 'rechazada')->count(),
+        ];
 
-        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos', 'todasInterconsultas'));
+        return view('interconsultas.index', compact('interconsultas', 'paciente', 'mostrar_todos', 'estadisticas'));
     }
 
     /* public function formImportar()
@@ -47,12 +51,15 @@ class InterconsultaController extends Controller
         ]);
 
         $import = new InterconsultasImport;
-        Excel::import(new InterconsultasImport, $request->file('archivo'));
+        Excel::import($import, $request->file('archivo'));
 
-        return back()
-            ->with('success', 'Importación completada. Pacientes importados: ' . count($import->pacientes) . ', Interconsultas importadas: ' . count($import->importados))
-            ->with('importados', $import->importados)
-            ->with('pacientes', $import->pacientes);
+        // Obtener los contadores
+        $pacientesCreados = $import->getPacientesCreados();
+        $interconsultasCreadas = $import->getInterconsultasCreadas();
+
+        $message = "Importación completada. Se crearon {$pacientesCreados} pacientes y se importaron {$interconsultasCreadas} interconsultas nuevas.";
+
+        return redirect()->back()->with('success', $message);
     }
 
     public function update(Request $request, $id)
@@ -73,6 +80,14 @@ class InterconsultaController extends Controller
         return redirect()->route('interconsultas.index')
             ->with('success', 'Interconsulta actualizada correctamente.');
     }
+
+    /* public function create()
+    {
+        $interconsulta = new Interconsulta();
+        $pacientes = Paciente::all();
+        $problemas = Problema::all();
+        return view('interconsultas.create', compact('pacientes', 'problemas', 'interconsulta'));
+    } */
 
     public function store(Request $request)
     {

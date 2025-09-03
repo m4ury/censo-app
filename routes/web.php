@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
@@ -21,6 +25,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/listado-pacientes/{tipo}', 'HomeController@listadoPacientes')->name('pacientes.listado');
 
 Route::middleware('auth')->group(function () {
+
+    Route::resource('permissions', 'PermissionController');
+    Route::get('permissions/{permissionId?}/delete', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.delete');
+
+    Route::resource('roles', 'RoleController');
+    Route::get('roles/{roleId?}/delete', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete');
+    Route::get('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionsToRole'])->name('roles.give-permissions');
+    Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionsToRole'])->name('roles.give-permissions');
+
+    Route::resource('users', 'UserController');
+    Route::get('users/{userId?}/delete', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
+    Route::post('users/{id}/restore', [App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
+
     Route::resource('pacientes', 'PacienteController');
     Route::get('/pacientes.g3', 'PacienteController@g3_list')->name('pacientes.g3');
     Route::get('/pacientes.i_g3', 'PacienteController@ig3_list')->name('pacientes.i_g3');
@@ -49,10 +66,6 @@ Route::middleware('auth')->group(function () {
 
     //rutas para OIRS
     Route::resource('encuestas', 'EncuestaController');
-    Route::resource('ciudadanas', 'CiudadanaController');
-
-    //rutas para IC
-    Route::resource('interconsultas', 'InterconsultaController');
 
     //rutas para solicitudes
     Route::resource('solicitudes', 'SolicitudController');
@@ -72,13 +85,6 @@ Route::middleware('auth')->group(function () {
     //importar controles excel
     Route::get('controles.excel', 'ImportController@excel')->name('controles.excel');
     Route::post('controles.import', 'ImportController@import')->name('controles.import');
-
-    //rutas para examenes
-    /* Route::resource('examenes', 'ExamenController')->except('[index, create]');
-    Route::get('examenes/create/{paciente?}', 'ExamenController@create')->name('examenes.create');
-    Route::get('examenes/created/new', 'ExamenController@creado')->name('examenes.created');
-    Route::post('examenes/guardar', 'ExamenController@guardado')->name('examenes.stored');
-    Route::get('examenes/{q?}', 'ExamenController@index')->name('examenes'); */
 
     //rutas para perfil
     Route::get('/perfil', 'UserController@profile')->name('perfil');
@@ -161,4 +167,5 @@ Route::middleware('auth')->group(function () {
 
     //Route::get('interconsultas/importar', 'InterconsultaController@formImportar')->name('interconsultas.formImportar');
     Route::post('interconsultas/importar', 'InterconsultaController@importarExcel')->name('interconsultas.importarExcel');
+    Route::resource('interconsultas', 'InterconsultaController');
 });

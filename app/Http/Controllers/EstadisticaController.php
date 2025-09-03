@@ -1341,9 +1341,9 @@ class EstadisticaController extends Controller
         $all = new Paciente;
         $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
             ->leftJoin('controls', 'controls.paciente_id', 'pacientes.id')
-            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo', 'controls.fecha_control', 'controls.tipo_control', 'controls.asmaClasif', 'controls.epocClasif', 'controls.sborClasif')
+            ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo', 'controls.fecha_control', 'controls.tipo_control', 'controls.asmaClasif', 'controls.epocClasif', 'controls.sborClasif', 'controls.otras_enf')
             ->where('paciente_patologia.patologia_id', 8)
-            ->where('controls.tipo_control', 'Kinesiologo')
+            //->where('controls.tipo_control', 'Kinesiologo')
             ->whereNull('egreso')
             ->latest('fecha_control')
             ->get()

@@ -71,6 +71,8 @@
                             <span class="text-bold"> EPOC {{ $paciente->epocClasif }}</span>
                         @elseif ($paciente->sborClasif)
                             <span class="text-bold"> SBOR {{ $paciente->sborClasif }}</span>
+                        @elseif ($paciente->otras_enf)
+                            <span class="text-bold"> Otras Enf. Resp. Cronicas</span
                         @endif
                     </td>
                     </tr>

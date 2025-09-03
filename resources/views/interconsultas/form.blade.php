@@ -18,7 +18,7 @@
         'class' => 'col-sm-3 col-form-label',
     ]) !!}
     <div class="col-sm-3">
-        {!! Form::date('fecha_ic', old('fecha_ic', $ic->fecha_ic), [
+        {!! Form::date('fecha_ic', old('fecha_ic', $interconsulta->fecha_ic), [
             'class' => 'form-control',
         ]) !!}
     </div>
@@ -26,7 +26,7 @@
         'class' => 'col-sm-3 col-form-label',
     ]) !!}
     <div class="col-sm-3">
-        {!! Form::time('hora_ic', old('hora_ic', $ic->hora_ic), [
+        {!! Form::time('hora_ic', old('hora_ic', $interconsulta->hora_ic), [
             'class' => 'form-control',
         ]) !!}
     </div>
@@ -52,7 +52,7 @@
         'class' => 'col-sm-3 col-form-label',
     ]) !!}
     <div class="col-sm">
-        {!! Form::text('retirado_por', old('retirado_por', $ic->retirado_por), [
+        {!! Form::text('retirado_por', old('retirado_por', $interconsulta->retirado_por), [
             'class' => 'form-control',
             'placeholder' => 'Nombre Completo de quien retira',
         ]) !!}
@@ -63,7 +63,7 @@
         'class' => 'col-sm col-form-label',
     ]) !!}
     <div class="col-sm">
-        {!! Form::textarea('observacion_ic', old('observacion_ic', $ic->observacion_ic), [
+        {!! Form::textarea('observacion_ic', old('observacion_ic', $interconsulta->observacion_ic), [
             'class' => 'form-control',
             'placeholder' => 'Observacion (Opcional)',
         ]) !!}

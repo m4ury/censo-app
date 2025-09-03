@@ -4,10 +4,6 @@
 namespace App\Imports;
 
 use Illuminate\Support\Facades\Log;
-use App\Paciente;
-use App\Problema;
-use App\Interconsulta;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Carbon\Carbon;
@@ -15,8 +11,8 @@ use PhpOffice\PhpSpreadsheet\Shared\Date as ExcelDate;
 
 class InterconsultasImport implements ToCollection
 {
-    public $importados = [];
-    public $pacientes = [];
+    private $pacientesCreados = 0;
+    private $interconsultasCreadas = 0;
 
     /**
      * @param array $row
@@ -105,7 +101,7 @@ class InterconsultasImport implements ToCollection
                     'egreso'            => null,
                 ]);
 
-                $this->pacientes[] = $paciente->id; // Guardar ID del paciente importado
+                $this->pacientesCreados++;
             }
 
 
@@ -141,6 +137,10 @@ class InterconsultasImport implements ToCollection
                 $nombreProblemaBD = 'Trastornos temporales mandibulares y dolor Orofacial';
             } elseif (str_contains($nombreProblema, 'INFECTOLOGIA')) {
                 $nombreProblemaBD = 'Dermatologia';
+            } elseif (str_contains($nombreProblema, 'PSIQUIATRIA PEDIATRICA Y DE LA ADOLESCENCIA')) {
+                $nombreProblemaBD = 'Psiquiatria Infantil';
+            } elseif (str_contains($nombreProblema, 'CIRUGIA PEDIATRICA')) {
+                $nombreProblemaBD = 'Cirugia Infantil';
             } else {
                 $nombreProblemaBD = $nombreProblema;
             }
@@ -156,7 +156,7 @@ class InterconsultasImport implements ToCollection
                     'fecha_citacion'  => $fechaCitacion,
                     'correlativo'     => $correlativo,
                 ]);
-                $this->importados[] = $importados->id; // Guardar ID de la interconsulta importada
+                $this->interconsultasCreadas++;
 
                 // Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo);
                 Log::info('Interconsulta importada: ' . $importados->id . ' - ' . $importados->correlativo . ' - ' . $paciente->rut . ' - ' . $paciente->nombres . ' ' . $paciente->apellido . ' - ' . $problema->nombre_problema);
@@ -166,13 +166,13 @@ class InterconsultasImport implements ToCollection
         }
     }
 
-    public function getImportdos()
+    public function getPacientesCreados()
     {
-        return $this->importados;
+        return $this->pacientesCreados;
     }
 
-    public function getPacientes()
+    public function getInterconsultasCreadas()
     {
-        return $this->pacientes;
+        return $this->interconsultasCreadas;
     }
 }

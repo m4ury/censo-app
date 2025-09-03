@@ -1,21 +1,26 @@
 <?php
 
-namespace app;
+namespace App\Models;
 
-use illuminate\contracts\auth\mustverifyemail;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-//use illuminate\foundation\auth\user as authenticatable;
+use App\Control;
+use App\Solicitud;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\App;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\App;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use illuminate\contracts\auth\mustverifyemail;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Constancia;
+use Spatie\Permission\Models\Role;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword;
-    use Notifiable;
+    use CanResetPassword, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * the attributes that are mass assignable.
@@ -23,7 +28,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'rut', 'apellido_paterno', 'apellido_materno'
+        'name',
+        'email',
+        'password',
+        'rut',
+        'apellido_paterno',
+        'apellido_materno',
+        'type',
     ];
 
     /**
@@ -32,7 +43,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -66,11 +78,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany(Control::class);
     }
 
-    public function examenes()
-    {
-        return $this->hasMany(Examen::class);
-    }
-
     public function solicitudes()
     {
         return $this->hasMany(Solicitud::class);
@@ -81,13 +88,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return ucfirst($this->name) . " " . ucfirst($this->apellido_paterno) . " " . ucfirst($this->apellido_materno);
     }
 
-    function isAdmin(){
+    function isAdmin()
+    {
         return $this->type === 'admin';
-
     }
 
-    function someUser(){
+    function someUser()
+    {
         return $this->type === 'some';
     }
 
+    public function constancias()
+    {
+        return $this->hasMany(\App\Constancia::class, 'user_id');
+    }
 }

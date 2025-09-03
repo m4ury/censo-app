@@ -1,5 +1,5 @@
 <div class="card card-primary card-outline mb-3" id="Medico">
-    <div class="card-header text-bold text-primary text-center">DIABETES MELLITUS</div>
+    <div class="card-header text-bold text-primary">DIABETES MELLITUS</div>
     @if ($paciente->grupo > 79)
         <div class="form-group row my-2 hba1c8">
             {!! Form::label('hba1cMenor8_label', 'HBA1C Menor a 8%', ['class' => 'col-sm col-form-label text-center']) !!}
