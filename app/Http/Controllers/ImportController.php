@@ -28,7 +28,7 @@ class ImportController extends Controller
             $message = "Importación completada. Se crearon {$pacientesCreados} pacientes y se importaron {$controlesCreados} controles nuevos.";
 
             return redirect()->back()->with('success', $message);
-            
+
         } catch (\Exception $e) {
             // Manejar el error y redirigir con un mensaje de error
             return redirect()->back()->with('error', 'Error durante la importación: ' . $e->getMessage());

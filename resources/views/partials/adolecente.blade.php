@@ -192,6 +192,15 @@
                     ['class' => 'form-control form-control-sm tipo_violencias', 'placeholder' => 'Seleccione'],
                 ) !!}
             </div>
+                {!! Form::label('esp_amigable_label', 'ATENCIÓN EN ESPACIOS AMIGABLES', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm-2">
+            {!! Form::checkbox('esp_amigables', 1, old('esp_amigables', $control->esp_amigables == 1 ? true : null), [
+                    'class' => 'form-control col col-form-label',
+                    'id' => 'esp_amigables',
+                ]) !!}
+            </div>
         </div>
     </div>
 </div>

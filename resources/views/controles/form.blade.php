@@ -211,7 +211,16 @@
         </div>
     </div>
 </div>
-
+@section('css')
+    {{-- Aquí puedes enlazar un archivo CSS o escribir los estilos directamente --}}
+    <style>
+        /* Estilo para el contenedor de Select2 cuando tiene un valor */
+        .select2-container.has-value .select2-selection--single {
+            border-color: #296e18dd; /* Verde */
+            box-shadow: 0 0 0 0.4rem rgba(40, 167, 69, 0.25); /* Sombra sutil verde */
+        }
+    </style>
+@stop
 @section('js')
     <script>
         $('#Enfermera, #Kine, #Medico, #Nutricionista, #efam, #Psicologo, #Dentista, #Matrona, .embarazo_fields, #tens, .post_partof, .fields, .vdi_label, .vdi')
@@ -381,7 +390,7 @@
             $('#Dentista').show();
             $('.presion_art, .peso_talla, .imc').hide()
         } else if (selectedOption == 'Matrona') {
-            $('#Matrona').show();
+            $('#Matrona, #Nutricionista').show();
             $('.condon, .preservativo, .diu_cobre, .horm, .estqx, .climater_fields, .post_partof').hide();
         }
     </script>
@@ -539,6 +548,33 @@
             if ($('.scoreIra').val() === 'moderado' || $('.scoreIra').val() === 'grave') {
                 $('.vdi_label, .vdi').show()
             } else $('.vdi_label, .vdi').hide()
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Función para revisar y aplicar el estilo a los selectores con Select2
+            function updateSelect2Style(selector) {
+                // .select2-container es el elemento que Select2 crea y que es visible.
+                // Le añadimos la clase 'has-value' si el <select> original tiene un valor.
+                if ($(selector).val() && $(selector).val() !== '') {
+                    $(selector).next('.select2-container').addClass('has-value');
+                } else {
+                    $(selector).next('.select2-container').removeClass('has-value');
+                }
+            }
+
+            // Selector para todos los <select> que usan Select2, excluyendo el de 'tipo_control'
+            const formSelects = "form select.select2-hidden-accessible:not(#tipo)";
+
+            // Aplicar el estilo al cargar la página a todos los selectores
+            $(formSelects).each(function() {
+                updateSelect2Style(this);
+            });
+
+            // Aplicar el estilo cuando un selector cambie
+            $(document).on('change', formSelects, function() {
+                updateSelect2Style(this);
+            });
         });
     </script>
 @endsection
