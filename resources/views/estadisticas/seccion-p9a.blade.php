@@ -162,17 +162,15 @@
                                     </td>
 
                                     <td>{{ $imc3DS->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td>{{ $imc3DSM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
-                                    </td>
-                                    <td>{{ $imc3DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
-                                    </td>
+                                    <td>{{ $imc3DSM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
+                                    <td>{{ $imc3DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> ≥ +2.0 a+2,9 D.E. (Obesidad)</th>
@@ -194,12 +192,12 @@
                                     <td>{{ $imc2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc2DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc2DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc2DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc2DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc2DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc2DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> ≥ +1.0 a+1,9 D.E.(Sobrepeso)</th>
@@ -221,12 +219,12 @@
                                     <td>{{ $imc1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc1DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc1DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc1DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr class="bg-gradient-light">
                                     <th class="text-info">SUBTOTAL</th>
@@ -250,12 +248,12 @@
                                     </td>
                                     <td>{{ $imc1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $imc2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $imc3DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc1DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc1DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc1DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc1DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th> ≤ -1.0 a-1,9 D.E.(Bajo peso)</th>
@@ -280,12 +278,12 @@
                                     <td>{{ $imc_1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc_1DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_1DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_1DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
 
                                 <tr>
@@ -311,12 +309,12 @@
                                     <td>{{ $imc_2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc_2DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_2DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_2DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_2DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_2DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_2DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
 
                                 <tr class="bg-gradient-light">
@@ -342,12 +340,12 @@
                                     <td>{{ $imc_1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $imc_2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc_1DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_1DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc_1DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc_1DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> -0.9 a+ 0.9 D.E. (Peso Normal)</th>
@@ -372,12 +370,12 @@
                                     <td>{{ $imc09DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc09DS->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc09DSM->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc09DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc09DS->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc09DSM->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc09DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 </tr>
 
@@ -399,12 +397,12 @@
                                     <td>{{ $indTe2DSM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $indTe2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> + 1.0 a+ 1.9 D.E. (Talla Normal Alta)</th>
@@ -419,12 +417,12 @@
                                     <td>{{ $indTe1DS->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $indTe1DSM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $indTe1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr class="bg-gradient-light">
                                     <th class="text-info">SUBTOTAL</th>
@@ -446,12 +444,12 @@
                                     <td>{{ $indTe1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $indTe2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th> - 1.0 a -1.9 D.E. (Talla Normal Baja)</th>
@@ -472,12 +470,12 @@
                                     </td>
                                     <td>{{ $indTe_1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th>
@@ -499,12 +497,12 @@
                                     </td>
                                     <td>{{ $indTe_2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
 
                                 <tr class="bg-gradient-light">
@@ -527,12 +525,12 @@
                                     <td>{{ $indTe_1DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $indTe_2DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> -0.9 a+ 0.9 D.E. (Talla Normal)</th>
@@ -557,12 +555,12 @@
                                     <td>{{ $indTe_09DSF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
 
                                 <tr>
@@ -592,12 +590,12 @@
                                     <td>{{ $pcintNormalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap=""> RIESGO DE OBESIDAD (75 < p < 90) </th>
@@ -622,12 +620,12 @@
                                     <td>{{ $pcintRiesgoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap="">OBESIDAD ABDOMINAL ( > p90)</th>
@@ -652,12 +650,12 @@
                                     <td>{{ $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr class="bg-gradient-light">
                                     <th class="text-info">TOTAL</th>
@@ -682,12 +680,12 @@
                                     <td>{{ $pcintNormalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintRiesgoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $pcintObesidadF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                 <tr>
@@ -707,12 +705,12 @@
                                     <td>{{ $rDesnut->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $rDesnutM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $rDesnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap="">DESNUTRIDO</th>
@@ -727,12 +725,12 @@
                                     <td>{{ $desnut->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $desnutM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $desnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th>SOBREPESO / RIESGO OBESIDAD</th>
@@ -753,12 +751,12 @@
                                     </td>
                                     <td>{{ $sobrepesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th>OBESO</th>
@@ -773,12 +771,12 @@
                                     <td>{{ $obeso->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $obesoM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $obesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th>OBESO SEVERO</th>
@@ -802,12 +800,12 @@
                                     </td>
                                     <td>{{ $obesoSeveroF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th>NORMAL O EUTROFIA</th>
@@ -822,12 +820,12 @@
                                     <td>{{ $normal->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $normalM->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
                                     <td>{{ $normalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <!-- $subtotalM = $rDesnutM->count() + $desnutM->count() + $normalM->count() + $sobrepesoM->count() + $obesoM->count() -->
                                 <tr class="bg-gradient-light">
@@ -855,12 +853,12 @@
                                     </td>
                                     <td>{{ $rDesnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $desnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $sobrepesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $obesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $obesoSeveroF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $normalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr>
                                     <th nowrap="">DENUTRICION SECUNDARIA</th>
@@ -882,12 +880,12 @@
                                     <td>{{ $desnutSecF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 <tr class="bg-gradient-light">
                                     <th class="text-info">TOTAL</th>
@@ -922,12 +920,12 @@
                                     <td>
                                         {{ $rDesnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $desnutF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $sobrepesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $obesoF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $obesoSeveroF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $normalF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() + $desnutSecF->where('grupo', '>=', 15)->where('grupo', '<=', 19)->count() }}
                                     </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('pueblo_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td>{{ $imc3DSF->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 19])->count() }}</td>
+                                    <td> {{ $imc3DSF->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 19])->count() }}</td>
                                 </tr>
                                 </tr>
                             </thead>

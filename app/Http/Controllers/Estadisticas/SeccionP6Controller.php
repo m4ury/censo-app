@@ -16,42 +16,62 @@ public function seccionP6a()
         ini_set('memory_limit', '1024M');
 
         $all = new Paciente;
+        [$fechaInicio, $fechaCorte] = $all->rangoAnualCorte();
 
-        $sm = $all->sm()->get();
+        $sm = \App\Paciente::whereHas('patologias', function($q) {
+                $q->where('patologia_id', 9); // ID de salud mental
+            })
+            ->whereHas('controls', function($q) use ($fechaInicio, $fechaCorte) {
+                $q->whereIn('tipo_control', ['Psicologo', 'Medico'])
+                  ->whereBetween('fecha_control', [$fechaInicio, $fechaCorte]);
+            })
+            ->get();
 
-        $depLeve = $all->trHumor('Femenino', 'Masculino', 'depLeve')->get()->unique('rut');
-        $depMod = $all->trHumor('Femenino', 'Masculino', 'depMod')->get()->unique('rut');
-        $depGrave = $all->trHumor('Femenino', 'Masculino', 'depGrave')->get()->unique('rut');
-        $depPostParto = $all->trHumor('Femenino', null, 'depPostParto')->get()->unique('rut');
-        $trBipolar = $all->trHumor('Femenino', 'Masculino', 'trBipolar')->get()->unique('rut');
-        $alcohol = $all->trConsumo('Femenino', 'Masculino', 'alcohol')->get()->unique('rut');
-        $drogas = $all->trConsumo('Femenino', 'Masculino', 'drogas')->get()->unique('rut');
-        $policonsumo = $all->trConsumo('Femenino', 'Masculino', 'policonsumo')->get()->unique('rut');
-        $trHiper = $all->trInfAdol('Femenino', 'Masculino', 'trHiper')->get()->unique('rut');
-        $trDis = $all->trInfAdol('Femenino', 'Masculino', 'trDis')->get()->unique('rut');
-        $trAnsInf = $all->trInfAdol('Femenino', 'Masculino', 'trAnsInf')->get()->unique('rut');
-        $otrosTrsInfAdol = $all->trInfAdol('Femenino', 'Masculino', 'otrosTrsInfAdol')->get()->unique('rut');
-        $trEstresPostT = $all->trAns('Femenino', 'Masculino', 'trEstresPostT')->get()->unique('rut');
-        $trPanicoAgo = $all->trAns('Femenino', 'Masculino', 'trPanicoAgo')->get()->unique('rut');
-        $trPanico = $all->trAns('Femenino', 'Masculino', 'trPanico')->get()->unique('rut');
-        $fobiaSocial = $all->trAns('Femenino', 'Masculino', 'fobiaSocial')->get()->unique('rut');
-        $trAnsGen = $all->trAns('Femenino', 'Masculino', 'trAnsGen')->get()->unique('rut');
-        $otrosTrAns = $all->trAns('Femenino', 'Masculino', 'otrosTrAns')->get()->unique('rut');
-        $leve = $all->demencias('Femenino', 'Masculino', 'leve')->get()->unique('rut');
-        $moderado = $all->demencias('Femenino', 'Masculino', 'moderado')->get()->unique('rut');
-        $avanzado = $all->demencias('Femenino', 'Masculino', 'avanzado')->get()->unique('rut');
-        $esquizo = $all->diagSm('Femenino', 'Masculino', 'esquizo')->get()->unique('rut');
-        $epEsquizo = $all->diagSm('Femenino', 'Masculino', 'epEsquizo')->get()->unique('rut');
-        $trCondAlim = $all->diagSm('Femenino', 'Masculino', 'trCondAlim')->get()->unique('rut');
-        $retrasoMental = $all->diagSm('Femenino', 'Masculino', 'retrasoMental')->get()->unique('rut');
-        $trPersonalidad = $all->diagSm('Femenino', 'Masculino', 'trPersonalidad')->get()->unique('rut');
-        $epilepsia = $all->diagSm('Femenino', 'Masculino', 'epilepsia')->get()->unique('rut');
-        $otras = $all->diagSm('Femenino', 'Masculino', 'otras')->get()->unique('rut');
-        $autismo = $all->trDesarrollo('Femenino', 'Masculino', 'autismo')->get()->unique('rut');
-        $asperger = $all->trDesarrollo('Femenino', 'Masculino', 'asperger')->get()->unique('rut');
-        $rett = $all->trDesarrollo('Femenino', 'Masculino', 'rett')->get()->unique('rut');
-        $trDesinteg = $all->trDesarrollo('Femenino', 'Masculino', 'trDesinteg')->get()->unique('rut');
-        $trNOespecif = $all->trDesarrollo('Femenino', 'Masculino', 'trNOespecif')->get()->unique('rut');
+        // 1. Traer todos los controles de salud mental en el rango anual
+        $controles = \App\Control::with('paciente')
+            ->where('tipo_control', 'Psicologo')
+            ->whereBetween('fecha_control', [$fechaInicio, $fechaCorte])
+            ->orderBy('fecha_control', 'desc')
+            ->get();
+
+        // 2. Agrupar por paciente y tomar el último control de cada uno
+        $ultimosControles = $controles->groupBy('paciente_id')->map(function($items) {
+            return $items->first(); // el más reciente por paciente
+        });
+
+        $depLeve = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trHumor', 'depLeve');
+        $depMod = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trHumor', 'depMod');
+        $depGrave = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trHumor', 'depGrave');
+        $depPostParto = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trHumor', 'depPostParto');
+        $trBipolar = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trHumor', 'trBipolar');
+        $alcohol = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trConsumo', 'alcohol');
+        $drogas = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trConsumo', 'drogas');
+        $policonsumo = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trConsumo', 'policonsumo');
+        $trHiper = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trInfAdol', 'trHiper');
+        $trDis = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trInfAdol', 'trDis');
+        $trAnsInf = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trInfAdol', 'trAnsInf');
+        $otrosTrsInfAdol = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trInfAdol', 'otrosTrsInfAdol');
+        $trEstresPostT = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'trEstresPostT'); // trastorno de estrés postraumático
+        $trPanicoAgo = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'trPanicoAgo');
+        $trPanico = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'trPanico');
+        $fobiaSocial = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'fobiaSocial');
+        $trAnsGen = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'trAnsGen');
+        $otrosTrAns = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trAns', 'otrosTrAns');
+        $leve = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'demencias', 'leve');
+        $moderado = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'demencias', 'moderado');
+        $avanzado = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'demencias', 'avanzado');
+        $esquizo = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'esquizo');
+        $epEsquizo = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'epEsquizo');
+        $trCondAlim = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'trCondAlim');
+        $retrasoMental = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'retrasoMental');
+        $trPersonalidad = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'trPersonalidad');
+        $epilepsia = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'epilepsia');
+        $otras = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'diagSm', 'otras');
+        $autismo = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trDesarrollo', 'autismo');
+        $asperger = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trDesarrollo', 'asperger');
+        $rett = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trDesarrollo', 'rett');
+        $trDesinteg = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trDesarrollo', 'trDesinteg');
+        $trNOespecif = $this->filtrarUltimosControlesPorDiagnostico($ultimosControles, 'trDesarrollo', 'trNOespecif');
 
         return view('estadisticas.seccion-p6a', compact(
             'sm',
@@ -90,5 +110,27 @@ public function seccionP6a()
             'otras',
             'all'
         ));
+    }
+
+    private function filtrarUltimosControlesPorDiagnostico($ultimosControles, $campoDiagnostico, $valorDiagnostico, $sexo = null, $edadMin = null, $edadMax = null)
+    {
+        return $ultimosControles->filter(function($control) use ($campoDiagnostico, $valorDiagnostico, $sexo, $edadMin, $edadMax) {
+            // Verifica diagnóstico
+            if ($control->$campoDiagnostico !== $valorDiagnostico) {
+                return false;
+            }
+            // Verifica sexo si se especifica
+            if ($sexo && $control->paciente && $control->paciente->sexo !== $sexo) {
+                return false;
+            }
+            // Verifica rango etario si se especifica
+            if ($control->paciente && ($edadMin !== null || $edadMax !== null)) {
+                $edad = $control->paciente->edad();
+                if (($edadMin !== null && $edad < $edadMin) || ($edadMax !== null && $edad > $edadMax)) {
+                    return false;
+                }
+            }
+            return true;
+        });
     }
 }

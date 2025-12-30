@@ -129,7 +129,7 @@ class ConstanciaController extends Controller
         }
 
 
-        return redirect('constancias')->withSuccess('Cosntancia creada con exito!');
+        return redirect('constancias')->withSuccess('Constancia creada con exito!');
     }
 
     /**

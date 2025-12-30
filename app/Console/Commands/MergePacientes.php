@@ -37,6 +37,11 @@ class MergePacientes extends Command
                 ->where('paciente_id', $pacienteA_id)
                 ->update(['paciente_id' => $pacienteB_id]);
 
+            // Transfiere las constancias de A a B (evita el error de FK)
+            DB::table('constancias')
+                ->where('paciente_id', $pacienteA_id)
+                ->update(['paciente_id' => $pacienteB_id]);
+
             // Transfiere las patologías de A a B
             $patologiasA = DB::table('paciente_patologia')
                 ->where('paciente_id', $pacienteA_id)

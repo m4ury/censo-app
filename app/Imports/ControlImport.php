@@ -32,10 +32,10 @@ class ControlImport implements ToCollection
     {
 
         // Leer el valor de la celda B7 (fila 7, columna 2)
-    $origenRepo = null;
-    if (isset($rows[6]) && isset($rows[6][1])) { // Fila 7 es índice 6, columna B es índice 1
-        $origenRepo = trim($rows[6][1]);
-    }
+        $origenRepo = null;
+        if (isset($rows[6]) && isset($rows[6][1])) { // Fila 7 es índice 6, columna B es índice 1
+            $origenRepo = trim($rows[6][1]);
+        }
 
         $fila = 0;
         // Omitir encabezado si existe
@@ -48,12 +48,25 @@ class ControlImport implements ToCollection
             }
 
             // Determinar patologiaId según el repo
-            $patologiaId = null; // Valor por defecto
+            $patologiaId = null;
             $estimacionRiesgo = null;
             $campoClasif = null;
             $campoControl = null;
             $valorClasif = null;
             $valorControl = null;
+
+            $pesoRow = null; // Columna V
+            $tallaRow = null; // Columna W
+            $imcRow = null; // Columna X
+            $estadoNutricionalRow = null; // Columna AG
+            $rpcCinturaRow = null; // Columna AJ
+
+            $tallaEdadRow = null; // Columna Z
+            $imcEdadRow = null; // Columna AH
+
+            $originarioRow = null;
+            $migranteRow = null;
+
 
             // Calcular edad para validaciones posteriores
             $edad_anios = intval($row[12] ?? 0); // Columna M (índice 12)
@@ -100,13 +113,140 @@ class ControlImport implements ToCollection
                 } else {
                     $estimacionRiesgo = null;
                 }
+            } elseif ($origenRepo === '02. PROGRAMA DEL ADOLESCENTE') {
+
+                $ci_adolecente = 1; // Columna B (índice 1)
+                // Limpiar espacios (incluido el non-breaking space \u{A0}) y convertir a float.
+                $pesoRow = isset($row[21]) ? (float) preg_replace('/[^\d.]/', '', $row[21]) : null; // Columna V
+                $tallaRow = isset($row[22]) ? (float) preg_replace('/[^\d.]/', '', $row[22]) : null; // Columna W
+                $imcRow = isset($row[23]) ? (float) preg_replace('/[^\d.]/', '', $row[23]) : null; // Columna X
+                $originarioRow = $row[28] ?? null; // Columna AC
+                if (trim($originarioRow, '01') !== false) {
+                    $originario = 1;
+                }
+
+                $migranteRow = $row[31] ?? null; // Columna AF
+                if (trim($migranteRow, '01') !== false) {
+                    $migrante = 1;
+                }
+
+                $rpcCinturaRow = trim(preg_replace('/[\s\x{00A0}]+/u', ' ', $row[35])) ?? null; // Columna AJ
+                if(stripos($rpcCinturaRow, 'normal') !== false) {
+                    $rpcCintura = 'normal';
+                } elseif (stripos($rpcCinturaRow, 'riesgo') !== false) {
+                    $rpcCintura = 'rObesidadAbdm';
+                } elseif (stripos($rpcCinturaRow, 'obesidad') !== false) {
+                    $rpcCintura = 'obesidadAbdm';
+                } else {
+                    $rpcCintura = null;
+                }
+
+                $estadoNutricionalRow = trim($row[32]) ?? null; // Columna AG
+                if (stripos($estadoNutricionalRow, 'normal') !== false) {
+                    $estadoNutricional = 'Normal';
+                } elseif (stripos($estadoNutricionalRow, 'sobrepeso') !== false) {
+                    $estadoNutricional = 'Sobrepeso';
+                } elseif (stripos($estadoNutricionalRow, 'obeso') !== false) {
+                    $estadoNutricional = 'Obesidad';
+                } elseif (stripos($estadoNutricionalRow, 'desnutrido') !== false) {
+                    $estadoNutricional = 'Desnutrido';
+                } elseif (stripos($estadoNutricionalRow, 'bajo peso') !== false) {
+                    $estadoNutricional = 'Bajo peso';
+                } else {
+                    $estadoNutricional = null;
+                }
+
+                $imcEdadRow = trim($row[33]) ?? null; // Columna AH
+                if (strpos($imcEdadRow, 'Normal') !== false) {
+                    $imcEdad = '-09 DS'; //NORMAL
+                } elseif (strpos($imcEdadRow, '-1DS') !== false) {
+                    $imcEdad = '-1 DS';
+                } elseif (strpos($imcEdadRow, '-2DS') !== false) {
+                $imcEdad = '-2 DS';
+                } elseif (strpos($imcEdadRow, '+1DS') !== false) {
+                    $imcEdad = '+1 DS';
+                } elseif (strpos($imcEdadRow, '+2DS') !== false) {
+                    $imcEdad = '+2 DS';
+                } elseif (strpos($imcEdadRow, '+3DS') !== false) {
+                    $imcEdad = '+3 DS';
+                } else {
+                    $imcEdad = null;
+                }
+
+                $tallaEdadRow = $row[25] ?? null; // Columna Z
+                if (strpos($tallaEdadRow, '4') !== false) {
+                    $tallaEdad = '-09 DS'; //NORMAL
+                } elseif (strpos($tallaEdadRow, '3') !== false) {
+                    $tallaEdad = '-1 DS';
+                } elseif (strpos($tallaEdadRow, '5') !== false) {
+                    $tallaEdad = '+1 DS';
+                } elseif (strpos($tallaEdadRow, '6') !== false) {
+                    $tallaEdad = '+2 DS';
+                } elseif (strpos($tallaEdadRow, '2') !== false) {
+                    $tallaEdad = '-2 DS';
+                } else {
+                    $tallaEdad = null;
+                }
+            } elseif ($origenRepo === '13. ACTIVIDADES DEL MODELO SALUD FAMILIAR') {
+                $ci_adolecente = 1;
+
+                $tipoConsejeriaRow = $row[24] ?? null; // Columna Y
+                if (strpos($tipoConsejeriaRow, '6') !== false) {
+                    $tipoConsejeria = 'regulacionFecund'; // Nutrición
+                } elseif (strpos($tipoConsejeriaRow, '3') !== false) {
+                    $tipoConsejeria = 'tabaquismo'; // Tabaquismo
+                } elseif (strpos($tipoConsejeriaRow, '1') !== false) {
+                    $tipoConsejeria = 'actFisica'; // Actividad fisica'
+                } elseif (strpos($tipoConsejeriaRow, '2') !== false) {
+                    $tipoConsejeria = 'alimSaludable'; // Alimentación saludable
+                } elseif (strpos($tipoConsejeriaRow, '7') !== false) {
+                    $tipoConsejeria = 'prevITS_VIH'; // Prevención ITS/VIH
+                } elseif (strpos($tipoConsejeriaRow, '5') !== false) {
+                    $tipoConsejeria = 'saludSexualReprod'; // Salud sexual y reproductiva
+                } else {
+                    $tipoConsejeria = null;
+                }
+
+                $esp_amigable = $row[27] ?? null; // Columna AB
+                if (stripos($esp_amigable, 'si') !== false) {
+                    $esp_amigable = 1;
+                }
+
+                $originarioRow = $row[23] ?? null; // Columna X
+                if (trim($originarioRow, '01') !== false) {
+                    $originario = 1;
+                }
+
+                $migranteRow = $row[30] ?? null; // Columna AE
+                if (trim(stripos($migranteRow, 'si')) !== false) {
+                    $migrante = 1;
+                }
+
             } elseif ($origenRepo === '08. PROGRAMA SALUD MENTAL') {
                 $patologiaId = 9;
+
+                $inasistenciaRow = $row[28] ?? null; // Columna AC
+                if (stripos($inasistenciaRow, 'inasistencia') !== false) {
+                    continue;
+                }
+
+                $mejorNinezRow = $row[25] ?? null; // Columna Z
+                if (stripos($mejorNinezRow, 'si') !== false) {
+                    $mejor_ninez = 1;
+                }
+
+
+
+
+
+
             } else {
-                // Si no se reconoce el repositorio, abortar y enviar un mensaje.
-                throw new \Exception("No es posible realizar la importación. El repositorio '" . ($origenRepo ?? 'desconocido') . "' no está soportado.");
+            // Si no se reconoce el repositorio, abortar y enviar un mensaje.
+            throw new \Exception("No es posible realizar la importación. El repositorio '" . ($origenRepo ?? 'desconocido') . "' no está soportado.");
             }
 
+            //dd('Peso: '. $pesoRow, 'Talla: '. $tallaRow, 'IMC: '. $imcRow, 'Estado Nutricional :'. $estadoNutricional, 'IMC Edad: '. $imcEdad, 'Talla Edad: '. $tallaEdad, 'RPC Cintura: '. $rpcCintura);
+            //dd($origenRepo, $tipoConsejeriaRow);
 
             //tipo control
             $tipoControlRow = $row[6] ?? null; // Columna G (índice 6)
@@ -125,9 +265,11 @@ class ControlImport implements ToCollection
                 $tipoControl = 'Nutricionista';
             } elseif (stripos($tipoControl, 'psicologo') !== false) {
                 $tipoControl = 'Psicologo';
+            } elseif (stripos($tipoControl, 'matrona') !== false) {
+                $tipoControl = 'Matrona';
             }
 
-            
+
             $rutRow = $row[7] ?? null;
             // Separar los datos por espacio
             $partes = explode(' ', trim($rutRow));
@@ -198,6 +340,8 @@ class ControlImport implements ToCollection
                     'fecha_nacimiento'  => $fechaNacimiento,
                     'sexo'              => $sexo,
                     'egreso'            => null,
+                    'pueblo_originario' => $originario ?? 0,
+                    'migrante'          => $migrante ?? 0,
                 ]);
                 // Loguear paciente nuevo
                 \Log::info('Paciente creado por importación', [
@@ -234,26 +378,46 @@ class ControlImport implements ToCollection
                 // Un control debe tener al menos un dato además del paciente y la fecha.
                 // Se considera que hay datos si se identifica un tipo de control, una patología o una evaluación de riesgo.
                 $hayDatosParaGuardar = !empty($tipoControl) || !is_null($campoClasif) || !is_null($estimacionRiesgo);
+
                 if ($hayDatosParaGuardar) {
+                    // Inicializar con los campos comunes
                     $searchData = [
-                        'paciente_id'   => $paciente->id,
+                        'paciente_id' => $paciente->id,
                         'fecha_control' => $fechaControlFormatted,
-                        'tipo_control'  => !empty($tipoControl) ? $tipoControl : null,
-                        'evaluacionPie' => $estimacionRiesgo,
-                        'observacion'   => 'Importado desde Registro de Prestaciones, repositorio: ' . ($origenRepo ?? 'Desconocido'),
+                        'tipo_control' => !empty($tipoControl) ? $tipoControl : null,
+                        'observacion' => 'Importado desde Registro de Prestaciones, repositorio: ' . ($origenRepo ?? 'Desconocido'),
                     ];
 
-                    if ($campoClasif) {
-                        $searchData[$campoClasif] = $valorClasif;
-                    }
-                    if ($campoControl) {
-                        $searchData[$campoControl] = $valorControl;
+                    // Añadir campos específicos según el repositorio
+                    if ($origenRepo === '02. PROGRAMA DEL ADOLESCENTE') {
+                        $searchData['ci_adolecente'] = $ci_adolecente ?? null;
+                        $searchData['esp_amigables'] = $esp_amigable ?? null;
+                        $searchData['peso_actual'] = $pesoRow;
+                        $searchData['talla_actual'] = $tallaRow;
+                        $searchData['imc'] = $imcRow;
+                        $searchData['imc_resultado'] = $estadoNutricional ?? null;
+                        $searchData['indIMCEdad'] = $imcEdad ?? null;
+                        $searchData['indTallaEdad'] = $tallaEdad ?? null;
+                        $searchData['indPeCinturaEdad'] = $rpcCintura ?? null;
+                    } elseif ($origenRepo === '06. PROGRAMAS RESPIRATORIOS' || $origenRepo === '09. ATENCIÓN INTEGRAL - ESTRATEGIA MULTIMORBILIDAD') {
+                        if ($campoClasif) $searchData[$campoClasif] = $valorClasif;
+                        if ($campoControl) $searchData[$campoControl] = $valorControl;
+                    } elseif ($origenRepo === '33. INSTRUMENTOS DE EVALUACIÓN ADULTO') {
+                        $searchData['evaluacionPie'] = $estimacionRiesgo;
+                    } elseif ($origenRepo === '13. ACTIVIDADES DEL MODELO SALUD FAMILIAR') {
+                        if ($tipoConsejeria) {
+                            $searchData['consejeria'] = $tipoConsejeria;
+                            $searchData['ci_adolecente'] = $ci_adolecente ?? null;
+                            $searchData['esp_amigables'] = $esp_amigable ?? null;
+                        }
                     }
 
                     // Eloquent `where` con un array maneja correctamente los valores null (los convierte a `IS NULL`).
                     $existe = Control::where($searchData)->exists();
 
                     if (!$existe) {
+                        // Para la creación, usamos el mismo array que para la búsqueda.
+                        // Así nos aseguramos de que solo se guardan los campos relevantes.
                         $control = Control::create($searchData);
                         $this->controlesCreados++;
 
@@ -264,7 +428,7 @@ class ControlImport implements ToCollection
                             'fecha_control'   => $fechaControlFormatted,
                             'tipo_control'    => $tipoControl,
                             'clasificacion'   => $campoClasif ? [$campoClasif => $valorClasif] : null,
-                            'nivel_control'   => $campoControl ? [$campoControl => $valorControl] : null,
+                            'nivel_control'   => $campoControl ? [$campoControl => $valorControl] : null, // Corregido
                             'evaluacionPie' => $estimacionRiesgo,
                         ]);
 
@@ -403,7 +567,7 @@ class ControlImport implements ToCollection
         if (is_null($string)) {
             return null;
         }
-        
+
         // Limpia espacios normales, no separables (nbsp), y otros caracteres de espacio.
         $cleanedString = trim(preg_replace('/[\s\x{00A0}]+/u', ' ', $string));
 

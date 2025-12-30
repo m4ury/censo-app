@@ -50,35 +50,25 @@
                             <tr>
                                 <th nowrap="">10-14 años</th>
                                 <td>{{ $actFisica->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $actFisica->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
-                                <td>{{ $actFisica->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
+                                <td>{{ $actFisica->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
 
-                                <td>{{ $actFisica->where('pueblos_originario', 1)->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
-                                <td>{{ $actFisica->where('pueblos_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
-                                <td>{{ $actFisica->where('pueblos_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
+                                <td>{{ $actFisica->where('pueblos_originario', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('pueblos_originario', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('pueblos_originario', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
 
                                 <td>{{ $actFisica->where('migrante', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
-                                <td>{{ $actFisica->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
-                                <td>{{ $actFisica->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $actFisica->where('migrante', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
-                                {{-- dd($actFisica->whereBetween('grupo', [15, 19])) --}}
                                 <td>{{ $actFisica->whereBetween('grupo', [15, 19])->count() }}</td>
-                                <td>{{ $actFisica->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}
-                                </td>
-                                <td>{{ $actFisica->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
-                                </td>
+                                <td>{{ $actFisica->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $actFisica->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
 
                                 <td>{{ $actFisica->where('pueblos_originario', 1)->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
@@ -93,9 +83,9 @@
                                 <td>{{ $actFisica->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $actFisica->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Alimentación saludable</th>
@@ -120,9 +110,9 @@
                                 </td>
                                 <td>{{ $alimSaludable->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -147,9 +137,9 @@
                                 <td>{{ $alimSaludable->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $alimSaludable->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Tabaquismo</th>
@@ -173,9 +163,9 @@
                                 </td>
                                 <td>{{ $tabaquismo->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $tabaquismo->where('esp_amigables', '=', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $tabaquismo->where('esp_amigables', '=', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $tabaquismo->where('esp_amigables', '=')->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -199,9 +189,9 @@
                                 <td>{{ $tabaquismo->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $tabaquismo->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $tabaquismo->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $tabaquismo->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Consumo de drogas</th>
@@ -226,9 +216,9 @@
                                 </td>
                                 <td>{{ $consumoDrogas->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -253,9 +243,10 @@
                                 <td>{{ $consumoDrogas->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $consumoDrogas->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                            </tr>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Salud sexual reproductiva</th>
@@ -280,9 +271,9 @@
                                 </td>
                                 <td>{{ $saludSexualReprod->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -307,9 +298,9 @@
                                 <td>{{ $saludSexualReprod->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $saludSexualReprod->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Regulación de fecundidad</th>
@@ -334,9 +325,9 @@
                                 </td>
                                 <td>{{ $regulacionFecund->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -361,9 +352,9 @@
                                 <td>{{ $regulacionFecund->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $regulacionFecund->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
 
                             <th rowspan="3" style="vertical-align: middle" nowrap>Prevención VIH-ITS</th>
@@ -388,9 +379,9 @@
                                 </td>
                                 <td>{{ $prevITS_VIH->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [10, 14])->count() }}</td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [10, 14])->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">15-19 años</th>
@@ -415,9 +406,9 @@
                                 <td>{{ $prevITS_VIH->where('migrante', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}
                                 </td>
 
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->where('sexo', 'Masculino')->whereBetween('grupo', [15, 19])->count() }}</td>
+                                <td>{{ $prevITS_VIH->where('esp_amigables', 1)->where('sexo', 'Femenino')->whereBetween('grupo', [15, 19])->count() }}</td>
                             </tr>
                         </thead>
                     </table>

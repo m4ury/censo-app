@@ -571,69 +571,77 @@
                         {{-- SALUD MENTAL --}}
                         @if ($patologia->nombre_patologia === 'SALUD MENTAL')
                             <div class="form-group row">
-                                @if ($paciente->controls()->pluck('trHumor')->whereNotNull()->last())
+                                @php
+                                    // Fetch the last control record
+                                    $ultimoControl = $paciente->controls()->latest('fecha_control')->first();
+                                @endphp
+
+                                @if ($ultimoControl)
+                                  @if ($ultimoControl->diagSm)
+                                      <div class="col-sm">
+                                          <strong><i class="fas fa-brain text-warning"></i>
+                                              Con Diagnosticos de Trastornos de la Salud Mental
+                                          </strong>
+                                          <p class="btn rounded-pill bg-gradient-warning">
+                                              {{ $ultimoControl->diagSm }}
+                                          </P>
+                                      </div>
+                                  @elseif ($ultimoControl->trHumor)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-success"></i>
                                             Trastornos del Humor (afectivos)
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-success">
-                                            {{ $paciente->controls()->pluck('trHumor')->whereNotNull()->last() }}
+
+                                            {{ $ultimoControl->trHumor }}
+
                                         </P>
                                     </div>
-                                @elseif($paciente->controls()->pluck('trConsumo')->whereNotNull()->last())
+                                @elseif($ultimoControl->trConsumo)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-warning"></i>
                                             Trastornos Mentales y del Comportamiento debido a Consumo Sustancias
                                             Psicotropicas
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('trConsumo')->whereNotNull()->last() }}
+                                            {{ $ultimoControl->trConsumo }}
                                         </P>
                                     </div>
-                                @elseif($paciente->controls()->pluck('trInfAdol')->whereNotNull()->last())
+                                @elseif($ultimoControl->trInfAdol)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-warning"></i>
                                             Trastornos del comportamiento y de las Emociones de comienzo habitual en
                                             la Infancia y Adolescencia
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('trInfAdol')->whereNotNull()->last() }}
+                                            {{ $ultimoControl->trInfAdol }}
                                         </P>
                                     </div>
-                                @elseif($paciente->controls()->pluck('trAns')->whereNotNull()->last())
+                                @elseif($ultimoControl->trAns)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-warning"></i>
                                             Trastornos de Ansiedad
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('trAns')->whereNotNull()->last() }}
+                                            {{ $ultimoControl->trAns }}
                                         </P>
                                     </div>
-                                @elseif($paciente->controls()->pluck('demencias')->whereNotNull()->last())
+                                @elseif($ultimoControl->demencias)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-warning"></i>
                                             Demencias (incluye Alzheimer)
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('demencias')->whereNotNull()->last() }}
+                                            {{ $ultimoControl->demencias }}
                                         </P>
                                     </div>
-                                @elseif($paciente->controls()->pluck('trDesarrollo')->whereNotNull()->last())
+                                @elseif($ultimoControl->trDesarrollo)
                                     <div class="col-sm">
                                         <strong><i class="fas fa-brain text-warning"></i>
                                             Trastornos Generalizados del Desarrollo
                                         </strong>
                                         <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('trDesarrollo')->whereNotNull()->last() }}
-                                        </P>
-                                    </div>
-                                @elseif($paciente->controls()->pluck('diagSm')->whereNotNull()->last())
-                                    <div class="col-sm">
-                                        <strong><i class="fas fa-brain text-warning"></i>
-                                            Con Diagnosticos de Trastornos de la Salud Mental
-                                        </strong>
-                                        <p class="btn rounded-pill bg-gradient-warning">
-                                            {{ $paciente->controls()->pluck('diagSm')->whereNotNull()->last() }}
+                                            {{ $ultimoControl->trDesarrollo }}
                                         </P>
                                     </div>
                                 @else
@@ -642,6 +650,7 @@
                                             No se encontró Información
                                         </strong>
                                     </div>
+                                  @endif
                                 @endif
                             </div>
                         @endif

@@ -99,6 +99,8 @@ class InterconsultasImport implements ToCollection
                     'direccion'         => $row[19] ?? '',
                     'comuna'            => $row[20] ?? '',
                     'egreso'            => null,
+                    'pueblo_originario' => 0,
+                    'migrante'          => 0,
                 ]);
 
                 $this->pacientesCreados++;

@@ -153,8 +153,16 @@ class PacienteController extends Controller
 
     public function store(PacienteRequest $request)
     {
-        Paciente::create($request->all());
-        return redirect('pacientes')->withSuccess('Paciente Creado con exito!');
+        try {
+            Paciente::create($request->all());
+            return redirect('pacientes')->with('swal', [
+                'icon' => 'success',
+                'title' => '¡Éxito!',
+                'text' => 'Paciente creado correctamente'
+            ]);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => $e->getMessage()])->withInput();
+        }
     }
 
     public function show($id)
@@ -175,45 +183,35 @@ class PacienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->except('rut'), [
+        $validator = Validator::make($request->all(), [
             'rut' => ['cl_rut', Rule::unique('pacientes')->ignore($id)],
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
             'erc' => 'required_with:riesgo_cv',
             'direccion' => 'required',
             'postrado_oncol' => [Rule::when($request->dependencia == 'G' or $request->dependencia == 'T', 'required')],
-            //'fecha_fallecido' => 'before_or_equal:'.Carbon::now()
-            //'racVigente' => 'before_or_equal:' . Carbon::now(),
         ]);
-
-        //dd($validator);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $paciente = Paciente::findOrFail($id);
+        try {
+            $paciente = Paciente::findOrFail($id);
+            $paciente->update($request->all());
 
-        $paciente->usoInsulina = $request->usoInsulina ?? 0;
-        $paciente->usoIecaAraII = $request->usoIecaAraII ?? 0;
-        $paciente->pueblo_originario = $request->pueblo_originario ?? 0;
-        $paciente->migrante = $request->migrante ?? 0;
-        $paciente->usoAspirinas = $request->usoAspirinas ?? 0;
-        $paciente->usoEstatinas = $request->usoEstatinas ?? 0;
-        $paciente->escaras = $request->escaras ?? 0;
-        $paciente->sename = $request->sename ?? 0;
-        $paciente->embarazada = $request->embarazada ?? 0;
-        $paciente->mejor_ninez = $request->mejor_ninez ?? 0;
-        $paciente->lactancia = $request->lactancia ?? 0;
-        $paciente->cuidador = $request->cuidador ?? 0;
-        $paciente->cuidador_capacit = $request->cuidador_capacit ?? 0;
-        $paciente->cuidador_evSobrecarga = $request->cuidador_evSobrecarga ?? 0;
-        $paciente->cuidador_examenPrev = $request->cuidador_examenPrev ?? 0;
-        $paciente->postrado = $request->postrado ?? 0;
-        $paciente->paciente_hd = $request->paciente_hd ?? 0;
-        $paciente->update($request->all());
-        //dd($paciente);
-        return redirect('pacientes/' . $id)->withSuccess('Paciente Actualizado con exito!');
+            return redirect('pacientes/' . $id)->with('swal', [
+                'icon' => 'success',
+                'title' => '¡Éxito!',
+                'text' => 'Paciente actualizado correctamente'
+            ]);
+        } catch (\Exception $e) {
+            return back()->with('swal', [
+                'icon' => 'error',
+                'title' => 'Error',
+                'text' => $e->getMessage()
+            ])->withInput();
+        }
     }
 
     public function destroy($id)

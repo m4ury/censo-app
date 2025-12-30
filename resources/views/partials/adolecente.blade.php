@@ -117,7 +117,6 @@
                         'condPostergada' => 'ADOLESCENTES CON CONDUCTA POSTERGADORA',
                         'condAnticipadora' => 'ADOLESCENTES CON CONDUCTA ANTICIPADORA',
                         'condActiva' => 'ADOLESCENTES CON CONDUCTA ACTIVA',
-                        'trabJuvenil' => 'TRABAJO JUVENIL',
                         'usoAnticonceptivo' => 'USO ACTUAL DE METODO ANTICONCEPTIVO	',
                         'dobleProteccion' => 'USO ACTUAL DE DOBLE PROTECCIÓN',
                         'primerEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO',
@@ -192,6 +191,15 @@
                     old('tipo_violencias', $control->tipo_violencias),
                     ['class' => 'form-control form-control-sm tipo_violencias', 'placeholder' => 'Seleccione'],
                 ) !!}
+            </div>
+                {!! Form::label('esp_amigable_label', 'ATENCIÓN EN ESPACIOS AMIGABLES', [
+                    'class' => 'col-sm col-form-label text-bold',
+                ]) !!}
+            <div class="col-sm-2">
+            {!! Form::checkbox('esp_amigables', 1, old('esp_amigables', $control->esp_amigables == 1 ? true : null), [
+                    'class' => 'form-control col col-form-label',
+                    'id' => 'esp_amigables',
+                ]) !!}
             </div>
         </div>
     </div>

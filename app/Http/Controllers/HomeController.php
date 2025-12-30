@@ -39,9 +39,9 @@ class HomeController extends Controller
                 'pa150_90' => $pa150 = $all->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count(),
                 /* $sumaPa = $pa140_90 + $pa150;
                 $descompPa = $hta - $sumaPa; */
-                /* 'dlp' => $all->dlp()->whereNull('egreso')->count(),
-                'iam' => $all->iam()->whereNull('egreso')->count(), 
-                'acv' => $all->acv()->whereNull('egreso')->count(), */
+                'dlp' => $all->dlp()->whereNull('egreso')->count(),
+                'iam' => $all->iam()->whereNull('egreso')->count(),
+                'acv' => $all->acv()->whereNull('egreso')->count(),
                 'riesgo' => $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count(),
                 'usoInsulina' => $all->dm2()->where('usoInsulina', true)->whereNull('egreso')->count(),
                 'pieDm2' => $all->dm2()
@@ -57,7 +57,7 @@ class HomeController extends Controller
                     ->unique('rut'),
                 'ginec' => $all->totalMac()->where('ginec', true)->count(),
                 'regulacion' => $all->totalMac()->where('regulacion', 1)->count(),
-                'climater' => $all->climater()->count(),
+                'climater' => $all->climater('climater')->count(),
                 'embarazadas' => $all->embarazada()->whereNull('egreso')->count(),
 
                 'sm' => $all->sm()->count(),
@@ -132,17 +132,10 @@ class HomeController extends Controller
         $pacientes = match ($tipo) {
             'dm2' => $paciente->dm2()->whereNull('egreso')->get(),
             'hta' => $paciente->hta()->whereNull('egreso')->get(),
-            /* 'dlp' => $paciente->dlp()->whereNull('egreso')->get(),
+            'dlp' => $paciente->dlp()->whereNull('egreso')->get(),
             'iam' => $paciente->iam()->whereNull('egreso')->get(),
-            'acv' => $paciente->acv()->whereNull('egreso')->get(), */
+            'acv' => $paciente->acv()->whereNull('egreso')->get(),
             'ninos' => $paciente->whereNull('egreso')->get()->whereBetween('grupo', [0, 9]),
-            'totalMasculino' => $paciente->pscv()->where('sexo', 'Masculino')->get(),
-            'totalFemenino' => $paciente->pscv()->where('sexo', 'Femenino')->get(),
-            'totalCeleste' => $paciente->pscv()->where('sector', 'Celeste')->get(),
-            'totalNaranjo' => $paciente->pscv()->where('sector', 'Naranjo')->get(),
-            'totalBlanco' => $paciente->pscv()->where('sector', 'Blanco')->get(), 
-            'am' => $paciente->whereNull('egreso')->get()->where('grupo', '>', 64),
-            'adolescentes' => $paciente->whereNull('egreso')->get()->whereBetween('grupo', [10, 19]),
             default => collect(),
         };
 

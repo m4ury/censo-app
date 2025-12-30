@@ -222,3 +222,20 @@
 </div>
 
 {{ Form::close() }}
+
+@if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Errores de Validación',
+                html: `<ul style="text-align: left;">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>`,
+                confirmButtonText: 'Aceptar'
+            });
+        });
+    </script>
+@endif

@@ -450,20 +450,6 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm">
-                <div class="small-box bg-gradient-green">
-                    <div class="inner">
-                        <h3 style="color:aliceblue">{{ $adolescentes }}</a></h3>
-                        <p>ADOLESCENTES 10 a 19 Años</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <a href="{{ route('pacientes.listado', 'adolescentes') }}" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-lg col-sm">
