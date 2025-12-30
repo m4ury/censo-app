@@ -129,7 +129,7 @@ class PacienteController extends Controller
     private function grupoEtareo($edad)
     {
         if ($edad < 15) return 'Menor de 15';
-        if ($edad >= 15 && $edad <= 19) return 'Entre 15 y 19';
+        if ($edad <= 19) return 'Entre 15 y 19';
         if ($edad >= 20 && $edad <= 24) return 'Entre 20 y 24';
         if ($edad >= 25 && $edad <= 29) return 'Entre 25 y 29';
         if ($edad >= 30 && $edad <= 34) return 'Entre 30 y 34';
@@ -184,7 +184,7 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'rut' => ['cl_rut', Rule::unique('pacientes')->ignore($id)],
+            'rut' => ['cl_rut', Rule::unique('pacientes')->ignore($id), new \App\Rules\ValidRut()],
             'nombres' => 'string|min:3',
             'apellidoP' => 'string|min:3',
             'erc' => 'required_with:riesgo_cv',

@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\ValidRut;
+use App\Rules\SolicitudUniqueRut;
 
 class SolicitudRequest extends FormRequest
 {
@@ -26,8 +28,18 @@ class SolicitudRequest extends FormRequest
     {
         return [
             'sol_rut' => [
-                'required', 'cl_rut', Rule::unique('solicitudes', 'sol_rut')->where(fn ($query) => $query->where('sol_estado', '!=', 'some'))
+                'required',
+                'cl_rut',
+                new SolicitudUniqueRut(),
+                new ValidRut()
             ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'sol_rut.cl_rut' => 'El campo RUT no es válido. Debe ser un RUT chileno válido.',
         ];
     }
 }
