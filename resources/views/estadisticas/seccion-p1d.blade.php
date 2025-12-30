@@ -1,17 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P1: Seccion D y E')
+@section('title', 'REM P1: Secciones D y E')
 
 @section('content')
     <div class="row justify-content-center">
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
-                    <a class="mx-3" href="{{ url('estadisticas') }}" title="Atras">
+                    <a class="mx-3" href="{{ url('estadisticas') }}" title="Atrás">
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>
                         Volver
                     </a>
-                    SECCION D: GESTANTES Y MUJERES DE 8° MES POST-PARTO EN CONTROL, SEGÚN ESTADO NUTRICIONAL
+                    SECCIÓN D: GESTANTES Y MUJERES DE 8° MES POST-PARTO EN CONTROL, SEGÚN ESTADO NUTRICIONAL
                 </h4>
                 <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()" type="button">
                     <i class="fas fa-file-excel"></i> Descargar Excel
@@ -281,7 +281,7 @@
                     </table>
                 </div>
                 <h4 class="card-title text-bold mb-3 pt-2">
-                    SECCION E: MUJERES Y GESTANTES EN CONTROL CON CONSULTA NUTRICIONAL
+                    SECCIÓN E: MUJERES Y GESTANTES EN CONTROL CON CONSULTA NUTRICIONAL
                 </h4>
                 <button class="btn btn-xs btn-success mx-2" onclick="exportarTablaExcel2()" type="button">
                     <i class="fas fa-file-excel"></i> Descargar Excel

@@ -95,10 +95,14 @@ public function seccionP1a(Request $request)
     public function seccionP1d()
     {
         $all = new Paciente;
-        $postParto = $all->postParto(['mes_3', 'mes_6', 'mes_8'])->get()->unique('rut');
-        $postParto3 = $all->postParto(['mes_3'])->get()->unique('rut');
-        $postParto6 = $all->postParto(['mes_6'])->get()->unique('rut');
-        $postParto8 = $all->postParto(['mes_8'])->get()->unique('rut');
+        // Iterar sobre cada mes y obtener los pacientes
+        $postParto = collect();
+        $postParto3 = $all->postParto(null, 'mes_3')->get()->unique('rut');
+        $postParto6 = $all->postParto(null, 'mes_6')->get()->unique('rut');
+        $postParto8 = $all->postParto(null, 'mes_8')->get()->unique('rut');
+
+        // Combinar los resultados de todos los meses
+        $postParto = $postParto3->merge($postParto6)->merge($postParto8)->unique('rut');
 
         return view('estadisticas.seccion-p1d', compact(
             'postParto',
@@ -128,10 +132,10 @@ public function seccionP1a(Request $request)
     public function seccionP1g()
     {
         $all = new Paciente;
-        $eco11 = $all->ecoTrimest('11sem')->get()->unique('rut');
-        $eco11_13 = $all->ecoTrimest('11_13sem')->get()->unique('rut');
-        $eco22_24 = $all->ecoTrimest('2224sem')->get()->unique('rut');
-        $eco30_34 = $all->ecoTrimest('3034sem')->get()->unique('rut');
+        $eco11 = $all->ecoTrimest(null, '11sem')->get()->unique('rut');
+        $eco11_13 = $all->ecoTrimest(null, '11_13sem')->get()->unique('rut');
+        $eco22_24 = $all->ecoTrimest(null, '2224sem')->get()->unique('rut');
+        $eco30_34 = $all->ecoTrimest(null, '3034sem')->get()->unique('rut');
 
         $ruts_eco11 = $eco11->pluck('rut')->toArray();
         $ruts_eco11_13 = $eco11_13->pluck('rut')->toArray();
