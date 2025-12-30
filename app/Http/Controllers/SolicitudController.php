@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SolicitudRequest;
 use App\Notifications\newSolicitudCreadaNotification;
+use Freshwork\ChileanBundle\Rut;
 
 class SolicitudController extends Controller
 {
@@ -84,9 +85,20 @@ class SolicitudController extends Controller
         $solicitud->user_id = Auth::user()->id;
         $solicitud->sol_fecha = Carbon::now();
 
+        // Normalizar el RUT: remover puntos
+        if ($solicitud->sol_rut) {
+            try {
+                $rut = Rut::parse($solicitud->sol_rut);
+                $solicitud->sol_rut = str_replace('.', '', $rut->format(Rut::FORMAT_COMPLETE));
+            } catch (\Exception $e) {
+                // Si falla la normalización, guardar tal cual removiendo puntos
+                $solicitud->sol_rut = str_replace('.', '', $solicitud->sol_rut);
+            }
+        }
+
         $solicitud->save();
 
-        Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
+        //Mail::to('somehualane@ssmaule.cl')->cc($solicitud->user->email)->send(new newSolicitudCreadaMail($solicitud));
 
         //event(new newSolicitudCreada($solicitud));
 

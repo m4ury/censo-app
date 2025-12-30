@@ -9,6 +9,8 @@
             {!! Form::text('rut', null, [
                 'class' => 'form-control form-control-sm' . ($errors->has('rut') ? ' is-invalid' : ''),
                 'placeholder' => 'Ej.: 16000000-K',
+                'id' => 'rut',
+                'title' => 'El RUT no debe contener puntos (.), comas (,) ni comenzar con cero (0)',
             ]) !!}
             @if ($errors->has('rut'))
                 <span class="invalid-feedback">
@@ -239,3 +241,54 @@
         });
     </script>
 @endif
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const rutInput = document.getElementById('rut');
+
+        if (rutInput) {
+            // Validación en tiempo real
+            rutInput.addEventListener('input', function (e) {
+                let value = e.target.value;
+
+                // Remover puntos y comas mientras el usuario escribe
+                value = value.replace(/[.,]/g, '');
+
+                // Si comienza con 0, no permitir
+                if (value.length > 0 && value[0] === '0') {
+                    value = value.substring(1);
+                }
+
+                e.target.value = value;
+            });
+
+            // Validación al perder el foco
+            rutInput.addEventListener('blur', function (e) {
+                const value = e.target.value;
+                const errors = [];
+
+                if (value) {
+                    if (value.includes('.')) {
+                        errors.push('No se permiten puntos (.)');
+                    }
+                    if (value.includes(',')) {
+                        errors.push('No se permiten comas (,)');
+                    }
+                    if (value[0] === '0') {
+                        errors.push('No puede comenzar con cero (0)');
+                    }
+                }
+
+                if (errors.length > 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Validación de RUT',
+                        text: errors.join(' y '),
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            });
+        }
+    });
+</script>
+

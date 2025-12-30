@@ -13,14 +13,19 @@
                         <div class="form-group row">
                             {!! Form::label('sol_rut_label', 'Rut paciente: ', ['class' => 'col-sm col-form-label']) !!}
                             <div class="col-sm">
-                                {!! Form::text('sol_rut', null, [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('sol_rut') ? 'is-invalid' : ''),
+                                {!! Form::text('sol_rut', old('sol_rut'), [
+                                    'class' => 'form-control form-control-sm' . ($errors->has('sol_rut') ? ' is-invalid' : ''),
                                     'placeholder' => 'ej.: 16000000-K',
+                                    'id' => 'sol_rut',
+                                    'title' => 'El RUT no debe contener puntos (.), comas (,) ni comenzar con cero (0)',
                                 ]) !!}
                                 @if ($errors->has('sol_rut'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('sol_rut') }}</strong>
-                                    </span>
+                                    <div class="invalid-feedback d-block">
+                                        <strong>
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            {{ $errors->first('sol_rut') }}
+                                        </strong>
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -44,3 +49,74 @@
                 </div>
             </div>
         </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const solRutInput = document.getElementById('sol_rut');
+
+        if (solRutInput) {
+            // Validación en tiempo real
+            solRutInput.addEventListener('input', function (e) {
+                let value = e.target.value;
+
+                // Remover puntos y comas mientras el usuario escribe
+                value = value.replace(/[.,]/g, '');
+
+                // Si comienza con 0, no permitir
+                if (value.length > 0 && value[0] === '0') {
+                    value = value.substring(1);
+                }
+
+                e.target.value = value;
+            });
+
+            // Validación al perder el foco
+            solRutInput.addEventListener('blur', function (e) {
+                const value = e.target.value;
+                const errors = [];
+
+                if (value) {
+                    if (value.includes('.')) {
+                        errors.push('No se permiten puntos (.)');
+                    }
+                    if (value.includes(',')) {
+                        errors.push('No se permiten comas (,)');
+                    }
+                    if (value[0] === '0') {
+                        errors.push('No puede comenzar con cero (0)');
+                    }
+                }
+
+                if (errors.length > 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Validación de RUT',
+                        text: errors.join(' y '),
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
+            });
+        }
+    });
+
+    // Mostrar alerta si hay errores de validación
+    @if ($errors->any())
+        document.addEventListener('DOMContentLoaded', function () {
+            const errorMessages = [
+                @foreach($errors->all() as $error)
+                    '{{ $error }}',
+                @endforeach
+            ];
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error en la validación',
+                html: `<ul style="text-align: left;">
+                    ${errorMessages.map(msg => `<li>${msg}</li>`).join('')}
+                </ul>`,
+                confirmButtonText: 'Aceptar'
+            });
+        });
+    @endif
+</script>
+
