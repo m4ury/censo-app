@@ -23,8 +23,8 @@
                                 <th class="text-center" colspan="2" rowspan="3">PROGRAMAS</th>
                                 <th class="text-center" colspan="3" rowspan="2">TOTAL</th>
                                 <th class="text-center" colspan="34">GRUPOS DE EDAD (en años) Y SEXO</th>
-                                <th class="text-center" rowspan="3" style="vertical-align: middle">Con espirometría
-                                    vigente</th>
+                                <th class="text-center" rowspan="3" style="vertical-align: middle">Con espirometría vigente</th>
+                                <th colspan="2" rowspan="2">Pueblos originarios</th>
                                 <th colspan="2" rowspan="2">Poblacion Migrantes</th>
 
                             </tr>
@@ -49,6 +49,8 @@
                             </tr>
                             <tr>
                                 <th>Ambos Sexos</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
                                 <th>Hombres</th>
                                 <th>Mujeres</th>
                                 <th>Hombres</th>
@@ -130,10 +132,11 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $sborLeve->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $sborLeve->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>MODERADO</th>
@@ -174,9 +177,11 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $sborModerado->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $sborModerado->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>SEVERO</th>
@@ -217,9 +222,11 @@
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
                                 <td class="bg-gradient-gray"></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td class="bg-gradient-gray"></td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $sborSevero->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th rowspan="4" nowrap ="" class ="py-5" style="vertical-align: middle">ASMA
@@ -297,8 +304,10 @@
                                 <td>{{ $asmaLeve->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Leve')->get()->unique('rut')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $asmaLeve->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>MODERADO</th>
@@ -375,8 +384,10 @@
                                 </td>
                                 <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Moderado')->get()->unique('rut')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaModerado->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $asmaModerado->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>SEVERO</th>
@@ -453,8 +464,10 @@
                                 </td>
                                 <td>{{ $all->asmaEspiromVigente('Masculino', 'Femenino', 'Severo')->get()->unique('rut')->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $asmaSevero->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $asmaSevero->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th rowspan="3">ENFERMEDAD PULMONAR OBSTRUCTIVA CRÓNICA (EPOC)</th>
@@ -505,9 +518,11 @@
                                 <td>{{ $epocA->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
                                 <td>{{ $epocA->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $epocA->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$all->epocEspiromVigente('Femenino', 'Masculino', 'A')->count()}}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $epocA->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th>TIPO B</th>
@@ -556,9 +571,11 @@
                                 <td>{{ $epocB->where('sexo', 'Femenino')->whereBetween('grupo', [75, 79])->count() }}</td>
                                 <td>{{ $epocB->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $epocB->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$all->epocEspiromVigente('Femenino', 'Masculino', 'B')->count()}}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $epocB->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">OTRAS RESPIRATORIAS CRONICAS</th>
@@ -632,8 +649,10 @@
                                 <td>{{ $otrasResp->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $otrasResp->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $otrasResp->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $otrasResp->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="" colspan="2">OXIGENO DEPENDIENTE</th>
@@ -707,8 +726,10 @@
                                 <td>{{ $oxigenoDep->where('sexo', 'Masculino')->where('grupo', '>', 79)->count() }}</td>
                                 <td>{{ $oxigenoDep->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}</td>
                                 <td class="bg-gradient-gray"></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->where('pueblo_originario', 1)->count() }}</td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Masculino')->where('migrante', 1)->count() }}</td>
+                                <td>{{ $oxigenoDep->where('sexo', 'Femenino')->where('migrante', 1)->count() }}</td>
                             </tr>
                             <tr>
                                 <th colspan="2">ASISTENCIA VENTILATORIA NO INVASIVA O INVASIVA</th>

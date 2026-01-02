@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'REM P1: Seccion A')
+@section('title', 'REM P1: Secciones A y H')
 
 @section('content')
     <div class="row justify-content-center">
@@ -10,6 +10,10 @@
             'fechaInicio' => $fechaInicio ?? '',
             'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
         ])
+
+        {{--$ruts_sin_metodo->pluck('rut')--}}
+        {{$pacientes_sin_metodo->pluck('id')}}
+
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
