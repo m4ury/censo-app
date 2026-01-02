@@ -426,7 +426,7 @@
                 <div class="small-box bg-gradient-pink">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $riesgo }}</a></h3>
-                        <p>NIÑOS NIÑAS RIESGO ODONT.</p>
+                        <p>NIÑOS CON RIESGO ODONT.</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-child"></i>
@@ -440,7 +440,7 @@
                 <div class="small-box bg-gradient-lime">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $ninos }}</a></h3>
-                        <p>NIÑOS NIÑAS</p>
+                        <p>NIÑOS de 0 a 9 Años</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-child"></i>
@@ -454,7 +454,7 @@
                 <div class="small-box bg-gradient-success">
                     <div class="inner">
                         <h3 style="color:aliceblue">{{ $adolescentes }}</a></h3>
-                        <p>ADOLESCENTES</p>
+                        <p>ADOLESCENTES de 10 a 19 Años</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-user"></i>
