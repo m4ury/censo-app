@@ -84,7 +84,8 @@ class UserController extends Controller
             'email' => $request->email,
             'rut' => $request->rut,
             'apellido_paterno' => $request->apellido_paterno,
-            'apellido_materno' => $request->apellido_materno
+            'apellido_materno' => $request->apellido_materno,
+            'type' => $request->type,
         ];
 
         // Solo actualizar la contraseña si se proporciona una nueva

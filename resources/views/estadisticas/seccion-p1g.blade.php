@@ -5,6 +5,11 @@
 @section('content')
 {{-- dd($ruts_repetidos) --}}
     <div class="row justify-content-center">
+    @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-p1g',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">

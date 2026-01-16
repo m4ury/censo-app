@@ -57,7 +57,7 @@ class HomeController extends Controller
                     ->unique('rut'),
                 'ginec' => $all->totalMac()->where('ginec', true)->count(),
                 'regulacion' => $all->totalMac()->where('regulacion', 1)->count(),
-                'climater' => $all->climater('climater')->count(),
+                'climater' => $all->climater()->count(),
                 'embarazadas' => $all->embarazada()->whereNull('egreso')->count(),
 
                 'sm' => $all->sm()->count(),

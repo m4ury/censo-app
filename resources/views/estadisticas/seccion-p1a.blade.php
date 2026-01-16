@@ -12,7 +12,7 @@
         ])
 
         {{--$ruts_sin_metodo->pluck('rut')--}}
-        {{$pacientes_sin_metodo->pluck('id')}}
+        {{-- $pacientes_sin_metodo->pluck('id') --}}
 
         <div class="card card-primary card-outline">
             <div class="card-body">

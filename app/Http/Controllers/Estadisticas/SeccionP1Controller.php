@@ -14,7 +14,7 @@ public function seccionP1a(Request $request)
 {
     $all = new Paciente;
     $fechaInicio = $request->input('fecha_inicio', null);
-    $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 6, 30)->format('Y-m-d'));
+    $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
 
     $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
 
@@ -75,31 +75,42 @@ public function seccionP1a(Request $request)
     ));
 }
 
-    public function seccionP1b()
+    public function seccionP1b(Request $request)
     {
         $all = new Paciente;
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
 
-        $aro = $all->aro()->get()->unique('rut');
-        $riesgoPs = $all->rBiops()->get()->unique('rut');
-        $violenciaGen = $all->violenciaGen()->get()->unique('rut');
-        $embarazadas = $all->embarazo()->get()->unique('rut');
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        $aro = $all->aro($range)->get()->unique('rut');
+        $riesgoPs = $all->rBiops($range)->get()->unique('rut');
+        $violenciaGen = $all->violenciaGen($range)->get()->unique('rut');
+        $embarazadas = $all->embarazo($range)->get()->unique('rut');
 
         return view('estadisticas.seccion-p1b', compact(
             'aro',
             'riesgoPs',
             'violenciaGen',
             'embarazadas',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP1d()
+    public function seccionP1d(Request $request)
     {
         $all = new Paciente;
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
         // Iterar sobre cada mes y obtener los pacientes
         $postParto = collect();
-        $postParto3 = $all->postParto(null, 'mes_3')->get()->unique('rut');
-        $postParto6 = $all->postParto(null, 'mes_6')->get()->unique('rut');
-        $postParto8 = $all->postParto(null, 'mes_8')->get()->unique('rut');
+        $postParto3 = $all->postParto($range, 'mes_3')->get()->unique('rut');
+        $postParto6 = $all->postParto($range, 'mes_6')->get()->unique('rut');
+        $postParto8 = $all->postParto($range, 'mes_8')->get()->unique('rut');
 
         // Combinar los resultados de todos los meses
         $postParto = $postParto3->merge($postParto6)->merge($postParto8)->unique('rut');
@@ -110,32 +121,46 @@ public function seccionP1a(Request $request)
             'postParto6',
             'postParto8',
             'all',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP1f()
+    public function seccionP1f(Request $request)
     {
         $all = new Paciente;
-        $climater = $all->climater()->get()->unique('rut');
-        $pautaMrs = $all->climater()->get()->where('pauta_mrs', '>', 0)->unique('rut');
-        $mrsElev = $all->climater()->get()->where('pauta_mrs', '>', 14)->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        $climater = $all->climater($range)->get()->unique('rut');
+        $pautaMrs = $all->climater($range)->get()->where('pauta_mrs', '>', 0)->unique('rut');
+        $mrsElev = $all->climater($range)->get()->where('pauta_mrs', '>', 14)->unique('rut');
 
 
 
         return view('estadisticas.seccion-p1f', compact(
             'climater',
             'pautaMrs',
-            'mrsElev'
+            'mrsElev',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP1g()
+    public function seccionP1g(Request $request)
     {
         $all = new Paciente;
-        $eco11 = $all->ecoTrimest(null, '11sem')->get()->unique('rut');
-        $eco11_13 = $all->ecoTrimest(null, '11_13sem')->get()->unique('rut');
-        $eco22_24 = $all->ecoTrimest(null, '2224sem')->get()->unique('rut');
-        $eco30_34 = $all->ecoTrimest(null, '3034sem')->get()->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        $eco11 = $all->ecoTrimest($range, '11sem')->get()->unique('rut');
+        $eco11_13 = $all->ecoTrimest($range, '11_13sem')->get()->unique('rut');
+        $eco22_24 = $all->ecoTrimest($range, '2224sem')->get()->unique('rut');
+        $eco30_34 = $all->ecoTrimest($range, '3034sem')->get()->unique('rut');
 
         $ruts_eco11 = $eco11->pluck('rut')->toArray();
         $ruts_eco11_13 = $eco11_13->pluck('rut')->toArray();
@@ -155,18 +180,24 @@ public function seccionP1a(Request $request)
             'eco22_24',
             'eco30_34',
             'ruts_repetidos',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP1i()
+    public function seccionP1i(Request $request)
     {
         $all = new Paciente;
-        $vih = $all->embarazo()->whereNotNull('vih')->get()->unique('rut');
-        $vih_1 = $all->embarazo()->where('vih', '1vih')->get()->unique('rut');
-        $vih_2 = $all->embarazo()->where('vih', '2vih')->get()->unique('rut');
-        $sifilis = $all->embarazo()->whereNotNull('sifilis')->get()->unique('rut');
-        $sifilis_1 = $all->embarazo()->where('sifilis', '1sifilis')->get()->unique('rut');
-        $sifilis_3trimest = $all->embarazo()->where('sifilis', '3trimGestacion')->get()->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        $vih = $all->embarazo($range)->whereNotNull('vih')->get()->unique('rut');
+        $vih_1 = $all->embarazo($range)->where('vih', '1vih')->get()->unique('rut');
+        $vih_2 = $all->embarazo($range)->where('vih', '2vih')->get()->unique('rut');
+        $sifilis = $all->embarazo($range)->whereNotNull('sifilis')->get()->unique('rut');
+        $sifilis_1 = $all->embarazo($range)->where('sifilis', '1sifilis')->get()->unique('rut');
+        $sifilis_3trimest = $all->embarazo($range)->where('sifilis', '3trimGestacion')->get()->unique('rut');
 
         return view('estadisticas.seccion-p1i', compact(
             'vih_1',
@@ -175,7 +206,9 @@ public function seccionP1a(Request $request)
             'sifilis_3trimest',
             'vih',
             'sifilis',
-            'all'
+            'all',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 }

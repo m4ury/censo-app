@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::put('roles/{rolId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionsToRole'])->name('roles.give-permissions');
 
     Route::resource('users', 'UserController');
+    Route::get('/users', 'UserController@index')->name('users.index');
     Route::get('users/{userId?}/delete', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
     Route::post('users/{id}/restore', [App\Http\Controllers\UserController::class, 'restore'])->name('users.restore');
 
@@ -126,8 +127,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/estadisticas.seccion-c', 'Estadisticas\SeccionP4Controller@seccionP4c')->name('estadisticas.seccion-c');
 
     //P5
-    Route::get('/estadisticas.seccion-p5a', 'EstadisticaController@seccionP5a')->name('estadisticas.seccion-p5a');
-    Route::get('/estadisticas.seccion-p5b', 'EstadisticaController@seccionP5b')->name('estadisticas.seccion-p5b');
+    Route::get('/estadisticas.seccion-p5a', 'Estadisticas\SeccionP5Controller@seccionP5a')->name('estadisticas.seccion-p5a');
+    Route::get('/estadisticas.seccion-p5b', 'Estadisticas\SeccionP5Controller@seccionP5b')->name('estadisticas.seccion-p5b');
 
     //P6
     Route::get('/estadisticas.seccion-p6a', 'Estadisticas\SeccionP6Controller@seccionP6a')->name('estadisticas.seccion-p6a');

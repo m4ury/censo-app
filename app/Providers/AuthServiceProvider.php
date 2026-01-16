@@ -26,41 +26,42 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('ver-patologias', function ($user) {
-            if ($user->type == 'admin') {
+            if ($user->type == 'super-admin') {
                 return true;
             }
             return false;
         });
 
         Gate::define('estadisticas', function ($user) {
-            if ($user->type == 'admin' || $user->type == 'enfermera' || $user->type == 'oirs') {
+            if ($user->type == 'admin' || $user->type == 'enfermera' || $user->type == 'oirs' || $user->type == 'super-admin') {
                 return true;
             }
             return false;
         });
 
         Gate::define('controles-all', function ($user) {
-            if ($user->type == 'admin' || $user->type == 'medico') {
+            if ($user->type == 'admin' || $user->type == 'medico' || $user->type == 'super-admin') {
                 return true;
             }
             return false;
         });
 
         Gate::define('oirs', function ($user) {
-            if ($user->type == 'oirs' || $user->type == 'admin') {
+            if ($user->type == 'oirs' || $user->type == 'admin' || $user->type == 'super-admin') {
                 return true;
             }
             return false;
         });
 
-        Gate::define('rx', function ($user) {
-            if ($user->type == 'rx') {
+        Gate::define('some', function ($user) {
+            if ($user->type == 'some' || $user->type == 'admin' || $user->type == 'super-admin') {
                 return true;
             }
             return false;
         });
-        Gate::define('some', function ($user) {
-            if ($user->type == 'some' || $user->type == 'admin') {
+
+        Gate::define('super-admin', function ($user) {
+            if ($user->type == 'super-admin') {
                 return true;
             }
             return false;

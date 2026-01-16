@@ -270,6 +270,7 @@
                             @if ($paciente->sexo == 'Femenino' and $paciente->grupo > 10)
                                 <div class="col-sm">
                                     {!! Form::label('embarazada_label', 'Embarazada', ['class' => 'col-sm col-form-label']) !!}
+                                    <input type="hidden" name="embarazada" value="0">
                                     {!! Form::checkbox('embarazada', 1, old('embarazada', $paciente->embarazada == 1 ? true : false), [
                                         'class' => 'form-control form-control',
                                     ]) !!}

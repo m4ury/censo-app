@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="row justify-content-center">
+        <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+                'route' => 'estadisticas.seccion-p1f',
+                'fechaInicio' => $fechaInicio ?? '',
+                'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+            ])
+            
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">

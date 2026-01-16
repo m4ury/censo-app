@@ -24,6 +24,7 @@
                                 <th>Nombre Completo</th>
                                 <th>Email</th>
                                 <th>Perfiles</th>
+                                <th>Tipo de Usuario</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -38,6 +39,7 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->type }}</td>
                                     <td class="text-center text-uppercase">
                                         @if (!empty($user->getRoleNames()))
                                             @foreach ($user->getRoleNames() as $role)

@@ -269,21 +269,14 @@ return [
         ],
         [
             'header' => 'CONTROLES',
-            'can' => 'estadisticas'
+            'can' => 'super-admin'
         ],
         [
             'text' => 'Importar Controles',
             'route' => 'controles.excel',
             'icon' => 'fas fa-fw fa-file-excel text-info',
-            'can' => 'estadisticas'
+            'can' => 'super-admin'
         ],
-/*
-        [
-            'text' => 'Proximos Controles',
-            'route' => 'proximos',
-            'icon' => 'fas fa-fw fa-project-diagram text-yellow',
-            'can' => 'controles-all'
-        ], */
         [
             'header' => 'ESTADISTICAS',
             'can' => 'estadisticas'
@@ -294,16 +287,27 @@ return [
             'icon' => 'fas fa-fw fa-file-alt text-pink',
             'can' => 'estadisticas'
         ],
+        [
+            'header' => 'ADMINISTRACION',
+            'can' => 'super-admin'
+        ],
+        [
+            'text' => 'Gestionar Usuarios',
+            'route' => 'users.index',
+            'icon' => 'fas fa-fw fa-users-cog text-blue',
+            'can' => 'super-admin'
+        ],
         /* [
             'text' => 'Metas Ley 18.834',
             'route' => 'estadisticas.metas',
             'icon' => 'fas fa-chart-pie text-green',
             'can' => 'estadisticas'
         ], */
+        
         [
         'type' => 'darkmode-widget',
         'topnav_right' => true,     // Or "topnav => true" to place on the left.
-        ]
+        ],
     ],
 
     /*

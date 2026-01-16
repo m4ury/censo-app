@@ -33,7 +33,7 @@
 @stop
 @section('js')
     <script>
-        $('#roles').select2({
+        $('#roles, #type').select2({
             theme: 'classic',
             width: '100%'
         })

@@ -198,7 +198,21 @@ class PacienteController extends Controller
 
         try {
             $paciente = Paciente::findOrFail($id);
-            $paciente->update($request->all());
+            
+            // Preparar datos para actualizar
+            $data = $request->all();
+            
+            // Si el checkbox 'embarazada' no fue explícitamente marcado (es decir, si solo tiene el valor del hidden 0)
+            // y el valor actual en BD es igual, no actualizar para evitar cambios no intencionales
+            if (isset($data['embarazada']) && $data['embarazada'] == 0 && $paciente->embarazada == 0) {
+                // Solo actualizar si realmente fue cambiado o si otros campos fueron modificados
+                unset($data['embarazada']);
+            } elseif (isset($data['embarazada']) && $data['embarazada'] == 0 && $paciente->embarazada == 1) {
+                // Solo actualizar si fue explícitamente desmarcado (el checkbox estaba antes)
+                // Mantener el valor 0
+            }
+            
+            $paciente->update($data);
 
             return redirect('pacientes/' . $id)->with('swal', [
                 'icon' => 'success',

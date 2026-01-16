@@ -80,5 +80,10 @@
             <label for="roles" class="form-label">Perfiles</label>
             {{ html()->select('roles[]')->options($roles)->multiple()->class('form-control')->value(old('roles', isset($user) ? $user->roles->pluck('name')->toArray() : []))->id('roles') }}
         </div>
+    
+        <div class="col-md-6">
+            <label for="type" class="form-label">Tipo de Usuario</label>
+            {{ html()->select('type')->options(['admin' => 'Administrador', 'normal_user' => 'Usuario Normal', 'super-admin' => 'Super Administrador', 'oirs' => 'OIRS', 'some' => 'SOME'])->class('form-control')->value(old('type', isset($user) ? $user->type : null)) }}
+        </div>
     </div>
 </div>

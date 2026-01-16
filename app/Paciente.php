@@ -181,7 +181,7 @@ class Paciente extends Model
 
     public function rangoAnualCorte()
     {
-        $fechaCorte = \Carbon\Carbon::create(null, 6, 30);
+        $fechaCorte = \Carbon\Carbon::create(null, 12, 31);
         $fechaInicio = $fechaCorte->copy()->subYear()->addDay();
         return [$fechaInicio->format('Y-m-d'), $fechaCorte->format('Y-m-d')];
     }
@@ -306,15 +306,19 @@ class Paciente extends Model
 
     public function climater($fechaCorte = null)
     {
-        return $this->controlsMetric(
-            ['controls.climater' => true]);
-        /* [$desde, $hasta] = $this->rangoPorFechaCorte($fechaCorte);
-    {
-        return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->where('controls.tipo_control', 'Matrona')
-            ->where('controls.climater', true)
-            ->whereBetween('controls.fecha_control', [$desde, $hasta]);
-    } */
+        /* return $this->controlsMetric(
+            ['controls.climater' => true],
+            'Matrona',
+            $fechaCorte,
+            'Femenino'
+        ); */
+        [$desde, $hasta] = $this->rangoPorFechaCorte($fechaCorte);
+        {
+            return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
+                ->where('controls.tipo_control', 'Matrona')
+                ->where('controls.climater', true)
+                ->whereBetween('controls.fecha_control', [$desde, $hasta]);
+        }
     }
 
     public function rBiops($fechaCorte = null)
@@ -379,10 +383,11 @@ class Paciente extends Model
         {
             return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
                 ->where('controls.tipo_control', 'Matrona')
-                ->where('controls.embarazo', true)
                 ->whereBetween('controls.fecha_control', [$desde, $hasta])
                 ->where('pacientes.embarazada', true)
                 ->whereNull('pacientes.egreso')
+                ->select('pacientes.*')
+                ->distinct()
                 ->latest('controls.fecha_control');
         }
     }
