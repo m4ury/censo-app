@@ -306,7 +306,7 @@
                             <div class="col-sm-3">
                                 {!! Form::select(
                                     'riesgo_cv',
-                                    ['Bajo' => 'Bajo', 'Moderado' => 'Moderado', 'Alto' => 'Alto'],
+                                    ['BAJO' => 'Bajo', 'MODERADO' => 'Moderado', 'ALTO' => 'Alto'],
                                     old('riesgo_cv', $paciente->riesgo_cv),
                                     ['class' => 'form-control', 'placeholder' => 'Seleccione el riesgo', 'id' => 'riesgo_cv'],
                                 ) !!}

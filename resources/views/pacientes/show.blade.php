@@ -98,11 +98,11 @@
                                     <hr>
                                     <strong><i class="fas fa-heartbeat mr-1"></i> Riesgo Cardiovascular</strong>
                                     <br>
-                                    @if ($paciente->riesgo_cv == 'Moderado')
+                                    @if ($paciente->riesgo_cv == 'MODERADO')
                                         <p class="btn rounded-pill bg-gradient-warning">MODERADO</P>
-                                    @elseif($paciente->riesgo_cv == 'Alto')
+                                    @elseif($paciente->riesgo_cv == 'ALTO')
                                         <p class="btn rounded-pill bg-gradient-danger px-4">ALTO</P>
-                                    @elseif($paciente->riesgo_cv == 'Bajo')
+                                    @elseif($paciente->riesgo_cv == 'BAJO')
                                         <p class="btn rounded-pill bg-gradient-success px-4">BAJO</P>
                                     @else
                                         <p class="btn badge-pill bg-gradient-info">No hay datos...</p>
