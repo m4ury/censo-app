@@ -374,12 +374,14 @@ public function index()
     {
         $all = new Paciente;
         $sala_era = $all->join('paciente_patologia', 'pacientes.id', 'paciente_patologia.paciente_id')
-            ->leftJoin('controls', 'controls.paciente_id', 'pacientes.id')
+            ->join('controls', function ($join) {
+                $join->on('controls.paciente_id', '=', 'pacientes.id')
+                    ->whereIn('controls.tipo_control', ['Kinesiologo', 'Medico']);
+            })
             ->select('pacientes.id', 'rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'sector', 'telefono', 'fecha_nacimiento', 'sexo', 'controls.fecha_control', 'controls.tipo_control', 'controls.asmaClasif', 'controls.epocClasif', 'controls.sborClasif', 'controls.otras_enf')
             ->where('paciente_patologia.patologia_id', 8)
-            //->where('controls.tipo_control', 'Kinesiologo')
-            ->whereNull('egreso')
-            ->latest('fecha_control')
+            ->whereNull('pacientes.egreso')
+            ->latest('controls.fecha_control')
             ->get()
             ->unique('rut');
 

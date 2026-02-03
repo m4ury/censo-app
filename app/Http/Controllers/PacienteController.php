@@ -158,10 +158,15 @@ class PacienteController extends Controller
             return redirect('pacientes')->with('swal', [
                 'icon' => 'success',
                 'title' => '¡Éxito!',
-                'text' => 'Paciente creado correctamente'
+                'text' => 'Paciente creado correctamente',
+                'timer' => 2000
             ]);
         } catch (\Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()])->withInput();
+            return back()->with('swal', [
+                'icon' => 'error',
+                'title' => 'Error',
+                'text' => 'No se pudo crear el paciente: ' . $e->getMessage()
+            ])->withInput();
         }
     }
 
@@ -216,23 +221,38 @@ class PacienteController extends Controller
 
             return redirect('pacientes/' . $id)->with('swal', [
                 'icon' => 'success',
-                'title' => '¡Éxito!',
-                'text' => 'Paciente actualizado correctamente'
+                'title' => '¡Actualizado!',
+                'text' => 'Los datos del paciente se actualizaron correctamente',
+                'timer' => 2000
             ]);
         } catch (\Exception $e) {
             return back()->with('swal', [
                 'icon' => 'error',
-                'title' => 'Error',
-                'text' => $e->getMessage()
+                'title' => 'Error en la actualización',
+                'text' => 'No se pudo actualizar el paciente: ' . $e->getMessage()
             ])->withInput();
         }
     }
 
+    // Eliminado: el método destroy ha sido deshabilitado para evitar pérdida de datos
+    // Todos los registros de pacientes son históricos y no deben ser eliminados
+    /*
     public function destroy($id)
     {
-        Paciente::destroy($id);
-        return response(['data' => null], 204);
+        try {
+            Paciente::destroy($id);
+            return response()->json([
+                'success' => true,
+                'message' => 'Paciente eliminado correctamente'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al eliminar el paciente: ' . $e->getMessage()
+            ], 500);
+        }
     }
+    */
 
     public function fondoOjo()
     {
@@ -375,8 +395,6 @@ class PacienteController extends Controller
                 || $item->hba1cMayorIgual9Porcent == 1; //dm2
         })->unique('rut');
 
-        //dd($desCompensado->whereBetween('grupo', [20, 44])->pluck('rut'));
-
         $pscv = $paciente->pscv()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
             ->orderBy('rut', 'asc')
             ->get();
@@ -420,10 +438,20 @@ class PacienteController extends Controller
             ->whereHas('patologias', function ($query) {
                 $query->where('nombre_patologia', 'SALUD MENTAL');
             })
-            ->whereDoesntHave('controls', function ($query) {
-                $query->where('tipo_control', 'Psicologo')
-                    ->where('fecha_control', '>=', Carbon::now()->subYear());
+            ->whereHas('controls', function ($query) {
+                // Verificar que tengan controles de Medico o Psicologo
+                $query->whereIn('tipo_control', ['Medico', 'Psicologo']);
             })
+            ->where(function ($query) {
+                // El último control sea de 4 o 5 meses o más
+                $fiveMonthsAgo = Carbon::now()->subMonths(5);
+                $query->whereRaw(
+                    '(SELECT MAX(fecha_control) FROM controls WHERE controls.paciente_id = pacientes.id AND tipo_control IN ("Medico", "Psicologo")) <= ?',
+                    [$fiveMonthsAgo]
+                );
+            })
+            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
             ->get();
 
         return view('pacientes.pacientes_sin_controles', compact('pacientes'));
@@ -433,9 +461,20 @@ class PacienteController extends Controller
     {
         $pacientes = Paciente::whereNull('egreso') // Filtra pacientes donde 'egreso' es NULL
             ->whereNotNull('riesgo_cv') // Filtra pacientes con algún valor en 'riesgo_cv'
-            ->whereDoesntHave('controls', function ($query) {
-                $query->where('fecha_control', '>=', Carbon::now()->subYear());
+            ->whereHas('controls', function ($query) {
+                // Verificar que tengan al menos un control tipo 'Medico', 'Enfermera' o 'Nutricionista'
+                $query->whereIn('tipo_control', ['Medico', 'Enfermera', 'Nutricionista']);
             })
+            ->where(function ($query) {
+                // El último control sea de 10 meses o más
+                $tenMonthsAgo = Carbon::now()->subMonths(10);
+                $query->whereRaw(
+                    '(SELECT MAX(fecha_control) FROM controls WHERE controls.paciente_id = pacientes.id AND tipo_control IN ("Medico", "Enfermera", "Nutricionista")) <= ?',
+                    [$tenMonthsAgo]
+                );
+            })
+            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
             ->get();
 
         return view('pacientes.pscv_sin_controles', compact('pacientes'));
@@ -447,10 +486,20 @@ class PacienteController extends Controller
             ->whereHas('patologias', function ($query) {
                 $query->where('nombre_patologia', 'SALA ERA');
             })
-            ->whereDoesntHave('controls', function ($query) {
-                $query->where('tipo_control', 'Kinesiologo')
-                    ->where('fecha_control', '>=', Carbon::now()->subYear());
+            ->whereHas('controls', function ($query) {
+                // Verificar que tengan controles de Kinesiologo o Medico
+                $query->whereIn('tipo_control', ['Kinesiologo', 'Medico']);
             })
+            ->where(function ($query) {
+                // El último control sea de 10 meses o más
+                $tenMonthsAgo = Carbon::now()->subMonths(10);
+                $query->whereRaw(
+                    '(SELECT MAX(fecha_control) FROM controls WHERE controls.paciente_id = pacientes.id AND tipo_control IN ("Kinesiologo", "Medico")) <= ?',
+                    [$tenMonthsAgo]
+                );
+            })
+            ->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'sexo', 'sector', 'fecha_nacimiento', 'egreso', 'fecha_egreso', 'id')
+            ->orderBy('rut', 'asc')
             ->get();
 
         return view('pacientes.salaEra_sin_controles', compact('pacientes'));

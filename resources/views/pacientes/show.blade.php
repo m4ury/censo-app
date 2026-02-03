@@ -217,7 +217,6 @@
 <script>
     $(".confirm").on('submit', function(e) {
         e.preventDefault();
-        //console.log('alerta');
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success mx-2',
@@ -226,30 +225,40 @@
             buttonsStyling: false
         })
         swalWithBootstrapButtons.fire({
-            title: 'Estas seguro?',
-            text: "No podras revertir esto!",
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esta acción!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Si, borrar!',
-            cancelButtonText: 'No, cancelar!',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {
-                this.submit();
-                swalWithBootstrapButtons.fire(
-                    'Eliminado!',
-                    'registro Eliminado.',
-                    'success'
-                )
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Cancelado',
-                    'Tranki.. no ha pasaso nada',
-                    'error'
-                )
+                const form = this;
+                $.ajax({
+                    url: form.action,
+                    type: form.method,
+                    data: $(form).serialize(),
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        swalWithBootstrapButtons.fire(
+                            '¡Eliminado!',
+                            'El paciente ha sido eliminado correctamente.',
+                            'success'
+                        ).then(() => {
+                            window.location.href = '{{ route("pacientes.index") }}';
+                        });
+                    },
+                    error: function(xhr) {
+                        swalWithBootstrapButtons.fire(
+                            'Error',
+                            'No se pudo eliminar el paciente: ' + (xhr.responseJSON?.message || 'Error desconocido'),
+                            'error'
+                        );
+                    }
+                });
             }
         })
     })
