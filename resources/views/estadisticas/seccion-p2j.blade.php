@@ -4,6 +4,12 @@
 
 @section('content')
     <div class="row justify-content-center">
+        <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-p2j',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
@@ -19,7 +25,7 @@
                         </button>
                     </div>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-j" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" colspan="2" rowspan="3">INDICADOR ODONTOLOGICO Y PARAMETROS DE
@@ -604,65 +610,65 @@
                             </tr>
                             <tr>
                                 <th colspan="2" class="text-center">INASISTENTES A CONTROL ODONTOLOGICO</th>
-                                <td>{{ $all->inasist('Femenino', 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
+                                <td>{{ $inasistente->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist(null, 'Masculino')->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->whereBetween('grupo', [1, 9])->unique('rut')->count() }}
                                 </td>
                                 <td class="bg-gradient-gray"></td>">
                                 <td class="bg-gradient-gray"></td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 2)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 2)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 2)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 2)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 3)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 3)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 3)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 3)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 4)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 4)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 4)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 4)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 5)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 5)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 5)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 5)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 6)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 6)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 6)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 6)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 7)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 7)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 7)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 7)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 8)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 8)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 8)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 8)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('grupo', '==', 9)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('grupo', '==', 9)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('grupo', '==', 9)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('grupo', '==', 9)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('pueblo_originario', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('pueblo_originario', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('pueblo_originario', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('pueblo_originario', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('migrante', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('migrante', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('migrante', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('migrante', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('discap', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('discap', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('discap', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('discap', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Masculino', null)->get()->where('inasistente', true)->where('mejor_ninez', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteM->where('mejor_ninez', 1)->unique('rut')->count() }}
                                 </td>
-                                <td>{{ $all->inasist('Femenino', null)->get()->where('inasistente', true)->where('mejor_ninez', 1)->unique('rut')->count() }}
+                                <td>{{ $inasistenteF->where('mejor_ninez', 1)->unique('rut')->count() }}
                                 </td>
                             </tr>
                             </tr>
@@ -677,9 +683,9 @@
 @section('js')
     <script>
         function exportarTablaExcel() {
-            var tabla = document.getElementById('sm');
+            var tabla = document.getElementById('seccion-j');
             var wb = XLSX.utils.table_to_book(tabla, {
-                sheet: "Estadísticas"
+                sheet: "Libro1"
             });
             XLSX.writeFile(wb, 'P2_seccionJ.xlsx');
         }

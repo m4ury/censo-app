@@ -4,6 +4,12 @@
 
 @section('content')
     <div class="row justify-content-center">
+        <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-p9d',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
@@ -14,8 +20,13 @@
                     SECCION E: POBLACIÓN EN CONTROL SALUD INTEGRAL DE ADOLESCENTES, SEGÚN AMBITOS
                     GINECO-UROLOGICO/SEXUALIDAD
                 </h4>
+                <div class="col-md-12">
+                    <button class="btn btn-success float-right mb-3" onclick="exportarTablaExcel()">
+                        <i class="fas fa-file-excel"></i> Descargar Excel
+                    </button>
+                </div>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-e" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" rowspan="3">Gineco/urologico/sexualidad</th>
@@ -312,4 +323,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+            <script>
+                function exportarTablaExcel() {
+                    var tabla = document.getElementById('seccion-e');
+                    var wb = XLSX.utils.table_to_book(tabla, {
+                        sheet: "Estadísticas"
+                    });
+                    XLSX.writeFile(wb, 'P9_seccionE.xlsx');
+                }
+            </script>
 @endsection

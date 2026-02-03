@@ -9,30 +9,35 @@ use Illuminate\Http\Request;
 
 class SeccionP3Controller extends Controller
 {
-    public function seccionP3a()
+    public function seccionP3a(Request $request)
     {
         $all = new Paciente;
 
-        $asmaLeve = $all->asma('Femenino', 'Masculino', 'Leve')->get()->unique('rut');
-        $asmaModerado = $all->asma('Femenino', 'Masculino', 'Moderado')->get()->unique('rut');
-        $asmaSevero = $all->asma('Femenino', 'Masculino', 'Severo')->get()->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        [$asmaLeve, $asmaLeveM, $asmaLeveF] = $this->getStats($all, 'asma', 'Leve', $range);
+        [$asmaModerado, $asmaModeradoM, $asmaModeradoF] = $this->getStats($all, 'asma', 'Moderado', $range);
+        [$asmaSevero, $asmaSeveroM, $asmaSeveroF] = $this->getStats($all, 'asma', 'Severo', $range);
 
         //otras enfermedades
-        $otrasResp = $all->otrasResp('Femenino', 'Masculino', 'Otras respiratorias cronicas')->get()->unique('rut');
-        $oxigenoDep = $all->otrasResp('Femenino', 'Masculino', 'Oxigeno dependiente')->get()->unique('rut');
-        $asistVent = $all->otrasResp('Femenino', 'Masculino', 'Asistencia ventilatoria no invasiva o invasiva')->get()->unique('rut');
-        $fibrosis = $all->otrasResp('Femenino', 'Masculino', 'Fibrosis quistica')->get()->unique('rut');
+        [$otrasResp, $otrasRespM, $otrasRespF] = $this->getStats($all, 'otrasResp', 'Otras respiratorias cronicas', $range);
+        [$oxigenoDep, $oxigenoDepM, $oxigenoDepF] = $this->getStats($all, 'otrasResp', 'Oxigeno dependiente', $range);
+        [$asistVent, $asistVentM, $asistVentF] = $this->getStats($all, 'otrasResp', 'Asistencia ventilatoria no invasiva o invasiva', $range);
+        [$fibrosis, $fibrosisM, $fibrosisF] = $this->getStats($all, 'otrasResp', 'Fibrosis quistica', $range);
         $tea = $all->tea();
 
         //sbor
-        $sborLeve = $all->sbor('Femenino', 'Masculino', 'Leve')->get()->whereBetween('grupo', [0, 4])->unique('rut');
-        $sborModerado = $all->sbor('Femenino', 'Masculino', 'Moderado')->get()->whereBetween('grupo', [0, 4])->unique('rut');
-        $sborSevero = $all->sbor('Femenino', 'Masculino', 'Severo')->get()->whereBetween('grupo', [0, 4])->unique('rut');
+        [$sborLeve, $sborLeveM, $sborLeveF] = $this->getStats($all, 'sbor', 'Leve', $range);
+        [$sborModerado, $sborModeradoM, $sborModeradoF] = $this->getStats($all, 'sbor', 'Moderado', $range);
+        [$sborSevero, $sborSeveroM, $sborSeveroF] = $this->getStats($all, 'sbor', 'Severo', $range);
 
         //epoc A
-        $epocA = $all->epoc('Femenino', 'Masculino', 'A')->get()->unique('rut');
+        [$epocA, $epocAM, $epocAF] = $this->getStats($all, 'epoc', 'A', $range);
         //epoc B
-        $epocB = $all->epoc('Femenino', 'Masculino', 'B')->get()->unique('rut');
+        [$epocB, $epocBM, $epocBF] = $this->getStats($all, 'epoc', 'B', $range);
 
         //epilepsia todos
         $epilepsia = $all->epilepsia()->get();
@@ -67,7 +72,7 @@ class SeccionP3Controller extends Controller
         //ESCARAS
         $escaras = $all->escaras()->get();
 
-        //ESCARAS
+        //PALIATIVO
         $paliativo = $all->paliativo()->get();
 
 
@@ -85,64 +90,127 @@ class SeccionP3Controller extends Controller
             'alivio_dolor',
             'hipot',
             'asmaLeve',
+            'asmaLeveM',
+            'asmaLeveF',
             'sborLeve',
+            'sborLeveM',
+            'sborLeveF',
             'sborModerado',
+            'sborModeradoM',
+            'sborModeradoF',
             'sborSevero',
+            'sborSeveroM',
+            'sborSeveroF',
             'asmaModerado',
+            'asmaModeradoM',
+            'asmaModeradoF',
             'asmaSevero',
+            'asmaSeveroM',
+            'asmaSeveroF',
             'epocA',
+            'epocAM',
+            'epocAF',
             'epocB',
+            'epocBM',
+            'epocBF',
             'otrasResp',
+            'otrasRespM',
+            'otrasRespF',
             'oxigenoDep',
+            'oxigenoDepM',
+            'oxigenoDepF',
             'asistVent',
+            'asistVentM',
+            'asistVentF',
             'fibrosis',
+            'fibrosisM',
+            'fibrosisF',
             'tea',
             'all',
+            'fechaCorte',
+            'fechaInicio',
             'paliativo'
         ));
     }
 
-    public function seccionp3b()
+    public function seccionp3b(Request $request)
     {
         $all = new Paciente;
+
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
 
         $cuidador = $all->where('cuidador', 1)->get();
 
-        return view('estadisticas.seccion-p3b', compact('cuidador'));
+        return view('estadisticas.seccion-p3b', compact('cuidador', 'fechaCorte', 'fechaInicio'));
     }
 
-    public function seccionp3d()
+    public function seccionp3d(Request $request)
     {
         $all = new Paciente;
 
-        $asmaControl = $all->asmaControl('Femenino', 'Masculino', 'Controlado')->get()->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
 
-        $asmaParcial = $all->asmaControl('Femenino', 'Masculino', 'Parcialmente Controlado')->get()->unique('rut');
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
 
-        $asmaNoControl = $all->asmaControl('Femenino', 'Masculino', 'No Controlado')->get()->unique('rut');
+        [$asmaControl, $asmaControlM, $asmaControlF] = $this->getStats($all, 'asmaControl', 'Controlado', $range);
 
-        $asmaNoEval = $all->asmaControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut');
+        [$asmaParcial, $asmaParcialM, $asmaParcialF] = $this->getStats($all, 'asmaControl', 'Parcialmente Controlado', $range);
 
-        $epocControl = $all->epocControl('Femenino', 'Masculino', 'Logra Control')->get()->unique('rut');
+        [$asmaNoControl, $asmaNoControlM, $asmaNoControlF] = $this->getStats($all, 'asmaControl', 'No Controlado', $range);
 
-        $epocNoControl = $all->epocControl('Femenino', 'Masculino', 'No Logra Control')->get()->unique('rut');
+        [$asmaNoEval, $asmaNoEvalM, $asmaNoEvalF] = $this->getStats($all, 'asmaControl', 'No Evaluado', $range);
 
-        $epocNoEval = $all->epocControl('Femenino', 'Masculino', 'No Evaluado')->get()->unique('rut');
+        [$epocControl, $epocControlM, $epocControlF] = $this->getStats($all, 'epocControl', 'Logra Control', $range);
+
+        [$epocNoControl, $epocNoControlM, $epocNoControlF] = $this->getStats($all, 'epocControl', 'No Logra Control', $range);
+
+        [$epocNoEval, $epocNoEvalM, $epocNoEvalF] = $this->getStats($all, 'epocControl', 'No Evaluado', $range);
 
         return view('estadisticas.seccion-p3d', compact(
             'asmaControl',
+            'asmaControlM',
+            'asmaControlF',
 
             'asmaNoEval',
+            'asmaNoEvalM',
+            'asmaNoEvalF',
 
             'asmaParcial',
+            'asmaParcialM',
+            'asmaParcialF',
 
             'asmaNoControl',
+            'asmaNoControlM',
+            'asmaNoControlF',
 
             'epocControl',
+            'epocControlM',
+            'epocControlF',
 
             'epocNoControl',
+            'epocNoControlM',
+            'epocNoControlF',
 
             'epocNoEval',
+            'epocNoEvalM',
+            'epocNoEvalF',
+
+            'all',
+            'fechaCorte',
+            'fechaInicio',
         ));
+    }
+
+    private function getStats($model, $scope, $arg, $range = null)
+    {
+        return [
+            $model->{$scope}('Femenino', 'Masculino', $arg, $range)->get()->unique('rut'),
+            $model->{$scope}(null, 'Masculino', $arg, $range)->get()->unique('rut'),
+            $model->{$scope}('Femenino', null, $arg, $range)->get()->unique('rut'),
+        ];
     }
 }

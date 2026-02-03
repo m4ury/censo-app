@@ -4,6 +4,12 @@
 
 @section('content')
 <div class="row justify-content-center">
+    <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-c',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
     <div class="card card-primary card-outline">
         <div class="card-body">
             <h4 class="card-title text-bold mb-3">
@@ -18,6 +24,13 @@
                     <i class="fas fa-file-excel"></i> Descargar Excel
                 </button>
             </div>
+            {{-- {{ dd($evaluacionPie_bajo) }}
+            {{
+            dd($evaluacionPie_moderado) }}
+            {{
+            dd($evaluacionPie_alto) }}
+            {{
+            dd($evaluacionPie_maximo)}} --}}
             <div class="col-md-12 table-responsive">
                 <table class="table table-md-responsive table-bordered" id="pscv">
                     <thead>

@@ -4,6 +4,12 @@
 
 @section('content')
     <div class="row justify-content-center">
+        <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-p2cde',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
@@ -13,8 +19,11 @@
                     </a>
                     SECCION C: POBLACIÓN MENOR DE 1 AÑO EN CONTROL, SEGÚN SCORE RIESGO EN IRA Y VISITA DOMICILIARIA INTEGRAL
                 </h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcel()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-c" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" colspan="2">RESULTADO</th>
@@ -117,7 +126,7 @@
                 <h4 class="card-title text-bold mb-3">
                     SECCION D: POBLACIÓN EN CONTROL EN EL SEMESTRE CON CONSULTA NUTRICIONAL, SEGÚN ESTRATEGIA</h4>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-d" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">NIÑO/A CON CONSULTA NUTRICIONAL EN</th>
@@ -140,7 +149,7 @@
                 <h4 class="card-title text-bold mb-3">
                     SECCION E: POBLACIÓN INASISTENTE A CONTROL DEL NIÑO SANO (AL CORTE)</h4>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-e" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">EDAD</th>
@@ -178,8 +187,11 @@
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
                     SECCION F: POBLACIÓN INFANTIL SEGÚN DIAGNÓSTICO DE PRESIÓN ARTERIAL (Incluida en sección A y A1)</h4>
+                <button class="btn btn-xs btn-success mb-2 mx-2" onclick="exportarTablaExcelF()">
+                    <i class="fas fa-file-excel"></i> Descargar Excel
+                </button>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-f" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" rowspan="3" style="vertical-align: middle" nowrap>CLASIFICACIÓN
@@ -283,7 +295,7 @@
                     SECCION G: POBLACIÓN INFANTIL EUTRÓFICA, SEGÚN RIESGO DE MALNUTRICIÓN POR EXCESO (Incluida en sección A
                     y A1)</h4>
                 <div class="col-md-12 table-responsive">
-                    <table id="sm" class="table table-md-responsive table-bordered">
+                    <table id="seccion-g" class="table table-md-responsive table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center" rowspan="2" style="vertical-align: middle" nowrap>RESULTADO
@@ -357,4 +369,23 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        function exportarTablaExcel() {
+            const table = document.getElementById('seccion-c');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: "Sheet1"
+            });
+            XLSX.writeFile(workbook, 'P2_seccionC.xlsx');
+        }
+
+        function exportarTablaExcelF() {
+            const table = document.getElementById('seccion-f');
+            const workbook = XLSX.utils.table_to_book(table, {
+                sheet: "Sheet1"
+            });
+            XLSX.writeFile(workbook, 'P2_seccionF.xlsx');
+        }
+    </script>
 @endsection

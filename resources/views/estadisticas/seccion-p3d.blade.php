@@ -4,6 +4,12 @@
 
 @section('content')
     <div class="row justify-content-center">
+        <!-- Incluir partial de selector de fechas -->
+        @include('partials.fecha_corte_selector', [
+            'route' => 'estadisticas.seccion-p3d',
+            'fechaInicio' => $fechaInicio ?? '',
+            'fechaCorte' => $fechaCorte ?? now()->format('Y-m-d')
+        ])
         <div class="card card-primary card-outline">
             <div class="card-body">
                 <h4 class="card-title text-bold mb-3">
@@ -25,6 +31,7 @@
                                 <th class="text-center" colspan="2" rowspan="3">PROGRAMAS</th>
                                 <th class="text-center" colspan="3" rowspan="2">TOTAL</th>
                                 <th class="text-center" colspan="34">GRUPOS DE EDAD (en años) Y SEXO</th>
+                                <th class="text-center" colspan="2" rowspan="2">PUEBLO ORIGINARIO</th>
                                 <th colspan="2" rowspan="2">Poblacion Migrantes</th>
 
                             </tr>
@@ -49,6 +56,8 @@
                             </tr>
                             <tr>
                                 <th>Ambos Sexos</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
                                 <th>Hombres</th>
                                 <th>Mujeres</th>
                                 <th>Hombres</th>
@@ -163,8 +172,10 @@
                                 </td>
                                 <td>{{ $asmaControl->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaControl->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaControl->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaControl->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaControl->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
                             <tr>
                                 <th>Parcialmente Controlado</th>
@@ -239,8 +250,10 @@
                                 </td>
                                 <td>{{ $asmaParcial->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaParcial->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaParcial->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaParcial->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaParcial->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
 
                             <tr>
@@ -316,8 +329,10 @@
                                 </td>
                                 <td>{{ $asmaNoControl->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaNoControl->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaNoControl->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaNoControl->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaNoControl->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
 
                             <tr>
@@ -393,8 +408,10 @@
                                 </td>
                                 <td>{{ $asmaNoEval->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $asmaNoEval->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaNoEval->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $asmaNoEval->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $asmaNoEval->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
 
                             <tr>
@@ -455,8 +472,10 @@
                                 </td>
                                 <td>{{ $epocControl->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $epocControl->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocControl->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $epocControl->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocControl->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">No Logra Control Adecuado</th>
@@ -515,8 +534,10 @@
                                 </td>
                                 <td>{{ $epocNoControl->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $epocNoControl->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocNoControl->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $epocNoControl->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocNoControl->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
                             <tr>
                                 <th nowrap="">No Evaluada</th>
@@ -575,8 +596,10 @@
                                 </td>
                                 <td>{{ $epocNoEval->where('sexo', 'Femenino')->where('grupo', '>', 79)->count() }}
                                 </td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $epocNoEval->where('pueblo_originario', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocNoEval->where('pueblo_originario', 1)->where('sexo', 'Femenino')->count() }}</td>
+                                <td>{{ $epocNoEval->where('migrante', 1)->where('sexo', 'Masculino')->count() }}</td>
+                                <td>{{ $epocNoEval->where('migrante', 1)->where('sexo', 'Femenino')->count() }}</td>
                             </tr>
                         </thead>
                     </table>

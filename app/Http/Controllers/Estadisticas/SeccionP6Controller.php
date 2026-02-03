@@ -10,27 +10,35 @@ use Illuminate\Http\Request;
 class SeccionP6Controller extends Controller
 {
 
-public function seccionP6a()
+public function seccionP6a(Request $request)
     {
         ini_set('max_execution_time', 900);
         ini_set('memory_limit', '1024M');
 
         $all = new Paciente;
-        [$fechaInicio, $fechaCorte] = $all->rangoAnualCorte();
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        // Obtener las fechas del rango para usarlas en las consultas
+        [$desdeRango, $hastaRango] = $all->rangoPorFechaCorte($range);
+
+        //[$fechaInicio, $fechaCorte] = $all->rangoAnualCorte();
 
         $sm = \App\Paciente::whereHas('patologias', function($q) {
                 $q->where('patologia_id', 9); // ID de salud mental
             })
-            ->whereHas('controls', function($q) use ($fechaInicio, $fechaCorte) {
+            ->whereHas('controls', function($q) use ($desdeRango, $hastaRango) {
                 $q->whereIn('tipo_control', ['Psicologo', 'Medico'])
-                  ->whereBetween('fecha_control', [$fechaInicio, $fechaCorte]);
+                  ->whereBetween('fecha_control', [$desdeRango, $hastaRango]);
             })
             ->get();
 
         // 1. Traer todos los controles de salud mental en el rango anual
         $controles = \App\Control::with('paciente')
             ->where('tipo_control', 'Psicologo')
-            ->whereBetween('fecha_control', [$fechaInicio, $fechaCorte])
+            ->whereBetween('fecha_control', [$desdeRango, $hastaRango])
             ->orderBy('fecha_control', 'desc')
             ->get();
 
@@ -108,7 +116,9 @@ public function seccionP6a()
             'trNOespecif',
             'epilepsia',
             'otras',
-            'all'
+            'all',
+            'fechaInicio',
+            'fechaCorte'
         ));
     }
 

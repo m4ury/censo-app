@@ -120,101 +120,100 @@ class SeccionP4Controller extends Controller
         ));
     }
 
-    public function seccionP4C()
+    public function seccionP4C(Request $request)
     {
         $pacientes = new Paciente;
 
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
         //racVigente
-        $racVigente = $pacientes->racVigente()->get();
+        [$racVigente] = $this->getStats($pacientes, 'racVigente', null, $range);
 
         //vfgVigente
-        $vfgVigente = $pacientes->vfgVigente()->get();
+        [$vfgVigente] = $this->getStats($pacientes, 'vfgVigente', null, $range);
 
         //vfgRacVigente
-        $vfgRacVigente = $pacientes->vfgRacVigente()->get();
+        [$vfgRacVigente] = $this->getStats($pacientes, 'vfgRacVigente', null, $range);
 
         //fondo de ojo Vigente
-        $fondoOjoVigente = $pacientes->fondoOjoVigente()->get();
+        [$fondoOjoVigente] = $this->getStats($pacientes, 'fondoOjoVigente', null, $range);
 
         //hta Vfg Vigente
-        $htaVfgVigente = $pacientes->htaVfgVigente()->get();
-
+        [$htaVfgVigente] = $this->getStats($pacientes, 'htaVfgVigente', null, $range);
         //control podologico al dia
-        $controlPodologico_alDia = $pacientes->controlPodologico_alDia()->get();
+        [$controlPodologico_alDia] = $this->getStats($pacientes, 'controlPodologico_alDia', null, $range);
 
         //ecgVigente
-        $ecgVigente = $pacientes->ecgVigente()->get();
+        [$ecgVigente] = $this->getStats($pacientes, 'ecgVigente', null, $range);
 
         //usoInsulina
-        $usoInsulina = $pacientes->usoInsulina()->get();
+        [$usoInsulina] = $this->getStats($pacientes, 'usoInsulina', null, $range);
 
         //insulinaHb1C
-        $insulinaHba1C = $pacientes->insulinaHba1C()->get()->unique('rut');
+        [$insulinaHba1C] = $this->getStats($pacientes, 'insulinaHba1C', null, $range);
 
         //hba1cMayorIgual9Porcent
-        $hba1cMayorIgual9Porcent = $pacientes->hba1cMayorIgual9Porcent()->get()->unique('rut');
+        [$hba1cMayorIgual9Porcent] = $this->getStats($pacientes, 'hba1cMayorIgual9Porcent', null, $range);
 
         //dm2 fumador
-        $dm2Fumador = $pacientes->dm2Fumador()->get();
+        [$dm2Fumador] = $this->getStats($pacientes, 'dm2Fumador', null, $range);
 
         //dm2 ERC
-        $dm2Erc = $pacientes->dm2Erc()->get();
+        [$dm2Erc] = $this->getStats($pacientes, 'dm2Erc', null, $range);
 
         //hta Vfg Rac Vigente
-        $htaVfgRac = $pacientes->htaVfgRac()->get();
+        [$htaVfgRac] = $this->getStats($pacientes, 'htaVfgRac', null, $range);
 
         //usoIecaAraII
-        $usoIecaAraII = $pacientes->usoIecaAraII()->get();
-
+        [$usoIecaAraII] = $this->getStats($pacientes, 'usoIecaAraII', null, $range);
         //ldlVigente
-        $ldlVigente = $pacientes->ldlVigente()->get();
+        [$ldlVigente] = $this->getStats($pacientes, 'ldlVigente', null, $range);
 
         //evaluacion Pie_bajo
-        $evaluacionPie_bajo = $pacientes->evaluacionPie_bajo()->get()->unique('rut');
+        [$evaluacionPie_bajo] = $this->getStats($pacientes, 'evaluacionPie_bajo', null, $range);
 
         //evaluacion Pie_moderado
-        $evaluacionPie_moderado = $pacientes->evaluacionPie_moderado()->get()->unique('rut');
+        [$evaluacionPie_moderado] = $this->getStats($pacientes, 'evaluacionPie_moderado', null, $range);
 
         //evaluacion Pie_alto
-        $evaluacionPie_alto = $pacientes->evaluacionPie_alto()->get()->unique('rut');
+        [$evaluacionPie_alto] = $this->getStats($pacientes, 'evaluacionPie_alto', null, $range);
 
         //evaluacion Pie_maximo
-        $evaluacionPie_maximo = $pacientes->evaluacionPie_maximo()->get()->unique('rut');
+        [$evaluacionPie_maximo] = $this->getStats($pacientes, 'evaluacionPie_maximo', null, $range);
 
         //ulcerasActivas_TipoCuracion_avz
-        $ulcerasActivas_TipoCuracion_avz = $pacientes->ulcerasActivas_TipoCuracion_avz()->get()->unique('rut');
-
+        [$ulcerasActivas_TipoCuracion_avz] = $this->getStats($pacientes, 'ulcerasActivas_TipoCuracion_avz', null, $range);
         //ulcerasActivas_TipoCuracion_conv
-        $ulcerasActivas_TipoCuracion_conv = $pacientes->ulcerasActivas_TipoCuracion_conv()->get()->unique('rut');
+        [$ulcerasActivas_TipoCuracion_conv] = $this->getStats($pacientes, 'ulcerasActivas_TipoCuracion_conv', null, $range);
 
         //aputacionPieDM2
-        $aputacionPieDM2 = $pacientes->aputacionPieDM2()->get();
+        [$aputacionPieDM2] = $this->getStats($pacientes, 'aputacionPieDM2', null, $range);
 
         //dm2 + hta
-        $dm2_hta = $pacientes->dm2_hta()->get();
+        [$dm2_hta] = $this->getStats($pacientes, 'dm2_hta', null, $range);
 
         //dm2 + acv
-        $dm2_acv = $pacientes->dm2_acv()->get();
+        [$dm2_acv] = $this->getStats($pacientes, 'dm2_acv', null, $range);
 
         //dm2 + iam
-        $dm2_iam = $pacientes->dm2_iam()->get();
+        [$dm2_iam] = $this->getStats($pacientes, 'dm2_iam', null, $range);
 
         $hta_racVigente = $pacientes->hta()->where('racVigente', '>=', Carbon::now()->subYear(1))->get();
-        //dd($racVigente);
 
         //pa mayor = 160/100
-        $paMayor160 = $pacientes->paMayor160()->get()->unique('rut');
+        [$paMayor160] = $this->getStats($pacientes, 'paMayor160', null, $range);
 
-        $imc2529 = $pacientes->imc2529()->get()->unique('rut');
+        [$imc2529] = $this->getStats($pacientes, 'imc2529', null, $range);
 
-        $imc2831 = $pacientes->imc2831()->get()->unique('rut');
-        // dd($imc2831_80F);
+        [$imc2831] = $this->getStats($pacientes, 'imc2831', null, $range);
+        [$imcMayor30] = $this->getStats($pacientes, 'imcMayor30', null, $range);
 
-        $imcMayor30 = $pacientes->imcMayor30()->get()->unique('rut');
+        [$imcMayor32] = $this->getStats($pacientes, 'imcMayor32', null, $range);
 
-        $imcMayor32 = $pacientes->imcMayor32()->get()->unique('rut');
-
-        $actFisica = $pacientes->actFisica()->get();
+        [$actFisica] = $this->getStats($pacientes, 'actFisica', null, $range);
 
 
         return view('estadisticas.seccion-c', compact(
@@ -249,7 +248,16 @@ class SeccionP4Controller extends Controller
             'imc2831',
             'imcMayor30',
             'imcMayor32',
-            'actFisica'
+            'actFisica',
+            'fechaCorte',
+            'fechaInicio',
         ));
+    }
+
+    private function getStats($model, $scope, $arg = null, $range = null)
+    {
+        return [
+            $model->{$scope}($range)->get()->unique('rut'),
+        ];
     }
 }

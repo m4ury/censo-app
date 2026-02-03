@@ -10,119 +10,47 @@ use Illuminate\Http\Request;
 class SeccionP2Controller extends Controller
 {
 
-    public function seccionP2j()
+    public function seccionP2a(Request $request)
     {
         $all = new Paciente;
 
-        $rCero = $all->rCero('Femenino', 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
-        $rCeroM = $all->rCero(null, 'Masculino')->whereNotNull('rCero')->get()->unique('rut');
-        $rCeroF = $all->rCero(null, 'Femenino')->whereNotNull('rCero')->get()->unique('rut');
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
 
-        $dCaries = $all->dCaries('Femenino', 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesM = $all->dCaries(null, 'Masculino')->whereNotNull('dCaries')->get()->unique('rut');
-        $dCariesF = $all->dCaries(null, 'Femenino')->whereNotNull('dCaries')->get()->unique('rut');
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
 
-        $inasistente = $all->inasist('Femenino', 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
-        $inasistenteM = $all->inasist(null, 'Masculino')->whereNotNull('inasistente')->get()->unique('rut');
-        $inasistenteF = $all->inasist('Femenino', null)->whereNotNull('inasistente')->get()->unique('rut');
+        // 1. POBLACIÓN BAJO CONTROL
+        $poblacionBajoControl = $all->poblacionBajoControlNinos($range);
+        $totalBajoControl = $poblacionBajoControl->count();
 
-        return view('estadisticas.seccion-p2j', compact(
-            'rCero',
-            'rCeroM',
-            'rCeroF',
-            'dCaries',
-            'dCariesM',
-            'dCariesF',
-            'inasistente',
-            'inasistenteM',
-            'inasistenteF',
-            'all'
-        ));
-    }
-
-    public function seccionP2a()
-    {
-        $all = new Paciente;
         //peso edad
-        $ind2DS = $all->pesoEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $ind2DSM = $all->pesoEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $ind2DSF = $all->pesoEdad('Femenino', null, '+2 DS')->get()->unique('rut');
-
-        $ind1DS = $all->pesoEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $ind1DSM = $all->pesoEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $ind1DSF = $all->pesoEdad('Femenino', null, '+1 DS')->get()->unique('rut');
-
-        $ind_1DS = $all->pesoEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $ind_1DSM = $all->pesoEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $ind_1DSF = $all->pesoEdad('Femenino', null, '-1 DS')->get()->unique('rut');
-
-        $ind_2DS = $all->pesoEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $ind_2DSM = $all->pesoEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $ind_2DSF = $all->pesoEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+        [$ind2DS, $ind2DSM, $ind2DSF] = $this->getStats($all, 'pesoEdad', '+2 DS', $range);
+        [$ind1DS, $ind1DSM, $ind1DSF] = $this->getStats($all, 'pesoEdad', '+1 DS', $range);
+        [$ind_1DS, $ind_1DSM, $ind_1DSF] = $this->getStats($all, 'pesoEdad', '-1 DS', $range);
+        [$ind_2DS, $ind_2DSM, $ind_2DSF] = $this->getStats($all, 'pesoEdad', '-2 DS', $range);
 
         //peso talla
-        $indPt2DS = $all->pesoTalla('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $indPt2DSM = $all->pesoTalla(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $indPt2DSF = $all->pesoTalla('Femenino', null, '+2 DS')->get()->unique('rut');
-
-        $indPt1DS = $all->pesoTalla('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $indPt1DSM = $all->pesoTalla(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $indPt1DSF = $all->pesoTalla('Femenino', null, '+1 DS')->get()->unique('rut');
-
-        $indPt_1DS = $all->pesoTalla('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $indPt_1DSM = $all->pesoTalla(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $indPt_1DSF = $all->pesoTalla('Femenino', null, '-1 DS')->get()->unique('rut');
-
-        $indPt_2DS = $all->pesoTalla('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $indPt_2DSM = $all->pesoTalla(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $indPt_2DSF = $all->pesoTalla('Femenino', null, '-2 DS')->get()->unique('rut');
+        [$indPt2DS, $indPt2DSM, $indPt2DSF] = $this->getStats($all, 'pesoTalla', '+2 DS', $range);
+        [$indPt1DS, $indPt1DSM, $indPt1DSF] = $this->getStats($all, 'pesoTalla', '+1 DS', $range);
+        [$indPt_1DS, $indPt_1DSM, $indPt_1DSF] = $this->getStats($all, 'pesoTalla', '-1 DS', $range);
+        [$indPt_2DS, $indPt_2DSM, $indPt_2DSF] = $this->getStats($all, 'pesoTalla', '-2 DS', $range);
 
         //talla de edad
-        $indTe2DS = $all->tallaEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSM = $all->tallaEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSF = $all->tallaEdad('Femenino', null, '+2 DS')->get()->unique('rut');
-
-        $indTe1DS = $all->tallaEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSM = $all->tallaEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSF = $all->tallaEdad('Femenino', null, '+1 DS')->get()->unique('rut');
-
-        $indTe_1DS = $all->tallaEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSM = $all->tallaEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSF = $all->tallaEdad('Femenino', null, '-1 DS')->get()->unique('rut');
-
-        $indTe_2DS = $all->tallaEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSM = $all->tallaEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSF = $all->tallaEdad('Femenino', null, '-2 DS')->get()->unique('rut');
+        [$indTe2DS, $indTe2DSM, $indTe2DSF] = $this->getStats($all, 'tallaEdad', '+2 DS', $range);
+        [$indTe1DS, $indTe1DSM, $indTe1DSF] = $this->getStats($all, 'tallaEdad', '+1 DS', $range);
+        [$indTe_1DS, $indTe_1DSM, $indTe_1DSF] = $this->getStats($all, 'tallaEdad', '-1 DS', $range);
+        [$indTe_2DS, $indTe_2DSM, $indTe_2DSF] = $this->getStats($all, 'tallaEdad', '-2 DS', $range);
 
         //promedio
-        $avgTe = $all->tallaEdad('Femenino', 'Masculino', 'promedio')->get()->unique('rut');
-        $avgTeM = $all->tallaEdad(null, 'Masculino', 'promedio')->get()->unique('rut');
-        $avgTeF = $all->tallaEdad('Femenino', null, 'promedio')->get()->unique('rut');
+        [$avgTe, $avgTeM, $avgTeF] = $this->getStats($all, 'tallaEdad', 'promedio', $range);
 
         //diagnostico nutricion integral
-        $rDesnut = $all->integral('Femenino', 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutM = $all->integral(null, 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutF = $all->integral('Femenino', null, 'riesgoDesNut')->get()->unique('rut');
-
-        $desnut = $all->integral('Femenino', 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutM = $all->integral(null, 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutF = $all->integral('Femenino', null, 'desnut')->get()->unique('rut');
-
-        $normal = $all->integral('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $normalM = $all->integral(null, 'Masculino', 'normal')->get()->unique('rut');
-        $normalF = $all->integral('Femenino', null, 'normal')->get()->unique('rut');
-
-        $sobrepeso = $all->integral('Femenino', 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoM = $all->integral(null, 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoF = $all->integral('Femenino', null, 'sobrepeso')->get()->unique('rut');
-
-        $obeso = $all->integral('Femenino', 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoM = $all->integral(null, 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoF = $all->integral('Femenino', null, 'obeso')->get()->unique('rut');
-
-        $desnutSec = $all->integral('Femenino', 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
+        [$rDesnut, $rDesnutM, $rDesnutF] = $this->getStats($all, 'integral', 'riesgoDesNut', $range);
+        [$desnut, $desnutM, $desnutF] = $this->getStats($all, 'integral', 'desnut', $range);
+        [$normal, $normalM, $normalF] = $this->getStats($all, 'integral', 'normal', $range);
+        [$sobrepeso, $sobrepesoM, $sobrepesoF] = $this->getStats($all, 'integral', 'sobrepeso', $range);
+        [$obeso, $obesoM, $obesoF] = $this->getStats($all, 'integral', 'obeso', $range);
+        [$desnutSec, $desnutSecM, $desnutSecF] = $this->getStats($all, 'integral', 'desnutSecund', $range);
 
 
         return view('estadisticas.seccion-p2a', compact(
@@ -203,101 +131,51 @@ class SeccionP2Controller extends Controller
             'desnutSec',
             'desnutSecM',
             'desnutSecF',
+
+            'totalBajoControl',
+            'poblacionBajoControl',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP2a1()
+    public function seccionP2a1(Request $request)
     {
         $all = new Paciente;
 
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
         //imc edad
-        $imc3DS = $all->imcEdad('Femenino', 'Masculino', '+3 DS')->get()->unique('rut');
-        $imc3DSM = $all->imcEdad(null, 'Masculino', '+3 DS')->get()->unique('rut');
-        $imc3DSF = $all->imcEdad('Femenino', null, '+3 DS')->get()->unique('rut');
-
-        $imc2DS = $all->imcEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $imc2DSM = $all->imcEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $imc2DSF = $all->imcEdad('Femenino', null, '+2 DS')->get()->unique('rut');
-
-        $imc1DS = $all->imcEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $imc1DSM = $all->imcEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $imc1DSF = $all->imcEdad('Femenino', null, '+1 DS')->get()->unique('rut');
-
-        $imc_2DS = $all->imcEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $imc_2DSM = $all->imcEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $imc_2DSF = $all->imcEdad('Femenino', null, '-2 DS')->get()->unique('rut');
-
-        $imc_1DS = $all->imcEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $imc_1DSM = $all->imcEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $imc_1DSF = $all->imcEdad('Femenino', null, '-1 DS')->get()->unique('rut');
-
-        $imcAvg = $all->imcEdad('Femenino', 'Masculino', 'promedio')->get()->unique('rut');
-        $imcAvgM = $all->imcEdad(null, 'Masculino', 'promedio')->get()->unique('rut');
-        $imcAvgF = $all->imcEdad('Femenino', null, 'promedio')->get()->unique('rut');
+        [$imc3DS, $imc3DSM, $imc3DSF] = $this->getStats($all, 'imcEdad', '+3 DS', $range);
+        [$imc2DS, $imc2DSM, $imc2DSF] = $this->getStats($all, 'imcEdad', '+2 DS', $range);
+        [$imc1DS, $imc1DSM, $imc1DSF] = $this->getStats($all, 'imcEdad', '+1 DS', $range);
+        [$imc_2DS, $imc_2DSM, $imc_2DSF] = $this->getStats($all, 'imcEdad', '-2 DS', $range);
+        [$imc_1DS, $imc_1DSM, $imc_1DSF] = $this->getStats($all, 'imcEdad', '-1 DS', $range);
+        [$imcAvg, $imcAvgM, $imcAvgF] = $this->getStats($all, 'imcEdad', 'promedio', $range);
 
         //talla de edad
-        $indTe2DS = $all->tallaEdad('Femenino', 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSM = $all->tallaEdad(null, 'Masculino', '+2 DS')->get()->unique('rut');
-        $indTe2DSF = $all->tallaEdad('Femenino', null, '+2 DS')->get()->unique('rut');
-
-        $indTe1DS = $all->tallaEdad('Femenino', 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSM = $all->tallaEdad(null, 'Masculino', '+1 DS')->get()->unique('rut');
-        $indTe1DSF = $all->tallaEdad('Femenino', null, '+1 DS')->get()->unique('rut');
-
-        $indTe_1DS = $all->tallaEdad('Femenino', 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSM = $all->tallaEdad(null, 'Masculino', '-1 DS')->get()->unique('rut');
-        $indTe_1DSF = $all->tallaEdad('Femenino', null, '-1 DS')->get()->unique('rut');
-
-        $indTe_2DS = $all->tallaEdad('Femenino', 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSM = $all->tallaEdad(null, 'Masculino', '-2 DS')->get()->unique('rut');
-        $indTe_2DSF = $all->tallaEdad('Femenino', null, '-2 DS')->get()->unique('rut');
-
-        $indTeAvg = $all->tallaEdad('Femenino', 'Masculino', 'promedio')->get()->unique('rut');
-        $indTeAvgM = $all->tallaEdad(null, 'Masculino', 'promedio')->get()->unique('rut');
-        $indTeAvgF = $all->tallaEdad('Femenino', null, 'promedio')->get()->unique('rut');
+        [$indTe2DS, $indTe2DSM, $indTe2DSF] = $this->getStats($all, 'tallaEdad', '+2 DS', $range);
+        [$indTe1DS, $indTe1DSM, $indTe1DSF] = $this->getStats($all, 'tallaEdad', '+1 DS', $range);
+        [$indTe_1DS, $indTe_1DSM, $indTe_1DSF] = $this->getStats($all, 'tallaEdad', '-1 DS', $range);
+        [$indTe_2DS, $indTe_2DSM, $indTe_2DSF] = $this->getStats($all, 'tallaEdad', '-2 DS', $range);
+        [$indTeAvg, $indTeAvgM, $indTeAvgF] = $this->getStats($all, 'tallaEdad', 'promedio', $range);
 
         //perimetro cintura - edad
-        $pcintNormal = $all->perimCintura('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $pcintNormalM = $all->perimCintura(null, 'Masculino', 'normal')->get()->unique('rut');
-        $pcintNormalF = $all->perimCintura('Femenino', null, 'normal')->get()->unique('rut');
-
-        $pcintRiesgo = $all->perimCintura('Femenino', 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
-        $pcintRiesgoM = $all->perimCintura(null, 'Masculino', 'rObesidadAbdm')->get()->unique('rut');
-        $pcintRiesgoF = $all->perimCintura('Femenino', null, 'rObesidadAbdm')->get()->unique('rut');
-
-        $pcintObesidad = $all->perimCintura('Femenino', 'Masculino', 'obesidadAbdm')->get()->unique('rut');
-        $pcintObesidadM = $all->perimCintura(null, 'Masculino', 'obesidadAbdm')->get()->unique('rut');
-        $pcintObesidadF = $all->perimCintura('Femenino', null, 'obesidadAbdm')->get()->unique('rut');
+        [$pcintNormal, $pcintNormalM, $pcintNormalF] = $this->getStats($all, 'perimCintura', 'normal', $range);
+        [$pcintRiesgo, $pcintRiesgoM, $pcintRiesgoF] = $this->getStats($all, 'perimCintura', 'rObesidadAbdm', $range);
+        [$pcintObesidad, $pcintObesidadM, $pcintObesidadF] = $this->getStats($all, 'perimCintura', 'obesidadAbdm', $range);
 
         //diagnostico nutricion integral
-        $rDesnut = $all->integral('Femenino', 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutM = $all->integral(null, 'Masculino', 'riesgoDesNut')->get()->unique('rut');
-        $rDesnutF = $all->integral('Femenino', null, 'riesgoDesNut')->get()->unique('rut');
-
-        $desnut = $all->integral('Femenino', 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutM = $all->integral(null, 'Masculino', 'desnut')->get()->unique('rut');
-        $desnutF = $all->integral('Femenino', null, 'desnut')->get()->unique('rut');
-
-        $normal = $all->integral('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $normalM = $all->integral(null, 'Masculino', 'normal')->get()->unique('rut');
-        $normalF = $all->integral('Femenino', null, 'normal')->get()->unique('rut');
-
-        $sobrepeso = $all->integral('Femenino', 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoM = $all->integral(null, 'Masculino', 'sobrepeso')->get()->unique('rut');
-        $sobrepesoF = $all->integral('Femenino', null, 'sobrepeso')->get()->unique('rut');
-
-        $obeso = $all->integral('Femenino', 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoM = $all->integral(null, 'Masculino', 'obeso')->get()->unique('rut');
-        $obesoF = $all->integral('Femenino', null, 'obeso')->get()->unique('rut');
-
-        $obesoSevero = $all->integral('Femenino', 'Masculino', 'obesoSevero')->get()->unique('rut');
-        $obesoSeveroM = $all->integral(null, 'Masculino', 'obesoSevero')->get()->unique('rut');
-        $obesoSeveroF = $all->integral('Femenino', null, 'obesoSevero')->get()->unique('rut');
-
-        $desnutSec = $all->integral('Femenino', 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecM = $all->integral(null, 'Masculino', 'desnutSecund')->get()->unique('rut');
-        $desnutSecF = $all->integral('Femenino', null, 'desnutSecund')->get()->unique('rut');
-
+        [$rDesnut, $rDesnutM, $rDesnutF] = $this->getStats($all, 'integral', 'riesgoDesNut', $range);
+        [$desnut, $desnutM, $desnutF] = $this->getStats($all, 'integral', 'desnut', $range);
+        [$normal, $normalM, $normalF] = $this->getStats($all, 'integral', 'normal', $range);
+        [$sobrepeso, $sobrepesoM, $sobrepesoF] = $this->getStats($all, 'integral', 'sobrepeso', $range);
+        [$obeso, $obesoM, $obesoF] = $this->getStats($all, 'integral', 'obeso', $range);
+        [$obesoSevero, $obesoSeveroM, $obesoSeveroF] = $this->getStats($all, 'integral', 'obesoSevero', $range);
+        [$desnutSec, $desnutSecM, $desnutSecF] = $this->getStats($all, 'integral', 'desnutSecund', $range);
 
         return view('estadisticas.seccion-p2a1', compact(
             'all',
@@ -384,30 +262,25 @@ class SeccionP2Controller extends Controller
             'desnutSec',
             'desnutSecM',
             'desnutSecF',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP2b()
+    public function seccionP2b(Request $request)
     {
         $all = new Paciente;
 
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
         //ev DPM
-        $evNormal = $all->psicomotor('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $evNormalM = $all->psicomotor(null, 'Masculino', 'normal')->get()->unique('rut');
-        $evNormalF = $all->psicomotor('Femenino', null, 'normal')->get()->unique('rut');
-
-        $evRiesgo = $all->psicomotor('Femenino', 'Masculino', 'riesgo')->get()->unique('rut');
-        $evRiesgoM = $all->psicomotor(null, 'Masculino', 'riesgo')->get()->unique('rut');
-        $evRiesgoF = $all->psicomotor('Femenino', null, 'riesgo')->get()->unique('rut');
-
-        $evNormalR = $all->psicomotor('Femenino', 'Masculino', 'normalRezago')->get()->unique('rut');
-        $evNormalRM = $all->psicomotor(null, 'Masculino', 'normalRezago')->get()->unique('rut');
-        $evNormalRF = $all->psicomotor('Femenino', null, 'normalRezago')->get()->unique('rut');
-
-        $evRetraso = $all->psicomotor('Femenino', 'Masculino', 'retraso')->get()->unique('rut');
-        $evRetrasoM = $all->psicomotor(null, 'Masculino', 'retraso')->get()->unique('rut');
-        $evRetrasoF = $all->psicomotor('Femenino', null, 'retraso')->get()->unique('rut');
-
+        [$evNormal, $evNormalM, $evNormalF] = $this->getStats($all, 'psicomotor', 'normal', $range);
+        [$evRiesgo, $evRiesgoM, $evRiesgoF] = $this->getStats($all, 'psicomotor', 'riesgo', $range);
+        [$evNormalR, $evNormalRM, $evNormalRF] = $this->getStats($all, 'psicomotor', 'normalRezago', $range);
+        [$evRetraso, $evRetrasoM, $evRetrasoF] = $this->getStats($all, 'psicomotor', 'retraso', $range);
 
         return view('estadisticas.seccion-p2b', compact(
             'evNormal',
@@ -425,50 +298,42 @@ class SeccionP2Controller extends Controller
             'evRiesgo',
             'evRiesgoM',
             'evRiesgoF',
+
+            'all',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP2cde()
+    public function seccionP2cde(Request $request)
     {
         $all = new Paciente;
 
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
         //score Ira
-        $scoreLeve = $all->riesgoIra('Femenino', 'Masculino', 'leve')->get()->unique('rut');
-        $scoreLeveM = $all->riesgoIra(null, 'Masculino', 'leve')->get()->unique('rut');
-        $scoreLeveF = $all->riesgoIra('Femenino', null, 'leve')->get()->unique('rut');
+        [$scoreLeve, $scoreLeveM, $scoreLeveF] = $this->getStats($all, 'riesgoIra', 'leve', $range);
+        [$scoreMod, $scoreModM, $scoreModF] = $this->getStats($all, 'riesgoIra', 'moderado', $range);
+        [$scoreGrave, $scoreGraveM, $scoreGraveF] = $this->getStats($all, 'riesgoIra', 'grave', $range);
+        //dd($scoreLeve);
 
-        $scoreMod = $all->riesgoIra('Femenino', 'Masculino', 'moderado')->get()->unique('rut');
-        $scoreModM = $all->riesgoIra(null, 'Masculino', 'moderado')->get()->unique('rut');
-        $scoreModF = $all->riesgoIra('Femenino', null, 'moderado')->get()->unique('rut');
+        //quinto mes y tres años
+        $quintoMes = $all->quintoMes('Femenino', 'Masculino', $range)->get()->unique('rut');
+        $tresAnios = $all->tercerAnio('Femenino', 'Masculino', $range)->get()->unique('rut');
 
-        $scoreGrave = $all->riesgoIra('Femenino', 'Masculino', 'grave')->get()->unique('rut');
-        $scoreGraveM = $all->riesgoIra(null, 'Masculino', 'grave')->get()->unique('rut');
-        $scoreGraveF = $all->riesgoIra('Femenino', null, 'grave')->get()->unique('rut');
+        [$dgPAnormal, $dgPAnormalM, $dgPAnormalF] = $this->getStats($all, 'dgPA', 'normal', $range);
+        [$dgPAelevada, $dgPAelevadaM, $dgPAelevadaF] = $this->getStats($all, 'dgPA', 'elevada', $range);
+        [$dgPAhta1, $dgPAhta1M, $dgPAhta1F] = $this->getStats($all, 'dgPA', 'hta_eI', $range);
+        [$dgPAhta2, $dgPAhta2M, $dgPAhta2F] = $this->getStats($all, 'dgPA', 'hta_eII', $range);
 
-        $quintoMes = $all->quintoMes('Femenino', 'Masculino')->get()->unique('rut');
-        $tresAnios = $all->tercerAnio('Femenino', 'Masculino')->get()->unique('rut');
+        $malNutRiesgo = $all->malNut('Femenino', 'Masculino', 'conRiesgo', $range)->get()->unique('rut');
 
-        $dgPAnormal = $all->dgPA('Femenino', 'Masculino', 'normal')->get()->unique('rut');
-        $dgPAnormalM = $all->dgPA(null, 'Masculino', 'normal')->get()->unique('rut');
-        $dgPAnormalF = $all->dgPA('Femenino', null, 'normal')->get()->unique('rut');
+        $malNut = $all->malNut('Femenino', 'Masculino', 'sinRiesgo', $range)->get()->unique('rut');
 
-        $dgPAelevada = $all->dgPA('Femenino', 'Masculino', 'elevada')->get()->unique('rut');
-        $dgPAelevadaM = $all->dgPA(null, 'Masculino', 'elevada')->get()->unique('rut');
-        $dgPAelevadaF = $all->dgPA('Femenino', null, 'elevada')->get()->unique('rut');
-
-        $dgPAhta1 = $all->dgPA('Femenino', 'Masculino', 'hta_eI')->get()->unique('rut');
-        $dgPAhta1M = $all->dgPA(null, 'Masculino', 'hta_eI')->get()->unique('rut');
-        $dgPAhta1F = $all->dgPA('Femenino', null, 'hta_eI')->get()->unique('rut');
-
-        $dgPAhta2 = $all->dgPA('Femenino', 'Masculino', 'hta_eII')->get()->unique('rut');
-        $dgPAhta2M = $all->dgPA(null, 'Masculino', 'hta_eII')->get()->unique('rut');
-        $dgPAhta2F = $all->dgPA('Femenino', null, 'hta_eII')->get()->unique('rut');
-
-        $malNutRiesgo = $all->malNut('Femenino', 'Masculino', 'conRiesgo')->get()->unique('rut');
-
-        $malNut = $all->malNut('Femenino', 'Masculino', 'sinRiesgo')->get()->unique('rut');
-
-        $inasist = $all->inasist('Femenino', 'Masculino')->get()->unique('rut');
+        $inasist = $all->inasist('Femenino', 'Masculino', $range)->get()->unique('rut');
 
 
 
@@ -511,13 +376,59 @@ class SeccionP2Controller extends Controller
 
             'inasist',
 
+            'all',
+            'fechaCorte',
+            'fechaInicio',
         ));
     }
 
-    public function seccionP2h()
+    public function seccionP2h(Request $request)
     {
         $all = new Paciente;
 
-        return view('estadisticas.seccion-p2h', compact('all'));
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        return view('estadisticas.seccion-p2h', compact('all', 'fechaInicio', 'fechaCorte'));
+    }
+
+    public function seccionP2j(Request $request)
+    {
+        $all = new Paciente;
+
+        $fechaInicio = $request->input('fecha_inicio', null);
+        $fechaCorte = $request->input('fecha_corte', Carbon::create(null, 12, 31)->format('Y-m-d'));
+
+        $range = $fechaInicio ? ['desde' => $fechaInicio, 'hasta' => $fechaCorte] : $fechaCorte;
+
+        [$rCero, $rCeroM, $rCeroF] = $this->getStats($all, 'rCero', $range);
+        [$dCaries, $dCariesM, $dCariesF] = $this->getStats($all, 'dCaries', $range);
+        [$inasistente, $inasistenteM, $inasistenteF] = $this->getStats($all, 'inasist', $range);
+
+        return view('estadisticas.seccion-p2j', compact(
+            'rCero',
+            'rCeroM',
+            'rCeroF',
+            'dCaries',
+            'dCariesM',
+            'dCariesF',
+            'inasistente',
+            'inasistenteM',
+            'inasistenteF',
+            'all',
+            'fechaCorte',
+            'fechaInicio',
+        ));
+    }
+
+    private function getStats($model, $scope, $arg, $range = null)
+    {
+        return [
+            $model->{$scope}('Femenino', 'Masculino', $arg, $range)->get()->unique('rut'),
+            $model->{$scope}(null, 'Masculino', $arg, $range)->get()->unique('rut'),
+            $model->{$scope}('Femenino', null, $arg, $range)->get()->unique('rut'),
+        ];
     }
 }
