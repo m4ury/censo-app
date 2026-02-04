@@ -25,7 +25,7 @@
 
                         {{ Form::hidden('patologia_id', $patologia->id) }}
                         {{ Form::hidden('paciente_id', $paciente->id) }}
-                        @if (auth()->user()->isAdmin() || auth()->user()->type == 'medico')
+                        @if (auth()->user()->isAdmin() || auth()->user()->type == 'medico' || auth()->user()->type == 'super-admin')
                             {!! Form::button('<i class="fas fa-trash"> Egreso/Alta </i>', [
                                 'type' => 'submit',
                                 'class' => 'btn btn-outline-danger btn-sm float-right',

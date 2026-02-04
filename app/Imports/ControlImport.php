@@ -15,8 +15,8 @@ use Freshwork\ChileanBundle\Rut;
 class ControlImport implements ToCollection
 {
     // Índices de columnas para reportes estándar
-    private const COL_RESP_STD_DIAGNOSTICO = 25; // Columna Z
-    private const COL_RESP_STD_CONTROL = 23; // Columna X
+    private const COL_RESP_STD_DIAGNOSTICO = 26; // Columna AA, Antes Z reportes de junio 2025 hacia atras
+    private const COL_RESP_STD_CONTROL = 24; // Columna Y, antes X reportes de junio 2025 hacia atras
 
     // Índices de columnas para reportes ECICEP
     private const COL_RESP_ECICEP_DIAGNOSTICO = 26; // Columna AA
@@ -235,11 +235,6 @@ class ControlImport implements ToCollection
                     $mejor_ninez = 1;
                 }
 
-
-
-
-
-
             } else {
             // Si no se reconoce el repositorio, abortar y enviar un mensaje.
             throw new \Exception("No es posible realizar la importación. El repositorio '" . ($origenRepo ?? 'desconocido') . "' no está soportado.");
@@ -257,7 +252,7 @@ class ControlImport implements ToCollection
             // Normalizar tipo_control
             if (stripos($tipoControl, 'medico') !== false) {
                 $tipoControl = 'Medico';
-            } elseif (stripos($tipoControl, 'kine') !== false) {
+            } elseif (stripos($tipoControl, 'kinesiologo') !== false) {
                 $tipoControl = 'Kinesiologo';
             }elseif (stripos($tipoControl, 'enfermera') !== false) {
                 $tipoControl = 'Enfermera';
