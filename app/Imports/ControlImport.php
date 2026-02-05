@@ -14,22 +14,16 @@ use Freshwork\ChileanBundle\Rut;
 
 class ControlImport implements ToCollection
 {
-    // Índices de columnas para reportes estándar
-    private const COL_RESP_STD_DIAGNOSTICO = 26; // Columna AA, Antes Z reportes de junio 2025 hacia atras
-    private const COL_RESP_STD_CONTROL = 24; // Columna Y, antes X reportes de junio 2025 hacia atras
-
-    // Índices de columnas para reportes ECICEP
-    private const COL_RESP_ECICEP_DIAGNOSTICO = 26; // Columna AA
-    private const COL_RESP_ECICEP_CONTROL = 30; // Columna AE
-    private const COL_RESP_ECICEP_CLASIFICACION = 27; // Columna AB
-
-    private const COL_INASISTENCIA = 63; // Columna BL
-
     private $pacientesCreados = 0;
     private $controlesCreados = 0;
+    private $headerIndexMap = []; // Mapeo dinámico de headers a índices
 
     public function collection(Collection $rows)
     {
+        // Construir mapeo de headers en la primera fila (fila 11 - índice 10)
+        if (isset($rows[10])) {
+            $this->buildHeaderIndexMap($rows[10]);
+        }
 
         // Leer el valor de la celda B7 (fila 7, columna 2)
         $origenRepo = null;
@@ -73,7 +67,7 @@ class ControlImport implements ToCollection
 
             if ($origenRepo === '06. PROGRAMAS RESPIRATORIOS' or $origenRepo === '09. ATENCIÓN INTEGRAL - ESTRATEGIA MULTIMORBILIDAD') {
                 $patologiaId = 8;
-                $inasistenciaRow = $row[self::COL_INASISTENCIA] ?? null; // Columna BL
+                $inasistenciaRow = $this->getValueByHeader($row, 'inasistencia') ?? $row[63] ?? null; // Fallback a columna BL
                 $prestacionRow = $rows[7][1] ?? null; // Columna B (índice 1) fila 8 (índice 7)
 
                 if (stripos($inasistenciaRow, 'inasistencia') !== false) {
@@ -83,7 +77,7 @@ class ControlImport implements ToCollection
 
                  //ECICEP complemento Respiratorio
                 if (stripos($prestacionRow, '3. respiratorio') !== false) {
-                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, self::COL_RESP_ECICEP_DIAGNOSTICO, self::COL_RESP_ECICEP_CONTROL, $edad_anios, self::COL_RESP_ECICEP_CLASIFICACION);
+                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, 'diagnostico_ecicep', 'control_ecicep', $edad_anios, 'clasificacion_ecicep');
                     if ($datosPatologiaEcicep['campoClasif']) {
                         $campoClasif = $datosPatologiaEcicep['campoClasif'];
                         $campoControl = $datosPatologiaEcicep['campoControl'];
@@ -91,8 +85,8 @@ class ControlImport implements ToCollection
                         $valorControl = $datosPatologiaEcicep['valorControl'];
                     }
                 } else {
-                    // Si no es ECICEP, usar las columnas estándar
-                    $datosPatologia = $this->procesarDatosRespiratorios($row, self::COL_RESP_STD_DIAGNOSTICO, self::COL_RESP_STD_CONTROL, $edad_anios);
+                    // Si no es ECICEP, usar los headers
+                    $datosPatologia = $this->procesarDatosRespiratorios($row, 'diagnostico', 'control', $edad_anios);
                     $campoClasif = $datosPatologia['campoClasif'];
                     $campoControl = $datosPatologia['campoControl'];
                     $valorClasif = $datosPatologia['valorClasif'];
@@ -116,21 +110,21 @@ class ControlImport implements ToCollection
             } elseif ($origenRepo === '02. PROGRAMA DEL ADOLESCENTE') {
 
                 $ci_adolecente = 1; // Columna B (índice 1)
-                // Limpiar espacios (incluido el non-breaking space \u{A0}) y convertir a float.
-                $pesoRow = isset($row[21]) ? (float) preg_replace('/[^\d.]/', '', $row[21]) : null; // Columna V
-                $tallaRow = isset($row[22]) ? (float) preg_replace('/[^\d.]/', '', $row[22]) : null; // Columna W
-                $imcRow = isset($row[23]) ? (float) preg_replace('/[^\d.]/', '', $row[23]) : null; // Columna X
-                $originarioRow = $row[28] ?? null; // Columna AC
+                // Usar headers dinámicos con fallbacks a índices fijos
+                $pesoRow = isset($row[$this->getHeaderIndex('peso') ?? 21]) ? (float) preg_replace('/[^\d.]/', '', $row[$this->getHeaderIndex('peso') ?? 21]) : null; // Columna V
+                $tallaRow = isset($row[$this->getHeaderIndex('talla') ?? 22]) ? (float) preg_replace('/[^\d.]/', '', $row[$this->getHeaderIndex('talla') ?? 22]) : null; // Columna W
+                $imcRow = isset($row[$this->getHeaderIndex('imc') ?? 23]) ? (float) preg_replace('/[^\d.]/', '', $row[$this->getHeaderIndex('imc') ?? 23]) : null; // Columna X
+                $originarioRow = $row[$this->getHeaderIndex('originario') ?? 28] ?? null; // Columna AC
                 if (trim($originarioRow, '01') !== false) {
                     $originario = 1;
                 }
 
-                $migranteRow = $row[31] ?? null; // Columna AF
+                $migranteRow = $row[$this->getHeaderIndex('migrante') ?? 31] ?? null; // Columna AF
                 if (trim($migranteRow, '01') !== false) {
                     $migrante = 1;
                 }
 
-                $rpcCinturaRow = trim(preg_replace('/[\s\x{00A0}]+/u', ' ', $row[35])) ?? null; // Columna AJ
+                $rpcCinturaRow = trim(preg_replace('/[\s\x{00A0}]+/u', ' ', $row[$this->getHeaderIndex('rpc_cintura') ?? 35] ?? '')) ?? null; // Columna AJ
                 if(stripos($rpcCinturaRow, 'normal') !== false) {
                     $rpcCintura = 'normal';
                 } elseif (stripos($rpcCinturaRow, 'riesgo') !== false) {
@@ -141,7 +135,7 @@ class ControlImport implements ToCollection
                     $rpcCintura = null;
                 }
 
-                $estadoNutricionalRow = trim($row[32]) ?? null; // Columna AG
+                $estadoNutricionalRow = trim($row[$this->getHeaderIndex('estado_nutricional') ?? 32] ?? '') ?? null; // Columna AG
                 if (stripos($estadoNutricionalRow, 'normal') !== false) {
                     $estadoNutricional = 'Normal';
                 } elseif (stripos($estadoNutricionalRow, 'sobrepeso') !== false) {
@@ -156,7 +150,7 @@ class ControlImport implements ToCollection
                     $estadoNutricional = null;
                 }
 
-                $imcEdadRow = trim($row[33]) ?? null; // Columna AH
+                $imcEdadRow = trim($row[$this->getHeaderIndex('imc_edad') ?? 33] ?? '') ?? null; // Columna AH
                 if (strpos($imcEdadRow, 'Normal') !== false) {
                     $imcEdad = '-09 DS'; //NORMAL
                 } elseif (strpos($imcEdadRow, '-1DS') !== false) {
@@ -173,7 +167,7 @@ class ControlImport implements ToCollection
                     $imcEdad = null;
                 }
 
-                $tallaEdadRow = $row[25] ?? null; // Columna Z
+                $tallaEdadRow = $row[$this->getHeaderIndex('talla_edad') ?? 25] ?? null; // Columna Z
                 if (strpos($tallaEdadRow, '4') !== false) {
                     $tallaEdad = '-09 DS'; //NORMAL
                 } elseif (strpos($tallaEdadRow, '3') !== false) {
@@ -190,7 +184,7 @@ class ControlImport implements ToCollection
             } elseif ($origenRepo === '13. ACTIVIDADES DEL MODELO SALUD FAMILIAR') {
                 $ci_adolecente = 1;
 
-                $tipoConsejeriaRow = $row[24] ?? null; // Columna Y
+                $tipoConsejeriaRow = $row[$this->getHeaderIndex('tipo_consejeria') ?? 24] ?? null; // Columna Y
                 if (strpos($tipoConsejeriaRow, '6') !== false) {
                     $tipoConsejeria = 'regulacionFecund'; // Nutrición
                 } elseif (strpos($tipoConsejeriaRow, '3') !== false) {
@@ -207,17 +201,17 @@ class ControlImport implements ToCollection
                     $tipoConsejeria = null;
                 }
 
-                $esp_amigable = $row[27] ?? null; // Columna AB
+                $esp_amigable = $row[$this->getHeaderIndex('esp_amigable') ?? 27] ?? null; // Columna AB
                 if (stripos($esp_amigable, 'si') !== false) {
                     $esp_amigable = 1;
                 }
 
-                $originarioRow = $row[23] ?? null; // Columna X
+                $originarioRow = $row[$this->getHeaderIndex('originario') ?? 23] ?? null; // Columna X
                 if (trim($originarioRow, '01') !== false) {
                     $originario = 1;
                 }
 
-                $migranteRow = $row[30] ?? null; // Columna AE
+                $migranteRow = $row[$this->getHeaderIndex('migrante') ?? 30] ?? null; // Columna AE
                 if (trim(stripos($migranteRow, 'si')) !== false) {
                     $migrante = 1;
                 }
@@ -225,12 +219,12 @@ class ControlImport implements ToCollection
             } elseif ($origenRepo === '08. PROGRAMA SALUD MENTAL') {
                 $patologiaId = 9;
 
-                $inasistenciaRow = $row[28] ?? null; // Columna AC
+                $inasistenciaRow = $row[$this->getHeaderIndex('inasistencia') ?? 28] ?? null; // Columna AC
                 if (stripos($inasistenciaRow, 'inasistencia') !== false) {
                     continue;
                 }
 
-                $mejorNinezRow = $row[25] ?? null; // Columna Z
+                $mejorNinezRow = $row[$this->getHeaderIndex('mejor_ninez') ?? 25] ?? null; // Columna Z
                 if (stripos($mejorNinezRow, 'si') !== false) {
                     $mejor_ninez = 1;
                 }
@@ -244,7 +238,7 @@ class ControlImport implements ToCollection
             //dd($origenRepo, $tipoConsejeriaRow);
 
             //tipo control
-            $tipoControlRow = $row[6] ?? null; // Columna G (índice 6)
+            $tipoControlRow = $this->getValueByHeader($row, 'tipo_control') ?? $row[6] ?? null; // Columna G (índice 6)
 
             // Limpieza de datos ejemplo:
             $tipoControl = trim($tipoControlRow) ?? '';
@@ -444,10 +438,15 @@ class ControlImport implements ToCollection
         return $this->controlesCreados;
     }
 
-    private function procesarDatosRespiratorios($row, $categDiagnosticaIndex, $nivelControlIndex, $edad_anios, $clasifIndex = null)
+    private function procesarDatosRespiratorios($row, $categDiagnosticaHeader, $nivelControlHeader, $edad_anios, $clasifHeader = null)
     {
-        $categDiagnosticaRow = $row[$categDiagnosticaIndex] ?? null;
-        $nivelControlRow = $row[$nivelControlIndex] ?? null;
+        // Obtener índices reales basados en headers
+        $categDiagnosticaIndex = is_string($categDiagnosticaHeader) ? ($this->getHeaderIndex($categDiagnosticaHeader) ?? null) : $categDiagnosticaHeader;
+        $nivelControlIndex = is_string($nivelControlHeader) ? ($this->getHeaderIndex($nivelControlHeader) ?? null) : $nivelControlHeader;
+        $clasifIndex = $clasifHeader ? (is_string($clasifHeader) ? ($this->getHeaderIndex($clasifHeader) ?? null) : $clasifHeader) : null;
+
+        $categDiagnosticaRow = isset($categDiagnosticaIndex) ? ($row[$categDiagnosticaIndex] ?? null) : null;
+        $nivelControlRow = isset($nivelControlIndex) ? ($row[$nivelControlIndex] ?? null) : null;
 
         // Si no hay diagnóstico, no hay nada que procesar.
         if (!$categDiagnosticaRow) {
@@ -581,5 +580,71 @@ class ControlImport implements ToCollection
 
         // Devuelve el valor mapeado o, si no existe, el valor original normalizado.
         return $map[$lowerCaseString] ?? ucfirst($lowerCaseString);
+    }
+
+    /**
+     * Construir un mapeo dinámico de headers a índices de columnas
+     * Busca coincidencias parciales en los encabezados para mayor flexibilidad
+     */
+    private function buildHeaderIndexMap($headerRow)
+    {
+        $headerMap = [
+            'diagnostico' => ['diagnostic', 'diagnostico', 'categoría diagnóstica'],
+            'control' => ['nivel de control', 'control', 'nivel_control'],
+            'peso' => ['peso (kg)'],
+            'talla' => ['talla (cm)'],
+            'imc' => ['imc'],
+            'estado_nutricional' => ['estado nutricional'],
+            'imc_edad' => ['imc edad', 'imc/edad', 'imc_edad'],
+            'talla_edad' => ['talla edad', 'talla/edad', 'talla_edad'],
+            'rpc_cintura' => ['rpc cintura', 'circunferencia cintura', 'cintura'],
+            'originario' => ['originario', 'pueblo originario'],
+            'migrante' => ['migrante'],
+            'tipo_consejeria' => ['tema de consejería individual','consejería'],
+            'esp_amigable' => ['amigable', 'esp_amigable', 'espacios amigables'],
+            'inasistencia' => ['inasistencia'],
+            'mejor_ninez' => ['mejor ninez', 'mejora'],
+            'diagnostico_ecicep' => ['diagnostico ecicep', 'diagnostico de paciente crónico'],
+            'control_ecicep' => ['nivel de severidad asma bronquial', 'nivel control'],
+            'clasificacion_ecicep' => ['clasificacion ecicep', 'clasificación ecicep'],
+        ];
+
+        foreach ($headerRow as $index => $header) {
+            if (is_null($header) || $header === '') {
+                continue;
+            }
+
+            $headerLower = strtolower(trim($header));
+
+            foreach ($headerMap as $key => $patterns) {
+                foreach ($patterns as $pattern) {
+                    if (strpos($headerLower, strtolower($pattern)) !== false) {
+                        $this->headerIndexMap[$key] = $index;
+                        break 2; // Salir de ambos bucles si encontramos coincidencia
+                    }
+                }
+            }
+        }
+
+        \Log::info('Header Index Map construido:', $this->headerIndexMap);
+    }
+
+    /**
+     * Obtener el índice de una columna por su nombre de header
+     * Devuelve null si no se encuentra
+     */
+    private function getHeaderIndex($headerName)
+    {
+        return $this->headerIndexMap[$headerName] ?? null;
+    }
+
+    /**
+     * Obtener el valor de una columna usando el nombre del header
+     * Si no se encuentra, devuelve null
+     */
+    private function getValueByHeader($row, $headerName)
+    {
+        $index = $this->getHeaderIndex($headerName);
+        return $index !== null ? ($row[$index] ?? null) : null;
     }
 }
