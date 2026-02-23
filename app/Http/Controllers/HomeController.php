@@ -29,25 +29,23 @@ class HomeController extends Controller
 
             return [
                 'pscv' => $all->pscv()->count(),
-                'dm2' => $all->dm2()->whereNull('egreso')->count(),
+                'dm2' => $all->dm2()->count(),
                 'hbac17' => $all->hbac17()->get()->whereBetween('grupo', [15, 79])->unique('rut')->count(),
                 'hbac18' => $all->hbac18()->get()->where('grupo', '>', 79)->unique('rut')->count(),
-                /* $sumaHbac = $hbac17 + $hbac18,
-                $descompDm2 = $dm2 - $sumaHbac, */
-                'hta' => $all->hta()->whereNull('egreso')->count(),
+                'hta' => $all->hta()->count(),
                 'pa140_90' => $pa140_90 = $all->paMenor140()->get()->where('grupo', '>', 14)->unique('rut')->count(),
                 'pa150_90' => $pa150 = $all->pa150()->get()->where('grupo', '>', 79)->unique('rut')->count(),
                 /* $sumaPa = $pa140_90 + $pa150;
                 $descompPa = $hta - $sumaPa; */
-                'dlp' => $all->dlp()->whereNull('egreso')->count(),
-                'iam' => $all->iam()->whereNull('egreso')->count(),
-                'acv' => $all->acv()->whereNull('egreso')->count(),
-                'riesgo' => $all->rCero('Femenino', 'Masculino')->whereNull('egreso')->count(),
-                'usoInsulina' => $all->dm2()->where('usoInsulina', true)->whereNull('egreso')->count(),
+                'dlp' => $all->dlp()->count(),
+                'iam' => $all->iam()->count(),
+                'acv' => $all->acv()->count(),
+                'riesgo' => $all->rCero('Femenino', 'Masculino')->count(),
+                'usoInsulina' => $all->dm2()->where('usoInsulina', true)->count(),
                 'pieDm2' => $all->dm2()
                     ->join('controls', 'controls.paciente_id', 'pacientes.id')
                     ->whereIn('controls.evaluacionPie', ['Maximo', 'Moderado', 'Bajo', 'Alto'])
-                    ->whereYear('controls.fecha_control', '>', '2024')
+                    ->whereBetween('controls.fecha_control', [now()->subYear()->format('Y-m-d'), now()->format('Y-m-d')])
                     ->distinct('pacientes.rut')
                     ->count(),
                 'pMujer' => $all->totalMac()
@@ -71,12 +69,12 @@ class HomeController extends Controller
                 'totalFemenino' => $all->pscv()->where('sexo', '=', 'Femenino')->count(),
                 'totalCeleste' => $all->pscv()->where('sector', '=', 'celeste')->count(),
                 'totalNaranjo' => $all->pscv()->where('sector', '=', 'naranjo')->count(),
-                'totalBlanco' => $all->pscv()->where('sector', '=', 'blanco')->count(), 
-                'g3' => $all->g3()->whereNull('egreso')->count(),
+                'totalBlanco' => $all->pscv()->where('sector', '=', 'blanco')->count(),
+                'g3' => $all->g3()->count(),
                 'ingresosG3' => $all->ingresosG3()->whereNull('egreso')->count(),
-                'g2' => $all->g2()->whereNull('egreso')->count(),
+                'g2' => $all->g2()->count(),
                 'ingresosG2' => $all->ingresosG2()->whereNull('egreso')->count(),
-                'g1' => $all->g1()->whereNull('egreso')->count(),
+                'g1' => $all->g1()->count(),
                 'ingresosG1' => $all->ingresosG1()->whereNull('egreso')->count(),
                 'postrados' => $all->postrados()->whereNull('egreso')->count(),
                 'cuidadores' => $all->cuidadores()->whereNull('egreso')->count(),
@@ -136,6 +134,7 @@ class HomeController extends Controller
             'iam' => $paciente->iam()->whereNull('egreso')->get(),
             'acv' => $paciente->acv()->whereNull('egreso')->get(),
             'ninos' => $paciente->whereNull('egreso')->get()->whereBetween('grupo', [0, 9]),
+            'adolescentes' => $paciente->whereNull('egreso')->get()->whereBetween('grupo', [10, 19]),
             default => collect(),
         };
 

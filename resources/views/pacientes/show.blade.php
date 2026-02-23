@@ -34,16 +34,16 @@
                         @endif </span>
                     <div class="col-sm">
                         <span class="badge badge-pill bg-gradient-light badge mx-3 py-2">Multimorbilidad:
-                            @if ($paciente->patologias->count() > 4)
+                            @if ($paciente->isG3())
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-danger"></i>G3</strong>
-                            @elseif($paciente->patologias->count() > 1 and $paciente->patologias->count() < 5)
+                            @elseif($paciente->isG2())
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-orange"></i>G2</strong>
-                            @elseif($paciente->patologias->count() == 1)
+                            @elseif($paciente->isG1())
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-warning"></i>G1</strong>
-                                <br>
                             @else
                                 <strong><i class="fas fa-exclamation-triangle mr-1 text-success"></i>G0</strong>
                             @endif
+                            <small class="ml-1">({{ $paciente->puntajeEcicep() }}pts)</small>
                         </span>
                     </div>
                     <div class="col-sm text-right">

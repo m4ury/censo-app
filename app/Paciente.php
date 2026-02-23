@@ -1160,7 +1160,7 @@ class Paciente extends Model
             });
     }
 
-    public function evaluacionPie($fechaCorte = null)
+    public function evaluacionPie($fechaCorte = [])
     {
         [$desde, $hasta] = $this->rangoPorFechaCorte($fechaCorte);
         {
@@ -1776,7 +1776,7 @@ class Paciente extends Model
     public function g3()
     {
         return $this->whereHas('patologias', function ($query) {
-            $query->selectRaw('SUM(descripcion_patologia) as total_puntos')
+            $query->selectRaw('SUM(COALESCE(descripcion_patologia, 1)) as total_puntos')
                 ->having('total_puntos', '>=', 5);
         })
             ->whereNull('egreso');
@@ -1797,7 +1797,7 @@ class Paciente extends Model
     function g2()
     {
         return $this->whereHas('patologias', function ($query) {
-            $query->selectRaw('SUM(descripcion_patologia) as total_puntos')
+            $query->selectRaw('SUM(COALESCE(descripcion_patologia, 1)) as total_puntos')
                 ->havingBetween('total_puntos', [2, 4]);
         })
             ->whereNull('egreso');
@@ -1818,10 +1818,50 @@ class Paciente extends Model
     function g1()
     {
         return $this->whereHas('patologias', function ($query) {
-            $query->selectRaw('SUM(descripcion_patologia) as total_puntos')
+            $query->selectRaw('SUM(COALESCE(descripcion_patologia, 1)) as total_puntos')
                 ->having('total_puntos', '=', 1);
         })
             ->whereNull('egreso');
+    }
+
+    /**
+     * Calcular el puntaje total de patologías para estratificación ECICEP.
+     * Método de instancia: retorna el total de puntos del paciente.
+     */
+    public function puntajeEcicep()
+    {
+        return (int) $this->patologias()->sum(\DB::raw('COALESCE(descripcion_patologia, 1)'));
+    }
+
+    /**
+     * Retorna el grupo de estratificación ECICEP del paciente: G0, G1, G2 o G3.
+     */
+    public function grupoEcicep()
+    {
+        $puntos = $this->puntajeEcicep();
+        if ($puntos >= 5) return 'G3';
+        if ($puntos >= 2) return 'G2';
+        if ($puntos == 1) return 'G1';
+        return 'G0';
+    }
+
+    /**
+     * Métodos booleanos de instancia para usar en vistas.
+     */
+    public function isG3()
+    {
+        return $this->puntajeEcicep() >= 5;
+    }
+
+    public function isG2()
+    {
+        $p = $this->puntajeEcicep();
+        return $p >= 2 && $p <= 4;
+    }
+
+    public function isG1()
+    {
+        return $this->puntajeEcicep() == 1;
     }
 
     public function lactancia()
@@ -1946,7 +1986,7 @@ class Paciente extends Model
         [$desde, $hasta] = $this->rangoPorFechaCorte($fechaCorte);
 
         return $this->join('controls', 'controls.paciente_id', 'pacientes.id')
-            ->whereIn('controls.tipo_control', ['Medico', 'Psicologo'])
+            ->whereIn('controls.tipo_control', ['Medico', 'Enfermera', 'Nutricionista', 'Psicologo'])
             ->whereBetween('controls.fecha_control', [$desde, $hasta])
             ->whereNull('pacientes.egreso')
             ->whereYear('pacientes.fecha_nacimiento', '>=', Carbon::now()->subYears(9)->year)

@@ -203,10 +203,10 @@ class PacienteController extends Controller
 
         try {
             $paciente = Paciente::findOrFail($id);
-            
+
             // Preparar datos para actualizar
             $data = $request->all();
-            
+
             // Si el checkbox 'embarazada' no fue explícitamente marcado (es decir, si solo tiene el valor del hidden 0)
             // y el valor actual en BD es igual, no actualizar para evitar cambios no intencionales
             if (isset($data['embarazada']) && $data['embarazada'] == 0 && $paciente->embarazada == 0) {
@@ -216,7 +216,7 @@ class PacienteController extends Controller
                 // Solo actualizar si fue explícitamente desmarcado (el checkbox estaba antes)
                 // Mantener el valor 0
             }
-            
+
             $paciente->update($data);
 
             return redirect('pacientes/' . $id)->with('swal', [
@@ -348,7 +348,9 @@ class PacienteController extends Controller
     {
         $paciente = new Paciente;
         $dm2 = $paciente->dm2()->select('rut', 'ficha', 'nombres', 'apellidoP', 'apellidoM', 'telefono', 'pacientes.id');
-        $eval = $paciente->evaluacionPie()->get()->unique('rut');
+        // Vigencia evaluación pie: 1 año desde hoy
+        $rango = ['desde' => now()->subYear()->format('Y-m-d'), 'hasta' => now()->format('Y-m-d')];
+        $eval = $paciente->evaluacionPie($rango)->get()->unique('rut');
         $noEval = $dm2->whereNotIn('rut', $eval->pluck('rut'));
 
         return view('pacientes.sinEvalPie', compact('noEval'));

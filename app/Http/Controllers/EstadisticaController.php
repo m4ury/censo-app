@@ -266,8 +266,9 @@ public function index()
     public function pie()
     {
         $all = new Paciente;
-        $pacientes = $all->evaluacionPie()->get()->unique('rut');
-        //dd($pacientes);
+        // Vigencia evaluación pie diabético: 1 año desde hoy
+        $rango = ['desde' => now()->subYear()->format('Y-m-d'), 'hasta' => now()->format('Y-m-d')];
+        $pacientes = $all->evaluacionPie($rango)->get()->unique('rut');
         return view('estadisticas.pie', compact('pacientes'));
     }
 

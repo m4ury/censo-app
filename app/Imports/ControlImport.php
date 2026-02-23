@@ -20,10 +20,23 @@ class ControlImport implements ToCollection
 
     public function collection(Collection $rows)
     {
-        // Construir mapeo de headers en la primera fila (fila 11 - índice 10)
-        if (isset($rows[10])) {
-            $this->buildHeaderIndexMap($rows[10]);
+        // === DEBUG: Dump de filas 8-11 para encontrar dónde están los headers ===
+        foreach ([7, 8, 9, 10] as $rowIdx) {
+            if (isset($rows[$rowIdx])) {
+                $filaNum = $rowIdx + 1;
+                $celdas = [];
+                foreach ($rows[$rowIdx] as $colIdx => $val) {
+                    if (!is_null($val) && $val !== '') {
+                        $celdas[$colIdx] = $val;
+                    }
+                }
+                \Log::info("=== DEBUG FILA {$filaNum} (index {$rowIdx}) - Celdas con valor ===", $celdas);
+            }
         }
+
+        // Construir mapeo de headers escaneando MÚLTIPLES filas (8-11)
+        // El Excel respiratorio tiene headers repartidos en varias filas con celdas combinadas.
+        $this->buildHeaderIndexMapMultiRow($rows);
 
         // Leer el valor de la celda B7 (fila 7, columna 2)
         $origenRepo = null;
@@ -70,6 +83,30 @@ class ControlImport implements ToCollection
                 $inasistenciaRow = $this->getValueByHeader($row, 'inasistencia') ?? $row[63] ?? null; // Fallback a columna BL
                 $prestacionRow = $rows[7][1] ?? null; // Columna B (índice 1) fila 8 (índice 7)
 
+                // DEBUG: Loguear valores respiratorios solo para la primera fila de datos (fila 12)
+                if ($fila === 12) {
+                    $diagIdx = $this->getHeaderIndex('diagnostico');
+                    $ctrlIdx = $this->getHeaderIndex('control');
+                    $diagEcicepIdx = $this->getHeaderIndex('diagnostico_ecicep');
+                    $ctrlEcicepIdx = $this->getHeaderIndex('control_ecicep');
+                    $clasifEcicepIdx = $this->getHeaderIndex('clasificacion_ecicep');
+                    \Log::info('=== DEBUG RESPIRATORIO (Fila 12) ===', [
+                        'prestacionRow' => $prestacionRow,
+                        'inasistenciaRow' => $inasistenciaRow,
+                        'idx_diagnostico' => $diagIdx,
+                        'val_diagnostico' => $diagIdx !== null ? ($row[$diagIdx] ?? 'NULL') : 'INDEX_NOT_FOUND',
+                        'idx_control' => $ctrlIdx,
+                        'val_control' => $ctrlIdx !== null ? ($row[$ctrlIdx] ?? 'NULL') : 'INDEX_NOT_FOUND',
+                        'idx_diagnostico_ecicep' => $diagEcicepIdx,
+                        'val_diagnostico_ecicep' => $diagEcicepIdx !== null ? ($row[$diagEcicepIdx] ?? 'NULL') : 'INDEX_NOT_FOUND',
+                        'idx_control_ecicep' => $ctrlEcicepIdx,
+                        'val_control_ecicep' => $ctrlEcicepIdx !== null ? ($row[$ctrlEcicepIdx] ?? 'NULL') : 'INDEX_NOT_FOUND',
+                        'idx_clasificacion_ecicep' => $clasifEcicepIdx,
+                        'val_clasificacion_ecicep' => $clasifEcicepIdx !== null ? ($row[$clasifEcicepIdx] ?? 'NULL') : 'INDEX_NOT_FOUND',
+                        'edad_anios' => $edad_anios,
+                    ]);
+                }
+
                 if (stripos($inasistenciaRow, 'inasistencia') !== false) {
                     // Si hay inasistencia, no se registra control ni clasificación
                     continue;
@@ -77,7 +114,15 @@ class ControlImport implements ToCollection
 
                  //ECICEP complemento Respiratorio
                 if (stripos($prestacionRow, '3. respiratorio') !== false) {
-                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, 'diagnostico_ecicep', 'control_ecicep', $edad_anios, 'clasificacion_ecicep');
+                    // Para ECICEP:
+                    // - diagnostico_ecicep (col 26): "Asma Bronquial", "Enfermedad Pulmonar Obstructiva Crónica"
+                    // - control (col 31): "Asma controlada", "EPOC logra control adecuado" (nivel de control real)
+                    // - clasificacion_ecicep (col 27): "Leve", "Moderado", "Severo" (severidad asma)
+                    $datosPatologiaEcicep = $this->procesarDatosRespiratorios($row, 'diagnostico_ecicep', 'control', $edad_anios, 'clasificacion_ecicep');
+
+                    // DEBUG: Log resultado ECICEP
+                    if ($fila === 12) \Log::info('=== DEBUG ECICEP resultado ===', $datosPatologiaEcicep);
+
                     if ($datosPatologiaEcicep['campoClasif']) {
                         $campoClasif = $datosPatologiaEcicep['campoClasif'];
                         $campoControl = $datosPatologiaEcicep['campoControl'];
@@ -87,6 +132,10 @@ class ControlImport implements ToCollection
                 } else {
                     // Si no es ECICEP, usar los headers
                     $datosPatologia = $this->procesarDatosRespiratorios($row, 'diagnostico', 'control', $edad_anios);
+
+                    // DEBUG: Log resultado respiratorio genérico
+                    if ($fila === 12) \Log::info('=== DEBUG RESPIRATORIO resultado ===', $datosPatologia);
+
                     $campoClasif = $datosPatologia['campoClasif'];
                     $campoControl = $datosPatologia['campoControl'];
                     $valorClasif = $datosPatologia['valorClasif'];
@@ -152,7 +201,7 @@ class ControlImport implements ToCollection
 
                 $imcEdadRow = trim($row[$this->getHeaderIndex('imc_edad') ?? 33] ?? '') ?? null; // Columna AH
                 if (strpos($imcEdadRow, 'Normal') !== false) {
-                    $imcEdad = '-09 DS'; //NORMAL
+                    $imcEdad = 'promedio'; //NORMAL
                 } elseif (strpos($imcEdadRow, '-1DS') !== false) {
                     $imcEdad = '-1 DS';
                 } elseif (strpos($imcEdadRow, '-2DS') !== false) {
@@ -169,7 +218,7 @@ class ControlImport implements ToCollection
 
                 $tallaEdadRow = $row[$this->getHeaderIndex('talla_edad') ?? 25] ?? null; // Columna Z
                 if (strpos($tallaEdadRow, '4') !== false) {
-                    $tallaEdad = '-09 DS'; //NORMAL
+                    $tallaEdad = 'promedio'; //NORMAL
                 } elseif (strpos($tallaEdadRow, '3') !== false) {
                     $tallaEdad = '-1 DS';
                 } elseif (strpos($tallaEdadRow, '5') !== false) {
@@ -584,49 +633,104 @@ class ControlImport implements ToCollection
 
     /**
      * Construir un mapeo dinámico de headers a índices de columnas
-     * Busca coincidencias parciales en los encabezados para mayor flexibilidad
+     * Escanea MÚLTIPLES filas (8-11, índices 7-10) porque en el Excel de
+     * Programas Respiratorios los headers están repartidos en varias filas
+     * (celdas combinadas). Se preserva el primer match encontrado para cada clave.
+     *
+     * IMPORTANTE: El orden de las claves importa. Para cada columna del header,
+     * se busca la PRIMERA clave que coincida (break 2). Por eso las claves más
+     * específicas (ej: ECICEP) deben ir ANTES que las genéricas.
      */
-    private function buildHeaderIndexMap($headerRow)
+    private function buildHeaderIndexMapMultiRow($rows)
     {
         $headerMap = [
-            'diagnostico' => ['diagnostic', 'diagnostico', 'categoría diagnóstica'],
-            'control' => ['nivel de control', 'control', 'nivel_control'],
-            'peso' => ['peso (kg)'],
-            'talla' => ['talla (cm)'],
+            // === ECICEP-specific: deben ir PRIMERO para tener prioridad ===
+            'diagnostico_ecicep' => ['diagnostico ecicep', 'diagnostico de paciente cronico'],
+            // clasificacion_ecicep: captura la severidad del asma (col "Nivel de Severidad Asma Bronquial")
+            // Debe ir ANTES de control_ecicep para que "nivel de severidad" no sea robado
+            'clasificacion_ecicep' => ['clasificacion ecicep', 'nivel de severidad'],
+            // control_ecicep: solo patrones muy específicos que NO capturan la severidad
+            // El nivel de control real se obtiene via la clave genérica 'control' ("Nivel de Control")
+            'control_ecicep' => ['control ecicep'],
+            // Tipo de EPOC (A/B) - columna específica ECICEP
+            'tipo_epoc_ecicep' => ['tipo de enf. pulmonar', 'tipo de enfermedad pulmonar', 'tipo epoc'],
+
+            // === tipo_control y tipo-funcionario: van ANTES de 'control' y 'diagnostico' ===
+            'tipo_control' => ['tipo control', 'tipo de control', 'tipo_control'],
+            'tipo_funcionario' => ['tipo-funcionario', 'tipo funcionario'],
+
+            // === Respiratorio: "Categoría diagnóstica" y "Nivel de Control" ===
+            // IMPORTANTE: NO usar patrones genéricos como 'diagnostico' o 'control'
+            // porque matchean con "Diagnostico 1 (CIE10)" y "Control" (tipo atención)
+            // que son columnas diferentes.
+            'diagnostico' => ['categoria diagnostica', 'categ. diagnostica', 'categ diagnostica'],
+            'control' => ['nivel de control', 'nivel control'],
+
+            // === Otros campos ===
+            'peso' => ['peso (kg)', 'peso'],
+            'talla' => ['talla (cm)', 'talla'],
             'imc' => ['imc'],
+            // talla_edad e imc_edad DEBEN ir ANTES de estado_nutricional
+            // porque "Estado Nutricional Talla/Edad" contiene "estado nutricional" como substring
+            // y si estado_nutricional va primero, roba la columna de talla/edad.
+            'talla_edad' => ['talla/edad', 'talla edad', 'talla_edad'],
+            'imc_edad' => ['imc/edad', 'imc edad', 'imc_edad'],
             'estado_nutricional' => ['estado nutricional'],
-            'imc_edad' => ['imc edad', 'imc/edad', 'imc_edad'],
-            'talla_edad' => ['talla edad', 'talla/edad', 'talla_edad'],
-            'rpc_cintura' => ['rpc cintura', 'circunferencia cintura', 'cintura'],
-            'originario' => ['originario', 'pueblo originario'],
-            'migrante' => ['migrante'],
-            'tipo_consejeria' => ['tema de consejería individual','consejería'],
+            // rpc_cintura: usar "rangos percentiles" para matchear col AJ (Rangos Percentiles Cintura)
+            // y NO "cintura" genérico que roba col Y (Circunferencia de Cintura cms = valor numérico)
+            'rpc_cintura' => ['rangos percentiles', 'rpc cintura', 'percentiles cintura'],
+            'originario' => ['originario', 'pueblo originario', 'pueblo indigena'],
+            'migrante' => ['migrante', 'poblacion migrante'],
+            'tipo_consejeria' => ['tema de consejeria individual', 'consejeria'],
             'esp_amigable' => ['amigable', 'esp_amigable', 'espacios amigables'],
             'inasistencia' => ['inasistencia'],
             'mejor_ninez' => ['mejor ninez', 'mejora'],
-            'diagnostico_ecicep' => ['diagnostico ecicep', 'diagnostico de paciente crónico'],
-            'control_ecicep' => ['nivel de severidad asma bronquial', 'nivel control'],
-            'clasificacion_ecicep' => ['clasificacion ecicep', 'clasificación ecicep'],
         ];
 
-        foreach ($headerRow as $index => $header) {
-            if (is_null($header) || $header === '') {
+        // Escanear filas 8 a 11 (índices 7 a 10) buscando headers
+        $filasHeader = [7, 8, 9, 10];
+
+        foreach ($filasHeader as $rowIdx) {
+            if (!isset($rows[$rowIdx])) {
                 continue;
             }
 
-            $headerLower = strtolower(trim($header));
+            foreach ($rows[$rowIdx] as $index => $header) {
+                if (is_null($header) || $header === '') {
+                    continue;
+                }
 
-            foreach ($headerMap as $key => $patterns) {
-                foreach ($patterns as $pattern) {
-                    if (strpos($headerLower, strtolower($pattern)) !== false) {
-                        $this->headerIndexMap[$key] = $index;
-                        break 2; // Salir de ambos bucles si encontramos coincidencia
+                // Normalizar header: minúsculas, trim y remover acentos
+                $headerLower = strtolower(trim($header));
+                $headerNorm = $this->removeAccents($headerLower);
+
+                foreach ($headerMap as $key => $patterns) {
+                    // Si esta clave ya fue mapeada, no sobreescribir
+                    if (isset($this->headerIndexMap[$key])) {
+                        continue;
+                    }
+
+                    foreach ($patterns as $pattern) {
+                        $patternNorm = $this->removeAccents(strtolower($pattern));
+                        if (strpos($headerNorm, $patternNorm) !== false) {
+                            $this->headerIndexMap[$key] = $index;
+                            \Log::info("  MATCH: '{$key}' => columna [{$index}] (fila " . ($rowIdx + 1) . ", header: '{$header}')");
+                            break 2; // Salir de ambos bucles para esta celda
+                        }
                     }
                 }
             }
         }
 
-        \Log::info('Header Index Map construido:', $this->headerIndexMap);
+        \Log::info('=== DEBUG HEADERS: Mapeo final headerIndexMap (multi-row) ===', $this->headerIndexMap);
+    }
+
+    /**
+     * Mantener buildHeaderIndexMap original por compatibilidad (ya no se usa directamente)
+     */
+    private function buildHeaderIndexMap($headerRow)
+    {
+        // Delegado a buildHeaderIndexMapMultiRow
     }
 
     /**
@@ -636,6 +740,7 @@ class ControlImport implements ToCollection
     private function getHeaderIndex($headerName)
     {
         return $this->headerIndexMap[$headerName] ?? null;
+
     }
 
     /**
@@ -646,5 +751,16 @@ class ControlImport implements ToCollection
     {
         $index = $this->getHeaderIndex($headerName);
         return $index !== null ? ($row[$index] ?? null) : null;
+    }
+
+    /**
+     * Remover acentos/tildes de un string para comparación flexible de headers.
+     * Convierte á→a, é→e, í→i, ó→o, ú→u, ñ→n, ü→u
+     */
+    private function removeAccents($string)
+    {
+        $accents   = ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü'];
+        $noAccents = ['a', 'e', 'i', 'o', 'u', 'n', 'u', 'a', 'e', 'i', 'o', 'u', 'n', 'u'];
+        return str_replace($accents, $noAccents, $string);
     }
 }
