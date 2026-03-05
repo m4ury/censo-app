@@ -5,110 +5,66 @@
             CONRTOL PROGRAMA DE LA MUJER
         </div>
         <div class="form-group row my-2 ml-2 mx-3 ginec">
-            {!! Form::label('ginec_label', 'Control Ginecologico', [
-                'class' => 'col-sm-2 col-form-label text-bold',
-            ]) !!}
+            <label for="ginec_label" class="col-sm-2 col-form-label text-bold">Control Ginecologico</label>
             <div class="col-sm-2">
-                {!! Form::checkbox('ginec', 1, old('ginec', $control->ginec == 1 ? true : null), [
-                    'class' => 'form-control my-2 ginec',
-                    'id' => 'ginec',
-                ]) !!}
+                {{ html()->checkbox('ginec', old('ginec', $control->ginec == 1 ? true : null), 1)->class('form-control my-2 ginec')->id('ginec') }}
             </div>
 
-            {!! Form::label('regulacion_label', 'Control Regulacion', [
-                'class' => 'col-sm-2 col-form-label text-bold',
-            ]) !!}
+            <label for="regulacion_label" class="col-sm-2 col-form-label text-bold">Control Regulacion</label>
             <div class="col-sm-2">
-                {!! Form::checkbox('regulacion', 1, old('regulacion', $control->regulacion == 1 ? true : null), [
-                    'class' => 'form-control my-2 regulacion',
-                    'id' => 'regulacion',
-                ]) !!}
+                {{ html()->checkbox('regulacion', old('regulacion', $control->regulacion == 1 ? true : null), 1)->class('form-control my-2 regulacion')->id('regulacion') }}
             </div>
         </div>
         {{-- control diada --}}
     @elseif ($paciente->grupo < 1)
-        {!! Form::label('diada_label', 'Control DIADA (Entre 7 y 10 dias)', [
-            'class' => 'col-sm-3 col-form-label text-bold',
-        ]) !!}
+        <label for="diada_label" class="col-sm-3 col-form-label text-bold">Control DIADA (Entre 7 y 10 dias)</label>
         <div class="col-sm">
-            {!! Form::checkbox('diada', 1, old('diada', $control->diada == 1 ? true : null), [
-                'class' => 'form-control my-2 diada',
-                'id' => 'diada',
-            ]) !!}
+            {{ html()->checkbox('diada', old('diada', $control->diada == 1 ? true : null), 1)->class('form-control my-2 diada')->id('diada') }}
         </div>
     @endif
     {{-- pacientes embarazadas --}}
     @if ($paciente->embarazada)
         <div class="form-group row my-2 ml-2 mx-3 embarazo">
-            {!! Form::label('embarazo_label', 'Control Embarazo', [
-                'class' => 'col-sm-2 col-form-label text-bold',
-            ]) !!}
+            <label for="embarazo_label" class="col-sm-2 col-form-label text-bold">Control Embarazo</label>
             <div class="col-sm-2">
-                {!! Form::checkbox('embarazo', 1, old('embarazo', $control->embarazo == 1 ? 1 : 0), [
-                    'class' => 'form-control my-2 embarazo',
-                    'id' => 'embarazo',
-                ]) !!}
+                {{ html()->checkbox('embarazo', old('embarazo', $control->embarazo == 1 ? 1 : 0), 1)->class('form-control my-2 embarazo')->id('embarazo') }}
             </div>
         </div>
     @endif
     {{-- pacientes entre 45 y 64 años tipo control mater --}}
     @if ($paciente->grupo > 39 && $paciente->grupo < 65 && $paciente->sexo == 'Femenino')
         <div class="form-group row my-2 ml-2 mx-3 climater">
-            {!! Form::label('climater_label', 'Control Climaterio', [
-                'class' => 'col-sm-2 col-form-label text-bold',
-            ]) !!}
+            <label for="climater_label" class="col-sm-2 col-form-label text-bold">Control Climaterio</label>
             <div class="col-sm-2">
-                {!! Form::checkbox('climater', 1, old('climater', $control->climater == 1 ? true : null), [
-                    'class' => 'form-control my-2 climater',
-                    'id' => 'climater',
-                ]) !!}
+                {{ html()->checkbox('climater', old('climater', $control->climater == 1 ? true : null), 1)->class('form-control my-2 climater')->id('climater') }}
             </div>
         </div>
     @endif
     {{-- pacientes hasta 59 años control de regulacion --}}
     @if ($paciente->grupo < 60 and $paciente->grupo > 9 && $paciente->sexo == 'Femenino')
         <div class="form-group row pt-2 ml-2 mx-3 preservativo border-top border-danger rounded border-2">
-            {!! Form::label('preservativo_label', 'SÓLO PRESERVATIVO  MAC', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="preservativo_label" class="col-sm col-form-label text-bold">SÓLO PRESERVATIVO  MAC</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'preservativo',
-                    [
+                {{ html()->select('preservativo', [
                         'Hombres' => 'Hombres',
                         'Mujer' => 'Mujer',
-                    ],
-                    old('preservativo', $control->preservativo),
-                    ['class' => 'form-control form-control-sm preservat', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('preservativo', $control->preservativo))->class('form-control form-control-sm preservat')->placeholder('Seleccione') }}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3 diu_cobre">
-            {!! Form::label('diuCobre_label', 'D . I . U T CON COBRE', [
-                'class' => 'col-sm-3 col-form-label text-bold',
-            ]) !!}
+            <label for="diuCobre_label" class="col-sm-3 col-form-label text-bold">D . I . U T CON COBRE</label>
             <div class="col-sm-3">
-                {!! Form::checkbox('diu_cobre', 1, old('diu_cobre', $control->diu_cobre == 1 ? true : null), [
-                    'class' => 'form-control my-2 diu',
-                    'id' => 'diu_cobre',
-                ]) !!}
+                {{ html()->checkbox('diu_cobre', old('diu_cobre', $control->diu_cobre == 1 ? true : null), 1)->class('form-control my-2 diu')->id('diu_cobre') }}
             </div>
-            {!! Form::label('diuLevonorgest_label', 'D . I . U CON LEVONORGESTREL', [
-                'class' => 'col-sm-3 col-form-label text-bold',
-            ]) !!}
+            <label for="diuLevonorgest_label" class="col-sm-3 col-form-label text-bold">D . I . U CON LEVONORGESTREL</label>
             <div class="col-sm-3">
-                {!! Form::checkbox('diu_levonorgest', 1, old('diu_levonorgest', $control->diu_levonorgest == 1 ? true : null), [
-                    'class' => 'form-control my-2 diu',
-                    'id' => 'diu_levonorgest',
-                ]) !!}
+                {{ html()->checkbox('diu_levonorgest', old('diu_levonorgest', $control->diu_levonorgest == 1 ? true : null), 1)->class('form-control my-2 diu')->id('diu_levonorgest') }}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3 horm">
-            {!! Form::label('hormonal_label', 'HORMONAL', ['class' => 'col-sm col-form-label']) !!}
+            <label for="hormonal_label" class="col-sm col-form-label">HORMONAL</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'hormonal',
-                    [
+                {{ html()->select('hormonal', [
                         'oral_comb' => 'Oral Combinado',
                         'oral_progest' => 'Oral Progestageno',
                         'inyectable_comb' => 'Inyectable Combinado',
@@ -116,207 +72,120 @@
                         'implante_etonogest' => 'Implante Etonogestrel (3 años)',
                         // 'implante_levonorgest' => 'Implante Levonorgestrel (5 años)',
                         'anillo' => 'Anillo Vaginal',
-                    ],
-                    old('hormonal', $control->hormonal),
-                    ['class' => 'form-control form-control-sm hormon', 'placeholder' => 'Seleccione metodo'],
-                ) !!}
+                    ], old('hormonal', $control->hormonal))->class('form-control form-control-sm hormon')->placeholder('Seleccione metodo') }}
             </div>
         </div>
     @endif
 
     {{-- pacientes de 70 años y mas control de regulacion --}}
     <div class="form-group row my-2 ml-2 mx-3 condon border-bottom border-danger rounded border-2">
-        {!! Form::label('condonFem_label', 'CONDON FEMENINO', [
-            'class' => 'col-sm-3 col-form-label text-bold',
-        ]) !!}
+        <label for="condonFem_label" class="col-sm-3 col-form-label text-bold">CONDON FEMENINO</label>
         <div class="col-sm-3">
-            {!! Form::checkbox('condon_fem', 1, old('condon_fem', $control->condon_fem == 1 ? true : null), [
-                'class' => 'form-control my-2',
-                'id' => 'condon_fem',
-            ]) !!}
+            {{ html()->checkbox('condon_fem', old('condon_fem', $control->condon_fem == 1 ? true : null), 1)->class('form-control my-2')->id('condon_fem') }}
         </div>
     </div>
 
     {{-- pacientes control e ingreso climaterio --}}
     <div class="form-group row my-2 ml-2 mx-3 climater_fields border border-info rounded border-2">
-        {!! Form::label('pautaMrs_label', 'Pauta MRS*', [
-            'class' => 'col-sm-6 col-form-label text-bold',
-        ]) !!}
+        <label for="pautaMrs_label" class="col-sm-6 col-form-label text-bold">Pauta MRS*</label>
         <div class="col-sm">
-            {!! Form::number('pauta_mrs', old('pauta_mrs', $control->pauta_mrs ?? ''), [
-                'class' => 'form-control my-2',
-                'id' => 'pauta_mrs',
-            ]) !!}
+            {{ html()->number('pauta_mrs', old('pauta_mrs', $control->pauta_mrs ?? ''))->class('form-control my-2')->id('pauta_mrs') }}
         </div>
-        {!! Form::label('trh_label', 'Tipoo terapia Reemplazo Hormonal', [
-            'class' => 'col-sm-6 col-form-label text-bold',
-        ]) !!}
+        <label for="trh_label" class="col-sm-6 col-form-label text-bold">Tipoo terapia Reemplazo Hormonal</label>
         <div class="col-sm">
-            {!! Form::select(
-                'trh',
-                [
+            {{ html()->select('trh', [
                     'Estradiol Micronizado 1mg' => 'Estradiol Micronizado 1mg',
                     'Estradiol Gel' => 'Estradiol Gel',
                     'Tibolona 2,5mg comp.' => 'Tibolona 2,5mg comp.',
-                ],
-                old('trh', $control->trh),
-                ['class' => 'form-control form-control-sm trh', 'placeholder' => 'Seleccione terapia'],
-            ) !!}
+                ], old('trh', $control->trh))->class('form-control form-control-sm trh')->placeholder('Seleccione terapia') }}
         </div>
     </div>
 
     {{-- pacientes embarazadas --}}
     <div class="form-group row my-2 ml-2 mx-3 embarazo_fields border border-primary rounded border-2">
-        {!! Form::label('rPsicosocial_label', 'Gestante con Riesgo Psicosocial', [
-            'class' => 'col-sm-3 col-form-label text-bold',
-        ]) !!}
+        <label for="rPsicosocial_label" class="col-sm-3 col-form-label text-bold">Gestante con Riesgo Psicosocial</label>
         <div class="col-sm">
-            {!! Form::checkbox('rPsicosocial', 1, old('rPsicosocial', $control->rPsicosocial == 1 ? true : null), [
-                'class' => 'form-control my-2',
-                'id' => 'rPsicosocial',
-            ]) !!}
+            {{ html()->checkbox('rPsicosocial', old('rPsicosocial', $control->rPsicosocial == 1 ? true : null), 1)->class('form-control my-2')->id('rPsicosocial') }}
         </div>
-        {!! Form::label('vGenero_label', 'Presenta Violencia de Genero', [
-            'class' => 'col-sm-2 col-form-label text-bold',
-        ]) !!}
+        <label for="vGenero_label" class="col-sm-2 col-form-label text-bold">Presenta Violencia de Genero</label>
         <div class="col-sm-2">
-            {!! Form::checkbox('vGenero', 1, old('vGenero', $control->vGenero == 1 ? true : null), [
-                'class' => 'form-control my-2',
-                'id' => 'vGenero',
-            ]) !!}
+            {{ html()->checkbox('vGenero', old('vGenero', $control->vGenero == 1 ? true : null), 1)->class('form-control my-2')->id('vGenero') }}
         </div>
-        {!! Form::label('aro_label', 'Gestante Presenta ARO', [
-            'class' => 'col-sm-2 col-form-label text-bold',
-        ]) !!}
+        <label for="aro_label" class="col-sm-2 col-form-label text-bold">Gestante Presenta ARO</label>
         <div class="col-sm-2">
-            {!! Form::checkbox('aro', 1, old('aro', $control->aro == 1 ? true : null), [
-                'class' => 'form-control my-2',
-                'id' => 'aro',
-            ]) !!}
+            {{ html()->checkbox('aro', old('aro', $control->aro == 1 ? true : null), 1)->class('form-control my-2')->id('aro') }}
         </div>
 
-        {!! Form::label('ecoTrimest_label', 'Ecografia por Trimestre de Gestación (En el semestre)', [
-            'class' => 'col-sm-6 col-form-label text-bold',
-        ]) !!}
+        <label for="ecoTrimest_label" class="col-sm-6 col-form-label text-bold">Ecografia por Trimestre de Gestación (En el semestre)</label>
         <div class="col-sm">
-            {!! Form::select(
-                'ecoTrimest',
-                [
+            {{ html()->select('ecoTrimest', [
                     '11sem' => '<11 semanas',
                     '11_13sem' => '11- 13+6 semanas',
                     '2224sem' => '22-24 semanas',
                     '3034sem' => '30-34 semanas',
-                ],
-                old('ecoTrimest', $control->ecoTrimest),
-                ['class' => 'form-control form-control-sm ecoTrimest', 'placeholder' => 'Seleccione'],
-            ) !!}
+                ], old('ecoTrimest', $control->ecoTrimest))->class('form-control form-control-sm ecoTrimest')->placeholder('Seleccione') }}
         </div>
-        {!! Form::label('ecoExtaSist_label', 'Ecografia extrasistema', [
-            'class' => 'col-sm-2 col-form-label text-bold',
-        ]) !!}
+        <label for="ecoExtaSist_label" class="col-sm-2 col-form-label text-bold">Ecografia extrasistema</label>
         <div class="col-sm-2">
-            {!! Form::checkbox('ecoExtrasist', 1, old('ecoExtrasist', $control->ecoExtrasist == 1 ? true : null), [
-                'class' => 'form-control my-2',
-                'id' => 'ecoExtrasist',
-            ]) !!}
+            {{ html()->checkbox('ecoExtrasist', old('ecoExtrasist', $control->ecoExtrasist == 1 ? true : null), 1)->class('form-control my-2')->id('ecoExtrasist') }}
         </div>
-            {!! Form::label('vih_label', 'Con TEST de VIH tomado (En el semestre, Red Publica o Extrasistema)', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="vih_label" class="col-sm col-form-label text-bold">Con TEST de VIH tomado (En el semestre, Red Publica o Extrasistema)</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'vih',
-                    [
+                {{ html()->select('vih', [
                         '1vih' => 'CON RESULTADO 1° VIH',
                         //'1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
                         '2vih' => 'CON RESULTADO 2° VIH',
                         //'3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
-                    ],
-                    old('vih', $control->vih),
-                    ['class' => 'form-control form-control-sm vih', 'placeholder' => 'VIH'],
-                ) !!}
+                    ], old('vih', $control->vih))->class('form-control form-control-sm vih')->placeholder('VIH') }}
             </div>
-            {!! Form::label('sifilis_label', 'Con TEST de SIFILIS tomado (En el semestre, Red Publica o Extrasistema)', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="sifilis_label" class="col-sm col-form-label text-bold">Con TEST de SIFILIS tomado (En el semestre, Red Publica o Extrasistema)</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'sifilis',
-                    [
+                {{ html()->select('sifilis', [
                         '1sifilis' => 'CON RESULTADO 1° TAMIZAJE SIFILIS',
                         '3trimGestacion' => 'CON RESULTADO TAMIZAJE SIFILIS 3° TRIMESTRE GESTACION',
-                    ],
-                    old('sifilis', $control->sifilis),
-                    ['class' => 'form-control form-control-sm sifilis', 'placeholder' => 'Sifilis'],
-                ) !!}
+                    ], old('sifilis', $control->sifilis))->class('form-control form-control-sm sifilis')->placeholder('Sifilis') }}
             </div>
     </div>
 
     {{-- todas las pacientes programa de la mujer --}}
     @if ($paciente->sexo == 'Femenino' && $paciente->grupo > 9)
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('esterilizacion_label', 'ESTERILIZACIÓN QUIRURGICA', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="esterilizacion_label" class="col-sm col-form-label text-bold">ESTERILIZACIÓN QUIRURGICA</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'esterilizacion',
-                    [
+                {{ html()->select('esterilizacion', [
                         'Hombres' => 'Hombres',
                         'Mujer' => 'Mujer',
-                    ],
-                    old('esterilizacion', $control->esterilizacion),
-                    ['class' => 'form-control form-control-sm esterilizacion', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('esterilizacion', $control->esterilizacion))->class('form-control form-control-sm esterilizacion')->placeholder('Seleccione') }}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3" id="pap">
-            {!! Form::label('papVigente_label', 'PAP Vigente', [
-                'class' => 'col-sm-6 col-form-label',
-            ]) !!}
+            <label for="papVigente_label" class="col-sm-6 col-form-label">PAP Vigente</label>
             <div class="col-sm-6">
-                {!! Form::date('papVigente', old('papVigente', $control->papVigente), [
-                    'class' => 'form-control',
-                ]) !!}
+                {{ html()->date('papVigente', old('papVigente', $control->papVigente))->class('form-control') }}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3" id="emp">
-            {!! Form::label('empVigente_label', 'EMP Vigente', [
-                'class' => 'col-sm-6 col-form-label',
-            ]) !!}
+            <label for="empVigente_label" class="col-sm-6 col-form-label">EMP Vigente</label>
             <div class="col-sm-6">
-                {!! Form::date('empVigente', old('empVigente', $control->empVigente), [
-                    'class' => 'form-control',
-                ]) !!}
+                {{ html()->date('empVigente', old('empVigente', $control->empVigente))->class('form-control') }}
             </div>
         </div>
         <div class="form-group row my-2 ml-2 mx-3" id="mamo">
-            {!! Form::label('mamoVigente_label', 'MAMO Vigente', [
-                'class' => 'col-sm-6 col-form-label',
-            ]) !!}
+            <label for="mamoVigente_label" class="col-sm-6 col-form-label">MAMO Vigente</label>
             <div class="col-sm-6">
-                {!! Form::date('mamoVigente', old('mamoVigente', $control->mamoVigente), [
-                    'class' => 'form-control',
-                ]) !!}
+                {{ html()->date('mamoVigente', old('mamoVigente', $control->mamoVigente))->class('form-control') }}
             </div>
         </div>
 
         @if ($paciente->grupo < 60 and $paciente->grupo > 14)
             <div class="form-group row my-2 ml-2 mx-3 post_partof">
-                {!! Form::label('post_parto_label', 'Control POST-PARTO', [
-                    'class' => 'col-sm col-form-label text-bold',
-                ]) !!}
+                <label for="post_parto_label" class="col-sm col-form-label text-bold">Control POST-PARTO</label>
                 <div class="col-sm">
-                    {!! Form::select(
-                        'post_parto',
-                        [
+                    {{ html()->select('post_parto', [
                             'mes_3' => 'al 3° MES POST-PARTO',
                             'mes_6' => 'al 6° MES POST-PARTO',
                             'mes_8' => 'al 8° MES POST-PARTO',
-                        ],
-                        old('post_parto', $control->post_parto),
-                        ['class' => 'form-control form-control-sm post_parto', 'placeholder' => 'Seleccione'],
-                    ) !!}
+                        ], old('post_parto', $control->post_parto))->class('form-control form-control-sm post_parto')->placeholder('Seleccione') }}
                 </div>
             </div>
         @endif

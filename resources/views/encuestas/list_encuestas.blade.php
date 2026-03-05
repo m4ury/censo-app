@@ -51,14 +51,13 @@
                         <td>{{ \Carbon\Carbon::parse($control->proximo_control)->format("d-m-Y"). ' - '
                             .$control->prox_tipo ? : ''}}</td>
 
-                        {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE']) !!}
+                        {{ html()->form('DELETE', route(['controles.destroy', $control->id]))->open() }}
                         <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                                 title="Editar" href="{{ url('controles/'.$control->id.'/editar') }}"><i
                                     class="fas fa-pen"></i></a>
-                            {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                            btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title'
-                            => 'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Control?")'] ) !!}
-                            {!! Form::close() !!}
+                            {{ html()->submit('<i class="fas fa-trash"></i>')->attribute('type', 'submit')->class('btn
+                            btn-outline-danger btn-sm')->attribute('data-toggle', 'tooltip')->attribute('data-placement', 'top')->attribute('title', 'Eliminar')->attribute('onclick', 'return confirm("seguro desea eliminar esta Control?")') }}
+                            {{ html()->form()->close() }}
                         </td>
                     </tr>
                     @endforeach

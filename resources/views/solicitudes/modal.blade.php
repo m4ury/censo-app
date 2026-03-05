@@ -9,16 +9,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{ Form::open(['action' => 'SolicitudController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+                        {{ html()->form('POST', route('solicitudes.store'))->class('form-horizontal')->open() }}
                         <div class="form-group row">
-                            {!! Form::label('sol_rut_label', 'Rut paciente: ', ['class' => 'col-sm col-form-label']) !!}
+                            <label for="sol_rut_label" class="col-sm col-form-label">Rut paciente: </label>
                             <div class="col-sm">
-                                {!! Form::text('sol_rut', old('sol_rut'), [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('sol_rut') ? ' is-invalid' : ''),
-                                    'placeholder' => 'ej.: 16000000-K',
-                                    'id' => 'sol_rut',
-                                    'title' => 'El RUT no debe contener puntos (.), comas (,) ni comenzar con cero (0)',
-                                ]) !!}
+                                {{ html()->text('sol_rut', old('sol_rut'))->class('form-control form-control-sm')->classIf($errors->has('sol_rut'), 'is-invalid')->placeholder('ej.: 16000000-K')->id('sol_rut')->attribute('title', 'El RUT no debe contener puntos (.), comas (,) ni comenzar con cero (0)') }}
                                 @if ($errors->has('sol_rut'))
                                     <div class="invalid-feedback d-block">
                                         <strong>
@@ -32,7 +27,7 @@
                         <hr>
                         <div class="row py-3 px-3">
                             <div class="col">
-                                {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-success btn-sm btn-block']) }}
+                                {{ html()->submit('Guardar')->class('btn bg-gradient-success btn-sm btn-block') }}
                             </div>
                             <div class="col">
                                 <button type="button" class="btn bg-gradient-secondary btn-sm btn-block"
@@ -40,11 +35,11 @@
                                     Cancelar
                                 </button>
                                 {{-- <a href="{{ url('solicitudes') }}" style="text-decoration:none">
-                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block']) }}
+                                    {{ html()->submit('Cancelar')->class('btn bg-gradient-secondary btn-sm btn-block') }}
                                 </a> --}}
                             </div>
                         </div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

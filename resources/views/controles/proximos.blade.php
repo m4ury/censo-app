@@ -10,37 +10,13 @@
     @endphp
 --}}
         <div class="col col-sm mt-2">
-            {!! Form::open([
-                'route' => 'proximos',
-                'method' => 'GET',
-                'class' => 'form-inline float-left',
-                'id' => 'myForm',
-            ]) !!}
-            <div class="form-group mx-sm-3 mb-2">
-                {!! Form::select(
-                    'q',
-                    [
-                        'Dentista' => 'Dentista',
-                        'Medico' => 'Medico',
-                        'Kinesiologo' => 'Kinesiologo',
-                        'Psicologo' => 'Psicologo',
-                        'Matrona' => 'Matrona',
-                        'Enfermera' => 'Enfermera',
-                    ],
-                    \Request()->q,
-                    [
-                        'class' => 'form-control m-auto',
-                        'placeholder' => 'Busqueda Profesional',
-                        'id' => 'q',
-                        'onchange' => 'submitForm()',
-                    ],
-                ) !!}
+            {{ html()->form('GET', route('proximos'))->class('form-inline float-left')->id('myForm')->open() }}
+<div class="form-group mx-sm-3 mb-2">
+               {{ html()->select('q', ['Dentista' => 'Dentista', 'Medico' => 'Medico', 'Kinesiologo' => 'Kinesiologo', 'Psicologo' => 'Psicologo', 'Matrona' => 'Matrona', 'Enfermera' => 'Enfermera'], null)->class('form-control m-auto')->id('q')->placeholder('Busqueda Profesional')->attribute('onchange', 'submitForm()') }}
             </div>
 
-            {{-- <button type="submit" class="btn btn-primary mb-2">
-                <span><i class="fas fa-search"> Buscar</i></span>
-            </button> --}}
-            {!! Form::close() !!}
+            {{-- {{ html()->submit('Buscar')->class('fas fa-search') }} --}}
+            {{ html()->form()->close() }}
         </div>
         <div class="col-md-12 table-responsive">
             <h3 class="header m-auto py-2 text-center">Proximos Controles <span

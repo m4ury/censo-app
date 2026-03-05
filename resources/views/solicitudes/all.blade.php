@@ -49,11 +49,10 @@
                         </a>
                     </td>
                     <td>
-                        {{--{!! Form::open(['route' => ['solicitudes.destroy', $encuesta->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
-                        {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                        btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
-                        'Eliminar'] ) !!}
-                        {!! Form::close() !!}--}}
+                        {{--{{ html()->form('DELETE', route(['solicitudes.destroy', $encuesta->id]))->class('confirm')->open() }}
+                        {{ html()->submit('<i class="fas fa-trash"></i>')->attribute('type', 'submit')->class('btn
+                        btn-outline-danger btn-sm')->attribute('data-toggle', 'tooltip')->attribute('data-placement', 'top')->attribute('title', 'Eliminar') }}
+                        {{ html()->form()->close() }}--}}
                     </td>
                 </tr>
             @endforeach

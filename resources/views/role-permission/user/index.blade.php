@@ -49,26 +49,24 @@
                                     </td>
                                     <td class="text-center text-uppercase">
                                         @if ($user->trashed())
-                                            <form action="{{ route('users.restore', $user->id) }}" method="POST"
+                                            {{ html()->form('GET', '')->open() }}
+id) }}" method="POST"
                                                 style="display:inline;">
                                                 @csrf
-                                                <button type="submit" class="btn btn-success btn-sm">Restaurar</button>
-                                            </form>
+                                                {{ html()->submit('Restaurar')->class('btn btn-success btn-sm') }}
+                                            {{ html()->form()->close() }}
                                         @else
                                             <a class="btn btn-primary btn-sm" title="Editar Usuario"
                                                 href="{{ route('users.edit', $user->id) }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                            {{ html()->form('GET', '')->open() }}
+id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    title="Deshabilitar Usuario"
-                                                    onclick="return confirm('¿Estás seguro de que deseas deshabilitar este usuario?')">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
+                                                {{ html()->submit('')->class('fas fa-trash') }}
+                                            {{ html()->form()->close() }}
                                         @endif
                                     </td>
                                 </tr>

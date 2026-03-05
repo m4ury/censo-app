@@ -17,24 +17,14 @@
                         @else
                             Desde : {{ $patologia->pivot->created_at->format('d-m-Y') }}
                         @endif
-                        {{ Form::open([
-                            'action' => 'PacientePatologiaController@eliminarPatologia',
-                            'method' => 'POST',
-                            'class' => 'col-sm-3 float-right confirm',
-                        ]) }}
+                        {{ html()->form('POST', route('pacientes.eliminarPatologia', $paciente->id))->class('col-sm-3 float-right confirm')->open() }}
 
-                        {{ Form::hidden('patologia_id', $patologia->id) }}
-                        {{ Form::hidden('paciente_id', $paciente->id) }}
+                        {{ html()->hidden('patologia_id', $patologia->id) }}
+                        {{ html()->hidden('paciente_id', $paciente->id) }}
                         @if (auth()->user()->isAdmin() || auth()->user()->type == 'medico' || auth()->user()->type == 'super-admin')
-                            {!! Form::button('<i class="fas fa-trash"> Egreso/Alta </i>', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-outline-danger btn-sm float-right',
-                                'data-toggle' => 'tooltip',
-                                'data-placement' => 'top',
-                                'title' => 'Egreso / Alta',
-                            ]) !!}
+                            {{ html()->submit('<i class="fas fa-trash"> Egreso/Alta </i>')->attribute('type', 'submit')->class('btn btn-outline-danger btn-sm float-right')->attribute('data-toggle', 'tooltip')->attribute('data-placement', 'top')->attribute('title', 'Egreso / Alta') }}
                         @endif
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
 
                         {{-- Hipertensos --}}
                         @if ($patologia->nombre_patologia == 'HTA' or $patologia->nombre_patologia == 'DM2')

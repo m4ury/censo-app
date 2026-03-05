@@ -38,13 +38,11 @@
                 @else
                 <td class="text-center"><i class="fas fa-times-circle text-danger"></i></td>
                 @endif --}}
-                {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE']) !!}
-                <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
+                {{ html()->form('DELETE', route('controles.destroy', $control->id))->open() }}
+<td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
                         href="{{ url('controles/'.$control->id.'/editar') }}"><i class="fas fa-pen"></i></a>
-                    {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn
-                    btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' =>
-                    'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Control?")'] ) !!}
-                    {!! Form::close() !!}
+                    {{ html()->submit('')->class('fas fa-trash') }}
+                    {{ html()->form()->close() }}
                 </td>
             </tr>
             @endforeach

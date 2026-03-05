@@ -47,18 +47,8 @@
                         <td>{{ $constancia->user ? $constancia->user->fullUserName() : '' }}</td>
                         <td>
                             @if (auth()->user()->is($constancia->user))
-                                {!! Form::open([
-                                    'route' => ['constancias.destroy', $constancia],
-                                    'method' => 'DELETE',
-                                    'class' => 'confirm',
-                                ]) !!}
-                                {!! Form::button('<i class="fas fa-trash"></i>', [
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-outline-danger btn-sm',
-                                    'data-toggle' => 'tooltip',
-                                    'data-placement' => 'top',
-                                    'title' => 'Eliminar',
-                                ]) !!}
+                                {{ html()->form('DELETE', route('constancias.destroy', $constancia))->class('confirm')->open() }}
+{{ html()->submit('')->class('fas fa-trash') }}
 
                                 <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                                     title="Editar" href="{{ route('constancias.edit', $constancia) }}">
@@ -66,7 +56,7 @@
                                     </i>
                                 </a>
                             @endif
-                            {!! Form::close() !!}
+                            {{ html()->form()->close() }}
                             <a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="bottom"
                                 title="Constancia" href="{{ route('constancias.show', $constancia) }}" target="_blank"><i
                                     class="fas fa-envelope"></i>

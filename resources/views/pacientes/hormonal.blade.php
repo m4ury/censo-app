@@ -9,37 +9,13 @@
             <p class="text-bold text-uppercase">Metodo: <span class="text-red">{{ \Request()->metodo ?? 'Todos' }}</span></p>
         </div>
         <div class="row my-3">
-            {!! Form::open([
-                'route' => 'pacientes.hormonal',
-                'method' => 'GET',
-                'class' => 'form-inline float-right',
-                'id' => 'myForm',
-            ]) !!}
-            <div class="form-group mx-sm-3 mb-2">
-                {!! Form::select(
-                    'metodo',
-                    [
-                        'oral_comb' => 'Oral Combinado',
-                        'oral_progest' => 'Oral Progest',
-                        'inyectable_comb' => 'Inyectable Combinado',
-                        'inyectable_progest' => 'Inyectable Progest',
-                        'implante_etonogest' => 'Implante Etonogest',
-                        'anillo' => 'Anillo',
-                    ],
-                    \Request()->metodo,
-                    [
-                        'class' => 'form-control m-auto',
-                        'placeholder' => 'Busqueda Metodo',
-                        'id' => 'metodo',
-                        'onchange' => 'submitForm()',
-                    ],
-                ) !!}
+            {{ html()->form('GET', route('pacientes.hormonal'))->class('form-inline float-right')->id('myForm')->open() }}
+<div class="form-group mx-sm-3 mb-2">
+               {{ html()->select('metodo', ['oral_comb' => 'Oral Combinado', 'oral_progest' => 'Oral Progest', 'inyectable_comb' => 'Inyectable Combinado', 'inyectable_progest' => 'Inyectable Progest', 'implante_etonogest' => 'Implante Etonogest', 'anillo' => 'Anillo'], null)->class('form-control m-auto')->id('metodo')->placeholder('Busqueda Metodo')->attribute('onchange', 'submitForm()') }}
             </div>
 
-            {{-- <button type="submit" class="btn btn-primary mb-2">
-                <span><i class="fas fa-search"> Buscar</i></span>
-            </button> --}}
-            {!! Form::close() !!}
+            {{-- {{ html()->submit('Buscar')->class('fas fa-search') }} --}}
+            {{ html()->form()->close() }}
         </div>
         <table id="pacientes" class="table table-hover table-md-responsive table-bordered">
             <thead class="thead-light">

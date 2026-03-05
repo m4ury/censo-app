@@ -16,30 +16,18 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>Volver
                     </a>
                 </div>
-                {!! Form::open([
-                    'route' => 'estadisticas.encuestas',
-                    'method' => 'GET',
-                    'class' => 'form-inline float-right',
-                ]) !!}
-                {{-- {!! Form::select(
+                {{ html()->form('GET', route('estadisticas.encuestas'))->class('form-inline float-right')->open() }}
+{{-- {!! Form::select(
                     'year',
                     ['2022' => '2022', '2023' => '2023', '2024' => '2024'],
                     \Carbon\Carbon::now()->format('YYYY'),
                     ['id' => 'year', 'placeholder' => 'Año', 'class' => 'form-control'],
                 ) !!} --}}
-                {!! Form::date('ini', \Request()->ini, [
-                    'class' => 'form-control form-control-sm mx-2',
-                ]) !!}
-                {!! Form::date('end', \Request()->end, [
-                    'class' => 'form-control form-control-sm mx-2',
-                ]) !!}
-                <button type="submit" class="btn btn-primary btn-xs">
-                    <span><i class="fas fa-search"> Buscar</i></span>
-                </button>
-                {{-- <button type="submit" class="btn btn-primary float-right btn-xs">
-                    <span><i class="fas fa-search p-auto"> Buscar</i></span>
-                </button> --}}
-                {!! Form::close() !!}
+                {{ html()->date('ini', \Request()->ini)->class('form-control form-control-sm mx-2')->id('ini') }}
+                {{ html()->date('end', \Request()->end)->class('form-control form-control-sm mx-2')->id('end') }}
+                {{ html()->submit('Buscar')->class('fas fa-search') }}
+                {{-- {{ html()->submit('Buscar')->class('fas fa-search p-auto') }} --}}
+                {{ html()->form()->close() }}
             </div>
         </div>
 

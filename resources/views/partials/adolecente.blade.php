@@ -3,76 +3,48 @@
     <div class="text-bold text-center ml-3 mr-3 py-2 row">
         CONTROL DE SALUD INTEGRAL DE ADOLESCENTES
         <div class="col-sm-2 pb-2">
-            {!! Form::checkbox('ci_adolecente', 1, old('ci_adolecente', $control->ci_adolecente == 1 ? true : null), [
-                'class' => 'form-control col col-form-label',
-                'id' => 'ci_adolecente',
-            ]) !!}
+            {{ html()->checkbox('ci_adolecente', old('ci_adolecente', $control->ci_adolecente == 1 ? true : null), 1)->class('form-control col col-form-label')->id('ci_adolecente') }}
         </div>
     </div>
     <div class="fields">
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('indIMCEdad_label', 'INDICADOR IMC/EDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="indIMCEdad_label" class="col-sm col-form-label text-bold">INDICADOR IMC/EDAD</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'indIMCEdad',
-                    [
+                {{ html()->select('indIMCEdad', [
                         '+3 DS' => '>= + 3 D.E. (Obesidad Severa)',
                         '+2 DS' => '>= + 2.0 a + 2.9 D.E. (Obesidad)',
                         '+1 DS' => '>= + 1.0 a + 1.9 D.E. (Sobrepeso)',
                         '-2 DS' => '<= - 2.0 D.E. (Desnutrición)',
                         '-1 DS' => '< = -1.0 a -1.9 D.E. (Bajo peso)',
                         '-09 DS' => '- 0.9 a + 0.9 D.E. (Peso Normal)',
-                    ],
-                    old('indIMCEdad', $control->indIMCEdad),
-                    ['class' => 'form-control form-control-sm imcEdad', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('indIMCEdad', $control->indIMCEdad))->class('form-control form-control-sm imcEdad')->placeholder('Seleccione') }}
             </div>
 
-            {!! Form::label('indPeCinturaEdad_label', 'INDICADOR PERIMETRO DE CINTURA / EDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="indPeCinturaEdad_label" class="col-sm col-form-label text-bold">INDICADOR PERIMETRO DE CINTURA / EDAD</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'indPeCinturaEdad',
-                    [
+                {{ html()->select('indPeCinturaEdad', [
                         'normal' => 'NORMAL (< p75)',
                         'rObesidadAbdm' => 'RIESGO DE OBESIDAD ABDOMINAL (75 < p <90)',
                         'obesidadAbdm' => 'OBESIDAD ABDOMINAL (> p90)',
-                    ],
-                    old('indPeCinturaEdad', $control->indPeCinturaEdad),
-                    ['class' => 'form-control form-control-sm peCinturaEdad', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('indPeCinturaEdad', $control->indPeCinturaEdad))->class('form-control form-control-sm peCinturaEdad')->placeholder('Seleccione') }}
             </div>
         </div>
 
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('indTallaEdad_label', 'INDICADOR TALLA/EDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="indTallaEdad_label" class="col-sm col-form-label text-bold">INDICADOR TALLA/EDAD</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'indTallaEdad',
-                    [
+                {{ html()->select('indTallaEdad', [
                         '+2 DS' => '>= + 2.0 D.E. (Talla Alta)',
                         '+1 DS' => '+1.0 a + 1.9 D.E. (Talla Normal Alta)',
                         '-2 DS' => '<= 2.0 D.E. (Talla Baja)',
                         '-1 DS' => '- 1.0 a + 1.9 D.E. (Talla Normal Baja)',
                         '-09 DS' => '- 0.9 a + 0.9 D.E. (Talla Normal)',
-                    ],
-                    old('indTallaEdad', $control->indTallaEdad),
-                    ['class' => 'form-control form-control-sm tallaEdad', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('indTallaEdad', $control->indTallaEdad))->class('form-control form-control-sm tallaEdad')->placeholder('Seleccione') }}
             </div>
 
-            {!! Form::label('dNutInteg_label', 'DIAGNOSTICO NUTRICIONAL INTEGRADO ', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="dNutInteg_label" class="col-sm col-form-label text-bold">DIAGNOSTICO NUTRICIONAL INTEGRADO </label>
             <div class="col-sm">
-                {!! Form::select(
-                    'dNutInteg',
-                    [
+                {{ html()->select('dNutInteg', [
                         'deficitPondBajo' => 'DEFICIT PONDERADO BAJO PESO',
                         'desnut' => 'DESNUTRIDO',
                         'sobrepeso' => 'SOBREPESO / RIESGO OBESIDAD',
@@ -80,40 +52,26 @@
                         'obesoSevero' => 'OBESO SEVERO',
                         'normal' => 'NORMAL O EUTROFIA',
                         'denutSecund' => 'DESNUTRICIÓN SECUNDARIA',
-                    ],
-                    old('dNutInteg', $control->dNutInteg),
-                    ['class' => 'form-control form-control-sm dNutInteg', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('dNutInteg', $control->dNutInteg))->class('form-control form-control-sm dNutInteg')->placeholder('Seleccione') }}
             </div>
         </div>
 
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('eduTrab_label', 'EDUCACION/ TRABAJO', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="eduTrab_label" class="col-sm col-form-label text-bold">EDUCACION/ TRABAJO</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'eduTrab',
-                    [
+                {{ html()->select('eduTrab', [
                         'estudia' => 'ESTUDIA',
                         'disercion' => 'DISERCION ESCOLAR',
                         'trabInfantil' => 'TRABAJO INFANTIL',
                         'trabJuvenil' => 'TRABAJO JUVENIL',
                         'peorFormaTrabInfantil' => 'PEORES FORMAS DE TRABAJO INFANTIL',
                         'servDomesticoNoRemun' => 'SERVICIO DOMESTICO NO REMUNERADO PELIGROSO',
-                    ],
-                    old('eduTrab', $control->eduTrab),
-                    ['class' => 'form-control form-control-sm eduTrab', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('eduTrab', $control->eduTrab))->class('form-control form-control-sm eduTrab')->placeholder('Seleccione') }}
             </div>
 
-            {!! Form::label('sexualidad_label', 'GINECO-UROLOGICO/ SEXUALIDAD', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="sexualidad_label" class="col-sm col-form-label text-bold">GINECO-UROLOGICO/ SEXUALIDAD</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'sexualidad',
-                    [
+                {{ html()->select('sexualidad', [
                         'condPostergada' => 'ADOLESCENTES CON CONDUCTA POSTERGADORA',
                         'condAnticipadora' => 'ADOLESCENTES CON CONDUCTA ANTICIPADORA',
                         'condActiva' => 'ADOLESCENTES CON CONDUCTA ACTIVA',
@@ -122,21 +80,14 @@
                         'primerEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE UN PRIMER EMBARAZO',
                         'masEmbarazo' => 'ADOLESCENTE CON ANTECEDENTE DE MAS DE UN EMBARAZO',
                         'aborto' => 'ADOLESCENTE CON ANTECEDENTE DE ABORTO',
-                    ],
-                    old('sexualidad', $control->sexualidad),
-                    ['class' => 'form-control form-control-sm sexualidad', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('sexualidad', $control->sexualidad))->class('form-control form-control-sm sexualidad')->placeholder('Seleccione') }}
             </div>
         </div>
 
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('areaRiesgo_label', 'SEGÚN ÁREAS DE RIESGO', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="areaRiesgo_label" class="col-sm col-form-label text-bold">SEGÚN ÁREAS DE RIESGO</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'areaRiesgo',
-                    [
+                {{ html()->select('areaRiesgo', [
                         'ssr' => 'RIESGO SSR',
                         'rSuicida' => 'RIESGO SUICIDA',
                         'rSocial' => 'RIESGO SOCIAL',
@@ -147,19 +98,12 @@
                         'malNut_exceso' => 'MALNUTRICION POR EXCESO',
                         'rDesercion' => 'RIESGO DESERCIÓN ESCOLAR',
                         'otroRiesgo' => 'OTRO',
-                    ],
-                    old('areaRiesgo', $control->areaRiesgo),
-                    ['class' => 'form-control form-control-sm areaRiesgo', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('areaRiesgo', $control->areaRiesgo))->class('form-control form-control-sm areaRiesgo')->placeholder('Seleccione') }}
             </div>
 
-            {!! Form::label('consejeria_label', 'ADOLECENTE QUE RECIBE CONSEJERÍA', [
-                'class' => 'col-sm col-form-label text-bold',
-            ]) !!}
+            <label for="consejeria_label" class="col-sm col-form-label text-bold">ADOLECENTE QUE RECIBE CONSEJERÍA</label>
             <div class="col-sm">
-                {!! Form::select(
-                    'consejeria',
-                    [
+                {{ html()->select('consejeria', [
                         'actFisica' => 'ACTIVIDAD FÍSICA',
                         'alimSaludable' => 'ALIMENTACION SALUDABLE',
                         'tabaquismo' => 'TABAQUISMO',
@@ -167,39 +111,24 @@
                         'saludSexualReprod' => 'SALUD SEXUAL REPRODUCTIVA',
                         'regulacionFecund' => 'REGULACION DE FECUNDIDAD',
                         'prevITS_VIH' => 'PREVENCION VIH-ITS',
-                    ],
-                    old('consejeria', $control->consejeria),
-                    ['class' => 'form-control form-control-sm consejeria', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('consejeria', $control->consejeria))->class('form-control form-control-sm consejeria')->placeholder('Seleccione') }}
             </div>
         </div>
 
         <div class="form-group row my-2 ml-2 mx-3">
-            {!! Form::label('tipoViolencia_label', 'SEGUN TIPO DE VIOLENCIA', [
-                'class' => 'col-sm-3 col-form-label text-bold',
-            ]) !!}
+            <label for="tipoViolencia_label" class="col-sm-3 col-form-label text-bold">SEGUN TIPO DE VIOLENCIA</label>
             <div class="col-sm-3">
-                {!! Form::select(
-                    'tipo_violencias',
-                    [
+                {{ html()->select('tipo_violencias', [
                         'vIntraFamiliar' => 'VIOLENCIA INTRAFAMILIAR',
                         'vEscolar' => 'VIOLENCIA ESCOLAR o BULLYING',
                         'vVirtual' => 'VIOLENCIA VIRTUAL',
                         'violenciaPareja' => 'VIOLENCIA DE PAREJA / POLOLEO',
                         'violenciaSexual' => 'VIOLENCIA SEXUAL',
-                    ],
-                    old('tipo_violencias', $control->tipo_violencias),
-                    ['class' => 'form-control form-control-sm tipo_violencias', 'placeholder' => 'Seleccione'],
-                ) !!}
+                    ], old('tipo_violencias', $control->tipo_violencias))->class('form-control form-control-sm tipo_violencias')->placeholder('Seleccione') }}
             </div>
-                {!! Form::label('esp_amigable_label', 'ATENCIÓN EN ESPACIOS AMIGABLES', [
-                    'class' => 'col-sm col-form-label text-bold',
-                ]) !!}
+                <label for="esp_amigable_label" class="col-sm col-form-label text-bold">ATENCIÓN EN ESPACIOS AMIGABLES</label>
             <div class="col-sm-2">
-            {!! Form::checkbox('esp_amigables', 1, old('esp_amigables', $control->esp_amigables == 1 ? true : null), [
-                    'class' => 'form-control col col-form-label',
-                    'id' => 'esp_amigables',
-                ]) !!}
+            {{ html()->checkbox('esp_amigables', old('esp_amigables', $control->esp_amigables == 1 ? true : null), 1)->class('form-control col col-form-label')->id('esp_amigables') }}
             </div>
         </div>
     </div>

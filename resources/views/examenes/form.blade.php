@@ -1,12 +1,11 @@
 
-{!! Form::hidden('paciente_id', $paciente->id) !!}
+{{ html()->hidden('paciente_id', $paciente->id) }}
 
 <div class="form-group row">
-    {!! Form::label('fecha_solicitud_label', 'Fecha solicitud', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="fecha_solicitud_label" class="col-sm-3 col-form-label">Fecha solicitud</label>
     <div class="col-sm">
-        {!! Form::date('fecha_solicitud', old('fecha_solicitud', $examen->fecha_solicitud), ['class' => 'form-control
-        form-control-sm'.($errors->has('fecha_solicitud')
-        ? ' is-invalid' : '')]) !!}
+        {{ html()->date('fecha_solicitud', old('fecha_solicitud', $examen->fecha_solicitud))->class('form-control
+        form-control-sm')->classIf($errors->has('fecha_solicitud'), 'is-invalid') }}
         @if ($errors->has('fecha_solicitud'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('fecha_solicitud') }}</strong>
@@ -14,12 +13,11 @@
         @endif
     </div>
 
-    {!! Form::label('procedencia_label', 'Procedencia', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="procedencia_label" class="col-sm-3 col-form-label">Procedencia</label>
     <div class="col-sm">
-        {!! Form::select('procedencia', ['urgencia'=> 'Urgencia', 'medicina' => 'Medicina(Hospitalizados)', 'poli' =>
-        'Policlinico', 'depto' => 'Depto de Salud'], old('procedencia', $examen->procedencia), ['class' =>
-        'form-control'.($errors->has('procedencia') ? ' is-invalid' : ''), 'id' => 'procedencia', 'placeholder'=> "Seleccione
-        Procedencia"]) !!}
+        {{ html()->select('procedencia', ['urgencia'=> 'Urgencia', 'medicina' => 'Medicina(Hospitalizados)', 'poli' =>
+        'Policlinico', 'depto' => 'Depto de Salud'], old('procedencia', $examen->procedencia))->class('form-control')->classIf($errors->has('procedencia'), 'is-invalid')->id('procedencia')->placeholder("Seleccione
+        Procedencia") }}
         @if ($errors->has('procedencia'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('procedencia') }}</strong>
@@ -29,10 +27,9 @@
 </div>
 
 <div class="form-group row">
-    {!! Form::label('procedimiento_label', 'Examen solicitado(Procedimiento)', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="procedimiento_label" class="col-sm-3 col-form-label">Examen solicitado(Procedimiento)</label>
     <div class="col-sm">
-        {!! Form::select('procedimiento[]',
-        [   '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo' => '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo',
+        {{ html()->select('procedimiento[]', [   '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo' => '401002 - Partes blandas, laringe lateral, cavum rinofaríngeo',
             '401009 - Tórax simple frontal o lateral' => '401009 - Tórax simple frontal o lateral',
             '401070 - Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)' => '401070 - Tórax frontal y lateral (INCLUIR POR NEUMONÍA Y OTRAS PATOLOGÍAS)',
             '401070 - Tórax frontal y lateral por neumonía (NAC)' => '401070 - Tórax frontal y lateral por neumonía (NAC)',
@@ -60,8 +57,7 @@
             '401059 - Estudio radiológico de muñeca o tobillo (frontal, lateral y oblicuas)' => '401059 - Estudio radiológico de muñeca o tobillo (frontal, lateral y oblicuas)',
             '401060 - Hombro, fémur, rodilla, pierna, costilla o esternón (frontal y lateral)' => '401060 - Hombro, fémur, rodilla, pierna, costilla o esternón (frontal y lateral)',
             '401062 - Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.' => '401062 - Proyecciones especiales oblicuas u otras en hombro, brazo, codo, rodilla, rótulas, sesamoideos, axial de ambas rótulas o similares.',
-            '401063 - Túnel intercondíleo o radio-carpiano' => '401063 - Túnel intercondíleo o radio-carpiano'],
-        old('procedimiento', $examen->procedimiento), ['multiple' => 'multiple', 'class' => 'form-control'.($errors->has('procedimiento') ? ' is-invalid' : ''), 'id' => 'procedimiento']) !!}
+            '401063 - Túnel intercondíleo o radio-carpiano' => '401063 - Túnel intercondíleo o radio-carpiano'], old('procedimiento', $examen->procedimiento))->multiple()->class('form-control')->classIf($errors->has('procedimiento'), 'is-invalid')->id('procedimiento') }}
 
         @if ($errors->has('procedimiento'))
         <span class="invalid-feedback">
@@ -72,12 +68,11 @@
 </div>
 
 <div class="form-group row">
-    {!! Form::label('medico_label', 'Medico',['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="medico_label" class="col-sm-3 col-form-label">Medico</label>
     <div class="col-sm">
-    {!! Form::select('medico', ['apolonio'=> 'Dr. Apolonio', 'jara' => 'Dra. Jara', 'soriano' =>
-        'Dr. Soriano', 'gong' => 'Dr. Yang', 'zapata' => 'Dra. Zapata', 'tolorza' => 'Dr. Tolorza', 'briones' => 'Dra. Briones', 'valle' => 'Dra. Valle', 'naranjo' => 'Dra. Naranjo'],old('medico', $examen->medico), ['class' => 'form-control
-        form-control-sm'.($errors->has('medico') ?
-        ' is-invalid' : ''), 'id' => 'medico', 'placeholder' => 'Seleccione medico']) !!}
+    {{ html()->select('medico', ['apolonio'=> 'Dr. Apolonio', 'jara' => 'Dra. Jara', 'soriano' =>
+        'Dr. Soriano', 'gong' => 'Dr. Yang', 'zapata' => 'Dra. Zapata', 'tolorza' => 'Dr. Tolorza', 'briones' => 'Dra. Briones', 'valle' => 'Dra. Valle', 'naranjo' => 'Dra. Naranjo'], old('medico', $examen->medico))->class('form-control
+        form-control-sm')->classIf($errors->has('medico'), 'is-invalid')->id('medico')->placeholder('Seleccione medico') }}
         @if ($errors->has('medico'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('medico') }}</strong>
@@ -85,11 +80,10 @@
         @endif
     </div>
 
-    {!! Form::label('diagnostico_label', 'Diagnostico',['class' => 'col-sm col-form-label']) !!}
+    <label for="diagnostico_label" class="col-sm col-form-label">Diagnostico</label>
     <div class="col-sm-3">
-        {!! Form::textarea('diagnostico', old('diagnostico', $examen->diagnostico), ['class' => 'form-control
-        form-control-sm'.($errors->has('diagnostico') ?
-        ' is-invalid' : ''), 'placeholder' => 'Diagnostico', 'rows' => 2]) !!}
+        {{ html()->textarea('diagnostico', old('diagnostico', $examen->diagnostico))->class('form-control
+        form-control-sm')->classIf($errors->has('diagnostico'), 'is-invalid')->placeholder('Diagnostico')->rows(2) }}
         @if ($errors->has('diagnostico'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('diagnostico') }}</strong>
@@ -99,11 +93,10 @@
 </div>
 
     <div class="form-group row">
-        {!! Form::label('fecha_examen_label', 'Fecha Examen',['class' => 'col-sm-3 col-form-label']) !!}
+        <label for="fecha_examen_label" class="col-sm-3 col-form-label">Fecha Examen</label>
         <div class="col-sm-2">
-            {!! Form::date('fecha_examen', old('fecha_examen', $examen->fecha_examen), ['class' =>
-            'form-control
-            form-control-sm'.($errors->has('fecha_examen') ? ' is-invalid' : '')]) !!}
+            {{ html()->date('fecha_examen', old('fecha_examen', $examen->fecha_examen))->class('form-control
+            form-control-sm')->classIf($errors->has('fecha_examen'), 'is-invalid') }}
             @if ($errors->has('fecha_examen'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('fecha_examen') }}</strong>
@@ -113,13 +106,13 @@
     </div>
 
     <div class="form-group row">
-        {!! Form::label('firma_label', 'Firma', ['class' => 'col-sm-3 col-form-label text-bold']) !!}
+        <label for="firma_label" class="col-sm-3 col-form-label text-bold">Firma</label>
         <div class="col-sm-3">
-            {!! Form::checkbox('firma', 1, null, ['class' => 'form-control my-2']) !!}
+            {{ html()->checkbox('firma', null, 1)->class('form-control my-2') }}
         </div>
-        {!! Form::label('cumple_label', 'Cumple', ['class' => 'col-sm-3 col-form-label text-bold']) !!}
+        <label for="cumple_label" class="col-sm-3 col-form-label text-bold">Cumple</label>
         <div class="col-sm-3">
-            {!! Form::checkbox('cumple', 1, null, ['class' => 'form-control my-2']) !!}
+            {{ html()->checkbox('cumple', null, 1)->class('form-control my-2') }}
         </div>
     </div>
 

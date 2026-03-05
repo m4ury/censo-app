@@ -14,13 +14,12 @@
 @section('auth_header', __('adminlte::adminlte.register_message'))
 
 @section('auth_body')
-    <form action="{{ $register_url }}" method="post">
+    {{ html()->form('POST', $register_url)->open() }}
         {{ csrf_field() }}
 
         {{-- Rut field --}}
         <div class="input-group mb-3">
-            <input type="text" name="rut" class="form-control {{ $errors->has('rut') ? 'is-invalid' : '' }}"
-                   value="{{ old('rut') }}" placeholder="Rut Ej.: 16 000 000-K" autofocus>
+            {{ html()->text('rut', old('rut'))->class('form-control')->classIf($errors->has('rut'), 'is-invalid')->placeholder('Rut Ej.: 16 000 000-K')->autofocus() }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-fingerprint text-light"></span>
@@ -35,8 +34,7 @@
 
         {{-- Name field --}}
         <div class="input-group mb-3">
-            <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                   value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}">
+            {{ html()->text('name', old('name'))->class('form-control')->classIf($errors->has('name'), 'is-invalid')->placeholder(__('adminlte::adminlte.full_name')) }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -51,8 +49,7 @@
 
         {{-- Apellido Paterno field --}}
         <div class="input-group mb-3">
-            <input type="text" name="apellido_pat" class="form-control {{ $errors->has('apellido_pat') ? 'is-invalid' : '' }}"
-                   value="{{ old('apellido_pat') }}" placeholder="Apellido paterno">
+            {{ html()->text('apellido_pat', old('apellido_pat'))->class('form-control')->classIf($errors->has('apellido_pat'), 'is-invalid')->placeholder('Apellido paterno') }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -67,8 +64,7 @@
 
         {{-- Apellido Paterno field --}}
         <div class="input-group mb-3">
-            <input type="text" name="apellido_mat" class="form-control {{ $errors->has('apellido_mat') ? 'is-invalid' : '' }}"
-                   value="{{ old('apellido_mat') }}" placeholder="Apellido materno">
+            {{ html()->text('apellido_mat', old('apellido_mat'))->class('form-control')->classIf($errors->has('apellido_mat'), 'is-invalid')->placeholder('Apellido materno') }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-user {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -83,8 +79,7 @@
 
         {{-- Email field --}}
         <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                   value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}">
+            {{ html()->email('email', old('email'))->class('form-control')->classIf($errors->has('email'), 'is-invalid')->placeholder(__('adminlte::adminlte.email')) }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -99,9 +94,7 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password"
-                   class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                   placeholder="{{ __('adminlte::adminlte.password') }}">
+            {{ html()->password('password')->class('form-control')->classIf($errors->has('password'), 'is-invalid')->placeholder(__('adminlte::adminlte.password')) }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -116,9 +109,7 @@
 
         {{-- Confirm password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password_confirmation"
-                   class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
-                   placeholder="{{ __('adminlte::adminlte.retype_password') }}">
+            {{ html()->password('password_confirmation')->class('form-control')->classIf($errors->has('password_confirmation'), 'is-invalid')->placeholder(__('adminlte::adminlte.retype_password')) }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -132,12 +123,10 @@
         </div>
 
         {{-- Register button --}}
-        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-            <span class="fas fa-user-plus"></span>
-            {{ __('adminlte::adminlte.register') }}
-        </button>
+        <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}"><span class="fas fa-user-plus"></span>
+            {{ __('adminlte::adminlte.register') }}</button>
 
-    </form>
+    {{ html()->form()->close() }}
 @stop
 
 @section('auth_footer')

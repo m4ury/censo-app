@@ -9,21 +9,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{ Form::open(['action' => 'InterconsultaController@update', 'method' => 'POST', 'url' => 'interconsultas/' . $interconsulta->id, 'class' => 'form-horizontal']) }}
+                        {{ html()->form('POST', route('interconsultas.update', $interconsulta))->class('form-horizontal')->open() }}
                         @method('PUT')
                         <div class="form-group row">
-                            {!! Form::label('estado_ic_label', 'Estado:', ['class' => 'col-sm col-form-label']) !!}
+                            <label for="estado_ic_label" class="col-sm col-form-label">Estado:</label>
                             <div class="col-sm">
-                                {!! Form::select(
-                                    'estado_ic',
-                                    ['pendiente' => 'Pendiente', 'rechazada' => 'Rechazada', 'retirada' => 'Retirada', 'notificada' => 'Notificada'],
-                                    old('estado_ic', $interconsulta->estado_ic ?? ''),
-                                    [
-                                        'class' => 'form-control form-control-sm' . ($errors->has('estado_ic') ? ' is-invalid' : ''),
-                                        'placeholder' => 'Seleccione un estado',
-                                        'id' => 'estado',
-                                    ],
-                                ) !!}
+                                {{ html()->select('estado_ic', ['pendiente' => 'Pendiente', 'rechazada' => 'Rechazada', 'retirada' => 'Retirada', 'notificada' => 'Notificada'], old('estado_ic', $interconsulta->estado_ic ?? ''))->class('form-control form-control-sm')->classIf($errors->has('estado_ic'), 'is-invalid')->placeholder('Seleccione un estado')->id('estado') }}
                                 @if ($errors->has('estado_ic'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('estado_ic') }}</strong>
@@ -32,12 +23,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('retirado_por_label', 'Retirado / Notificado por:', ['class' => 'col-sm col-form-label']) !!}
+                            <label for="retirado_por_label" class="col-sm col-form-label">Retirado / Notificado por:</label>
                             <div class="col-sm">
-                                {!! Form::text('retirado_por', old('retirado_por', $interconsulta->retirado_por ?? ''), [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('retirado_por') ? ' is-invalid' : ''),
-                                    'placeholder' => 'Ingrese el nombre de quien retira',
-                                ]) !!}
+                                {{ html()->text('retirado_por', old('retirado_por', $interconsulta->retirado_por ?? ''))->class('form-control form-control-sm')->classIf($errors->has('retirado_por'), 'is-invalid')->placeholder('Ingrese el nombre de quien retira') }}
                                 @if ($errors->has('retirado_por'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('retirado_por') }}</strong>
@@ -46,13 +34,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('observacion_ic_label', 'Observación:', ['class' => 'col-sm col-form-label']) !!}
+                            <label for="observacion_ic_label" class="col-sm col-form-label">Observación:</label>
                             <div class="col-sm">
-                                {!! Form::textarea('observacion_ic', old('observacion_ic', $interconsulta->observacion_ic ?? ''), [
-                                    'class' => 'form-control form-control-sm' . ($errors->has('observacion_ic') ? ' is-invalid' : ''),
-                                    'placeholder' => 'Ingrese una observación',
-                                    'rows' => 3,
-                                ]) !!}
+                                {{ html()->textarea('observacion_ic', old('observacion_ic', $interconsulta->observacion_ic ?? ''))->class('form-control form-control-sm')->classIf($errors->has('observacion_ic'), 'is-invalid')->placeholder('Ingrese una observación')->rows(3) }}
                                 @if ($errors->has('observacion_ic'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('observacion_ic') }}</strong>
@@ -63,7 +47,7 @@
                         <hr>
                         <div class="row py-3 px-3">
                             <div class="col">
-                                {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-success btn-sm btn-block']) }}
+                                {{ html()->submit('Guardar')->class('btn bg-gradient-success btn-sm btn-block') }}
                             </div>
                             <div class="col">
                                 <button type="button" class="btn bg-gradient-secondary btn-sm btn-block"
@@ -71,11 +55,11 @@
                                     Cancelar
                                 </button>
                                 {{-- <a href="{{ url('solicitudes') }}" style="text-decoration:none">
-                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block']) }}
+                                    {{ html()->submit('Cancelar')->class('btn bg-gradient-secondary btn-sm btn-block') }}
                                 </a> --}}
                             </div>
                         </div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

@@ -21,13 +21,12 @@
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
 @section('auth_body')
-    <form action="{{ $login_url }}" method="post">
+    {{ html()->form('POST', $login_url)->open() }}
         {{ csrf_field() }}
 
         {{-- rut field --}}
         <div class="input-group mb-3">
-            <input type="rut" name="rut" class="form-control {{ $errors->has('rut') ? 'is-invalid' : '' }}"
-                   value="{{ old('rut') }}" placeholder="{{ __('Rut Ej.: 16000000-K') }}" autofocus>
+            {{ html()->text('rut', old('rut'))->class('form-control')->classIf($errors->has('rut'), 'is-invalid')->placeholder(__('Rut Ej.: 16000000-K'))->autofocus() }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-fingerprint text-blue"></span>
@@ -42,8 +41,7 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                   placeholder="{{ __('adminlte::adminlte.password') }}">
+            {{ html()->password('password')->class('form-control')->classIf($errors->has('password'), 'is-invalid')->placeholder(__('adminlte::adminlte.password')) }}
             <div class="input-group-append">
                 <div class="input-group-text">
                     <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
@@ -60,19 +58,17 @@
         <div class="row">
             <div class="col-7">
                 <div class="icheck-primary">
-                    <input type="checkbox" name="remember" id="remember">
+                    {{ html()->checkbox('remember', false, null)->id('remember') }}
                     <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
                 </div>
             </div>
             <div class="col-5">
-                <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-                    <span class="fas fa-sign-in-alt"></span>
-                    {{ __('adminlte::adminlte.sign_in') }}
-                </button>
+                <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}"><span class="fas fa-sign-in-alt"></span>
+                    {{ __('adminlte::adminlte.sign_in') }}</button>
             </div>
         </div>
 
-    </form>
+    {{ html()->form()->close() }}
 @stop
 
 @section('auth_footer')

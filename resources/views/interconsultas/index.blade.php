@@ -162,19 +162,15 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('interconsultas.importarExcel') }}" method="POST" enctype="multipart/form-data"
-                        id="formImportarExcel">
-                        @csrf
-                        <div class="mb-3">
+                    {{ html()->form('POST', route('interconsultas.importarExcel'))->id('formImportarExcel')->acceptsFiles()->open() }}
+<div class="mb-3">
                             <input type="file" name="archivo" class="form-control" required>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-success">
-                                <i class="fas fa-file-excel"></i> Importar
-                            </button>
+                            {{ html()->submit('Importar')->class('fas fa-file-excel') }}
                         </div>
-                    </form>
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div>

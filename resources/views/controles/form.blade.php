@@ -1,9 +1,7 @@
 <div class="form-group row">
-    {!! Form::label('tipo_control_label', 'Profesional', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="tipo_control_label" class="col-sm-3 col-form-label">Profesional</label>
     <div class="col-sm">
-        {!! Form::select(
-            'tipo_control',
-            [
+        {{ html()->select('tipo_control', [
                 'Medico' => 'Medico',
                 'Enfermera' => 'Enfermera',
                 'Kinesiologo' => 'Kinesiologo',
@@ -12,14 +10,7 @@
                 'Dentista' => 'Dentista',
                 'Matrona' => 'Matrona',
                 'tens' => 'Tec. en Enfermeria',
-            ],
-            old('tipo_control', $control->tipo_control),
-            [
-                'class' => 'form-control' . ($errors->has('tipo_control') ? ' is-invalid' : ''),
-                'id' => 'tipo',
-                'placeholder' => 'Seleccione Profesional',
-            ],
-        ) !!}
+            ], old('tipo_control', $control->tipo_control))->class('form-control')->classIf($errors->has('tipo_control'), 'is-invalid')->id('tipo')->placeholder('Seleccione Profesional') }}
         @if ($errors->has('tipo_control'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('tipo_control') }}</strong>
@@ -27,19 +18,9 @@
         @endif
     </div>
     @if ($paciente->paciente_hd)
-        {!! Form::label('visita_domiciliaria_label', 'Visita Domiciliaria', [
-            'class' => 'col-sm col-form-label text-bold text-center',
-        ]) !!}
+        <label for="visita_domiciliaria_label" class="col-sm col-form-label text-bold text-center">Visita Domiciliaria</label>
         <div class="col-sm">
-            {!! Form::checkbox(
-                'visita_domiciliaria',
-                1,
-                old('visita_domiciliaria', $control->visita_domiciliaria == 1 ? true : null),
-                [
-                    'class' => 'form-control my-2',
-                    'id' => 'visita_domiciliaria',
-                ],
-            ) !!}
+            {{ html()->checkbox('visita_domiciliaria', old('visita_domiciliaria', $control->visita_domiciliaria == 1 ? true : null), 1)->class('form-control my-2')->id('visita_domiciliaria') }}
         </div>
         <div class="row">
             <div class="col col-sm">
@@ -50,14 +31,12 @@
     @endif
 </div>
 
-{!! Form::hidden('paciente_id', $paciente->id) !!}
+{{ html()->hidden('paciente_id', $paciente->id) }}
 
 <div class="form-group row">
-    {!! Form::label('fecha_control', 'Fecha Control', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="fecha_control" class="col-sm-3 col-form-label">Fecha Control</label>
     <div class="col-sm">
-        {!! Form::date('fecha_control', old('fecha_control', $control->fecha_control), [
-            'class' => 'form-control form-control-sm' . ($errors->has('fecha_control') ? ' is-invalid' : ''),
-        ]) !!}
+        {{ html()->date('fecha_control', old('fecha_control', $control->fecha_control))->class('form-control form-control-sm')->classIf($errors->has('fecha_control'), 'is-invalid') }}
         @if ($errors->has('fecha_control'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('fecha_control') }}</strong>
@@ -66,24 +45,18 @@
     </div>
 </div>
 <div class="form-group row presion_art">
-    {!! Form::label('sistolica_label', 'Presion Art. Sistolica', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="sistolica_label" class="col-sm-3 col-form-label">Presion Art. Sistolica</label>
     <div class="col-sm-3">
-        {!! Form::number('sistolica', old('sistólica', $control->sistolica), [
-            'class' => 'form-control form-control-sm' . ($errors->has('sistolica') ? ' is-invalid' : ''),
-            'placeholder' => 'Ejemplo.: 120',
-        ]) !!}
+        {{ html()->number('sistolica', old('sistólica', $control->sistolica))->class('form-control form-control-sm')->classIf($errors->has('sistolica'), 'is-invalid')->placeholder('Ejemplo.: 120') }}
         @if ($errors->has('sistolica'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('sistolica') }}</strong>
             </span>
         @endif
     </div>
-    {!! Form::label('diastolica_label', 'Presion Art. Diastólica', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="diastolica_label" class="col-sm-3 col-form-label">Presion Art. Diastólica</label>
     <div class="col-sm-3">
-        {!! Form::number('diastolica', old('diastolica', $control->diastolica), [
-            'class' => 'form-control form-control-sm' . ($errors->has('diastolica') ? ' is-invalid' : ''),
-            'placeholder' => 'Ejemplo: 80',
-        ]) !!}
+        {{ html()->number('diastolica', old('diastolica', $control->diastolica))->class('form-control form-control-sm')->classIf($errors->has('diastolica'), 'is-invalid')->placeholder('Ejemplo: 80') }}
         @if ($errors->has('diastolica'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('diastolica') }}</strong>
@@ -92,26 +65,18 @@
     </div>
 </div>
 <div class="form-group row peso_talla">
-    {!! Form::label('peso_actual', 'Peso actual(Kg.)', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="peso_actual" class="col-sm-3 col-form-label">Peso actual(Kg.)</label>
     <div class="col-sm-3">
-        {!! Form::number('peso_actual', old('peso_actual', $control->peso_actual), [
-            'class' => 'form-control form-control-sm' . ($errors->has('peso_actual') ? ' is-invalid' : ''),
-            'placeholder' => 'Ejemplo: 88',
-            'step' => 'any',
-        ]) !!}
+        {{ html()->number('peso_actual', old('peso_actual', $control->peso_actual))->class('form-control form-control-sm')->classIf($errors->has('peso_actual'), 'is-invalid')->placeholder('Ejemplo: 88')->attribute('step', 'any') }}
         @if ($errors->has('peso_actual'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('peso_actual') }}</strong>
             </span>
         @endif
     </div>
-    {!! Form::label('talla_actual', 'Talla actual(Cms.)', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="talla_actual" class="col-sm-3 col-form-label">Talla actual(Cms.)</label>
     <div class="col-sm-3">
-        {!! Form::number('talla_actual', old('talla_actual', $control->talla_actual), [
-            'class' => 'form-control form-control-sm' . ($errors->has('talla_actual') ? ' is-invalid' : ''),
-            'placeholder' => 'Ejemplo: 175',
-            'step' => 'any',
-        ]) !!}
+        {{ html()->number('talla_actual', old('talla_actual', $control->talla_actual))->class('form-control form-control-sm')->classIf($errors->has('talla_actual'), 'is-invalid')->placeholder('Ejemplo: 175')->attribute('step', 'any') }}
         @if ($errors->has('talla_actual'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('talla_actual') }}</strong>
@@ -120,21 +85,13 @@
     </div>
 </div>
 <div class="form-group row imc">
-    {!! Form::label('imc', 'IMC', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="imc" class="col-sm-3 col-form-label">IMC</label>
     <div class="col-sm-3">
-        {!! Form::text('imc', old('imc', $control->imc), [
-            'class' => 'form-control form-control-sm',
-            'step' => 'any',
-            'placeholder' => 'IMC',
-        ]) !!}
+        {{ html()->text('imc', old('imc', $control->imc))->class('form-control form-control-sm')->attribute('step', 'any')->placeholder('IMC') }}
     </div>
-    {!! Form::label('imc_resultado_label', 'Estado Nutricional', ['class' => 'col-sm-3 col-form-label rImc_label']) !!}
+    <label for="imc_resultado_label" class="col-sm-3 col-form-label rImc_label">Estado Nutricional</label>
     <div class="col-sm-3">
-        {!! Form::text('imc_resultado', old('imc_resultado', $control->imc_resultado), [
-            'class' => 'form-control form-control-sm' . ($errors->has('imc_resultado') ? ' is-invalid' : ''),
-            'placeholder' => 'Est. Nutricional.',
-            'id' => 'imc_resultado',
-        ]) !!}
+        {{ html()->text('imc_resultado', old('imc_resultado', $control->imc_resultado))->class('form-control form-control-sm')->classIf($errors->has('imc_resultado'), 'is-invalid')->placeholder('Est. Nutricional.')->id('imc_resultado') }}
         @if ($errors->has('imc_resultado'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('imc_resultado') }}</strong>
@@ -143,12 +100,9 @@
     </div>
 </div>
 <div class="form-group row">
-    {!! Form::label('observacion', 'Observación', ['class' => 'col-sm-3 col-form-label']) !!}
+    <label for="observacion" class="col-sm-3 col-form-label">Observación</label>
     <div class="col-sm">
-        {!! Form::textarea('observacion', old('observacion', $control->observacion), [
-            'class' => 'form-control form-control-sm',
-            'placeholder' => 'Ingrese observación',
-        ]) !!}
+        {{ html()->textarea('observacion', old('observacion', $control->observacion))->class('form-control form-control-sm')->placeholder('Ingrese observación') }}
     </div>
 </div>
 
@@ -199,11 +153,9 @@
 <div class="card card-info card-outline" id="proximo">
     <div class="card-header text-bold text-bold">PROXIMO CONTROL</div>
     <div class="card-body row">
-        {!! Form::label('proximo_control_label', 'Fecha prox. control', ['class' => 'col-sm-2 col-form-label']) !!}
+        <label for="proximo_control_label" class="col-sm-2 col-form-label">Fecha prox. control</label>
         <div class="col-sm-2">
-            {!! Form::date('proximo_control', old('proximo_control', $control->proximo_control), [
-                'class' => 'form-control form-control-sm' . ($errors->has('proximo_control') ? ' is-invalid' : ''),
-            ]) !!}
+            {{ html()->date('proximo_control', old('proximo_control', $control->proximo_control))->class('form-control form-control-sm')->classIf($errors->has('proximo_control'), 'is-invalid') }}
             @if ($errors->has('proximo_control'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('proximo_control') }}</strong>

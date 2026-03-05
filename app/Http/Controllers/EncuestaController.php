@@ -78,8 +78,8 @@ class EncuestaController extends Controller
     public function edit($id)
     {
         $encuesta = Encuesta::findOrFail($id);
-        //$paciente = Paciente::with('patologias')->findOrFail($encuesta->paciente->id);
-        return view('encuestas.edit', compact('encuesta'));
+        $paciente = Paciente::with('patologias')->findOrFail($encuesta->paciente->id);
+        return view('encuestas.edit', compact('encuesta', 'paciente'));
     }
 
     public function update(Request $request, $id)

@@ -14,9 +14,9 @@ class AddFieldsToControlTable extends Migration
     public function up()
     {
         Schema::table('controls', function (Blueprint $table) {
-            $table->unsignedFloat('peso_actual')->nullable()->after('hora_proximoControl');
-            $table->unsignedFloat('talla_actual')->nullable()->after('peso_actual');
-            $table->unsignedFloat('imc')->after('talla_actual')->nullable();
+            $table->float('peso_actual')->unsigned()->nullable()->after('hora_proximoControl');
+            $table->float('talla_actual')->unsigned()->nullable()->after('peso_actual');
+            $table->float('imc')->unsigned()->after('talla_actual')->nullable();
         });
     }
 

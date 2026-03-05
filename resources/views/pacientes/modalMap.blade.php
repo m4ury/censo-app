@@ -8,20 +8,14 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                    {!! Form::label('Latitud_label', 'Latitud', ['class' => 'col-sm-2 col-form-label']) !!}
+                    <label for="Latitud_label" class="col-sm-2 col-form-label">Latitud</label>
                 <div class="col-sm">
-                    {!! Form::text('latitud', old('latitud', $paciente->latitud ?? ''), [
-                    'class' => 'form-control form-control-sm' . ($errors->has('Latitud') ? ' is-invalid' : ''),
-                    'id' => 'latitude',
-                ]) !!}
+                    {{ html()->text('latitud', old('latitud', $paciente->latitud ?? ''))->class('form-control form-control-sm')->classIf($errors->has('Latitud'), 'is-invalid')->id('latitude') }}
                 </div>
 
-                {!! Form::label('Longitud_label', 'Longitud', ['class' => 'col-sm-2 col-form-label']) !!}
+                <label for="Longitud_label" class="col-sm-2 col-form-label">Longitud</label>
                 <div class="col-sm">
-                    {!! Form::text('longitud', old('latitud', $paciente->longitud ?? ''), [
-                    'class' => 'form-control form-control-sm' . ($errors->has('Longitud') ? ' is-invalid' : ''),
-                    'id' => 'longitude',
-                ]) !!}
+                    {{ html()->text('longitud', old('latitud', $paciente->longitud ?? ''))->class('form-control form-control-sm')->classIf($errors->has('Longitud'), 'is-invalid')->id('longitude') }}
                 </div>
             </div>
            <!-- Contenedor del mapa con altura definida -->

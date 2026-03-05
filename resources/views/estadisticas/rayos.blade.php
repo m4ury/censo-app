@@ -5,13 +5,12 @@
 @section('content')
 <div class="row justify-content-center">
     {{-- <div class="row">
-        {!! Form::open(['route' => 'examenes', 'method' => 'GET', 'class' => 'form-inline float-right pb-4']) !!}
-        {!! Form::selectMonth('q', null, ['class' => 'form-control', 'placeholder' => 'Busqueda por mes', 'id' => 'q'])
-        !!}
+        {{ html()->form('GET', route('examenes'))->class('form-inline float-right pb-4')->open() }}
+        {{ html()->select('q', ['1' => 'Enero', '2' => 'Febrero', '3' => 'Marzo', '4' => 'Abril', '5' => 'Mayo', '6' => 'Junio', '7' => 'Julio', '8' => 'Agosto', '9' => 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre'], null)->class('form-control')->placeholder('Busqueda por mes')->id('q') }}
         <button type="submit" class="btn btn-primary btn-sm mx-2">
             <span><i class="fas fa-search"> Buscar</i></span>
         </button>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div> --}}
     <div class="card card-primary card-outline">
         <div class="card-body">

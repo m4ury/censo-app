@@ -8,19 +8,19 @@
                 <div class="card card-default">
                     <div class="card-header">Datos de la Patologia</div>
                     <div class="card-body">
-                        {{ Form::open(['action' => 'PatologiaController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
+                        {{ html()->form('POST', route('patologias.store'))->class('form-horizontal')->open() }}
                         @include('patologias.form')
                         <div class="row">
                             <div class="col">
-                                {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block', 'id' => '']) }}
+                                {{ html()->submit('Guardar')->class('btn bg-gradient-primary btn-sm btn-block') }}
                             </div>
                             <div class="col">
                                 <a href="{{ url('patologias') }}" style="text-decoration:none">
-                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block'] ) }}
+                                    <button type="button" class="btn bg-gradient-secondary btn-sm btn-block">Cancelar</button>
                                 </a>
                             </div>
                         </div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
 
                         @section('js')
                             <script>

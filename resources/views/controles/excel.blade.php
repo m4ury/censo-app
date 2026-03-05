@@ -26,20 +26,20 @@
                     <p class="text-center">¡Buena suerte con la importación!</p>
                 </div>
                 <div class="col col-sm text-center pt-3">
-                    {{ Form::open(['action' => 'ImportController@import', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
-                    {{ Form::file('file') }}
+                    {{ html()->form('POST', route('controles.import'))->acceptsFiles()->open() }}
+                    <input type="file" name="file" id="file">
 
                     <div class="row mt-3">
                         <div class="col col-sm">
-                            {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-sm btn-block']) !!}
+                            {{ html()->submit('Guardar')->class('btn btn-primary btn-sm btn-block') }}
                         </div>
                         <div class="col col-sm">
                             <a href="{{ url()->previous() }}">
-                                {{ Form::button('Cancelar', ['class' => 'btn btn-secondary btn-sm btn-block']) }}
+                                <button type="button" class="btn btn-secondary btn-sm btn-block">Cancelar</button>
                             </a>
                         </div>
                     </div>
-                    {{ Form::close() }}
+                    {{ html()->form()->close() }}
                 </div>
             </div>
         </div>

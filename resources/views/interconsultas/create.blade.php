@@ -9,21 +9,20 @@
                         <p class="text-bold">Nueva Interconsulta</p>
                     </div>
                     <div class="card-body">
-                        {{ Form::open(['action' => 'InterconsultaController@store', 'method' => 'POST', 'class' => 'form-horizontal']) }}
-
+                        {{ html()->form('POST', route('interconsultas.store'))->class('form-horizontal')->open() }}
                         @include('interconsultas.form')
                         <hr>
                         <div class="row py-3">
                             <div class="col">
-                                {{ Form::submit('Guardar', ['class' => 'btn bg-gradient-primary btn-sm btn-block', 'id' => '']) }}
+                                {{ html()->submit('Guardar')->class('btn bg-gradient-primary btn-sm btn-block') }}
                             </div>
                             <div class="col">
                                 <a href="{{ url()->previous() }}" style="text-decoration:none">
-                                    {{ Form::button('Cancelar', ['class' => 'btn bg-gradient-secondary btn-sm btn-block']) }}
+                                    <button type="button" class="btn bg-gradient-secondary btn-sm btn-block">Cancelar</button>
                                 </a>
                             </div>
                         </div>
-                        {{ Form::close() }}
+                        {{ html()->form()->close() }}
                     </div>
                 </div>
             </div>

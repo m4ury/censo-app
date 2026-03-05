@@ -16,21 +16,13 @@
                         <i class="fas fa-arrow-alt-circle-left" style="font-size: x-large"></i>Volver
                     </a>
                 </div>
-                {!! Form::open([
-                    'route' => 'estadisticas.metas',
-                    'method' => 'GET',
-                    'class' => 'form-inline float-right',
-                ]) !!}
-                {!! Form::date('ini', \Request()->ini, [
-                    'class' => 'form-control form-control-sm mx-2',
-                ]) !!}
-                {!! Form::date('end', \Request()->end, [
-                    'class' => 'form-control form-control-sm mx-2',
-                ]) !!}
+                {{ html()->form('GET', route('estadisticas.metas'))->class('form-inline float-right')->open() }}
+                {{ html()->date('ini', \Request()->ini)->class('form-control form-control-sm mx-2') }}
+                {{ html()->date('end', \Request()->end)->class('form-control form-control-sm mx-2') }}
                 <button type="submit" class="btn btn-primary btn-xs">
                     <span><i class="fas fa-search"> Buscar</i></span>
                 </button>
-                {!! Form::close() !!}
+                {{ html()->form()->close() }}
             </div>
         </div> --}}
 

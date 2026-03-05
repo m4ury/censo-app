@@ -24,12 +24,12 @@
                 <tr>
                     <td>{{ $patologia->nombre_patologia }}</td>
                     <td>{{ $patologia->descripcion_patologia }}</td>
-                    {!! Form::open(['route' => ['patologias.destroy', $patologia->id], 'method' => 'DELETE']) !!}
-                    <td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
+                    {{ html()->form('DELETE', route('patologias.destroy', $patologia->id))->open() }}
+<td><a class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top"
                            title="Editar" href="{{ url('patologias/'.$patologia->id.'/edit') }}"><i
                                     class="fas fa-pen"></i></a>
-                    {!! Form::button('<i class="fas fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-outline-danger btn-sm', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Eliminar','onclick'=>'return confirm("seguro desea eliminar esta Patologia?")'] ) !!}
-                        {!! Form::close() !!}
+                    <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="return confirm(&quot;seguro desea eliminar esta Patologia?&quot;)"><i class="fas fa-trash"></i></button>
+                        {{ html()->form()->close() }}
                     </td>
                 </tr>
             @endforeach

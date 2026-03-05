@@ -49,8 +49,8 @@
                                     @endif
                                 </td>
 
-                                {!! Form::open(['route' => ['controles.destroy', $control->id], 'method' => 'DELETE', 'class' => 'confirm']) !!}
-                                <td>
+                                {{ html()->form('DELETE', route('controles.destroy', $control->id))->class('confirm')->open() }}
+<td>
                                     <a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top"
                                         title="Detalle" href="{{ route('controles.show', $control->id) }}"><i
                                             class="fas fa-eye info-md"></i>
@@ -59,14 +59,8 @@
                                         title="Editar" href="{{ url('controles/' . $control->id . '/editar') }}"><i
                                             class="fas fa-pen"></i>
                                     </a>
-                                    {!! Form::button('<i class="fas fa-trash"></i>', [
-                                        'type' => 'submit',
-                                        'class' => 'btn btn-outline-danger btn-sm',
-                                        'data-toggle' => 'tooltip',
-                                        'data-placement' => 'top',
-                                        'title' => 'Eliminar',
-                                    ]) !!}
-                                    {!! Form::close() !!}
+                                    {{ html()->submit('')->class('fas fa-trash') }}
+                                    {{ html()->form()->close() }}
                                 </td>
                             </tr>
                         @endforeach
