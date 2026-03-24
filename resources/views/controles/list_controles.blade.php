@@ -48,9 +48,8 @@
                                         {{ \Carbon\Carbon::parse($control->proximo_control)->format('d/m/Y') }}
                                     @endif
                                 </td>
-
                                 {{ html()->form('DELETE', route('controles.destroy', $control->id))->class('confirm')->open() }}
-<td>
+                                <td>
                                     <a class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top"
                                         title="Detalle" href="{{ route('controles.show', $control->id) }}"><i
                                             class="fas fa-eye info-md"></i>
@@ -59,7 +58,9 @@
                                         title="Editar" href="{{ url('controles/' . $control->id . '/editar') }}"><i
                                             class="fas fa-pen"></i>
                                     </a>
-                                    {{ html()->submit('')->class('fas fa-trash') }}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                     {{ html()->form()->close() }}
                                 </td>
                             </tr>

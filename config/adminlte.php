@@ -249,12 +249,12 @@ return [
             'can' => 'oirs'
         ],
 
-        [
+        /* [
             'text' => 'Constancias GES',
             'route' => 'constancias.index',
             'icon' => 'fas fa-fw fa-file text-white',
             'can' => 'some'
-        ],
+        ], */
         [
             'text' => 'Mapa ECICEP (G3)',
             'route' => 'mapa',
@@ -437,8 +437,8 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://cdn.jsdelivr.net/npm/sweetalert2@11',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
                 [
                     'type' => 'css',

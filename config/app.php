@@ -76,4 +76,40 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | Here you can register your application's service providers. These
+    | providers are loaded automatically by the framework.
+    |
+    */
+
+    'providers' => Illuminate\Support\ServiceProvider::defaultProviders()->merge([
+        // Package Service Providers...
+    ])->merge([
+        // Application Service Providers...
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+    ])->merge([
+        // Added Service Providers (Do not remove this line)...
+    ])->toArray(),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | This array of class aliases will be registered when this application
+    | is started. You may add your own aliases here.
+    |
+    */
+
+    'aliases' => Illuminate\Support\Facades\Facade::defaultAliases()->merge([
+        // 'Example' => App\Facades\Example::class,
+    ])->toArray(),
+
 ];
