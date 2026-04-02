@@ -24,6 +24,7 @@ use App\Http\Controllers\Estadisticas\SeccionP4Controller;
 use App\Http\Controllers\Estadisticas\SeccionP5Controller;
 use App\Http\Controllers\Estadisticas\SeccionP6Controller;
 use App\Http\Controllers\Estadisticas\SeccionP9Controller;
+use App\Http\Controllers\EvaluacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,7 @@ Route::middleware('auth')->group(function () {
     //rutas para solicitudes
     Route::resource('solicitudes', SolicitudController::class);
     Route::get('solicitudes.all', [SolicitudController::class, 'all'])->name('solicitudes-all');
+    Route::post('evaluaciones.store', [EvaluacionController::class, 'store'])->name('evaluaciones.store');
 
     //rutas para constancias
     Route::resource('constancias', ConstanciaController::class);

@@ -9,7 +9,10 @@
                     class="fas fa-calendar-check"></i>
                 Nueva Solicitud
             </button>
-
+            <button type="button" class="btn btn-info btn-sm ml-2" data-toggle="modal" data-target="#evaluacion"><i
+                    class="fas fa-file-alt"></i>
+                Nueva Evaluación (Calidad)
+            </button>
         </div>
         <div class="row">
             <div class="col-md-3 col-sm-6 col-12">
@@ -104,19 +107,17 @@
                             <span class="mr-2">
                                 @if ($solicitud->sol_estado == 'solicitado')
                                     <p class="btn rounded-pill bg-gradient-warning">SOLICITADO A SOME</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'medicina')
                                     <p class="btn rounded-pill bg-gradient-danger px-4">EN MEDICINA</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'some')
                                     <p class="btn rounded-pill bg-gradient-success px-4">DEVUELTO A SOME</p>
                                     @if ($solicitud->alta)
                                         @php
-                                            $dias_diferencia = Carbon\Carbon::create(
-                                                $solicitud->updated_at,
-                                            )->diffInWeekDays($solicitud->alta);
+                                            $dias_diferencia = floor(abs(Carbon\Carbon::parse($solicitud->updated_at)->diffInWeekDays(Carbon\Carbon::parse($solicitud->alta))));
                                         @endphp
                                         @if ($dias_diferencia > 1)
                                             <i class="fas fa-clock text-danger"></i>
@@ -125,23 +126,23 @@
                                     @endif
                                 @elseif ($solicitud->sol_estado == 'a_social')
                                     <p class="btn rounded-pill bg-gradient-gray px-4">EN ASISTENTE SOCIAL</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'psicologo')
                                     <p class="btn rounded-pill bg-gradient-primary px-4">EN PSICOLOGÍA</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'otros')
                                     <p class="btn rounded-pill bg-gradient-info px-4">OTROS</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'box medico')
                                     <p class="btn rounded-pill bg-gradient-indigo px-4">EN BOX MÉDICO</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @elseif ($solicitud->sol_estado == 'acreditacion')
                                     <p class="btn rounded-pill bg-gradient-purple px-4">POR ACREDITACIÓN</p>
-                                    <i class="fas fa-clock mx-2"></i><span>{{ Carbon\Carbon::now()->diffInDays($solicitud->updated_at) }}
+                                    <i class="fas fa-clock mx-2"></i><span>{{ floor(abs(Carbon\Carbon::now()->diffInDays($solicitud->updated_at))) }}
                                         días</span>
                                 @endif
                             </span>
@@ -173,6 +174,7 @@
         </table>
     </div>
     @include('solicitudes.modal')
+    @include('solicitudes.modalEval')
 
 @stop
 @section('plugins.Datatables', true)
@@ -266,7 +268,7 @@
     </script>
     <script type="text/javascript">
         @if (count($errors) > 0)
-            $('#solicitud').modal('show');
+            $('#solicitud, #evaluacion').modal('show');
         @endif
     </script>
 @endsection

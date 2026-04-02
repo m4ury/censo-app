@@ -1,23 +1,23 @@
-        <div class="modal fade py-3" id="solicitud" tabindex="-1" role="dialog" aria-labelledby="modelTitleId">
+        <div class="modal fade py-3" id="evaluacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Nueva Solicitud </h5>
+                        <h5 class="modal-title">Nueva evaluacion </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{ html()->form('POST', route('solicitudes.store'))->class('form-horizontal')->open() }}
+                        {{ html()->form('POST', route('evaluaciones.store'))->class('form-horizontal')->open() }}
                         <div class="form-group row">
-                            <label for="sol_rut_label" class="col-sm col-form-label">Rut paciente: </label>
+                            <label for="eval_nombre_label" class="col-sm col-form-label">Nombre evaluador: </label>
                             <div class="col-sm">
-                                {{ html()->text('sol_rut', old('sol_rut'))->class('form-control form-control-sm')->classIf($errors->has('sol_rut'), 'is-invalid')->placeholder('ej.: 16000000-K')->id('sol_rut')->attribute('title', 'El RUT no debe contener puntos (.), comas (,) ni comenzar con cero (0)') }}
-                                @if ($errors->has('sol_rut'))
+                                {{ html()->text('eval_nombre', old('eval_nombre'))->class('form-control form-control-sm')->classIf($errors->has('eval_nombre'), 'is-invalid')->placeholder('ej.: John Doe')->id('eval_nombre')->attribute('title', 'El nombre del evaluador es obligatorio') }}
+                                @if ($errors->has('eval_nombre'))
                                     <div class="invalid-feedback d-block">
                                         <strong>
                                             <i class="fas fa-exclamation-circle"></i>
-                                            {{ $errors->first('sol_rut') }}
+                                            {{ $errors->first('eval_nombre') }}
                                         </strong>
                                     </div>
                                 @endif
@@ -33,7 +33,7 @@
                                     data-dismiss="modal">
                                     Cancelar
                                 </button>
-                                {{-- <a href="{{ url('solicitudes') }}" style="text-decoration:none">
+                                {{-- <a href="{{ url('evaluaciones') }}" style="text-decoration:none">
                                     {{ html()->submit('Cancelar')->class('btn bg-gradient-secondary btn-sm btn-block') }}
                                 </a> --}}
                             </div>
